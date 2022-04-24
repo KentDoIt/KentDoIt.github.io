@@ -1039,7 +1039,7 @@ pre .javascript .function {
 }
 .site-meta {
   flex-grow: 1;
-  text-align: left;
+  text-align: center;
 }
 @media (max-width: 767px) {
   .site-meta {
@@ -1242,7 +1242,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #1fffff;
+  background: #f605ff;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
@@ -2360,7 +2360,7 @@ hr {
 }
 .posts-expand.index .post-title,
 .posts-expand.index .post-meta {
-  text-align: left;
+  text-align: center;
 }
 @media (max-width: 767px) {
   .posts-expand.index .post-title,
@@ -2369,7 +2369,10 @@ hr {
   }
 }
 .posts-expand.index .post-meta {
-  margin: 5px 0 20px 0;
+  margin: 5px 0 40px 0;
+}
+.posts-expand.index .post-body {
+  text-align: center;
 }
 .posts-expand .post-eof {
   display: none;
@@ -2399,27 +2402,33 @@ hr {
   margin-top: 40px;
 }
 .post-button {
-  margin-top: 20px;
-  text-align: left;
+  margin-top: 40px;
+  text-align: center;
 }
 .post-button .btn {
   background: none;
-  border: 0;
-  border-bottom: 2px solid var(--btn-default-border-color);
-  padding: 0;
-  transition-property: border;
+  border-radius: 2px;
+  color: var(--btn-default-color);
+  border: 2px solid var(--btn-default-border-color);
+  padding: 0 20px;
+  transition: background-color 0.2s ease-in-out;
 }
 .post-button .btn:hover {
-  border-bottom-color: var(--btn-default-hover-border-color);
+  background: var(--btn-default-hover-border-color);
+  border-color: var(--btn-default-hover-border-color);
+  color: var(--body-bg-color);
+}
+.footer-inner {
+  text-align: center;
 }
 .sidebar {
-  left: -320px;
+  left: -260px;
 }
 .sidebar.sidebar-active {
   left: 0;
 }
 .sidebar {
-  width: 320px;
+  width: 260px;
   z-index: 1200;
   transition-delay: 0s;
   transition-duration: 0.2s;
