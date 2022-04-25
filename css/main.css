@@ -1278,7 +1278,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #ff53a1;
+  background: #ffa2bd;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
@@ -1678,6 +1678,7 @@ pre .javascript .function {
 .posts-collapse .collection-title {
   font-size: 1.125em;
   position: relative;
+  display: none;
 }
 .posts-collapse .collection-title::before {
   background: #999;
@@ -2449,9 +2450,6 @@ hr {
   background: var(--btn-default-hover-border-color);
   border-color: var(--btn-default-hover-border-color);
   color: var(--body-bg-color);
-}
-.collection-title {
-  display: none;
 }
 .sidebar {
   left: -240px;
