@@ -16,6 +16,13 @@
 <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
   <link rel="stylesheet" href="/lib/pace/pace-theme-minimal.min.css">
   <script src="/lib/pace/pace.min.js"></script>
+  <style>
+    /*設置進度條顏色*/
+    .pace .pace-progress {
+      background: #222;
+      height: 3px;
+    }
+  </style>
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
@@ -358,6 +365,13 @@
 
           </div>
           
+    
+  <div class="comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+    </div>
+  </div>
+  
 
 <script>
   window.addEventListener('tabs:register', () => {
@@ -517,6 +531,27 @@
   
 
   
+
+<script>
+  var disqus_config = function() {
+    this.page.url = "https://kentdoit.github.io/2022/04/24/%E6%9E%B6%E8%A8%AD%E9%83%A8%E8%90%BD%E6%A0%BC-Hexo-Github/";
+    this.page.identifier = "2022/04/24/架設部落格-Hexo-Github/";
+    this.page.title = "架設部落格 Hexo + Github";
+    };
+  NexT.utils.loadComments(document.querySelector('#disqus_thread'), () => {
+    if (window.DISQUS) {
+      DISQUS.reset({
+        reload: true,
+        config: disqus_config
+      });
+    } else {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://kentdoit.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', '' + +new Date());
+      (d.head || d.body).appendChild(s);
+    }
+  });
+</script>
 
 </body>
 </html>
