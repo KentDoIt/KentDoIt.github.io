@@ -3,7 +3,42 @@
   <entry>
     <title>JS String vs toString</title>
     <url>/2022/03/23/JS%20String%20vs%20toString/</url>
-    <content><![CDATA[]]></content>
+    <content><![CDATA[<h2 id="String"><a href="#String" class="headerlink" title="String"></a>String</h2><p>優點：所有型別都能轉換為字串。</p>
+<p>缺點：<code>不支援</code>轉進位制轉換。</p>
+<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="title class_">String</span>(<span class="literal">null</span>); <span class="comment">// &#x27;null&#x27;</span></span><br><span class="line"><span class="title class_">String</span>(<span class="literal">undefined</span>); <span class="comment">// &#x27;undefined&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="toString-NaN"><a href="#toString-NaN" class="headerlink" title="toString"></a>toString</h2><p>優點：支援進位制轉換。</p>
+<p>缺點：無法轉換  <code>null</code> 、 <code>undefined</code>（會報 Error）。</p>
+<ul>
+<li>進位制轉換，括號中填寫進位對應數值。</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> num = <span class="number">10</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 二進位制</span></span><br><span class="line">num.<span class="title function_">toString</span>(<span class="number">2</span>); <span class="comment">// &#x27;1010&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 八進位制</span></span><br><span class="line">num.<span class="title function_">toString</span>(<span class="number">8</span>); <span class="comment">// &#x27;12&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 十進位制</span></span><br><span class="line">num.<span class="title function_">toString</span>(<span class="number">10</span>); <span class="comment">// &#x27;10&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 十六進位制</span></span><br><span class="line">num.<span class="title function_">toString</span>(<span class="number">16</span>); <span class="comment">// &#x27;a&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="different"><a href="#different" class="headerlink" title="different"></a>different</h2><blockquote>
+<p>toString() 對於 <code>null</code> 、 <code>undefined</code>會報 Error。</p>
+</blockquote>
+<p><img src="https://imgur.com/iss3lwQ.png" alt="Untitled"></p>
+<blockquote>
+<p>String() 無法轉換進位制。</p>
+</blockquote>
+<p><img src="https://imgur.com/eC07N2W.png" alt="Untitled"></p>
+<hr>
+<h2 id="conclusion"><a href="#conclusion" class="headerlink" title="conclusion"></a>conclusion</h2><p>toString 使用情境</p>
+<blockquote>
+<p>需要做進位制轉換。</p>
+</blockquote>
+<ul>
+<li>但要注意 <code>null</code>、<code>undefined</code> 會報 Error。</li>
+<li>建議使用 <code>try catch</code> 或 <code>短路求值</code> 來預防 Error。</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> toNum = <span class="literal">null</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 解法一</span></span><br><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">	toNum.<span class="title function_">toString</span>();</span><br><span class="line">&#125; <span class="keyword">catch</span> (exception) &#123;</span><br><span class="line">  <span class="comment">//  TypeError: Cannot read properties of null (reading &#x27;toString&#x27;)</span></span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`<span class="subst">$&#123;exception.name&#125;</span>: <span class="subst">$&#123;exception&#125;</span>`</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 解法二</span></span><br><span class="line">toNum &amp;&amp; toNum.<span class="title function_">toString</span>();</span><br></pre></td></tr></table></figure>
+
+<p>String 使用情境</p>
+<blockquote>
+<p>不需要做進位制轉換，且比較保險的轉換方式。</p>
+</blockquote>
+]]></content>
       <categories>
         <category>JavaScript</category>
       </categories>
@@ -15,7 +50,111 @@
   <entry>
     <title>架設部落格 Hexo + Github</title>
     <url>/2022/04/24/%E6%9E%B6%E8%A8%AD%E9%83%A8%E8%90%BD%E6%A0%BC-Hexo-Github/</url>
-    <content><![CDATA[]]></content>
+    <content><![CDATA[<h2 id="Hexo-環境"><a href="#Hexo-環境" class="headerlink" title="Hexo 環境"></a>Hexo 環境</h2><p>Step1：下載 Hexo 環境</p>
+<ul>
+<li><p><code>npm install hexo-cli -g</code></p>
+</li>
+<li><p>檢查 hexo 版本：hexo version</p>
+</li>
+</ul>
+<p><img src="https://imgur.com/eskxR6o.png" alt="Untitled"></p>
+<p>Step2：建立 Hexo</p>
+<ul>
+<li>輸入以下指令 ( projectname 換成自己的名稱)</li>
+<li><code>hexo init projectname</code></li>
+</ul>
+<p><img src="https://imgur.com/UQw03Y3.png" alt="Untitled"></p>
+<p>Step3：進入 Hexo 目錄</p>
+<ul>
+<li>cd projectname</li>
+</ul>
+<p>Step4：安裝相依套件</p>
+<ul>
+<li><code>npm install</code></li>
+</ul>
+<p>Step5：在本地端把 server run 起來</p>
+<ul>
+<li><code>hexo server</code></li>
+<li>在本地端啟動 Hexo 伺服器，預設路徑為：<code>http://localhost:4000/</code></li>
+<li>可在自己電腦上預覽設定結果，按 Ctrl + C 即可關閉</li>
+</ul>
+<blockquote>
+<p>localhost：代表只能從本地瀏覽此網站，無法從外部瀏覽</p>
+</blockquote>
+<h2 id="部署到-GitHub"><a href="#部署到-GitHub" class="headerlink" title="部署到 GitHub"></a>部署到 GitHub</h2><p>Step1：Git 部署套件（因為預設 Hexo 並沒有安裝）</p>
+<ul>
+<li><code>npm install hexo-deployer-git --save</code></li>
+</ul>
+<p>Step2：修改 <code>deploy</code> 餐去</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  <span class="built_in">type</span>: git // 模式</span><br><span class="line">  repo: https://github.com/hsiangfeng/ray.github.io.git // 自己 GitHub repos 連結</span><br><span class="line">  branch: master // 分支</span><br></pre></td></tr></table></figure>
+
+<p>Step3：部署</p>
+<ul>
+<li><code>hexo d -g</code></li>
+</ul>
+<p><img src="https://imgur.com/o6lXKWf.png" alt="Untitled"></p>
+<p>失敗的話把 repo 改為用 SSH（例如：<a href="mailto:git@github.com">git@github.com</a>:KentDoIt&#x2F;KentDoIt.github.io.git）</p>
+<p>Step4：查看 pages</p>
+<ul>
+<li>github 專案底下 → 點擊右上角 齒輪 Settings → 左側 Pages</li>
+</ul>
+<aside>
+👨‍💻 剛上傳會需要等一段時間
+
+</aside>
+
+<p><img src="https://imgur.com/CyCxriT.png" alt="等待中"></p>
+<aside>
+👨‍💻 可以先在 local 端 run 起來看看
+
+</aside>
+
+<p>輸入指令：（兩種都可以）</p>
+<ul>
+<li><code>hexo server</code></li>
+<li>hexo s –debug</li>
+</ul>
+<aside>
+👨‍💻 成功的話會看到下方畫面（預設主題是 `landscape`）
+
+</aside>
+
+<p><img src="https://imgur.com/P8oLEQt.png" alt="Untitled"></p>
+<hr>
+<h2 id="Hexo-目錄架構"><a href="#Hexo-目錄架構" class="headerlink" title="Hexo 目錄架構"></a>Hexo 目錄架構</h2><blockquote>
+<p>下方會介紹幾個常用到的</p>
+</blockquote>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="string">├──</span> <span class="string">.deploy_git</span></span><br><span class="line"><span class="string">├──</span> <span class="string">.git</span></span><br><span class="line"><span class="string">├──</span> <span class="string">node_modules</span></span><br><span class="line"><span class="string">├──</span> <span class="string">public</span>           <span class="comment"># hexo g 生成靜態網站</span></span><br><span class="line"><span class="string">├──</span> <span class="string">scaffolds</span>        <span class="comment"># 指令產生的草稿、頁面、文章都會依照資料夾內的文件建立</span></span><br><span class="line"><span class="string">|</span>   <span class="string">├──</span> <span class="string">draft.md</span></span><br><span class="line"><span class="string">|</span>   <span class="string">├──</span> <span class="string">page.md</span></span><br><span class="line"><span class="string">|</span>   <span class="string">└──</span> <span class="string">post.md</span>      <span class="comment"># 生成文章的樣版</span></span><br><span class="line"><span class="string">├──</span> <span class="string">source</span></span><br><span class="line"><span class="string">|</span>   <span class="string">├──</span> <span class="string">_drafts</span></span><br><span class="line"><span class="string">|</span>   <span class="string">└──</span> <span class="string">_posts</span>       <span class="comment"># 文章資料夾</span></span><br><span class="line"><span class="string">├──</span> <span class="string">themes</span>           <span class="comment"># theme 版型資料夾</span></span><br><span class="line"><span class="string">|</span>   <span class="string">└──</span> <span class="string">landscape</span>    <span class="comment"># 預設 theme</span></span><br><span class="line"><span class="string">|</span>       <span class="string">└──</span> <span class="string">_config.yml</span>  <span class="comment"># 版型樣式 設定</span></span><br><span class="line"><span class="string">├──</span> <span class="string">.gitignore</span></span><br><span class="line"><span class="string">├──</span> <span class="string">_config.yml</span>      <span class="comment"># 基本部署 設定</span></span><br><span class="line"><span class="string">├──</span> <span class="string">db.json</span></span><br><span class="line"><span class="string">├──</span> <span class="string">package.json</span></span><br><span class="line"><span class="string">└──</span> <span class="string">package-lock.json</span></span><br></pre></td></tr></table></figure>
+
+<p>node_modules：依照 package.json 所安裝的套件。</p>
+<ul>
+<li><code>npm install</code></li>
+</ul>
+<p>public：編譯產生靜態檔案後存放的位置。</p>
+<ul>
+<li><code>hexo g</code></li>
+</ul>
+<p>scaffolds：存放 <code>layout</code> 模版，Hexo 會根據 scaffolds 模板來建立檔案。（預設 layout 為 <code>post</code>）</p>
+<ul>
+<li><code>hexo new [layout] &lt;title&gt;</code></li>
+</ul>
+<p>source：新增文章後存放的位置。</p>
+<ul>
+<li><code>hexo new [layout] &lt;title&gt;</code></li>
+</ul>
+<p>themes：存放 Hexo 主題的位置，（預設 themes 為 <code>landscape</code>），Hexo 會依據放在該資料夾底下的主題與 _config.yml 設置來編譯產生靜態檔案。</p>
+<p>_config.yml：Hexo 編譯網站的設定檔。</p>
+<p>package.json：應用程式資料，包含使用的一些相依套件</p>
+<p>.gitignore：部署時要忽略特定檔案或資料夾。</p>
+<p>package.json：管理相依套件的版本。</p>
+<p>package-lock.json：主要用途是記錄當前安裝的每一個套件版本，確認是否安裝到正確的套件版本。（基本上不會動到這個檔案，只有在新增、刪除以及更新套件時，它才會有變化）</p>
+<hr>
+<h2 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h2><ul>
+<li>ray <a href="https://israynotarray.com/hexo/20190411/932826160/">Hexo教學 Next主題設定與頁面功能(Ver. 8)</a></li>
+<li><a href="https://ed521.github.io/2019/07/hexo-install/">[教學] 使用 GitHub Pages + Hexo 來架設個人部落格</a></li>
+<li>ray <a href="https://israynotarray.com/hexo/20200917/636983586/">(4) 試著學 Hexo - 認識 Hexo 目錄結構</a></li>
+</ul>
+]]></content>
       <categories>
         <category>Hexo</category>
       </categories>

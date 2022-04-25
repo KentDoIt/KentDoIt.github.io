@@ -1281,7 +1281,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #7850c1;
+  background: #ff39ad;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
@@ -1800,6 +1800,11 @@ pre .javascript .function {
 }
 .post-block:last-of-type .post-eof {
   display: none;
+}
+@media (min-width: 414px) {
+  .post-eof {
+    margin: 30px auto 30px;
+  }
 }
 .content {
   padding-top: 40px;
