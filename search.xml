@@ -98,26 +98,23 @@
 <ul>
 <li>github 專案底下 → 點擊右上角 齒輪 Settings → 左側 Pages</li>
 </ul>
-<aside>
-👨‍💻 剛上傳會需要等一段時間
-
-</aside>
+<div class="note default">
+            <p>剛上傳會需要等一段時間</p>
+          </div>
 
 <p><img src="https://imgur.com/CyCxriT.png" alt="等待中"></p>
-<aside>
-👨‍💻 可以先在 local 端 run 起來看看
-
-</aside>
+<div class="note default">
+            <p>可以先在 local 端 run 起來看看</p>
+          </div>
 
 <p>輸入指令：（兩種都可以）</p>
 <ul>
 <li><code>hexo server</code></li>
 <li>hexo s –debug</li>
 </ul>
-<aside>
-👨‍💻 成功的話會看到下方畫面（預設主題是 `landscape`）
-
-</aside>
+<div class="note default">
+            <p>成功的話會看到下方畫面（預設主題是 <code>landscape</code>）</p>
+          </div>
 
 <p><img src="https://imgur.com/P8oLEQt.png" alt="Untitled"></p>
 <hr>
