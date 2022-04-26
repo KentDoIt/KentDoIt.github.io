@@ -249,7 +249,7 @@ hr {
   margin: 40px 0;
 }
 blockquote {
-  border-left: 4px solid #ddd;
+  border-left: 4px solid #b2b798;
   color: var(--blockquote-color);
   margin: 0;
   padding: 0 15px;
@@ -1340,7 +1340,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #44c1fe;
+  background: #c104cb;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
