@@ -10,7 +10,7 @@
   --brand-hover-color: #222;
   --table-row-odd-bg-color: #f9f9f9;
   --table-row-hover-bg-color: #f5f5f5;
-  --menu-item-bg-color: #ddd;
+  --menu-item-bg-color: transparent;
   --btn-default-bg: transparent;
   --btn-default-color: var(--link-color);
   --btn-default-border-color: var(--link-color);
@@ -1340,7 +1340,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #9cb578;
+  background: #abd099;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
@@ -2681,6 +2681,19 @@ hr {
   background: transparent !important;
   transform: scale(1.1);
 }
+.posts-expand .post-meta .post-description {
+  display: none;
+}
 .sidebar {
   background: #313131;
+}
+.menu .menu-item a {
+  border-radius: 0;
+  transition: all 0.1s linear;
+}
+.menu .menu-item a:hover {
+  border-bottom: 1px solid var(--link-hover-color);
+}
+.blockquote-center {
+  margin: 70px 0;
 }
