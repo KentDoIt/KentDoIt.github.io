@@ -362,13 +362,14 @@
 
           </div>
           
-    
-  <div class="comments">
-    <div id="disqus_thread">
-      <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
-    </div>
-  </div>
-  
+  <script src="https://utteranc.es/client.js"
+          repo="KentDoIt/hexo-theme-next"
+          issue-term="pathname"
+          label="blog comment"
+          theme="github-light"
+          crossorigin="anonymous"
+          async>
+  </script>
 
 <script>
   window.addEventListener('tabs:register', () => {
@@ -532,27 +533,6 @@
   
 
   
-
-<script>
-  var disqus_config = function() {
-    this.page.url = "https://kentdoit.github.io/2022/03/23/JS%20String%20vs%20toString/";
-    this.page.identifier = "2022/03/23/JS String vs toString/";
-    this.page.title = "JS String vs toString";
-    };
-  NexT.utils.loadComments(document.querySelector('#disqus_thread'), () => {
-    if (window.DISQUS) {
-      DISQUS.reset({
-        reload: true,
-        config: disqus_config
-      });
-    } else {
-      var d = document, s = d.createElement('script');
-      s.src = 'https://kentdoit.disqus.com/embed.js';
-      s.setAttribute('data-timestamp', '' + +new Date());
-      (d.head || d.body).appendChild(s);
-    }
-  });
-</script>
 
 </body>
 </html>
