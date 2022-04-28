@@ -50,7 +50,15 @@
   <entry>
     <title>架設部落格 Hexo + Github</title>
     <url>/2022/04/24/%E6%9E%B6%E8%A8%AD%E9%83%A8%E8%90%BD%E6%A0%BC-Hexo-Github/</url>
-    <content><![CDATA[<h2 id="Hexo-環境"><a href="#Hexo-環境" class="headerlink" title="Hexo 環境"></a>Hexo 環境</h2><p>Step1：下載 Hexo 環境</p>
+    <content><![CDATA[<h2 id="Hexo-環境"><a href="#Hexo-環境" class="headerlink" title="Hexo 環境"></a>Hexo 環境</h2><figure class="highlight diff"><figcaption><span>123</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="addition">+code snippt</span></span><br><span class="line"><span class="deletion">-code snippt</span></span><br></pre></td></tr></table></figure>
+
+<div class="note default">
+            <p>剛上傳會需要等一段時間</p>
+          </div>
+
+<figure class="highlight diff"><figcaption><span>路徑：./_config.yml</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="addition">+程式碼測試</span></span><br><span class="line"><span class="deletion">-程式碼測試</span></span><br></pre></td></tr></table></figure>
+
+<p>Step1：下載 Hexo 環境</p>
 <ul>
 <li><p><code>npm install hexo-cli -g</code></p>
 </li>
@@ -85,7 +93,7 @@
 <ul>
 <li><code>npm install hexo-deployer-git --save</code></li>
 </ul>
-<p>Step2：修改 <code>deploy</code> 餐去</p>
+<p>Step2：修改 <code>deploy</code> 參數</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  <span class="built_in">type</span>: git // 模式</span><br><span class="line">  repo: https://github.com/hsiangfeng/ray.github.io.git // 自己 GitHub repos 連結</span><br><span class="line">  branch: master // 分支</span><br></pre></td></tr></table></figure>
 
 <p>Step3：部署</p>
