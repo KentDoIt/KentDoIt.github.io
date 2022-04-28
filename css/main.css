@@ -177,7 +177,7 @@ body {
 body {
   background: var(--body-bg-color);
   color: var(--text-color);
-  font-family: 'Lato', "PingFang SC", "Microsoft YaHei", sans-serif;
+  font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
   font-size: 1em;
   line-height: 2;
 }
@@ -193,7 +193,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: 'Lato', "PingFang SC", "Microsoft YaHei", sans-serif;
+  font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
   font-weight: bold;
   line-height: 1.5;
   margin: 20px 0 15px;
@@ -1067,7 +1067,7 @@ pre .javascript .function {
   color: var(--brand-hover-color);
 }
 .site-title {
-  font-family: 'Lato', "PingFang SC", "Microsoft YaHei", sans-serif;
+  font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
   font-size: 1.375em;
   font-weight: normal;
   margin: 0;
@@ -1318,7 +1318,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #f01c9f;
+  background: #492ab0;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
@@ -1671,7 +1671,7 @@ pre .javascript .function {
   bottom: 0;
 }
 .post-body {
-  font-family: 'Lato', "PingFang SC", "Microsoft YaHei", sans-serif;
+  font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
   overflow-wrap: break-word;
   word-wrap: break-word;
 }
@@ -1975,7 +1975,7 @@ pre .javascript .function {
 }
 .posts-expand .post-meta {
   color: #999;
-  font-family: 'Lato', "PingFang SC", "Microsoft YaHei", sans-serif;
+  font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
   font-size: 0.75em;
   margin: 3px 0 60px 0;
   text-align: center;
@@ -2654,6 +2654,21 @@ hr {
 .sub-menu .menu-item {
   display: inline-block;
 }
+.content {
+  padding-top: 40px;
+}
+.menu .menu-item.menu-item-active a {
+  color: var(--link-color);
+}
+.menu .menu-item a {
+  border-radius: 0;
+  color: #999;
+  font-size: 14px;
+  transition: all 0.1s linear;
+}
+.menu .menu-item a:hover {
+  color: var(--link-color);
+}
 .post-tags {
   text-align: center !important;
 }
@@ -2666,34 +2681,30 @@ hr {
   background: transparent !important;
   transform: scale(1.1);
 }
-.content {
-  padding-top: 40px;
-}
 .posts-expand .post-meta .post-description {
   display: none;
-}
-.sidebar {
-  background: #313131;
-}
-.menu .menu-item a {
-  border-radius: 0;
-  transition: all 0.1s linear;
-}
-.menu .menu-item a:hover {
-  border-bottom: 1px solid var(--link-hover-color);
 }
 .blockquote-center {
   margin: 70px 0;
 }
 .post-copyright {
-  border-top: 3px solid #e4e0ce;
   border-left: 0;
   background: var(--body-bg-color);
   color: var(--blockquote-color);
   padding: 1rem 0;
 }
+.sidebar {
+  background: #313131;
+}
 .sidebar-toggle {
-  border-radius: 5px;
+  background: transparent;
+}
+.sidebar-toggle .toggle-line,
+.sidebar-toggle:hover .toggle-line {
+  background: #222;
+}
+.sidebar-toggle.toggle-close .toggle-line {
+  background: #b3cdd1;
 }
 .back-to-top {
   left: auto;
@@ -2702,9 +2713,6 @@ hr {
 }
 .back-to-top.back-to-top-on {
   bottom: 45px;
-}
-.footer-inner {
-  display: none;
 }
 .github-corner svg {
   position: fixed;
@@ -2726,4 +2734,7 @@ pre .deletion {
   background: transparent;
   top: auto;
   bottom: 5px;
+}
+.footer-inner {
+  display: none;
 }
