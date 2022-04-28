@@ -1318,7 +1318,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #ff40d9;
+  background: #73661c;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
@@ -2681,11 +2681,37 @@ hr {
   background: transparent !important;
   transform: scale(1.1);
 }
+.posts-expand.index .post-meta {
+  margin-bottom: 10px;
+}
+.post-button {
+  margin-top: 20px;
+}
+.post-eof {
+  margin: 60px auto 40px;
+}
+.post-meta .post-meta-item + .post-meta-item::before {
+  content: '';
+  margin: 0;
+}
+[itemprop="about"] a {
+  border-bottom: 0;
+}
+[itemprop="about"] a:hover {
+  border-bottom: 1px solid var(--link-hover-color);
+}
+.posts-expand .post-meta time {
+  border-bottom: 0;
+  cursor: default;
+}
+.posts-expand .post-meta {
+  margin-bottom: 0;
+}
 .posts-expand .post-meta .post-description {
   display: none;
 }
 .blockquote-center {
-  margin: 70px 0;
+  margin: 50px 0;
 }
 .post-copyright {
   border-left: 0;
