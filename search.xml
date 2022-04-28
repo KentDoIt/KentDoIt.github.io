@@ -1,62 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>JS String vs toString</title>
-    <url>/2022/03/23/JS%20String%20vs%20toString/</url>
-    <content><![CDATA[<h2 id="String"><a href="#String" class="headerlink" title="String"></a>String</h2><p>優點：所有型別都能轉換為字串。</p>
-<p>缺點：<code>不支援</code>轉進位制轉換。</p>
-<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="title class_">String</span>(<span class="literal">null</span>); <span class="comment">// &#x27;null&#x27;</span></span><br><span class="line"><span class="title class_">String</span>(<span class="literal">undefined</span>); <span class="comment">// &#x27;undefined&#x27;</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="toString-NaN"><a href="#toString-NaN" class="headerlink" title="toString"></a>toString</h2><p>優點：支援進位制轉換。</p>
-<p>缺點：無法轉換  <code>null</code> 、 <code>undefined</code>（會報 Error）。</p>
-<ul>
-<li>進位制轉換，括號中填寫進位對應數值。</li>
-</ul>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> num = <span class="number">10</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 二進位制</span></span><br><span class="line">num.<span class="title function_">toString</span>(<span class="number">2</span>); <span class="comment">// &#x27;1010&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 八進位制</span></span><br><span class="line">num.<span class="title function_">toString</span>(<span class="number">8</span>); <span class="comment">// &#x27;12&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 十進位制</span></span><br><span class="line">num.<span class="title function_">toString</span>(<span class="number">10</span>); <span class="comment">// &#x27;10&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 十六進位制</span></span><br><span class="line">num.<span class="title function_">toString</span>(<span class="number">16</span>); <span class="comment">// &#x27;a&#x27;</span></span><br></pre></td></tr></table></figure>
-
-<hr>
-<h2 id="different"><a href="#different" class="headerlink" title="different"></a>different</h2><blockquote>
-<p>toString() 對於 <code>null</code> 、 <code>undefined</code>會報 Error。</p>
-</blockquote>
-<p><img src="https://imgur.com/iss3lwQ.png" alt="Untitled"></p>
-<blockquote>
-<p>String() 無法轉換進位制。</p>
-</blockquote>
-<p><img src="https://imgur.com/eC07N2W.png" alt="Untitled"></p>
-<hr>
-<h2 id="conclusion"><a href="#conclusion" class="headerlink" title="conclusion"></a>conclusion</h2><p>toString 使用情境</p>
-<blockquote>
-<p>需要做進位制轉換。</p>
-</blockquote>
-<ul>
-<li>但要注意 <code>null</code>、<code>undefined</code> 會報 Error。</li>
-<li>建議使用 <code>try catch</code> 或 <code>短路求值</code> 來預防 Error。</li>
-</ul>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> toNum = <span class="literal">null</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 解法一</span></span><br><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">	toNum.<span class="title function_">toString</span>();</span><br><span class="line">&#125; <span class="keyword">catch</span> (exception) &#123;</span><br><span class="line">  <span class="comment">//  TypeError: Cannot read properties of null (reading &#x27;toString&#x27;)</span></span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`<span class="subst">$&#123;exception.name&#125;</span>: <span class="subst">$&#123;exception&#125;</span>`</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 解法二</span></span><br><span class="line">toNum &amp;&amp; toNum.<span class="title function_">toString</span>();</span><br></pre></td></tr></table></figure>
-
-<p>String 使用情境</p>
-<blockquote>
-<p>不需要做進位制轉換，且比較保險的轉換方式。</p>
-</blockquote>
-]]></content>
-      <categories>
-        <category>JavaScript</category>
-      </categories>
-      <tags>
-        <tag>JavaScript</tag>
-        <tag>JS 轉換型別</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>架設部落格 Hexo + Github</title>
     <url>/2022/04/24/%E6%9E%B6%E8%A8%AD%E9%83%A8%E8%90%BD%E6%A0%BC-Hexo-Github/</url>
-    <content><![CDATA[<h2 id="Hexo-環境"><a href="#Hexo-環境" class="headerlink" title="Hexo 環境"></a>Hexo 環境</h2><figure class="highlight diff"><figcaption><span>123</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="addition">+code snippt</span></span><br><span class="line"><span class="deletion">-code snippt</span></span><br></pre></td></tr></table></figure>
+    <content><![CDATA[<h2 id="Hexo-環境"><a href="#Hexo-環境" class="headerlink" title="Hexo 環境"></a>Hexo 環境</h2><figure class="highlight diff"><figcaption><span>js</span><a href="http://zhuzhuyule.com/images/avatar.png">link</a></figcaption><table><tr><td class="code"><pre><span class="line">&#x27;use struct&#x27;;</span><br><span class="line"><span class="deletion">-var name = &#x27;zhu&#x27;</span></span><br><span class="line"><span class="addition">+var name = &#x27;zhuzhuxia&#x27;;</span></span><br><span class="line">function sayHello()&#123;</span><br><span class="line"><span class="deletion">-    alert(name);</span></span><br><span class="line"><span class="addition">+    console.log(name);</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <div class="note default">
             <p>剛上傳會需要等一段時間</p>
           </div>
 
-<figure class="highlight diff"><figcaption><span>路徑：./_config.yml</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="addition">+程式碼測試</span></span><br><span class="line"><span class="deletion">-程式碼測試</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><figcaption><span>diff 路徑：./_config.yml</span></figcaption><table><tr><td class="code"><pre><span class="line">+ <span class="keyword">let</span> n=<span class="number">1</span>;</span><br><span class="line">- <span class="keyword">let</span> nn=<span class="number">1</span>;</span><br></pre></td></tr></table></figure>
 
 <p>Step1：下載 Hexo 環境</p>
 <ul>
@@ -165,6 +118,53 @@
       </categories>
       <tags>
         <tag>Hexo 部落格</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>JS String vs toString</title>
+    <url>/2022/03/23/JS%20String%20vs%20toString/</url>
+    <content><![CDATA[<h2 id="String"><a href="#String" class="headerlink" title="String"></a>String</h2><p>優點：所有型別都能轉換為字串。</p>
+<p>缺點：<code>不支援</code>轉進位制轉換。</p>
+<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="title class_">String</span>(<span class="literal">null</span>); <span class="comment">// &#x27;null&#x27;</span></span><br><span class="line"><span class="title class_">String</span>(<span class="literal">undefined</span>); <span class="comment">// &#x27;undefined&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="toString-NaN"><a href="#toString-NaN" class="headerlink" title="toString"></a>toString</h2><p>優點：支援進位制轉換。</p>
+<p>缺點：無法轉換  <code>null</code> 、 <code>undefined</code>（會報 Error）。</p>
+<ul>
+<li>進位制轉換，括號中填寫進位對應數值。</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> num = <span class="number">10</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 二進位制</span></span><br><span class="line">num.<span class="title function_">toString</span>(<span class="number">2</span>); <span class="comment">// &#x27;1010&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 八進位制</span></span><br><span class="line">num.<span class="title function_">toString</span>(<span class="number">8</span>); <span class="comment">// &#x27;12&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 十進位制</span></span><br><span class="line">num.<span class="title function_">toString</span>(<span class="number">10</span>); <span class="comment">// &#x27;10&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 十六進位制</span></span><br><span class="line">num.<span class="title function_">toString</span>(<span class="number">16</span>); <span class="comment">// &#x27;a&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="different"><a href="#different" class="headerlink" title="different"></a>different</h2><blockquote>
+<p>toString() 對於 <code>null</code> 、 <code>undefined</code>會報 Error。</p>
+</blockquote>
+<p><img src="https://imgur.com/iss3lwQ.png" alt="Untitled"></p>
+<blockquote>
+<p>String() 無法轉換進位制。</p>
+</blockquote>
+<p><img src="https://imgur.com/eC07N2W.png" alt="Untitled"></p>
+<hr>
+<h2 id="conclusion"><a href="#conclusion" class="headerlink" title="conclusion"></a>conclusion</h2><p>toString 使用情境</p>
+<blockquote>
+<p>需要做進位制轉換。</p>
+</blockquote>
+<ul>
+<li>但要注意 <code>null</code>、<code>undefined</code> 會報 Error。</li>
+<li>建議使用 <code>try catch</code> 或 <code>短路求值</code> 來預防 Error。</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> toNum = <span class="literal">null</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 解法一</span></span><br><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">	toNum.<span class="title function_">toString</span>();</span><br><span class="line">&#125; <span class="keyword">catch</span> (exception) &#123;</span><br><span class="line">  <span class="comment">//  TypeError: Cannot read properties of null (reading &#x27;toString&#x27;)</span></span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`<span class="subst">$&#123;exception.name&#125;</span>: <span class="subst">$&#123;exception&#125;</span>`</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 解法二</span></span><br><span class="line">toNum &amp;&amp; toNum.<span class="title function_">toString</span>();</span><br></pre></td></tr></table></figure>
+
+<p>String 使用情境</p>
+<blockquote>
+<p>不需要做進位制轉換，且比較保險的轉換方式。</p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>JavaScript</category>
+      </categories>
+      <tags>
+        <tag>JavaScript</tag>
+        <tag>JS 轉換型別</tag>
       </tags>
   </entry>
 </search>

@@ -442,7 +442,7 @@ code {
   padding: 0;
 }
 .highlight figcaption {
-  background: #eae8da;
+  background: #e2e1dd;
   color: #4d4d4c;
   display: flex;
   font-size: 0.875em;
@@ -463,7 +463,7 @@ code {
   user-select: none;
 }
 .highlight .gutter pre {
-  background: #eae8da;
+  background: #e2e1dd;
   color: #828282;
   padding-left: 10px;
   padding-right: 10px;
@@ -784,7 +784,7 @@ pre .javascript .function {
   font-weight: 900;
 }
 .post-body .note.default {
-  background: #e5e3d5;
+  background: #f3f3e3;
   color: #5d5647;
   box-shadow: 1px 1px 3px #e5e3d5;
 }
@@ -802,7 +802,7 @@ pre .javascript .function {
   content: "👨‍💻";
 }
 .post-body .note.primary {
-  background: #e5e3d5;
+  background: #f3f3e3;
   color: #5d5647;
   box-shadow: 1px 1px 3px #e5e3d5;
 }
@@ -820,7 +820,7 @@ pre .javascript .function {
   content: "📖";
 }
 .post-body .note.info {
-  background: #e5e3d5;
+  background: #f3f3e3;
   color: #5d5647;
   box-shadow: 1px 1px 3px #e5e3d5;
 }
@@ -874,7 +874,7 @@ pre .javascript .function {
   content: "\f06a";
 }
 .post-body .note.danger {
-  background: #e5e3d5;
+  background: #f3f3e3;
   color: #5d5647;
   box-shadow: 1px 1px 3px #e5e3d5;
 }
@@ -1318,7 +1318,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #1cbb1c;
+  background: #f01c9f;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
@@ -2708,13 +2708,22 @@ hr {
 }
 .github-corner svg {
   position: fixed;
+  top: -50px;
   fill: transparent;
   color: var(--link-hover-color);
-  transform: rotate(315deg);
-  margin: 10px 5px 0 0;
+  transform: rotate(140deg);
+  margin-top: 10px;
 }
 .highlight {
   overflow-x: auto;
   overflow-y: hidden;
   border-radius: 4px;
+}
+pre .deletion {
+  background: #ffd8d5;
+}
+.copy-btn {
+  background: transparent;
+  top: auto;
+  bottom: 5px;
 }
