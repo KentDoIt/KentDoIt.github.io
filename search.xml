@@ -95,7 +95,7 @@
     <title>Hexo 新增文章和頁面 (二)</title>
     <url>/2022/04/26/Hexo-%E6%96%B0%E5%A2%9E%E6%96%87%E7%AB%A0%E5%92%8C%E9%A0%81%E9%9D%A2-%E4%BA%8C/</url>
     <content><![CDATA[<blockquote>
-<p>新增語法都一樣只差別在 layout 參數。</p>
+<p>新增文章、草稿、草稿三種語法都一樣是使用 new 指令，只差別在 layout 參數。</p>
 </blockquote>
 <p>語法</p>
 <ul>
