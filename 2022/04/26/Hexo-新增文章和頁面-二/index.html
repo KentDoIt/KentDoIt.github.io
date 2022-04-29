@@ -29,24 +29,25 @@
     var CONFIG = {"hostname":"kentdoit.github.io","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","width":240,"display":"hide","padding":40,"offset":12,"onmobile":true},"copycode":{"enable":true,"show_result":true,"style":"flat"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="此篇會介紹如何設置 Hexo 主題 NexT 以及設置 Settings。">
+  <meta name="description" content="此篇會如何在 Hexo 使用 new 新增指令。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hexo 主題 NexT 設置 (一)">
-<meta property="og:url" content="https://kentdoit.github.io/2022/04/25/Hexo-%E4%B8%BB%E9%A1%8C-NexT-%E8%A8%AD%E7%BD%AE-%E4%B8%80/index.html">
+<meta property="og:title" content="Hexo 新增文章和頁面 (二)">
+<meta property="og:url" content="https://kentdoit.github.io/2022/04/26/Hexo-%E6%96%B0%E5%A2%9E%E6%96%87%E7%AB%A0%E5%92%8C%E9%A0%81%E9%9D%A2-%E4%BA%8C/index.html">
 <meta property="og:site_name" content="Kent">
-<meta property="og:description" content="此篇會介紹如何設置 Hexo 主題 NexT 以及設置 Settings。">
+<meta property="og:description" content="此篇會如何在 Hexo 使用 new 新增指令。">
 <meta property="og:locale" content="zh_TW">
-<meta property="og:image" content="https://imgur.com/tq9H5Eb.png">
-<meta property="og:image" content="https://imgur.com/AbQvbMt.png">
-<meta property="og:image" content="https://imgur.com/W1W5iaB.png">
-<meta property="article:published_time" content="2022-04-24T16:30:34.000Z">
-<meta property="article:modified_time" content="2022-04-29T07:57:33.845Z">
+<meta property="og:image" content="https://imgur.com/XWXBS2c.png">
+<meta property="og:image" content="https://imgur.com/8Cyd1Pz.png">
+<meta property="og:image" content="https://imgur.com/6OCF161.png">
+<meta property="og:image" content="https://imgur.com/bRVlExe.png">
+<meta property="article:published_time" content="2022-04-26T07:11:38.000Z">
+<meta property="article:modified_time" content="2022-04-29T08:33:38.653Z">
 <meta property="article:author" content="Kent">
 <meta property="article:tag" content="Hexo 部落格">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://imgur.com/tq9H5Eb.png">
+<meta name="twitter:image" content="https://imgur.com/XWXBS2c.png">
 
-<link rel="canonical" href="https://kentdoit.github.io/2022/04/25/Hexo-%E4%B8%BB%E9%A1%8C-NexT-%E8%A8%AD%E7%BD%AE-%E4%B8%80/">
+<link rel="canonical" href="https://kentdoit.github.io/2022/04/26/Hexo-%E6%96%B0%E5%A2%9E%E6%96%87%E7%AB%A0%E5%92%8C%E9%A0%81%E9%9D%A2-%E4%BA%8C/">
 
 
 <script id="page-configurations">
@@ -59,7 +60,7 @@
   };
 </script>
 
-  <title>Hexo 主題 NexT 設置 (一) | Kent</title>
+  <title>Hexo 新增文章和頁面 (二) | Kent</title>
   
 
 
@@ -212,7 +213,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
-    <link itemprop="mainEntityOfPage" href="https://kentdoit.github.io/2022/04/25/Hexo-%E4%B8%BB%E9%A1%8C-NexT-%E8%A8%AD%E7%BD%AE-%E4%B8%80/">
+    <link itemprop="mainEntityOfPage" href="https://kentdoit.github.io/2022/04/26/Hexo-%E6%96%B0%E5%A2%9E%E6%96%87%E7%AB%A0%E5%92%8C%E9%A0%81%E9%9D%A2-%E4%BA%8C/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/headshost_ya.jpg">
@@ -225,7 +226,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          Hexo 主題 NexT 設置 (一)
+          Hexo 新增文章和頁面 (二)
         </h1>
 
         <div class="post-meta">
@@ -243,7 +244,7 @@
               <!--<span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>-->
-              <span>4 分鐘閱讀時間</span>
+              <span>3 分鐘閱讀時間</span>
             </span>
             <span class="post-meta-item">
               <!--<span class="post-meta-item-icon">
@@ -251,11 +252,11 @@
               </span>
               <span class="post-meta-item-text">發表於</span>-->
               <br>
-              <time title="創建時間：2022-04-25 00:30:34" itemprop="dateCreated datePublished" datetime="2022-04-25T00:30:34+08:00">2022-04-25</time>
+              <time title="創建時間：2022-04-26 15:11:38" itemprop="dateCreated datePublished" datetime="2022-04-26T15:11:38+08:00">2022-04-26</time>
             </span>
 
           
-            <div class="post-description">此篇會介紹如何設置 Hexo 主題 NexT 以及設置 Settings。</div>
+            <div class="post-description">此篇會如何在 Hexo 使用 new 新增指令。</div>
 
         </div>
       </header>
@@ -266,90 +267,166 @@
     <div class="post-body" itemprop="articleBody">
         <blockquote class="blockquote-center">
           <i class="fa fa-quote-left"></i>
-          <p>此篇會介紹如何設置 Hexo 主題 NexT 以及設置 Settings。</p>
+          <p>此篇會如何在 Hexo 使用 new 新增指令。</p>
           <i class="fa fa-quote-right"></i>
         </blockquote>
       
-        <h2 id="更換主題-theme"><a href="#更換主題-theme" class="headerlink" title="更換主題 theme"></a>更換主題 theme</h2><p>Step1：從<a target="_blank" rel="noopener" href="https://hexo.io/themes/">官方</a>主題找尋自己順眼的</p>
-<div class="note default">
-            <p>最近主流有兩個推薦的（我選擇 Next）</p>
-          </div>
-
+        <blockquote>
+<p>新增語法都一樣只差別在 layout 參數。</p>
+</blockquote>
+<p>語法</p>
 <ul>
-<li><a target="_blank" rel="noopener" href="https://github.com/theme-next/hexo-theme-next">Next</a></li>
-<li><a target="_blank" rel="noopener" href="https://github.com/fluid-dev/hexo-theme-fluid">Fluid</a></li>
+<li><code>hexo new [layout] &lt;title&gt;</code></li>
 </ul>
-<p>Step2：下載主題 Download 或 clone 到 themes 資料夾底下</p>
-<div class="note danger">
-            <p>切記要先進入該專案根目錄的 themes（&#x2F;themes）</p>
-          </div>
-
+<p>參數</p>
 <ul>
-<li><code>cd themes</code></li>
-<li><code>git clone https://github.com/theme-next/hexo-theme-next.git</code></li>
-</ul>
-<p>Step3：修改根目錄 _config.yml 中的 theme 參數（預設是 landscape）</p>
-<figure class="highlight diff"><figcaption><span>_config.yml</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="addition">+theme: landscape</span></span><br><span class="line"><span class="deletion">-theme: hexo-theme-next</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="NexT-樣式設定"><a href="#NexT-樣式設定" class="headerlink" title="NexT 樣式設定"></a>NexT 樣式設定</h2><blockquote>
-<p>下方會介紹部落格樣式中最基礎的設置。</p>
-</blockquote>
-<h3 id="Scheme-Settings"><a href="#Scheme-Settings" class="headerlink" title="Scheme Settings"></a>Scheme Settings</h3><blockquote>
-<p>第一個介紹的一定非 Scheme 莫屬，替部落格換上喜歡的皮。</p>
-</blockquote>
-<p>Step1：搜尋 Scheme</p>
-<p>Step2：將選擇的 scheme 取消註解（我選擇 Mist）</p>
-<figure class="highlight diff"><figcaption><span>themes/hexo-theme-next/_config.yml</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># Schemes</span><br><span class="line"># scheme: Muse</span><br><span class="line">scheme: Mist</span><br><span class="line"># scheme: Pisces</span><br><span class="line"># scheme: Gemini</span><br></pre></td></tr></table></figure>
-
-<div class="note default">
-            <p>下方演示 NexT 提供的四種 schemes</p>
-          </div>
-
-<p><img src="https://imgur.com/tq9H5Eb.png" alt="NexT 提供的四種 schemes"></p>
-<h3 id="程式碼區塊樣式"><a href="#程式碼區塊樣式" class="headerlink" title="程式碼區塊樣式"></a>程式碼區塊樣式</h3><blockquote>
-<p>撰寫技術文章絕對不能缺少的 code block，換上舒服的樣式好比設置編輯器的樣式一樣。</p>
-</blockquote>
-<p>Step1：搜尋 codeblock</p>
-<p>Step2：設置參數</p>
-<ul>
-<li>highlight_theme：代碼高亮（我選擇 galactic，後來因為要客製化所以選擇 normal）<ul>
-<li>由於不同的 Next 版本可能有的 highlight_theme 樣式不同，因此建議大家都可以都試試看在選擇比較喜歡的。</li>
+<li><code>layout</code>：模板種類，有三種不同的佈局<ul>
+<li>draft.md（新增草稿）</li>
+<li>page.md（新增頁面）</li>
+<li>post.md（預設值，新增文章）</li>
 </ul>
 </li>
-<li>copy_button：hover 會顯示複製按鈕</li>
-<li>style：外觀樣式（我選擇原本是選 mac，後來發現 flat 比較適合客製化其它樣式）</li>
 </ul>
-<figure class="highlight diff"><figcaption><span>themes/hexo-theme-next/_config.yml</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">codeblock:</span><br><span class="line">  # Code Highlight theme</span><br><span class="line">  # Available values: normal | night | night eighties | night blue | night bright | solarized | solarized dark | galactic</span><br><span class="line">  # See: https://github.com/chriskempson/tomorrow-theme</span><br><span class="line"><span class="deletion">-  highlight_theme: normal</span></span><br><span class="line"><span class="addition">+  highlight_theme: galactic</span></span><br><span class="line">  # Add copy button on codeblock</span><br><span class="line">  copy_button:</span><br><span class="line"><span class="deletion">-    enable: false</span></span><br><span class="line"><span class="addition">+    enable: true</span></span><br><span class="line">    # Show text copy result.</span><br><span class="line"><span class="deletion">-    show_result: false</span></span><br><span class="line"><span class="addition">+    show_result: false</span></span><br><span class="line">    # Available values: default | flat | mac</span><br><span class="line"><span class="deletion">-    style:</span></span><br><span class="line"><span class="addition">+    style: flat</span></span><br></pre></td></tr></table></figure>
-
-<div class="note danger">
-            <p>如果上面設置完沒有效果，請確認根目錄 _config.yml 檔案中的 highlight 參數是否設置為<br> enable。</p>
+<div class="note default">
+            <p>如果沒有加上 layout 參數，則會帶入根目錄 _config.yml 檔案中的 <code>default_layout</code> 參數，預設為 post。</p>
           </div>
 
-<figure class="highlight diff"><figcaption><span>_config.yml</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">highlight:</span><br><span class="line">  enable: true</span><br></pre></td></tr></table></figure>
-
-<h3 id="Menu-設置"><a href="#Menu-設置" class="headerlink" title="Menu 設置"></a>Menu 設置</h3><blockquote>
-<p>設置 menu 選單列的內容（home、about、tags、categories、archives、schedule、sitemap、commonweal），預設只有開啟兩個（home、archives）。</p>
-</blockquote>
-<p>Step1：搜尋 Menu Settings</p>
-<p>Step2：設置參數</p>
 <ul>
-<li>需要啟用就將對應的註解移除，下方範例示範開啟 tags、categories</li>
+<li><code>title</code>：文章標題</li>
 </ul>
-<figure class="highlight diff"><figcaption><span>themes/hexo-theme-next/_config.yml</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">menu:</span><br><span class="line">  home: / || fa fa-home</span><br><span class="line">  #about: /about/ || fa fa-user</span><br><span class="line"><span class="deletion">- #tags: /tags/ || fa fa-tags</span></span><br><span class="line"><span class="addition">+ tags: /tags/ || fa fa-tags</span></span><br><span class="line"><span class="deletion">- #categories: /categories/ || fa fa-th</span></span><br><span class="line"><span class="addition">+ categories: /categories/ || fa fa-th</span></span><br><span class="line">  archives: /archives/ || fa fa-archive</span><br><span class="line">  #schedule: /schedule/ || fa fa-calendar</span><br><span class="line">  #sitemap: /sitemap.xml || fa fa-sitemap</span><br><span class="line">  #commonweal: /404/ || fa fa-heartbeat</span><br></pre></td></tr></table></figure>
+<div class="note default">
+            <p>若文章標題包含空格，需使用 <code>引號</code> 刮起來（雙引號、單引號都可以），否則會以最後一個空格後面的字作為 title。</p>
+          </div>
+
+<blockquote>
+<p>再下新增指令前，還需要先暸解一些設定以及檔案。</p>
+</blockquote>
+<h3 id="存放路徑"><a href="#存放路徑" class="headerlink" title="存放路徑"></a>存放路徑</h3><blockquote>
+<p>存放於根目錄 <code>source/_post</code> 路徑底下，會用 .md 檔作為筆記的副檔名。</p>
+</blockquote>
+<p><img src="https://imgur.com/XWXBS2c.png" alt="source"></p>
+<h3 id="設置模版參數"><a href="#設置模版參數" class="headerlink" title="設置模版參數"></a>設置模版參數</h3><blockquote>
+<p>設置於根目錄 scaffolds 資料夾中的 layout 檔案（draft.md、page.md、post.md）。</p>
+</blockquote>
+<p><img src="https://imgur.com/8Cyd1Pz.png" alt="scaffolds"></p>
+<h3 id="模版參數種類"><a href="#模版參數種類" class="headerlink" title="模版參數種類"></a>模版參數種類</h3><blockquote>
+<p>參數是 Front-matter，是檔案最上方以 — 分隔的區域） 作為模版預設樣式的參數。</p>
+</blockquote>
+<p>常用的四種參數</p>
+<ul>
+<li>title：會自動帶上當 title 值，並以 h1 tag 的方式呈現。</li>
+<li>date：會自動帶上當下日期。</li>
+<li>categories：分類（多筆會用 <code>破折號 -</code> 的方式輸入）。</li>
+<li>tags：分類（多筆會用 <code>破折號 -</code> 的方式輸入）。</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">title: &#123;&#123; title &#125;&#125; // 預設值，文章名稱（會自動帶入）</span><br><span class="line"><span class="built_in">date</span>: &#123;&#123; <span class="built_in">date</span> &#125;&#125; // 預設值，文章時間（會自動帶入）</span><br><span class="line">tags: &#123;&#123; tags &#125;&#125; // 標籤</span><br><span class="line">categories: &#123;&#123; categories &#125;&#125; // 分類</span><br><span class="line">thumbnail: // 預覽圖</span><br><span class="line">banner: // 文章開頭圖</span><br></pre></td></tr></table></figure>
 
 <div class="note default">
-            <p>Hexo 原生是使用 Font Awesome icon（註解中有寫），並透過 <code>短路求值（Short-circuit evaluation）</code> 的方式在路徑後方加上 icon 樣式（可以修改其它 icon 樣式）。</p>
+            <p>其他參數請參考<a target="_blank" rel="noopener" href="https://hexo.io/zh-tw/docs/front-matter">官方文件</a></p>
           </div>
 
-<p>Step3：menu 可以設置是否要開啟 icon 圖示 以及 badges 數量（用來顯示對應的數量）。</p>
-<figure class="highlight diff"><figcaption><span>themes/hexo-theme-next/_config.yml</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># Enable / Disable menu icons / item badges.</span><br><span class="line">menu_settings:</span><br><span class="line">  icons: true</span><br><span class="line"><span class="deletion">-  badges: false</span></span><br><span class="line"><span class="addition">+  badges: true</span></span><br></pre></td></tr></table></figure>
-
-<p><img src="https://imgur.com/AbQvbMt.png" alt="menu tag"></p>
-<div class="note danger">
-            <p>點選 menu 中預設（home、archives）之外的路徑，會出現路徑錯誤（例如：Cannot GET&#x2F;about&#x2F;），因為我們還沒新增對應的頁面，從根目錄 source 資料夾中是否有對應的資料夾，新增頁面可以參考下一篇文章。</p>
+<h2 id="新增頁面"><a href="#新增頁面" class="headerlink" title="新增頁面"></a>新增頁面</h2><blockquote>
+<p>此小節也會介紹如何解決上一篇文章結尾提到的徑錯誤（例如：Cannot GET&#x2F;about&#x2F;）。</p>
+</blockquote>
+<p>語法</p>
+<ul>
+<li><code>hexo new page &lt;title&gt;</code></li>
+</ul>
+<div class="note default">
+            <p>下方會演釋如何透過指令建立 menu 所需頁面，以及建立後需要設置什麼？</p>
           </div>
 
-<p><img src="https://imgur.com/W1W5iaB.png" alt="路徑錯誤"></p>
+<p>Step1：輸入新增頁面指令</p>
+<ul>
+<li>示範新增 tags 頁面</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new page tags</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://imgur.com/6OCF161.png" alt="tags"></p>
+<div class="note default">
+            <p>這樣路徑就不會錯誤拉，只是會發現空空如也，那是因為還需要設置對應的 type 參數。</p>
+          </div>
+
+<p>Step2：修改 index.md 中 Front-matter 參數 type</p>
+<div class="note default">
+            <p>進入根目錄 source 資料夾中，剛剛新增的 tags 資料夾底下，會有一個 index.md，這隻檔案使用 Front-matter（檔案最上方以 — 分隔的區域） 作為模版預設樣式的參數。</p>
+          </div>
+
+<ul>
+<li>title：會自動帶入指令中的 title（tags）</li>
+<li>date：會自動帶入檔案檔案建立日期</li>
+<li>type: 才會對應類別的文章</li>
+</ul>
+<figure class="highlight plaintext"><figcaption><span>source/tags/index.md</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: tags</span><br><span class="line">date: 2022-04-25 13:15:09</span><br><span class="line">type: tags</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://imgur.com/bRVlExe.png" alt="type"></p>
+<p>延伸閱讀：ray 大 <a target="_blank" rel="noopener" href="https://israynotarray.com/hexo/20200923/2032860736/">試著學 Hexo - 新增頁面</a></p>
+<div class="note default">
+            <p>文章中有提到如何去除模板，不使用預設產生的樣板而是改用手刻的 .html 檔案。</p>
+          </div>
+
+<h2 id="新增文章"><a href="#新增文章" class="headerlink" title="新增文章"></a>新增文章</h2><p>語法</p>
+<ul>
+<li><code>hexo new &lt;title&gt;</code></li>
+</ul>
+<div class="note default">
+            <p>下方如何透過指令新增文章，以及建立後需要設置什麼？</p>
+          </div>
+
+<p>Step1：新增文章</p>
+<ul>
+<li><code>hexo new &lt;title&gt;</code></li>
+</ul>
+<p>Step2：清除快取檔案 (db.json) 和已產生的靜態檔案 (public)</p>
+<ul>
+<li><code>hexo cl</code></li>
+</ul>
+<p>Step3：產生靜態檔案以及重新部署</p>
+<ul>
+<li><code>hexo d -g</code></li>
+</ul>
+<figure class="highlight bash"><figcaption><span>三步驟指令演示</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo new <span class="string">&#x27;架設部落格 Hexo 部署 Github (零)&#x27;</span></span><br><span class="line">hexo cl</span><br><span class="line">hexo d -g</span><br></pre></td></tr></table></figure>
+
+<div class="note default">
+            <p>那如何在文章中添加圖片以及刪除文章呢？</p>
+          </div>
+
+<h3 id="刪除文章"><a href="#刪除文章" class="headerlink" title="刪除文章"></a>刪除文章</h3><p>Step1：直接刪除錄中的 <code>./source/_posts</code> 對應的文章 .md 檔案。</p>
+<p>Step2：清除快取檔案和已產生的靜態檔案。</p>
+<ul>
+<li><code>hexo cl</code></li>
+</ul>
+<p>Step3：重新部署</p>
+<ul>
+<li><code>hexo d -g</code></li>
+</ul>
+<h3 id="文章圖片"><a href="#文章圖片" class="headerlink" title="文章圖片"></a>文章圖片</h3><blockquote>
+<p>Hexo 本身並沒有提供上傳圖片的功能，因此需要另外尋找上傳圖片的服務，下面介紹兩種方法。</p>
+</blockquote>
+<p>方法一：在創建文章時，自動產生一個和文章同名的資料夾，用於存放圖片。</p>
+<blockquote>
+<p>透過部署時一併上傳到 github。</p>
+</blockquote>
+<p>Step1：搜尋 Writing<br>Step2：修改 post_asset_folder 參數（預設是 false）</p>
+<ul>
+<li><code>post_asset_folder: true</code></li>
+</ul>
+<div class="note default">
+            <p>後期不建議使用這種方式，因為 github repository 限制 5GB，當文件大小超過 50 MB 將收到警告，無法上傳超過 100 MB 的文件。</p><p>src：<a target="_blank" rel="noopener" href="https://www.modb.pro/db/154051">GitHub、Gitlab、Gitee的容量及文件大小限制</a></p>
+          </div>
+
+<p>方法二：上傳其它圖片空間在用圖片超連結的方式插入到文章的 md 檔案。</p>
+<blockquote>
+<p>免費圖片空間：<a target="_blank" rel="noopener" href="https://imgur.com/">Imgur</a>、<a target="_blank" rel="noopener" href="https://upload.cc/">Upload.cc</a>、firebase</p>
+</blockquote>
+<p>Step1：上傳圖片到免費空間中<br>Step2：複製圖片連結<br>Step3：插入到文章中</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">![<span class="string">type</span>](<span class="link">https://imgur.com/bRVlExe.png</span>)</span><br></pre></td></tr></table></figure>
+
+<div class="note default">
+            <p>免費圖片空間注意事項</p><ol><li>是否有時間限制（例如：超過 60 天沒有瀏覽就刪除）</li><li>圖片是否可外連（例如：有些空間是不支援直接獲取圖片連結）</li><li>圖片流量限制（例如：限制圖片的讀取數量以及流出數量）</li></ol>
+          </div>
+
+<p>延伸閱讀：</p>
 
     </div>
 
@@ -366,7 +443,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>文章連結：</strong>
-    <a href="https://kentdoit.github.io/2022/04/25/Hexo-%E4%B8%BB%E9%A1%8C-NexT-%E8%A8%AD%E7%BD%AE-%E4%B8%80/" title="Hexo 主題 NexT 設置 (一)">https://kentdoit.github.io/2022/04/25/Hexo-主題-NexT-設置-一/</a>
+    <a href="https://kentdoit.github.io/2022/04/26/Hexo-%E6%96%B0%E5%A2%9E%E6%96%87%E7%AB%A0%E5%92%8C%E9%A0%81%E9%9D%A2-%E4%BA%8C/" title="Hexo 新增文章和頁面 (二)">https://kentdoit.github.io/2022/04/26/Hexo-新增文章和頁面-二/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版權聲明： </strong>本網誌所有文章除特別聲明外，均採用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh_TW" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 許可協議。轉載請註明出處！
@@ -387,13 +464,10 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2022/04/24/%E6%9E%B6%E8%A8%AD%E9%83%A8%E8%90%BD%E6%A0%BCHexoGithub%E9%9B%B6/" rel="prev" title="架設部落格 Hexo 部署 Github (零)">
-      <i class="fa fa-chevron-left"></i> 架設部落格 Hexo 部署 Github (零)
+    <a href="/2022/04/25/Hexo-%E4%B8%BB%E9%A1%8C-NexT-%E8%A8%AD%E7%BD%AE-%E4%B8%80/" rel="prev" title="Hexo 主題 NexT 設置 (一)">
+      <i class="fa fa-chevron-left"></i> Hexo 主題 NexT 設置 (一)
     </a></div>
-      <div class="post-nav-item">
-    <a href="/2022/04/26/Hexo-%E6%96%B0%E5%A2%9E%E6%96%87%E7%AB%A0%E5%92%8C%E9%A0%81%E9%9D%A2-%E4%BA%8C/" rel="next" title="Hexo 新增文章和頁面 (二)">
-      Hexo 新增文章和頁面 (二) <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -460,7 +534,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9B%B4%E6%8F%9B%E4%B8%BB%E9%A1%8C-theme"><span class="nav-text">更換主題 theme</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#NexT-%E6%A8%A3%E5%BC%8F%E8%A8%AD%E5%AE%9A"><span class="nav-text">NexT 樣式設定</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Scheme-Settings"><span class="nav-text">Scheme Settings</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A8%8B%E5%BC%8F%E7%A2%BC%E5%8D%80%E5%A1%8A%E6%A8%A3%E5%BC%8F"><span class="nav-text">程式碼區塊樣式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Menu-%E8%A8%AD%E7%BD%AE"><span class="nav-text">Menu 設置</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AD%98%E6%94%BE%E8%B7%AF%E5%BE%91"><span class="nav-text">存放路徑</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A8%AD%E7%BD%AE%E6%A8%A1%E7%89%88%E5%8F%83%E6%95%B8"><span class="nav-text">設置模版參數</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A8%A1%E7%89%88%E5%8F%83%E6%95%B8%E7%A8%AE%E9%A1%9E"><span class="nav-text">模版參數種類</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%B0%E5%A2%9E%E9%A0%81%E9%9D%A2"><span class="nav-text">新增頁面</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%B0%E5%A2%9E%E6%96%87%E7%AB%A0"><span class="nav-text">新增文章</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%AA%E9%99%A4%E6%96%87%E7%AB%A0"><span class="nav-text">刪除文章</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%87%E7%AB%A0%E5%9C%96%E7%89%87"><span class="nav-text">文章圖片</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
