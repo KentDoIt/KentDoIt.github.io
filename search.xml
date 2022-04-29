@@ -1,97 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Hexo 主題 NexT 設置 (一)</title>
-    <url>/2022/04/25/Hexo-%E4%B8%BB%E9%A1%8C-NexT-%E8%A8%AD%E7%BD%AE-%E4%B8%80/</url>
-    <content><![CDATA[<h2 id="更換主題-theme"><a href="#更換主題-theme" class="headerlink" title="更換主題 theme"></a>更換主題 theme</h2><p>Step1：從<a href="https://hexo.io/themes/">官方</a>主題找尋自己順眼的</p>
-<div class="note default">
-            <p>最近主流有兩個推薦的（我選擇 Next）</p>
-          </div>
-
-<ul>
-<li><a href="https://github.com/theme-next/hexo-theme-next">Next</a></li>
-<li><a href="https://github.com/fluid-dev/hexo-theme-fluid">Fluid</a></li>
-</ul>
-<p>Step2：下載主題 Download 或 clone 到 themes 資料夾底下</p>
-<div class="note danger">
-            <p>切記要先進入該專案根目錄的 themes（&#x2F;themes）</p>
-          </div>
-
-<ul>
-<li><code>cd themes</code></li>
-<li><code>git clone https://github.com/theme-next/hexo-theme-next.git</code></li>
-</ul>
-<p>Step3：修改根目錄 _config.yml 中的 theme 參數（預設是 landscape）</p>
-<figure class="highlight diff"><figcaption><span>_config.yml</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="addition">+theme: landscape</span></span><br><span class="line"><span class="deletion">-theme: hexo-theme-next</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="NexT-樣式設定"><a href="#NexT-樣式設定" class="headerlink" title="NexT 樣式設定"></a>NexT 樣式設定</h2><blockquote>
-<p>下方會介紹部落格樣式中最基礎的設置。</p>
-</blockquote>
-<h3 id="Scheme-Settings"><a href="#Scheme-Settings" class="headerlink" title="Scheme Settings"></a>Scheme Settings</h3><blockquote>
-<p>第一個介紹的一定非 Scheme 莫屬，替部落格換上喜歡的皮。</p>
-</blockquote>
-<p>Step1：搜尋 Scheme</p>
-<p>Step2：將選擇的 scheme 取消註解（我選擇 Mist）</p>
-<figure class="highlight diff"><figcaption><span>themes/hexo-theme-next/_config.yml</span></figcaption><table><tr><td class="code"><pre><span class="line"># Schemes</span><br><span class="line"># scheme: Muse</span><br><span class="line">scheme: Mist</span><br><span class="line"># scheme: Pisces</span><br><span class="line"># scheme: Gemini</span><br></pre></td></tr></table></figure>
-
-<div class="note default">
-            <p>下方演示 NexT 提供的四種 schemes</p>
-          </div>
-
-<p><img src="https://imgur.com/tq9H5Eb.png" alt="NexT 提供的四種 schemes"></p>
-<h3 id="程式碼區塊樣式"><a href="#程式碼區塊樣式" class="headerlink" title="程式碼區塊樣式"></a>程式碼區塊樣式</h3><blockquote>
-<p>撰寫技術文章絕對不能缺少的 code block，換上舒服的樣式好比設置編輯器的樣式一樣。</p>
-</blockquote>
-<p>Step1：搜尋 codeblock</p>
-<p>Step2：設置參數</p>
-<ul>
-<li>highlight_theme：代碼高亮（我選擇 galactic，後來因為要客製化所以選擇 normal）<ul>
-<li>由於不同的 Next 版本可能有的 highlight_theme 樣式不同，因此建議大家都可以都試試看在選擇比較喜歡的。</li>
-</ul>
-</li>
-<li>copy_button：hover 會顯示複製按鈕</li>
-<li>style：外觀樣式（我選擇原本是選 mac，後來發現 flat 比較適合客製化其它樣式）</li>
-</ul>
-<figure class="highlight diff"><figcaption><span>themes/hexo-theme-next/_config.yml</span></figcaption><table><tr><td class="code"><pre><span class="line">codeblock:</span><br><span class="line">  # Code Highlight theme</span><br><span class="line">  # Available values: normal | night | night eighties | night blue | night bright | solarized | solarized dark | galactic</span><br><span class="line">  # See: https://github.com/chriskempson/tomorrow-theme</span><br><span class="line"><span class="deletion">-  highlight_theme: normal</span></span><br><span class="line"><span class="addition">+  highlight_theme: galactic</span></span><br><span class="line">  # Add copy button on codeblock</span><br><span class="line">  copy_button:</span><br><span class="line"><span class="deletion">-    enable: false</span></span><br><span class="line"><span class="addition">+    enable: true</span></span><br><span class="line">    # Show text copy result.</span><br><span class="line"><span class="deletion">-    show_result: false</span></span><br><span class="line"><span class="addition">+    show_result: false</span></span><br><span class="line">    # Available values: default | flat | mac</span><br><span class="line"><span class="deletion">-    style:</span></span><br><span class="line"><span class="addition">+    style: flat</span></span><br></pre></td></tr></table></figure>
-
-<div class="note danger">
-            <p>如果上面設置完沒有效果，請確認根目錄 _config.yml 檔案中的 highlight 參數是否設置為<br> enable。</p>
-          </div>
-
-<figure class="highlight diff"><figcaption><span>_config.yml</span></figcaption><table><tr><td class="code"><pre><span class="line">highlight:</span><br><span class="line">  enable: true</span><br></pre></td></tr></table></figure>
-
-<h3 id="Menu-設置"><a href="#Menu-設置" class="headerlink" title="Menu 設置"></a>Menu 設置</h3><blockquote>
-<p>設置 menu 選單列的內容（home、about、tags、categories、archives、schedule、sitemap、commonweal），預設只有開啟兩個（home、archives）。</p>
-</blockquote>
-<p>Step1：搜尋 Menu Settings</p>
-<p>Step2：設置參數</p>
-<ul>
-<li>需要啟用就將對應的註解移除，下方範例示範開啟 tags、categories</li>
-</ul>
-<figure class="highlight diff"><figcaption><span>themes/hexo-theme-next/_config.yml</span></figcaption><table><tr><td class="code"><pre><span class="line">menu:</span><br><span class="line">  home: / || fa fa-home</span><br><span class="line">  #about: /about/ || fa fa-user</span><br><span class="line"><span class="deletion">- #tags: /tags/ || fa fa-tags</span></span><br><span class="line"><span class="addition">+ tags: /tags/ || fa fa-tags</span></span><br><span class="line"><span class="deletion">- #categories: /categories/ || fa fa-th</span></span><br><span class="line"><span class="addition">+ categories: /categories/ || fa fa-th</span></span><br><span class="line">  archives: /archives/ || fa fa-archive</span><br><span class="line">  #schedule: /schedule/ || fa fa-calendar</span><br><span class="line">  #sitemap: /sitemap.xml || fa fa-sitemap</span><br><span class="line">  #commonweal: /404/ || fa fa-heartbeat</span><br></pre></td></tr></table></figure>
-
-<div class="note default">
-            <p>Hexo 原生是使用 Font Awesome icon（註解中有寫），並透過 <code>短路求值（Short-circuit evaluation）</code> 的方式在路徑後方加上 icon 樣式（可以修改其它 icon 樣式）。</p>
-          </div>
-
-<p>Step3：menu 可以設置是否要開啟 icon 圖示 以及 badges 數量（用來顯示對應的數量）。</p>
-<figure class="highlight diff"><figcaption><span>themes/hexo-theme-next/_config.yml</span></figcaption><table><tr><td class="code"><pre><span class="line"># Enable / Disable menu icons / item badges.</span><br><span class="line">menu_settings:</span><br><span class="line">  icons: true</span><br><span class="line"><span class="deletion">-  badges: false</span></span><br><span class="line"><span class="addition">+  badges: true</span></span><br></pre></td></tr></table></figure>
-
-<p><img src="https://imgur.com/AbQvbMt.png" alt="menu tag"></p>
-<div class="note danger">
-            <p>點選 menu 中預設（home、archives）之外的路徑，會出現路徑錯誤（例如：Cannot GET&#x2F;about&#x2F;），因為我們還沒新增對應的頁面，從根目錄 source 資料夾中是否有對應的資料夾，新增頁面可以參考下一篇文章。</p>
-          </div>
-
-<p><img src="https://imgur.com/W1W5iaB.png" alt="路徑錯誤"></p>
-]]></content>
-      <categories>
-        <category>Hexo</category>
-      </categories>
-      <tags>
-        <tag>Hexo 部落格</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Hexo 新增文章和頁面 (二)</title>
     <url>/2022/04/26/Hexo-%E6%96%B0%E5%A2%9E%E6%96%87%E7%AB%A0%E5%92%8C%E9%A0%81%E9%9D%A2-%E4%BA%8C/</url>
     <content><![CDATA[<blockquote>
@@ -226,14 +135,13 @@
 <h3 id="文章圖片"><a href="#文章圖片" class="headerlink" title="文章圖片"></a>文章圖片</h3><blockquote>
 <p>Hexo 本身並沒有提供上傳圖片的功能，因此需要另外尋找上傳圖片的服務，下面介紹兩種方法。</p>
 </blockquote>
-<p>方法一：在創建文章時，自動產生一個和文章同名的資料夾，用於存放圖片。</p>
+<p>方法一：在創建文章時，<span class="label danger">自動</span>產生一個和文章同名的資料夾，用於存放圖片。</p>
 <blockquote>
 <p>透過部署時一併上傳到 github。</p>
 </blockquote>
 <p>Step1：搜尋 Writing<br>Step2：修改 post_asset_folder 參數（預設是 false）</p>
-<ul>
-<li><code>post_asset_folder: true</code></li>
-</ul>
+<figure class="highlight diff"><figcaption><span>_config.yml</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="deletion">- post_asset_folder: false</span></span><br><span class="line"><span class="addition">+ post_asset_folder: true</span></span><br></pre></td></tr></table></figure>
+
 <div class="note default">
             <p>後期不建議使用這種方式，因為 github repository 限制 5GB，當文件大小超過 50 MB 將收到警告，無法上傳超過 100 MB 的文件。</p><p>src：<a href="https://www.modb.pro/db/154051">GitHub、Gitlab、Gitee的容量及文件大小限制</a></p>
           </div>
@@ -248,8 +156,97 @@
 <div class="note default">
             <p>免費圖片空間注意事項</p><ol><li>是否有時間限制（例如：超過 60 天沒有瀏覽就刪除）</li><li>圖片是否可外連（例如：有些空間是不支援直接獲取圖片連結）</li><li>圖片流量限制（例如：限制圖片的讀取數量以及流出數量）</li></ol>
           </div>
+]]></content>
+      <categories>
+        <category>Hexo</category>
+      </categories>
+      <tags>
+        <tag>Hexo 部落格</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Hexo 主題 NexT 設置 (一)</title>
+    <url>/2022/04/25/Hexo-%E4%B8%BB%E9%A1%8C-NexT-%E8%A8%AD%E7%BD%AE-%E4%B8%80/</url>
+    <content><![CDATA[<h2 id="更換主題-theme"><a href="#更換主題-theme" class="headerlink" title="更換主題 theme"></a>更換主題 theme</h2><p>Step1：從<a href="https://hexo.io/themes/">官方</a>主題找尋自己順眼的</p>
+<div class="note default">
+            <p>最近主流有兩個推薦的（我選擇 Next）</p>
+          </div>
 
-<p>延伸閱讀：</p>
+<ul>
+<li><a href="https://github.com/theme-next/hexo-theme-next">Next</a></li>
+<li><a href="https://github.com/fluid-dev/hexo-theme-fluid">Fluid</a></li>
+</ul>
+<p>Step2：下載主題 Download 或 clone 到 themes 資料夾底下</p>
+<div class="note danger">
+            <p>切記要先進入該專案根目錄的 themes（&#x2F;themes）</p>
+          </div>
+
+<ul>
+<li><code>cd themes</code></li>
+<li><code>git clone https://github.com/theme-next/hexo-theme-next.git</code></li>
+</ul>
+<p>Step3：修改根目錄 _config.yml 中的 theme 參數（預設是 landscape）</p>
+<figure class="highlight diff"><figcaption><span>_config.yml</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="addition">+theme: landscape</span></span><br><span class="line"><span class="deletion">-theme: hexo-theme-next</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="NexT-樣式設定"><a href="#NexT-樣式設定" class="headerlink" title="NexT 樣式設定"></a>NexT 樣式設定</h2><blockquote>
+<p>下方會介紹部落格樣式中最基礎的設置。</p>
+</blockquote>
+<h3 id="Scheme-Settings"><a href="#Scheme-Settings" class="headerlink" title="Scheme Settings"></a>Scheme Settings</h3><blockquote>
+<p>第一個介紹的一定非 Scheme 莫屬，替部落格換上喜歡的皮。</p>
+</blockquote>
+<p>Step1：搜尋 Scheme</p>
+<p>Step2：將選擇的 scheme 取消註解（我選擇 Mist）</p>
+<figure class="highlight diff"><figcaption><span>themes/hexo-theme-next/_config.yml</span></figcaption><table><tr><td class="code"><pre><span class="line"># Schemes</span><br><span class="line"># scheme: Muse</span><br><span class="line">scheme: Mist</span><br><span class="line"># scheme: Pisces</span><br><span class="line"># scheme: Gemini</span><br></pre></td></tr></table></figure>
+
+<div class="note default">
+            <p>下方演示 NexT 提供的四種 schemes</p>
+          </div>
+
+<p><img src="https://imgur.com/tq9H5Eb.png" alt="NexT 提供的四種 schemes"></p>
+<h3 id="程式碼區塊樣式"><a href="#程式碼區塊樣式" class="headerlink" title="程式碼區塊樣式"></a>程式碼區塊樣式</h3><blockquote>
+<p>撰寫技術文章絕對不能缺少的 code block，換上舒服的樣式好比設置編輯器的樣式一樣。</p>
+</blockquote>
+<p>Step1：搜尋 codeblock</p>
+<p>Step2：設置參數</p>
+<ul>
+<li>highlight_theme：代碼高亮（我選擇 galactic，後來因為要客製化所以選擇 normal）<ul>
+<li>由於不同的 Next 版本可能有的 highlight_theme 樣式不同，因此建議大家都可以都試試看在選擇比較喜歡的。</li>
+</ul>
+</li>
+<li>copy_button：hover 會顯示複製按鈕</li>
+<li>style：外觀樣式（我選擇原本是選 mac，後來發現 flat 比較適合客製化其它樣式）</li>
+</ul>
+<figure class="highlight diff"><figcaption><span>themes/hexo-theme-next/_config.yml</span></figcaption><table><tr><td class="code"><pre><span class="line">codeblock:</span><br><span class="line">  # Code Highlight theme</span><br><span class="line">  # Available values: normal | night | night eighties | night blue | night bright | solarized | solarized dark | galactic</span><br><span class="line">  # See: https://github.com/chriskempson/tomorrow-theme</span><br><span class="line"><span class="deletion">-  highlight_theme: normal</span></span><br><span class="line"><span class="addition">+  highlight_theme: galactic</span></span><br><span class="line">  # Add copy button on codeblock</span><br><span class="line">  copy_button:</span><br><span class="line"><span class="deletion">-    enable: false</span></span><br><span class="line"><span class="addition">+    enable: true</span></span><br><span class="line">    # Show text copy result.</span><br><span class="line"><span class="deletion">-    show_result: false</span></span><br><span class="line"><span class="addition">+    show_result: false</span></span><br><span class="line">    # Available values: default | flat | mac</span><br><span class="line"><span class="deletion">-    style:</span></span><br><span class="line"><span class="addition">+    style: flat</span></span><br></pre></td></tr></table></figure>
+
+<div class="note danger">
+            <p>如果上面設置完沒有效果，請確認根目錄 _config.yml 檔案中的 highlight 參數是否設置為<br> enable。</p>
+          </div>
+
+<figure class="highlight diff"><figcaption><span>_config.yml</span></figcaption><table><tr><td class="code"><pre><span class="line">highlight:</span><br><span class="line">  enable: true</span><br></pre></td></tr></table></figure>
+
+<h3 id="Menu-設置"><a href="#Menu-設置" class="headerlink" title="Menu 設置"></a>Menu 設置</h3><blockquote>
+<p>設置 menu 選單列的內容（home、about、tags、categories、archives、schedule、sitemap、commonweal），預設只有開啟兩個（home、archives）。</p>
+</blockquote>
+<p>Step1：搜尋 Menu Settings</p>
+<p>Step2：設置參數</p>
+<ul>
+<li>需要啟用就將對應的註解移除，下方範例示範開啟 tags、categories</li>
+</ul>
+<figure class="highlight diff"><figcaption><span>themes/hexo-theme-next/_config.yml</span></figcaption><table><tr><td class="code"><pre><span class="line">menu:</span><br><span class="line">  home: / || fa fa-home</span><br><span class="line">  #about: /about/ || fa fa-user</span><br><span class="line"><span class="deletion">- #tags: /tags/ || fa fa-tags</span></span><br><span class="line"><span class="addition">+ tags: /tags/ || fa fa-tags</span></span><br><span class="line"><span class="deletion">- #categories: /categories/ || fa fa-th</span></span><br><span class="line"><span class="addition">+ categories: /categories/ || fa fa-th</span></span><br><span class="line">  archives: /archives/ || fa fa-archive</span><br><span class="line">  #schedule: /schedule/ || fa fa-calendar</span><br><span class="line">  #sitemap: /sitemap.xml || fa fa-sitemap</span><br><span class="line">  #commonweal: /404/ || fa fa-heartbeat</span><br></pre></td></tr></table></figure>
+
+<div class="note default">
+            <p>Hexo 原生是使用 Font Awesome icon（註解中有寫），並透過 <code>短路求值（Short-circuit evaluation）</code> 的方式在路徑後方加上 icon 樣式（可以修改其它 icon 樣式）。</p>
+          </div>
+
+<p>Step3：menu 可以設置是否要開啟 icon 圖示 以及 badges 數量（用來顯示對應的數量）。</p>
+<figure class="highlight diff"><figcaption><span>themes/hexo-theme-next/_config.yml</span></figcaption><table><tr><td class="code"><pre><span class="line"># Enable / Disable menu icons / item badges.</span><br><span class="line">menu_settings:</span><br><span class="line">  icons: true</span><br><span class="line"><span class="deletion">-  badges: false</span></span><br><span class="line"><span class="addition">+  badges: true</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="https://imgur.com/AbQvbMt.png" alt="menu tag"></p>
+<div class="note danger">
+            <p>點選 menu 中預設（home、archives）之外的路徑，會出現路徑錯誤（例如：Cannot GET&#x2F;about&#x2F;），因為我們還沒新增對應的頁面，從根目錄 source 資料夾中是否有對應的資料夾，新增頁面可以參考下一篇文章。</p>
+          </div>
+
+<p><img src="https://imgur.com/W1W5iaB.png" alt="路徑錯誤"></p>
 ]]></content>
       <categories>
         <category>Hexo</category>
