@@ -40,8 +40,11 @@
 <meta property="og:image" content="https://imgur.com/8Cyd1Pz.png">
 <meta property="og:image" content="https://imgur.com/6OCF161.png">
 <meta property="og:image" content="https://imgur.com/bRVlExe.png">
+<meta property="og:image" content="https://imgur.com/7XKWLNt.png">
+<meta property="og:image" content="https://imgur.com/vmJTEpM.png">
+<meta property="og:image" content="https://imgur.com/wuOgMjr.png">
 <meta property="article:published_time" content="2022-04-26T07:11:38.000Z">
-<meta property="article:modified_time" content="2022-04-29T08:39:15.815Z">
+<meta property="article:modified_time" content="2022-04-29T12:14:14.787Z">
 <meta property="article:author" content="Kent">
 <meta property="article:tag" content="Hexo 部落格">
 <meta name="twitter:card" content="summary">
@@ -244,7 +247,7 @@
               <!--<span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>-->
-              <span>4 分鐘閱讀時間</span>
+              <span>5 分鐘閱讀時間</span>
             </span>
             <span class="post-meta-item">
               <!--<span class="post-meta-item-icon">
@@ -302,7 +305,7 @@
 <p>再下新增指令前，還需要先暸解一些設定以及檔案。</p>
 </blockquote>
 <h3 id="存放路徑"><a href="#存放路徑" class="headerlink" title="存放路徑"></a>存放路徑</h3><blockquote>
-<p>存放於根目錄 <code>source/_post</code> 路徑底下，會用 .md 檔作為筆記的副檔名。</p>
+<p>存放於根目錄 source&#x2F;_post 路徑底下，會用 .md 檔作為筆記的副檔名。</p>
 </blockquote>
 <p><img src="https://imgur.com/XWXBS2c.png" alt="source"></p>
 <h3 id="設置模版參數"><a href="#設置模版參數" class="headerlink" title="設置模版參數"></a>設置模版參數</h3><blockquote>
@@ -310,7 +313,7 @@
 </blockquote>
 <p><img src="https://imgur.com/8Cyd1Pz.png" alt="scaffolds"></p>
 <h3 id="模版參數種類"><a href="#模版參數種類" class="headerlink" title="模版參數種類"></a>模版參數種類</h3><blockquote>
-<p>參數是 Front-matter，是檔案最上方以 — 分隔的區域） 作為模版預設樣式的參數。</p>
+<p>參數是 Front-matter，檔案最上方以 <code>---</code> 分隔的區域）作為模版預設樣式的參數。</p>
 </blockquote>
 <p>常用的四種參數</p>
 <ul>
@@ -391,7 +394,7 @@
             <p>那如何在文章中添加圖片以及刪除文章呢？</p>
           </div>
 
-<h3 id="刪除文章"><a href="#刪除文章" class="headerlink" title="刪除文章"></a>刪除文章</h3><p>Step1：直接刪除錄中的 <code>./source/_posts</code> 對應的文章 .md 檔案。</p>
+<h3 id="刪除文章"><a href="#刪除文章" class="headerlink" title="刪除文章"></a>刪除文章</h3><p>Step1：直接刪除路徑 .&#x2F;source&#x2F;_posts 對應的文章 .md 檔案。</p>
 <p>Step2：清除快取檔案和已產生的靜態檔案。</p>
 <ul>
 <li><code>hexo cl</code></li>
@@ -403,7 +406,7 @@
 <h3 id="文章圖片"><a href="#文章圖片" class="headerlink" title="文章圖片"></a>文章圖片</h3><blockquote>
 <p>Hexo 本身並沒有提供上傳圖片的功能，因此需要另外尋找上傳圖片的服務，下面介紹兩種方法。</p>
 </blockquote>
-<p>方法一：在創建文章時，<span class="label danger">自動</span>產生一個和文章同名的資料夾，用於存放圖片。</p>
+<p>方法一：在創建文章時，<code>自動產生</code> 一個和文章同名的資料夾，用於存放圖片。</p>
 <blockquote>
 <p>透過部署時一併上傳到 github。</p>
 </blockquote>
@@ -424,6 +427,63 @@
 <div class="note default">
             <p>免費圖片空間注意事項</p><ol><li>是否有時間限制（例如：超過 60 天沒有瀏覽就刪除）</li><li>圖片是否可外連（例如：有些空間是不支援直接獲取圖片連結）</li><li>圖片流量限制（例如：限制圖片的讀取數量以及流出數量）</li></ol>
           </div>
+
+<h2 id="新增草稿"><a href="#新增草稿" class="headerlink" title="新增草稿"></a>新增草稿</h2><div class="note default">
+            <p>草稿優勢為，預設不會被編譯出來，下方會介紹兩種不會被編譯的方法。</p>
+          </div>
+
+<p>語法</p>
+<ul>
+<li><code>hexo new draft &lt;title&gt;</code></li>
+</ul>
+<p>方法一：_drafts 資料夾（草稿資料夾）內的文章</p>
+<div class="note default">
+            <p>新增的草稿會存放於 _drafts 資料夾中，若資料夾不存在則會自動生成一個。</p>
+          </div>
+
+<p>Step1：輸入新增草稿文章指令</p>
+<ul>
+<li><code>hexo new draft &lt;title&gt;</code></li>
+</ul>
+<p>方法二：新增底線開頭資料夾</p>
+<p>Step1：根目錄 source&#x2F;_post 資料夾內，新增底線開頭的資料夾（例如：_草稿、_draft）<br>Step2：將還沒有要發布的文章手動搬移到到該資料夾底下</p>
+<p><img src="https://imgur.com/7XKWLNt.png" alt="草稿資料夾"></p>
+<div class="note default">
+            <p>那如果寫完了怎麼轉成文章？</p>
+          </div>
+
+<h3 id="草稿轉文章"><a href="#草稿轉文章" class="headerlink" title="草稿轉文章"></a>草稿轉文章</h3><div class="note default">
+            <p>下面介紹兩種方法。</p>
+          </div>
+
+<p>方法一：手動搬移</p>
+<ul>
+<li>將草稿文章手動搬移到 source&#x2F;_post 資料夾中。</li>
+</ul>
+<p>方法二：輸入 publish 指令</p>
+<ul>
+<li><code>hexo publish draft &lt;title&gt;</code></li>
+</ul>
+<div class="note danger">
+            <p>有限制，僅適用於存在 _drafts 資料夾底下的草稿，因為會自動從 source&#x2F;_drafts 尋找對應的草稿文章，因此不在該資料夾底下則會搜尋不到。</p>
+          </div>
+
+<p><img src="https://imgur.com/vmJTEpM.png" alt="草稿 error"></p>
+<h3 id="編譯草稿"><a href="#編譯草稿" class="headerlink" title="編譯草稿"></a>編譯草稿</h3><blockquote>
+<p>上面有提到，預設是不會將編譯草稿編譯出來，但如果要讓本地端 server 看見還是有辦法可以將其編譯出來的，下方介紹兩種方法。</p>
+</blockquote>
+<p>方法一：reu server 時帶入 <code>--draft</code></p>
+<ul>
+<li><code>hexo s --draft</code></li>
+</ul>
+<p>方法二：修改根目錄 _config.yml 中的 <code>render_drafts</code> 參數（預設為 false）</p>
+<figure class="highlight diff"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="deletion">-render_drafts: false</span></span><br><span class="line"><span class="addition">+render_drafts: true</span></span><br></pre></td></tr></table></figure>
+
+<div class="note danger">
+            <p>但要注意使用方法二，運行時會出現警告提醒。（可以忽略沒關係）</p>
+          </div>
+
+<p><img src="https://imgur.com/wuOgMjr.png" alt="render_drafts"></p>
 
     </div>
 
@@ -531,7 +591,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AD%98%E6%94%BE%E8%B7%AF%E5%BE%91"><span class="nav-text">存放路徑</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A8%AD%E7%BD%AE%E6%A8%A1%E7%89%88%E5%8F%83%E6%95%B8"><span class="nav-text">設置模版參數</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A8%A1%E7%89%88%E5%8F%83%E6%95%B8%E7%A8%AE%E9%A1%9E"><span class="nav-text">模版參數種類</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%B0%E5%A2%9E%E9%A0%81%E9%9D%A2"><span class="nav-text">新增頁面</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%B0%E5%A2%9E%E6%96%87%E7%AB%A0"><span class="nav-text">新增文章</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%AA%E9%99%A4%E6%96%87%E7%AB%A0"><span class="nav-text">刪除文章</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%87%E7%AB%A0%E5%9C%96%E7%89%87"><span class="nav-text">文章圖片</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AD%98%E6%94%BE%E8%B7%AF%E5%BE%91"><span class="nav-text">存放路徑</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A8%AD%E7%BD%AE%E6%A8%A1%E7%89%88%E5%8F%83%E6%95%B8"><span class="nav-text">設置模版參數</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A8%A1%E7%89%88%E5%8F%83%E6%95%B8%E7%A8%AE%E9%A1%9E"><span class="nav-text">模版參數種類</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%B0%E5%A2%9E%E9%A0%81%E9%9D%A2"><span class="nav-text">新增頁面</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%B0%E5%A2%9E%E6%96%87%E7%AB%A0"><span class="nav-text">新增文章</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%AA%E9%99%A4%E6%96%87%E7%AB%A0"><span class="nav-text">刪除文章</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%87%E7%AB%A0%E5%9C%96%E7%89%87"><span class="nav-text">文章圖片</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%B0%E5%A2%9E%E8%8D%89%E7%A8%BF"><span class="nav-text">新增草稿</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%8D%89%E7%A8%BF%E8%BD%89%E6%96%87%E7%AB%A0"><span class="nav-text">草稿轉文章</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%B7%A8%E8%AD%AF%E8%8D%89%E7%A8%BF"><span class="nav-text">編譯草稿</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
