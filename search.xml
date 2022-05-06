@@ -1,0 +1,426 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title>Hexo 主題 NexT 設置 (一)</title>
+    <url>/hexo/20220425/3802192554/</url>
+    <content><![CDATA[<h2 id="更換主題-theme"><a href="#更換主題-theme" class="headerlink" title="更換主題 theme"></a>更換主題 theme</h2><p>Step1：從<a href="https://hexo.io/themes/">官方</a>主題找尋自己順眼的</p>
+<div class="note default">
+            <p>最近主流有兩個推薦的（我選擇 Next）</p>
+          </div>
+
+<ul>
+<li><a href="https://github.com/theme-next/hexo-theme-next">Next</a></li>
+<li><a href="https://github.com/fluid-dev/hexo-theme-fluid">Fluid</a></li>
+</ul>
+<p>Step2：下載主題 Download 或 clone 到 themes 資料夾底下</p>
+<div class="note danger">
+            <p>切記要先進入該專案根目錄的 themes（&#x2F;themes）</p>
+          </div>
+
+<ul>
+<li><code>cd themes</code></li>
+<li><code>git clone https://github.com/theme-next/hexo-theme-next.git</code></li>
+</ul>
+<p>Step3：修改根目錄 _config.yml 中的 theme 參數（預設是 landscape）</p>
+<figure class="highlight diff"><figcaption><span>_config.yml</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="addition">+theme: landscape</span></span><br><span class="line"><span class="deletion">-theme: hexo-theme-next</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="NexT-樣式設定"><a href="#NexT-樣式設定" class="headerlink" title="NexT 樣式設定"></a>NexT 樣式設定</h2><blockquote>
+<p>下方會介紹部落格樣式中最基礎的設置。</p>
+</blockquote>
+<h3 id="Scheme-Settings"><a href="#Scheme-Settings" class="headerlink" title="Scheme Settings"></a>Scheme Settings</h3><blockquote>
+<p>第一個介紹的一定非 Scheme 莫屬，替部落格換上喜歡的皮。</p>
+</blockquote>
+<p>Step1：搜尋 Scheme</p>
+<p>Step2：將選擇的 scheme 取消註解（我選擇 Mist）</p>
+<figure class="highlight diff"><figcaption><span>themes/hexo-theme-next/_config.yml</span></figcaption><table><tr><td class="code"><pre><span class="line"># Schemes</span><br><span class="line"># scheme: Muse</span><br><span class="line">scheme: Mist</span><br><span class="line"># scheme: Pisces</span><br><span class="line"># scheme: Gemini</span><br></pre></td></tr></table></figure>
+
+<div class="note default">
+            <p>下方演示 NexT 提供的四種 schemes</p>
+          </div>
+
+<p><img src="https://imgur.com/tq9H5Eb.png" alt="NexT 提供的四種 schemes"></p>
+<h3 id="程式碼區塊樣式"><a href="#程式碼區塊樣式" class="headerlink" title="程式碼區塊樣式"></a>程式碼區塊樣式</h3><blockquote>
+<p>撰寫技術文章絕對不能缺少的 code block，換上舒服的樣式好比設置編輯器的樣式一樣。</p>
+</blockquote>
+<p>Step1：搜尋 codeblock</p>
+<p>Step2：設置參數</p>
+<ul>
+<li>highlight_theme：代碼高亮（我選擇 galactic，後來因為要客製化所以選擇 normal）<ul>
+<li>由於不同的 Next 版本可能有的 highlight_theme 樣式不同，因此建議大家都可以都試試看在選擇比較喜歡的。</li>
+</ul>
+</li>
+<li>copy_button：hover 會顯示複製按鈕</li>
+<li>style：外觀樣式（我選擇原本是選 mac，後來發現 flat 比較適合客製化其它樣式）</li>
+</ul>
+<figure class="highlight diff"><figcaption><span>themes/hexo-theme-next/_config.yml</span></figcaption><table><tr><td class="code"><pre><span class="line">codeblock:</span><br><span class="line">  # Code Highlight theme</span><br><span class="line">  # Available values: normal | night | night eighties | night blue | night bright | solarized | solarized dark | galactic</span><br><span class="line">  # See: https://github.com/chriskempson/tomorrow-theme</span><br><span class="line"><span class="deletion">-  highlight_theme: normal</span></span><br><span class="line"><span class="addition">+  highlight_theme: galactic</span></span><br><span class="line">  # Add copy button on codeblock</span><br><span class="line">  copy_button:</span><br><span class="line"><span class="deletion">-    enable: false</span></span><br><span class="line"><span class="addition">+    enable: true</span></span><br><span class="line">    # Show text copy result.</span><br><span class="line"><span class="deletion">-    show_result: false</span></span><br><span class="line"><span class="addition">+    show_result: false</span></span><br><span class="line">    # Available values: default | flat | mac</span><br><span class="line"><span class="deletion">-    style:</span></span><br><span class="line"><span class="addition">+    style: flat</span></span><br></pre></td></tr></table></figure>
+
+<div class="note danger">
+            <p>如果上面設置完沒有效果，請確認根目錄 _config.yml 檔案中的 highlight 參數是否設置為<br> enable。</p>
+          </div>
+
+<figure class="highlight diff"><figcaption><span>_config.yml</span></figcaption><table><tr><td class="code"><pre><span class="line">highlight:</span><br><span class="line">  enable: true</span><br></pre></td></tr></table></figure>
+
+<h3 id="Menu-設置"><a href="#Menu-設置" class="headerlink" title="Menu 設置"></a>Menu 設置</h3><blockquote>
+<p>設置 menu 選單列的內容（home、about、tags、categories、archives、schedule、sitemap、commonweal），預設只有開啟兩個（home、archives）。</p>
+</blockquote>
+<p>Step1：搜尋 Menu Settings</p>
+<p>Step2：設置參數</p>
+<ul>
+<li>需要啟用就將對應的註解移除，下方範例示範開啟 tags、categories</li>
+</ul>
+<figure class="highlight diff"><figcaption><span>themes/hexo-theme-next/_config.yml</span></figcaption><table><tr><td class="code"><pre><span class="line">menu:</span><br><span class="line">  home: / || fa fa-home</span><br><span class="line">  #about: /about/ || fa fa-user</span><br><span class="line"><span class="deletion">- #tags: /tags/ || fa fa-tags</span></span><br><span class="line"><span class="addition">+ tags: /tags/ || fa fa-tags</span></span><br><span class="line"><span class="deletion">- #categories: /categories/ || fa fa-th</span></span><br><span class="line"><span class="addition">+ categories: /categories/ || fa fa-th</span></span><br><span class="line">  archives: /archives/ || fa fa-archive</span><br><span class="line">  #schedule: /schedule/ || fa fa-calendar</span><br><span class="line">  #sitemap: /sitemap.xml || fa fa-sitemap</span><br><span class="line">  #commonweal: /404/ || fa fa-heartbeat</span><br></pre></td></tr></table></figure>
+
+<div class="note default">
+            <p>Hexo 原生是使用 Font Awesome icon（註解中有寫），並透過 <code>短路求值（Short-circuit evaluation）</code> 的方式在路徑後方加上 icon 樣式（可以修改其它 icon 樣式）。</p>
+          </div>
+
+<p>Step3：menu 可以設置是否要開啟 icon 圖示 以及 badges 數量（用來顯示對應的數量）。</p>
+<figure class="highlight diff"><figcaption><span>themes/hexo-theme-next/_config.yml</span></figcaption><table><tr><td class="code"><pre><span class="line"># Enable / Disable menu icons / item badges.</span><br><span class="line">menu_settings:</span><br><span class="line">  icons: true</span><br><span class="line"><span class="deletion">-  badges: false</span></span><br><span class="line"><span class="addition">+  badges: true</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="https://imgur.com/AbQvbMt.png" alt="menu tag"></p>
+<div class="note danger">
+            <p>點選 menu 中預設（home、archives）之外的路徑，會出現路徑錯誤（例如：Cannot GET&#x2F;about&#x2F;），因為我們還沒新增對應的頁面，從根目錄 source 資料夾中是否有對應的資料夾，新增頁面可以參考下一篇文章。</p>
+          </div>
+
+<p><img src="https://imgur.com/W1W5iaB.png" alt="路徑錯誤"></p>
+]]></content>
+      <categories>
+        <category>Hexo</category>
+      </categories>
+      <tags>
+        <tag>Hexo 部落格</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>架設部落格 Hexo 部署 Github (零)</title>
+    <url>/hexo/20220424/1074258594/</url>
+    <content><![CDATA[<h2 id="Hexo-環境"><a href="#Hexo-環境" class="headerlink" title="Hexo 環境"></a>Hexo 環境</h2><p>Step1：下載 Hexo 環境</p>
+<ul>
+<li><code>npm install hexo-cli -g</code></li>
+</ul>
+<p>Step2：檢查 hexo 版本</p>
+<ul>
+<li><code>hexo version</code></li>
+</ul>
+<p><img src="https://imgur.com/eskxR6o.png" alt="Untitled"></p>
+<p>Step3：建立 Hexo（projectname 替換成自己的名稱）</p>
+<ul>
+<li><code>hexo init projectname</code></li>
+</ul>
+<div class="note default">
+            <p>projectname 之後會用於 github repository</p>
+          </div>
+
+<p><img src="https://imgur.com/UQw03Y3.png" alt="Untitled"></p>
+<p>Step4：進入 Hexo 目錄</p>
+<ul>
+<li><code>cd projectname</code></li>
+</ul>
+<p>Step5：安裝相依套件</p>
+<ul>
+<li><code>npm install</code></li>
+</ul>
+<p>Step6：在本地端把 server run 起來</p>
+<ul>
+<li><code>hexo server</code></li>
+</ul>
+<blockquote>
+<p>在本地端啟動 Hexo 伺服器，預設路徑為：<code>http://localhost:4000/</code><br>這種方法只能本地瀏覽，無法從外部瀏覽，那怎麼做才能從外部瀏覽？</p>
+</blockquote>
+<div class="note default">
+            <p>免費仔當然就是用 <span class="label danger">免費</span> github pages 啦～～</p>
+          </div>
+
+<h2 id="部署到-GitHub"><a href="#部署到-GitHub" class="headerlink" title="部署到 GitHub"></a>部署到 GitHub</h2><p>Step1：安裝 Git 部署套件（預設 Hexo 沒有安裝）</p>
+<ul>
+<li><code>npm install hexo-deployer-git --save</code></li>
+</ul>
+<p>Step2：修改 <code>deploy</code> 參數</p>
+<figure class="highlight bash"><figcaption><span>_config.yml</span></figcaption><table><tr><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  <span class="built_in">type</span>: git // 模式</span><br><span class="line">  repo: https://github.com/KentDoIt/KentDoIt.github.io.git // 自己 GitHub repo 連結</span><br><span class="line">  branch: master // 分支</span><br></pre></td></tr></table></figure>
+
+<p>Step3：部署</p>
+<ul>
+<li><code>hexo d -g</code></li>
+</ul>
+<p><img src="https://imgur.com/o6lXKWf.png" alt="Untitled"></p>
+<p>失敗的話把 repo 改為用 SSH（例如：<a href="mailto:git@github.com">git@github.com</a>:KentDoIt&#x2F;KentDoIt.github.io.git）</p>
+<p>Step4：查看 pages</p>
+<ul>
+<li>github 專案底下 → 點擊右上角 齒輪 Settings → 左側 Pages</li>
+</ul>
+<div class="note default">
+            <p>剛上傳會需要等一段時間</p>
+          </div>
+
+<p><img src="https://imgur.com/CyCxriT.png" alt="等待中"></p>
+<p>Step5：先在 local 端 run 起來看看</p>
+<ul>
+<li><code>hexo server</code></li>
+</ul>
+<div class="note default">
+            <p>成功的話會看到下方畫面（預設主題為 landscape）</p>
+          </div>
+
+<p><img src="https://imgur.com/P8oLEQt.png" alt="Untitled"></p>
+<hr>
+<h2 id="Hexo-目錄架構"><a href="#Hexo-目錄架構" class="headerlink" title="Hexo 目錄架構"></a>Hexo 目錄架構</h2><blockquote>
+<p>下方會介紹幾個 Hexo 目錄架構中比較常用到的資料夾以及檔案。</p>
+</blockquote>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="string">├──</span> <span class="string">.deploy_git</span></span><br><span class="line"><span class="string">├──</span> <span class="string">.git</span></span><br><span class="line"><span class="string">├──</span> <span class="string">node_modules</span></span><br><span class="line"><span class="string">├──</span> <span class="string">public</span>           <span class="comment"># hexo g 後生成靜態網站</span></span><br><span class="line"><span class="string">├──</span> <span class="string">scaffolds</span>        <span class="comment"># 指令 new 產生的草稿、頁面、文章模板設置</span></span><br><span class="line"><span class="string">|</span>   <span class="string">├──</span> <span class="string">draft.md</span></span><br><span class="line"><span class="string">|</span>   <span class="string">├──</span> <span class="string">page.md</span></span><br><span class="line"><span class="string">|</span>   <span class="string">└──</span> <span class="string">post.md</span>      <span class="comment"># 生成文章的模版</span></span><br><span class="line"><span class="string">├──</span> <span class="string">source</span></span><br><span class="line"><span class="string">|</span>   <span class="string">├──</span> <span class="string">_drafts</span></span><br><span class="line"><span class="string">|</span>   <span class="string">└──</span> <span class="string">_posts</span>       <span class="comment"># 文章資料夾（markdown 檔）</span></span><br><span class="line"><span class="string">├──</span> <span class="string">themes</span>           <span class="comment"># theme 版型資料夾</span></span><br><span class="line"><span class="string">|</span>   <span class="string">└──</span> <span class="string">landscape</span>    <span class="comment"># 預設 theme</span></span><br><span class="line"><span class="string">|</span>       <span class="string">└──</span> <span class="string">_config.yml</span>  <span class="comment"># 版型樣式設定參數</span></span><br><span class="line"><span class="string">├──</span> <span class="string">.gitignore</span></span><br><span class="line"><span class="string">├──</span> <span class="string">_config.yml</span>      <span class="comment"># 基本部署設定</span></span><br><span class="line"><span class="string">├──</span> <span class="string">db.json</span></span><br><span class="line"><span class="string">├──</span> <span class="string">package.json</span></span><br><span class="line"><span class="string">└──</span> <span class="string">package-lock.json</span></span><br></pre></td></tr></table></figure>
+
+<p>node_modules：依照 package.json 所安裝的套件。</p>
+<ul>
+<li><code>npm install</code></li>
+</ul>
+<p>public：編譯產生靜態檔案後存放的位置。</p>
+<ul>
+<li><code>hexo g</code></li>
+</ul>
+<p>scaffolds：存放 layout 模版，Hexo 會根據 scaffolds 模板來建立檔案。（預設 layout 沒輸入就是 post）</p>
+<ul>
+<li><code>hexo new [layout] &lt;title&gt;</code></li>
+</ul>
+<p>source：新增文章後存放的位置。</p>
+<ul>
+<li><code>hexo new [layout] &lt;title&gt;</code></li>
+</ul>
+<p>themes：存放 Hexo 主題的位置，（預設 themes 為 landscape），Hexo 會依據放在該資料夾底下的主題與 _config.yml 設置來編譯產生靜態檔案。</p>
+<p>_config.yml：Hexo 編譯網站的設定檔。</p>
+<p>package.json：管理相依套件的版本。</p>
+<p>.gitignore：部署時要忽略特定檔案或資料夾。</p>
+<p>package-lock.json：主要用途是記錄當前安裝的每一個套件版本，確認是否安裝到正確的套件版本。（基本上不會動到這個檔案，只有在新增、刪除以及更新套件時，它才會有變化）</p>
+<h2 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h2><ul>
+<li>ray <a href="https://israynotarray.com/hexo/20190411/932826160/">Hexo教學 Next主題設定與頁面功能(Ver. 8)</a></li>
+<li><a href="https://ed521.github.io/2019/07/hexo-install/">[教學] 使用 GitHub Pages + Hexo 來架設個人部落格</a></li>
+<li>ray <a href="https://israynotarray.com/hexo/20200917/636983586/">(4) 試著學 Hexo - 認識 Hexo 目錄結構</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>Hexo</category>
+      </categories>
+      <tags>
+        <tag>Hexo 部落格</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Hexo 新增文章和頁面 (二)</title>
+    <url>/hexo/20220426/356195859/</url>
+    <content><![CDATA[<blockquote>
+<p>新增文章、草稿、草稿三種語法都一樣是使用 new 指令，只差別在 layout 參數。</p>
+</blockquote>
+<p>語法</p>
+<ul>
+<li><code>hexo new [layout] &lt;title&gt;</code></li>
+</ul>
+<p>參數</p>
+<ul>
+<li><code>layout</code>：模板種類，有三種不同的佈局<ul>
+<li>draft.md（新增草稿）</li>
+<li>page.md（新增頁面）</li>
+<li>post.md（預設值，新增文章）</li>
+</ul>
+</li>
+</ul>
+<div class="note default">
+            <p>如果沒有加上 layout 參數，則會帶入根目錄 _config.yml 檔案中的 <code>default_layout</code> 參數，預設為 post。</p>
+          </div>
+
+<ul>
+<li><code>title</code>：文章標題</li>
+</ul>
+<div class="note default">
+            <p>若文章標題包含空格，需使用 <code>引號</code> 刮起來（雙引號、單引號都可以），否則會以最後一個空格後面的字作為 title。</p>
+          </div>
+
+<blockquote>
+<p>再下新增指令前，還需要先暸解一些設定以及檔案。</p>
+</blockquote>
+<h3 id="存放路徑"><a href="#存放路徑" class="headerlink" title="存放路徑"></a>存放路徑</h3><blockquote>
+<p>存放於根目錄 source&#x2F;_post 路徑底下，會用 .md 檔作為筆記的副檔名。</p>
+</blockquote>
+<p><img src="https://imgur.com/XWXBS2c.png" alt="source"></p>
+<h3 id="設置模版參數"><a href="#設置模版參數" class="headerlink" title="設置模版參數"></a>設置模版參數</h3><blockquote>
+<p>設置於根目錄 scaffolds 資料夾中的 layout 檔案（draft.md、page.md、post.md）。</p>
+</blockquote>
+<p><img src="https://imgur.com/8Cyd1Pz.png" alt="scaffolds"></p>
+<h3 id="模版參數種類"><a href="#模版參數種類" class="headerlink" title="模版參數種類"></a>模版參數種類</h3><blockquote>
+<p>參數是 Front-matter，檔案最上方以 <code>---</code> 分隔的區域）作為模版預設樣式的參數。</p>
+</blockquote>
+<p>常用的四種參數</p>
+<ul>
+<li>title：會自動帶上當 title 值，並以 h1 tag 的方式呈現。</li>
+<li>date：會自動帶上當下日期。</li>
+<li>categories：分類（多筆會用 <code>破折號 -</code> 的方式輸入）。</li>
+<li>tags：分類（多筆會用 <code>破折號 -</code> 的方式輸入）。</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">title: &#123;&#123; title &#125;&#125; // 預設值，文章名稱（會自動帶入）</span><br><span class="line"><span class="built_in">date</span>: &#123;&#123; <span class="built_in">date</span> &#125;&#125; // 預設值，文章時間（會自動帶入）</span><br><span class="line">tags: &#123;&#123; tags &#125;&#125; // 標籤</span><br><span class="line">categories: &#123;&#123; categories &#125;&#125; // 分類</span><br><span class="line">thumbnail: // 預覽圖</span><br><span class="line">banner: // 文章開頭圖</span><br></pre></td></tr></table></figure>
+
+<div class="note default">
+            <p>其他參數請參考<a href="https://hexo.io/zh-tw/docs/front-matter">官方文件</a></p>
+          </div>
+
+<h2 id="新增頁面"><a href="#新增頁面" class="headerlink" title="新增頁面"></a>新增頁面</h2><blockquote>
+<p>此小節也會介紹如何解決上一篇文章結尾提到的徑錯誤（例如：Cannot GET&#x2F;about&#x2F;）。</p>
+</blockquote>
+<p>語法</p>
+<ul>
+<li><code>hexo new page &lt;title&gt;</code></li>
+</ul>
+<div class="note default">
+            <p>下方會演釋如何透過指令建立 menu 所需頁面，以及建立後需要設置什麼？</p>
+          </div>
+
+<p>Step1：輸入新增頁面指令</p>
+<ul>
+<li>示範新增 tags 頁面</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo new page tags</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://imgur.com/6OCF161.png" alt="tags"></p>
+<div class="note default">
+            <p>這樣路徑就不會錯誤拉，只是會發現空空如也，那是因為還需要設置對應的 type 參數。</p>
+          </div>
+
+<p>Step2：修改 index.md 中 Front-matter 參數 type</p>
+<div class="note default">
+            <p>進入根目錄 source 資料夾中，剛剛新增的 tags 資料夾底下，會有一個 index.md，這隻檔案使用 Front-matter（檔案最上方以 — 分隔的區域） 作為模版預設樣式的參數。</p>
+          </div>
+
+<ul>
+<li>title：會自動帶入指令中的 title（tags）</li>
+<li>date：會自動帶入檔案檔案建立日期</li>
+<li>type: 才會對應類別的文章</li>
+</ul>
+<figure class="highlight plaintext"><figcaption><span>source/tags/index.md</span></figcaption><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">title: tags</span><br><span class="line">date: 2022-04-25 13:15:09</span><br><span class="line">type: tags</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://imgur.com/bRVlExe.png" alt="type"></p>
+<p>延伸閱讀：ray 大 <a href="https://israynotarray.com/hexo/20200923/2032860736/">試著學 Hexo - 新增頁面</a></p>
+<div class="note default">
+            <p>文章中有提到如何去除模板，不使用預設產生的樣板而是改用手刻的 .html 檔案。</p>
+          </div>
+
+<h2 id="新增文章"><a href="#新增文章" class="headerlink" title="新增文章"></a>新增文章</h2><p>語法</p>
+<ul>
+<li><code>hexo new &lt;title&gt;</code></li>
+</ul>
+<div class="note default">
+            <p>下方如何透過指令新增文章，以及建立後需要設置什麼？</p>
+          </div>
+
+<p>Step1：新增文章</p>
+<ul>
+<li><code>hexo new &lt;title&gt;</code></li>
+</ul>
+<p>Step2：清除快取檔案 (db.json) 和已產生的靜態檔案 (public)</p>
+<ul>
+<li><code>hexo cl</code></li>
+</ul>
+<p>Step3：產生靜態檔案以及重新部署</p>
+<ul>
+<li><code>hexo d -g</code></li>
+</ul>
+<figure class="highlight bash"><figcaption><span>三步驟指令演示</span></figcaption><table><tr><td class="code"><pre><span class="line">hexo new <span class="string">&#x27;架設部落格 Hexo 部署 Github (零)&#x27;</span></span><br><span class="line">hexo cl</span><br><span class="line">hexo d -g</span><br></pre></td></tr></table></figure>
+
+<div class="note default">
+            <p>那如何在文章中添加圖片以及刪除文章呢？</p>
+          </div>
+
+<h3 id="刪除文章"><a href="#刪除文章" class="headerlink" title="刪除文章"></a>刪除文章</h3><p>Step1：直接刪除路徑 .&#x2F;source&#x2F;_posts 對應的文章 .md 檔案。</p>
+<p>Step2：清除快取檔案和已產生的靜態檔案。</p>
+<ul>
+<li><code>hexo cl</code></li>
+</ul>
+<p>Step3：重新部署</p>
+<ul>
+<li><code>hexo d -g</code></li>
+</ul>
+<h3 id="文章圖片"><a href="#文章圖片" class="headerlink" title="文章圖片"></a>文章圖片</h3><blockquote>
+<p>Hexo 本身並沒有提供上傳圖片的功能，因此需要另外尋找上傳圖片的服務，下面介紹兩種方法。</p>
+</blockquote>
+<p>方法一：在創建文章時，<code>自動產生</code> 一個和文章同名的資料夾，用於存放圖片。</p>
+<blockquote>
+<p>透過部署時一併上傳到 github。</p>
+</blockquote>
+<p>Step1：搜尋 Writing<br>Step2：修改 post_asset_folder 參數（預設是 false）</p>
+<figure class="highlight diff"><figcaption><span>_config.yml</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="deletion">- post_asset_folder: false</span></span><br><span class="line"><span class="addition">+ post_asset_folder: true</span></span><br></pre></td></tr></table></figure>
+
+<div class="note default">
+            <p>後期不建議使用這種方式，因為 github repository 限制 5GB，當文件大小超過 50 MB 將收到警告，無法上傳超過 100 MB 的文件。</p><p>src：<a href="https://www.modb.pro/db/154051">GitHub、Gitlab、Gitee的容量及文件大小限制</a></p>
+          </div>
+
+<p>方法二：上傳其它圖片空間在用圖片超連結的方式插入到文章的 md 檔案。</p>
+<blockquote>
+<p>免費圖片空間：<a href="https://imgur.com/">Imgur</a>、<a href="https://upload.cc/">Upload.cc</a>、firebase</p>
+</blockquote>
+<p>Step1：上傳圖片到免費空間中<br>Step2：複製圖片連結<br>Step3：插入到文章中</p>
+<figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">![<span class="string">type</span>](<span class="link">https://imgur.com/bRVlExe.png</span>)</span><br></pre></td></tr></table></figure>
+
+<div class="note default">
+            <p>免費圖片空間注意事項</p><ol><li>是否有時間限制（例如：超過 60 天沒有瀏覽就刪除）</li><li>圖片是否可外連（例如：有些空間是不支援直接獲取圖片連結）</li><li>圖片流量限制（例如：限制圖片的讀取數量以及流出數量）</li></ol>
+          </div>
+
+<h2 id="新增草稿"><a href="#新增草稿" class="headerlink" title="新增草稿"></a>新增草稿</h2><div class="note default">
+            <p>草稿優勢為，預設不會被編譯出來，下方會介紹兩種不會被編譯的方法。</p>
+          </div>
+
+<p>語法</p>
+<ul>
+<li><code>hexo new draft &lt;title&gt;</code></li>
+</ul>
+<p>方法一：_drafts 資料夾（草稿資料夾）內的文章</p>
+<div class="note default">
+            <p>新增的草稿會存放於 _drafts 資料夾中，若資料夾不存在則會自動生成一個。</p>
+          </div>
+
+<p>Step1：輸入新增草稿文章指令</p>
+<ul>
+<li><code>hexo new draft &lt;title&gt;</code></li>
+</ul>
+<p>方法二：新增底線開頭資料夾</p>
+<p>Step1：根目錄 source&#x2F;_post 資料夾內，新增底線開頭的資料夾（例如：_草稿、_draft）<br>Step2：將還沒有要發布的文章手動搬移到到該資料夾底下</p>
+<p><img src="https://imgur.com/7XKWLNt.png" alt="草稿資料夾"></p>
+<div class="note default">
+            <p>那如果寫完了怎麼轉成文章？</p>
+          </div>
+
+<h3 id="草稿轉文章"><a href="#草稿轉文章" class="headerlink" title="草稿轉文章"></a>草稿轉文章</h3><div class="note default">
+            <p>下面介紹兩種方法。</p>
+          </div>
+
+<p>方法一：手動搬移</p>
+<ul>
+<li>將草稿文章手動搬移到 source&#x2F;_post 資料夾中。</li>
+</ul>
+<p>方法二：輸入 publish 指令</p>
+<ul>
+<li><code>hexo publish draft &lt;title&gt;</code></li>
+</ul>
+<div class="note danger">
+            <p>有限制，僅適用於存在 _drafts 資料夾底下的草稿，因為會自動從 source&#x2F;_drafts 尋找對應的草稿文章，因此不在該資料夾底下則會搜尋不到。</p>
+          </div>
+
+<p><img src="https://imgur.com/vmJTEpM.png" alt="草稿 error"></p>
+<h3 id="編譯草稿"><a href="#編譯草稿" class="headerlink" title="編譯草稿"></a>編譯草稿</h3><blockquote>
+<p>上面有提到，預設是不會將編譯草稿編譯出來，但如果要讓本地端 server 看見還是有辦法可以將其編譯出來的，下方介紹兩種方法。</p>
+</blockquote>
+<p>方法一：reu server 時帶入 <code>--draft</code></p>
+<ul>
+<li><code>hexo s --draft</code></li>
+</ul>
+<p>方法二：修改根目錄 _config.yml 中的 <code>render_drafts</code> 參數（預設為 false）</p>
+<figure class="highlight diff"><table><tr><td class="code"><pre><span class="line"><span class="deletion">-render_drafts: false</span></span><br><span class="line"><span class="addition">+render_drafts: true</span></span><br></pre></td></tr></table></figure>
+
+<div class="note danger">
+            <p>但要注意使用方法二，運行時會出現警告提醒。（可以忽略沒關係）</p>
+          </div>
+
+<p><img src="https://imgur.com/wuOgMjr.png" alt="render_drafts"></p>
+]]></content>
+      <categories>
+        <category>Hexo</category>
+      </categories>
+      <tags>
+        <tag>Hexo 部落格</tag>
+      </tags>
+  </entry>
+</search>
