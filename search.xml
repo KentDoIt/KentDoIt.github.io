@@ -2,7 +2,7 @@
 <search>
   <entry>
     <title>Hexo 新增文章和頁面 (二)</title>
-    <url>/Hexo-%E6%96%B0%E5%A2%9E%E6%96%87%E7%AB%A0%E5%92%8C%E9%A0%81%E9%9D%A2-%E4%BA%8C/</url>
+    <url></url>
     <content><![CDATA[<blockquote>
 <p>新增文章、草稿、草稿三種語法都一樣是使用 new 指令，只差別在 layout 參數。</p>
 </blockquote>
@@ -223,7 +223,7 @@
   </entry>
   <entry>
     <title>Hexo 主題 NexT 設置 (一)</title>
-    <url>/Hexo-%E4%B8%BB%E9%A1%8C-NexT-%E8%A8%AD%E7%BD%AE-%E4%B8%80/</url>
+    <url></url>
     <content><![CDATA[<h2 id="更換主題-theme"><a href="#更換主題-theme" class="headerlink" title="更換主題 theme"></a>更換主題 theme</h2><p>Step1：從<a href="https://hexo.io/themes/">官方</a>主題找尋自己順眼的</p>
 <div class="note default">
             <p>最近主流有兩個推薦的（我選擇 Next）</p>
@@ -314,7 +314,7 @@
   </entry>
   <entry>
     <title>架設部落格 Hexo 部署 Github (零)</title>
-    <url>/%E6%9E%B6%E8%A8%AD%E9%83%A8%E8%90%BD%E6%A0%BCHexoGithub%E9%9B%B6/</url>
+    <url></url>
     <content><![CDATA[<h2 id="Hexo-環境"><a href="#Hexo-環境" class="headerlink" title="Hexo 環境"></a>Hexo 環境</h2><p>Step1：下載 Hexo 環境</p>
 <ul>
 <li><code>npm install hexo-cli -g</code></li>
