@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.1.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/t-headshost-ya-apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/t-headshost-ya-favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/t-headshost-ya-favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/headshost-ya-apple-touch-icon-next.svg" color="#222">
+  <meta name="google-site-verification" content="25miYVaewg4Qur_GPtoF9-GhCZZJNidmq2kqy6wRE9g">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-minimal.min.css">
+  <script src="/lib/pace/pace.min.js"></script>
+  <style>
+    /*設置進度條顏色*/
+    .pace .pace-progress {
+      background: #222;
+      height: 3px;
+    }
+  </style>
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"kentdoit.github.io","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","width":240,"display":"hide","padding":40,"offset":12,"onmobile":true},"copycode":{"enable":true,"show_result":true,"style":"flat"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-K8QW91NNBQ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-K8QW91NNBQ');
+</script>
+
+  <meta name="description" content="此篇會如何在 Hexo 使用 new 新增指令。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo 新增文章和頁面 (二)">
+<meta property="og:url" content="https://kentdoit.github.io/hexo/356195859/index.html">
+<meta property="og:site_name" content="Kent">
+<meta property="og:description" content="此篇會如何在 Hexo 使用 new 新增指令。">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="https://imgur.com/XWXBS2c.png">
+<meta property="og:image" content="https://imgur.com/8Cyd1Pz.png">
+<meta property="og:image" content="https://imgur.com/6OCF161.png">
+<meta property="og:image" content="https://imgur.com/bRVlExe.png">
+<meta property="og:image" content="https://imgur.com/7XKWLNt.png">
+<meta property="og:image" content="https://imgur.com/vmJTEpM.png">
+<meta property="og:image" content="https://imgur.com/wuOgMjr.png">
+<meta property="article:published_time" content="2022-04-26T07:11:38.000Z">
+<meta property="article:modified_time" content="2022-05-07T17:37:05.056Z">
+<meta property="article:author" content="Kent">
+<meta property="article:tag" content="Hexo 部落格">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://imgur.com/XWXBS2c.png">
+
+<link rel="canonical" href="https://kentdoit.github.io/hexo/356195859/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-TW'
+  };
+</script>
+
+  <title>Hexo 新增文章和頁面 (二) | Kent</title>
+  
+    <script>
+      function sendPageView() {
+        if (CONFIG.hostname !== location.hostname) return;
+        var uid = localStorage.getItem('uid') || (Math.random() + '.' + Math.random());
+        localStorage.setItem('uid', uid);
+        navigator.sendBeacon('https://www.google-analytics.com/collect', new URLSearchParams({
+          v  : 1,
+          tid: 'G-K8QW91NNBQ',
+          cid: uid,
+          t  : 'pageview',
+          dp : encodeURIComponent(location.pathname)
+        }));
+      }
+      document.addEventListener('pjax:complete', sendPageView);
+      sendPageView();
+    </script>
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="Kent" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切換導航欄">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Kent</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">Just Do Eat</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+    <!---->
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i></a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+    <!---->
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+    <!---->
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+    <!---->
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i></a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger">
+          <i class="fa fa-search fa-fw"></i>
+          <!--<i class="fa fa-search fa-fw"></i>搜尋-->
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜尋..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+  <a href="https://github.com/KentDoIt" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="https://kentdoit.github.io/hexo/356195859/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/headshost_ya.jpg">
+      <meta itemprop="name" content="Kent">
+      <meta itemprop="description" content="Blog">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Kent">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Hexo 新增文章和頁面 (二)
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <!--<i class="far fa-folder"></i>-->
+                <i class="far fa-folder-open"></i>
+              </span>
+              <!--<span class="post-meta-item-text">分類於</span>-->
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/hexo/" itemprop="url" rel="index"><span itemprop="name">Hexo</span></a>
+                </span>
+            </span>
+            <span class="post-meta-item" title="所需閱讀時間">
+              <!--<span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>-->
+              <span>5 分鐘閱讀時間</span>
+            </span>
+            <span class="post-meta-item">
+              <!--<span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>-->
+              <br>
+              <time title="創建時間：2022-04-26 15:11:38" itemprop="dateCreated datePublished" datetime="2022-04-26T15:11:38+08:00">2022-04-26</time>
+            </span>
+
+          
+            <div class="post-description">此篇會如何在 Hexo 使用 new 新增指令。</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <blockquote class="blockquote-center">
+          <i class="fa fa-quote-left"></i>
+          <p>此篇會如何在 Hexo 使用 new 新增指令。</p>
+          <i class="fa fa-quote-right"></i>
+        </blockquote>
+      
+        <h2 id="範例的環境版本"><a href="#範例的環境版本" class="headerlink" title="範例的環境版本"></a>範例的環境版本</h2><p>hexo 版本：6.0.1<br>hexo-cli 版本：4.3.0<br>next 版本：7.8.0</p>
+<blockquote>
+<p>新增文章、草稿、草稿三種語法都一樣是使用 new 指令，只差別在 layout 參數。</p>
+</blockquote>
+<p>指令</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">hexo new [layout] &lt;title&gt;</span><br></pre></td></tr></table></figure>
+
+<p>參數</p>
+<p>title：文章標題</p>
+<ul>
+<li>若文章標題包含空格，需使用 <code>引號</code> 刮起來（雙引號、單引號都可以），否則會以最後一個空格後面的字作為 title。</li>
+</ul>
+<p>layout：模板種類，有以下三種不同的種類</p>
+<ul>
+<li>draft.md（新增草稿）</li>
+<li>page.md（新增頁面）</li>
+<li>post.md（預設值，新增文章）</li>
+</ul>
+<div class="note default">
+            <p>如果沒有加上 layout 參數，則會帶入根目錄 _config.yml 檔案中的 <code>default_layout</code> 參數，預設為 post。</p>
+          </div>
+
+<blockquote>
+<p>再下新增指令前，還需要先暸解一些設定以及檔案路徑。</p>
+</blockquote>
+<h3 id="存放路徑"><a href="#存放路徑" class="headerlink" title="存放路徑"></a>存放路徑</h3><blockquote>
+<p>新增的文章會存放於根目錄 source&#x2F;_post 路徑底下，會用 .md 檔作為筆記的副檔名。</p>
+</blockquote>
+<p><img src="https://imgur.com/XWXBS2c.png"></p>
+<div class="note default">
+            <p>如果想獲取已發佈的文章，則可以直接複製 source&#x2F;_post 資料夾，就可以獲得發佈過的 md 檔案。</p>
+          </div>
+
+<h3 id="設置模版參數"><a href="#設置模版參數" class="headerlink" title="設置模版參數"></a>設置模版參數</h3><blockquote>
+<p>根目錄 scaffolds 資料夾中的 layout 檔案（draft.md、page.md、post.md），分別代表三種種 layout 模板的設置。</p>
+</blockquote>
+<p><img src="https://imgur.com/8Cyd1Pz.png"></p>
+<h3 id="模版參數種類"><a href="#模版參數種類" class="headerlink" title="模版參數種類"></a>模版參數種類</h3><blockquote>
+<p>參數是 <code>Front-matter</code>，檔案最上方以 <code>---</code> 分隔的區域）作為模版預設樣式的參數。</p>
+</blockquote>
+<p>常用的四種參數</p>
+<ul>
+<li>title：會自動帶上當 title 值，並以 h1 tag 的方式呈現。</li>
+<li>date：會自動帶上當下日期。</li>
+<li>categories：分類（多筆會用 <code>破折號 -</code> 的方式輸入）。</li>
+<li>tags：分類（多筆會用 <code>破折號 -</code> 的方式輸入）。</li>
+</ul>
+<figure class="highlight js"><figcaption><span>示範 scaffolds 中如何用 &#123;&#123;&#125;&#125; 設置 Front-matter 參數</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line"><span class="attr">title</span>: &#123;&#123; title &#125;&#125; <span class="comment">// 預設值，文章名稱（會自動帶入）</span></span><br><span class="line"><span class="attr">date</span>: &#123;&#123; date &#125;&#125; <span class="comment">// 預設值，文章時間（會自動帶入）</span></span><br><span class="line"><span class="attr">tags</span>: &#123;&#123; tags &#125;&#125; <span class="comment">// 標籤</span></span><br><span class="line"><span class="attr">categories</span>: &#123;&#123; categories &#125;&#125; <span class="comment">// 分類</span></span><br><span class="line"><span class="attr">thumbnail</span>: <span class="comment">// 預覽圖</span></span><br><span class="line"><span class="attr">banner</span>: <span class="comment">// 文章開頭圖</span></span><br><span class="line">---</span><br></pre></td></tr></table></figure>
+
+<div class="note default">
+            <p>其他參數請參考<a target="_blank" rel="noopener" href="https://hexo.io/zh-tw/docs/front-matter">官方文件</a></p>
+          </div>
+
+<h2 id="新增頁面"><a href="#新增頁面" class="headerlink" title="新增頁面"></a>新增頁面</h2><blockquote>
+<p>此小節也會介紹如何解決上一篇文章結尾提到的徑錯誤（例如：Cannot GET&#x2F;about&#x2F;）。</p>
+</blockquote>
+<p>語法</p>
+<ul>
+<li><code>hexo new page &lt;title&gt;</code></li>
+</ul>
+<div class="note default">
+            <p>下方會演釋如何透過指令建立 menu 所需頁面，以及建立後需要設置什麼？</p>
+          </div>
+
+<p>Step1：輸入新增頁面指令</p>
+<ul>
+<li>示範新增 tags 頁面</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">hexo new page tags</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://imgur.com/6OCF161.png" alt="tags 畫面"></p>
+<div class="note default">
+            <p>這樣路徑就不會錯誤拉，只是會發現空空如也，那是因為還需要設置對應的 type 參數。</p>
+          </div>
+
+<p>Step2：修改 index.md 中 Front-matter 參數 type</p>
+<div class="note default">
+            <p>進入根目錄 source 資料夾中，剛剛新增的 tags 資料夾底下，會有一個 index.md，這隻檔案使用 Front-matter（檔案最上方以 — 分隔的區域） 作為模版預設樣式的參數。</p>
+          </div>
+
+<ul>
+<li>title：會自動帶入指令中的 title（tags）</li>
+<li>date：會自動帶入檔案檔案建立日期</li>
+<li>type: 才會對應類別的文章</li>
+</ul>
+<figure class="highlight plaintext"><figcaption><span>source/tags/index.md</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: tags</span><br><span class="line">date: 2022-04-25 13:15:09</span><br><span class="line">type: tags</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://imgur.com/bRVlExe.png" alt="tags 畫面"></p>
+<p>延伸閱讀：ray 大 <a target="_blank" rel="noopener" href="https://israynotarray.com/hexo/20200923/2032860736/">試著學 Hexo - 新增頁面</a></p>
+<div class="note default">
+            <p>文章中有提到如何去除模板，不使用預設產生的樣板而是改用手刻的 .html 檔案。</p>
+          </div>
+
+<h2 id="新增文章"><a href="#新增文章" class="headerlink" title="新增文章"></a>新增文章</h2><p>語法</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">hexo new &lt;title&gt;</span><br></pre></td></tr></table></figure>
+
+<div class="note default">
+            <p>下方如何透過指令新增文章，以及建立後需要設置什麼？</p>
+          </div>
+
+<p>Step1：新增文章</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">hexo new &lt;title&gt;</span><br></pre></td></tr></table></figure>
+
+<p>Step2：清除快取檔案 (db.json) 和已產生的靜態檔案 (public)</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">hexo cl</span><br></pre></td></tr></table></figure>
+
+<p>Step3：產生靜態檔案以及重新部署</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">hexo d -g</span><br></pre></td></tr></table></figure>
+
+<div class="note default">
+            <p>示範新增文章需要做的三個指令</p>
+          </div>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">hexo new &#x27;架設部落格 Hexo 部署 Github (零)&#x27;</span><br><span class="line">hexo cl</span><br><span class="line">hexo d -g</span><br></pre></td></tr></table></figure>
+
+<div class="note default">
+            <p>那如何在文章中添加圖片以及刪除文章呢？</p>
+          </div>
+
+<h3 id="刪除文章"><a href="#刪除文章" class="headerlink" title="刪除文章"></a>刪除文章</h3><p>Step1：直接刪除路徑 .&#x2F;source&#x2F;_posts 對應的文章 .md 檔案。</p>
+<p>Step2：清除快取檔案和已產生的靜態檔案。</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">hexo cl</span><br></pre></td></tr></table></figure>
+
+<p>Step3：重新部署</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">hexo d -g</span><br></pre></td></tr></table></figure>
+
+<h3 id="文章圖片"><a href="#文章圖片" class="headerlink" title="文章圖片"></a>文章圖片</h3><blockquote>
+<p>Hexo 本身並沒有提供上傳圖片的功能，因此需要另外尋找上傳圖片的服務，下面介紹兩種方法。</p>
+</blockquote>
+<p>方法一：在創建文章時會 <code>自動產生</code> 一個和文章同名的資料夾，用於存放圖片。</p>
+<blockquote>
+<p>透過部署時一併上傳到 github。</p>
+</blockquote>
+<p>Step1：搜尋 Writing<br>Step2：修改 post_asset_folder 參數（預設是 false）</p>
+<figure class="highlight diff"><figcaption><span>_config.yml</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="deletion">- post_asset_folder: false</span></span><br><span class="line"><span class="addition">+ post_asset_folder: true</span></span><br></pre></td></tr></table></figure>
+
+<div class="note default">
+            <p>後期不建議使用這種方式，因為 github repository 限制 5GB，當文件大小超過 50 MB 將收到警告，無法上傳超過 100 MB 的文件。</p><p>src：<a target="_blank" rel="noopener" href="https://www.modb.pro/db/154051">GitHub、Gitlab、Gitee的容量及文件大小限制</a></p>
+          </div>
+
+<p>方法二：上傳其它圖片空間在用圖片超連結的方式插入到文章的 md 檔案。</p>
+<blockquote>
+<p>免費圖片空間：<a target="_blank" rel="noopener" href="https://imgur.com/">Imgur</a>、<a target="_blank" rel="noopener" href="https://upload.cc/">Upload.cc</a>、firebase</p>
+</blockquote>
+<p>Step1：上傳圖片到免費空間中<br>Step2：複製圖片連結<br>Step3：插入到文章中</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">![<span class="string">type</span>](<span class="link">https://imgur.com/bRVlExe.png</span>)</span><br></pre></td></tr></table></figure>
+
+<div class="note default">
+            <p>免費圖片空間注意事項</p><ol><li>是否有時間限制（例如：超過 60 天沒有瀏覽就刪除）</li><li>圖片是否可外連（例如：有些空間是不支援直接獲取圖片連結）</li><li>圖片流量限制（例如：限制圖片的讀取數量以及流出數量）</li></ol>
+          </div>
+
+<h2 id="新增草稿"><a href="#新增草稿" class="headerlink" title="新增草稿"></a>新增草稿</h2><div class="note default">
+            <p>草稿優勢為，預設不會被編譯出來，下方會介紹兩種不會被編譯的方法。</p>
+          </div>
+
+<p>指令</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">hexo new draft &lt;title&gt;</span><br></pre></td></tr></table></figure>
+
+<p>方法一：_drafts 資料夾（草稿資料夾）內的文章</p>
+<div class="note default">
+            <p>新增的草稿會存放於 _drafts 資料夾中，若資料夾不存在則會自動生成一個。</p>
+          </div>
+
+<p>Step1：輸入新增草稿文章指令</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">hexo new draft &lt;title&gt;</span><br></pre></td></tr></table></figure>
+
+<p>方法二：新增底線開頭資料夾</p>
+<p>Step1：根目錄 source&#x2F;_post 資料夾內，新增底線開頭的資料夾（例如：_草稿、_draft）<br>Step2：將還沒有要發布的文章手動搬移到到該資料夾底下</p>
+<p><img src="https://imgur.com/7XKWLNt.png" alt="草稿資料夾"></p>
+<div class="note default">
+            <p>那如果寫完了怎麼轉成文章？</p>
+          </div>
+
+<h3 id="草稿轉文章"><a href="#草稿轉文章" class="headerlink" title="草稿轉文章"></a>草稿轉文章</h3><div class="note default">
+            <p>下面介紹兩種方法。</p>
+          </div>
+
+<p>方法一：手動搬移</p>
+<ul>
+<li>將草稿文章手動搬移到 source&#x2F;_post 資料夾中。</li>
+</ul>
+<p>方法二：輸入 publish 指令</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">hexo publish draft &lt;title&gt;</span><br></pre></td></tr></table></figure>
+
+<div class="note danger">
+            <p>有限制，僅適用於存在 _drafts 資料夾底下的草稿，因為會自動從 source&#x2F;_drafts 尋找對應的草稿文章，因此不在該資料夾底下則會搜尋不到。</p>
+          </div>
+
+<p><img src="https://imgur.com/vmJTEpM.png" alt="草稿 error"></p>
+<h3 id="編譯草稿"><a href="#編譯草稿" class="headerlink" title="編譯草稿"></a>編譯草稿</h3><blockquote>
+<p>上面有提到，預設是不會將編譯草稿編譯出來，但如果要讓本地端 server 看見還是有辦法可以將其編譯出來的，下方介紹兩種方法。</p>
+</blockquote>
+<p>方法一：reu server 時帶入 <code>--draft</code></p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">hexo s --draft</span><br></pre></td></tr></table></figure>
+
+<p>方法二：修改根目錄 _config.yml 中的 <code>render_drafts</code> 參數（預設為 false）</p>
+<figure class="highlight diff"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="deletion">-render_drafts: false</span></span><br><span class="line"><span class="addition">+render_drafts: true</span></span><br></pre></td></tr></table></figure>
+
+<div class="note danger">
+            <p>但要注意使用方法二，運行時會出現警告提醒。（可以忽略沒關係）</p>
+          </div>
+
+<p><img src="https://imgur.com/wuOgMjr.png" alt="WARN 警告提示"></p>
+
+    </div>
+
+    
+    
+    
+        
+
+<div>
+<hr style="margin-top: 40px">
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>作者： </strong>Kent
+  </li>
+  <li class="post-copyright-link">
+    <strong>文章連結：</strong>
+    <a href="https://kentdoit.github.io/hexo/356195859/" title="Hexo 新增文章和頁面 (二)">https://kentdoit.github.io/hexo/356195859/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版權聲明： </strong>本網誌所有文章除特別聲明外，均採用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh_TW" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 許可協議。轉載請註明出處！
+  </li>
+</ul>
+</div>
+
+        
+
+  <div class="followme">
+    <p>歡迎關注我的其它發布渠道</p>
+
+    <div class="social-list">
+
+        <div class="social-item">
+          <a target="_blank" class="social-link" href="/atom.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+
+            <span class="label">RSS</span>
+          </a>
+        </div>
+    </div>
+  </div>
+
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+              <a href="/tags/hexo-blog/" rel="tag"><i class="fas fa-hashtag"></i> Hexo 部落格</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/hexo/3802192554/" rel="prev" title="Hexo 主題 NexT 設置 (一)">
+      <i class="fa fa-chevron-left"></i> Hexo 主題 NexT 設置 (一)
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/hexo/821499080/" rel="next" title="Hexo 檔案名稱 Url 優化（三）">
+      Hexo 檔案名稱 Url 優化（三） <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+  <script src="https://utteranc.es/client.js"
+          repo="KentDoIt/hexo-theme-next"
+          issue-term="pathname"
+          label="blog comment"
+          theme="github-light"
+          crossorigin="anonymous"
+          async>
+  </script>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目錄
+        </li>
+        <li class="sidebar-nav-overview">
+          本站概要
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AF%84%E4%BE%8B%E7%9A%84%E7%92%B0%E5%A2%83%E7%89%88%E6%9C%AC"><span class="nav-text">範例的環境版本</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AD%98%E6%94%BE%E8%B7%AF%E5%BE%91"><span class="nav-text">存放路徑</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A8%AD%E7%BD%AE%E6%A8%A1%E7%89%88%E5%8F%83%E6%95%B8"><span class="nav-text">設置模版參數</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A8%A1%E7%89%88%E5%8F%83%E6%95%B8%E7%A8%AE%E9%A1%9E"><span class="nav-text">模版參數種類</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%B0%E5%A2%9E%E9%A0%81%E9%9D%A2"><span class="nav-text">新增頁面</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%B0%E5%A2%9E%E6%96%87%E7%AB%A0"><span class="nav-text">新增文章</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%AA%E9%99%A4%E6%96%87%E7%AB%A0"><span class="nav-text">刪除文章</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%87%E7%AB%A0%E5%9C%96%E7%89%87"><span class="nav-text">文章圖片</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%B0%E5%A2%9E%E8%8D%89%E7%A8%BF"><span class="nav-text">新增草稿</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%8D%89%E7%A8%BF%E8%BD%89%E6%96%87%E7%AB%A0"><span class="nav-text">草稿轉文章</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%B7%A8%E8%AD%AF%E8%8D%89%E7%A8%BF"><span class="nav-text">編譯草稿</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Kent"
+      src="/images/headshost_ya.jpg">
+  <p class="site-author-name" itemprop="name">Kent</p>
+  <div class="site-description" itemprop="description">Blog</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">4</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">分類</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">標籤</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class=""></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Kent</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
