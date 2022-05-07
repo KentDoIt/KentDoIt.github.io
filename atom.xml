@@ -6,7 +6,7 @@
   <link href="https://kentdoit.github.io/atom.xml" rel="self"/>
   
   <link href="https://kentdoit.github.io/"/>
-  <updated>2022-05-07T13:55:04.773Z</updated>
+  <updated>2022-05-07T17:01:48.413Z</updated>
   <id>https://kentdoit.github.io/</id>
   
   <author>
@@ -18,10 +18,10 @@
   
   <entry>
     <title>Hexo 檔案名稱 Url 優化（三）</title>
-    <link href="https://kentdoit.github.io/hexo/20220506/821499080/"/>
-    <id>https://kentdoit.github.io/hexo/20220506/821499080/</id>
-    <published>2022-05-06T14:20:08.000Z</published>
-    <updated>2022-05-07T13:55:04.773Z</updated>
+    <link href="https://kentdoit.github.io/hexo/20220428/821499080/"/>
+    <id>https://kentdoit.github.io/hexo/20220428/821499080/</id>
+    <published>2022-04-28T14:20:08.000Z</published>
+    <updated>2022-05-07T17:01:48.413Z</updated>
     
     
     <summary type="html">此篇介紹如何變更新增文章名稱帶入的參數以及對於 url 的優化。</summary>
@@ -40,7 +40,7 @@
     <link href="https://kentdoit.github.io/hexo/20220426/356195859/"/>
     <id>https://kentdoit.github.io/hexo/20220426/356195859/</id>
     <published>2022-04-26T07:11:38.000Z</published>
-    <updated>2022-05-06T07:23:14.981Z</updated>
+    <updated>2022-05-07T17:37:05.056Z</updated>
     
     
     <summary type="html">此篇會如何在 Hexo 使用 new 新增指令。</summary>
@@ -59,7 +59,7 @@
     <link href="https://kentdoit.github.io/hexo/20220425/3802192554/"/>
     <id>https://kentdoit.github.io/hexo/20220425/3802192554/</id>
     <published>2022-04-24T16:30:34.000Z</published>
-    <updated>2022-05-06T07:23:14.979Z</updated>
+    <updated>2022-05-07T17:20:39.998Z</updated>
     
     
     <summary type="html">此篇會介紹如何設置 Hexo 主題 NexT 以及設置 Settings。</summary>
@@ -78,7 +78,7 @@
     <link href="https://kentdoit.github.io/hexo/20220424/1074258594/"/>
     <id>https://kentdoit.github.io/hexo/20220424/1074258594/</id>
     <published>2022-04-24T14:03:56.000Z</published>
-    <updated>2022-05-06T07:23:14.982Z</updated>
+    <updated>2022-05-07T17:37:50.566Z</updated>
     
     
     <summary type="html">此篇會手把手介紹如何透過 Hexo 架設部落格部並署到 Github。</summary>

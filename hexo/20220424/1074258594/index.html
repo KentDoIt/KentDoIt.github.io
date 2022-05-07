@@ -53,7 +53,7 @@
 <meta property="og:image" content="https://imgur.com/CyCxriT.png">
 <meta property="og:image" content="https://imgur.com/P8oLEQt.png">
 <meta property="article:published_time" content="2022-04-24T14:03:56.000Z">
-<meta property="article:modified_time" content="2022-05-06T07:23:14.982Z">
+<meta property="article:modified_time" content="2022-05-07T17:37:50.566Z">
 <meta property="article:author" content="Kent">
 <meta property="article:tag" content="Hexo 部落格">
 <meta name="twitter:card" content="summary">
@@ -301,35 +301,29 @@
         </blockquote>
       
         <h2 id="Hexo-環境"><a href="#Hexo-環境" class="headerlink" title="Hexo 環境"></a>Hexo 環境</h2><p>Step1：下載 Hexo 環境</p>
-<ul>
-<li><code>npm install hexo-cli -g</code></li>
-</ul>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">npm install hexo-cli -g</span><br></pre></td></tr></table></figure>
+
 <p>Step2：檢查 hexo 版本</p>
-<ul>
-<li><code>hexo version</code></li>
-</ul>
-<p><img src="https://imgur.com/eskxR6o.png" alt="Untitled"></p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">hexo version</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://imgur.com/eskxR6o.png"></p>
 <p>Step3：建立 Hexo（projectname 替換成自己的名稱）</p>
-<ul>
-<li><code>hexo init projectname</code></li>
-</ul>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">hexo init projectname</span><br></pre></td></tr></table></figure>
+
 <div class="note default">
             <p>projectname 之後會用於 github repository</p>
           </div>
 
-<p><img src="https://imgur.com/UQw03Y3.png" alt="Untitled"></p>
+<p><img src="https://imgur.com/UQw03Y3.png" alt="Hexo 建立完成畫面"></p>
 <p>Step4：進入 Hexo 目錄</p>
-<ul>
-<li><code>cd projectname</code></li>
-</ul>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">cd projectname</span><br></pre></td></tr></table></figure>
+
 <p>Step5：安裝相依套件</p>
-<ul>
-<li><code>npm install</code></li>
-</ul>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">npm install</span><br></pre></td></tr></table></figure>
+
 <p>Step6：在本地端把 server run 起來</p>
-<ul>
-<li><code>hexo server</code></li>
-</ul>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">hexo server</span><br></pre></td></tr></table></figure>
+
 <blockquote>
 <p>在本地端啟動 Hexo 伺服器，預設路徑為：<code>http://localhost:4000/</code><br>這種方法只能本地瀏覽，無法從外部瀏覽，那怎麼做才能從外部瀏覽？</p>
 </blockquote>
@@ -338,17 +332,15 @@
           </div>
 
 <h2 id="部署到-GitHub"><a href="#部署到-GitHub" class="headerlink" title="部署到 GitHub"></a>部署到 GitHub</h2><p>Step1：安裝 Git 部署套件（預設 Hexo 沒有安裝）</p>
-<ul>
-<li><code>npm install hexo-deployer-git --save</code></li>
-</ul>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
+
 <p>Step2：修改 <code>deploy</code> 參數</p>
 <figure class="highlight bash"><figcaption><span>_config.yml</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  <span class="built_in">type</span>: git // 模式</span><br><span class="line">  repo: https://github.com/KentDoIt/KentDoIt.github.io.git // 自己 GitHub repo 連結</span><br><span class="line">  branch: master // 分支</span><br></pre></td></tr></table></figure>
 
-<p>Step3：部署</p>
-<ul>
-<li><code>hexo d -g</code></li>
-</ul>
-<p><img src="https://imgur.com/o6lXKWf.png" alt="Untitled"></p>
+<p>Step3：部署指令</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">hexo d -g</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://imgur.com/o6lXKWf.png" alt="403 error"></p>
 <p>失敗的話把 repo 改為用 SSH（例如：<a href="mailto:git@github.com">git@github.com</a>:KentDoIt&#x2F;KentDoIt.github.io.git）</p>
 <p>Step4：查看 pages</p>
 <ul>
@@ -358,17 +350,15 @@
             <p>剛上傳會需要等一段時間</p>
           </div>
 
-<p><img src="https://imgur.com/CyCxriT.png" alt="等待中"></p>
+<p><img src="https://imgur.com/CyCxriT.png" alt="pages 狀態比較圖"></p>
 <p>Step5：先在 local 端 run 起來看看</p>
-<ul>
-<li><code>hexo server</code></li>
-</ul>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">hexo server</span><br></pre></td></tr></table></figure>
+
 <div class="note default">
             <p>成功的話會看到下方畫面（預設主題為 landscape）</p>
           </div>
 
-<p><img src="https://imgur.com/P8oLEQt.png" alt="Untitled"></p>
-<hr>
+<p><img src="https://imgur.com/P8oLEQt.png"></p>
 <h2 id="Hexo-目錄架構"><a href="#Hexo-目錄架構" class="headerlink" title="Hexo 目錄架構"></a>Hexo 目錄架構</h2><blockquote>
 <p>下方會介紹幾個 Hexo 目錄架構中比較常用到的資料夾以及檔案。</p>
 </blockquote>
@@ -376,19 +366,19 @@
 
 <p>node_modules：依照 package.json 所安裝的套件。</p>
 <ul>
-<li><code>npm install</code></li>
+<li>對應的指令：<code>npm install</code></li>
 </ul>
 <p>public：編譯產生靜態檔案後存放的位置。</p>
 <ul>
-<li><code>hexo g</code></li>
+<li>對應的指令：<code>hexo g</code></li>
 </ul>
 <p>scaffolds：存放 layout 模版，Hexo 會根據 scaffolds 模板來建立檔案。（預設 layout 沒輸入就是 post）</p>
 <ul>
-<li><code>hexo new [layout] &lt;title&gt;</code></li>
+<li>對應的指令：<code>hexo new [layout] &lt;title&gt;</code></li>
 </ul>
 <p>source：新增文章後存放的位置。</p>
 <ul>
-<li><code>hexo new [layout] &lt;title&gt;</code></li>
+<li>對應的指令：<code>hexo new [layout] &lt;title&gt;</code></li>
 </ul>
 <p>themes：存放 Hexo 主題的位置，（預設 themes 為 landscape），Hexo 會依據放在該資料夾底下的主題與 _config.yml 設置來編譯產生靜態檔案。</p>
 <p>_config.yml：Hexo 編譯網站的設定檔。</p>
