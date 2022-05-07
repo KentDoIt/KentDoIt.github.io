@@ -30,7 +30,7 @@
 </blockquote>
 <p><img src="https://imgur.com/A4msRQp.jpg" alt="比較圖"></p>
 <p>Step1：安裝 abbrlink 套件</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm install hexo-abbrlink --save</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">npm install hexo-abbrlink --save</span><br></pre></td></tr></table></figure>
 
 <p>Step2：進入根目錄 _config.yml 搜尋 <code>#URL</code><br>Step3：修改參數 <code>permalink</code></p>
 <div class="note default">
@@ -49,22 +49,22 @@
 <p><img src="https://imgur.com/NtTxON5.jpg" alt="路徑比較圖"></p>
 <p>原因：git 命令默認會忽略文件名稱的大小寫，因此大小寫發生變化會被忽略也導致沒有更新。<br>解法：修改 git ignorecase 參數。</p>
 <p>Step1：進到根目錄 deploy_git 資料夾</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> .deploy_git</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">cd .deploy_git</span><br></pre></td></tr></table></figure>
 
 <p>Step2：編輯 git 設定檔</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">vim .git/config</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">vim .git/config</span><br></pre></td></tr></table></figure>
 
 <p>Step3：修改 ignorecase 參數為 false</p>
 <figure class="highlight diff"><figcaption><span>.git/config</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="addition">+ ignorecase = false</span></span><br><span class="line"><span class="deletion">- ignorecase = true</span></span><br></pre></td></tr></table></figure>
 
 <p>Step4：修改完後離開檔案，先按 Esc 後直接輸入以下指令</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">:wq</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">:wq</span><br></pre></td></tr></table></figure>
 
 <p>Step5：接下來的三個指令是為了更新 server 上的檔案（先刪除在新增）</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git <span class="built_in">rm</span> -rf *</span><br><span class="line">git commit -m <span class="string">&#x27;clean all file&#x27;</span></span><br><span class="line">git push</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">git rm -rf *</span><br><span class="line">git commit -m &#x27;clean all file&#x27;</span><br><span class="line">git push</span><br></pre></td></tr></table></figure>
 
 <p>Step6：接下來指令是回到根目錄並清除快取檔案 (db.json) 和已產生的靜態檔案 (public)，最後就是重新部署</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> ..</span><br><span class="line">hexo clean</span><br><span class="line">hexo g -d</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">cd ..</span><br><span class="line">hexo clean</span><br><span class="line">hexo g -d</span><br></pre></td></tr></table></figure>
 
 <h2 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h2><p><a href="https://trifond.github.io/2018/12/05/hexo-folder-ignore-case/">Hexo部署到Github后文件夹名大小写引起的问题</a><br>ray 大 <a href="https://israynotarray.com/hexo/20190517/2562079032/">Hexo Url優化(SEO)</a></p>
 ]]></content>
