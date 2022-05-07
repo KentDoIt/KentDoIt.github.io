@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Kent</title>
+  <icon>https://kentdoit.github.io/icon.png</icon>
+  <subtitle>Just Do Eat</subtitle>
+  <link href="https://kentdoit.github.io/atom.xml" rel="self"/>
+  
+  <link href="https://kentdoit.github.io/"/>
+  <updated>2022-05-07T17:01:48.413Z</updated>
+  <id>https://kentdoit.github.io/</id>
+  
+  <author>
+    <name>Kent</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Hexo 檔案名稱 Url 優化（三）</title>
+    <link href="https://kentdoit.github.io/hexo/20220428/821499080/"/>
+    <id>https://kentdoit.github.io/hexo/20220428/821499080/</id>
+    <published>2022-04-28T14:20:08.000Z</published>
+    <updated>2022-05-07T17:01:48.413Z</updated>
+    
+    
+    <summary type="html">此篇介紹如何變更新增文章名稱帶入的參數以及對於 url 的優化。</summary>
+    
+    
+    
+    <category term="Hexo" scheme="https://kentdoit.github.io/categories/hexo/"/>
+    
+    
+    <category term="Hexo 優化" scheme="https://kentdoit.github.io/tags/Hexo-%E5%84%AA%E5%8C%96/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hexo 新增文章和頁面 (二)</title>
+    <link href="https://kentdoit.github.io/hexo/20220426/356195859/"/>
+    <id>https://kentdoit.github.io/hexo/20220426/356195859/</id>
+    <published>2022-04-26T07:11:38.000Z</published>
+    <updated>2022-05-07T17:37:05.056Z</updated>
+    
+    
+    <summary type="html">此篇會如何在 Hexo 使用 new 新增指令。</summary>
+    
+    
+    
+    <category term="Hexo" scheme="https://kentdoit.github.io/categories/hexo/"/>
+    
+    
+    <category term="Hexo 部落格" scheme="https://kentdoit.github.io/tags/hexo-blog/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hexo 主題 NexT 設置 (一)</title>
+    <link href="https://kentdoit.github.io/hexo/20220425/3802192554/"/>
+    <id>https://kentdoit.github.io/hexo/20220425/3802192554/</id>
+    <published>2022-04-24T16:30:34.000Z</published>
+    <updated>2022-05-07T17:20:39.998Z</updated>
+    
+    
+    <summary type="html">此篇會介紹如何設置 Hexo 主題 NexT 以及設置 Settings。</summary>
+    
+    
+    
+    <category term="Hexo" scheme="https://kentdoit.github.io/categories/hexo/"/>
+    
+    
+    <category term="Hexo 部落格" scheme="https://kentdoit.github.io/tags/hexo-blog/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>架設部落格 Hexo 部署 Github (零)</title>
+    <link href="https://kentdoit.github.io/hexo/20220424/1074258594/"/>
+    <id>https://kentdoit.github.io/hexo/20220424/1074258594/</id>
+    <published>2022-04-24T14:03:56.000Z</published>
+    <updated>2022-05-07T17:37:50.566Z</updated>
+    
+    
+    <summary type="html">此篇會手把手介紹如何透過 Hexo 架設部落格部並署到 Github。</summary>
+    
+    
+    
+    <category term="Hexo" scheme="https://kentdoit.github.io/categories/hexo/"/>
+    
+    
+    <category term="Hexo 部落格" scheme="https://kentdoit.github.io/tags/hexo-blog/"/>
+    
+  </entry>
+  
+</feed>
