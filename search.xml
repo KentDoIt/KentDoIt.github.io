@@ -2,7 +2,7 @@
 <search>
   <entry>
     <title>Hexo 檔案名稱 Url 優化（三）</title>
-    <url>/hexo/20220428/821499080/</url>
+    <url>/hexo/821499080/</url>
     <content><![CDATA[<div class="note default">
             <p>建議此篇內容越早更改設定越好！<br>不然文章一多起來也懶得調整前面的文章 QQ</p>
           </div>
@@ -92,7 +92,7 @@
   </entry>
   <entry>
     <title>Hexo 主題 NexT 設置 (一)</title>
-    <url>/hexo/20220425/3802192554/</url>
+    <url>/hexo/3802192554/</url>
     <content><![CDATA[<h2 id="範例的環境版本"><a href="#範例的環境版本" class="headerlink" title="範例的環境版本"></a>範例的環境版本</h2><p>hexo 版本：6.0.1<br>hexo-cli 版本：4.3.0<br>next 版本：7.8.0</p>
 <h2 id="更換主題-theme"><a href="#更換主題-theme" class="headerlink" title="更換主題 theme"></a>更換主題 theme</h2><p>Step1：從<a href="https://hexo.io/themes/">官方</a>主題找尋自己順眼的</p>
 <div class="note default">
@@ -182,7 +182,7 @@
   </entry>
   <entry>
     <title>Hexo 新增文章和頁面 (二)</title>
-    <url>/hexo/20220426/356195859/</url>
+    <url>/hexo/356195859/</url>
     <content><![CDATA[<h2 id="範例的環境版本"><a href="#範例的環境版本" class="headerlink" title="範例的環境版本"></a>範例的環境版本</h2><p>hexo 版本：6.0.1<br>hexo-cli 版本：4.3.0<br>next 版本：7.8.0</p>
 <blockquote>
 <p>新增文章、草稿、草稿三種語法都一樣是使用 new 指令，只差別在 layout 參數。</p>
@@ -395,7 +395,7 @@
   </entry>
   <entry>
     <title>架設部落格 Hexo 部署 Github (零)</title>
-    <url>/hexo/20220424/1074258594/</url>
+    <url>/hexo/1074258594/</url>
     <content><![CDATA[<h2 id="Hexo-環境"><a href="#Hexo-環境" class="headerlink" title="Hexo 環境"></a>Hexo 環境</h2><p>Step1：下載 Hexo 環境</p>
 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">npm install hexo-cli -g</span><br></pre></td></tr></table></figure>
 
