@@ -65,21 +65,14 @@
 
   <title>Kent</title>
   
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-K8QW91NNBQ"></script>
     <script>
-      function sendPageView() {
-        if (CONFIG.hostname !== location.hostname) return;
-        var uid = localStorage.getItem('uid') || (Math.random() + '.' + Math.random());
-        localStorage.setItem('uid', uid);
-        navigator.sendBeacon('https://www.google-analytics.com/collect', new URLSearchParams({
-          v  : 1,
-          tid: 'G-K8QW91NNBQ',
-          cid: uid,
-          t  : 'pageview',
-          dp : encodeURIComponent(location.pathname)
-        }));
+      if (CONFIG.hostname === location.hostname) {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-K8QW91NNBQ');
       }
-      document.addEventListener('pjax:complete', sendPageView);
-      sendPageView();
     </script>
 
 
@@ -228,6 +221,86 @@
 
           <div class="content index posts-expand">
             
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="https://kentdoit.github.io/hexo/599670072/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/headshost_ya.jpg">
+      <meta itemprop="name" content="Kent">
+      <meta itemprop="description" content="Blog">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Kent">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/hexo/599670072/" class="post-title-link" itemprop="url">Hexo 設置 GA、Sitemap（四）</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <!--<i class="far fa-folder"></i>-->
+                <i class="far fa-folder-open"></i>
+              </span>
+              <!--<span class="post-meta-item-text">分類於</span>-->
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/hexo/" itemprop="url" rel="index"><span itemprop="name">Hexo</span></a>
+                </span>
+            </span>
+            <span class="post-meta-item" title="所需閱讀時間">
+              <!--<span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>-->
+              <span>3 分鐘閱讀時間</span>
+            </span>
+            <span class="post-meta-item">
+              <!--<span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>-->
+              <br>
+              <time title="創建時間：2022-05-08 14:10:25" itemprop="dateCreated datePublished" datetime="2022-05-08T14:10:25+08:00">2022-05-08</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+      
+          <p>此篇介紹如何為部落格設置 GA 以及 Sitemap。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/hexo/599670072/">
+                閱讀全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
       
   
   
@@ -616,7 +689,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">4</span>
+          <span class="site-state-item-count">5</span>
           <span class="site-state-item-name">文章</span>
         </a>
       </div>

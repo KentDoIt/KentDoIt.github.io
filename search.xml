@@ -494,4 +494,85 @@
         <tag>Hexo 部落格</tag>
       </tags>
   </entry>
+  <entry>
+    <title>Hexo 設置 GA、Sitemap（四）</title>
+    <url>/hexo/599670072/</url>
+    <content><![CDATA[<div class="note default">
+            <p>會把這篇內容放在前面是因為我深受其害，因此我誠心建議這些設定越早弄完越好。</p>
+          </div>
+
+<h2 id="範例的環境版本"><a href="#範例的環境版本" class="headerlink" title="範例的環境版本"></a>範例的環境版本</h2><p>hexo 版本：6.0.1<br>hexo-cli 版本：4.3.0<br>next 版本：7.8.0</p>
+<h2 id="Google-Analytics"><a href="#Google-Analytics" class="headerlink" title="Google Analytics"></a>Google Analytics</h2><blockquote>
+<p>下面分成兩個方向來設置：設置追蹤碼、埋追蹤碼。</p>
+</blockquote>
+<h3 id="設置追蹤碼（製評估-ID）"><a href="#設置追蹤碼（製評估-ID）" class="headerlink" title="設置追蹤碼（製評估 ID）"></a>設置追蹤碼（製評估 ID）</h3><p>Step1：<a href="https://analytics.google.com/analytics/web/provision/#/provision">Google Analytics</a> 申請帳號<br>Step2：複製評估 ID（<code>G-</code> 開頭）<br>Step3：修改 NexT 主題中 _config.yml 參數</p>
+<figure class="highlight diff"><figcaption><span>themes/hexo-theme-next/_config.yml</span></figcaption><table><tr><td class="code"><pre><span class="line"># Google Analytics</span><br><span class="line">google_analytics:</span><br><span class="line"><span class="deletion">-  tracking_id: # &lt;app_id&gt;</span></span><br><span class="line"><span class="addition">+  tracking_id: #貼上剛剛複製的評估 ID</span></span><br><span class="line">  # By default, NexT will load an external gtag.js script on your site.</span><br><span class="line">  # If you only need the pageview feature, set the following option to true to get a better performance.</span><br><span class="line">  only_pageview: false</span><br></pre></td></tr></table></figure>
+
+<h3 id="埋追蹤碼"><a href="#埋追蹤碼" class="headerlink" title="埋追蹤碼"></a>埋追蹤碼</h3><p>Step1：複製追蹤碼</p>
+<p><img src="https://imgur.com/mjvgxfs.jpg" alt="步驟演示：資料串流 →  全域網站代碼 → 複製"></p>
+<p>Step2：檔案 themes&#x2F;hexo-theme-next&#x2F;layout&#x2F;_partials&#x2F;head&#x2F;head.swig 最後貼上追蹤碼</p>
+<figure class="highlight diff"><figcaption><span>themes/hexo-theme-next/layout/_partials/head/head.swig</span></figcaption><table><tr><td class="code"><pre><span class="line">&#123;&#123; next_config() &#125;&#125;</span><br><span class="line"><span class="addition">+ &lt;!-- Global site tag (gtag.js) - Google Analytics --&gt;</span></span><br><span class="line"><span class="addition">+ &lt;script async src=&quot;https://www.googletagmanager.com/gtag/js?id=G-K8QW91NNBQ&quot;&gt;&lt;/script&gt;</span></span><br><span class="line"><span class="addition">+ &lt;script&gt;</span></span><br><span class="line"><span class="addition">+   window.dataLayer = window.dataLayer || [];</span></span><br><span class="line"><span class="addition">+   function gtag()&#123;dataLayer.push(arguments);&#125;</span></span><br><span class="line"><span class="addition">+   gtag(&#x27;js&#x27;, new Date());</span></span><br><span class="line"><span class="addition">+ </span></span><br><span class="line"><span class="addition">+   gtag(&#x27;config&#x27;, &#x27;G-K8QW91NNBQ&#x27;);</span></span><br><span class="line"><span class="addition">+ &lt;/script&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>Step3：重新部署</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">hexo g -d</span><br></pre></td></tr></table></figure>
+
+<div class="note default">
+            <p>完成上面兩個設置就可以重新部署後再次檢查 GA 是否成功。</p>
+          </div>
+
+<p><img src="https://imgur.com/60AW6rA.jpg" alt="進到 GA 中點選左邊側邊欄報表，有看到數字 1 就成功了！"></p>
+<h2 id="Sitemap"><a href="#Sitemap" class="headerlink" title="Sitemap"></a>Sitemap</h2><blockquote>
+<p>Sitemap 檔案會提供網頁中的相關資訊給搜尋引擎，Google 的爬蟲會定期爬 sitemap.xml 檔案，若有更新他就會去爬你的網站並加入到搜尋引擎中。</p>
+</blockquote>
+<p>Step1：安裝指令</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">npm install hexo-generator-sitemap</span><br></pre></td></tr></table></figure>
+
+<p>Step2：重新部署後到 <a href="https://search.google.com/search-console/about?hl=zh-tw">Google Search</a> 加入網站連結，就會自動驗證成功</p>
+<p><img src="https://imgur.com/MCx0dFO.jpg"></p>
+<p>Step3：提交 sitemap</p>
+<ul>
+<li>在新增 Sitemap 欄位中輸入 <code>sitemap.xml</code></li>
+</ul>
+<p><img src="https://imgur.com/5XjdXGj.jpg"></p>
+<div class="note default">
+            <p>如果<strong>運氣好</strong>到這邊應該是成功了，<del>運氣不好</del>正常會是無法擷取。</p>
+          </div>
+
+<p><img src="https://imgur.com/Ae8Sllt.jpg"></p>
+<div class="note default">
+            <p>下方會介紹四種我嘗試過的方法。</p>
+          </div>
+
+<h3 id="無法擷取"><a href="#無法擷取" class="headerlink" title="無法擷取"></a>無法擷取</h3><p><img src="https://imgur.com/UH0jdLH.jpg"></p>
+<p>❌ 方法一：擁有權驗證，添加其他驗證方式（本來只有用 GA）</p>
+<p>Step1：取得 content 值<br><img src="https://imgur.com/9ZHzdTP.jpg" alt="演示取得 content"></p>
+<p>Step2：修改 NexT 主題中 _config.yml 參數 google_site_verification</p>
+<figure class="highlight diff"><figcaption><span>.git/config</span></figcaption><table><tr><td class="code"><pre><span class="line"># Google Webmaster tools verification.</span><br><span class="line"># See: https://www.google.com/webmasters</span><br><span class="line"><span class="addition">+ google_site_verification: 25miYVaewg4Qur_GPtoF9-GhCZZJNidmq2kqy6wRE9g</span></span><br><span class="line"><span class="deletion">- google_site_verification:</span></span><br></pre></td></tr></table></figure>
+
+<p>Step3：重新部署</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">hexo g -d</span><br></pre></td></tr></table></figure>
+
+<p>Step4：重新部署後，檢查網站中是否包含 google-site-verification</p>
+<p><img src="https://imgur.com/RVLo57e.jpg" alt="搜尋 google-site-verification"></p>
+<p>❌ 方法二：檢查 Sitemap 格式</p>
+<blockquote>
+<p>發覺我的 sitemap.xml 格式和官方範例不同，所以需要將多的標籤移除。</p>
+</blockquote>
+<p><img src="https://imgur.com/QnPnMb0.jpg" alt="格式比較"></p>
+<p>Step1：將 node_modules&#x2F;hexo-generator-sitemap&#x2F;sitemap.xml 中的 <code>changefreq</code>、<code>priority</code> 標籤移除。</p>
+<p>Step2：重新部署</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">hexo g -d</span><br></pre></td></tr></table></figure>
+
+<p>❌ 方法三：網址審查建立索引</p>
+<p>Step1：點擊網址審查，並在上方網址列貼上部落格網址（例如：<a href="https://kentdoit.github.io/%EF%BC%89">https://kentdoit.github.io/）</a></p>
+<p>Step2：按下建立索引</p>
+<p><img src="https://imgur.com/YzGmXVf.jpg"></p>
+]]></content>
+      <categories>
+        <category>Hexo</category>
+      </categories>
+      <tags>
+        <tag>Hexo 優化</tag>
+      </tags>
+  </entry>
 </search>
