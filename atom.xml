@@ -6,7 +6,7 @@
   <link href="https://kentdoit.github.io/atom.xml" rel="self"/>
   
   <link href="https://kentdoit.github.io/"/>
-  <updated>2022-05-08T12:25:03.868Z</updated>
+  <updated>2022-05-08T12:44:15.337Z</updated>
   <id>https://kentdoit.github.io/</id>
   
   <author>
@@ -17,11 +17,30 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Hexo 管理爬蟲 robots.txt（五）</title>
+    <link href="https://kentdoit.github.io/hexo/3578178281/"/>
+    <id>https://kentdoit.github.io/hexo/3578178281/</id>
+    <published>2022-05-04T12:26:06.000Z</published>
+    <updated>2022-05-08T12:44:15.337Z</updated>
+    
+    
+    <summary type="html">此篇介紹如何設置 robots.txt 來管理爬蟲檔案爬取的權限。</summary>
+    
+    
+    
+    <category term="Hexo" scheme="https://kentdoit.github.io/categories/hexo/"/>
+    
+    
+    <category term="Hexo 優化" scheme="https://kentdoit.github.io/tags/Hexo-%E5%84%AA%E5%8C%96/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Hexo 設置 GA、Sitemap（四）</title>
     <link href="https://kentdoit.github.io/hexo/599670072/"/>
     <id>https://kentdoit.github.io/hexo/599670072/</id>
     <published>2022-05-01T06:10:25.000Z</published>
-    <updated>2022-05-08T12:25:03.868Z</updated>
+    <updated>2022-05-08T12:43:44.619Z</updated>
     
     
     <summary type="html">此篇介紹如何為部落格設置 GA 以及 Sitemap。</summary>
@@ -40,7 +59,7 @@
     <link href="https://kentdoit.github.io/hexo/821499080/"/>
     <id>https://kentdoit.github.io/hexo/821499080/</id>
     <published>2022-04-28T14:20:08.000Z</published>
-    <updated>2022-05-07T17:01:48.413Z</updated>
+    <updated>2022-05-08T12:44:14.484Z</updated>
     
     
     <summary type="html">此篇介紹如何變更新增文章名稱帶入的參數以及對於 url 的優化。</summary>
@@ -59,7 +78,7 @@
     <link href="https://kentdoit.github.io/hexo/356195859/"/>
     <id>https://kentdoit.github.io/hexo/356195859/</id>
     <published>2022-04-26T07:11:38.000Z</published>
-    <updated>2022-05-08T06:09:09.867Z</updated>
+    <updated>2022-05-08T12:44:46.704Z</updated>
     
     
     <summary type="html">此篇會如何在 Hexo 使用 new 新增指令。</summary>
