@@ -221,7 +221,12 @@
 </ul>
 <p><img src="https://imgur.com/5XjdXGj.jpg"></p>
 <div class="note default">
-            <p>如果<strong>運氣好</strong>到這邊應該是成功了，<del>運氣不好</del>正常會是無法擷取。</p>
+            <p>接下來可以在檢查自己的網址後面加上 &#x2F;sitemap 是否有內容。</p>
+          </div>
+
+<p><img src="https://imgur.com/0jiux9B.jpg" alt="https://kentdoit.github.io/sitemap"></p>
+<div class="note default">
+            <p>如果<strong>運氣好</strong>到這邊應該是成功了，<del>運氣不好</del>會發覺網址看有內容，但是狀態為<code>無法擷取</code>。</p>
           </div>
 
 <p><img src="https://imgur.com/Ae8Sllt.jpg"></p>
@@ -231,7 +236,7 @@
 
 <h3 id="無法擷取"><a href="#無法擷取" class="headerlink" title="無法擷取"></a>無法擷取</h3><p><img src="https://imgur.com/UH0jdLH.jpg"></p>
 <p>❌ 方法一：擁有權驗證，添加其他驗證方式（本來只有用 GA）</p>
-<p>Step1：取得 content 值<br><img src="https://imgur.com/9ZHzdTP.jpg" alt="演示取得 content"></p>
+<p>Step1：取得 content 值<br><img src="https://imgur.com/N623p1p.jpg" alt="演示四步驟取得 content"></p>
 <p>Step2：修改 NexT 主題中 _config.yml 參數 google_site_verification</p>
 <figure class="highlight diff"><figcaption><span>.git/config</span></figcaption><table><tr><td class="code"><pre><span class="line"># Google Webmaster tools verification.</span><br><span class="line"># See: https://www.google.com/webmasters</span><br><span class="line"><span class="addition">+ google_site_verification: 25miYVaewg4Qur_GPtoF9-GhCZZJNidmq2kqy6wRE9g</span></span><br><span class="line"><span class="deletion">- google_site_verification:</span></span><br></pre></td></tr></table></figure>
 
@@ -252,7 +257,7 @@
 <p>❌ 方法三：網址審查建立索引</p>
 <p>Step1：點擊網址審查，並在上方網址列貼上部落格網址（例如：<a href="https://kentdoit.github.io/%EF%BC%89">https://kentdoit.github.io/）</a></p>
 <p>Step2：按下建立索引</p>
-<p><img src="https://imgur.com/HNQkyGU.jpg"></p>
+<p><img src="https://imgur.com/VwNKDrB.jpg" alt="兩步驟建立索引"></p>
 <p>🟢 方法四：建立 .nojekyll</p>
 <p>Step1：進入根目錄 source 資料夾底下</p>
 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">cd source</span><br></pre></td></tr></table></figure>
@@ -269,7 +274,20 @@
 <figure class="highlight diff"><figcaption><span>_config.yml</span></figcaption><table><tr><td class="code"><pre><span class="line"># Include / Exclude file(s)</span><br><span class="line">## include:/exclude: options only apply to the &#x27;source/&#x27; folder</span><br><span class="line">include:</span><br><span class="line"><span class="addition">+  .nojekyll</span></span><br><span class="line">exclude:</span><br><span class="line">ignore:</span><br></pre></td></tr></table></figure>
 
 <p>Step4：重新部署</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">hexo </span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">hexo cl</span><br><span class="line">hexo g -d</span><br></pre></td></tr></table></figure>
+
+<div class="note default">
+            <p>過一陣子之後再到網址審查中檢查就會看到綠色勾勾了～～～</p>
+          </div>
+
+<p><img src="https://imgur.com/iR7NAzQ.jpg" alt="網址審查通過"></p>
+<div class="note default">
+            <p>眼尖的朋友從上面這張圖會發現另一個問題：未提交至 Sitemap</p>
+          </div>
+
+<div class="note default">
+            <p>最後沒辦法了就靜待幾天看看囉</p>
+          </div>
 ]]></content>
       <categories>
         <category>Hexo</category>
