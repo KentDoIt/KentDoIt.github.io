@@ -1318,7 +1318,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #b1ffb9;
+  background: #8effcb;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
@@ -2809,7 +2809,10 @@ pre .deletion {
 .posts-expand .post-body img {
   margin: 0 auto 40px;
 }
-.custom-logo-image {
+.use-motion .site-title {
+  top: 0;
+}
+.use-motion .custom-logo-image {
   height: 40px;
   top: 0;
   opacity: 1;
