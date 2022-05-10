@@ -627,7 +627,7 @@
     <title>Hexo Sitemap 建立索引 無法擷取</title>
     <url>/hexo/2629412870/</url>
     <content><![CDATA[<div class="note default">
-            <p>此篇內容為 <a href="https://kentdoit.github.io/hexo/599670072/">Hexo 設置 GA、Sitemap（四）</a>的 Debug 延續篇，會介紹如何解決 Sitemap 所遇到的問題。</p>
+            <p>此篇內容為 <a href="https://kentdoit.github.io/hexo/599670072/">Hexo 設置 GA、Sitemap（四）</a>的 Debug 延續篇，介紹如何解決無法擷取以及設置索引。</p>
           </div>
 
 <h2 id="範例的環境版本"><a href="#範例的環境版本" class="headerlink" title="範例的環境版本"></a>範例的環境版本</h2><p>hexo 版本：6.0.1<br>hexo-cli 版本：4.3.0<br>next 版本：7.8.0</p>
@@ -636,9 +636,16 @@
             <p>下方會介紹四種我嘗試過的方法。</p>
           </div>
 
-<p>❌ 方法一：擁有權驗證，添加其他驗證方式（本來只有用 GA）</p>
-<p>Step1：取得 content 值<br><img src="https://imgur.com/N623p1p.jpg" alt="演示四步驟取得 content"></p>
+<h3 id="擁有權驗證"><a href="#擁有權驗證" class="headerlink" title="擁有權驗證"></a>擁有權驗證</h3><p>❌ 方法一：添加其他驗證方式（本來只有用 GA）</p>
+<p>Step1：取得 content 值</p>
+<ul>
+<li>記得在複製內容中只擷取 content 值就好。</li>
+</ul>
+<p><img src="https://imgur.com/N623p1p.jpg" alt="演示四步驟取得 content"></p>
 <p>Step2：修改 NexT 主題中 _config.yml 參數 google_site_verification</p>
+<ul>
+<li>貼上取得的 content 值。</li>
+</ul>
 <figure class="highlight diff"><figcaption><span>.git/config</span></figcaption><table><tr><td class="code"><pre><span class="line"># Google Webmaster tools verification.</span><br><span class="line"># See: https://www.google.com/webmasters</span><br><span class="line"><span class="addition">+ google_site_verification: 25miYVaewg4Qur_GPtoF9-GhCZZJNidmq2kqy6wRE9g</span></span><br><span class="line"><span class="deletion">- google_site_verification:</span></span><br></pre></td></tr></table></figure>
 
 <p>Step3：重新部署</p>
@@ -646,7 +653,7 @@
 
 <p>Step4：重新部署後，檢查網站中是否包含 google-site-verification</p>
 <p><img src="https://imgur.com/RVLo57e.jpg" alt="搜尋 google-site-verification"></p>
-<p>❌ 方法二：檢查 Sitemap 格式</p>
+<h3 id="檢查-Sitemap-格式"><a href="#檢查-Sitemap-格式" class="headerlink" title="檢查 Sitemap 格式"></a>檢查 Sitemap 格式</h3><p>❌ 方法二：檢查 Sitemap 格式</p>
 <blockquote>
 <p>發覺我的 sitemap.xml 格式和官方範例不同，所以需要將多的標籤移除。</p>
 </blockquote>
@@ -655,11 +662,19 @@
 <p>Step2：重新部署</p>
 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">hexo g -d</span><br></pre></td></tr></table></figure>
 
+<div class="note default">
+            <p>參考這篇 <a href="https://zenreal.github.io/posts/7993/#google%E7%84%A1%E6%B3%95%E8%AE%80%E5%8F%96sitemap-%E4%B8%80%E8%88%AC%E7%9A%84http%E9%8C%AF%E8%AA%A4-%E8%A7%A3%E6%B1%BA%E6%96%B9%E5%BC%8F">Google無法讀取sitemap(一般的HTTP錯誤) 解決方式</a> 所提到的解法，雖然我沒有這個問題。</p>
+          </div>
+
+<p><img src="https://imgur.com/NkFfNmd.jpg" alt="記得要把所有多的標籤都移除呦，雖然也一樣沒成功"></p>
+<h3 id="建立索引"><a href="#建立索引" class="headerlink" title="建立索引"></a>建立索引</h3><blockquote>
+<p>為了將自己的網址透過 Google Search Console 建立索引，提交給 Google 使搜尋引擎能更容易地搜尋到我們的網站，這個也屬於提升 SEO 的其中一種方法。</p>
+</blockquote>
 <p>❌ 方法三：網址審查建立索引</p>
 <p>Step1：點擊網址審查，並在上方網址列貼上部落格網址（例如：<a href="https://kentdoit.github.io/%EF%BC%89">https://kentdoit.github.io/）</a></p>
 <p>Step2：按下建立索引</p>
 <p><img src="https://imgur.com/VwNKDrB.jpg" alt="兩步驟建立索引"></p>
-<p>🟢 方法四：建立 .nojekyll</p>
+<h3 id="建立-nojekyll"><a href="#建立-nojekyll" class="headerlink" title="建立 .nojekyll"></a>建立 .nojekyll</h3><p>🟢 方法四：建立 .nojekyll</p>
 <p>Step1：進入根目錄 source 資料夾底下</p>
 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">cd source</span><br></pre></td></tr></table></figure>
 
@@ -678,7 +693,7 @@
 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">hexo cl</span><br><span class="line">hexo g -d</span><br></pre></td></tr></table></figure>
 
 <div class="note default">
-            <p>過一陣子之後再到網址審查中檢查就會看到綠色勾勾了～～～</p>
+            <p>過一陣子之後再到網址審查中檢查就會看到綠色勾勾了，也代表建立索引成功了～～～<br>雖然不確定是時間還沒到還是因為 .nojekyll，但至少之後用其他文章連結也有成功建立索引 (੭•̀ᴗ•̀)੭</p>
           </div>
 
 <p><img src="https://imgur.com/iR7NAzQ.jpg" alt="網址審查通過"></p>
@@ -686,13 +701,29 @@
             <p>眼尖的朋友從上面這張圖會發現另一個問題：未提交至 Sitemap<br>最後沒辦法只好靜待幾天看看會不會發生奇蹟</p>
           </div>
 
-<h2 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h2><p><a href="https://blog.kyomind.tw/adding-sitemap-issue/">解決 Hexo + Github Pages 新增 sitemap.xml 找不到頁面</a><br><a href="https://blog.balabambe.com/2021/12/01/%E8%A7%A3%E6%B1%BA-Google-Search-Console-%E6%8A%93%E4%B8%8D%E5%88%B0-Hexo-%E6%94%BE%E5%9C%A8-Github-Pages-%E7%9A%84-sitemap-xml-%E7%9A%84%E5%95%8F%E9%A1%8C/">解決 Google Search Console 抓不到 Hexo 放在 Github Pages 的 sitemap.xml 的問題</a></p>
+<h2 id="未提交至-Sitemap"><a href="#未提交至-Sitemap" class="headerlink" title="未提交至 Sitemap"></a>未提交至 Sitemap</h2><h2 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h2><p><a href="https://blog.kyomind.tw/adding-sitemap-issue/">解決 Hexo + Github Pages 新增 sitemap.xml 找不到頁面</a><br><a href="https://blog.balabambe.com/2021/12/01/%E8%A7%A3%E6%B1%BA-Google-Search-Console-%E6%8A%93%E4%B8%8D%E5%88%B0-Hexo-%E6%94%BE%E5%9C%A8-Github-Pages-%E7%9A%84-sitemap-xml-%E7%9A%84%E5%95%8F%E9%A1%8C/">解決 Google Search Console 抓不到 Hexo 放在 Github Pages 的 sitemap.xml 的問題</a></p>
 ]]></content>
       <categories>
         <category>Hexo</category>
       </categories>
       <tags>
         <tag>Hexo SEO</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>JS == vs ===</title>
+    <url>/JavaScript/3699626031/</url>
+    <content><![CDATA[<p>比較運算子注意事項</p>
+<div class="note default">
+            <p>在 JavaScript 中除了基礎型別（Primitive Type）以外的型別（ex: 陣列、物件）在做比較時，判斷的是兩者是否指向同一個 <code>reference</code>，而非判斷兩者的值是否相同。</p>
+          </div>
+]]></content>
+      <categories>
+        <category>JavaScript</category>
+      </categories>
+      <tags>
+        <tag>運算子</tag>
+        <tag>JavaScript</tag>
       </tags>
   </entry>
 </search>
