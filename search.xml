@@ -736,17 +736,28 @@
 <figure class="highlight js"><figcaption><span>e.g. 賦予值</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> num = <span class="number">10</span>;</span><br></pre></td></tr></table></figure>
 
 <h2 id="x3D-x3D"><a href="#x3D-x3D" class="headerlink" title="&#x3D;&#x3D;"></a>&#x3D;&#x3D;</h2><blockquote>
-<p><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Equality">Equality operator（相等運算子）</a>，</p>
+<p><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Equality">Equality 相等比較</a>，</p>
 </blockquote>
 <div class="note primary">
-            <p>equality operator：比較等號兩邊值是否相同，當等號兩邊型別不同時，會先依照規則轉型再進行比對。（除了物件外，幾乎會轉型為 number 後在做比較）</p>
+            <p>equality：比較等號兩邊值是否相同，當等號兩邊型別不同時，會先依照規則轉型再進行比對。（除了物件外，幾乎會轉型為 number 後在做比較）</p>
+          </div>
+
+<div class="note default">
+            <p>紀錄一下看到的其它名稱：<br>Double equals operator （寬鬆相等）<br>equality comparison operator（相等比較運算子）<br>abstract comparison operator（抽象比較運算子）</p>
           </div>
 
 <figure class="highlight js"><figcaption><span>e.g. </span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;1&#x27;</span> == <span class="number">1</span>); <span class="comment">// true，1 == 1</span></span><br></pre></td></tr></table></figure>
 
 <p><img src="https://imgur.com/9I2G4tQ.jpg" alt="== 比較表"></p>
-<h2 id="x3D-x3D-x3D"><a href="#x3D-x3D-x3D" class="headerlink" title="&#x3D;&#x3D;&#x3D;"></a>&#x3D;&#x3D;&#x3D;</h2><div class="note primary">
-            <p>equality operator：比較等號兩邊 <code>型別</code> 以及 <code>數值</code> 是否 <code>都相同</code>。</p>
+<h2 id="x3D-x3D-x3D"><a href="#x3D-x3D-x3D" class="headerlink" title="&#x3D;&#x3D;&#x3D;"></a>&#x3D;&#x3D;&#x3D;</h2><blockquote>
+<p><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Strict_equality">Strict equality 嚴格相等比較</a></p>
+</blockquote>
+<div class="note primary">
+            <p>strict equality：比較等號兩邊 <code>型別</code> 以及 <code>數值</code> 是否 <code>都相同</code>。</p>
+          </div>
+
+<div class="note default">
+            <p>紀錄一下看到的其它名稱：<br>identity comparison operator（身份比較運算子）<br>strict comparison operator（嚴格比較運算子）</p>
           </div>
 
 <figure class="highlight js"><figcaption><span>e.g. </span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;1&#x27;</span> === <span class="number">1</span>); <span class="comment">// false</span></span><br></pre></td></tr></table></figure>
