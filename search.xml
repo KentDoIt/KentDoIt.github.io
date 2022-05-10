@@ -181,6 +181,55 @@
       </tags>
   </entry>
   <entry>
+    <title>Hexo 管理爬蟲 robots.txt（五）</title>
+    <url>/hexo/3578178281/</url>
+    <content><![CDATA[<h2 id="範例的環境版本"><a href="#範例的環境版本" class="headerlink" title="範例的環境版本"></a>範例的環境版本</h2><p>hexo 版本：6.0.1<br>hexo-cli 版本：4.3.0<br>next 版本：7.8.0</p>
+<h2 id="Front-matter"><a href="#Front-matter" class="headerlink" title="Front-matter"></a>Front-matter</h2><blockquote>
+<p>如果有特定的頁面不希望被加入 sitemap.xml 中，可以在頁面的 markdown 中 Front-matter 設定 sitemap: false。</p>
+</blockquote>
+<figure class="highlight diff"><figcaption><span>text.md</span></figcaption><table><tr><td class="code"><pre><span class="line">title: 測試</span><br><span class="line">date: 2022-05-01 14:10:25</span><br><span class="line">categories:</span><br><span class="line">tags: </span><br><span class="line">description:</span><br><span class="line"><span class="addition">+ sitemap: false</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="robots-txt"><a href="#robots-txt" class="headerlink" title="robots.txt"></a>robots.txt</h2><blockquote>
+<p>設置搜尋引擎爬蟲哪些是可以爬的路徑哪些是不能爬的，也能增強 SEO。</p>
+</blockquote>
+<p>Step1：根目錄 source 資料夾底下新增 robots.txt 檔案</p>
+<p><img src="https://imgur.com/z1hRLbs.jpg"></p>
+<p>Step2：設置檔案參數</p>
+<p>User-agent : 爬蟲程式名字，必要項目</p>
+<ul>
+<li>可以在每項規則中指定一或多個 user-agen</li>
+<li>*：運行於所有搜尋引擎，也可以只允許指定搜尋引擎，例如<code>User-agent: Googlebot</code>。</li>
+</ul>
+<p>Allow：允許爬取路徑，至少要有一個</p>
+<ul>
+<li>相對路徑；若為目錄，則必須以 &#x2F; 作為結尾。</li>
+</ul>
+<p>Disallow：不允許爬取路徑，至少要有一個</p>
+<ul>
+<li>相對路徑；若為目錄，則必須以 &#x2F; 作為結尾。</li>
+</ul>
+<p>Sitemap：網站地圖的路徑，非必要</p>
+<ul>
+<li>使用絕對路徑。</li>
+</ul>
+<p>Crawl-delay：同伺服器每次連續請求所需的要間隔秒數，非必要</p>
+<figure class="highlight txt"><figcaption><span>source/robots.txt</span></figcaption><table><tr><td class="code"><pre><span class="line">User-agent: *</span><br><span class="line">Allow: /</span><br><span class="line">Allow: /archives/</span><br><span class="line">Allow: /categories/</span><br><span class="line">Allow: /tags/ </span><br><span class="line">Disallow: /vendors/</span><br><span class="line">Disallow: /fonts/</span><br><span class="line">Disallow: /vendors/</span><br><span class="line">Disallow: /fancybox/</span><br><span class="line">Sitemap: https://kentdoit.github.io/sitemap.xml</span><br></pre></td></tr></table></figure>
+
+<div class="note default">
+            <p><a href="https://israynotarray.com/other/20210627/3588736352/">ray 大</a>：『建議不要忽略 js、css 與 fonts 相關的檔案與資料夾，否則可能在 Google Console Search 會收到一些問題提示』。</p>
+          </div>
+
+<p>延伸閱讀：<a href="https://israynotarray.com/other/20210627/3588736352/">快速掌握 robots.txt 用途</a></p>
+<h2 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h2><p><a href="https://blog.yucheng.me/post/hexo-configuration/#sitemap-xml-%E6%90%9C%E5%B0%8B%E5%BC%95%E6%93%8E%E7%88%AC%E8%9F%B2">Hexo 基本配置</a><br><a href="https://israynotarray.com/other/20210627/3588736352/">快速掌握 robots.txt 用途</a></p>
+]]></content>
+      <categories>
+        <category>Hexo</category>
+      </categories>
+      <tags>
+        <tag>Hexo 優化</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Hexo 新增文章和頁面 (二)</title>
     <url>/hexo/356195859/</url>
     <content><![CDATA[<h2 id="範例的環境版本"><a href="#範例的環境版本" class="headerlink" title="範例的環境版本"></a>範例的環境版本</h2><p>hexo 版本：6.0.1<br>hexo-cli 版本：4.3.0<br>next 版本：7.8.0</p>
@@ -395,55 +444,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Hexo 管理爬蟲 robots.txt（五）</title>
-    <url>/hexo/3578178281/</url>
-    <content><![CDATA[<h2 id="範例的環境版本"><a href="#範例的環境版本" class="headerlink" title="範例的環境版本"></a>範例的環境版本</h2><p>hexo 版本：6.0.1<br>hexo-cli 版本：4.3.0<br>next 版本：7.8.0</p>
-<h2 id="Front-matter"><a href="#Front-matter" class="headerlink" title="Front-matter"></a>Front-matter</h2><blockquote>
-<p>如果有特定的頁面不希望被加入 sitemap.xml 中，可以在頁面的 markdown 中 Front-matter 設定 sitemap: false。</p>
-</blockquote>
-<figure class="highlight diff"><figcaption><span>text.md</span></figcaption><table><tr><td class="code"><pre><span class="line">title: 測試</span><br><span class="line">date: 2022-05-01 14:10:25</span><br><span class="line">categories:</span><br><span class="line">tags: </span><br><span class="line">description:</span><br><span class="line"><span class="addition">+ sitemap: false</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="robots-txt"><a href="#robots-txt" class="headerlink" title="robots.txt"></a>robots.txt</h2><blockquote>
-<p>設置搜尋引擎爬蟲哪些是可以爬的路徑哪些是不能爬的，也能增強 SEO。</p>
-</blockquote>
-<p>Step1：根目錄 source 資料夾底下新增 robots.txt 檔案</p>
-<p><img src="https://imgur.com/z1hRLbs.jpg"></p>
-<p>Step2：設置檔案參數</p>
-<p>User-agent : 爬蟲程式名字，必要項目</p>
-<ul>
-<li>可以在每項規則中指定一或多個 user-agen</li>
-<li>*：運行於所有搜尋引擎，也可以只允許指定搜尋引擎，例如<code>User-agent: Googlebot</code>。</li>
-</ul>
-<p>Allow：允許爬取路徑，至少要有一個</p>
-<ul>
-<li>相對路徑；若為目錄，則必須以 &#x2F; 作為結尾。</li>
-</ul>
-<p>Disallow：不允許爬取路徑，至少要有一個</p>
-<ul>
-<li>相對路徑；若為目錄，則必須以 &#x2F; 作為結尾。</li>
-</ul>
-<p>Sitemap：網站地圖的路徑，非必要</p>
-<ul>
-<li>使用絕對路徑。</li>
-</ul>
-<p>Crawl-delay：同伺服器每次連續請求所需的要間隔秒數，非必要</p>
-<figure class="highlight txt"><figcaption><span>source/robots.txt</span></figcaption><table><tr><td class="code"><pre><span class="line">User-agent: *</span><br><span class="line">Allow: /</span><br><span class="line">Allow: /archives/</span><br><span class="line">Allow: /categories/</span><br><span class="line">Allow: /tags/ </span><br><span class="line">Disallow: /vendors/</span><br><span class="line">Disallow: /fonts/</span><br><span class="line">Disallow: /vendors/</span><br><span class="line">Disallow: /fancybox/</span><br><span class="line">Sitemap: https://kentdoit.github.io/sitemap.xml</span><br></pre></td></tr></table></figure>
-
-<div class="note default">
-            <p><a href="https://israynotarray.com/other/20210627/3588736352/">ray 大</a>：『建議不要忽略 js、css 與 fonts 相關的檔案與資料夾，否則可能在 Google Console Search 會收到一些問題提示』。</p>
-          </div>
-
-<p>延伸閱讀：<a href="https://israynotarray.com/other/20210627/3588736352/">快速掌握 robots.txt 用途</a></p>
-<h2 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h2><p><a href="https://blog.yucheng.me/post/hexo-configuration/#sitemap-xml-%E6%90%9C%E5%B0%8B%E5%BC%95%E6%93%8E%E7%88%AC%E8%9F%B2">Hexo 基本配置</a><br><a href="https://israynotarray.com/other/20210627/3588736352/">快速掌握 robots.txt 用途</a></p>
-]]></content>
-      <categories>
-        <category>Hexo</category>
-      </categories>
-      <tags>
-        <tag>Hexo 優化</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Hexo 設置 GA、Sitemap（四）</title>
     <url>/hexo/599670072/</url>
     <content><![CDATA[<div class="note default">
@@ -497,7 +497,7 @@
             <p>下方會介紹四種我嘗試過的方法。</p>
           </div>
 
-<h3 id="無法擷取"><a href="#無法擷取" class="headerlink" title="無法擷取"></a>無法擷取</h3><p><img src="https://imgur.com/UH0jdLH.jpg"></p>
+<h2 id="無法擷取"><a href="#無法擷取" class="headerlink" title="無法擷取"></a>無法擷取</h2><p><img src="https://imgur.com/UH0jdLH.jpg"></p>
 <p>❌ 方法一：擁有權驗證，添加其他驗證方式（本來只有用 GA）</p>
 <p>Step1：取得 content 值<br><img src="https://imgur.com/N623p1p.jpg" alt="演示四步驟取得 content"></p>
 <p>Step2：修改 NexT 主題中 _config.yml 參數 google_site_verification</p>
@@ -664,6 +664,7 @@
     <content><![CDATA[<div class="note default">
             <p>此篇內容為 <a href="https://kentdoit.github.io/hexo/599670072/">Hexo 設置 GA、Sitemap（四）</a>的 Debug 延續篇。</p>
           </div>
+
 ]]></content>
       <categories>
         <category>Hexo</category>
