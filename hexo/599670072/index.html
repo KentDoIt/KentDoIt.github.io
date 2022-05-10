@@ -50,18 +50,12 @@
 <meta property="og:image" content="https://imgur.com/mjvgxfs.jpg">
 <meta property="og:image" content="https://imgur.com/60AW6rA.jpg">
 <meta property="og:image" content="https://imgur.com/MCx0dFO.jpg">
+<meta property="og:image" content="https://imgur.com/D2VrXHx.jpg">
 <meta property="og:image" content="https://imgur.com/5XjdXGj.jpg">
 <meta property="og:image" content="https://imgur.com/0jiux9B.jpg">
 <meta property="og:image" content="https://imgur.com/Ae8Sllt.jpg">
-<meta property="og:image" content="https://imgur.com/UH0jdLH.jpg">
-<meta property="og:image" content="https://imgur.com/N623p1p.jpg">
-<meta property="og:image" content="https://imgur.com/RVLo57e.jpg">
-<meta property="og:image" content="https://imgur.com/QnPnMb0.jpg">
-<meta property="og:image" content="https://imgur.com/VwNKDrB.jpg">
-<meta property="og:image" content="https://imgur.com/BFbbf5V.jpg">
-<meta property="og:image" content="https://imgur.com/iR7NAzQ.jpg">
 <meta property="article:published_time" content="2022-05-01T06:10:25.000Z">
-<meta property="article:modified_time" content="2022-05-10T00:03:45.315Z">
+<meta property="article:modified_time" content="2022-05-10T00:21:16.401Z">
 <meta property="article:author" content="Kent">
 <meta property="article:tag" content="Hexo SEO">
 <meta name="twitter:card" content="summary">
@@ -276,7 +270,7 @@
               <!--<span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>-->
-              <span>4 分鐘閱讀時間</span>
+              <span>2 分鐘閱讀時間</span>
             </span>
             <span class="post-meta-item">
               <!--<span class="post-meta-item-icon">
@@ -333,12 +327,19 @@
 <p>Step1：安裝指令</p>
 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">npm install hexo-generator-sitemap</span><br></pre></td></tr></table></figure>
 
-<p>Step2：重新部署後到 <a target="_blank" rel="noopener" href="https://search.google.com/search-console/about?hl=zh-tw">Google Search</a> 加入網站連結，就會自動驗證成功</p>
+<p>Step2：重新部署</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">hexo d -g</span><br></pre></td></tr></table></figure>
+
+<p>Step3：<a target="_blank" rel="noopener" href="https://search.google.com/search-console/about?hl=zh-tw">Google Search</a> 加入網站連結</p>
+<ul>
+<li>GA 屬於一種驗證方式，剛剛有成功設置 GA 所以會自動驗證成功。</li>
+</ul>
 <p><img src="https://imgur.com/MCx0dFO.jpg"></p>
 <p>Step3：提交 sitemap</p>
 <ul>
 <li>在新增 Sitemap 欄位中輸入 <code>sitemap.xml</code></li>
 </ul>
+<p><img src="https://imgur.com/D2VrXHx.jpg"></p>
 <p><img src="https://imgur.com/5XjdXGj.jpg"></p>
 <div class="note default">
             <p>接下來可以在檢查自己的網址後面加上 &#x2F;sitemap 是否有內容。</p>
@@ -350,62 +351,7 @@
           </div>
 
 <p><img src="https://imgur.com/Ae8Sllt.jpg"></p>
-<div class="note default">
-            <p>下方會介紹四種我嘗試過的方法。</p>
-          </div>
-
-<h2 id="無法擷取"><a href="#無法擷取" class="headerlink" title="無法擷取"></a>無法擷取</h2><p><img src="https://imgur.com/UH0jdLH.jpg"></p>
-<p>❌ 方法一：擁有權驗證，添加其他驗證方式（本來只有用 GA）</p>
-<p>Step1：取得 content 值<br><img src="https://imgur.com/N623p1p.jpg" alt="演示四步驟取得 content"></p>
-<p>Step2：修改 NexT 主題中 _config.yml 參數 google_site_verification</p>
-<figure class="highlight diff"><figcaption><span>.git/config</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># Google Webmaster tools verification.</span><br><span class="line"># See: https://www.google.com/webmasters</span><br><span class="line"><span class="addition">+ google_site_verification: 25miYVaewg4Qur_GPtoF9-GhCZZJNidmq2kqy6wRE9g</span></span><br><span class="line"><span class="deletion">- google_site_verification:</span></span><br></pre></td></tr></table></figure>
-
-<p>Step3：重新部署</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">hexo g -d</span><br></pre></td></tr></table></figure>
-
-<p>Step4：重新部署後，檢查網站中是否包含 google-site-verification</p>
-<p><img src="https://imgur.com/RVLo57e.jpg" alt="搜尋 google-site-verification"></p>
-<p>❌ 方法二：檢查 Sitemap 格式</p>
-<blockquote>
-<p>發覺我的 sitemap.xml 格式和官方範例不同，所以需要將多的標籤移除。</p>
-</blockquote>
-<p><img src="https://imgur.com/QnPnMb0.jpg" alt="格式比較"></p>
-<p>Step1：將 node_modules&#x2F;hexo-generator-sitemap&#x2F;sitemap.xml 中的 <code>changefreq</code>、<code>priority</code> 標籤移除。</p>
-<p>Step2：重新部署</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">hexo g -d</span><br></pre></td></tr></table></figure>
-
-<p>❌ 方法三：網址審查建立索引</p>
-<p>Step1：點擊網址審查，並在上方網址列貼上部落格網址（例如：<a href="https://kentdoit.github.io/%EF%BC%89">https://kentdoit.github.io/）</a></p>
-<p>Step2：按下建立索引</p>
-<p><img src="https://imgur.com/VwNKDrB.jpg" alt="兩步驟建立索引"></p>
-<p>🟢 方法四：建立 .nojekyll</p>
-<p>Step1：進入根目錄 source 資料夾底下</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">cd source</span><br></pre></td></tr></table></figure>
-
-<p>Step2：建立一個空白的 .nojekyll 檔案</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">touch .nojekyll</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://imgur.com/BFbbf5V.jpg"></p>
-<div class="note default">
-            <p>接下來設定是為了讓每次部署產生的 public 資料夾中也能存在 .nojekyll 檔案</p>
-          </div>
-
-<p>Step3：修改根目錄 _config.yml 參數</p>
-<figure class="highlight diff"><figcaption><span>_config.yml</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># Include / Exclude file(s)</span><br><span class="line">## include:/exclude: options only apply to the &#x27;source/&#x27; folder</span><br><span class="line">include:</span><br><span class="line"><span class="addition">+  .nojekyll</span></span><br><span class="line">exclude:</span><br><span class="line">ignore:</span><br></pre></td></tr></table></figure>
-
-<p>Step4：重新部署</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">hexo cl</span><br><span class="line">hexo g -d</span><br></pre></td></tr></table></figure>
-
-<div class="note default">
-            <p>過一陣子之後再到網址審查中檢查就會看到綠色勾勾了～～～</p>
-          </div>
-
-<p><img src="https://imgur.com/iR7NAzQ.jpg" alt="網址審查通過"></p>
-<div class="note default">
-            <p>眼尖的朋友從上面這張圖會發現另一個問題：未提交至 Sitemap<br>最後沒辦法只好靜待幾天看看會不會發生奇蹟</p>
-          </div>
-
-<h2 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h2><p><a target="_blank" rel="noopener" href="https://zenreal.github.io/posts/7993/">Hexo 搭建系列 - SEO優化篇</a><br><a target="_blank" rel="noopener" href="https://syj0905.github.io/hexo/20190906/285599935/">Hexo 架站攻略 - SEO 優化</a><br><a target="_blank" rel="noopener" href="https://blog.kyomind.tw/adding-sitemap-issue/">解決 Hexo + Github Pages 新增 sitemap.xml 找不到頁面</a><br><a target="_blank" rel="noopener" href="https://blog.balabambe.com/2021/12/01/%E8%A7%A3%E6%B1%BA-Google-Search-Console-%E6%8A%93%E4%B8%8D%E5%88%B0-Hexo-%E6%94%BE%E5%9C%A8-Github-Pages-%E7%9A%84-sitemap-xml-%E7%9A%84%E5%95%8F%E9%A1%8C/">解決 Google Search Console 抓不到 Hexo 放在 Github Pages 的 sitemap.xml 的問題</a></p>
+<h2 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h2><p><a target="_blank" rel="noopener" href="https://zenreal.github.io/posts/7993/">Hexo 搭建系列 - SEO優化篇</a><br><a target="_blank" rel="noopener" href="https://syj0905.github.io/hexo/20190906/285599935/">Hexo 架站攻略 - SEO 優化</a></p>
 
     </div>
 
@@ -535,7 +481,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AF%84%E4%BE%8B%E7%9A%84%E7%92%B0%E5%A2%83%E7%89%88%E6%9C%AC"><span class="nav-text">範例的環境版本</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Google-Analytics"><span class="nav-text">Google Analytics</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A8%AD%E7%BD%AE%E8%BF%BD%E8%B9%A4%E7%A2%BC%EF%BC%88%E8%A3%BD%E8%A9%95%E4%BC%B0-ID%EF%BC%89"><span class="nav-text">設置追蹤碼（製評估 ID）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9F%8B%E8%BF%BD%E8%B9%A4%E7%A2%BC"><span class="nav-text">埋追蹤碼</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Sitemap"><span class="nav-text">Sitemap</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%84%A1%E6%B3%95%E6%93%B7%E5%8F%96"><span class="nav-text">無法擷取</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#reference"><span class="nav-text">reference</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AF%84%E4%BE%8B%E7%9A%84%E7%92%B0%E5%A2%83%E7%89%88%E6%9C%AC"><span class="nav-text">範例的環境版本</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Google-Analytics"><span class="nav-text">Google Analytics</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A8%AD%E7%BD%AE%E8%BF%BD%E8%B9%A4%E7%A2%BC%EF%BC%88%E8%A3%BD%E8%A9%95%E4%BC%B0-ID%EF%BC%89"><span class="nav-text">設置追蹤碼（製評估 ID）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9F%8B%E8%BF%BD%E8%B9%A4%E7%A2%BC"><span class="nav-text">埋追蹤碼</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Sitemap"><span class="nav-text">Sitemap</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#reference"><span class="nav-text">reference</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 

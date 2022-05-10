@@ -181,55 +181,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Hexo 管理爬蟲 robots.txt（五）</title>
-    <url>/hexo/3578178281/</url>
-    <content><![CDATA[<h2 id="範例的環境版本"><a href="#範例的環境版本" class="headerlink" title="範例的環境版本"></a>範例的環境版本</h2><p>hexo 版本：6.0.1<br>hexo-cli 版本：4.3.0<br>next 版本：7.8.0</p>
-<h2 id="Front-matter"><a href="#Front-matter" class="headerlink" title="Front-matter"></a>Front-matter</h2><blockquote>
-<p>如果有特定的頁面不希望被加入 sitemap.xml 中，可以在頁面的 markdown 中 Front-matter 設定 sitemap: false。</p>
-</blockquote>
-<figure class="highlight diff"><figcaption><span>text.md</span></figcaption><table><tr><td class="code"><pre><span class="line">title: 測試</span><br><span class="line">date: 2022-05-01 14:10:25</span><br><span class="line">categories:</span><br><span class="line">tags: </span><br><span class="line">description:</span><br><span class="line"><span class="addition">+ sitemap: false</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="robots-txt"><a href="#robots-txt" class="headerlink" title="robots.txt"></a>robots.txt</h2><blockquote>
-<p>設置搜尋引擎爬蟲哪些是可以爬的路徑哪些是不能爬的，也能增強 SEO。</p>
-</blockquote>
-<p>Step1：根目錄 source 資料夾底下新增 robots.txt 檔案</p>
-<p><img src="https://imgur.com/z1hRLbs.jpg"></p>
-<p>Step2：設置檔案參數</p>
-<p>User-agent : 爬蟲程式名字，必要項目</p>
-<ul>
-<li>可以在每項規則中指定一或多個 user-agen</li>
-<li>*：運行於所有搜尋引擎，也可以只允許指定搜尋引擎，例如<code>User-agent: Googlebot</code>。</li>
-</ul>
-<p>Allow：允許爬取路徑，至少要有一個</p>
-<ul>
-<li>相對路徑；若為目錄，則必須以 &#x2F; 作為結尾。</li>
-</ul>
-<p>Disallow：不允許爬取路徑，至少要有一個</p>
-<ul>
-<li>相對路徑；若為目錄，則必須以 &#x2F; 作為結尾。</li>
-</ul>
-<p>Sitemap：網站地圖的路徑，非必要</p>
-<ul>
-<li>使用絕對路徑。</li>
-</ul>
-<p>Crawl-delay：同伺服器每次連續請求所需的要間隔秒數，非必要</p>
-<figure class="highlight txt"><figcaption><span>source/robots.txt</span></figcaption><table><tr><td class="code"><pre><span class="line">User-agent: *</span><br><span class="line">Allow: /</span><br><span class="line">Allow: /archives/</span><br><span class="line">Allow: /categories/</span><br><span class="line">Allow: /tags/ </span><br><span class="line">Disallow: /vendors/</span><br><span class="line">Disallow: /fonts/</span><br><span class="line">Disallow: /vendors/</span><br><span class="line">Disallow: /fancybox/</span><br><span class="line">Sitemap: https://kentdoit.github.io/sitemap.xml</span><br></pre></td></tr></table></figure>
-
-<div class="note default">
-            <p><a href="https://israynotarray.com/other/20210627/3588736352/">ray 大</a>：『建議不要忽略 js、css 與 fonts 相關的檔案與資料夾，否則可能在 Google Console Search 會收到一些問題提示』。</p>
-          </div>
-
-<p>延伸閱讀：<a href="https://israynotarray.com/other/20210627/3588736352/">快速掌握 robots.txt 用途</a></p>
-<h2 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h2><p><a href="https://blog.yucheng.me/post/hexo-configuration/#sitemap-xml-%E6%90%9C%E5%B0%8B%E5%BC%95%E6%93%8E%E7%88%AC%E8%9F%B2">Hexo 基本配置</a><br><a href="https://israynotarray.com/other/20210627/3588736352/">快速掌握 robots.txt 用途</a></p>
-]]></content>
-      <categories>
-        <category>Hexo</category>
-      </categories>
-      <tags>
-        <tag>Hexo 優化</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Hexo 新增文章和頁面 (二)</title>
     <url>/hexo/356195859/</url>
     <content><![CDATA[<h2 id="範例的環境版本"><a href="#範例的環境版本" class="headerlink" title="範例的環境版本"></a>範例的環境版本</h2><p>hexo 版本：6.0.1<br>hexo-cli 版本：4.3.0<br>next 版本：7.8.0</p>
@@ -476,12 +427,19 @@
 <p>Step1：安裝指令</p>
 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">npm install hexo-generator-sitemap</span><br></pre></td></tr></table></figure>
 
-<p>Step2：重新部署後到 <a href="https://search.google.com/search-console/about?hl=zh-tw">Google Search</a> 加入網站連結，就會自動驗證成功</p>
+<p>Step2：重新部署</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">hexo d -g</span><br></pre></td></tr></table></figure>
+
+<p>Step3：<a href="https://search.google.com/search-console/about?hl=zh-tw">Google Search</a> 加入網站連結</p>
+<ul>
+<li>GA 屬於一種驗證方式，剛剛有成功設置 GA 所以會自動驗證成功。</li>
+</ul>
 <p><img src="https://imgur.com/MCx0dFO.jpg"></p>
 <p>Step3：提交 sitemap</p>
 <ul>
 <li>在新增 Sitemap 欄位中輸入 <code>sitemap.xml</code></li>
 </ul>
+<p><img src="https://imgur.com/D2VrXHx.jpg"></p>
 <p><img src="https://imgur.com/5XjdXGj.jpg"></p>
 <div class="note default">
             <p>接下來可以在檢查自己的網址後面加上 &#x2F;sitemap 是否有內容。</p>
@@ -493,68 +451,62 @@
           </div>
 
 <p><img src="https://imgur.com/Ae8Sllt.jpg"></p>
-<div class="note default">
-            <p>下方會介紹四種我嘗試過的方法。</p>
-          </div>
-
-<h2 id="無法擷取"><a href="#無法擷取" class="headerlink" title="無法擷取"></a>無法擷取</h2><p><img src="https://imgur.com/UH0jdLH.jpg"></p>
-<p>❌ 方法一：擁有權驗證，添加其他驗證方式（本來只有用 GA）</p>
-<p>Step1：取得 content 值<br><img src="https://imgur.com/N623p1p.jpg" alt="演示四步驟取得 content"></p>
-<p>Step2：修改 NexT 主題中 _config.yml 參數 google_site_verification</p>
-<figure class="highlight diff"><figcaption><span>.git/config</span></figcaption><table><tr><td class="code"><pre><span class="line"># Google Webmaster tools verification.</span><br><span class="line"># See: https://www.google.com/webmasters</span><br><span class="line"><span class="addition">+ google_site_verification: 25miYVaewg4Qur_GPtoF9-GhCZZJNidmq2kqy6wRE9g</span></span><br><span class="line"><span class="deletion">- google_site_verification:</span></span><br></pre></td></tr></table></figure>
-
-<p>Step3：重新部署</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">hexo g -d</span><br></pre></td></tr></table></figure>
-
-<p>Step4：重新部署後，檢查網站中是否包含 google-site-verification</p>
-<p><img src="https://imgur.com/RVLo57e.jpg" alt="搜尋 google-site-verification"></p>
-<p>❌ 方法二：檢查 Sitemap 格式</p>
-<blockquote>
-<p>發覺我的 sitemap.xml 格式和官方範例不同，所以需要將多的標籤移除。</p>
-</blockquote>
-<p><img src="https://imgur.com/QnPnMb0.jpg" alt="格式比較"></p>
-<p>Step1：將 node_modules&#x2F;hexo-generator-sitemap&#x2F;sitemap.xml 中的 <code>changefreq</code>、<code>priority</code> 標籤移除。</p>
-<p>Step2：重新部署</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">hexo g -d</span><br></pre></td></tr></table></figure>
-
-<p>❌ 方法三：網址審查建立索引</p>
-<p>Step1：點擊網址審查，並在上方網址列貼上部落格網址（例如：<a href="https://kentdoit.github.io/%EF%BC%89">https://kentdoit.github.io/）</a></p>
-<p>Step2：按下建立索引</p>
-<p><img src="https://imgur.com/VwNKDrB.jpg" alt="兩步驟建立索引"></p>
-<p>🟢 方法四：建立 .nojekyll</p>
-<p>Step1：進入根目錄 source 資料夾底下</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">cd source</span><br></pre></td></tr></table></figure>
-
-<p>Step2：建立一個空白的 .nojekyll 檔案</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">touch .nojekyll</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://imgur.com/BFbbf5V.jpg"></p>
-<div class="note default">
-            <p>接下來設定是為了讓每次部署產生的 public 資料夾中也能存在 .nojekyll 檔案</p>
-          </div>
-
-<p>Step3：修改根目錄 _config.yml 參數</p>
-<figure class="highlight diff"><figcaption><span>_config.yml</span></figcaption><table><tr><td class="code"><pre><span class="line"># Include / Exclude file(s)</span><br><span class="line">## include:/exclude: options only apply to the &#x27;source/&#x27; folder</span><br><span class="line">include:</span><br><span class="line"><span class="addition">+  .nojekyll</span></span><br><span class="line">exclude:</span><br><span class="line">ignore:</span><br></pre></td></tr></table></figure>
-
-<p>Step4：重新部署</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">hexo cl</span><br><span class="line">hexo g -d</span><br></pre></td></tr></table></figure>
-
-<div class="note default">
-            <p>過一陣子之後再到網址審查中檢查就會看到綠色勾勾了～～～</p>
-          </div>
-
-<p><img src="https://imgur.com/iR7NAzQ.jpg" alt="網址審查通過"></p>
-<div class="note default">
-            <p>眼尖的朋友從上面這張圖會發現另一個問題：未提交至 Sitemap<br>最後沒辦法只好靜待幾天看看會不會發生奇蹟</p>
-          </div>
-
-<h2 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h2><p><a href="https://zenreal.github.io/posts/7993/">Hexo 搭建系列 - SEO優化篇</a><br><a href="https://syj0905.github.io/hexo/20190906/285599935/">Hexo 架站攻略 - SEO 優化</a><br><a href="https://blog.kyomind.tw/adding-sitemap-issue/">解決 Hexo + Github Pages 新增 sitemap.xml 找不到頁面</a><br><a href="https://blog.balabambe.com/2021/12/01/%E8%A7%A3%E6%B1%BA-Google-Search-Console-%E6%8A%93%E4%B8%8D%E5%88%B0-Hexo-%E6%94%BE%E5%9C%A8-Github-Pages-%E7%9A%84-sitemap-xml-%E7%9A%84%E5%95%8F%E9%A1%8C/">解決 Google Search Console 抓不到 Hexo 放在 Github Pages 的 sitemap.xml 的問題</a></p>
+<h2 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h2><p><a href="https://zenreal.github.io/posts/7993/">Hexo 搭建系列 - SEO優化篇</a><br><a href="https://syj0905.github.io/hexo/20190906/285599935/">Hexo 架站攻略 - SEO 優化</a></p>
 ]]></content>
       <categories>
         <category>Hexo</category>
       </categories>
       <tags>
         <tag>Hexo SEO</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Hexo 管理爬蟲 robots.txt（五）</title>
+    <url>/hexo/3578178281/</url>
+    <content><![CDATA[<h2 id="範例的環境版本"><a href="#範例的環境版本" class="headerlink" title="範例的環境版本"></a>範例的環境版本</h2><p>hexo 版本：6.0.1<br>hexo-cli 版本：4.3.0<br>next 版本：7.8.0</p>
+<h2 id="Front-matter"><a href="#Front-matter" class="headerlink" title="Front-matter"></a>Front-matter</h2><blockquote>
+<p>如果有特定的頁面不希望被加入 sitemap.xml 中，可以在頁面的 markdown 中 Front-matter 設定 sitemap: false。</p>
+</blockquote>
+<figure class="highlight diff"><figcaption><span>text.md</span></figcaption><table><tr><td class="code"><pre><span class="line">title: 測試</span><br><span class="line">date: 2022-05-01 14:10:25</span><br><span class="line">categories:</span><br><span class="line">tags: </span><br><span class="line">description:</span><br><span class="line"><span class="addition">+ sitemap: false</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="robots-txt"><a href="#robots-txt" class="headerlink" title="robots.txt"></a>robots.txt</h2><blockquote>
+<p>設置搜尋引擎爬蟲哪些是可以爬的路徑哪些是不能爬的，也能增強 SEO。</p>
+</blockquote>
+<p>Step1：根目錄 source 資料夾底下新增 robots.txt 檔案</p>
+<p><img src="https://imgur.com/z1hRLbs.jpg"></p>
+<p>Step2：設置檔案參數</p>
+<p>User-agent : 爬蟲程式名字，必要項目</p>
+<ul>
+<li>可以在每項規則中指定一或多個 user-agen</li>
+<li>*：運行於所有搜尋引擎，也可以只允許指定搜尋引擎，例如<code>User-agent: Googlebot</code>。</li>
+</ul>
+<p>Allow：允許爬取路徑，至少要有一個</p>
+<ul>
+<li>相對路徑；若為目錄，則必須以 &#x2F; 作為結尾。</li>
+</ul>
+<p>Disallow：不允許爬取路徑，至少要有一個</p>
+<ul>
+<li>相對路徑；若為目錄，則必須以 &#x2F; 作為結尾。</li>
+</ul>
+<p>Sitemap：網站地圖的路徑，非必要</p>
+<ul>
+<li>使用絕對路徑。</li>
+</ul>
+<p>Crawl-delay：同伺服器每次連續請求所需的要間隔秒數，非必要</p>
+<figure class="highlight txt"><figcaption><span>source/robots.txt</span></figcaption><table><tr><td class="code"><pre><span class="line">User-agent: *</span><br><span class="line">Allow: /</span><br><span class="line">Allow: /archives/</span><br><span class="line">Allow: /categories/</span><br><span class="line">Allow: /tags/ </span><br><span class="line">Disallow: /vendors/</span><br><span class="line">Disallow: /fonts/</span><br><span class="line">Disallow: /vendors/</span><br><span class="line">Disallow: /fancybox/</span><br><span class="line">Sitemap: https://kentdoit.github.io/sitemap.xml</span><br></pre></td></tr></table></figure>
+
+<div class="note default">
+            <p><a href="https://israynotarray.com/other/20210627/3588736352/">ray 大</a>：『建議不要忽略 js、css 與 fonts 相關的檔案與資料夾，否則可能在 Google Console Search 會收到一些問題提示』。</p>
+          </div>
+
+<p>延伸閱讀：<a href="https://israynotarray.com/other/20210627/3588736352/">快速掌握 robots.txt 用途</a></p>
+<h2 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h2><p><a href="https://blog.yucheng.me/post/hexo-configuration/#sitemap-xml-%E6%90%9C%E5%B0%8B%E5%BC%95%E6%93%8E%E7%88%AC%E8%9F%B2">Hexo 基本配置</a><br><a href="https://israynotarray.com/other/20210627/3588736352/">快速掌握 robots.txt 用途</a></p>
+]]></content>
+      <categories>
+        <category>Hexo</category>
+      </categories>
+      <tags>
+        <tag>Hexo 優化</tag>
       </tags>
   </entry>
   <entry>
@@ -665,6 +617,63 @@
             <p>此篇內容為 <a href="https://kentdoit.github.io/hexo/599670072/">Hexo 設置 GA、Sitemap（四）</a>的 Debug 延續篇。</p>
           </div>
 
+
+<div class="note default">
+            <p>下方會介紹四種我嘗試過的方法。</p>
+          </div>
+
+<h2 id="無法擷取"><a href="#無法擷取" class="headerlink" title="無法擷取"></a>無法擷取</h2><p><img src="https://imgur.com/UH0jdLH.jpg"></p>
+<p>❌ 方法一：擁有權驗證，添加其他驗證方式（本來只有用 GA）</p>
+<p>Step1：取得 content 值<br><img src="https://imgur.com/N623p1p.jpg" alt="演示四步驟取得 content"></p>
+<p>Step2：修改 NexT 主題中 _config.yml 參數 google_site_verification</p>
+<figure class="highlight diff"><figcaption><span>.git/config</span></figcaption><table><tr><td class="code"><pre><span class="line"># Google Webmaster tools verification.</span><br><span class="line"># See: https://www.google.com/webmasters</span><br><span class="line"><span class="addition">+ google_site_verification: 25miYVaewg4Qur_GPtoF9-GhCZZJNidmq2kqy6wRE9g</span></span><br><span class="line"><span class="deletion">- google_site_verification:</span></span><br></pre></td></tr></table></figure>
+
+<p>Step3：重新部署</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">hexo g -d</span><br></pre></td></tr></table></figure>
+
+<p>Step4：重新部署後，檢查網站中是否包含 google-site-verification</p>
+<p><img src="https://imgur.com/RVLo57e.jpg" alt="搜尋 google-site-verification"></p>
+<p>❌ 方法二：檢查 Sitemap 格式</p>
+<blockquote>
+<p>發覺我的 sitemap.xml 格式和官方範例不同，所以需要將多的標籤移除。</p>
+</blockquote>
+<p><img src="https://imgur.com/QnPnMb0.jpg" alt="格式比較"></p>
+<p>Step1：將 node_modules&#x2F;hexo-generator-sitemap&#x2F;sitemap.xml 中的 <code>changefreq</code>、<code>priority</code> 標籤移除。</p>
+<p>Step2：重新部署</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">hexo g -d</span><br></pre></td></tr></table></figure>
+
+<p>❌ 方法三：網址審查建立索引</p>
+<p>Step1：點擊網址審查，並在上方網址列貼上部落格網址（例如：<a href="https://kentdoit.github.io/%EF%BC%89">https://kentdoit.github.io/）</a></p>
+<p>Step2：按下建立索引</p>
+<p><img src="https://imgur.com/VwNKDrB.jpg" alt="兩步驟建立索引"></p>
+<p>🟢 方法四：建立 .nojekyll</p>
+<p>Step1：進入根目錄 source 資料夾底下</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">cd source</span><br></pre></td></tr></table></figure>
+
+<p>Step2：建立一個空白的 .nojekyll 檔案</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">touch .nojekyll</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://imgur.com/BFbbf5V.jpg"></p>
+<div class="note default">
+            <p>接下來設定是為了讓每次部署產生的 public 資料夾中也能存在 .nojekyll 檔案</p>
+          </div>
+
+<p>Step3：修改根目錄 _config.yml 參數</p>
+<figure class="highlight diff"><figcaption><span>_config.yml</span></figcaption><table><tr><td class="code"><pre><span class="line"># Include / Exclude file(s)</span><br><span class="line">## include:/exclude: options only apply to the &#x27;source/&#x27; folder</span><br><span class="line">include:</span><br><span class="line"><span class="addition">+  .nojekyll</span></span><br><span class="line">exclude:</span><br><span class="line">ignore:</span><br></pre></td></tr></table></figure>
+
+<p>Step4：重新部署</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">hexo cl</span><br><span class="line">hexo g -d</span><br></pre></td></tr></table></figure>
+
+<div class="note default">
+            <p>過一陣子之後再到網址審查中檢查就會看到綠色勾勾了～～～</p>
+          </div>
+
+<p><img src="https://imgur.com/iR7NAzQ.jpg" alt="網址審查通過"></p>
+<div class="note default">
+            <p>眼尖的朋友從上面這張圖會發現另一個問題：未提交至 Sitemap<br>最後沒辦法只好靜待幾天看看會不會發生奇蹟</p>
+          </div>
+
+<h2 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h2><p><a href="https://blog.kyomind.tw/adding-sitemap-issue/">解決 Hexo + Github Pages 新增 sitemap.xml 找不到頁面</a><br><a href="https://blog.balabambe.com/2021/12/01/%E8%A7%A3%E6%B1%BA-Google-Search-Console-%E6%8A%93%E4%B8%8D%E5%88%B0-Hexo-%E6%94%BE%E5%9C%A8-Github-Pages-%E7%9A%84-sitemap-xml-%E7%9A%84%E5%95%8F%E9%A1%8C/">解決 Google Search Console 抓不到 Hexo 放在 Github Pages 的 sitemap.xml 的問題</a></p>
 ]]></content>
       <categories>
         <category>Hexo</category>
