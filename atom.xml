@@ -36,11 +36,30 @@
   </entry>
   
   <entry>
+    <title>Hexo Sitemap 建立索引 無法擷取</title>
+    <link href="https://kentdoit.github.io/hexo/2629412870/"/>
+    <id>https://kentdoit.github.io/hexo/2629412870/</id>
+    <published>2022-05-03T23:51:46.000Z</published>
+    <updated>2022-05-10T00:02:38.674Z</updated>
+    
+    
+    <summary type="html">此篇會介紹 Sitemap 所遇到的一切問題。</summary>
+    
+    
+    
+    <category term="Hexo" scheme="https://kentdoit.github.io/categories/hexo/"/>
+    
+    
+    <category term="Hexo SEO" scheme="https://kentdoit.github.io/tags/Hexo-SEO/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Hexo 設置 GA、Sitemap（四）</title>
     <link href="https://kentdoit.github.io/hexo/599670072/"/>
     <id>https://kentdoit.github.io/hexo/599670072/</id>
     <published>2022-05-01T06:10:25.000Z</published>
-    <updated>2022-05-08T12:53:21.912Z</updated>
+    <updated>2022-05-10T00:03:11.279Z</updated>
     
     
     <summary type="html">此篇介紹如何為部落格設置 GA 以及 Sitemap。</summary>
@@ -50,7 +69,7 @@
     <category term="Hexo" scheme="https://kentdoit.github.io/categories/hexo/"/>
     
     
-    <category term="Hexo 優化" scheme="https://kentdoit.github.io/tags/Hexo-%E5%84%AA%E5%8C%96/"/>
+    <category term="Hexo SEO" scheme="https://kentdoit.github.io/tags/Hexo-SEO/"/>
     
   </entry>
   
