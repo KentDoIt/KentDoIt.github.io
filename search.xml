@@ -712,11 +712,14 @@
   </entry>
   <entry>
     <title>JS == vs ===</title>
-    <url>/JavaScript/3699626031/</url>
+    <url>/javascript/3699626031/</url>
     <content><![CDATA[<p>比較運算子注意事項</p>
 <div class="note default">
             <p>在 JavaScript 中除了基礎型別（Primitive Type）以外的型別（ex: 陣列、物件）在做比較時，判斷的是兩者是否指向同一個 <code>reference</code>，而非判斷兩者的值是否相同。</p>
           </div>
+
+<p>e.g. 陣列判斷</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> a = [<span class="number">1</span> , <span class="number">2</span>];</span><br><span class="line"><span class="keyword">let</span> b = [<span class="number">1</span> , <span class="number">2</span>];</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(a == b); <span class="comment">// false</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> c = b;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(c == b); <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>JavaScript</category>

@@ -6,7 +6,7 @@
   <link href="https://kentdoit.github.io/atom.xml" rel="self"/>
   
   <link href="https://kentdoit.github.io/"/>
-  <updated>2022-05-10T03:10:33.542Z</updated>
+  <updated>2022-05-10T03:12:40.002Z</updated>
   <id>https://kentdoit.github.io/</id>
   
   <author>
@@ -18,17 +18,17 @@
   
   <entry>
     <title>JS == vs ===</title>
-    <link href="https://kentdoit.github.io/JavaScript/3699626031/"/>
-    <id>https://kentdoit.github.io/JavaScript/3699626031/</id>
+    <link href="https://kentdoit.github.io/javascript/3699626031/"/>
+    <id>https://kentdoit.github.io/javascript/3699626031/</id>
     <published>2022-05-10T03:07:50.000Z</published>
-    <updated>2022-05-10T03:10:33.542Z</updated>
+    <updated>2022-05-10T03:12:40.002Z</updated>
     
     
     <summary type="html">此篇主要探討兩種比較運算子 ==、=== 的差異。</summary>
     
     
     
-    <category term="JavaScript" scheme="https://kentdoit.github.io/categories/JavaScript/"/>
+    <category term="JavaScript" scheme="https://kentdoit.github.io/categories/javascript/"/>
     
     
     <category term="運算子" scheme="https://kentdoit.github.io/tags/%E9%81%8B%E7%AE%97%E5%AD%90/"/>
