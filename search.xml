@@ -486,7 +486,7 @@
 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
 
 <p>Step2：修改 <code>deploy</code> 參數</p>
-<figure class="highlight diff"><figcaption><span>_config.yml</span></figcaption><table><tr><td class="code"><pre><span class="line">deploy:</span><br><span class="line"><span class="deletion">-  type: </span></span><br><span class="line"><span class="addition">+  type: git // 模式</span></span><br><span class="line"><span class="addition">+  repo: https://github.com/KentDoIt/KentDoIt.github.io.git // 自己 GitHub repo 連結</span></span><br><span class="line"><span class="addition">+  branch: master // 分支</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight diff"><figcaption><span>_config.yml</span></figcaption><table><tr><td class="code"><pre><span class="line">deploy:</span><br><span class="line"><span class="deletion">-  type: </span></span><br><span class="line"><span class="addition">+  type: git # 模式</span></span><br><span class="line"><span class="addition">+  repo: https://github.com/KentDoIt/KentDoIt.github.io.git # 自己 GitHub repo 連結</span></span><br><span class="line"><span class="addition">+  branch: master # 分支</span></span><br></pre></td></tr></table></figure>
 
 <p>Step3：部署指令</p>
 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">hexo d -g</span><br></pre></td></tr></table></figure>

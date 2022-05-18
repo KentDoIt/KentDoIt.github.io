@@ -53,7 +53,7 @@
 <meta property="og:image" content="https://imgur.com/o6lXKWf.png">
 <meta property="og:image" content="https://imgur.com/CyCxriT.png">
 <meta property="article:published_time" content="2022-04-24T14:03:56.000Z">
-<meta property="article:modified_time" content="2022-05-18T01:51:10.149Z">
+<meta property="article:modified_time" content="2022-05-18T02:02:22.633Z">
 <meta property="article:author" content="Kent">
 <meta property="article:tag" content="Hexo 部落格">
 <meta name="twitter:card" content="summary">
@@ -335,7 +335,7 @@
 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
 
 <p>Step2：修改 <code>deploy</code> 參數</p>
-<figure class="highlight diff"><figcaption><span>_config.yml</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line"><span class="deletion">-  type: </span></span><br><span class="line"><span class="addition">+  type: git // 模式</span></span><br><span class="line"><span class="addition">+  repo: https://github.com/KentDoIt/KentDoIt.github.io.git // 自己 GitHub repo 連結</span></span><br><span class="line"><span class="addition">+  branch: master // 分支</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight diff"><figcaption><span>_config.yml</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line"><span class="deletion">-  type: </span></span><br><span class="line"><span class="addition">+  type: git # 模式</span></span><br><span class="line"><span class="addition">+  repo: https://github.com/KentDoIt/KentDoIt.github.io.git # 自己 GitHub repo 連結</span></span><br><span class="line"><span class="addition">+  branch: master # 分支</span></span><br></pre></td></tr></table></figure>
 
 <p>Step3：部署指令</p>
 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">hexo d -g</span><br></pre></td></tr></table></figure>
