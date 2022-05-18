@@ -51,7 +51,7 @@
 <meta property="og:image" content="https://imgur.com/AbQvbMt.png">
 <meta property="og:image" content="https://imgur.com/W1W5iaB.png">
 <meta property="article:published_time" content="2022-04-24T16:30:34.000Z">
-<meta property="article:modified_time" content="2022-05-07T17:20:39.998Z">
+<meta property="article:modified_time" content="2022-05-18T01:42:44.879Z">
 <meta property="article:author" content="Kent">
 <meta property="article:tag" content="Hexo 部落格">
 <meta name="twitter:card" content="summary">
@@ -344,7 +344,7 @@
 <figure class="highlight diff"><figcaption><span>themes/hexo-theme-next/_config.yml</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">codeblock:</span><br><span class="line">  # Code Highlight theme</span><br><span class="line">  # Available values: normal | night | night eighties | night blue | night bright | solarized | solarized dark | galactic</span><br><span class="line">  # See: https://github.com/chriskempson/tomorrow-theme</span><br><span class="line"><span class="deletion">-  highlight_theme: normal</span></span><br><span class="line"><span class="addition">+  highlight_theme: galactic</span></span><br><span class="line">  # Add copy button on codeblock</span><br><span class="line">  copy_button:</span><br><span class="line"><span class="deletion">-    enable: false</span></span><br><span class="line"><span class="addition">+    enable: true</span></span><br><span class="line">    # Show text copy result.</span><br><span class="line"><span class="deletion">-    show_result: false</span></span><br><span class="line"><span class="addition">+    show_result: false</span></span><br><span class="line">    # Available values: default | flat | mac</span><br><span class="line"><span class="deletion">-    style:</span></span><br><span class="line"><span class="addition">+    style: flat</span></span><br></pre></td></tr></table></figure>
 
 <div class="note danger">
-            <p>如果上面設置完沒有效果，請確認根目錄 _config.yml 檔案中的 highlight 參數是否設置為<br> enable。</p>
+            <p>如果上面設置完沒有效果，請確認根目錄 _config.yml 檔案中的 <code>highlight</code> 參數 enable 是否設置為 true。</p>
           </div>
 
 <figure class="highlight diff"><figcaption><span>_config.yml</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">highlight:</span><br><span class="line">  enable: true</span><br></pre></td></tr></table></figure>
