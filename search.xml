@@ -978,10 +978,13 @@
 <blockquote>
 <p>分享幾張 &#x3D;&#x3D; 、 &#x3D;&#x3D;&#x3D;、if 的視覺化圖表</p>
 </blockquote>
+<p><a href="https://github.com/dorey/JavaScript-Equality-Table">src：JavaScript-Equality-Table</a></p>
 <p><img src="https://imgur.com/Ys0CgUz.jpg" alt="=== 比較表"></p>
 <p><img src="https://imgur.com/WzPfFFf.jpg" alt="== 比較表"></p>
-<p><img src="/.jpg"></p>
-<p><img src="/.jpg"></p>
+<p><img src="https://imgur.com/wd4ydIB.jpg" alt="綜合比較表"></p>
+<p><img src="https://imgur.com/OtmX7k7.jpg" alt="if/else （綠色代表 true、白色代表 false）"></p>
+<p>最後一張：<a href="https://thomas-yang.me/projects/oh-my-dear-js/">Relational and Equality Operators</a></p>
+<p><img src="https://imgur.com/Og8Y5JH.jpg" alt="依照嚴格程度排序不同的比較子（紅色最嚴格、灰色最寬鬆）"></p>
 <div class="note default">
             <p>最後建議新手一律使用嚴謹的 &#x3D;&#x3D;&#x3D; 進行比較，避免因為自動轉型而產生非預期的結果，有經驗的就可以自由使用兩者囉。</p>
           </div>
