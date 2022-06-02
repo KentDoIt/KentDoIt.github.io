@@ -975,6 +975,13 @@
             <p>&#x3D;&#x3D; 第一步不是直接轉型，而是先檢查型別，再依造規則做轉型。</p>
           </div>
 
+<blockquote>
+<p>分享幾張 &#x3D;&#x3D; 、 &#x3D;&#x3D;&#x3D;、if 的視覺化圖表</p>
+</blockquote>
+<p><img src="https://imgur.com/Ys0CgUz.jpg" alt="=== 比較表"></p>
+<p><img src="https://imgur.com/WzPfFFf.jpg" alt="== 比較表"></p>
+<p><img src="/.jpg"></p>
+<p><img src="/.jpg"></p>
 <div class="note default">
             <p>最後建議新手一律使用嚴謹的 &#x3D;&#x3D;&#x3D; 進行比較，避免因為自動轉型而產生非預期的結果，有經驗的就可以自由使用兩者囉。</p>
           </div>
