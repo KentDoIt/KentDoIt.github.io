@@ -47,12 +47,23 @@
 <meta property="og:site_name" content="KentDoIt">
 <meta property="og:description" content="此篇會依照 ECMA-262 11th（ES2020）規則，來深入探討比較運算子轉型的規則。">
 <meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="https://imgur.com/O6GtcuY.jpg">
+<meta property="og:image" content="https://imgur.com/csTWjoh.jpg">
+<meta property="og:image" content="https://imgur.com/Mey9zi3.jpg">
+<meta property="og:image" content="https://imgur.com/RTWXolI.jpg">
+<meta property="og:image" content="https://imgur.com/qXhuPgq.jpg">
+<meta property="og:image" content="https://imgur.com/EID9qm4.jpg">
+<meta property="og:image" content="https://imgur.com/gGq66Sb.jpg">
+<meta property="og:image" content="https://imgur.com/PiEO17R.jpg">
+<meta property="og:image" content="https://imgur.com/qivniM1.jpg">
+<meta property="og:image" content="https://imgur.com/L3oUg26.jpg">
 <meta property="article:published_time" content="2022-05-15T04:36:46.000Z">
-<meta property="article:modified_time" content="2022-06-02T04:41:12.398Z">
+<meta property="article:modified_time" content="2022-06-02T06:48:13.966Z">
 <meta property="article:author" content="Kent">
 <meta property="article:tag" content="運算子">
 <meta property="article:tag" content="JavaScript">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://imgur.com/O6GtcuY.jpg">
 
 <link rel="canonical" href="https://kentdoit.github.io/javascript/2972146539/">
 
@@ -269,7 +280,7 @@
               <!--<span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>-->
-              <span>1 分鐘閱讀時間</span>
+              <span>6 分鐘閱讀時間</span>
             </span>
             <span class="post-meta-item">
               <!--<span class="post-meta-item-icon">
@@ -296,7 +307,168 @@
           <i class="fa fa-quote-right"></i>
         </blockquote>
       
-        
+        <p>比較運算子注意事項</p>
+<div class="note default">
+            <p>在 JavaScript 中除了基礎型別（Primitive Type）以外的型別（ex: 陣列、物件）在做比較時，判斷的是兩者是否指向同一個 <code>reference</code>，而非判斷兩者的值是否相同。</p>
+          </div>
+
+<p>e.g. 陣列判斷</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a = [<span class="number">1</span> , <span class="number">2</span>];</span><br><span class="line"><span class="keyword">let</span> b = [<span class="number">1</span> , <span class="number">2</span>];</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(a == b); <span class="comment">// false</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> c = b;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(c == b); <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+
+<div class="note default">
+            <p>下方會在針對其它例外情況做詳細介紹。</p>
+          </div>
+
+<h2 id="x3D-x3D"><a href="#x3D-x3D" class="headerlink" title="&#x3D;&#x3D;"></a>&#x3D;&#x3D;</h2><div class="note primary">
+            <p>equality：比較等號兩邊值是否相同，當等號兩邊型別不同時，會先依照規則轉型再進行比對。（除了物件外，幾乎會轉型為 number 後在做比較）</p>
+          </div>
+
+<p>e.g. 基礎 equality</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;1&#x27;</span> == <span class="number">1</span>); <span class="comment">// true</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<div class="note default">
+            <p>下方會解析 ECMA-262 11th（ES2020）規範：<a target="_blank" rel="noopener" href="https://www.notion.so/kentclark/JS-e93044a1a2574dcd82e66c6e1b100493#cce0892de58b416eb6a4b21e5dce4375">7.2.15 Abstract Equality Comparison</a> 是如何比較的以及轉型的過程。</p>
+          </div>
+
+<blockquote>
+<p>Step1：先檢查型別，型別相同則回傳 x &#x3D;&#x3D;&#x3D; y 的結果。</p>
+</blockquote>
+<p><img src="https://imgur.com/O6GtcuY.jpg"></p>
+<p>當型別相同，則不需要轉型因此可以直接比較。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;b&#x27;</span> === <span class="string">&#x27;a&#x27;</span>); <span class="comment">// false</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>Step2：等號兩邊為 null 和 undefined 回傳 true。</p>
+</blockquote>
+<p><img src="https://imgur.com/csTWjoh.jpg"></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="literal">undefined</span> == <span class="literal">null</span>); <span class="comment">// true</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="literal">null</span> == <span class="literal">undefined</span>); <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>Step3：基礎型別自動轉成 number 後在做比較。（透過原生函式 ToNumber）</p>
+</blockquote>
+<p><img src="https://imgur.com/Mey9zi3.jpg"></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;1&#x27;</span> == <span class="number">1</span>);       <span class="comment">// true，1 == 1</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="literal">true</span> == <span class="string">&#x27;1&#x27;</span>);    <span class="comment">// true，1 == 1</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="literal">true</span> == <span class="string">&#x27;true&#x27;</span>); <span class="comment">// false，1 == NaN</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>⭐️ Step4：先將非基礎型別轉成基礎型別後再做比較。（透過原生函示 toPrimitive）</p>
+</blockquote>
+<p><img src="https://imgur.com/RTWXolI.jpg"></p>
+<div class="note default">
+            <p>toPrimitive 將物件透過原生方法（ex：valueOf、toString）轉成基礎型別。</p>
+          </div>
+
+<p>string 的執行順序</p>
+<ul>
+<li>先執行 toString &gt; 還不是 primitive 在執行 valueOf &gt; 還不是 primitive 就噴 <code>TypeError</code>。</li>
+</ul>
+<p>number 的執行順序</p>
+<ul>
+<li>（PreferredType 預設為 number）先執行 valueOf &gt; 還不是 primitive 在執行 toString &gt; 還不是 primitive 就噴 <code>TypeError</code>。</li>
+</ul>
+<p>e.g. 觀察 toPrimitive 中 valueOf 、 toString 優先順序</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> obj = &#123;</span><br><span class="line">  toString : <span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;toString&quot;</span>);</span><br><span class="line">    <span class="keyword">return</span> &#123;&#125;;</span><br><span class="line">  &#125;,</span><br><span class="line">  valueOf : <span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;valueOf&quot;</span>);</span><br><span class="line">    <span class="keyword">return</span> &#123;&#125;;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="title class_">String</span>(obj); <span class="comment">// toString -&gt; valueOf -&gt; TypeError</span></span><br><span class="line"><span class="title class_">Number</span>(obj); <span class="comment">// valueOf -&gt; toString -&gt; TypeError</span></span><br></pre></td></tr></table></figure>
+
+<p>e.g. toPrimitive 自定義方法，依照 hint 種類輸出結果。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> obj = &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&#x27;kent&#x27;</span>,</span><br><span class="line">  <span class="attr">age</span>: <span class="number">18</span>,</span><br><span class="line">  <span class="attr">sex</span>: <span class="string">&#x27;M&#x27;</span>,</span><br><span class="line">  [<span class="title class_">Symbol</span>.<span class="property">toPrimitive</span>]: <span class="keyword">function</span>(<span class="params">hint</span>) &#123;</span><br><span class="line">    <span class="comment">// hint 三種 &#x27;string&#x27;, &#x27;number&#x27;, &#x27;default&#x27;</span></span><br><span class="line">    <span class="keyword">switch</span>(hint) &#123;</span><br><span class="line">      <span class="keyword">case</span> <span class="string">&#x27;default&#x27;</span>: <span class="keyword">return</span> <span class="variable language_">this</span>.<span class="property">sex</span>;</span><br><span class="line">      <span class="keyword">case</span> <span class="string">&#x27;string&#x27;</span>: <span class="keyword">return</span> <span class="variable language_">this</span>.<span class="property">name</span>;</span><br><span class="line">      <span class="keyword">case</span> <span class="string">&#x27;number&#x27;</span>: <span class="keyword">return</span> <span class="variable language_">this</span>.<span class="property">age</span>;</span><br><span class="line">      <span class="attr">default</span>: <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">Error</span>();</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(obj == <span class="string">&#x27;M&#x27;</span>);            <span class="comment">// true，default</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">Number</span>(obj) == <span class="number">18</span>);     <span class="comment">// true，number</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">String</span>(obj) == <span class="string">&#x27;kent&#x27;</span>); <span class="comment">// true，string</span></span><br></pre></td></tr></table></figure>
+
+<div class="note default">
+            <p>以上為 &#x3D;&#x3D; 比較運算子的自動轉型過程。</p>
+          </div>
+
+<hr>
+<h2 id="x3D-x3D-x3D"><a href="#x3D-x3D-x3D" class="headerlink" title="&#x3D;&#x3D;&#x3D;"></a>&#x3D;&#x3D;&#x3D;</h2><div class="note default">
+            <p>strict equality：比較等號兩邊 <code>型別</code> 以及 <code>數值</code> 是否 <code>都相同</code>。</p>
+          </div>
+
+<p>e.g. 基礎 strict equality</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;1&#x27;</span> === <span class="number">1</span>); <span class="comment">// false</span></span><br></pre></td></tr></table></figure>
+
+<div class="note default">
+            <p>下方會解析 ECMA-262 11th（ES2020）規範：<a target="_blank" rel="noopener" href="https://262.ecma-international.org/11.0/#sec-strict-equality-comparison">7.2.16 Strict Equality Comparison</a> 是如何比較的以及轉型的過程。</p>
+          </div>
+
+<blockquote>
+<p>Step1：檢查型別，型別不同則回傳 false。</p>
+</blockquote>
+<p><img src="https://imgur.com/qXhuPgq.jpg"></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;1&#x27;</span> === <span class="number">1</span>); <span class="comment">// false</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>Step2：型別為 number 時會回傳 <a target="_blank" rel="noopener" href="https://www.ecma-international.org/ecma-262/11.0/index.html#sec-numeric-types-number-equal">Number::equal ( x, y )</a> 結果，型別為 BigInt 時會回傳 <a target="_blank" rel="noopener" href="https://www.ecma-international.org/ecma-262/11.0/index.html#sec-numeric-types-bigint-equal">BigInt::equal ( x, y )</a> 結果。</p>
+</blockquote>
+<p><img src="https://imgur.com/EID9qm4.jpg"></p>
+<div class="note default">
+            <p>在這之前需要，先暸解 Number、BigInt 兩者的 equal ( x, y ) 規則。</p>
+          </div>
+
+<p>Number::equal ( x, y ) 規則：</p>
+<p><img src="https://imgur.com/gGq66Sb.jpg"></p>
+<ul>
+<li>有 NaN 就回傳 false。</li>
+<li>值相同就回傳 true。</li>
+<li>兩者為 0 就回傳 true。（不管正負）</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">NaN</span> === <span class="title class_">NaN</span>); <span class="comment">// false</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(+<span class="number">1</span> === -<span class="number">1</span>);   <span class="comment">// false</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="number">0</span> === -<span class="number">0</span>);    <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+
+<p>BigInt::equal ( x, y ) 規則：</p>
+<p><img src="https://imgur.com/PiEO17R.jpg"></p>
+<ul>
+<li>BigInt 值相同回傳 true，否則回傳 false。</li>
+</ul>
+<div class="note primary">
+            <p>根據 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Global_Objects/BigInt">MDN 文件</a>：「BigInt 是一個內建的物件，提供了表示大於 “2 的 53 次方” 整數的功能 (“2 的 53 次方” 是 JavaScript 原生的 Number 能夠表示的最大值)」</p>
+          </div>
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="number">1n</span> === <span class="number">1n</span>); <span class="comment">// true</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="number">1n</span> === <span class="number">2n</span>); <span class="comment">// false</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>Step3：會依照 SameValueNonNumeric 規則回傳結果。</p>
+</blockquote>
+<p><img src="https://imgur.com/qivniM1.jpg"></p>
+<p>SameValueNonNumeric ECMA Assert：</p>
+<ul>
+<li>兩者不是 <code>Number</code> 或 <code>BigInt</code> 型別。</li>
+<li>兩者值不相同。</li>
+</ul>
+<p>SameValueNonNumeric 規則：</p>
+<p><img src="https://imgur.com/L3oUg26.jpg"></p>
+<ul>
+<li>有 <code>undefined</code> 回傳 true。</li>
+<li>有 <code>null</code> 回傳 true。</li>
+<li><code>字串型別</code>時判斷字串是否相同，相同回傳 true 否則回傳 false。</li>
+<li><code>boolean</code>、<code>symbol</code> 和 <code>object</code> 型別都是比較值是否相同 。(但 object、symbols 還需要比較 reference 是否相同)<ul>
+<li>參考：<a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/61203925/how-does-the-array-prototype-includes-function-compare-objects">How does the Array.prototype.includes function compare objects</a></li>
+</ul>
+</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="literal">true</span> === <span class="literal">true</span>);           <span class="comment">// true</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">Symbol</span>(<span class="number">1</span>) === <span class="title class_">Symbol</span>(<span class="number">1</span>)); <span class="comment">// false</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(&#123;&#125; === &#123;&#125;);               <span class="comment">// false</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> obj = &#123;&#125;;</span><br><span class="line"><span class="keyword">const</span> sym = <span class="title class_">Symbol</span>();</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>([obj].<span class="title function_">includes</span>(obj));     <span class="comment">// true</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>([sym].<span class="title function_">includes</span>(sym));     <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="conclusion"><a href="#conclusion" class="headerlink" title="conclusion"></a>conclusion</h2><ul>
+<li><code>object</code>、<code>symbols</code> 還需要比較 reference，指向同一個 <code>references</code> 才會回傳 true。</li>
+<li><code>===</code> 不會做自動轉型。</li>
+<li><code>==</code>  除了物件外，會轉型為 number 在做比較。</li>
+<li>判斷是否為 <code>null</code> 、 <code>undefined</code> 可以使用 <code>==</code> 替代 <code>===</code> 。</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (x === <span class="literal">null</span> || x === <span class="literal">undefined</span>) &#123;</span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// == 特性等號左右兩邊為 null、undefined 會回傳 true</span></span><br><span class="line"><span class="keyword">if</span> (x == <span class="literal">null</span>) &#123;</span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>常見迷思</p>
+</blockquote>
+<div class="note success">
+            <p>&#x3D;&#x3D; 不會檢查型別，直接轉型。</p>
+          </div>
+
+<div class="note warning">
+            <p>&#x3D;&#x3D; 第一步不是直接轉型，而是先檢查型別，再依造規則做轉型。</p>
+          </div>
+
+<div class="note default">
+            <p>最後建議新手一律使用嚴謹的 &#x3D;&#x3D;&#x3D; 進行比較，避免因為自動轉型而產生非預期的結果，有經驗的就可以自由使用兩者囉。</p>
+          </div>
+
+<h2 id="references"><a href="#references" class="headerlink" title="references"></a>references</h2><p>白話文：<a target="_blank" rel="noopener" href="https://medium.com/schaoss-blog/%E5%89%8D%E7%AB%AF%E4%B8%89%E5%8D%81-13-js-%E7%82%BA%E4%BB%80%E9%BA%BC%E5%88%A4%E6%96%B7%E7%9B%B8%E7%AD%89%E6%99%82%E4%B8%8D%E7%94%A8%E8%83%BD%E9%9B%99%E7%AD%89%E8%99%9F-d02fbf91492f">前端三十｜13. [JS] 為什麼判斷相等時不能用雙等號？</a><br>簡單解析ES6文件：<a target="_blank" rel="noopener" href="https://stringpiggy.hpd.io/javascript-double-equals-triple-equals/#tldr">JavaScript 可愛筆記 #0 – 兩個等於真的有那麼壞嗎？</a><br>解析 ToPrimitive：<a target="_blank" rel="noopener" href="https://sinaad.github.io/xfe/2016/04/15/ToPrimitive/">js隐式装箱-ToPrimitive</a><br>stackoverflow 討論：<a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/359494/which-equals-operator-vs-should-be-used-in-javascript-comparisons">Which equals operator (&#x3D;&#x3D; vs &#x3D;&#x3D;&#x3D;) should be used in JavaScript comparisons?</a></p>
+
     </div>
 
     
@@ -404,6 +576,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#x3D-x3D"><span class="nav-text">&#x3D;&#x3D;</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#x3D-x3D-x3D"><span class="nav-text">&#x3D;&#x3D;&#x3D;</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#conclusion"><span class="nav-text">conclusion</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#references"><span class="nav-text">references</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
