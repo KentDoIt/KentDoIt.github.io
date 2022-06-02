@@ -486,7 +486,7 @@
 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
 
 <p>Step2：修改 <code>deploy</code> 參數</p>
-<figure class="highlight diff"><figcaption><span>_config.yml</span></figcaption><table><tr><td class="code"><pre><span class="line">deploy:</span><br><span class="line"><span class="deletion">-  type: </span></span><br><span class="line"><span class="addition">+  type: git # 模式</span></span><br><span class="line"><span class="addition">+  repo: https://github.com/KentDoIt/KentDoIt.github.io.git # 自己 GitHub repo 連結</span></span><br><span class="line"><span class="addition">+  branch: master # 分支</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight diff"><figcaption><span>_config.yml</span></figcaption><table><tr><td class="code"><pre><span class="line">deploy:</span><br><span class="line"><span class="deletion">-  type: </span></span><br><span class="line"><span class="addition">+  type: git # 模式</span></span><br><span class="line"><span class="addition">+  repo: h$$</span></span><br><span class="line"></span><br><span class="line">$$ttps://github.com/KentDoIt/KentDoIt.github.io.git # 自己 GitHub repo 連結</span><br><span class="line"><span class="addition">+  branch: master # 分支</span></span><br></pre></td></tr></table></figure>
 
 <p>Step3：部署指令</p>
 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">hexo d -g</span><br></pre></td></tr></table></figure>
@@ -808,6 +808,18 @@
 
 <h2 id="references"><a href="#references" class="headerlink" title="references"></a>references</h2><p><a href="https://ithelp.ithome.com.tw/articles/10282758">為了轉生而點技能-JavaScript，難題紀錄(二)隱式轉換規則及&#x3D;&#x3D;&#x3D;、&#x3D;&#x3D;</a><br><a href="https://eddychang.me/js-object-plus-object">JS中的 {} + {} 與 {} + [] 的結果是什麼？</a></p>
 ]]></content>
+      <categories>
+        <category>JavaScript</category>
+      </categories>
+      <tags>
+        <tag>運算子</tag>
+        <tag>JavaScript</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>JS 比較運算子的自動轉型</title>
+    <url>/javascript/2972146539/</url>
+    <content><![CDATA[]]></content>
       <categories>
         <category>JavaScript</category>
       </categories>
