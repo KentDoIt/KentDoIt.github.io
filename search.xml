@@ -836,10 +836,10 @@
           </div>
 
 <p>e.g. 基礎 equality</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;1&#x27;</span> == <span class="number">1</span>); <span class="comment">// true</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;1&#x27;</span> == <span class="number">1</span>); <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
 
 <div class="note default">
-            <p>下方會解析 ECMA-262 11th（ES2020）規範：<a href="https://www.notion.so/kentclark/JS-e93044a1a2574dcd82e66c6e1b100493#cce0892de58b416eb6a4b21e5dce4375">7.2.15 Abstract Equality Comparison</a> 是如何比較的以及轉型的過程。</p>
+            <p>下方會解析 ECMA-262 11th（ES2020）規範：<a href="https://262.ecma-international.org/11.0/#sec-abstract-equality-comparison">7.2.15 Abstract Equality Comparison</a> 是如何比較的以及轉型的過程。</p>
           </div>
 
 <blockquote>
@@ -997,6 +997,20 @@
       <tags>
         <tag>運算子</tag>
         <tag>JavaScript</tag>
+        <tag>ECMAScript</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>JS 邏輯運算子</title>
+    <url>/javascript/1047366401/</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>JavaScript</category>
+      </categories>
+      <tags>
+        <tag>運算子</tag>
+        <tag>JavaScript</tag>
+        <tag>ECMAScript</tag>
       </tags>
   </entry>
 </search>
