@@ -1111,7 +1111,7 @@ console.log(obj[0]); // num
 
 <details>
   <summary>Q2：ES6 函式縮寫是傳統函式還是箭頭函式？</summary>
-  <answer>A2：箭頭函式，因為有印出 `Arguments[] 類陣列。`</answer>
+  <answer>A2：箭頭函式，因為有印出 Arguments 類陣列。</answer>
 <pre><code>let obj = &#123;
   fn() &#123;
     console.log(arguments); // Arguments []
@@ -1124,7 +1124,7 @@ obj.fn();
 
 <details>
   <summary>Q3：ES6 可以動態設置屬性名稱嗎？</summary>
-  <answer>A3：可以，使用 `中括號[]`。</answer>
+  <answer>A3：可以，使用中括號[]。</answer>
 <pre><code>let objKey = 'name';
 let obj = &#123;
   [objKey]: 'kent'
