@@ -620,7 +620,7 @@ pre .javascript .function {
   background: #e7f4e9;
 }
 .post-body .label.warning {
-  background: #fcf6e1;
+  background: #f9e6e1;
 }
 .post-body .label.danger {
   background: #fae8eb;
@@ -856,22 +856,22 @@ pre .javascript .function {
   content: "\f058";
 }
 .post-body .note.warning {
-  background: #fcf4e3;
-  border-color: #fae4cd;
-  color: #8a6d3b;
+  background: #f4e3e3;
+  border-color: #ebcdd2;
+  color: #a94442;
 }
 .post-body .note.warning a:not(.btn),
 .post-body .note.warning span.exturl:not(.btn) {
-  border-bottom: 1px solid #8a6d3b;
-  color: #8a6d3b;
+  border-bottom: 1px solid #a94442;
+  color: #a94442;
 }
 .post-body .note.warning a:not(.btn):hover,
 .post-body .note.warning span.exturl:not(.btn):hover {
-  border-bottom: 1px solid #714f30;
-  color: #714f30;
+  border-bottom: 1px solid #8b3642;
+  color: #8b3642;
 }
 .post-body .note.warning:not(.no-icon)::before {
-  content: "\f06a";
+  content: "\f00d";
 }
 .post-body .note.danger {
   background: #f3f3e3;
@@ -1318,7 +1318,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #168a17;
+  background: #b04e77;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
@@ -2134,44 +2134,6 @@ pre .javascript .function {
   margin: 2em 0 0;
   padding: 0.5em 1em;
 }
-.followme {
-  align-items: center;
-  background: var(--card-bg-color);
-  border-left: 3px solid #ff2a2a;
-  color: #bbb;
-  margin: 2em 0 1em 0;
-  padding: 1em 1.5em;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-.followme .social-list {
-  align-items: center;
-  display: flex;
-  flex-wrap: wrap;
-}
-.followme .social-list .social-item {
-  margin: 0.5em 2em;
-}
-@media (max-width: 991px) {
-  .followme .social-list .social-item {
-    margin: 0.5em 0.75em;
-  }
-}
-.followme .social-list .social-link {
-  border: 0;
-  display: inline-block;
-  text-align: center;
-}
-.followme .social-list .social-link .icon {
-  font-size: 1.75em;
-  height: 1.75em;
-  width: 1.75em;
-}
-.followme .social-list .social-link .label {
-  display: block;
-  font-size: 14px;
-}
 .category-all-page .category-all-title {
   text-align: center;
 }
@@ -2827,4 +2789,7 @@ pre .deletion {
 }
 .footer-inner {
   display: none;
+}
+answer {
+  margin-left: 18px;
 }
