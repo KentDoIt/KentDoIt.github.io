@@ -1099,6 +1099,16 @@
             <p>最後用三個問題來結束這回合，大家可以試著回答看看。</p>
           </div>
 
+<details>
+  <summary>Q1：物件實字的屬性可以用數值嗎？</summary>
+  <answer>A1：可以</answer>
+<pre><code>let obj = &#123;
+  0: 'num'
+&#125;;
+console.log(obj[0]); // num
+</code></pre>
+</details>
+
 <h2 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h2><ul>
 <li>PJ大大：<a href="https://pjchender.blogspot.com/2017/01/es6-object-literal-extension.html">[筆記]JavaScript ES6 中的物件的擴展 object literal extension）</a></li>
 <li><a href="https://ithelp.ithome.com.tw/articles/10208316">你不可不知的 JavaScript 二三事#Day23：ES6 物件實字威力加強版 (Enhanced Object Literals)</a></li>
