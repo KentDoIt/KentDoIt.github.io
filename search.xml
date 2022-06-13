@@ -1109,6 +1109,29 @@ console.log(obj[0]); // num
 </code></pre>
 </details>
 
+<details>
+  <summary>Q2：ES6 函式縮寫是傳統函式還是箭頭函式？</summary>
+  <answer>A2：箭頭函式，因為有印出 `Arguments[] 類陣列。`</answer>
+<pre><code>let obj = &#123;
+  fn() &#123;
+    console.log(arguments); // Arguments []
+    return 'ES6';
+  &#125;
+&#125;;
+obj.fn();
+</code></pre>
+</details>
+
+<details>
+  <summary>Q3：ES6 可以動態設置屬性名稱嗎？</summary>
+  <answer>A3：可以，使用 `中括號[]`。</answer>
+<pre><code>let objKey = 'name';
+let obj = &#123;
+  [objKey]: 'kent'
+&#125;;
+console.log(obj.name);  // kent
+</code></pre>
+
 <h2 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h2><ul>
 <li>PJ大大：<a href="https://pjchender.blogspot.com/2017/01/es6-object-literal-extension.html">[筆記]JavaScript ES6 中的物件的擴展 object literal extension）</a></li>
 <li><a href="https://ithelp.ithome.com.tw/articles/10208316">你不可不知的 JavaScript 二三事#Day23：ES6 物件實字威力加強版 (Enhanced Object Literals)</a></li>
