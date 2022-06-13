@@ -44,10 +44,10 @@
     <link href="https://kentdoit.github.io/javascript/1047366401/"/>
     <id>https://kentdoit.github.io/javascript/1047366401/</id>
     <published>2022-06-03T06:35:27.000Z</published>
-    <updated>2022-06-09T12:56:56.369Z</updated>
+    <updated>2022-06-13T12:27:36.535Z</updated>
     
     
-    <summary type="html">此篇主要探討兩種比較運算子 ==、=== 的差異。</summary>
+    <summary type="html">此篇透過邏輯運算子切入學習 真值（truthy）、假值（falsy），以及和短路求值 的關係。</summary>
     
     
     
