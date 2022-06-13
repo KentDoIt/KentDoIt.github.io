@@ -1013,4 +1013,105 @@
         <tag>ECMAScript</tag>
       </tags>
   </entry>
+  <entry>
+    <title>JS 物件實字 | 物件字面值 | Object Literal</title>
+    <url>/javascript/2900651289/</url>
+    <content><![CDATA[<h2 id="Literal"><a href="#Literal" class="headerlink" title="Literal"></a>Literal</h2><blockquote>
+<p><a href="https://developer.mozilla.org/en-US/docs/Glossary/Literal">MDN</a> 定義：<strong>Literals</strong> represent values in JavaScript. These are fixed values—not variables—that you <em>literally</em> provide in your script.</p>
+</blockquote>
+<div class="note primary">
+            <p>Literals 在 JavaScript 代表固定的值（Fixed values）而不是變數的值。</p>
+          </div>
+
+<p>JS 提供六種 Literal 類型</p>
+<ul>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Grammar_and_types#array_literals">Array literals</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Grammar_and_types#boolean_literals">Boolean literals</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Grammar_and_types#floating-point_literals">Floating-point literals</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Grammar_and_types#numeric_literals">Numeric literals</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Grammar_and_types#object_literals">Object literals</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Grammar_and_types#regexp_literals">RegExp literals</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Grammar_and_types#string_literals">String literals</a></li>
+</ul>
+<div class="note default">
+            <p>下方只針對 <code>物件實字 Object Literal</code> 來做介紹以及範例。</p>
+          </div>
+
+<hr>
+<h2 id="物件實字（物件字面值）-Object-Literal"><a href="#物件實字（物件字面值）-Object-Literal" class="headerlink" title="物件實字（物件字面值） Object Literal"></a>物件實字（物件字面值） Object Literal</h2><div class="note default">
+            <p>使用 <code>大括號{}</code> 來建立物件的方式，就稱為 <code>物件實字 (Object Literals)</code>。</p>
+          </div>
+
+<p>物件用法 tips</p>
+<ul>
+<li>用大括號 {}。</li>
+<li>每一筆資料包含 key、value，在物件中 key 為<code>屬性 (Properties)</code> 、value 為 <code>對名值對 (name-value pairs)</code> 。</li>
+<li>多筆資料用逗號（comma）隔開。</li>
+<li>宣告完後，還是可以再增加 <code>屬性</code> 進去。</li>
+</ul>
+<p>e.g. 基礎物件</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> obj = &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&#x27;kent&#x27;</span>,</span><br><span class="line">  <span class="attr">age</span>: <span class="number">5</span>,</span><br><span class="line">  <span class="attr">born</span>: <span class="string">&#x27;2017-05-12&#x27;</span>,</span><br><span class="line">  <span class="attr">showInfo</span>: <span class="keyword">function</span> (<span class="params"></span>)&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">`<span class="subst">$&#123;<span class="variable language_">this</span>.name&#125;</span> 今年 <span class="subst">$&#123;<span class="variable language_">this</span>.age&#125;</span> 歲`</span>;</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<div class="note default">
+            <p>下方會介紹幾種 ES6 推出的新特性 Enhanced Object Literals，使物件實字寫起來更簡潔的寫法。 </p>
+          </div>
+
+<h2 id="物件屬性"><a href="#物件屬性" class="headerlink" title="物件屬性"></a>物件屬性</h2><div class="note default">
+            <p>當 <code>屬性名稱</code> 和 <code>value 變數名稱</code> 相同時，只需要在括號中設置變數名稱即可。</p>
+          </div>
+
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// ES5</span></span><br><span class="line"><span class="keyword">let</span> msg1 = &#123;</span><br><span class="line">  <span class="attr">text</span>: <span class="string">&#x27;我是誰&#x27;</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(msg1.<span class="property">text</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// ES6</span></span><br><span class="line"><span class="keyword">let</span> text = <span class="string">&#x27;我是誰&#x27;</span>;</span><br><span class="line"><span class="comment">// 變數名稱 text 會變為物件屬性名稱，變數的值會變成對應的值</span></span><br><span class="line"><span class="keyword">let</span> msg2 = &#123;  <span class="comment">// 縮寫前</span></span><br><span class="line">  <span class="attr">text</span>: text</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">let</span> msg2 = &#123; text &#125;; <span class="comment">// 縮寫後</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(msg2.<span class="property">text</span>);</span><br></pre></td></tr></table></figure>
+
+<h2 id="物件函示"><a href="#物件函示" class="headerlink" title="物件函示"></a>物件函示</h2><div class="note default">
+            <p>省略了 <code>冒號 :</code> 和 <code>function 關鍵字</code>。</p>
+          </div>
+
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// ES5</span></span><br><span class="line"><span class="keyword">let</span> obj1 = &#123;</span><br><span class="line">  <span class="attr">fn</span>: <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&#x27;ES5&#x27;</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(obj1.<span class="title function_">fn</span>());</span><br><span class="line"><span class="comment">// 箭頭函式寫法</span></span><br><span class="line"><span class="keyword">let</span> obj2 = &#123;</span><br><span class="line">  <span class="attr">fn</span>: <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">// 取得到 arguments 就是傳統函式，否則為箭頭函式的話會噴 ReferenceError</span></span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">arguments</span>); <span class="comment">// ReferenceError</span></span><br><span class="line">    <span class="keyword">return</span> <span class="string">&#x27;ES5&#x27;</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(obj2.<span class="title function_">fn</span>());</span><br><span class="line"></span><br><span class="line"><span class="comment">// ES6</span></span><br><span class="line"><span class="keyword">let</span> obj3 = &#123;</span><br><span class="line">  <span class="title function_">fn</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">arguments</span>); <span class="comment">// Arguments[]</span></span><br><span class="line">    <span class="keyword">return</span> <span class="string">&#x27;ES6&#x27;</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(obj3.<span class="title function_">fn</span>());</span><br></pre></td></tr></table></figure>
+
+<p><strong>注意事項</strong></p>
+<ul>
+<li>ES6 寫法是傳統函式。<ul>
+<li>ES6 使用簡寫的方式，函式屬於不具名，因此無法使用箭頭函式。</li>
+</ul>
+</li>
+<li>ES6 預設的屬性名稱會是字串的型態。<ul>
+<li>ex：<code>fn() &#123; /*...*/&#125;</code> 等同於 <code>&#39;fn&#39;() &#123; /*...*/&#125;</code>。</li>
+</ul>
+</li>
+</ul>
+<h2 id="具運算性的屬性名稱"><a href="#具運算性的屬性名稱" class="headerlink" title="具運算性的屬性名稱"></a>具運算性的屬性名稱</h2><div class="note default">
+            <p>ES6 中使用 <code>中括號[]</code> 將<code>表達式</code>作為屬性名稱，即可透過運算子來賦予屬性名稱。</p>
+          </div>
+
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> obj = &#123;</span><br><span class="line">  [<span class="string">&quot;na&quot;</span>+<span class="string">&quot;me&quot;</span>]: <span class="string">&#x27;kent&#x27;</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(obj.<span class="property">name</span>); <span class="comment">// kent</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="動態賦予屬性名稱"><a href="#動態賦予屬性名稱" class="headerlink" title="動態賦予屬性名稱"></a>動態賦予屬性名稱</h2><div class="note default">
+            <p>ES6 中使用 <code>中括號[]</code> 動態來賦予屬性名稱，打破 Literal <code>固定的值（Fixed values）</code> 特性。</p>
+          </div>
+
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> objKey = <span class="string">&#x27;name&#x27;</span>;</span><br><span class="line"><span class="keyword">let</span> obj = &#123;</span><br><span class="line">  [objKey]: <span class="string">&#x27;kent&#x27;</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(obj.<span class="property">name</span>);  <span class="comment">// kent</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="conclusion"><a href="#conclusion" class="headerlink" title="conclusion"></a>conclusion</h2><div class="note default">
+            <p>ES6 提升了物件實字語法的簡潔性和靈活性。</p>
+          </div>
+
+<div class="note info">
+            <p>最後用三個問題來結束這回合，大家可以試著回答看看。</p>
+          </div>
+
+<h2 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h2><ul>
+<li>PJ大大：<a href="https://pjchender.blogspot.com/2017/01/es6-object-literal-extension.html">[筆記]JavaScript ES6 中的物件的擴展 object literal extension）</a></li>
+<li><a href="https://ithelp.ithome.com.tw/articles/10208316">你不可不知的 JavaScript 二三事#Day23：ES6 物件實字威力加強版 (Enhanced Object Literals)</a></li>
+<li><a href="https://chupai.github.io/posts/200515_js_object_literal_extension/">物件字面值擴充功能</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>JavaScript</category>
+      </categories>
+      <tags>
+        <tag>JavaScript</tag>
+        <tag>物件</tag>
+        <tag>ES6</tag>
+      </tags>
+  </entry>
 </search>
