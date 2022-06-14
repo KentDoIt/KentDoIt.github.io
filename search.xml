@@ -1042,7 +1042,9 @@
             <p>使用 <code>大括號{}</code> 來建立物件的方式，就稱為 <code>物件實字 (Object Literals)</code>。</p>
           </div>
 
+<blockquote>
 <p>物件用法 tips</p>
+</blockquote>
 <ul>
 <li>用大括號 {}。</li>
 <li>每一筆資料包含 key、value，在物件中 key 為<code>屬性 (Properties)</code> 、value 為 <code>對名值對 (name-value pairs)</code> 。</li>
@@ -1066,14 +1068,13 @@
             <p>省略了 <code>冒號 :</code> 和 <code>function 關鍵字</code>。</p>
           </div>
 
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// ES5</span></span><br><span class="line"><span class="keyword">let</span> obj1 = &#123;</span><br><span class="line">  <span class="attr">fn</span>: <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&#x27;ES5&#x27;</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(obj1.<span class="title function_">fn</span>());</span><br><span class="line"><span class="comment">// 箭頭函式寫法</span></span><br><span class="line"><span class="keyword">let</span> obj2 = &#123;</span><br><span class="line">  <span class="attr">fn</span>: <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">// 取得到 arguments 就是傳統函式，否則為箭頭函式的話會噴 ReferenceError</span></span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">arguments</span>); <span class="comment">// ReferenceError</span></span><br><span class="line">    <span class="keyword">return</span> <span class="string">&#x27;ES5&#x27;</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(obj2.<span class="title function_">fn</span>());</span><br><span class="line"></span><br><span class="line"><span class="comment">// ES6</span></span><br><span class="line"><span class="keyword">let</span> obj3 = &#123;</span><br><span class="line">  <span class="title function_">fn</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">arguments</span>); <span class="comment">// Arguments[]</span></span><br><span class="line">    <span class="keyword">return</span> <span class="string">&#x27;ES6&#x27;</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(obj3.<span class="title function_">fn</span>());</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// ES5</span></span><br><span class="line"><span class="keyword">let</span> obj1 = &#123;</span><br><span class="line">  <span class="attr">fn</span>: <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&#x27;ES5&#x27;</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(obj1.<span class="title function_">fn</span>());</span><br><span class="line"><span class="comment">// 箭頭函式寫法</span></span><br><span class="line"><span class="keyword">let</span> obj2 = &#123;</span><br><span class="line">  <span class="attr">fn</span>: <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">// 取得到 arguments 就是傳統函式，否則為箭頭函式的話會噴 ReferenceError</span></span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">arguments</span>); <span class="comment">// ReferenceError</span></span><br><span class="line">    <span class="keyword">return</span> <span class="string">&#x27;ES5&#x27;</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(obj2.<span class="title function_">fn</span>());</span><br><span class="line"></span><br><span class="line"><span class="comment">// ES6</span></span><br><span class="line"><span class="keyword">let</span> obj3 = &#123;</span><br><span class="line">  <span class="title function_">fn</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">arguments</span>); <span class="comment">// Arguments [&#x27;arg&#x27;, callee: ƒ, Symbol(Symbol.iterator): ƒ]</span></span><br><span class="line">    <span class="keyword">return</span> <span class="string">&#x27;ES6&#x27;</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(obj3.<span class="title function_">fn</span>(<span class="string">&#x27;arg&#x27;</span>));</span><br></pre></td></tr></table></figure>
 
-<p><strong>注意事項</strong></p>
+<blockquote>
+<p>注意事項</p>
+</blockquote>
 <ul>
-<li>ES6 寫法是傳統函式。<ul>
 <li>ES6 使用簡寫的方式，函式屬於不具名，因此無法使用箭頭函式。</li>
-</ul>
-</li>
 <li>ES6 預設的屬性名稱會是字串的型態。<ul>
 <li>ex：<code>fn() &#123; /*...*/&#125;</code> 等同於 <code>&#39;fn&#39;() &#123; /*...*/&#125;</code>。</li>
 </ul>
@@ -1095,7 +1096,7 @@
             <p>ES6 提升了物件實字語法的簡潔性和靈活性。</p>
           </div>
 
-<div class="note info">
+<h2 id="quiz"><a href="#quiz" class="headerlink" title="quiz"></a>quiz</h2><div class="note info">
             <p>最後用三個問題來結束這回合，大家可以試著回答看看。</p>
           </div>
 
