@@ -1003,7 +1003,77 @@
   <entry>
     <title>JS 邏輯運算子</title>
     <url>/javascript/1047366401/</url>
-    <content><![CDATA[]]></content>
+    <content><![CDATA[<h2 id="邏輯運算子-Logical-Operators"><a href="#邏輯運算子-Logical-Operators" class="headerlink" title="邏輯運算子 (Logical Operators)"></a>邏輯運算子 (Logical Operators)</h2><p><img src="https://imgur.com/1ynLfOn.jpg" alt="三種常見邏輯運算子介紹"></p>
+<div class="note default">
+            <p>最常見用途為 <code>if 判斷式</code>並搭配 <code>比較運算子</code> 一起使用，透過 <code>邏輯運算子</code> 回傳運算結果為 true 或 false。</p>
+          </div>
+
+<h3 id="邏輯運算子-OR"><a href="#邏輯運算子-OR" class="headerlink" title="|| 邏輯運算子 OR"></a>|| 邏輯運算子 OR</h3><div class="note primary">
+            <p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Logical_OR">Logical OR</a>：其中一側為 true 就會回傳 true，兩個皆為 false 才會回傳 false。</p>
+          </div>
+
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> (<span class="number">3</span> === <span class="number">3</span> || <span class="number">1</span> == <span class="string">&#x27;2&#x27;</span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;true&#x27;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="amp-amp-邏輯運算子-AND"><a href="#amp-amp-邏輯運算子-AND" class="headerlink" title="&amp;&amp; 邏輯運算子 AND"></a>&amp;&amp; 邏輯運算子 AND</h3><div class="note primary">
+            <p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Logical_AND">Logical AND</a>：其中一側為 false 就會回傳 false，兩個皆為 true 才會回傳 true。</p>
+          </div>
+
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> (<span class="number">3</span> === <span class="number">3</span> &amp;&amp; <span class="number">2</span> == <span class="string">&#x27;2&#x27;</span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;true&#x27;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="邏輯運算子-NOT"><a href="#邏輯運算子-NOT" class="headerlink" title="! 邏輯運算子 NOT"></a>! 邏輯運算子 NOT</h3><div class="note primary">
+            <p><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Logical_NOT">Logical NOT</a>：將布林值反向。</p>
+          </div>
+
+<div class="note default">
+            <p>將非布林變數自動轉型為布林值的特性，衍伸出另一種用法 <code>!! 將型別轉型為布林</code> 達到和 <code>Boolean(變數)</code> 相同效果。</p>
+          </div>
+
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(!<span class="literal">true</span>); <span class="comment">// false</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(!!<span class="string">&#x27;&#x27;</span>);  <span class="comment">// false</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(!!<span class="string">&#x27;a&#x27;</span>); <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="https://imgur.com/tqCYUbe.jpg" alt="型別轉換過程解析"></p>
+<blockquote>
+<p>邏輯運算子 tips</p>
+</blockquote>
+<ol>
+<li>JS 中邏輯運算子僅支援符號寫法，不支援英文寫法。<br><img src="https://imgur.com/fnGTg2x.jpg"></li>
+<li>依照權重高低，有優先順序。（<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Operator_Precedence#table">運算子優先順序 operator precedence</a>）<br><img src="https://imgur.com/VF2aXkz.jpg"></li>
+</ol>
+<hr>
+<h2 id="真值（truthy）、假值（falsy）"><a href="#真值（truthy）、假值（falsy）" class="headerlink" title="真值（truthy）、假值（falsy）"></a><a href="https://developer.mozilla.org/zh-CN/docs/Glossary/Truthy">真值（truthy）</a>、<a href="https://developer.mozilla.org/zh-CN/docs/Glossary/Falsy">假值（falsy）</a></h2><div class="note default">
+            <p>JS 將轉換為布林型別後為 true 的值稱為 <code>真值（truthy)</code>，false 的值稱為 <code>假值 (falsy)</code>。</p>
+          </div>
+
+<blockquote>
+<p>類型定義</p>
+</blockquote>
+<ul>
+<li>假值：<ul>
+<li><code>false</code></li>
+<li><code>null</code></li>
+<li><code>NaN</code></li>
+<li><code>0、-0</code></li>
+<li><code>空字串 (&quot;&quot; 或 &#39;&#39; 或 ``)</code></li>
+<li><code>undefined</code></li>
+</ul>
+</li>
+<li>真值：<ul>
+<li>除了上述<code>假值</code>類型以外的值都是<code>真值</code>。</li>
+</ul>
+</li>
+</ul>
+<p>常見用法：判斷是否有值</p>
+<div class="note default">
+            <p>在函數前方做資料判斷是否為空的防呆機制，判斷是否為我們預期的資料型別，不是的話 retuen 回去讓程式不再往下執行。</p>
+          </div>
+
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">isAdult</span>(<span class="params">age</span>) &#123; </span><br><span class="line">  <span class="comment">// 判斷是否為假值</span></span><br><span class="line">  <span class="keyword">if</span> (!age) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&#x27;資料錯誤&#x27;</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> age &gt;= <span class="number">18</span> ? <span class="string">&#x27;已成年&#x27;</span> : <span class="string">&#x27;未成年&#x27;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title function_">isAdult</span>(<span class="literal">null</span>); <span class="comment">// 資料錯誤</span></span><br><span class="line"><span class="title function_">isAdult</span>(<span class="number">18</span>);   <span class="comment">// 已成年</span></span><br><span class="line"><span class="title function_">isAdult</span>(<span class="number">17</span>);   <span class="comment">// 未成年</span></span><br></pre></td></tr></table></figure>
+
+<div class="note default">
+            <p>運算子並非只能回傳 true、false，在 javascript 中邏輯運算子也能回傳<code>非布林</code>的值。（有興趣可以參考這篇短路求值介紹，其中有示範操作非布林的值的方法）</p>
+          </div>
+
+<p>真值表：依照嚴格程度排序不同的比較子（紅色最嚴格、灰色最寬鬆）<br><img src="https://imgur.com/Og8Y5JH.jpg" alt="src: https://thomas-yang.me/projects/oh-my-dear-js/"></p>
+]]></content>
       <categories>
         <category>JavaScript</category>
       </categories>
