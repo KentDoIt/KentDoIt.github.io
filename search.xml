@@ -1342,7 +1342,7 @@ console.log(obj.name);  // kent
 <h2 id="conclusion"><a href="#conclusion" class="headerlink" title="conclusion"></a>conclusion</h2><p>箭頭函式 tips</p>
 <ul>
 <li>傳統函式縮寫且只有一個參數才不用加<code>括號 ()</code>。</li>
-<li>特殊情況會造成 this 指向改變。</li>
+<li>特殊情況會造成 this 指向<code>改變</code>。</li>
 <li>沒有 arguments 參數。</li>
 <li>沒有 constructor、prototype。</li>
 <li>沒有 Array 無法使用陣列方法。</li>
