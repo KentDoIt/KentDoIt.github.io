@@ -1218,4 +1218,19 @@ console.log(obj.name);  // kent
         <tag>ES6</tag>
       </tags>
   </entry>
+  <entry>
+    <title>JS 箭頭函式 arrow function</title>
+    <url>/javascript/2638792469/</url>
+    <content><![CDATA[<div class="note default">
+            <p><a href="https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Functions/Arrow_functions">箭頭函式</a>是 ES6 新的語法糖，白話文來說，箭頭函式是傳統函式的縮寫，但有一些特性和邏輯不盡相同尤其是 this 的部分。</p>
+          </div>
+]]></content>
+      <categories>
+        <category>JavaScript</category>
+      </categories>
+      <tags>
+        <tag>JavaScript</tag>
+        <tag>箭頭函式</tag>
+      </tags>
+  </entry>
 </search>
