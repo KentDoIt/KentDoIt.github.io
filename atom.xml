@@ -6,7 +6,7 @@
   <link href="https://kentdoit.github.io/atom.xml" rel="self"/>
   
   <link href="https://kentdoit.github.io/"/>
-  <updated>2022-06-17T03:05:57.389Z</updated>
+  <updated>2022-06-17T04:51:50.452Z</updated>
   <id>https://kentdoit.github.io/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://kentdoit.github.io/javascript/2638792469/"/>
     <id>https://kentdoit.github.io/javascript/2638792469/</id>
     <published>2022-06-17T03:02:37.000Z</published>
-    <updated>2022-06-17T03:05:57.389Z</updated>
+    <updated>2022-06-17T04:51:50.452Z</updated>
     
     
     <summary type="html">此篇會用範例來了解什麼是箭頭函式以及特性。</summary>
@@ -34,6 +34,10 @@
     <category term="JavaScript" scheme="https://kentdoit.github.io/tags/JavaScript/"/>
     
     <category term="箭頭函式" scheme="https://kentdoit.github.io/tags/%E7%AE%AD%E9%A0%AD%E5%87%BD%E5%BC%8F/"/>
+    
+    <category term="this" scheme="https://kentdoit.github.io/tags/this/"/>
+    
+    <category term="arguments" scheme="https://kentdoit.github.io/tags/arguments/"/>
     
   </entry>
   

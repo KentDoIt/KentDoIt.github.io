@@ -47,12 +47,18 @@
 <meta property="og:site_name" content="KentDoIt">
 <meta property="og:description" content="此篇會用範例來了解什麼是箭頭函式以及特性。">
 <meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="https://imgur.com/okxB6Sa.jpg">
+<meta property="og:image" content="https://imgur.com/hdFhyyI.jpg">
+<meta property="og:image" content="https://imgur.com/wzpfSYj.jpg">
 <meta property="article:published_time" content="2022-06-17T03:02:37.000Z">
-<meta property="article:modified_time" content="2022-06-17T03:05:57.389Z">
+<meta property="article:modified_time" content="2022-06-17T04:51:50.452Z">
 <meta property="article:author" content="Kent">
 <meta property="article:tag" content="JavaScript">
 <meta property="article:tag" content="箭頭函式">
+<meta property="article:tag" content="this">
+<meta property="article:tag" content="arguments">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://imgur.com/okxB6Sa.jpg">
 
 <link rel="canonical" href="https://kentdoit.github.io/javascript/2638792469/">
 
@@ -269,7 +275,7 @@
               <!--<span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>-->
-              <span>1 分鐘閱讀時間</span>
+              <span>6 分鐘閱讀時間</span>
             </span>
             <span class="post-meta-item">
               <!--<span class="post-meta-item-icon">
@@ -297,8 +303,97 @@
         </blockquote>
       
         <div class="note default">
-            <p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Functions/Arrow_functions">箭頭函式</a>是 ES6 新的語法糖，白話文來說，箭頭函式是傳統函式的縮寫，但有一些特性和邏輯不盡相同尤其是 this 的部分。</p>
+            <p>箭頭函式是 ES6 新的語法糖，白話文來說，箭頭函式是傳統函式的<code>縮寫</code>，但有一些特性和邏輯不盡相同尤其是 this 的部分。</p>
           </div>
+
+<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Functions/Arrow_functions">語法</a></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">([param] [, param]) =&gt; &#123;</span><br><span class="line">  statements</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">param =&gt; expression</span><br></pre></td></tr></table></figure>
+
+<h2 id="縮寫特性"><a href="#縮寫特性" class="headerlink" title="縮寫特性"></a>縮寫特性</h2><blockquote>
+<p>用一張圖來看箭頭函式這個語法糖究竟簡化了些什麼？</p>
+</blockquote>
+<div class="note default">
+            <p>將 function 簡化為<code>箭頭 =&gt;</code>。</p>
+          </div>
+
+<p><img src="https://imgur.com/okxB6Sa.jpg"></p>
+<h3 id="單行型式縮寫"><a href="#單行型式縮寫" class="headerlink" title="單行型式縮寫"></a>單行型式縮寫</h3><blockquote>
+<p>規則</p>
+</blockquote>
+<ol>
+<li>大括號括號可省略。</li>
+<li>參數只有一個時，可以把參數的小括號省略。（沒有參數、兩個參數以上時不可省略小括號）</li>
+<li>若需要回傳值則可省略 return。</li>
+</ol>
+<p><img src="https://imgur.com/hdFhyyI.jpg"></p>
+<h3 id="縮寫-tips"><a href="#縮寫-tips" class="headerlink" title="縮寫 tips"></a>縮寫 tips</h3><div class="note default">
+            <p>下方會用範例來演示撰寫箭頭函式時需要注意的 tips。</p>
+          </div>
+
+<ul>
+<li>只有一個參數才不用加 <code>括號()</code>，否則會噴錯。</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 錯誤</span></span><br><span class="line"><span class="keyword">const</span> arrowFn = =&gt; <span class="string">&#x27;箭頭函式&#x27;</span>; <span class="comment">// SyntaxError: Unexpected token &#x27;=&gt;&#x27;</span></span><br><span class="line"><span class="keyword">const</span> arrowFn = item, <span class="function"><span class="params">index</span> =&gt;</span> <span class="string">&#x27;箭頭函式&#x27;</span>; <span class="comment">// SyntaxError: Unexpected token &#x27;=&gt;&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 正確</span></span><br><span class="line"><span class="keyword">const</span> <span class="title function_">arrowFn</span> = (<span class="params"></span>) =&gt; <span class="string">&#x27;箭頭函式&#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>參數、return 值有包含 <code>大括號 &#123;&#125;</code> 物件，則需要在外圍加上<code>小括號()</code> 將其包裹起來。</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 錯誤</span></span><br><span class="line"><span class="keyword">const</span> arrowFn = &#123;name, sex&#125; =&gt; name;                 <span class="comment">// SyntaxError: Malformed arrow function parameter list</span></span><br><span class="line"><span class="keyword">const</span> <span class="title function_">arrowFn2</span> = (<span class="params"></span>) =&gt; &#123;<span class="attr">name</span>: <span class="string">&#x27;kent&#x27;</span>, <span class="attr">sex</span>: <span class="string">&#x27;male&#x27;</span>&#125;;  <span class="comment">// SyntaxError: Unexpected token &#x27;:&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 正確</span></span><br><span class="line"><span class="keyword">const</span> <span class="title function_">arrowFn</span> = (<span class="params">&#123;name, sex&#125;</span>) =&gt; name;</span><br><span class="line"><span class="keyword">const</span> <span class="title function_">arrowFn2</span> = (<span class="params"></span>) =&gt; (&#123;<span class="attr">name</span>: <span class="string">&#x27;kent&#x27;</span>, <span class="attr">sex</span>: <span class="string">&#x27;male&#x27;</span>&#125;);</span><br></pre></td></tr></table></figure>
+
+<h2 id="this"><a href="#this" class="headerlink" title="this"></a>this</h2><div class="note primary">
+            <p>箭頭函數中的 this 在<code>定義</code>時就綁定了不會更改，會將其綁定在定義的<code>執行環境</code>，另一種說法是會指向上一層的 this。</p>
+          </div>
+
+<figure class="highlight js"><figcaption><span>e.g. this 指向</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 傳統函式</span></span><br><span class="line"><span class="keyword">const</span> obj = &#123;</span><br><span class="line">  <span class="attr">fn</span>: <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="variable language_">this</span>;</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 箭頭函式</span></span><br><span class="line"><span class="keyword">const</span> obj1 = &#123;</span><br><span class="line">  <span class="attr">arrowFn</span>: <span class="function">() =&gt;</span> <span class="variable language_">this</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(obj.<span class="title function_">fn</span>());         <span class="comment">// obj 物件</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(obj1.<span class="title function_">arrowFn</span>());   <span class="comment">// window 物件</span></span><br></pre></td></tr></table></figure>
+
+<div class="note danger">
+            <p>但有幾種特例情況會造成箭頭函式的 this 指向改變，而傳統函式的 this 物件指向是可變的，會隨著其呼叫的物件而有所改變。</p>
+          </div>
+
+<div class="note default">
+            <p>下方範例會掩飾在不同的情況下，箭頭函式以及傳統函式兩者 this 指向的結果。（不會對 this 做詳細的介紹）</p>
+          </div>
+
+<h3 id="嚴格模式-simple-call"><a href="#嚴格模式-simple-call" class="headerlink" title="嚴格模式 simple call"></a>嚴格模式 simple call</h3><ul>
+<li>傳統函式：指向 window，當函式 <code>沒有</code> 指定<code>呼叫物件</code>時，默認就會綁定在 <code>全域物件 window</code>。</li>
+<li>箭頭函式：指向 undefined，因為不允許默認綁定。</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title function_">fn</span> = (<span class="params"></span>) =&gt; &#123; </span><br><span class="line">  <span class="string">&#x27;use strict&#x27;</span>;</span><br><span class="line">  <span class="keyword">return</span> <span class="variable language_">this</span>; </span><br><span class="line">&#125;;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">fn</span>()); <span class="comment">//window物件</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> arrowFn = <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="string">&#x27;use strict&#x27;</span>; </span><br><span class="line">  <span class="keyword">const</span> <span class="title function_">arrowFn2</span> = (<span class="params"></span>) =&gt; <span class="variable language_">this</span>;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">arrowFn2</span>()); <span class="comment">//undefined </span></span><br><span class="line">  <span class="keyword">return</span> <span class="variable language_">this</span>; </span><br><span class="line">&#125;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">arrowFn</span>()); <span class="comment">//undefined </span></span><br></pre></td></tr></table></figure>
+
+<h3 id="物件實字（object-literal）方法"><a href="#物件實字（object-literal）方法" class="headerlink" title="物件實字（object literal）方法"></a>物件實字（object literal）方法</h3><ul>
+<li>傳統函式：指向 obj 物件，因此印出傳統函式。</li>
+<li>箭頭函式：指向上一層 window 物件，由於物件特性沒有定義 type 會回傳 undefined。</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 傳統函式</span></span><br><span class="line"><span class="keyword">const</span> obj = &#123;</span><br><span class="line">  <span class="attr">type</span>: <span class="string">&#x27;傳統函式&#x27;</span>,</span><br><span class="line">  <span class="attr">fn</span>: <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>.<span class="property">type</span>);  <span class="comment">// 傳統函式</span></span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 箭頭函式</span></span><br><span class="line"><span class="keyword">const</span> obj1 = &#123;</span><br><span class="line">  <span class="attr">type</span>: <span class="string">&#x27;箭頭函式&#x27;</span>,</span><br><span class="line">  <span class="attr">arrowFn</span>: <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>.<span class="property">type</span>);  <span class="comment">// undefined</span></span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">obj.<span class="title function_">fn</span>();         </span><br><span class="line">obj1.<span class="title function_">arrowFn</span>();</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://imgur.com/wzpfSYj.jpg"></p>
+<h3 id="call、apply、bind-方法"><a href="#call、apply、bind-方法" class="headerlink" title="call、apply、bind 方法"></a>call、apply、bind 方法</h3><div class="note default">
+            <p>這三種方法會透過傳入物件，並將函式 this 指向其物件。</p>
+          </div>
+
+<ul>
+<li>傳統函式：指向 obj 物件，因此印出傳統函式。</li>
+<li>箭頭函式：指向 window 物件，由於箭頭函式特性（this 在 <code>定義</code> 時就綁定了不會更改）使其無法重新改變 this 指向。</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> obj = &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&#x27;Kent&#x27;</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> fn = <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>);  <span class="comment">// obj 物件</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> <span class="title function_">fnArrow</span> = (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>);  <span class="comment">// window 物件</span></span><br><span class="line">&#125;</span><br><span class="line">fnArrow.<span class="title function_">call</span>(obj); </span><br><span class="line">fn.<span class="title function_">call</span>(obj);</span><br></pre></td></tr></table></figure>
+
+<h3 id="Prototype-物件原型"><a href="#Prototype-物件原型" class="headerlink" title="Prototype 物件原型"></a>Prototype 物件原型</h3><ul>
+<li>傳統函式：回傳 5，指向 Member 物件。</li>
+<li>箭頭函式：回傳 undefined，指向上一層 window 物件。</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> type = <span class="string">&quot;window&quot;</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="title class_">Member</span> = <span class="keyword">function</span>(<span class="params">name, age</span>) &#123;</span><br><span class="line">  <span class="variable language_">this</span>.<span class="property">name</span> = name;</span><br><span class="line">  <span class="variable language_">this</span>.<span class="property">age</span> = age;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="title class_">Member</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">getAge</span> = <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>.<span class="property">age</span> ,<span class="variable language_">this</span>); <span class="comment">// 5, Member 物件</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="title class_">Member</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">getAgeArrow</span> = <span class="function">() =&gt;</span> <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>.<span class="property">age</span> ,<span class="variable language_">this</span>); <span class="comment">// undefined, window 物件</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> customer = <span class="keyword">new</span> <span class="title class_">Member</span>(<span class="string">&#x27;Kent&#x27;</span>, <span class="number">5</span>);</span><br><span class="line">customer.<span class="title function_">getAge</span>();</span><br><span class="line">customer.<span class="title function_">getAgeArrow</span>();</span><br></pre></td></tr></table></figure>
+
+<h3 id="DOM-監聽函式"><a href="#DOM-監聽函式" class="headerlink" title="DOM 監聽函式"></a>DOM 監聽函式</h3><div class="note default">
+            <p>DOM 擁有自己的 this，當事件觸發時會將 this 指向觸發事件的元素本身。</p>
+          </div>
+
+<ul>
+<li>傳統函式：函式被執行時指向元素本身。</li>
+<li>箭頭函式：函式被執行時指向 window 物件。</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> btn = <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;button&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> obj = &#123;</span><br><span class="line">  <span class="attr">type</span>: <span class="string">&#x27;傳統函式&#x27;</span>,</span><br><span class="line">  <span class="attr">fn</span>: <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>, <span class="variable language_">this</span>.<span class="property">type</span>); <span class="comment">// DOM element, &#x27;button&#x27;</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">btn.<span class="title function_">addEventListener</span>(<span class="string">&#x27;click&#x27;</span>, obj.<span class="property">fn</span>);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> obj1 = &#123;</span><br><span class="line">  <span class="attr">type</span>: <span class="string">&#x27;箭頭函式&#x27;</span>,</span><br><span class="line">  <span class="attr">fnArrow</span>: <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>, <span class="variable language_">this</span>.<span class="property">type</span>); <span class="comment">// // window 物件, undefined</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">btn.<span class="title function_">addEventListener</span>(<span class="string">&#x27;click&#x27;</span>, obj1.<span class="property">fnArrow</span>);</span><br></pre></td></tr></table></figure>
+
+<h2 id="arguments-參數"><a href="#arguments-參數" class="headerlink" title="arguments 參數"></a>arguments 參數</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">``</span><span class="string">`</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">`</span><span class="string">``</span>js</span><br></pre></td></tr></table></figure>
 
     </div>
 
@@ -329,6 +424,8 @@
           <div class="post-tags">
               <a href="/tags/JavaScript/" rel="tag"><i class="fas fa-hashtag"></i> JavaScript</a>
               <a href="/tags/%E7%AE%AD%E9%A0%AD%E5%87%BD%E5%BC%8F/" rel="tag"><i class="fas fa-hashtag"></i> 箭頭函式</a>
+              <a href="/tags/this/" rel="tag"><i class="fas fa-hashtag"></i> this</a>
+              <a href="/tags/arguments/" rel="tag"><i class="fas fa-hashtag"></i> arguments</a>
           </div>
 
         
@@ -407,6 +504,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B8%AE%E5%AF%AB%E7%89%B9%E6%80%A7"><span class="nav-text">縮寫特性</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%96%AE%E8%A1%8C%E5%9E%8B%E5%BC%8F%E7%B8%AE%E5%AF%AB"><span class="nav-text">單行型式縮寫</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%B8%AE%E5%AF%AB-tips"><span class="nav-text">縮寫 tips</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#this"><span class="nav-text">this</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9A%B4%E6%A0%BC%E6%A8%A1%E5%BC%8F-simple-call"><span class="nav-text">嚴格模式 simple call</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%89%A9%E4%BB%B6%E5%AF%A6%E5%AD%97%EF%BC%88object-literal%EF%BC%89%E6%96%B9%E6%B3%95"><span class="nav-text">物件實字（object literal）方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#call%E3%80%81apply%E3%80%81bind-%E6%96%B9%E6%B3%95"><span class="nav-text">call、apply、bind 方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Prototype-%E7%89%A9%E4%BB%B6%E5%8E%9F%E5%9E%8B"><span class="nav-text">Prototype 物件原型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DOM-%E7%9B%A3%E8%81%BD%E5%87%BD%E5%BC%8F"><span class="nav-text">DOM 監聽函式</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#arguments-%E5%8F%83%E6%95%B8"><span class="nav-text">arguments 參數</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -435,7 +533,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-count">11</span>
         <span class="site-state-item-name">標籤</span></a>
       </div>
   </nav>
