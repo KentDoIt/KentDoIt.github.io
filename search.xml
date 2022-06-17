@@ -1312,7 +1312,45 @@ console.log(obj.name);  // kent
 </ul>
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> btn = <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;button&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> obj = &#123;</span><br><span class="line">  <span class="attr">type</span>: <span class="string">&#x27;傳統函式&#x27;</span>,</span><br><span class="line">  <span class="attr">fn</span>: <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>, <span class="variable language_">this</span>.<span class="property">type</span>); <span class="comment">// DOM element, &#x27;button&#x27;</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">btn.<span class="title function_">addEventListener</span>(<span class="string">&#x27;click&#x27;</span>, obj.<span class="property">fn</span>);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> obj1 = &#123;</span><br><span class="line">  <span class="attr">type</span>: <span class="string">&#x27;箭頭函式&#x27;</span>,</span><br><span class="line">  <span class="attr">fnArrow</span>: <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>, <span class="variable language_">this</span>.<span class="property">type</span>); <span class="comment">// // window 物件, undefined</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">btn.<span class="title function_">addEventListener</span>(<span class="string">&#x27;click&#x27;</span>, obj1.<span class="property">fnArrow</span>);</span><br></pre></td></tr></table></figure>
 
-<h2 id="arguments-參數"><a href="#arguments-參數" class="headerlink" title="arguments 參數"></a>arguments 參數</h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="string">``</span><span class="string">`</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">`</span><span class="string">``</span>js</span><br></pre></td></tr></table></figure>
+<h2 id="arguments-參數"><a href="#arguments-參數" class="headerlink" title="arguments 參數"></a>arguments 參數</h2><div class="note danger">
+            <p>箭頭函式沒有 arguments 參數使用的話會噴 Error。</p>
+          </div>
+
+<div class="note default">
+            <p>解法：使用其餘參數（rest parameter）來替代，（arguments 是類陣列，其餘參數是陣列）</p>
+          </div>
+
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> fn = <span class="keyword">function</span> (<span class="params">parm</span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">arguments</span>);</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">const</span> <span class="title function_">arrowFn</span> = (<span class="params">parm</span>) =&gt; &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">arguments</span>);</span><br><span class="line">&#125;;</span><br><span class="line"><span class="title function_">fn</span>(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>);      <span class="comment">// Arguments(3)</span></span><br><span class="line"><span class="title function_">arrowFn</span>(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>); <span class="comment">// ReferenceError: arguments is not defined</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 其餘參數（rest parameter）</span></span><br><span class="line"><span class="keyword">const</span> <span class="title function_">arrowRestFn</span> = (<span class="params">...parm</span>) =&gt; &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(parm);</span><br><span class="line">&#125;;</span><br><span class="line"><span class="title function_">arrowRestFn</span>(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>); <span class="comment">// [1, 2, 3]</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="constructor、prototype"><a href="#constructor、prototype" class="headerlink" title="constructor、prototype"></a>constructor、prototype</h2><ul>
+<li>沒有原型（prototype）屬性，使用會回傳 undefined。</li>
+<li>若使用於建構式（constructor），會在使用 new 時候噴 error。</li>
+</ul>
+<div class="note default">
+            <p>在實體化物件的時候會改變 this 的指向，指向新的實體物件，但由於箭頭函式無法指向新的實體物件所以會噴錯。</p>
+          </div>
+
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> fn = <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>);</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">const</span> <span class="title function_">arrowFn</span> = (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>);</span><br><span class="line">&#125;;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(fn.<span class="property"><span class="keyword">prototype</span></span>);      <span class="comment">// &#123;constructor: ƒ&#125;</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(arrowFn.<span class="property"><span class="keyword">prototype</span></span>); <span class="comment">// undefined</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">new</span> <span class="title function_">fn</span>();</span><br><span class="line"><span class="keyword">new</span> <span class="title function_">arrowFn</span>(); <span class="comment">// TypeError: arrowFn is not a constructor</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="Array-prototype、陣列方法"><a href="#Array-prototype、陣列方法" class="headerlink" title="Array.prototype、陣列方法"></a>Array.prototype、陣列方法</h2><p><img src="https://imgur.com/oQML1lh.jpg" alt="正常傳統函式中的 Array 屬性"></p>
+<div class="note default">
+            <p>箭頭函式由於沒有 <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a> 這個屬性，因此無法使用陣列方法</p>
+          </div>
+
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> calculate = &#123;</span><br><span class="line">  <span class="attr">array</span>: [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>],</span><br><span class="line">  <span class="attr">sum</span>: <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="variable language_">this</span>.<span class="property">array</span>.<span class="title function_">reduce</span>(<span class="function">(<span class="params">result, item</span>) =&gt;</span> result + item)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//TypeError: Cannot read property &#x27;array&#x27; of undefined</span></span><br><span class="line">calculate.<span class="title function_">sum</span>()</span><br></pre></td></tr></table></figure>
+
+<h2 id="conclusion"><a href="#conclusion" class="headerlink" title="conclusion"></a>conclusion</h2><p>箭頭函式 tips</p>
+<ul>
+<li>傳統函式縮寫且只有一個參數才不用加<code>括號 ()</code>。</li>
+<li>特殊情況會造成 this 指向改變。</li>
+<li>沒有 arguments 參數。</li>
+<li>沒有 constructor、prototype。</li>
+<li>沒有 Array 無法使用陣列方法。</li>
+</ul>
+<h2 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h2><ul>
+<li><a href="https://pjchender.dev/javascript/js-arrow-function/">[JS] 箭頭函式（arrow function）和它對 this 的影響</a></li>
+<li><a href="https://ithelp.ithome.com.tw/articles/10249940">JavaScript基本功修練：Day21 - 箭頭函式</a></li>
+</ul>
 ]]></content>
       <categories>
         <category>JavaScript</category>
