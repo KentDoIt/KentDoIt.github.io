@@ -1225,7 +1225,7 @@ console.log(obj.name);  // kent
             <p>箭頭函式是 ES6 新的語法糖，白話文來說，箭頭函式是傳統函式的<code>縮寫</code>，但有一些特性和邏輯不盡相同尤其是 this 的部分。</p>
           </div>
 
-<p><a href="https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Functions/Arrow_functions">語法</a></p>
+<p><a href="https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Functions/Arrow_functions">MDN 語法</a></p>
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line">([param] [, param]) =&gt; &#123;</span><br><span class="line">  statements</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">param =&gt; expression</span><br></pre></td></tr></table></figure>
 
 <h2 id="縮寫特性"><a href="#縮寫特性" class="headerlink" title="縮寫特性"></a>縮寫特性</h2><blockquote>
