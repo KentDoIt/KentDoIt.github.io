@@ -1451,6 +1451,29 @@ console.log(obj.name);  // kent
     <title>JS 空值合併運算子 Nullish coalescing operator</title>
     <url>/javascript/3525467973/</url>
     <content><![CDATA[<p><code>??</code> 左邊是 <code>null</code> 或 <code>undefined</code> 則不會執行右邊。</p>
+<p>語法</p>
+<ul>
+<li><code>leftExpr ?? rightExpr</code></li>
+</ul>
+<p>e.g. 判斷是否使用過</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> person1 = &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&#x27;kent&#x27;</span>,</span><br><span class="line">  <span class="attr">age</span>: <span class="number">18</span>,</span><br><span class="line">  <span class="attr">wallet</span>: <span class="number">0</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> person2 = &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&#x27;clark&#x27;</span>,</span><br><span class="line">  <span class="attr">age</span>: <span class="number">20</span>,</span><br><span class="line">  <span class="attr">wallet</span>: <span class="literal">null</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 假設有一間銀行，發給新辦用戶 100 摳</span></span><br><span class="line">person1.<span class="property">wallet</span> ?? &#123;person1, ...&#123;<span class="attr">wallet</span>: <span class="number">100</span>&#125;&#125;; <span class="comment">// &#123;person1: &#123;…&#125;, wallet: 0&#125;</span></span><br><span class="line">person2.<span class="property">wallet</span> ?? &#123;person2, ...&#123;<span class="attr">wallet</span>: <span class="number">100</span>&#125;&#125;; <span class="comment">// &#123;person2: &#123;…&#125;, wallet: 100&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>e.g. 預設值</p>
+<ul>
+<li>再賦予值的過程透過 ?? 來設置預設值，只要 <code>?? 左邊</code> 為 null、undefined 則就會賦予 <code>?? 右邊</code> 為新值。</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> n;</span><br><span class="line"><span class="keyword">let</span> num = n ?? <span class="string">&#x27;0&#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>注意事項</p>
+</blockquote>
+<div class="note Danger">
+            <p>不能與 &amp;&amp;、|| 一起使用。（不然會噴 SyntaxError）</p>
+          </div>
+
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="literal">null</span> || <span class="literal">undefined</span> ?? <span class="string">&quot;foo&quot;</span>; <span class="comment">// 噴 SyntaxError</span></span><br><span class="line">(<span class="literal">null</span> || <span class="literal">undefined</span> ) ?? <span class="string">&quot;foo&quot;</span>; <span class="comment">// 返回 &quot;foo&quot;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="conclusion"><a href="#conclusion" class="headerlink" title="conclusion"></a>conclusion</h2><p><img src="https://imgur.com/2sYcGjJ.jpg"></p>
 ]]></content>
       <categories>
         <category>JavaScript</category>
