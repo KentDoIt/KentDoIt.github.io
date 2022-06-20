@@ -49,7 +49,7 @@
 <meta property="og:locale" content="zh_TW">
 <meta property="og:image" content="https://imgur.com/2sYcGjJ.jpg">
 <meta property="article:published_time" content="2022-06-20T05:48:52.000Z">
-<meta property="article:modified_time" content="2022-06-20T06:43:00.026Z">
+<meta property="article:modified_time" content="2022-06-20T07:12:01.048Z">
 <meta property="article:author" content="Kent">
 <meta property="article:tag" content="運算子">
 <meta property="article:tag" content="JavaScript">
@@ -298,22 +298,32 @@
           <i class="fa fa-quote-right"></i>
         </blockquote>
       
-        <p><code>??</code> 左邊是 <code>null</code> 或 <code>undefined</code> 則不會執行右邊。</p>
-<p>語法</p>
-<ul>
-<li><code>leftExpr ?? rightExpr</code></li>
-</ul>
+        <div class="note default">
+            <p>建議先閱讀前一篇「<a href="https://kentdoit.github.io/javascript/350805089/">JS 短路求值 Short-circuit evaluation</a>」後再接下去閱讀。</p>
+          </div>
+
+<div class="note primary">
+            <p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Nullish_coalescing_operator">MDN</a>：<code>??</code> 左邊是 <code>null</code> 或 <code>undefined</code> 則不會執行右邊。</p>
+          </div>
+
+<p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Nullish_coalescing_operator#syntax">MDN 語法</a></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">leftExpr ?? rightExpr</span><br></pre></td></tr></table></figure>
+
 <p>e.g. 判斷是否使用過</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> person1 = &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&#x27;kent&#x27;</span>,</span><br><span class="line">  <span class="attr">age</span>: <span class="number">18</span>,</span><br><span class="line">  <span class="attr">wallet</span>: <span class="number">0</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> person2 = &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&#x27;clark&#x27;</span>,</span><br><span class="line">  <span class="attr">age</span>: <span class="number">20</span>,</span><br><span class="line">  <span class="attr">wallet</span>: <span class="literal">null</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 假設有一間銀行，發給新辦用戶 100 摳</span></span><br><span class="line">person1.<span class="property">wallet</span> ?? &#123;person1, ...&#123;<span class="attr">wallet</span>: <span class="number">100</span>&#125;&#125;; <span class="comment">// &#123;person1: &#123;…&#125;, wallet: 0&#125;</span></span><br><span class="line">person2.<span class="property">wallet</span> ?? &#123;person2, ...&#123;<span class="attr">wallet</span>: <span class="number">100</span>&#125;&#125;; <span class="comment">// &#123;person2: &#123;…&#125;, wallet: 100&#125;</span></span><br></pre></td></tr></table></figure>
+<div class="note default">
+            <p>情境：假設有一間銀行，發給新辦用戶 100 摳</p>
+          </div>
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> person1 = &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&#x27;kent&#x27;</span>,</span><br><span class="line">  <span class="attr">age</span>: <span class="number">18</span>,</span><br><span class="line">  <span class="attr">wallet</span>: <span class="number">0</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> person2 = &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&#x27;clark&#x27;</span>,</span><br><span class="line">  <span class="attr">age</span>: <span class="number">20</span>,</span><br><span class="line">  <span class="attr">wallet</span>: <span class="literal">null</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">person1.<span class="property">wallet</span> ?? &#123;personOld, ...&#123;<span class="attr">wallet</span>: <span class="number">100</span>&#125;&#125;; <span class="comment">// &#123;person1: &#123;…&#125;, wallet: 0&#125;</span></span><br><span class="line">person2.<span class="property">wallet</span> ?? &#123;personNew, ...&#123;<span class="attr">wallet</span>: <span class="number">100</span>&#125;&#125;; <span class="comment">// &#123;person2: &#123;…&#125;, wallet: 100&#125;</span></span><br></pre></td></tr></table></figure>
 
 <p>e.g. 預設值</p>
 <ul>
-<li>再賦予值的過程透過 ?? 來設置預設值，只要 <code>?? 左邊</code> 為 null、undefined 則就會賦予 <code>?? 右邊</code> 為新值。</li>
+<li>再賦予值的過程透過 <code>??</code> 來設置預設值，只要 <code>?? 左邊</code> 為 null、undefined 則就會賦予 <code>?? 右邊</code> 為新值。</li>
 </ul>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> n;</span><br><span class="line"><span class="keyword">let</span> num = n ?? <span class="string">&#x27;0&#x27;</span>;</span><br></pre></td></tr></table></figure>
 
 <blockquote>
-<p>注意事項</p>
+<p>Tips</p>
 </blockquote>
 <div class="note Danger">
             <p>不能與 &amp;&amp;、|| 一起使用。（不然會噴 SyntaxError）</p>
@@ -322,6 +332,9 @@
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="literal">null</span> || <span class="literal">undefined</span> ?? <span class="string">&quot;foo&quot;</span>; <span class="comment">// 噴 SyntaxError</span></span><br><span class="line">(<span class="literal">null</span> || <span class="literal">undefined</span> ) ?? <span class="string">&quot;foo&quot;</span>; <span class="comment">// 返回 &quot;foo&quot;</span></span><br></pre></td></tr></table></figure>
 
 <h2 id="conclusion"><a href="#conclusion" class="headerlink" title="conclusion"></a>conclusion</h2><p><img src="https://imgur.com/2sYcGjJ.jpg"></p>
+<h2 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1954297">谈谈 JavaScript 中的空值合并操作符 Nullish coalescing operator</a></li>
+</ul>
 
     </div>
 
@@ -430,7 +443,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#conclusion"><span class="nav-text">conclusion</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#conclusion"><span class="nav-text">conclusion</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#reference"><span class="nav-text">reference</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
