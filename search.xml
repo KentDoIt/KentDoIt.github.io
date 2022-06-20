@@ -1441,7 +1441,8 @@ console.log(obj.name);  // kent
   <entry>
     <title>JS 空值合併運算子 Nullish coalescing operator</title>
     <url>/javascript/3525467973/</url>
-    <content><![CDATA[]]></content>
+    <content><![CDATA[<p><code>??</code> 左邊是 <code>null</code> 或 <code>undefined</code> 則不會執行右邊。</p>
+]]></content>
       <categories>
         <category>JavaScript</category>
       </categories>
