@@ -1392,7 +1392,7 @@ console.log(obj.name);  // kent
           </div>
 
 <div class="note default">
-            <p>不熟悉 <code>真值（truthy）</code>、<code>假值（falsy）</code>，可以參考這篇<a href="https://kentdoit.github.io/javascript/1047366401/#%E7%9C%9F%E5%80%BC%EF%BC%88truthy%EF%BC%89%E3%80%81%E5%81%87%E5%80%BC%EF%BC%88falsy%EF%BC%89">文章</a>。</p>
+            <p>不熟悉 <code>真值（truthy）</code>、<code>假值（falsy）</code> 可以參考這篇<a href="https://kentdoit.github.io/javascript/1047366401/#%E7%9C%9F%E5%80%BC%EF%BC%88truthy%EF%BC%89%E3%80%81%E5%81%87%E5%80%BC%EF%BC%88falsy%EF%BC%89">文章</a>。</p>
           </div>
 
 <blockquote>
