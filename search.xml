@@ -1073,6 +1073,27 @@
           </div>
 
 <p>真值表：依照嚴格程度排序不同的比較子（紅色最嚴格、灰色最寬鬆）<br><img src="https://imgur.com/Og8Y5JH.jpg" alt="src: https://thomas-yang.me/projects/oh-my-dear-js/"></p>
+<h2 id="conclusion"><a href="#conclusion" class="headerlink" title="conclusion"></a>conclusion</h2><ol>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Operator_Precedence#table">運算子優先順序 operator precedence</a></li>
+</ol>
+<div class="note default">
+            <p>理解優先順序 <code>! &gt; &amp;&amp; &gt; || &gt; ??</code>，讓邏輯運算子用起來沒煩惱。</p>
+          </div>
+
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="literal">true</span> || <span class="literal">false</span> &amp;&amp; <span class="literal">false</span>)    <span class="comment">// true → (true || false)</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>((<span class="literal">true</span> || <span class="literal">false</span>) &amp;&amp; <span class="literal">false</span>)  <span class="comment">// false → (true &amp;&amp; false)</span></span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>括號內會強制轉型</li>
+</ol>
+<div class="note default">
+            <p>if 判斷式會將 <code>括號</code> 內變數 <code>強制轉型</code> 成布林值。</p>
+          </div>
+
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> (<span class="number">1</span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;true&#x27;</span>) <span class="comment">// true</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (<span class="string">&#x27;1&#x27;</span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;true&#x27;</span>) <span class="comment">// true</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (<span class="string">&#x27;0&#x27;</span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;true&#x27;</span>) <span class="comment">// true</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (!<span class="number">0</span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;true&#x27;</span>) <span class="comment">// true</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h2><ul>
+<li><a href="https://ithelp.ithome.com.tw/articles/10191343">重新認識 JavaScript: Day 08 Boolean 的真假判斷</a></li>
+</ul>
 ]]></content>
       <categories>
         <category>JavaScript</category>
