@@ -1425,10 +1425,13 @@ console.log(obj.name);  // kent
 
 <p><img src="https://imgur.com/yNnVS12.jpg" alt="部署後的工程師"></p>
 <div class="note default">
-            <p>javascript 後來增加了一種 <code>空值合併運算子</code> 用來解決不夠嚴謹的問題。</p>
+            <p>javascript 後來增加了一種 <a href="https://kentdoit.github.io/javascript/3525467973/"><code>空值合併運算子</code></a> 用來解決不夠嚴謹的問題。</p>
           </div>
 
 <h2 id="conclusion"><a href="#conclusion" class="headerlink" title="conclusion"></a>conclusion</h2><p><img src="https://imgur.com/w9OtDHw.png" alt="`||`、`&amp;&amp;` 使用口訣"></p>
+<h2 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h2><ul>
+<li><a href="https://bolaslien.github.io/blog/2021/06/18/js-short-circuit-evaluation/">用邏輯判斷 ||(OR) 及 &amp;&amp;(AND) 來改寫 if (短路求值 Short-circuit evaluation)</a></li>
+</ul>
 ]]></content>
       <categories>
         <category>JavaScript</category>
