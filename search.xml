@@ -1387,12 +1387,7 @@ console.log(obj.name);  // kent
   <entry>
     <title>JS 短路求值 Short-circuit evaluation</title>
     <url>/javascript/350805089/</url>
-    <content><![CDATA[<p>維基百科：「，就不需要知道第二個運算數的具體值。」</p>
-<div class="note default">
-            <p>利用 <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Logical_AND#short-circuit_evaluation">AND 運算子 &amp;&amp;</a>、<a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Logical_OR#short-circuit_evaluation">OR 運算子 ||</a>，兩者的短路求值方式來達到類似 if 條件判斷式的效果。</p>
-          </div>
-
-<div class="note primary">
+    <content><![CDATA[<div class="note primary">
             <p>快速複習一下<a href="https://kentdoit.github.io/javascript/1047366401/">邏輯運算子</a>：「當 AND 的第一個運算數的值為 false 時，其結果必定為 false；當 OR 的第一個運算數為 true 時，最後結果必定為 true。」<br>下方範例運用 &amp;&amp;、|| 特性，演示將左右兩邊的 <code>表達式</code> 達到和 if 判斷式一樣的效果。</p>
           </div>
 
