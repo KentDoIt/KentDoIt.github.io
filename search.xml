@@ -1388,7 +1388,11 @@ console.log(obj.name);  // kent
     <title>JS 短路求值 Short-circuit evaluation</title>
     <url>/javascript/350805089/</url>
     <content><![CDATA[<div class="note primary">
-            <p>快速複習一下<a href="https://kentdoit.github.io/javascript/1047366401/">邏輯運算子</a>：「當 AND 的第一個運算數的值為 false 時，其結果必定為 false；當 OR 的第一個運算數為 true 時，最後結果必定為 true。」<br>下方範例運用 &amp;&amp;、|| 特性，演示將左右兩邊的 <code>表達式</code> 達到和 if 判斷式一樣的效果。</p>
+            <p>快速複習一下<a href="https://kentdoit.github.io/javascript/1047366401/">邏輯運算子</a>：「當 AND 的第一個運算數的值為 false 時，其結果必定為 false；當 OR 的第一個運算數為 true 時，最後結果必定為 true。」</p>
+          </div>
+
+<div class="note default">
+            <p>不熟悉 <code>真值（truthy）</code>、<code>假值（falsy）</code>，可以參考這篇<a href="https://kentdoit.github.io/javascript/1047366401/#%E7%9C%9F%E5%80%BC%EF%BC%88truthy%EF%BC%89%E3%80%81%E5%81%87%E5%80%BC%EF%BC%88falsy%EF%BC%89">文章</a>。</p>
           </div>
 
 <blockquote>
@@ -1399,7 +1403,7 @@ console.log(obj.name);  // kent
 <li><code>||</code> 左邊是 <code>真值(truthy)</code> 則不會執行右邊。</li>
 </ul>
 <div class="note default">
-            <p>不熟悉 <code>真值（truthy）</code>、<code>假值（falsy）</code>，可以參考這篇<a href="https://kentdoit.github.io/javascript/1047366401/#%E7%9C%9F%E5%80%BC%EF%BC%88truthy%EF%BC%89%E3%80%81%E5%81%87%E5%80%BC%EF%BC%88falsy%EF%BC%89">文章</a>。</p>
+            <p>下方範例運用 &amp;&amp;、|| 特性，演示將左右兩邊的 <code>表達式</code> 達到和 if 判斷式一樣的效果。</p>
           </div>
 
 <p>e.g. 使用 <code>||</code> 來實作賦予預設值功能</p>
