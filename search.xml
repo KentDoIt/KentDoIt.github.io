@@ -1480,7 +1480,7 @@ console.log(obj.name);  // kent
 <blockquote>
 <p>Tips</p>
 </blockquote>
-<div class="note Danger">
+<div class="note danger">
             <p>不能與 &amp;&amp;、|| 一起使用。（不然會噴 SyntaxError）</p>
           </div>
 
