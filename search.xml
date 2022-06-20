@@ -1478,7 +1478,7 @@ console.log(obj.name);  // kent
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> n;</span><br><span class="line"><span class="keyword">let</span> num = n ?? <span class="string">&#x27;0&#x27;</span>;</span><br></pre></td></tr></table></figure>
 
 <blockquote>
-<p>Tips</p>
+<p>使用 tips</p>
 </blockquote>
 <div class="note danger">
             <p>不能與 &amp;&amp;、|| 一起使用。（不然會噴 SyntaxError）</p>
