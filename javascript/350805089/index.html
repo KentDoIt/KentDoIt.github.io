@@ -40,30 +40,36 @@
   gtag('config', 'G-K8QW91NNBQ');
 </script>
 
-  <meta name="description" content="Blog">
-<meta property="og:type" content="website">
-<meta property="og:title" content="KentDoIt">
-<meta property="og:url" content="https://kentdoit.github.io/index.html">
+  <meta name="description" content="口訣   &amp;&amp; 左邊是假值(falsy) 則不會執行右邊。 || 左邊是真值(truthy) 則不會執行右邊。               下方透過範例（賦予值、表達式），來快速上手 短路求值。             e.g. 使用 || 來實作賦予預設值功能 12345678910111213let a &#x3D; null;&#x2F;&#x2F; 短路求值寫法，a 不是真值所以會執行右邊，將 1 賦">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JS 短路求值 Short-circuit evaluation">
+<meta property="og:url" content="https://kentdoit.github.io/javascript/350805089/index.html">
 <meta property="og:site_name" content="KentDoIt">
-<meta property="og:description" content="Blog">
+<meta property="og:description" content="口訣   &amp;&amp; 左邊是假值(falsy) 則不會執行右邊。 || 左邊是真值(truthy) 則不會執行右邊。               下方透過範例（賦予值、表達式），來快速上手 短路求值。             e.g. 使用 || 來實作賦予預設值功能 12345678910111213let a &#x3D; null;&#x2F;&#x2F; 短路求值寫法，a 不是真值所以會執行右邊，將 1 賦">
 <meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="https://imgur.com/yNnVS12.jpg">
+<meta property="article:published_time" content="2022-06-20T05:34:38.000Z">
+<meta property="article:modified_time" content="2022-06-20T05:46:55.170Z">
 <meta property="article:author" content="Kent">
+<meta property="article:tag" content="運算子">
+<meta property="article:tag" content="JavaScript">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://imgur.com/yNnVS12.jpg">
 
-<link rel="canonical" href="https://kentdoit.github.io/">
+<link rel="canonical" href="https://kentdoit.github.io/javascript/350805089/">
 
 
 <script id="page-configurations">
   // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
-    isHome : true,
-    isPost : false,
+    isHome : false,
+    isPost : true,
     lang   : 'zh-TW'
   };
 </script>
 
-  <title>KentDoIt</title>
+  <title>JS 短路求值 Short-circuit evaluation | KentDoIt</title>
   
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-K8QW91NNBQ"></script>
     <script>
@@ -227,9 +233,10 @@
         <div class="content-wrap">
           
 
-          <div class="content index posts-expand">
+          <div class="content post posts-expand">
             
-      
+
+    
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
@@ -245,10 +252,9 @@
       <meta itemprop="name" content="KentDoIt">
     </span>
       <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/javascript/350805089/" class="post-title-link" itemprop="url">JS 短路求值 Short-circuit evaluation</a>
-        </h2>
+        <h1 class="post-title" itemprop="name headline">
+          JS 短路求值 Short-circuit evaluation
+        </h1>
 
         <div class="post-meta">
             <span class="post-meta-item">
@@ -286,7 +292,7 @@
     
     <div class="post-body" itemprop="articleBody">
       
-          <blockquote>
+        <blockquote>
 <p>口訣</p>
 </blockquote>
 <ul>
@@ -328,750 +334,67 @@
             <p>javascript 後來增加了一種 <code>空值合併運算子</code> 用來解決不夠嚴謹的問題。</p>
           </div>
 
-      
     </div>
 
     
     
     
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
-    <link itemprop="mainEntityOfPage" href="https://kentdoit.github.io/javascript/2638792469/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/headshost_ya.jpg">
-      <meta itemprop="name" content="Kent">
-      <meta itemprop="description" content="Blog">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="KentDoIt">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/javascript/2638792469/" class="post-title-link" itemprop="url">JS 箭頭函式 arrow function</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <!--<i class="far fa-folder"></i>-->
-                <i class="far fa-folder-open"></i>
-              </span>
-              <!--<span class="post-meta-item-text">分類於</span>-->
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/javascript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
-                </span>
-            </span>
-            <span class="post-meta-item" title="所需閱讀時間">
-              <!--<span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>-->
-              <span>8 分鐘閱讀時間</span>
-            </span>
-            <span class="post-meta-item">
-              <!--<span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">發表於</span>-->
-              <br>
-              <time title="創建時間：2022-06-17 11:02:37" itemprop="dateCreated datePublished" datetime="2022-06-17T11:02:37+08:00">2022-06-17</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-      
-          <p>此篇會用範例來了解什麼是箭頭函式以及特性。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/javascript/2638792469/">
-                閱讀全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
         
-      
-    </div>
 
-    
-    
-    
+<div>
+<hr style="margin-top: 40px">
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>作者： </strong>Kent
+  </li>
+  <li class="post-copyright-link">
+    <strong>文章連結：</strong>
+    <a href="https://kentdoit.github.io/javascript/350805089/" title="JS 短路求值 Short-circuit evaluation">https://kentdoit.github.io/javascript/350805089/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版權聲明： </strong>本網誌所有文章除特別聲明外，均採用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh_TW" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 許可協議。轉載請註明出處！
+  </li>
+</ul>
+</div>
+
+
       <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
-    <link itemprop="mainEntityOfPage" href="https://kentdoit.github.io/javascript/2900651289/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/headshost_ya.jpg">
-      <meta itemprop="name" content="Kent">
-      <meta itemprop="description" content="Blog">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="KentDoIt">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
           
-            <a href="/javascript/2900651289/" class="post-title-link" itemprop="url">JS 物件實字 | 物件字面值 | Object Literal</a>
-        </h2>
+          <div class="post-tags">
+              <a href="/tags/%E9%81%8B%E7%AE%97%E5%AD%90/" rel="tag"><i class="fas fa-hashtag"></i> 運算子</a>
+              <a href="/tags/JavaScript/" rel="tag"><i class="fas fa-hashtag"></i> JavaScript</a>
+          </div>
 
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <!--<i class="far fa-folder"></i>-->
-                <i class="far fa-folder-open"></i>
-              </span>
-              <!--<span class="post-meta-item-text">分類於</span>-->
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/javascript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
-                </span>
-            </span>
-            <span class="post-meta-item" title="所需閱讀時間">
-              <!--<span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>-->
-              <span>4 分鐘閱讀時間</span>
-            </span>
-            <span class="post-meta-item">
-              <!--<span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">發表於</span>-->
-              <br>
-              <time title="創建時間：2022-06-13 10:53:10" itemprop="dateCreated datePublished" datetime="2022-06-13T10:53:10+08:00">2022-06-13</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-      
-          <p>此篇會介紹 物件實字 Object Literal 的作用以及特性。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/javascript/2900651289/">
-                閱讀全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
         
-      
-    </div>
 
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
-    <link itemprop="mainEntityOfPage" href="https://kentdoit.github.io/javascript/1047366401/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/headshost_ya.jpg">
-      <meta itemprop="name" content="Kent">
-      <meta itemprop="description" content="Blog">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="KentDoIt">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/javascript/1047366401/" class="post-title-link" itemprop="url">JS 邏輯運算子</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <!--<i class="far fa-folder"></i>-->
-                <i class="far fa-folder-open"></i>
-              </span>
-              <!--<span class="post-meta-item-text">分類於</span>-->
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/javascript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
-                </span>
-            </span>
-            <span class="post-meta-item" title="所需閱讀時間">
-              <!--<span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>-->
-              <span>3 分鐘閱讀時間</span>
-            </span>
-            <span class="post-meta-item">
-              <!--<span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">發表於</span>-->
-              <br>
-              <time title="創建時間：2022-06-03 14:35:27" itemprop="dateCreated datePublished" datetime="2022-06-03T14:35:27+08:00">2022-06-03</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-      
-          <p>此篇透過邏輯運算子切入學習真值（truthy）、假值（falsy）。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/javascript/1047366401/">
-                閱讀全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
         
-      
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/javascript/2638792469/" rel="prev" title="JS 箭頭函式 arrow function">
+      <i class="fa fa-chevron-left"></i> JS 箭頭函式 arrow function
+    </a></div>
+      <div class="post-nav-item"></div>
     </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
       </footer>
+    
   </article>
   
   
   
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
-    <link itemprop="mainEntityOfPage" href="https://kentdoit.github.io/javascript/2972146539/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/headshost_ya.jpg">
-      <meta itemprop="name" content="Kent">
-      <meta itemprop="description" content="Blog">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="KentDoIt">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/javascript/2972146539/" class="post-title-link" itemprop="url">JS 比較運算子的自動轉型</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <!--<i class="far fa-folder"></i>-->
-                <i class="far fa-folder-open"></i>
-              </span>
-              <!--<span class="post-meta-item-text">分類於</span>-->
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/javascript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
-                </span>
-            </span>
-            <span class="post-meta-item" title="所需閱讀時間">
-              <!--<span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>-->
-              <span>7 分鐘閱讀時間</span>
-            </span>
-            <span class="post-meta-item">
-              <!--<span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">發表於</span>-->
-              <br>
-              <time title="創建時間：2022-05-15 12:36:46" itemprop="dateCreated datePublished" datetime="2022-05-15T12:36:46+08:00">2022-05-15</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-      
-          <p>此篇會依照 ECMA-262 11th（ES2020）規則，來深入探討比較運算子轉型的規則。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/javascript/2972146539/">
-                閱讀全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
-    <link itemprop="mainEntityOfPage" href="https://kentdoit.github.io/javascript/3699626031/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/headshost_ya.jpg">
-      <meta itemprop="name" content="Kent">
-      <meta itemprop="description" content="Blog">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="KentDoIt">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/javascript/3699626031/" class="post-title-link" itemprop="url">JS == vs ===</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <!--<i class="far fa-folder"></i>-->
-                <i class="far fa-folder-open"></i>
-              </span>
-              <!--<span class="post-meta-item-text">分類於</span>-->
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/javascript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
-                </span>
-            </span>
-            <span class="post-meta-item" title="所需閱讀時間">
-              <!--<span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>-->
-              <span>3 分鐘閱讀時間</span>
-            </span>
-            <span class="post-meta-item">
-              <!--<span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">發表於</span>-->
-              <br>
-              <time title="創建時間：2022-05-10 11:07:50" itemprop="dateCreated datePublished" datetime="2022-05-10T11:07:50+08:00">2022-05-10</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-      
-          <p>此篇主要探討兩種比較運算子 ==、=== 的差異。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/javascript/3699626031/">
-                閱讀全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
-    <link itemprop="mainEntityOfPage" href="https://kentdoit.github.io/hexo/2629412870/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/headshost_ya.jpg">
-      <meta itemprop="name" content="Kent">
-      <meta itemprop="description" content="Blog">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="KentDoIt">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/hexo/2629412870/" class="post-title-link" itemprop="url">Hexo Sitemap 建立索引 無法擷取</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <!--<i class="far fa-folder"></i>-->
-                <i class="far fa-folder-open"></i>
-              </span>
-              <!--<span class="post-meta-item-text">分類於</span>-->
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/hexo/" itemprop="url" rel="index"><span itemprop="name">Hexo</span></a>
-                </span>
-            </span>
-            <span class="post-meta-item" title="所需閱讀時間">
-              <!--<span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>-->
-              <span>2 分鐘閱讀時間</span>
-            </span>
-            <span class="post-meta-item">
-              <!--<span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">發表於</span>-->
-              <br>
-              <time title="創建時間：2022-05-10 07:51:46" itemprop="dateCreated datePublished" datetime="2022-05-10T07:51:46+08:00">2022-05-10</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-      
-          <p>此篇會介紹 Sitemap 所遇到的一切問題。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/hexo/2629412870/">
-                閱讀全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
-    <link itemprop="mainEntityOfPage" href="https://kentdoit.github.io/hexo/3578178281/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/headshost_ya.jpg">
-      <meta itemprop="name" content="Kent">
-      <meta itemprop="description" content="Blog">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="KentDoIt">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/hexo/3578178281/" class="post-title-link" itemprop="url">Hexo 管理爬蟲 robots.txt（五）</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <!--<i class="far fa-folder"></i>-->
-                <i class="far fa-folder-open"></i>
-              </span>
-              <!--<span class="post-meta-item-text">分類於</span>-->
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/hexo/" itemprop="url" rel="index"><span itemprop="name">Hexo</span></a>
-                </span>
-            </span>
-            <span class="post-meta-item" title="所需閱讀時間">
-              <!--<span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>-->
-              <span>1 分鐘閱讀時間</span>
-            </span>
-            <span class="post-meta-item">
-              <!--<span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">發表於</span>-->
-              <br>
-              <time title="創建時間：2022-05-04 20:26:06" itemprop="dateCreated datePublished" datetime="2022-05-04T20:26:06+08:00">2022-05-04</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-      
-          <p>此篇介紹如何設置 robots.txt 來管理爬蟲檔案爬取的權限。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/hexo/3578178281/">
-                閱讀全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
-    <link itemprop="mainEntityOfPage" href="https://kentdoit.github.io/hexo/599670072/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/headshost_ya.jpg">
-      <meta itemprop="name" content="Kent">
-      <meta itemprop="description" content="Blog">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="KentDoIt">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/hexo/599670072/" class="post-title-link" itemprop="url">Hexo 設置 GA、Sitemap（四）</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <!--<i class="far fa-folder"></i>-->
-                <i class="far fa-folder-open"></i>
-              </span>
-              <!--<span class="post-meta-item-text">分類於</span>-->
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/hexo/" itemprop="url" rel="index"><span itemprop="name">Hexo</span></a>
-                </span>
-            </span>
-            <span class="post-meta-item" title="所需閱讀時間">
-              <!--<span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>-->
-              <span>3 分鐘閱讀時間</span>
-            </span>
-            <span class="post-meta-item">
-              <!--<span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">發表於</span>-->
-              <br>
-              <time title="創建時間：2022-05-01 14:10:25" itemprop="dateCreated datePublished" datetime="2022-05-01T14:10:25+08:00">2022-05-01</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-      
-          <p>此篇介紹如何為部落格設置 GA 以及 Sitemap。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/hexo/599670072/">
-                閱讀全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
-    <link itemprop="mainEntityOfPage" href="https://kentdoit.github.io/hexo/821499080/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/headshost_ya.jpg">
-      <meta itemprop="name" content="Kent">
-      <meta itemprop="description" content="Blog">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="KentDoIt">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/hexo/821499080/" class="post-title-link" itemprop="url">Hexo 檔案名稱 Url 優化（三）</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <!--<i class="far fa-folder"></i>-->
-                <i class="far fa-folder-open"></i>
-              </span>
-              <!--<span class="post-meta-item-text">分類於</span>-->
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/hexo/" itemprop="url" rel="index"><span itemprop="name">Hexo</span></a>
-                </span>
-            </span>
-            <span class="post-meta-item" title="所需閱讀時間">
-              <!--<span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>-->
-              <span>3 分鐘閱讀時間</span>
-            </span>
-            <span class="post-meta-item">
-              <!--<span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">發表於</span>-->
-              <br>
-              <time title="創建時間：2022-04-28 22:20:08" itemprop="dateCreated datePublished" datetime="2022-04-28T22:20:08+08:00">2022-04-28</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-      
-          <p>此篇介紹如何變更新增文章名稱帶入的參數以及對於 url 的優化。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/hexo/821499080/">
-                閱讀全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-
-  
-  <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一頁"></i></a>
-  </nav>
 
 
 
           </div>
           
+  <script src="https://utteranc.es/client.js"
+          repo="KentDoIt/hexo-theme-next"
+          issue-term="pathname"
+          label="blog comment"
+          theme="github-light"
+          crossorigin="anonymous"
+          async>
+  </script>
 
 <script>
   window.addEventListener('tabs:register', () => {
@@ -1118,6 +441,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A9%AC%E7%97%85%E3%80%8C%E4%B8%8D%E5%A4%A0%E5%9A%B4%E8%AC%B9%E3%80%8D"><span class="nav-text">詬病「不夠嚴謹」</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
