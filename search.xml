@@ -1398,6 +1398,10 @@ console.log(obj.name);  // kent
 <li><code>&amp;&amp;</code> 左邊是 <code>假值(falsy)</code> 則不會執行右邊。</li>
 <li><code>||</code> 左邊是 <code>真值(truthy)</code> 則不會執行右邊。</li>
 </ul>
+<div class="note default">
+            <p>不熟悉 <code>真值（truthy）</code>、<code>假值（falsy）</code>，可以參考這篇<a href="https://kentdoit.github.io/javascript/1047366401/#%E7%9C%9F%E5%80%BC%EF%BC%88truthy%EF%BC%89%E3%80%81%E5%81%87%E5%80%BC%EF%BC%88falsy%EF%BC%89">文章</a>。</p>
+          </div>
+
 <p>e.g. 使用 <code>||</code> 來實作賦予預設值功能</p>
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> a = <span class="literal">null</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 短路求值寫法</span></span><br><span class="line"><span class="keyword">let</span> b = a || <span class="number">1</span>; <span class="comment">// a 不是真值所以會執行右邊，將 1 賦予到 b 變數上。</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// if 寫法</span></span><br><span class="line"><span class="keyword">if</span> (!a) &#123;</span><br><span class="line">  <span class="keyword">let</span> b = a;</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">  <span class="keyword">let</span> b = <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 三元運算寫法</span></span><br><span class="line"><span class="keyword">let</span> b = a ? a : <span class="number">1</span>;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
