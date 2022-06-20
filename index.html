@@ -233,6 +233,78 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="https://kentdoit.github.io/javascript/3525467973/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/headshost_ya.jpg">
+      <meta itemprop="name" content="Kent">
+      <meta itemprop="description" content="Blog">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="KentDoIt">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/javascript/3525467973/" class="post-title-link" itemprop="url">JS 空值合併運算子 Nullish coalescing operator</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <!--<i class="far fa-folder"></i>-->
+                <i class="far fa-folder-open"></i>
+              </span>
+              <!--<span class="post-meta-item-text">分類於</span>-->
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/javascript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
+                </span>
+            </span>
+            <span class="post-meta-item" title="所需閱讀時間">
+              <!--<span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>-->
+              <span>1 分鐘閱讀時間</span>
+            </span>
+            <span class="post-meta-item">
+              <!--<span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>-->
+              <br>
+              <time title="創建時間：2022-06-20 13:48:52" itemprop="dateCreated datePublished" datetime="2022-06-20T13:48:52+08:00">2022-06-20</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+      
+          
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
     <link itemprop="mainEntityOfPage" href="https://kentdoit.github.io/javascript/350805089/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -286,48 +358,15 @@
     
     <div class="post-body" itemprop="articleBody">
       
-          <blockquote>
-<p>口訣</p>
-</blockquote>
-<ul>
-<li><code>&amp;&amp;</code> 左邊是<code>假值(falsy)</code> 則不會執行右邊。</li>
-<li><code>||</code> 左邊是<code>真值(truthy)</code> 則不會執行右邊。</li>
-</ul>
-<div class="note default">
-            <p>下方透過範例（賦予值、表達式），來快速上手 <code>短路求值</code>。</p>
-          </div>
-
-<p>e.g. 使用 <code>||</code> 來實作賦予預設值功能</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a = <span class="literal">null</span>;</span><br><span class="line"><span class="comment">// 短路求值寫法，a 不是真值所以會執行右邊，將 1 賦予到 b 變數上。</span></span><br><span class="line"><span class="keyword">let</span> b = a || <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 三元運算寫法</span></span><br><span class="line"><span class="keyword">let</span> b = a ? a : <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// if 寫法</span></span><br><span class="line"><span class="keyword">if</span> (!a) &#123;</span><br><span class="line">  <span class="keyword">let</span> b = a;</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">  <span class="keyword">let</span> b = <span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>e.g. <code>&amp;&amp;</code> 透過判斷 <code>真假值</code> 來決定是否執行表達式（也可以執行函式）</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> person1 = &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&#x27;kent&#x27;</span>,</span><br><span class="line">  <span class="attr">age</span>: <span class="number">18</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 適用於只有一種結果的判斷式。</span></span><br><span class="line"><span class="comment">// person1.age &gt;= 18 是 true 所有會執行右邊 console.log</span></span><br><span class="line">person1.<span class="property">age</span> &gt;= <span class="number">18</span> &amp;&amp; <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`<span class="subst">$&#123;person1.name&#125;</span> 已成年`</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// if 寫法</span></span><br><span class="line"><span class="keyword">if</span> (person1.<span class="property">age</span> &gt;= <span class="number">18</span>) <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`<span class="subst">$&#123;person1.name&#125;</span> 已成年`</span>);</span><br></pre></td></tr></table></figure>
-
-<p>e.g. 判斷物件屬性是否存在</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> school = &#123;</span><br><span class="line">  <span class="attr">info</span>: &#123;</span><br><span class="line">    <span class="attr">student</span>: &#123;</span><br><span class="line">      <span class="attr">name</span>: <span class="string">&#x27;kent&#x27;</span>,</span><br><span class="line">      <span class="attr">age</span>: <span class="number">18</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> name = obj.<span class="property">info</span>.<span class="property">teacher</span> &amp;&amp; obj.<span class="property">info</span>.<span class="property">teacher</span>.<span class="property">name</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 會先判斷上一層屬性是否存在，來預防噴錯</span></span><br><span class="line"><span class="keyword">let</span> name = obj.<span class="property">info</span>.<span class="property">teacher</span>.<span class="property">name</span>; <span class="comment">// TypeError: Cannot read properties of undefined (reading &#x27;name&#x27;)</span></span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>注意事項</p>
-</blockquote>
-<ol>
-<li><code>短路求值</code> 使用表達式的情況下，只適用於沒有 else 的判斷式。</li>
-<li><code>短路求值</code> 不能帶 return。</li>
-</ol>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">isAdult</span>(<span class="params">age</span>) &#123; </span><br><span class="line">  <span class="comment">// 判斷是否為假值</span></span><br><span class="line">  <span class="keyword">if</span> (!age) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&#x27;資料錯誤&#x27;</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 短路求值帶 return 會噴 error。</span></span><br><span class="line">  <span class="comment">// age &amp;&amp; return &#x27;資料錯誤&#x27;;</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">let</span> res = age &gt;= <span class="number">18</span> ? <span class="string">&#x27;已成年&#x27;</span> : <span class="string">&#x27;未成年&#x27;</span>;</span><br><span class="line">  <span class="comment">// 上面範例不適合用短路求值，因為會缺少 else 表達式。</span></span><br><span class="line">  <span class="comment">// let res = (age &gt;= 18) &amp;&amp; &#x27;已成年&#x27;;</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title function_">isAdult</span>(<span class="literal">null</span>);  <span class="comment">// 資料錯誤</span></span><br><span class="line"><span class="title function_">isAdult</span>(<span class="number">18</span>); <span class="comment">// 已成年</span></span><br><span class="line"><span class="title function_">isAdult</span>(<span class="number">17</span>);  <span class="comment">// 未成年</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="詬病「不夠嚴謹」"><a href="#詬病「不夠嚴謹」" class="headerlink" title="詬病「不夠嚴謹」"></a>詬病「不夠嚴謹」</h3><div class="note default">
-            <p>👨‍💻 當變數為 <code>false</code>、<code>0</code> 或空字串 <code>&quot;&quot;</code> 其中之一時， 則布林值也會轉型為<code>假值 (falsy)</code>，對於判斷變數是否使用過來說是相當不方便的一件事。</p>
-          </div>
-
-<figure class="highlight js"><figcaption><span>e.g. 判斷某個變數是否使用過，有的話就作初始化。</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> time = <span class="number">1</span> - <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 判斷變數是否使用過，有的話將其初始化</span></span><br><span class="line"><span class="keyword">if</span> (time) &#123;</span><br><span class="line">  <span class="comment">// 初始化失敗</span></span><br><span class="line">  time = <span class="literal">null</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 初始化失敗</span></span><br><span class="line">time = time &amp;&amp; <span class="literal">null</span>;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight js"><figcaption><span>e.g. 假設有一間銀行，發給新辦用戶 100 摳。</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> person1 = &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&#x27;kent&#x27;</span>,</span><br><span class="line">  <span class="attr">age</span>: <span class="number">18</span>,</span><br><span class="line">  <span class="attr">wallet</span>: <span class="number">0</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> person2 = &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&#x27;clark&#x27;</span>,</span><br><span class="line">  <span class="attr">age</span>: <span class="number">20</span>,</span><br><span class="line">  <span class="attr">wallet</span>: <span class="literal">null</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">person1.<span class="property">wallet</span> || &#123;person1, ...&#123;<span class="attr">wallet</span>: <span class="number">100</span>&#125;&#125;; <span class="comment">// &#123;person1: &#123;…&#125;, wallet: 100&#125;</span></span><br><span class="line">person2.<span class="property">wallet</span> || &#123;person2, ...&#123;<span class="attr">wallet</span>: <span class="number">100</span>&#125;&#125;; <span class="comment">// &#123;person2: &#123;…&#125;, wallet: 100&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 發現活動還沒開跑，已經發了幾百萬出去</span></span><br></pre></td></tr></table></figure>
-
-<p><img src="https://imgur.com/yNnVS12.jpg" alt="部署後的工程師"></p>
-<div class="note default">
-            <p>javascript 後來增加了一種 <code>空值合併運算子</code> 用來解決不夠嚴謹的問題。</p>
-          </div>
-
+          <p>此篇會介紹 JS 中常用技巧「短路求值」，以及其優缺點。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/javascript/350805089/">
+                閱讀全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -982,86 +1021,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
-    <link itemprop="mainEntityOfPage" href="https://kentdoit.github.io/hexo/821499080/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/headshost_ya.jpg">
-      <meta itemprop="name" content="Kent">
-      <meta itemprop="description" content="Blog">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="KentDoIt">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/hexo/821499080/" class="post-title-link" itemprop="url">Hexo 檔案名稱 Url 優化（三）</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <!--<i class="far fa-folder"></i>-->
-                <i class="far fa-folder-open"></i>
-              </span>
-              <!--<span class="post-meta-item-text">分類於</span>-->
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/hexo/" itemprop="url" rel="index"><span itemprop="name">Hexo</span></a>
-                </span>
-            </span>
-            <span class="post-meta-item" title="所需閱讀時間">
-              <!--<span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>-->
-              <span>3 分鐘閱讀時間</span>
-            </span>
-            <span class="post-meta-item">
-              <!--<span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">發表於</span>-->
-              <br>
-              <time title="創建時間：2022-04-28 22:20:08" itemprop="dateCreated datePublished" datetime="2022-04-28T22:20:08+08:00">2022-04-28</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-      
-          <p>此篇介紹如何變更新增文章名稱帶入的參數以及對於 url 的優化。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/hexo/821499080/">
-                閱讀全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1133,7 +1092,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">13</span>
+          <span class="site-state-item-count">14</span>
           <span class="site-state-item-name">文章</span>
         </a>
       </div>

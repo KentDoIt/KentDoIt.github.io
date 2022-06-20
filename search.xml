@@ -1427,7 +1427,21 @@ console.log(obj.name);  // kent
 <div class="note default">
             <p>javascript 後來增加了一種 <code>空值合併運算子</code> 用來解決不夠嚴謹的問題。</p>
           </div>
+
+<h2 id="conclusion"><a href="#conclusion" class="headerlink" title="conclusion"></a>conclusion</h2><p><img src="https://imgur.com/w9OtDHw.png" alt="`||`、`&amp;&amp;` 使用口訣"></p>
 ]]></content>
+      <categories>
+        <category>JavaScript</category>
+      </categories>
+      <tags>
+        <tag>運算子</tag>
+        <tag>JavaScript</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>JS 空值合併運算子 Nullish coalescing operator</title>
+    <url>/javascript/3525467973/</url>
+    <content><![CDATA[]]></content>
       <categories>
         <category>JavaScript</category>
       </categories>
