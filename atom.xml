@@ -6,7 +6,7 @@
   <link href="https://kentdoit.github.io/atom.xml" rel="self"/>
   
   <link href="https://kentdoit.github.io/"/>
-  <updated>2022-06-20T07:19:00.390Z</updated>
+  <updated>2022-06-23T04:04:16.805Z</updated>
   <id>https://kentdoit.github.io/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>JS 樣板字面值 Template Literal、標籤樣板字面值 Tagged Template Literals</title>
+    <link href="https://kentdoit.github.io/javascript/2204307334/"/>
+    <id>https://kentdoit.github.io/javascript/2204307334/</id>
+    <published>2022-06-23T04:01:24.000Z</published>
+    <updated>2022-06-23T04:04:16.805Z</updated>
+    
+    
+    <summary type="html">此篇會介紹 ES6 新增的「板字面值 Template Literal」。</summary>
+    
+    
+    
+    <category term="JavaScript" scheme="https://kentdoit.github.io/categories/javascript/"/>
+    
+    
+    <category term="JavaScript" scheme="https://kentdoit.github.io/tags/JavaScript/"/>
+    
+    <category term="ES6" scheme="https://kentdoit.github.io/tags/ES6/"/>
+    
+  </entry>
   
   <entry>
     <title>JS 空值合併運算子 Nullish coalescing operator</title>

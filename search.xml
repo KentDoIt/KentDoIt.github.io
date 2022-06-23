@@ -1499,4 +1499,21 @@ console.log(obj.name);  // kent
         <tag>JavaScript</tag>
       </tags>
   </entry>
+  <entry>
+    <title>JS 樣板字面值 Template Literal、標籤樣板字面值 Tagged Template Literals</title>
+    <url>/javascript/2204307334/</url>
+    <content><![CDATA[<div class="note primary">
+            <p><a href="https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Template_literals">MDN</a>：用來進行多行字串、字串串接以及字串插補（string interpolation），在<code>先前</code>的版本 ES2015 中被稱為「樣板字串（template strings）」。</p>
+          </div>
+
+
+]]></content>
+      <categories>
+        <category>JavaScript</category>
+      </categories>
+      <tags>
+        <tag>JavaScript</tag>
+        <tag>ES6</tag>
+      </tags>
+  </entry>
 </search>
