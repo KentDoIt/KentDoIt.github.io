@@ -1502,11 +1502,113 @@ console.log(obj.name);  // kent
   <entry>
     <title>JS 樣板字面值 Template Literal、標籤樣板字面值 Tagged Template Literals</title>
     <url>/javascript/2204307334/</url>
-    <content><![CDATA[<div class="note primary">
+    <content><![CDATA[<h2 id="樣板字面值-Template-Literal"><a href="#樣板字面值-Template-Literal" class="headerlink" title="樣板字面值 Template Literal"></a>樣板字面值 Template Literal</h2><div class="note primary">
             <p><a href="https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Template_literals">MDN</a>：用來進行多行字串、字串串接以及字串插補（string interpolation），在<code>先前</code>的版本 ES2015 中被稱為「樣板字串（template strings）」。</p>
           </div>
 
+<p>語法：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">`string text $&#123;expression&#125; string text`</span><br></pre></td></tr></table></figure>
 
+<div class="note default">
+            <p>兩個反引號 &#96;&#96; 並加上 <code>${expression}</code> 來插入變數、表達式。</p>
+          </div>
+
+<figure class="highlight js"><figcaption><span>e.g. 樣板自面值</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> s = <span class="string">&#x27;我&#x27;</span>;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`<span class="subst">$&#123;s&#125;</span>是誰，<span class="subst">$&#123;s&#125;</span>在哪裡`</span>);</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>Tips</p>
+</blockquote>
+<ul>
+<li>反引號的內容會保留所有的 <code>換行</code> 和 <code>空白</code>。</li>
+<li>不能插入陳述式，否則會噴 Error。</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`我是誰  ，\n  我在哪裡`</span>);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`這是陳述式範例：變數宣告<span class="subst">$&#123; <span class="keyword">let</span> str&#125;</span>`</span>); <span class="comment">// SyntaxError: Missing &#125; in template expression</span></span><br></pre></td></tr></table></figure>
+
+<div class="note default">
+            <p>Q：那為什麼會需要樣板字面值？其它方式不行嗎？<br>A：可以，但樣板字面值簡化<code>串接過程</code>，使串接變得更<code>容易簡潔</code>。</p>
+          </div>
+
+<div class="note Info">
+            <p>舊字串串接：會使用<code>單引號</code>或<code>雙引號</code> 來<code>包裹字串</code>，再透過 <code>+</code> 的方式來串接，而樣板字面值<br>樣板字面值：兩個反引號 &#96;&#96; 並加上 <code>${expression}</code> 來插入變數、表達式。</p>
+          </div>
+
+<div class="note default">
+            <p>下面會透過幾個範例，來演示舊字串串接、樣板字面值兩者在不同情境的差別。</p>
+          </div>
+
+<figure class="highlight js"><figcaption><span>e.g. 寫法差異</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> str1 = <span class="string">&#x27;世界&#x27;</span>;</span><br><span class="line"><span class="keyword">let</span> str2 = <span class="string">&#x27;和平&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 舊字串串接</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(str1 + str2 + <span class="string">&#x27; &amp; 愛&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 樣板字面值</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`<span class="subst">$&#123;str1&#125;</span><span class="subst">$&#123;str2&#125;</span> &amp; 愛`</span>);</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight js"><figcaption><span>e.g. 多行串接</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> money = <span class="number">10</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 舊字串串接（需要使用到反斜線來換行）</span></span><br><span class="line"><span class="keyword">let</span> template = <span class="string">&#x27;&lt;ul&gt;\</span></span><br><span class="line"><span class="string">  &lt;li&gt;&#x27;</span> + money + <span class="string">&#x27;元 &lt;/li&gt;\</span></span><br><span class="line"><span class="string">  &lt;li&gt;&#x27;</span> + money + <span class="string">&#x27;元 &lt;/li&gt;\</span></span><br><span class="line"><span class="string">&lt;/ul&gt;&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 樣板字面值（會保留所有換行和空白）</span></span><br><span class="line"><span class="keyword">let</span> template = <span class="string">`</span></span><br><span class="line"><span class="string">  &lt;ul&gt;</span></span><br><span class="line"><span class="string">    &lt;li&gt; <span class="subst">$&#123;money&#125;</span>元 &lt;/li&gt;</span></span><br><span class="line"><span class="string">    &lt;li&gt; <span class="subst">$&#123;money&#125;</span>元 &lt;/li&gt;</span></span><br><span class="line"><span class="string">  &lt;/ul&gt;</span></span><br><span class="line"><span class="string">`</span>;</span><br></pre></td></tr></table></figure>
+
+<div class="note default">
+            <p>Q：那如果需要將反引號作為字串怎麼辦？<br>A：可以使用跳脫字元。</p>
+          </div>
+
+<figure class="highlight js"><figcaption><span>e.g. 跳脫字元</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="comment">// 在字元前面加上反斜線（backslash）</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`我厶\`誰`</span>); <span class="comment">// 我厶`誰</span></span><br></pre></td></tr></table></figure>
+
+<div class="note default">
+            <p>上面範例中已充分暸解如何使用樣板字面值，來做字串串接和字串插補，下方在用一個範例來演示，結合函式、判斷式、巢狀的應用。</p>
+          </div>
+
+<figure class="highlight js"><figcaption><span>e.g. 函式 + 判斷式 + 巢狀</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> moneys = [<span class="number">10</span>, <span class="number">0</span>];</span><br><span class="line"><span class="keyword">let</span> template = <span class="string">`&lt;ul&gt;</span></span><br><span class="line"><span class="string">  <span class="subst">$&#123;moneys.map((money) =&gt; &#123;</span></span></span><br><span class="line"><span class="subst"><span class="string">    <span class="keyword">if</span> (money) &#123;</span></span></span><br><span class="line"><span class="subst"><span class="string">        <span class="keyword">return</span> <span class="string">`&lt;li&gt; <span class="subst">$&#123;money&#125;</span>元 &lt;/li&gt;`</span>;</span></span></span><br><span class="line"><span class="subst"><span class="string">      &#125; <span class="keyword">else</span> &#123;</span></span></span><br><span class="line"><span class="subst"><span class="string">        <span class="keyword">return</span> <span class="string">`&lt;li&gt; 沒錢 &lt;/li&gt;`</span>;</span></span></span><br><span class="line"><span class="subst"><span class="string">      &#125;</span></span></span><br><span class="line"><span class="subst"><span class="string">    &#125;).join(<span class="string">&#x27;&#x27;</span>)</span></span></span><br><span class="line"><span class="subst"><span class="string">  &#125;</span></span></span><br><span class="line"><span class="string">&lt;/ul&gt;`</span>;</span><br></pre></td></tr></table></figure>
+
+<div class="note default">
+            <p>不敢想像用傳統串接寫的話會變成什麼樣子 QQ</p>
+          </div>
+
+<h2 id="標籤樣板字面值-Tagged-Template-Literals"><a href="#標籤樣板字面值-Tagged-Template-Literals" class="headerlink" title="標籤樣板字面值 Tagged Template Literals"></a>標籤樣板字面值 Tagged Template Literals</h2><div class="note primary">
+            <p>屬於樣板字面值的進階用法，常用於函式參數傳入。</p>
+          </div>
+
+<p>語法</p>
+<ul>
+<li>函式後方將括號替代為樣板字面值</li>
+</ul>
+<figure class="highlight js"><figcaption><span>e.g. 簡化了一般函式呼叫的括號</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="comment">// 一般函式參數</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;標籤樣板字面值&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 標籤樣板字面值</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="property">log</span><span class="string">`標籤樣板字面值`</span>;</span><br></pre></td></tr></table></figure>
+
+<div class="note default">
+            <p>如果樣板字面值中沒有使用到 <code>${}</code>，那和一般函式呼叫帶入的參數沒什麼差異，那看起來也沒多厲害？不不不精彩的正要開始。</p>
+          </div>
+
+<h3 id="樣板字面值傳參數特性"><a href="#樣板字面值傳參數特性" class="headerlink" title="樣板字面值傳參數特性"></a>樣板字面值傳參數特性</h3><ul>
+<li>將樣板字面值內容中含有 <code>$&#123;&#125;</code> 切為 <code>多個參數</code>，將其組成一個陣列傳入函式中。</li>
+</ul>
+<p>參數格式</p>
+<ul>
+<li>第一個參數（陣列）：除了 <code>$&#123;&#125;</code> 之外的內容。<ul>
+<li>從 <code>$&#123;&#125;</code> 位置切割，並會以字串型態存入陣列中。</li>
+<li>要注意就算 <code>$&#123;&#125;</code> 後面沒有其他字串，但還是會有一個空字串存入陣列中</li>
+</ul>
+</li>
+<li>第二個參數：第一個 <code>$&#123;&#125;</code></li>
+<li>第三個參數：第二個 <code>$&#123;&#125;</code>（…依此類推下去）</li>
+</ul>
+<figure class="highlight js"><figcaption><span>e.g. 標籤樣板字面值</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> str = <span class="string">&#x27;標籤樣板字面值&#x27;</span>;</span><br><span class="line"><span class="keyword">function</span> <span class="title function_">fn</span>(<span class="params">str, arg</span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(str, arg); </span><br><span class="line">  <span class="comment">// str=[&#x27;演示&#x27;, &#x27;範例&#x27;], arg=&#x27;標籤樣板字面值&#x27;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">fn<span class="string">`演示<span class="subst">$&#123;str&#125;</span>範例`</span>;</span><br></pre></td></tr></table></figure>
+
+<div class="note default">
+            <p>通常 <code>${}</code> 數量是不固定的，因此可以使用其餘運算子將 <code>${}</code> 的參數組成陣列來使用。</p>
+          </div>
+
+<figure class="highlight js"><figcaption><span>e.g. 標籤樣板字面值 + 其餘運算子</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> str1 = <span class="string">&#x27;標籤樣板字面值&#x27;</span>;</span><br><span class="line"><span class="keyword">let</span> str2 = <span class="string">&#x27;其餘運算子&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">fn</span>(<span class="params">str, ...args</span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(str, args); </span><br><span class="line">  <span class="comment">// str=[&#x27;演示&#x27;, &#x27;+&#x27;, &#x27;範例&#x27;], arg=[&#x27;標籤樣板字面值&#x27;, &#x27;其餘運算子&#x27;]</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">fn<span class="string">`演示<span class="subst">$&#123;str1&#125;</span>+<span class="subst">$&#123;str2&#125;</span>範例`</span>;</span><br></pre></td></tr></table></figure>
+
+<div class="note danger">
+            <p>要注意第一個參數永遠只會傳入非 <code>${}</code> 的字串，所以請不要在第一個參數使用其餘參數，因為沒有必要。</p>
+          </div>
+
+<div class="note default">
+            <p>標籤樣板字面值也常用來預防 XSS 攻擊，請看下方範例。</p>
+          </div>
+
+<ul>
+<li>透過將 ${} 內容中含有<code>&lt;</code>、<code>&gt;</code> 與 <code>&amp;</code> 的符號替換成 ASCII Code，也就是單純的字串。</li>
+</ul>
+<figure class="highlight js"><figcaption><span>e.g. 預防 XSS 攻擊</span><a href="https://israynotarray.com/javascript/20211114/136128318/">src</a></figcaption><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">convertHTML</span> (strings, ...keys) &#123;</span><br><span class="line">  <span class="keyword">return</span> strings.<span class="title function_">map</span>(<span class="function">(<span class="params">str, i</span>) =&gt;</span> <span class="string">`<span class="subst">$&#123;str&#125;</span><span class="subst">$&#123;keys[i] ? keys[i].replace(/&amp;/g, <span class="string">&#x27;&amp;amp;&#x27;</span>).replace(/&lt;/g, <span class="string">&#x27;&amp;lt;&#x27;</span>).replace(/&gt;/g, <span class="string">&#x27;&amp;gt;&#x27;</span>): <span class="string">&#x27;&#x27;</span>&#125;</span>`</span>).<span class="title function_">join</span>(<span class="string">&#x27;&#x27;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">convertHTML<span class="string">`&lt;p&gt;超連結：<span class="subst">$&#123;Url&#125;</span>&lt;/p&gt;`</span>;</span><br></pre></td></tr></table></figure>
+
+<h2 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h2><ul>
+<li><a href="https://medium.com/vicky-notes/es6-%E7%AB%A0%E7%AF%80-template-literial-7309b9e3bebb">ES6 章節：Template Literial</a></li>
+<li>PJ 大 <a href="https://pjchender.blogspot.com/2017/01/javascript-es6-template-literalstagged.html">[筆記] JavaScript ES6 中的模版字符串（template literals）和標籤模版（tagged template）</a></li>
+<li>Ray <a href="https://israynotarray.com/javascript/20211114/136128318/">JavaScript 核心觀念(72) - ES6 章節：Template Literial - 標籤樣板字面值</a></li>
+</ul>
 ]]></content>
       <categories>
         <category>JavaScript</category>
