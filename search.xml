@@ -1562,7 +1562,7 @@ console.log(obj.name);  // kent
             <p>屬於樣板字面值的進階用法，常用於函式參數傳入。</p>
           </div>
 
-<p>語法</p>
+<p>語法：</p>
 <ul>
 <li>函式後方將括號替代為樣板字面值</li>
 </ul>
@@ -1585,7 +1585,18 @@ console.log(obj.name);  // kent
 <li>第二個參數：第一個 <code>$&#123;&#125;</code></li>
 <li>第三個參數：第二個 <code>$&#123;&#125;</code>（…依此類推下去）</li>
 </ul>
-<figure class="highlight js"><figcaption><span>e.g. 標籤樣板字面值</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> str = <span class="string">&#x27;標籤樣板字面值&#x27;</span>;</span><br><span class="line"><span class="keyword">function</span> <span class="title function_">fn</span>(<span class="params">str, arg</span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(str, arg); </span><br><span class="line">  <span class="comment">// str=[&#x27;演示&#x27;, &#x27;範例&#x27;], arg=&#x27;標籤樣板字面值&#x27;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">fn<span class="string">`演示<span class="subst">$&#123;str&#125;</span>範例`</span>;</span><br></pre></td></tr></table></figure>
+<p><img src="https://imgur.com/N24S0H1.jpg"></p>
+<div class="note default">
+            <p>${} 後面沒有其他字串，但還是會有一個空字串存入陣列中。<br>例如：一個 ${} 會切兩個字串，兩個 ${} 會切三個字串。</p>
+          </div>
+
+<figure class="highlight js"><figcaption><span>e.g. 標籤樣板字面值</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> str1 = <span class="string">&#x27;標籤&#x27;</span>;</span><br><span class="line"><span class="keyword">let</span> str2 = <span class="string">&#x27;標籤樣板字面值&#x27;</span>;</span><br><span class="line"><span class="keyword">function</span> <span class="title function_">fn</span>(<span class="params">str, arg</span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(str);  <span class="comment">// str=[&#x27;演示&#x27;, &#x27;&#x27;, &#x27;範例&#x27;]</span></span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(arg);  <span class="comment">// arg=&#x27;標籤&#x27;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">fn<span class="string">`演示<span class="subst">$&#123;str1&#125;</span><span class="subst">$&#123;str2&#125;</span>範例`</span>;</span><br></pre></td></tr></table></figure>
+
+<div class="note default">
+            <p>變數的部分，也可以使用<code>其餘運算子</code>來一次接收全部變數。</p>
+          </div>
+
+<figure class="highlight js"><figcaption><span>e.g. 其餘運算子接收所有變數</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> str1 = <span class="string">&#x27;標籤&#x27;</span>;</span><br><span class="line"><span class="keyword">let</span> str2 = <span class="string">&#x27;標籤樣板字面值&#x27;</span>;</span><br><span class="line"><span class="keyword">function</span> <span class="title function_">fn</span>(<span class="params">str, ...arg</span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(str);  <span class="comment">// str=[&#x27;演示&#x27;, &#x27;&#x27;, &#x27;範例&#x27;]</span></span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(arg);  <span class="comment">// arg=[&#x27;標籤&#x27;, &#x27;標籤樣板字面值&#x27;]</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">fn<span class="string">`演示<span class="subst">$&#123;str1&#125;</span><span class="subst">$&#123;str2&#125;</span>範例`</span>;</span><br></pre></td></tr></table></figure>
 
 <div class="note default">
             <p>通常 <code>${}</code> 數量是不固定的，因此可以使用其餘運算子將 <code>${}</code> 的參數組成陣列來使用。</p>
