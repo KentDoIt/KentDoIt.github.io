@@ -48,7 +48,7 @@
 <meta property="og:description" content="此篇會介紹 ES6 新增的「板字面值 Template Literal」。">
 <meta property="og:locale" content="zh_TW">
 <meta property="article:published_time" content="2022-06-23T04:01:24.000Z">
-<meta property="article:modified_time" content="2022-06-23T04:50:37.545Z">
+<meta property="article:modified_time" content="2022-06-23T04:54:35.590Z">
 <meta property="article:author" content="Kent">
 <meta property="article:tag" content="JavaScript">
 <meta property="article:tag" content="ES6">
@@ -318,11 +318,12 @@
 </ul>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`我是誰  ，\n  我在哪裡`</span>);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`這是陳述式範例：變數宣告<span class="subst">$&#123; <span class="keyword">let</span> str&#125;</span>`</span>); <span class="comment">// SyntaxError: Missing &#125; in template expression</span></span><br></pre></td></tr></table></figure>
 
+<hr>
 <div class="note default">
             <p>Q：那為什麼會需要樣板字面值？其它方式不行嗎？<br>A：可以，但樣板字面值簡化<code>串接過程</code>，使串接變得更<code>容易簡潔</code>。</p>
           </div>
 
-<div class="note Info">
+<div class="note info">
             <p>舊字串串接：會使用<code>單引號</code>或<code>雙引號</code> 來<code>包裹字串</code>，再透過 <code>+</code> 的方式來串接，而樣板字面值<br>樣板字面值：兩個反引號 &#96;&#96; 並加上 <code>${expression}</code> 來插入變數、表達式。</p>
           </div>
 
@@ -330,17 +331,17 @@
             <p>下面會透過幾個範例，來演示舊字串串接、樣板字面值兩者在不同情境的差別。</p>
           </div>
 
-<figure class="highlight js"><figcaption><span>e.g. 寫法差異</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> str1 = <span class="string">&#x27;世界&#x27;</span>;</span><br><span class="line"><span class="keyword">let</span> str2 = <span class="string">&#x27;和平&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 舊字串串接</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(str1 + str2 + <span class="string">&#x27; &amp; 愛&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 樣板字面值</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`<span class="subst">$&#123;str1&#125;</span><span class="subst">$&#123;str2&#125;</span> &amp; 愛`</span>);</span><br></pre></td></tr></table></figure>
+<h3 id="語法差異"><a href="#語法差異" class="headerlink" title="語法差異"></a>語法差異</h3><figure class="highlight js"><figcaption><span>e.g. 和之前寫法差異</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> str1 = <span class="string">&#x27;世界&#x27;</span>;</span><br><span class="line"><span class="keyword">let</span> str2 = <span class="string">&#x27;和平&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 舊字串串接</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(str1 + str2 + <span class="string">&#x27; &amp; 愛&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 樣板字面值</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`<span class="subst">$&#123;str1&#125;</span><span class="subst">$&#123;str2&#125;</span> &amp; 愛`</span>);</span><br></pre></td></tr></table></figure>
 
-<figure class="highlight js"><figcaption><span>e.g. 多行串接</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> money = <span class="number">10</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 舊字串串接（需要使用到反斜線來換行）</span></span><br><span class="line"><span class="keyword">let</span> template = <span class="string">&#x27;&lt;ul&gt;\</span></span><br><span class="line"><span class="string">  &lt;li&gt;&#x27;</span> + money + <span class="string">&#x27;元 &lt;/li&gt;\</span></span><br><span class="line"><span class="string">  &lt;li&gt;&#x27;</span> + money + <span class="string">&#x27;元 &lt;/li&gt;\</span></span><br><span class="line"><span class="string">&lt;/ul&gt;&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 樣板字面值（會保留所有換行和空白）</span></span><br><span class="line"><span class="keyword">let</span> template = <span class="string">`</span></span><br><span class="line"><span class="string">  &lt;ul&gt;</span></span><br><span class="line"><span class="string">    &lt;li&gt; <span class="subst">$&#123;money&#125;</span>元 &lt;/li&gt;</span></span><br><span class="line"><span class="string">    &lt;li&gt; <span class="subst">$&#123;money&#125;</span>元 &lt;/li&gt;</span></span><br><span class="line"><span class="string">  &lt;/ul&gt;</span></span><br><span class="line"><span class="string">`</span>;</span><br></pre></td></tr></table></figure>
+<h3 id="多行串接"><a href="#多行串接" class="headerlink" title="多行串接"></a>多行串接</h3><figure class="highlight js"><figcaption><span>e.g. 多行串接</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> money = <span class="number">10</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 舊字串串接（需要使用到反斜線來換行）</span></span><br><span class="line"><span class="keyword">let</span> template = <span class="string">&#x27;&lt;ul&gt;\</span></span><br><span class="line"><span class="string">  &lt;li&gt;&#x27;</span> + money + <span class="string">&#x27;元 &lt;/li&gt;\</span></span><br><span class="line"><span class="string">  &lt;li&gt;&#x27;</span> + money + <span class="string">&#x27;元 &lt;/li&gt;\</span></span><br><span class="line"><span class="string">&lt;/ul&gt;&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 樣板字面值（會保留所有換行和空白）</span></span><br><span class="line"><span class="keyword">let</span> template = <span class="string">`</span></span><br><span class="line"><span class="string">  &lt;ul&gt;</span></span><br><span class="line"><span class="string">    &lt;li&gt; <span class="subst">$&#123;money&#125;</span>元 &lt;/li&gt;</span></span><br><span class="line"><span class="string">    &lt;li&gt; <span class="subst">$&#123;money&#125;</span>元 &lt;/li&gt;</span></span><br><span class="line"><span class="string">  &lt;/ul&gt;</span></span><br><span class="line"><span class="string">`</span>;</span><br></pre></td></tr></table></figure>
 
-<div class="note default">
+<h3 id="跳脫字元"><a href="#跳脫字元" class="headerlink" title="跳脫字元"></a>跳脫字元</h3><div class="note default">
             <p>Q：那如果需要將反引號作為字串怎麼辦？<br>A：可以使用跳脫字元。</p>
           </div>
 
 <figure class="highlight js"><figcaption><span>e.g. 跳脫字元</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 在字元前面加上反斜線（backslash）</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`我厶\`誰`</span>); <span class="comment">// 我厶`誰</span></span><br></pre></td></tr></table></figure>
 
-<div class="note default">
+<h3 id="複雜用法"><a href="#複雜用法" class="headerlink" title="複雜用法"></a>複雜用法</h3><div class="note default">
             <p>上面範例中已充分暸解如何使用樣板字面值，來做字串串接和字串插補，下方在用一個範例來演示，結合函式、判斷式、巢狀的應用。</p>
           </div>
 
@@ -350,6 +351,7 @@
             <p>不敢想像用傳統串接寫的話會變成什麼樣子 QQ</p>
           </div>
 
+<hr>
 <h2 id="標籤樣板字面值-Tagged-Template-Literals"><a href="#標籤樣板字面值-Tagged-Template-Literals" class="headerlink" title="標籤樣板字面值 Tagged Template Literals"></a>標籤樣板字面值 Tagged Template Literals</h2><div class="note primary">
             <p>屬於樣板字面值的進階用法，常用於函式參數傳入。</p>
           </div>
@@ -511,7 +513,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A8%A3%E6%9D%BF%E5%AD%97%E9%9D%A2%E5%80%BC-Template-Literal"><span class="nav-text">樣板字面值 Template Literal</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A8%99%E7%B1%A4%E6%A8%A3%E6%9D%BF%E5%AD%97%E9%9D%A2%E5%80%BC-Tagged-Template-Literals"><span class="nav-text">標籤樣板字面值 Tagged Template Literals</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A8%A3%E6%9D%BF%E5%AD%97%E9%9D%A2%E5%80%BC%E5%82%B3%E5%8F%83%E6%95%B8%E7%89%B9%E6%80%A7"><span class="nav-text">樣板字面值傳參數特性</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#reference"><span class="nav-text">reference</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A8%A3%E6%9D%BF%E5%AD%97%E9%9D%A2%E5%80%BC-Template-Literal"><span class="nav-text">樣板字面值 Template Literal</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AA%9E%E6%B3%95%E5%B7%AE%E7%95%B0"><span class="nav-text">語法差異</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%9A%E8%A1%8C%E4%B8%B2%E6%8E%A5"><span class="nav-text">多行串接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%B7%B3%E8%84%AB%E5%AD%97%E5%85%83"><span class="nav-text">跳脫字元</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A4%87%E9%9B%9C%E7%94%A8%E6%B3%95"><span class="nav-text">複雜用法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A8%99%E7%B1%A4%E6%A8%A3%E6%9D%BF%E5%AD%97%E9%9D%A2%E5%80%BC-Tagged-Template-Literals"><span class="nav-text">標籤樣板字面值 Tagged Template Literals</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A8%A3%E6%9D%BF%E5%AD%97%E9%9D%A2%E5%80%BC%E5%82%B3%E5%8F%83%E6%95%B8%E7%89%B9%E6%80%A7"><span class="nav-text">樣板字面值傳參數特性</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#reference"><span class="nav-text">reference</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
