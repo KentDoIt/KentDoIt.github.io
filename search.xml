@@ -1559,7 +1559,7 @@ console.log(obj.name);  // kent
 
 <hr>
 <h2 id="標籤樣板字面值-Tagged-Template-Literals"><a href="#標籤樣板字面值-Tagged-Template-Literals" class="headerlink" title="標籤樣板字面值 Tagged Template Literals"></a>標籤樣板字面值 Tagged Template Literals</h2><div class="note primary">
-            <p>屬於樣板字面值的進階用法，常用於函式參數傳入。</p>
+            <p><a href="https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Template_literals#%E6%A8%99%E7%B1%A4%E6%A8%A3%E6%9D%BF%E5%AD%97%E9%9D%A2%E5%80%BC">MDN</a>：屬於樣板字面值的進階用法，常用於函式參數傳入。</p>
           </div>
 
 <p>語法：</p>
