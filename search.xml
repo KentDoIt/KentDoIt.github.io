@@ -1204,7 +1204,7 @@
 
 <h2 id="conclusion"><a href="#conclusion" class="headerlink" title="conclusion"></a>conclusion</h2><ol>
 <li>ES6 提升了物件實字語法的簡潔性和靈活性。</li>
-<li>不建議使用非字串、保留字作為屬性名稱。</li>
+<li>不建議使用非字串、保留字作為屬性名稱（雖然不會出錯，但很有可能產生非預期的錯誤）。</li>
 </ol>
 <h2 id="quiz"><a href="#quiz" class="headerlink" title="quiz"></a>quiz</h2><div class="note info">
             <p>最後用三個問題來結束這回合，大家可以試著回答看看。</p>
