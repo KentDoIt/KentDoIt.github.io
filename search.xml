@@ -1187,8 +1187,8 @@
 <p>diff</p>
 </blockquote>
 <ol>
-<li>上方範例因為 primary 的特性，所以使物件訪問資料時使用 <code>.</code> Dot 的情況下會導致錯誤，而使用 <code>[]</code> Square Brackets 則不會有這個限制。</li>
-<li>obj[1]、obj[“1”] 會訪問到同一筆資料，從 typeof 印出結果為 <code>string</code> 能證明 number 被自動轉型為 string，所以兩者會相等。</li>
+<li>上方範例因為 Property accessors 的特性，使物件訪問資料時使用 <code>.</code> Dot 的情況下會發生錯誤，而使用 <code>[]</code> Square Brackets 則不會有這個限制。</li>
+<li>obj[1]、obj[“1”] 會訪問到同一筆資料，從 typeof 印出結果為 <code>string</code> 能證明 number 被自動轉型為 string 所以兩者會相等。</li>
 </ol>
 <div class="note danger">
             <p>使用 <code>[]</code> Square Brackets 雖然沒有了型別的限制，但會導致就算使用到保留字也不會出錯。</p>
