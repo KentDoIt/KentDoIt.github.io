@@ -1202,10 +1202,10 @@
 
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> objKey = <span class="string">&#x27;name&#x27;</span>;</span><br><span class="line"><span class="keyword">let</span> obj = &#123;</span><br><span class="line">  [objKey]: <span class="string">&#x27;kent&#x27;</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(obj.<span class="property">name</span>);  <span class="comment">// kent</span></span><br></pre></td></tr></table></figure>
 
-<h2 id="conclusion"><a href="#conclusion" class="headerlink" title="conclusion"></a>conclusion</h2><div class="note default">
-            <p>ES6 提升了物件實字語法的簡潔性和靈活性，且不建議使用非字串、保留字作為屬性名稱。</p>
-          </div>
-
+<h2 id="conclusion"><a href="#conclusion" class="headerlink" title="conclusion"></a>conclusion</h2><ol>
+<li>ES6 提升了物件實字語法的簡潔性和靈活性。</li>
+<li>不建議使用非字串、保留字作為屬性名稱。</li>
+</ol>
 <h2 id="quiz"><a href="#quiz" class="headerlink" title="quiz"></a>quiz</h2><div class="note info">
             <p>最後用三個問題來結束這回合，大家可以試著回答看看。</p>
           </div>
