@@ -1187,7 +1187,9 @@
 <p>diff</p>
 </blockquote>
 <ol>
-<li>上方範例因為 Property accessors 的特性，使物件訪問資料時使用 <code>.</code> Dot 的情況下會發生錯誤，而使用 <code>[]</code> Square Brackets 則不會有這個限制。</li>
+<li>上方範例因為 Property accessors 的特性，使物件訪問資料時使用 <code>.</code> Dot 的情況下會發生錯誤，而使用 <code>[]</code> Square Brackets 則不會有這個限制。<div class="note default">
+            <p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Grammar_and_types#object_literals">MDN Object literals</a> 有提到當屬性名稱為「數字」或 「無效的 JavaScript 識別字」時就必需要使用 <code>引號（&#39;&#39;、&quot;&quot;）</code>且無法使用 <code>.Dot</code> 來做屬性訪問，取而代之的就是使用 <code>[]Square Brackets</code>。</p>
+          </div></li>
 <li>obj[1]、obj[“1”] 會訪問到同一筆資料，從 typeof 印出結果為 <code>string</code> 能證明 number 被自動轉型為 string 所以兩者會相等。</li>
 </ol>
 <div class="note danger">
