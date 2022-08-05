@@ -1484,7 +1484,7 @@ console.log(obj.name);  // kent
           </div>
 
 <p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Nullish_coalescing_operator#syntax">MDN 語法</a></p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">leftExpr ?? rightExpr</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">leftExpr ?? rightExpr</span><br></pre></td></tr></table></figure>
 
 <p>e.g. 判斷是否使用過</p>
 <div class="note default">
