@@ -48,7 +48,7 @@
 <meta property="og:description" content="此篇學習在 JS 中如何透過這個 ES2020 新增的語法糖可選串連運算子，來避免遇到物件屬性不存在所導致的報錯。">
 <meta property="og:locale" content="zh_TW">
 <meta property="article:published_time" content="2022-08-05T09:03:08.000Z">
-<meta property="article:modified_time" content="2022-08-05T09:53:34.646Z">
+<meta property="article:modified_time" content="2022-08-05T09:57:15.278Z">
 <meta property="article:author" content="Kent">
 <meta property="article:tag" content="JavaScript">
 <meta property="article:tag" content="ES6">
@@ -297,7 +297,7 @@
         </blockquote>
       
         <h2 id="可選串連運算子-Optional-chaining-operator"><a href="#可選串連運算子-Optional-chaining-operator" class="headerlink" title="可選串連運算子 Optional chaining operator"></a>可選串連運算子 Optional chaining operator</h2><div class="note primary">
-            <p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Operators/Optional_chaining">MDN</a>：<br>可選串連運算子 <strong><code>?.</code></strong> 允許進行深層次的物件值存取，而無需透過明確的物件值串連驗證。<code>?.</code> 運算子的操作與 <code>.</code> 屬性存取運算子相似，後者會在參照到 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Glossary/Nullish">nullish (en-US)</a>(<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Global_Objects/null">null</a> or <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Global_Objects/undefined">undefined</a>) 的值來判斷不存在時會出現錯誤，而前者可選串連則回傳 <code>undefined</code>。 當需要存取一個函數，而這函數並不存在時，則會回傳 <code>undefined</code>。</p>
+            <p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Operators/Optional_chaining">MDN</a>：<br>可選串連運算子 <strong><code>?.</code></strong> 允許進行深層次的物件值存取，而無需透過明確的物件值串連驗證。<code>?.</code> 運算子的操作與 <code>.</code> 屬性存取運算子相似，後者會在參照到 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Glossary/Nullish">nullish (en-US)</a> 的值 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Global_Objects/null">null</a> or <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Global_Objects/undefined">undefined</a> 來判斷當不存在時會出現錯誤，而前者可選串連則回傳 <code>undefined</code>。 當需要存取一個函數，而這函數並不存在時，則會回傳 <code>undefined</code>。</p>
           </div>
 
 <div class="note default">

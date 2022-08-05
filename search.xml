@@ -1655,7 +1655,7 @@ console.log(obj.name);  // kent
     <title>JS 可選串連運算子 Optional chaining operator</title>
     <url>/javascript/3900271525/</url>
     <content><![CDATA[<h2 id="可選串連運算子-Optional-chaining-operator"><a href="#可選串連運算子-Optional-chaining-operator" class="headerlink" title="可選串連運算子 Optional chaining operator"></a>可選串連運算子 Optional chaining operator</h2><div class="note primary">
-            <p><a href="https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Operators/Optional_chaining">MDN</a>：<br>可選串連運算子 <strong><code>?.</code></strong> 允許進行深層次的物件值存取，而無需透過明確的物件值串連驗證。<code>?.</code> 運算子的操作與 <code>.</code> 屬性存取運算子相似，後者會在參照到 <a href="https://developer.mozilla.org/en-US/docs/Glossary/Nullish">nullish (en-US)</a>(<a href="https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Global_Objects/null">null</a> or <a href="https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Global_Objects/undefined">undefined</a>) 的值來判斷不存在時會出現錯誤，而前者可選串連則回傳 <code>undefined</code>。 當需要存取一個函數，而這函數並不存在時，則會回傳 <code>undefined</code>。</p>
+            <p><a href="https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Operators/Optional_chaining">MDN</a>：<br>可選串連運算子 <strong><code>?.</code></strong> 允許進行深層次的物件值存取，而無需透過明確的物件值串連驗證。<code>?.</code> 運算子的操作與 <code>.</code> 屬性存取運算子相似，後者會在參照到 <a href="https://developer.mozilla.org/en-US/docs/Glossary/Nullish">nullish (en-US)</a> 的值 <a href="https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Global_Objects/null">null</a> or <a href="https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Global_Objects/undefined">undefined</a> 來判斷當不存在時會出現錯誤，而前者可選串連則回傳 <code>undefined</code>。 當需要存取一個函數，而這函數並不存在時，則會回傳 <code>undefined</code>。</p>
           </div>
 
 <div class="note default">
