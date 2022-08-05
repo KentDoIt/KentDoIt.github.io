@@ -1552,7 +1552,7 @@ console.log(obj.name);  // kent
           </div>
 
 <div class="note info">
-            <p>舊字串串接：會使用<code>單引號</code>或<code>雙引號</code> 來<code>包裹字串</code>，再透過 <code>+</code> 的方式來串接，而樣板字面值<br>樣板字面值：兩個反引號 &#96;&#96; 並加上 <code>${expression}</code> 來插入變數、表達式。</p>
+            <p>舊字串串接：會使用<code>單引號</code>或<code>雙引號</code> 來<code>包裹字串</code>，再透過 <code>+</code> 的方式來串接。<br>樣板字面值：兩個反引號 &#96;&#96; 並加上 <code>${expression}</code> 來插入變數、表達式。</p>
           </div>
 
 <div class="note default">
