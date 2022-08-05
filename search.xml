@@ -1508,7 +1508,10 @@ console.log(obj.name);  // kent
 
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="literal">null</span> || <span class="literal">undefined</span> ?? <span class="string">&quot;foo&quot;</span>; <span class="comment">// 噴 SyntaxError</span></span><br><span class="line">(<span class="literal">null</span> || <span class="literal">undefined</span> ) ?? <span class="string">&quot;foo&quot;</span>; <span class="comment">// 返回 &quot;foo&quot;</span></span><br></pre></td></tr></table></figure>
 
-<h2 id="conclusion"><a href="#conclusion" class="headerlink" title="conclusion"></a>conclusion</h2><p><img src="https://imgur.com/2sYcGjJ.jpg"></p>
+<h2 id="conclusion"><a href="#conclusion" class="headerlink" title="conclusion"></a>conclusion</h2><ul>
+<li><code>空值合併 ??</code> 相較於 <a href="https://kentdoit.github.io/javascript/350805089/"><code>短路求值 ||</code></a> 更加嚴謹。</li>
+</ul>
+<p><img src="https://imgur.com/2sYcGjJ.jpg"></p>
 <h2 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h2><ul>
 <li><a href="https://cloud.tencent.com/developer/article/1954297">谈谈 JavaScript 中的空值合并操作符 Nullish coalescing operator</a></li>
 </ul>
