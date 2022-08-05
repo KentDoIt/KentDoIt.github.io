@@ -48,7 +48,7 @@
 <meta property="og:description" content="此篇會介紹 ES6 新增的展開運算子 Spread Operator 的兩種類型。">
 <meta property="og:locale" content="zh_TW">
 <meta property="article:published_time" content="2022-08-05T09:03:32.000Z">
-<meta property="article:modified_time" content="2022-08-05T10:45:59.765Z">
+<meta property="article:modified_time" content="2022-08-05T11:02:36.695Z">
 <meta property="article:author" content="Kent">
 <meta property="article:tag" content="JavaScript">
 <meta property="article:tag" content="ES6">
@@ -269,7 +269,7 @@
               <!--<span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>-->
-              <span>4 分鐘閱讀時間</span>
+              <span>5 分鐘閱讀時間</span>
             </span>
             <span class="post-meta-item">
               <!--<span class="post-meta-item-icon">
@@ -369,9 +369,26 @@
 <li>展開運算子如果直接用在物件上會拋出錯誤，因為展開運算子只能用於具有索引和 length 屬性的物件。</li>
 <li>如果在箭頭函式使用其餘運算子，即使函式只有一個參數也<code>必須</code>加上小括號。</li>
 </ol>
+<blockquote>
+<p>物件中的類似語法並不是 ES6 新增的特性</p>
+</blockquote>
+<div class="note primary">
+            <p><a target="_blank" rel="noopener" href="https://github.com/tc39/proposal-object-rest-spread">Object Rest&#x2F;Spread Properties for ECMAScript</a> proposal (ES2018)</p>
+          </div>
+
+<figure class="highlight js"><figcaption><span>src</span><a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Operators/Spread_syntax#spread_in_object_literals">src</a></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> obj1 = &#123; <span class="attr">foo</span>: <span class="string">&#x27;bar&#x27;</span>, <span class="attr">x</span>: <span class="number">42</span> &#125;;</span><br><span class="line"><span class="keyword">const</span> obj2 = &#123; <span class="attr">foo</span>: <span class="string">&#x27;baz&#x27;</span>, <span class="attr">y</span>: <span class="number">13</span> &#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> clonedObj = &#123; ...obj1 &#125;;</span><br><span class="line"><span class="comment">// Object &#123; foo: &quot;bar&quot;, x: 42 &#125;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> mergedObj = &#123; ...obj1, ...obj2 &#125;;</span><br><span class="line"><span class="comment">// Object &#123; foo: &quot;baz&quot;, x: 42, y: 13 &#125;</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>關於名詞不統一</p>
+</blockquote>
+<ul>
+<li>在<a target="_blank" rel="noopener" href="https://262.ecma-international.org/6.0/">ECMAScript</a> 上使用的是 <code>SpreadElement</code> 與 <code>rest parameter</code>，並且沒有一個完整的章節介紹，而是散落在各章節中。</li>
+<li>在 MDN 上是用 <code>Spread operator</code> 與 <code>Spread syntax</code> (標題是 syntax，網址是 operator)、<code>Rest operator</code>、<code>Rest parameters</code>(標題是 <code>parameters</code>，網址是 operator)。</li>
+</ul>
 <h2 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h2><ul>
 <li><a target="_blank" rel="noopener" href="https://ithelp.ithome.com.tw/articles/10195477">[ES6-重點紀錄] 擴展運算子 Spread Operator</a></li>
 <li>竹白大 <a target="_blank" rel="noopener" href="https://chupai.github.io/posts/200513_js_spread_and_rest_operator/">展開／其餘運算子</a></li>
+<li><a target="_blank" rel="noopener" href="https://eyesofkids.gitbooks.io/javascript-start-from-es6/content/part4/rest_spread.html">展開運算符與其餘運算符</a></li>
 </ul>
 
     </div>
