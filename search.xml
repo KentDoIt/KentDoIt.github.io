@@ -1545,20 +1545,19 @@ console.log(obj.name);  // kent
 </ul>
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`我是誰  ，\n  我在哪裡`</span>);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`這是陳述式範例：變數宣告<span class="subst">$&#123; <span class="keyword">let</span> str&#125;</span>`</span>); <span class="comment">// SyntaxError: Missing &#125; in template expression</span></span><br></pre></td></tr></table></figure>
 
-<hr>
 <div class="note default">
             <p>Q：那為什麼會需要樣板字面值？其它方式不行嗎？<br>A：可以，但樣板字面值簡化<code>串接過程</code>，使串接變得更<code>容易簡潔</code>。</p>
-          </div>
-
-<div class="note info">
-            <p>舊字串串接：會使用<code>單引號</code>或<code>雙引號</code> 來<code>包裹字串</code>，再透過 <code>+</code> 的方式來串接。<br>樣板字面值：兩個反引號 &#96;&#96; 並加上 <code>${expression}</code> 來插入變數、表達式。</p>
           </div>
 
 <div class="note default">
             <p>下面會透過幾個範例，來演示舊字串串接、樣板字面值兩者在不同情境的差別。</p>
           </div>
 
-<h3 id="語法差異"><a href="#語法差異" class="headerlink" title="語法差異"></a>語法差異</h3><figure class="highlight js"><figcaption><span>e.g. 和之前寫法差異</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> str1 = <span class="string">&#x27;世界&#x27;</span>;</span><br><span class="line"><span class="keyword">let</span> str2 = <span class="string">&#x27;和平&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 舊字串串接</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(str1 + str2 + <span class="string">&#x27; &amp; 愛&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 樣板字面值</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`<span class="subst">$&#123;str1&#125;</span><span class="subst">$&#123;str2&#125;</span> &amp; 愛`</span>);</span><br></pre></td></tr></table></figure>
+<h3 id="語法差異"><a href="#語法差異" class="headerlink" title="語法差異"></a>語法差異</h3><div class="note info">
+            <p>舊字串串接：會使用<code>單引號</code>或<code>雙引號</code> 來<code>包裹字串</code>，再透過 <code>+</code> 的方式來串接。<br>樣板字面值：兩個反引號 &#96;&#96; 並加上 <code>${expression}</code> 來插入變數、表達式。</p>
+          </div>
+
+<figure class="highlight js"><figcaption><span>e.g. 新舊寫法差異</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> str1 = <span class="string">&#x27;世界&#x27;</span>;</span><br><span class="line"><span class="keyword">let</span> str2 = <span class="string">&#x27;和平&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 舊字串串接</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(str1 + str2 + <span class="string">&#x27; &amp; 愛&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 樣板字面值</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`<span class="subst">$&#123;str1&#125;</span><span class="subst">$&#123;str2&#125;</span> &amp; 愛`</span>);</span><br></pre></td></tr></table></figure>
 
 <h3 id="多行串接"><a href="#多行串接" class="headerlink" title="多行串接"></a>多行串接</h3><figure class="highlight js"><figcaption><span>e.g. 多行串接</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> money = <span class="number">10</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 舊字串串接（需要使用到反斜線來換行）</span></span><br><span class="line"><span class="keyword">let</span> template = <span class="string">&#x27;&lt;ul&gt;\</span></span><br><span class="line"><span class="string">  &lt;li&gt;&#x27;</span> + money + <span class="string">&#x27;元 &lt;/li&gt;\</span></span><br><span class="line"><span class="string">  &lt;li&gt;&#x27;</span> + money + <span class="string">&#x27;元 &lt;/li&gt;\</span></span><br><span class="line"><span class="string">&lt;/ul&gt;&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 樣板字面值（會保留所有換行和空白）</span></span><br><span class="line"><span class="keyword">let</span> template = <span class="string">`</span></span><br><span class="line"><span class="string">  &lt;ul&gt;</span></span><br><span class="line"><span class="string">    &lt;li&gt; <span class="subst">$&#123;money&#125;</span>元 &lt;/li&gt;</span></span><br><span class="line"><span class="string">    &lt;li&gt; <span class="subst">$&#123;money&#125;</span>元 &lt;/li&gt;</span></span><br><span class="line"><span class="string">  &lt;/ul&gt;</span></span><br><span class="line"><span class="string">`</span>;</span><br></pre></td></tr></table></figure>
 
@@ -1655,7 +1654,66 @@ console.log(obj.name);  // kent
   <entry>
     <title>JS 可選串連運算子 Optional chaining operator</title>
     <url>/javascript/3900271525/</url>
-    <content><![CDATA[]]></content>
+    <content><![CDATA[<h2 id="可選串連運算子-Optional-chaining-operator"><a href="#可選串連運算子-Optional-chaining-operator" class="headerlink" title="可選串連運算子 Optional chaining operator"></a>可選串連運算子 Optional chaining operator</h2><div class="note primary">
+            <p><a href="https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Operators/Optional_chaining">MDN</a>：<br>可選串連運算子 <strong><code>?.</code></strong> 允許進行深層次的物件值存取，而無需透過明確的物件值串連驗證。<code>?.</code> 運算子的操作與 <code>.</code> 屬性存取運算子相似，後者會在參照到 <a href="https://developer.mozilla.org/en-US/docs/Glossary/Nullish">nullish (en-US)</a><br> (<code>[null](https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Global_Objects/null)</code> or <code>[undefined](https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Global_Objects/undefined)</code>) 的值時出現錯誤，而前者可選串連則回傳 <code>undefined</code>。 當需要存取一個函數，而這函數並不存在時，則會回傳 <code>undefined</code>。</p>
+          </div>
+
+<div class="note default">
+            <p>白話文：存取一層以上的物件屬性時，就算屬性不存在也不會報錯，而是回傳 undefined。</p>
+          </div>
+
+<p>語法：在 <code>.</code> 前方加上 <code>?</code>。</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">obj?.prop</span><br><span class="line">obj?.[expr]</span><br><span class="line">arr?.[index]</span><br><span class="line">func?.(args)</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>Tips</p>
+</blockquote>
+<ul>
+<li>當 <code>?.</code> 左側屬性不存在，回傳 <code>undefined</code> 而非 TypeError。</li>
+</ul>
+<div class="note primary">
+            <p>物件特性：取用未定義屬性則會回傳 undefined，但僅限一層！不然會噴 TypeError。<br>（因此有了可選串連運算子的誕生）</p>
+          </div>
+
+<h3 id="語法差異"><a href="#語法差異" class="headerlink" title="語法差異"></a>語法差異</h3><div class="note info">
+            <p>舊方法：手動判斷 typeof 是否為 undefined。<br>新方法：直接在屬性 <code>.</code> 前方加上 <code>?</code>。</p>
+          </div>
+
+<div class="note primary">
+            <p>判斷是否存在會依照 <a href="https://developer.mozilla.org/en-US/docs/Glossary/Nullish">nullish value</a> （null、undefined）直來判斷，若值為 nullish value 就表示不存在。</p>
+          </div>
+
+<figure class="highlight js"><figcaption><span>e.g. 新舊寫法差異</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> school = &#123;</span><br><span class="line">  <span class="attr">info</span>: &#123;</span><br><span class="line">    <span class="attr">student</span>: &#123;</span><br><span class="line">      <span class="attr">name</span>: <span class="string">&#x27;kent&#x27;</span>,</span><br><span class="line">      <span class="attr">age</span>: <span class="number">18</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// TypeError: Cannot read properties of undefined (reading &#x27;name&#x27;)</span></span><br><span class="line"><span class="keyword">let</span> name = school.<span class="property">info</span>.<span class="property">teacher</span>.<span class="property">name</span>; </span><br><span class="line"></span><br><span class="line"><span class="comment">// 舊方法</span></span><br><span class="line"><span class="keyword">if</span> (<span class="keyword">typeof</span> (school.<span class="property">info</span>.<span class="property">teacher</span>) !== <span class="string">&#x27;undefined&#x27;</span>)&#123;</span><br><span class="line">  <span class="keyword">let</span> name = school.<span class="property">info</span>.<span class="property">teacher</span>.<span class="property">name</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 新方法</span></span><br><span class="line"><span class="keyword">let</span> name = school.<span class="property">info</span>.<span class="property">teacher</span>?.<span class="property">name</span>;</span><br></pre></td></tr></table></figure>
+
+<div class="note default">
+            <p>下方會用更多範例來介紹，範例中會使用<a href="https://kentdoit.github.io/javascript/350805089/">短路求值</a>的方式來演示，還不暸解的朋友可以參考這篇文章。</p>
+          </div>
+
+<hr>
+<h3 id="判斷物件屬性是否存在"><a href="#判斷物件屬性是否存在" class="headerlink" title="判斷物件屬性是否存在"></a>判斷物件屬性是否存在</h3><ul>
+<li>舊方法：<code>&amp;&amp;</code><ul>
+<li>會先判斷上一層屬性是否存在，<code>&amp;&amp; 左邊</code> 是否為 nullish value （null 或 undefined）</li>
+<li>不是null 或 undefined 才繼續執行 <code>&amp;&amp; 右邊</code>。</li>
+</ul>
+</li>
+<li>新方法：<code>?.</code><ul>
+<li>當 <code>?.</code> 左側屬性是否為 nullish value （null 或 undefined），則回傳 undefined。</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> school = &#123;</span><br><span class="line">  <span class="attr">info</span>: &#123;</span><br><span class="line">    <span class="attr">student</span>: &#123;</span><br><span class="line">      <span class="attr">name</span>: <span class="string">&#x27;kent&#x27;</span>,</span><br><span class="line">      <span class="attr">age</span>: <span class="number">18</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 問題</span></span><br><span class="line"><span class="keyword">let</span> name = school.<span class="property">info</span>.<span class="property">teacher</span>.<span class="property">name</span>; <span class="comment">// TypeError: Cannot read properties of undefined (reading &#x27;name&#x27;)</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 舊方法</span></span><br><span class="line"><span class="keyword">let</span> name = school.<span class="property">info</span>.<span class="property">teacher</span> &amp;&amp; school.<span class="property">info</span>.<span class="property">teacher</span>.<span class="property">name</span>;   <span class="comment">// undefined</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 新方法</span></span><br><span class="line"><span class="keyword">let</span> name = school.<span class="property">info</span>.<span class="property">teacher</span>?.<span class="property">name</span>;      <span class="comment">// undefined</span></span><br><span class="line"><span class="keyword">let</span> name = school.<span class="property">info</span>[<span class="string">&#x27;teacher&#x27;</span>]?.<span class="property">name</span>;   <span class="comment">// undefined</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="預防陣列訪問不存在的索引值"><a href="#預防陣列訪問不存在的索引值" class="headerlink" title="預防陣列訪問不存在的索引值"></a>預防陣列訪問不存在的索引值</h3><div class="note default">
+            <p>預設不存在的索引值會回傳 undefined</p>
+          </div>
+
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> arr = [<span class="string">&#x27;世&#x27;</span>, <span class="string">&#x27;界&#x27;</span>, <span class="string">&#x27;和&#x27;</span>, <span class="string">&#x27;平&#x27;</span>];</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(arr[<span class="number">10</span>]);    <span class="comment">// undefined</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(arr?.[<span class="number">10</span>]);  <span class="comment">// undefined</span></span><br></pre></td></tr></table></figure>
+
+<div class="note default">
+            <p>這樣之後在做 API 資料處理或是獲取 DOM 元素可以不用寫一堆 &amp;&amp; 了 🥳</p>
+          </div>
+
+]]></content>
       <categories>
         <category>JavaScript</category>
       </categories>
