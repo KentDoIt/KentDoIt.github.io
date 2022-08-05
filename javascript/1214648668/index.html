@@ -48,7 +48,7 @@
 <meta property="og:description" content="此篇會介紹 ES6 新增的展開運算子 Spread Operator 的兩種類型。">
 <meta property="og:locale" content="zh_TW">
 <meta property="article:published_time" content="2022-08-05T09:03:32.000Z">
-<meta property="article:modified_time" content="2022-08-05T09:18:56.927Z">
+<meta property="article:modified_time" content="2022-08-05T10:26:51.170Z">
 <meta property="article:author" content="Kent">
 <meta property="article:tag" content="JavaScript">
 <meta property="article:tag" content="ES6">
@@ -269,7 +269,7 @@
               <!--<span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>-->
-              <span>1 分鐘閱讀時間</span>
+              <span>3 分鐘閱讀時間</span>
             </span>
             <span class="post-meta-item">
               <!--<span class="post-meta-item-icon">
@@ -296,7 +296,75 @@
           <i class="fa fa-quote-right"></i>
         </blockquote>
       
-        
+        <h2 id="展開運算子（Spread-Operator）"><a href="#展開運算子（Spread-Operator）" class="headerlink" title="展開運算子（Spread Operator）"></a>展開運算子（Spread Operator）</h2><div class="note primary">
+            <p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_operator">MDN</a>：The spread operator allows an expression to be expanded in places where multiple arguments (for function calls) or multiple elements (for array literals) or multiple variables (for destructuring assignment) are expected.</p>
+          </div>
+
+<div class="note default">
+            <p>白話文：就是將<code>函式中 參數(arguments)</code> 或 <code>陣列中元素(elements)</code>，透過迭代(iterable)重新組成一個新的變數。</p>
+          </div>
+
+<p>語法：</p>
+<ul>
+<li>在需要展開的變數前方加上三個點 <code>...</code></li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">myFunction(a, ...iterableObj, b)</span><br><span class="line">[1, ...iterableObj, &#x27;4&#x27;, &#x27;five&#x27;, 6]</span><br><span class="line">(&#123; ...obj, key: &#x27;value&#x27; &#125;)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight js"><figcaption><span>e.g. 將 array 展開為獨立的參數</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> number = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>];</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(...number); <span class="comment">// 1 2 3</span></span><br><span class="line"><span class="comment">// 等同於</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(number[<span class="number">0</span>], number[<span class="number">1</span>], number[<span class="number">2</span>]);</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>Tip</p>
+</blockquote>
+<ul>
+<li>展開運算子如果直接用在物件上會拋出錯誤，因為展開運算子只能用於具有索引和 <code>length</code> 屬性的物件。</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> obj = &#123; <span class="attr">a</span>: <span class="number">1</span>, <span class="attr">b</span>: <span class="number">2</span> &#125;;</span><br><span class="line"><span class="keyword">const</span> array = [...obj]; <span class="comment">// TypeError: obj is not iterable</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="常見應用"><a href="#常見應用" class="headerlink" title="常見應用"></a>常見應用</h3><div class="note default">
+            <p>下面會演示幾種常見應用。</p>
+          </div>
+
+<h4 id="函式將陣列拆開當作獨立引數傳入到式中"><a href="#函式將陣列拆開當作獨立引數傳入到式中" class="headerlink" title="函式將陣列拆開當作獨立引數傳入到式中"></a>函式將陣列拆開當作獨立引數傳入到式中</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">foo</span>(<span class="params">a, b, c</span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(a + b + c);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// ES6 寫法</span></span><br><span class="line"><span class="title function_">foo</span>(...[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]); <span class="comment">// 6</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// ES6 之前，需透過 apply() 作展開</span></span><br><span class="line">foo.<span class="title function_">apply</span>(<span class="literal">null</span>, [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]);  <span class="comment">// 6</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="合併陣列"><a href="#合併陣列" class="headerlink" title="合併陣列"></a>合併陣列</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> arr1 = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>];</span><br><span class="line"><span class="keyword">let</span> arr2 = [<span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>];</span><br><span class="line"></span><br><span class="line"><span class="comment">// ES6 寫法</span></span><br><span class="line"><span class="keyword">let</span> temp2 = [...arr1, ...arr2];</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(temp2); <span class="comment">// [1, 2, 3, 4, 5, 6]</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// ES 之前寫法使用 concat()</span></span><br><span class="line"><span class="keyword">let</span> temp1 = arr1.<span class="title function_">concat</span>(arr2);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(temp1); <span class="comment">// [1, 2, 3, 4, 5, 6]</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="淺拷貝陣列並添加新的參數"><a href="#淺拷貝陣列並添加新的參數" class="headerlink" title="淺拷貝陣列並添加新的參數"></a>淺拷貝陣列並添加新的參數</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> arr1 = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>];</span><br><span class="line"><span class="keyword">let</span> arr2 = [...arr1];</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(arr2); <span class="comment">// [1, 2, 3]</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(arr1 === arr2); <span class="comment">// false</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="DOM-物件轉陣列"><a href="#DOM-物件轉陣列" class="headerlink" title="DOM 物件轉陣列"></a>DOM 物件轉陣列</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> list = <span class="variable language_">document</span>.<span class="title function_">getElementsByTagName</span>(<span class="string">&#x27;body&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(list <span class="keyword">instanceof</span> <span class="title class_">Array</span>); <span class="comment">// false</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>([...list] <span class="keyword">instanceof</span> <span class="title class_">Array</span>);  <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="字串轉陣列"><a href="#字串轉陣列" class="headerlink" title="字串轉陣列"></a>字串轉陣列</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> string = <span class="string">&#x27;hello&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>([...<span class="string">&#x27;hello&#x27;</span>]);  <span class="comment">// [&#x27;h&#x27;, &#x27;e&#x27;, &#x27;l&#x27;, &#x27;l&#x27;, &#x27;o&#x27;]</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="淺拷貝物件"><a href="#淺拷貝物件" class="headerlink" title="淺拷貝物件"></a>淺拷貝物件</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> obj = &#123; <span class="attr">a</span>: <span class="number">1</span>, <span class="attr">b</span>: <span class="number">2</span> &#125;;</span><br><span class="line"><span class="keyword">let</span> obj2 = &#123; ...obj &#125;;</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(obj2); <span class="comment">// &#123; a: 1, b: 2 &#125;</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(obj === obj2); <span class="comment">// false</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="其餘運算子-Rest-Operator"><a href="#其餘運算子-Rest-Operator" class="headerlink" title="其餘運算子 Rest Operator"></a>其餘運算子 Rest Operator</h2><div class="note default">
+            <p>常見用途：用於參數不固定的函式上。</p>
+          </div>
+
+
+<blockquote>
+<p>Tip</p>
+</blockquote>
+<ul>
+<li>如果使用箭頭函式，其餘運算子必須以小括號標記，即使函式只有一個參數。</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> <span class="title function_">sumAll</span> = (<span class="params">...number</span>) =&gt; number.<span class="title function_">reduce</span>(<span class="function">(<span class="params">total, next</span>) =&gt;</span> total + next);</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">sumAll</span>(<span class="number">1</span>, <span class="number">3</span>, <span class="number">5</span>)); <span class="comment">// 9</span></span><br></pre></td></tr></table></figure>
+
+<div class="note default">
+            <p>補這個是因為，箭頭函式特性當參數只有一個時，可以把參數的小括號省略。（箭頭函式介紹可以參考這篇<a href="https://kentdoit.github.io/javascript/2638792469/#%E5%96%AE%E8%A1%8C%E5%9E%8B%E5%BC%8F%E7%B8%AE%E5%AF%AB">文章</a>）</p>
+          </div>
+
+<h4 id=""><a href="#" class="headerlink" title=""></a></h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">``</span><span class="string">`</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">####</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">`</span><span class="string">``</span>js</span><br></pre></td></tr></table></figure>
+
+<h4 id="-1"><a href="#-1" class="headerlink" title=""></a></h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="conclusion"><a href="#conclusion" class="headerlink" title="conclusion"></a>conclusion</h2><ul>
+<li>展開運算子如果直接用在物件上會拋出錯誤，因為展開運算子只能用於具有索引和 length 屬性的物件。</li>
+</ul>
+<h2 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://ithelp.ithome.com.tw/articles/10195477">[ES6-重點紀錄] 擴展運算子 Spread Operator</a></li>
+<li>竹白大 <a target="_blank" rel="noopener" href="https://chupai.github.io/posts/200513_js_spread_and_rest_operator/">展開／其餘運算子</a></li>
+</ul>
+
     </div>
 
     
@@ -407,6 +475,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B1%95%E9%96%8B%E9%81%8B%E7%AE%97%E5%AD%90%EF%BC%88Spread-Operator%EF%BC%89"><span class="nav-text">展開運算子（Spread Operator）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B8%B8%E8%A6%8B%E6%87%89%E7%94%A8"><span class="nav-text">常見應用</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%87%BD%E5%BC%8F%E5%B0%87%E9%99%A3%E5%88%97%E6%8B%86%E9%96%8B%E7%95%B6%E4%BD%9C%E7%8D%A8%E7%AB%8B%E5%BC%95%E6%95%B8%E5%82%B3%E5%85%A5%E5%88%B0%E5%BC%8F%E4%B8%AD"><span class="nav-text">函式將陣列拆開當作獨立引數傳入到式中</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%90%88%E4%BD%B5%E9%99%A3%E5%88%97"><span class="nav-text">合併陣列</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%B7%BA%E6%8B%B7%E8%B2%9D%E9%99%A3%E5%88%97%E4%B8%A6%E6%B7%BB%E5%8A%A0%E6%96%B0%E7%9A%84%E5%8F%83%E6%95%B8"><span class="nav-text">淺拷貝陣列並添加新的參數</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#DOM-%E7%89%A9%E4%BB%B6%E8%BD%89%E9%99%A3%E5%88%97"><span class="nav-text">DOM 物件轉陣列</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AD%97%E4%B8%B2%E8%BD%89%E9%99%A3%E5%88%97"><span class="nav-text">字串轉陣列</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%B7%BA%E6%8B%B7%E8%B2%9D%E7%89%A9%E4%BB%B6"><span class="nav-text">淺拷貝物件</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B6%E9%A4%98%E9%81%8B%E7%AE%97%E5%AD%90-Rest-Operator"><span class="nav-text">其餘運算子 Rest Operator</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-text"></span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#-1"><span class="nav-text"></span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#conclusion"><span class="nav-text">conclusion</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#reference"><span class="nav-text">reference</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
