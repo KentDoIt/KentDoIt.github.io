@@ -1784,22 +1784,17 @@ console.log(obj.name);  // kent
             <p>常見用途：用於參數不固定的函式上。</p>
           </div>
 
-
 <blockquote>
 <p>Tip</p>
 </blockquote>
 <ul>
-<li>如果使用箭頭函式，其餘運算子必須以小括號標記，即使函式只有一個參數。</li>
+<li>如果在箭頭函式使用其餘運算子，即使函式只有一個參數也<code>必須</code>加上小括號。</li>
 </ul>
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> <span class="title function_">sumAll</span> = (<span class="params">...number</span>) =&gt; number.<span class="title function_">reduce</span>(<span class="function">(<span class="params">total, next</span>) =&gt;</span> total + next);</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">sumAll</span>(<span class="number">1</span>, <span class="number">3</span>, <span class="number">5</span>)); <span class="comment">// 9</span></span><br></pre></td></tr></table></figure>
 
 <div class="note default">
             <p>補這個是因為，箭頭函式特性當參數只有一個時，可以把參數的小括號省略。（箭頭函式介紹可以參考這篇<a href="https://kentdoit.github.io/javascript/2638792469/#%E5%96%AE%E8%A1%8C%E5%9E%8B%E5%BC%8F%E7%B8%AE%E5%AF%AB">文章</a>）</p>
           </div>
-
-<h4 id=""><a href="#" class="headerlink" title=""></a></h4><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="string">``</span><span class="string">`</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">####</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">`</span><span class="string">``</span>js</span><br></pre></td></tr></table></figure>
-
-<h4 id="-1"><a href="#-1" class="headerlink" title=""></a></h4><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
 
 <h2 id="conclusion"><a href="#conclusion" class="headerlink" title="conclusion"></a>conclusion</h2><ul>
 <li>展開運算子如果直接用在物件上會拋出錯誤，因為展開運算子只能用於具有索引和 length 屬性的物件。</li>

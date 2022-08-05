@@ -48,7 +48,7 @@
 <meta property="og:description" content="此篇會介紹 ES6 新增的展開運算子 Spread Operator 的兩種類型。">
 <meta property="og:locale" content="zh_TW">
 <meta property="article:published_time" content="2022-08-05T09:03:32.000Z">
-<meta property="article:modified_time" content="2022-08-05T10:26:51.170Z">
+<meta property="article:modified_time" content="2022-08-05T10:28:19.946Z">
 <meta property="article:author" content="Kent">
 <meta property="article:tag" content="JavaScript">
 <meta property="article:tag" content="ES6">
@@ -340,22 +340,17 @@
             <p>常見用途：用於參數不固定的函式上。</p>
           </div>
 
-
 <blockquote>
 <p>Tip</p>
 </blockquote>
 <ul>
-<li>如果使用箭頭函式，其餘運算子必須以小括號標記，即使函式只有一個參數。</li>
+<li>如果在箭頭函式使用其餘運算子，即使函式只有一個參數也<code>必須</code>加上小括號。</li>
 </ul>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> <span class="title function_">sumAll</span> = (<span class="params">...number</span>) =&gt; number.<span class="title function_">reduce</span>(<span class="function">(<span class="params">total, next</span>) =&gt;</span> total + next);</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">sumAll</span>(<span class="number">1</span>, <span class="number">3</span>, <span class="number">5</span>)); <span class="comment">// 9</span></span><br></pre></td></tr></table></figure>
 
 <div class="note default">
             <p>補這個是因為，箭頭函式特性當參數只有一個時，可以把參數的小括號省略。（箭頭函式介紹可以參考這篇<a href="https://kentdoit.github.io/javascript/2638792469/#%E5%96%AE%E8%A1%8C%E5%9E%8B%E5%BC%8F%E7%B8%AE%E5%AF%AB">文章</a>）</p>
           </div>
-
-<h4 id=""><a href="#" class="headerlink" title=""></a></h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">``</span><span class="string">`</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">####</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">`</span><span class="string">``</span>js</span><br></pre></td></tr></table></figure>
-
-<h4 id="-1"><a href="#-1" class="headerlink" title=""></a></h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
 
 <h2 id="conclusion"><a href="#conclusion" class="headerlink" title="conclusion"></a>conclusion</h2><ul>
 <li>展開運算子如果直接用在物件上會拋出錯誤，因為展開運算子只能用於具有索引和 length 屬性的物件。</li>
@@ -475,7 +470,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B1%95%E9%96%8B%E9%81%8B%E7%AE%97%E5%AD%90%EF%BC%88Spread-Operator%EF%BC%89"><span class="nav-text">展開運算子（Spread Operator）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B8%B8%E8%A6%8B%E6%87%89%E7%94%A8"><span class="nav-text">常見應用</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%87%BD%E5%BC%8F%E5%B0%87%E9%99%A3%E5%88%97%E6%8B%86%E9%96%8B%E7%95%B6%E4%BD%9C%E7%8D%A8%E7%AB%8B%E5%BC%95%E6%95%B8%E5%82%B3%E5%85%A5%E5%88%B0%E5%BC%8F%E4%B8%AD"><span class="nav-text">函式將陣列拆開當作獨立引數傳入到式中</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%90%88%E4%BD%B5%E9%99%A3%E5%88%97"><span class="nav-text">合併陣列</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%B7%BA%E6%8B%B7%E8%B2%9D%E9%99%A3%E5%88%97%E4%B8%A6%E6%B7%BB%E5%8A%A0%E6%96%B0%E7%9A%84%E5%8F%83%E6%95%B8"><span class="nav-text">淺拷貝陣列並添加新的參數</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#DOM-%E7%89%A9%E4%BB%B6%E8%BD%89%E9%99%A3%E5%88%97"><span class="nav-text">DOM 物件轉陣列</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AD%97%E4%B8%B2%E8%BD%89%E9%99%A3%E5%88%97"><span class="nav-text">字串轉陣列</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%B7%BA%E6%8B%B7%E8%B2%9D%E7%89%A9%E4%BB%B6"><span class="nav-text">淺拷貝物件</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B6%E9%A4%98%E9%81%8B%E7%AE%97%E5%AD%90-Rest-Operator"><span class="nav-text">其餘運算子 Rest Operator</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-text"></span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#-1"><span class="nav-text"></span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#conclusion"><span class="nav-text">conclusion</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#reference"><span class="nav-text">reference</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B1%95%E9%96%8B%E9%81%8B%E7%AE%97%E5%AD%90%EF%BC%88Spread-Operator%EF%BC%89"><span class="nav-text">展開運算子（Spread Operator）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B8%B8%E8%A6%8B%E6%87%89%E7%94%A8"><span class="nav-text">常見應用</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%87%BD%E5%BC%8F%E5%B0%87%E9%99%A3%E5%88%97%E6%8B%86%E9%96%8B%E7%95%B6%E4%BD%9C%E7%8D%A8%E7%AB%8B%E5%BC%95%E6%95%B8%E5%82%B3%E5%85%A5%E5%88%B0%E5%BC%8F%E4%B8%AD"><span class="nav-text">函式將陣列拆開當作獨立引數傳入到式中</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%90%88%E4%BD%B5%E9%99%A3%E5%88%97"><span class="nav-text">合併陣列</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%B7%BA%E6%8B%B7%E8%B2%9D%E9%99%A3%E5%88%97%E4%B8%A6%E6%B7%BB%E5%8A%A0%E6%96%B0%E7%9A%84%E5%8F%83%E6%95%B8"><span class="nav-text">淺拷貝陣列並添加新的參數</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#DOM-%E7%89%A9%E4%BB%B6%E8%BD%89%E9%99%A3%E5%88%97"><span class="nav-text">DOM 物件轉陣列</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AD%97%E4%B8%B2%E8%BD%89%E9%99%A3%E5%88%97"><span class="nav-text">字串轉陣列</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%B7%BA%E6%8B%B7%E8%B2%9D%E7%89%A9%E4%BB%B6"><span class="nav-text">淺拷貝物件</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B6%E9%A4%98%E9%81%8B%E7%AE%97%E5%AD%90-Rest-Operator"><span class="nav-text">其餘運算子 Rest Operator</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#conclusion"><span class="nav-text">conclusion</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#reference"><span class="nav-text">reference</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
