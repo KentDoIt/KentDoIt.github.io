@@ -48,7 +48,7 @@
 <meta property="og:description" content="此篇會介紹 ES6 新增的展開運算子 Spread Operator 的兩種類型。">
 <meta property="og:locale" content="zh_TW">
 <meta property="article:published_time" content="2022-08-05T09:03:32.000Z">
-<meta property="article:modified_time" content="2022-08-05T10:28:19.946Z">
+<meta property="article:modified_time" content="2022-08-05T10:45:59.765Z">
 <meta property="article:author" content="Kent">
 <meta property="article:tag" content="JavaScript">
 <meta property="article:tag" content="ES6">
@@ -269,7 +269,7 @@
               <!--<span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>-->
-              <span>3 分鐘閱讀時間</span>
+              <span>4 分鐘閱讀時間</span>
             </span>
             <span class="post-meta-item">
               <!--<span class="post-meta-item-icon">
@@ -336,9 +336,22 @@
 
 <h4 id="淺拷貝物件"><a href="#淺拷貝物件" class="headerlink" title="淺拷貝物件"></a>淺拷貝物件</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> obj = &#123; <span class="attr">a</span>: <span class="number">1</span>, <span class="attr">b</span>: <span class="number">2</span> &#125;;</span><br><span class="line"><span class="keyword">let</span> obj2 = &#123; ...obj &#125;;</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(obj2); <span class="comment">// &#123; a: 1, b: 2 &#125;</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(obj === obj2); <span class="comment">// false</span></span><br></pre></td></tr></table></figure>
 
+<hr>
 <h2 id="其餘運算子-Rest-Operator"><a href="#其餘運算子-Rest-Operator" class="headerlink" title="其餘運算子 Rest Operator"></a>其餘運算子 Rest Operator</h2><div class="note default">
-            <p>常見用途：用於參數不固定的函式上。</p>
+            <p>在函式宣告中的最後一個參數加上 … 運算子，會稱其為「其餘運算子（Rest Operator）」，它與展開運算子效果上剛好完全相反，其餘運算子是把許多的參數轉換成一個陣列。</p>
           </div>
+
+<div class="note primary">
+            <p><a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/rest_parameters">MDN</a>：將函式參數數量變為可變參數。</p>
+          </div>
+
+<p>語法：</p>
+<ul>
+<li>在不確定參數數量的地方，使用上三個點 <code>...args</code> 來接收剩餘全部參數。</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">function f(a, b, ...theArgs) &#123;</span><br><span class="line">  // ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">foo</span>(<span class="params">...args</span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(args);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title function_">foo</span>(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>); <span class="comment">// [1, 2, 3]</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">foo2</span>(<span class="params">a, ...args</span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(a, args);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title function_">foo2</span>(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>); <span class="comment">// 1, [2, 3]</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 <blockquote>
 <p>Tip</p>
@@ -352,9 +365,10 @@
             <p>補這個是因為，箭頭函式特性當參數只有一個時，可以把參數的小括號省略。（箭頭函式介紹可以參考這篇<a href="https://kentdoit.github.io/javascript/2638792469/#%E5%96%AE%E8%A1%8C%E5%9E%8B%E5%BC%8F%E7%B8%AE%E5%AF%AB">文章</a>）</p>
           </div>
 
-<h2 id="conclusion"><a href="#conclusion" class="headerlink" title="conclusion"></a>conclusion</h2><ul>
+<h2 id="conclusion"><a href="#conclusion" class="headerlink" title="conclusion"></a>conclusion</h2><ol>
 <li>展開運算子如果直接用在物件上會拋出錯誤，因為展開運算子只能用於具有索引和 length 屬性的物件。</li>
-</ul>
+<li>如果在箭頭函式使用其餘運算子，即使函式只有一個參數也<code>必須</code>加上小括號。</li>
+</ol>
 <h2 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h2><ul>
 <li><a target="_blank" rel="noopener" href="https://ithelp.ithome.com.tw/articles/10195477">[ES6-重點紀錄] 擴展運算子 Spread Operator</a></li>
 <li>竹白大 <a target="_blank" rel="noopener" href="https://chupai.github.io/posts/200513_js_spread_and_rest_operator/">展開／其餘運算子</a></li>
