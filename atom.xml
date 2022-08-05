@@ -6,7 +6,7 @@
   <link href="https://kentdoit.github.io/atom.xml" rel="self"/>
   
   <link href="https://kentdoit.github.io/"/>
-  <updated>2022-08-05T09:03:44.291Z</updated>
+  <updated>2022-08-05T09:19:22.327Z</updated>
   <id>https://kentdoit.github.io/</id>
   
   <author>
@@ -18,27 +18,43 @@
   
   <entry>
     <title>JS 解構賦值 Destructuring Assignment</title>
-    <link href="https://kentdoit.github.io/uncategorized/4089638591/"/>
-    <id>https://kentdoit.github.io/uncategorized/4089638591/</id>
+    <link href="https://kentdoit.github.io/javascript/4089638591/"/>
+    <id>https://kentdoit.github.io/javascript/4089638591/</id>
     <published>2022-08-05T09:03:44.000Z</published>
-    <updated>2022-08-05T09:03:44.291Z</updated>
+    <updated>2022-08-05T09:19:22.327Z</updated>
+    
+    
+    <summary type="html">此篇會介紹 JS ES6 新增的語法解構賦值的概念以及如何使用。</summary>
     
     
     
+    <category term="JavaScript" scheme="https://kentdoit.github.io/categories/javascript/"/>
     
+    
+    <category term="JavaScript" scheme="https://kentdoit.github.io/tags/JavaScript/"/>
+    
+    <category term="ES6" scheme="https://kentdoit.github.io/tags/ES6/"/>
     
   </entry>
   
   <entry>
     <title>JS 展開運算子、其餘運算子</title>
-    <link href="https://kentdoit.github.io/uncategorized/1214648668/"/>
-    <id>https://kentdoit.github.io/uncategorized/1214648668/</id>
+    <link href="https://kentdoit.github.io/javascript/1214648668/"/>
+    <id>https://kentdoit.github.io/javascript/1214648668/</id>
     <published>2022-08-05T09:03:32.000Z</published>
-    <updated>2022-08-05T09:03:32.810Z</updated>
+    <updated>2022-08-05T09:18:56.927Z</updated>
+    
+    
+    <summary type="html">此篇會介紹 ES6 新增的展開運算子 Spread Operator 的兩種類型。</summary>
     
     
     
+    <category term="JavaScript" scheme="https://kentdoit.github.io/categories/javascript/"/>
     
+    
+    <category term="JavaScript" scheme="https://kentdoit.github.io/tags/JavaScript/"/>
+    
+    <category term="ES6" scheme="https://kentdoit.github.io/tags/ES6/"/>
     
   </entry>
   
@@ -47,7 +63,7 @@
     <link href="https://kentdoit.github.io/javascript/3900271525/"/>
     <id>https://kentdoit.github.io/javascript/3900271525/</id>
     <published>2022-08-05T09:03:08.000Z</published>
-    <updated>2022-08-05T09:07:03.612Z</updated>
+    <updated>2022-08-05T09:19:26.903Z</updated>
     
     
     <summary type="html">此篇學習在 JS 中如何透過這個 ES2020 新增的語法糖可選串連運算子，來避免遇到物件屬性不存在所導致的報錯。</summary>

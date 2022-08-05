@@ -1666,12 +1666,26 @@ console.log(obj.name);  // kent
   </entry>
   <entry>
     <title>JS 展開運算子、其餘運算子</title>
-    <url>/uncategorized/1214648668/</url>
+    <url>/javascript/1214648668/</url>
     <content><![CDATA[]]></content>
+      <categories>
+        <category>JavaScript</category>
+      </categories>
+      <tags>
+        <tag>JavaScript</tag>
+        <tag>ES6</tag>
+      </tags>
   </entry>
   <entry>
     <title>JS 解構賦值 Destructuring Assignment</title>
-    <url>/uncategorized/4089638591/</url>
+    <url>/javascript/4089638591/</url>
     <content><![CDATA[]]></content>
+      <categories>
+        <category>JavaScript</category>
+      </categories>
+      <tags>
+        <tag>JavaScript</tag>
+        <tag>ES6</tag>
+      </tags>
   </entry>
 </search>
