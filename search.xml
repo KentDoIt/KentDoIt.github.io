@@ -1883,6 +1883,24 @@ console.log(obj.name);  // kent
 </ul>
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 切記陣列有順序性，是依照索引值來賦予值，因此 d 為 3</span></span><br><span class="line"><span class="keyword">let</span> [a, , d] = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>];</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(a, d);      <span class="comment">// a=1, d=3</span></span><br></pre></td></tr></table></figure>
 
+<blockquote>
+<p>注意事項</p>
+</blockquote>
+<div class="note default">
+            <p>陣列解構賦值如果結尾不加分號會噴 Error。</p>
+          </div>
+
+<div class="note primary">
+            <p><a href="https://standardjs.com/readme-zhtw.html">standardJS</a> 中有提到，絕對不要使用 <code>(</code> 、 <code>[</code> 或 <code>``</code> 當開頭，因為會造成無法自動補上分號，一段加了 <code>Enter 鍵(\n)</code>後，JS 剖析器會在執行期間自動插入分號。</p>
+          </div>
+
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> a = <span class="number">0</span></span><br><span class="line"><span class="keyword">let</span> b = <span class="number">0</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(a, b)</span><br><span class="line">[a, b] = [<span class="number">20</span>, <span class="number">22</span>] <span class="comment">// TypeError: Cannot set property &#x27;0&#x27; of undefined</span></span><br></pre></td></tr></table></figure>
+
+<p>解決方法</p>
+<ul>
+<li>在使用 ( 、 [ 或 &#96; 當開頭前面加上分號。</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> a = <span class="number">0</span></span><br><span class="line"><span class="keyword">let</span> b = <span class="number">0</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(a, b);  <span class="comment">// 兩者都可以</span></span><br><span class="line">;[a, b] = [<span class="number">20</span>, <span class="number">22</span>]  <span class="comment">// 兩者都可以</span></span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>JavaScript</category>

@@ -49,7 +49,7 @@
 <meta property="og:locale" content="zh_TW">
 <meta property="og:image" content="https://imgur.com/qMguOpU.png">
 <meta property="article:published_time" content="2022-08-05T09:03:44.000Z">
-<meta property="article:modified_time" content="2022-08-05T16:39:32.268Z">
+<meta property="article:modified_time" content="2022-08-05T16:48:11.808Z">
 <meta property="article:author" content="Kent">
 <meta property="article:tag" content="JavaScript">
 <meta property="article:tag" content="ES6">
@@ -271,7 +271,7 @@
               <!--<span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>-->
-              <span>1 分鐘閱讀時間</span>
+              <span>2 分鐘閱讀時間</span>
             </span>
             <span class="post-meta-item">
               <!--<span class="post-meta-item-icon">
@@ -335,6 +335,24 @@
 </ul>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 切記陣列有順序性，是依照索引值來賦予值，因此 d 為 3</span></span><br><span class="line"><span class="keyword">let</span> [a, , d] = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>];</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(a, d);      <span class="comment">// a=1, d=3</span></span><br></pre></td></tr></table></figure>
 
+<blockquote>
+<p>注意事項</p>
+</blockquote>
+<div class="note default">
+            <p>陣列解構賦值如果結尾不加分號會噴 Error。</p>
+          </div>
+
+<div class="note primary">
+            <p><a target="_blank" rel="noopener" href="https://standardjs.com/readme-zhtw.html">standardJS</a> 中有提到，絕對不要使用 <code>(</code> 、 <code>[</code> 或 <code>``</code> 當開頭，因為會造成無法自動補上分號，一段加了 <code>Enter 鍵(\n)</code>後，JS 剖析器會在執行期間自動插入分號。</p>
+          </div>
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a = <span class="number">0</span></span><br><span class="line"><span class="keyword">let</span> b = <span class="number">0</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(a, b)</span><br><span class="line">[a, b] = [<span class="number">20</span>, <span class="number">22</span>] <span class="comment">// TypeError: Cannot set property &#x27;0&#x27; of undefined</span></span><br></pre></td></tr></table></figure>
+
+<p>解決方法</p>
+<ul>
+<li>在使用 ( 、 [ 或 &#96; 當開頭前面加上分號。</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a = <span class="number">0</span></span><br><span class="line"><span class="keyword">let</span> b = <span class="number">0</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(a, b);  <span class="comment">// 兩者都可以</span></span><br><span class="line">;[a, b] = [<span class="number">20</span>, <span class="number">22</span>]  <span class="comment">// 兩者都可以</span></span><br></pre></td></tr></table></figure>
 
     </div>
 
