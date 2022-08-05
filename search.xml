@@ -1048,16 +1048,16 @@
 </blockquote>
 <ul>
 <li>假值：<ul>
-<li><code>false</code></li>
-<li><code>null</code></li>
-<li><code>NaN</code></li>
-<li><code>0、-0</code></li>
-<li><code>空字串 (&quot;&quot; 或 &#39;&#39; 或 ``)</code></li>
-<li><code>undefined</code></li>
+<li>false</li>
+<li>null</li>
+<li>NaN</li>
+<li>0、-0</li>
+<li>空字串 (“” 或 ‘’ 或 &#96;&#96;)</li>
+<li>undefined</li>
 </ul>
 </li>
 <li>真值：<ul>
-<li>除了上述<code>假值</code>類型以外的值都是<code>真值</code>。</li>
+<li>除了上述假值類型<code>以外</code>的值都是真值。</li>
 </ul>
 </li>
 </ul>
