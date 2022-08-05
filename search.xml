@@ -1782,11 +1782,11 @@ console.log(obj.name);  // kent
 
 <hr>
 <h2 id="其餘運算子-Rest-Operator"><a href="#其餘運算子-Rest-Operator" class="headerlink" title="其餘運算子 Rest Operator"></a>其餘運算子 Rest Operator</h2><div class="note default">
-            <p>在函式宣告中的最後一個參數加上 … 運算子，會稱其為「其餘運算子（Rest Operator）」，它與展開運算子效果上剛好完全相反，其餘運算子是把許多的參數轉換成一個陣列。</p>
+            <p>在函式宣告中的最後一個參數加上 <code>...</code>，會稱其為「其餘運算子（Rest Operator）」，它與展開運算子效果上剛好完全相反，其餘運算子是把許多的參數組和成一個陣列。</p>
           </div>
 
 <div class="note primary">
-            <p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/rest_parameters">MDN</a>：將函式參數數量變為可變參數。</p>
+            <p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/rest_parameters">MDN</a>：將函式固定參數數量變為可變參數。</p>
           </div>
 
 <p>語法：</p>
