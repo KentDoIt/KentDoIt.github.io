@@ -1846,7 +1846,44 @@ console.log(obj.name);  // kent
   <entry>
     <title>JS 解構賦值 Destructuring Assignment</title>
     <url>/javascript/4089638591/</url>
-    <content><![CDATA[]]></content>
+    <content><![CDATA[<h2 id="解構賦值-Destructuring-Assignment"><a href="#解構賦值-Destructuring-Assignment" class="headerlink" title="解構賦值 Destructuring Assignment"></a>解構賦值 Destructuring Assignment</h2><div class="note primary">
+            <p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment">MDN</a>：屬於表達式，可以將陣列、物件解構（拆解結構，Destructure），透過更簡潔的語法來取值陣列、物件到對應的變數上。</p>
+          </div>
+
+<div class="note default">
+            <p>解構的過程就像是鏡子映射，將右邊的值映射到左邊變數上，則沒有映射到的就是 <code>undefined</code>。</p>
+          </div>
+
+<p>語法：</p>
+<ul>
+<li>使用 <code>&#123;&#125;</code>、<code>[]</code> 來解構，並依照解構的對象型別來選擇是 <code>&#123;&#125;</code>、<code>[]</code>。</li>
+<li>若無法對應到的值為 undefined。</li>
+</ul>
+<figure class="highlight js"><figcaption><span>e.g. 物件、陣列基礎的解構範例</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> obj = &#123; <span class="attr">name</span>: <span class="string">&#x27;kent&#x27;</span> &#125;;</span><br><span class="line"><span class="keyword">const</span> arr = [<span class="number">20</span>, <span class="number">22</span>];</span><br><span class="line"></span><br><span class="line"><span class="comment">// 舊寫法</span></span><br><span class="line"><span class="keyword">const</span> a = arr[<span class="number">0</span>];</span><br><span class="line"><span class="keyword">const</span> b = arr[<span class="number">1</span>];</span><br><span class="line"><span class="keyword">const</span> name = obj.<span class="property">name</span>;</span><br><span class="line"><span class="keyword">const</span> age = obj.<span class="property">age</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 新寫法</span></span><br><span class="line"><span class="keyword">const</span> [a, b] = arr <span class="comment">// a=20, b=22</span></span><br><span class="line"><span class="keyword">const</span> &#123; name, age &#125; = obj; <span class="comment">// name=&#x27;kent&#x27;, age=undefined</span></span><br></pre></td></tr></table></figure>
+
+<div class="note default">
+            <p>下方會透過陣列、物件、函式三種的解構賦值範例來介紹其特性以及應用。</p>
+          </div>
+
+<hr>
+<h3 id="陣列解構"><a href="#陣列解構" class="headerlink" title="陣列解構"></a>陣列解構</h3><p><img src="https://imgur.com/qMguOpU.png"></p>
+<p>特性</p>
+<ul>
+<li>沒有對應到的值為 undefined。</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> [a, b, c, d] = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>];</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(a, b, c, d);     <span class="comment">// a=1, b=2, c=3, d=undefined</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>有順序性，會依照索引值順序來對應到左邊變數上，長度不夠的索引值會自動全部忽略（因此需要透過空變數，來跳過特定陣列元素）。</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> [a, b, c, d] = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>];</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(a, b, c, d);   <span class="comment">// a=1, b=2, c=3, d=4</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>使用空變數來跳過該索引值。</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 切記陣列有順序性，是依照索引值來賦予值，因此 d 為 3</span></span><br><span class="line"><span class="keyword">let</span> [a, , d] = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>];</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(a, d);      <span class="comment">// a=1, d=3</span></span><br></pre></td></tr></table></figure>
+
+]]></content>
       <categories>
         <category>JavaScript</category>
       </categories>
