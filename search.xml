@@ -1857,7 +1857,9 @@ console.log(obj.name);  // kent
 
 <hr>
 <h3 id="陣列解構"><a href="#陣列解構" class="headerlink" title="陣列解構"></a>陣列解構</h3><p><img src="https://imgur.com/qMguOpU.png"></p>
-<p>特性</p>
+<blockquote>
+<p>Tips</p>
+</blockquote>
 <ul>
 <li>沒有對應到的值為 undefined。</li>
 </ul>
@@ -1901,7 +1903,9 @@ console.log(obj.name);  // kent
 
 <hr>
 <h3 id="物件解構"><a href="#物件解構" class="headerlink" title="物件解構"></a>物件解構</h3><p><img src="https://imgur.com/DuSVx4i.png"></p>
-<p>特性</p>
+<blockquote>
+<p>Tips</p>
+</blockquote>
 <ul>
 <li>沒有對應到的值為 undefined。</li>
 </ul>
