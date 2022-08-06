@@ -1703,16 +1703,6 @@ console.log(obj.name);  // kent
 </ul>
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> school = &#123;</span><br><span class="line">  <span class="attr">info</span>: &#123;</span><br><span class="line">    <span class="attr">student</span>: &#123;</span><br><span class="line">      <span class="attr">name</span>: <span class="string">&#x27;kent&#x27;</span>,</span><br><span class="line">      <span class="attr">age</span>: <span class="number">18</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 問題</span></span><br><span class="line"><span class="keyword">let</span> name = school.<span class="property">info</span>.<span class="property">teacher</span>.<span class="property">name</span>; <span class="comment">// TypeError: Cannot read properties of undefined (reading &#x27;name&#x27;)</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 舊方法</span></span><br><span class="line"><span class="keyword">let</span> name = school.<span class="property">info</span>.<span class="property">teacher</span> &amp;&amp; school.<span class="property">info</span>.<span class="property">teacher</span>.<span class="property">name</span>;   <span class="comment">// undefined</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 新方法</span></span><br><span class="line"><span class="keyword">let</span> name = school.<span class="property">info</span>.<span class="property">teacher</span>?.<span class="property">name</span>;      <span class="comment">// undefined</span></span><br><span class="line"><span class="keyword">let</span> name = school.<span class="property">info</span>[<span class="string">&#x27;teacher&#x27;</span>]?.<span class="property">name</span>;   <span class="comment">// undefined</span></span><br></pre></td></tr></table></figure>
 
-<h3 id="預防陣列訪問不存在的索引值"><a href="#預防陣列訪問不存在的索引值" class="headerlink" title="預防陣列訪問不存在的索引值"></a>預防陣列訪問不存在的索引值</h3><div class="note default">
-            <p>預設不存在的索引值會回傳 undefined</p>
-          </div>
-
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> arr = [<span class="string">&#x27;世&#x27;</span>, <span class="string">&#x27;界&#x27;</span>, <span class="string">&#x27;和&#x27;</span>, <span class="string">&#x27;平&#x27;</span>];</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(arr[<span class="number">10</span>]);    <span class="comment">// undefined</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(arr?.[<span class="number">10</span>]);  <span class="comment">// undefined</span></span><br></pre></td></tr></table></figure>
-
-<div class="note default">
-            <p>這樣之後在做 API 資料處理或是獲取 DOM 元素可以不用寫一堆 &amp;&amp; 了 🥳</p>
-          </div>
-
 <h2 id="延伸應用"><a href="#延伸應用" class="headerlink" title="延伸應用"></a>延伸應用</h2><h3 id="預防方法不存在"><a href="#預防方法不存在" class="headerlink" title="預防方法不存在"></a>預防方法不存在</h3><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> obj = &#123;</span><br><span class="line">  <span class="attr">fn</span>: <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;fn&#x27;</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(obj.<span class="title function_">fnn</span>());   <span class="comment">// TypeError: obj.fnn is not a function</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(obj.<span class="property">fnn</span>?.()); <span class="comment">// undefined</span></span><br></pre></td></tr></table></figure>
 
 <h3 id="結合空值合併運算符（-）來設置預設值"><a href="#結合空值合併運算符（-）來設置預設值" class="headerlink" title="結合空值合併運算符（??）來設置預設值"></a>結合空值合併運算符（??）來設置預設值</h3><figure class="highlight js"><figcaption><span>延續上方的程式碼</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> name = school.<span class="property">info</span>.<span class="property">teacher</span>?.<span class="property">name</span> ?? <span class="string">&#x27;陳怡君&#x27;</span>;</span><br></pre></td></tr></table></figure>
@@ -1901,6 +1891,36 @@ console.log(obj.name);  // kent
 <li>在使用 ( 、 [ 或 &#96; 當開頭前面加上分號。</li>
 </ul>
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> a = <span class="number">0</span></span><br><span class="line"><span class="keyword">let</span> b = <span class="number">0</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(a, b);  <span class="comment">// 兩者都可以</span></span><br><span class="line">;[a, b] = [<span class="number">20</span>, <span class="number">22</span>]  <span class="comment">// 兩者都可以</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>常見應用</p>
+</blockquote>
+<h4 id="字串拆解"><a href="#字串拆解" class="headerlink" title="字串拆解"></a>字串拆解</h4><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 舊寫法</span></span><br><span class="line"><span class="keyword">let</span> arr = <span class="string">&#x27;世界和平&#x27;</span>.<span class="title function_">split</span>(<span class="string">&#x27;&#x27;</span>);</span><br><span class="line"><span class="keyword">let</span> a = arr[<span class="number">0</span>];</span><br><span class="line"><span class="keyword">let</span> b = arr[<span class="number">1</span>];</span><br><span class="line"><span class="keyword">let</span> c = arr[<span class="number">2</span>];</span><br><span class="line"><span class="keyword">let</span> d = arr[<span class="number">3</span>];</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(a, b, c, d)      <span class="comment">// a=世, b=界, c=和, d=平</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 新寫法</span></span><br><span class="line"><span class="keyword">let</span> [a, b, c, d] = <span class="string">&#x27;世界和平&#x27;</span>;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(a, b, c, d)      <span class="comment">// a=世, b=界, c=和, d=平</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="變數互換"><a href="#變數互換" class="headerlink" title="變數互換"></a>變數互換</h4><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> change;</span><br><span class="line"><span class="keyword">let</span> name1 = <span class="string">&#x27;kent&#x27;</span>;</span><br><span class="line"><span class="keyword">let</span> name2 = <span class="string">&#x27;ken&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 舊寫法</span></span><br><span class="line">change = name1;</span><br><span class="line">name2 = change;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(name1, name2); <span class="comment">// name1=ken, name2=kent</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 新寫法</span></span><br><span class="line">[name1, name2] = [name2, name1];</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(name1, name2); <span class="comment">// name1=ken, name2=kent</span></span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="物件解構"><a href="#物件解構" class="headerlink" title="物件解構"></a>物件解構</h3><p><img src="https://imgur.com/DuSVx4i.png"></p>
+<p>特性</p>
+<ul>
+<li>沒有對應到的值為 undefined。</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> &#123; name, age &#125; = &#123; <span class="attr">name</span>: <span class="string">&#x27;kent&#x27;</span> &#125;;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(name, age);   <span class="comment">// name=&#x27;kent&#x27;, age=undefined</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>沒有順序性，左右兩邊的數量不相等也沒問題，因此就無法使用空白變數（會噴 Error）。</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> &#123; age, sex &#125; = &#123; <span class="attr">name</span>: <span class="string">&#x27;kent&#x27;</span>, <span class="attr">age</span>: <span class="number">18</span>, <span class="attr">sex</span>: <span class="string">&#x27;M&#x27;</span> &#125;;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(age, sex);   <span class="comment">// name=&#x27;kent&#x27;, sex=&#x27;M&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> &#123; age, ,sex &#125; = &#123; <span class="attr">name</span>: <span class="string">&#x27;kent&#x27;</span>, <span class="attr">age</span>: <span class="number">18</span>, <span class="attr">sex</span>: <span class="string">&#x27;M&#x27;</span> &#125;;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(age, sex);   <span class="comment">// SyntaxError: Unexpected token &#x27;,&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>直接使用 {}，需要在外面加上 ()，否則會噴 Error 被視為區塊（block）而非物件。</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 錯誤寫法</span></span><br><span class="line">&#123; age, name &#125; = &#123; <span class="attr">name</span>: <span class="string">&#x27;kent&#x27;</span>, <span class="attr">age</span>: <span class="number">20</span> &#125;;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(name, age);   <span class="comment">// SyntaxError: Unexpected token &#x27;=&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 正確寫法</span></span><br><span class="line">(&#123; age, name &#125; = &#123; <span class="attr">name</span>: <span class="string">&#x27;kent&#x27;</span>, <span class="attr">age</span>: <span class="number">20</span> &#125;);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(name, age);   <span class="comment">// &#123;name: &#x27;kent&#x27;, age: 20&#125;</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>常見應用</p>
+</blockquote>
+<p>重複指定，但都指向相同位置並使用傳址（ by Reference）方式，因此只要更改一個變數，其他變數值也會受影響。</p>
 ]]></content>
       <categories>
         <category>JavaScript</category>
@@ -1909,5 +1929,10 @@ console.log(obj.name);  // kent
         <tag>JavaScript</tag>
         <tag>ES6</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>JS 傳值 by Value、傳址 by Reference、傳共享 by sharing</title>
+    <url>/uncategorized/3842658283/</url>
+    <content><![CDATA[]]></content>
   </entry>
 </search>

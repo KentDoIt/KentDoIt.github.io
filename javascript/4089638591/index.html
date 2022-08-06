@@ -48,8 +48,9 @@
 <meta property="og:description" content="此篇會介紹 JS ES6 新增的語法解構賦值的概念以及如何使用。">
 <meta property="og:locale" content="zh_TW">
 <meta property="og:image" content="https://imgur.com/qMguOpU.png">
+<meta property="og:image" content="https://imgur.com/DuSVx4i.png">
 <meta property="article:published_time" content="2022-08-05T09:03:44.000Z">
-<meta property="article:modified_time" content="2022-08-05T16:48:11.808Z">
+<meta property="article:modified_time" content="2022-08-05T17:01:16.259Z">
 <meta property="article:author" content="Kent">
 <meta property="article:tag" content="JavaScript">
 <meta property="article:tag" content="ES6">
@@ -271,7 +272,7 @@
               <!--<span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>-->
-              <span>2 分鐘閱讀時間</span>
+              <span>4 分鐘閱讀時間</span>
             </span>
             <span class="post-meta-item">
               <!--<span class="post-meta-item-icon">
@@ -354,6 +355,36 @@
 </ul>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a = <span class="number">0</span></span><br><span class="line"><span class="keyword">let</span> b = <span class="number">0</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(a, b);  <span class="comment">// 兩者都可以</span></span><br><span class="line">;[a, b] = [<span class="number">20</span>, <span class="number">22</span>]  <span class="comment">// 兩者都可以</span></span><br></pre></td></tr></table></figure>
 
+<blockquote>
+<p>常見應用</p>
+</blockquote>
+<h4 id="字串拆解"><a href="#字串拆解" class="headerlink" title="字串拆解"></a>字串拆解</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 舊寫法</span></span><br><span class="line"><span class="keyword">let</span> arr = <span class="string">&#x27;世界和平&#x27;</span>.<span class="title function_">split</span>(<span class="string">&#x27;&#x27;</span>);</span><br><span class="line"><span class="keyword">let</span> a = arr[<span class="number">0</span>];</span><br><span class="line"><span class="keyword">let</span> b = arr[<span class="number">1</span>];</span><br><span class="line"><span class="keyword">let</span> c = arr[<span class="number">2</span>];</span><br><span class="line"><span class="keyword">let</span> d = arr[<span class="number">3</span>];</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(a, b, c, d)      <span class="comment">// a=世, b=界, c=和, d=平</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 新寫法</span></span><br><span class="line"><span class="keyword">let</span> [a, b, c, d] = <span class="string">&#x27;世界和平&#x27;</span>;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(a, b, c, d)      <span class="comment">// a=世, b=界, c=和, d=平</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="變數互換"><a href="#變數互換" class="headerlink" title="變數互換"></a>變數互換</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> change;</span><br><span class="line"><span class="keyword">let</span> name1 = <span class="string">&#x27;kent&#x27;</span>;</span><br><span class="line"><span class="keyword">let</span> name2 = <span class="string">&#x27;ken&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 舊寫法</span></span><br><span class="line">change = name1;</span><br><span class="line">name2 = change;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(name1, name2); <span class="comment">// name1=ken, name2=kent</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 新寫法</span></span><br><span class="line">[name1, name2] = [name2, name1];</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(name1, name2); <span class="comment">// name1=ken, name2=kent</span></span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="物件解構"><a href="#物件解構" class="headerlink" title="物件解構"></a>物件解構</h3><p><img src="https://imgur.com/DuSVx4i.png"></p>
+<p>特性</p>
+<ul>
+<li>沒有對應到的值為 undefined。</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> &#123; name, age &#125; = &#123; <span class="attr">name</span>: <span class="string">&#x27;kent&#x27;</span> &#125;;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(name, age);   <span class="comment">// name=&#x27;kent&#x27;, age=undefined</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>沒有順序性，左右兩邊的數量不相等也沒問題，因此就無法使用空白變數（會噴 Error）。</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> &#123; age, sex &#125; = &#123; <span class="attr">name</span>: <span class="string">&#x27;kent&#x27;</span>, <span class="attr">age</span>: <span class="number">18</span>, <span class="attr">sex</span>: <span class="string">&#x27;M&#x27;</span> &#125;;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(age, sex);   <span class="comment">// name=&#x27;kent&#x27;, sex=&#x27;M&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> &#123; age, ,sex &#125; = &#123; <span class="attr">name</span>: <span class="string">&#x27;kent&#x27;</span>, <span class="attr">age</span>: <span class="number">18</span>, <span class="attr">sex</span>: <span class="string">&#x27;M&#x27;</span> &#125;;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(age, sex);   <span class="comment">// SyntaxError: Unexpected token &#x27;,&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>直接使用 {}，需要在外面加上 ()，否則會噴 Error 被視為區塊（block）而非物件。</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 錯誤寫法</span></span><br><span class="line">&#123; age, name &#125; = &#123; <span class="attr">name</span>: <span class="string">&#x27;kent&#x27;</span>, <span class="attr">age</span>: <span class="number">20</span> &#125;;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(name, age);   <span class="comment">// SyntaxError: Unexpected token &#x27;=&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 正確寫法</span></span><br><span class="line">(&#123; age, name &#125; = &#123; <span class="attr">name</span>: <span class="string">&#x27;kent&#x27;</span>, <span class="attr">age</span>: <span class="number">20</span> &#125;);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(name, age);   <span class="comment">// &#123;name: &#x27;kent&#x27;, age: 20&#125;</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>常見應用</p>
+</blockquote>
+<p>重複指定，但都指向相同位置並使用傳址（ by Reference）方式，因此只要更改一個變數，其他變數值也會受影響。</p>
+
     </div>
 
     
@@ -394,7 +425,10 @@
     <a href="/javascript/1214648668/" rel="prev" title="JS 展開運算子、其餘運算子">
       <i class="fa fa-chevron-left"></i> JS 展開運算子、其餘運算子
     </a></div>
-      <div class="post-nav-item"></div>
+      <div class="post-nav-item">
+    <a href="/uncategorized/3842658283/" rel="next" title="JS 傳值 by Value、傳址 by Reference、傳共享 by sharing">
+      JS 傳值 by Value、傳址 by Reference、傳共享 by sharing <i class="fa fa-chevron-right"></i>
+    </a></div>
     </div>
       </footer>
     
@@ -461,7 +495,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A7%A3%E6%A7%8B%E8%B3%A6%E5%80%BC-Destructuring-Assignment"><span class="nav-text">解構賦值 Destructuring Assignment</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%99%A3%E5%88%97%E8%A7%A3%E6%A7%8B"><span class="nav-text">陣列解構</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A7%A3%E6%A7%8B%E8%B3%A6%E5%80%BC-Destructuring-Assignment"><span class="nav-text">解構賦值 Destructuring Assignment</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%99%A3%E5%88%97%E8%A7%A3%E6%A7%8B"><span class="nav-text">陣列解構</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AD%97%E4%B8%B2%E6%8B%86%E8%A7%A3"><span class="nav-text">字串拆解</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%AE%8A%E6%95%B8%E4%BA%92%E6%8F%9B"><span class="nav-text">變數互換</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%89%A9%E4%BB%B6%E8%A7%A3%E6%A7%8B"><span class="nav-text">物件解構</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -477,7 +511,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">18</span>
+          <span class="site-state-item-count">19</span>
           <span class="site-state-item-name">文章</span>
         </a>
       </div>
