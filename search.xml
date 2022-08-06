@@ -2017,4 +2017,16 @@ console.log(obj.name);  // kent
         <tag>JavaScript</tag>
       </tags>
   </entry>
+  <entry>
+    <title>JS 轉型 - 抽象的值運算 abstract operations</title>
+    <url>/javascript/163319027/</url>
+    <content><![CDATA[<h2 id="ToPrimitive"><a href="#ToPrimitive" class="headerlink" title="ToPrimitive"></a>ToPrimitive</h2>]]></content>
+      <categories>
+        <category>JavaScript</category>
+      </categories>
+      <tags>
+        <tag>JavaScript</tag>
+        <tag>ECMAScript</tag>
+      </tags>
+  </entry>
 </search>
