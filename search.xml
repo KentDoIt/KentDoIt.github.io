@@ -1932,7 +1932,13 @@ console.log(obj.name);  // kent
   </entry>
   <entry>
     <title>JS 傳值 by Value、傳址 by Reference、傳共享 by sharing</title>
-    <url>/uncategorized/3842658283/</url>
+    <url>/javascript/3842658283/</url>
     <content><![CDATA[]]></content>
+      <categories>
+        <category>JavaScript</category>
+      </categories>
+      <tags>
+        <tag>JavaScript</tag>
+      </tags>
   </entry>
 </search>
