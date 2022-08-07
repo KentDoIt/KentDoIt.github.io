@@ -1922,7 +1922,7 @@ console.log(obj.name);  // kent
       </tags>
   </entry>
   <entry>
-    <title>JS not defined vs. undefined</title>
+    <title>JS not defined vs undefined</title>
     <url>/javascript/4170310433/</url>
     <content><![CDATA[<p><img src="https://imgur.com/3uvmsGO.png"></p>
 <h2 id="undefined"><a href="#undefined" class="headerlink" title="undefined"></a>undefined</h2><div class="note primary">
@@ -2213,10 +2213,5 @@ console.log(obj.name);  // kent
         <tag>JavaScript</tag>
         <tag>JS 釘孤枝</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>JS not defined vs. undefined</title>
-    <url>/uncategorized/4170310433/</url>
-    <content><![CDATA[]]></content>
   </entry>
 </search>
