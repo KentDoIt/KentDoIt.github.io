@@ -709,114 +709,6 @@
       </tags>
   </entry>
   <entry>
-    <title>JS == vs ===</title>
-    <url>/javascript/3699626031/</url>
-    <content><![CDATA[<p><img src="https://imgur.com/7TLQ2Yr.jpg" alt="綜合比較表 src：https://github.com/dorey/JavaScript-Equality-Table"></p>
-<p>比較運算子注意事項</p>
-<div class="note default">
-            <p>在 JavaScript 中除了基礎型別（Primitive Type）以外的型別（ex: 陣列、物件）在做比較時，判斷的是兩者是否指向同一個 <code>reference</code>，而非判斷兩者的值是否相同。</p>
-          </div>
-
-<p>e.g. 陣列判斷</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> a = [<span class="number">1</span> , <span class="number">2</span>];</span><br><span class="line"><span class="keyword">let</span> b = [<span class="number">1</span> , <span class="number">2</span>];</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(a == b); <span class="comment">// false</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> c = b;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(c == b); <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
-
-<div class="note default">
-            <p>下方會範例會使用基礎型別（Primitive Type）來演示。</p>
-          </div>
-
-<h2 id="x3D"><a href="#x3D" class="headerlink" title="&#x3D;"></a>&#x3D;</h2><blockquote>
-<p><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Assignment">Assignment 賦值運算子</a></p>
-</blockquote>
-<div class="note primary">
-            <p>assignment：將等號右邊值賦予到左邊的變數。</p>
-          </div>
-
-<figure class="highlight js"><figcaption><span>e.g. 賦予值</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> num = <span class="number">10</span>;</span><br></pre></td></tr></table></figure>
-
-<h2 id="x3D-x3D"><a href="#x3D-x3D" class="headerlink" title="&#x3D;&#x3D;"></a>&#x3D;&#x3D;</h2><blockquote>
-<p><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Equality">Equality 相等比較</a>，</p>
-</blockquote>
-<div class="note primary">
-            <p>equality：比較等號兩邊值是否相同，當等號兩邊型別不同時，會先依照規則轉型再進行比對。（除了物件外，幾乎會轉型為 number 後在做比較）</p>
-          </div>
-
-<div class="note default">
-            <p>紀錄一下看到的其它名稱：<br>Double equals operator （寬鬆相等）<br>equality comparison operator（相等比較運算子）<br>abstract comparison operator（抽象比較運算子）</p>
-          </div>
-
-<figure class="highlight js"><figcaption><span>e.g. </span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;1&#x27;</span> == <span class="number">1</span>); <span class="comment">// true，1 == 1</span></span><br></pre></td></tr></table></figure>
-
-<p><img src="https://imgur.com/9I2G4tQ.jpg" alt="== 比較表"></p>
-<h2 id="x3D-x3D-x3D"><a href="#x3D-x3D-x3D" class="headerlink" title="&#x3D;&#x3D;&#x3D;"></a>&#x3D;&#x3D;&#x3D;</h2><blockquote>
-<p><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Strict_equality">Strict equality 嚴格相等比較</a></p>
-</blockquote>
-<div class="note primary">
-            <p>strict equality：比較等號兩邊 <code>型別</code> 以及 <code>數值</code> 是否 <code>都相同</code>。</p>
-          </div>
-
-<div class="note default">
-            <p>紀錄一下看到的其它名稱：<br>identity comparison operator（身份比較運算子）<br>strict comparison operator（嚴格比較運算子）</p>
-          </div>
-
-<figure class="highlight js"><figcaption><span>e.g. </span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;1&#x27;</span> === <span class="number">1</span>); <span class="comment">// false</span></span><br></pre></td></tr></table></figure>
-
-<p><img src="https://imgur.com/I3piMnw.jpg" alt="=== 比較表"></p>
-<h2 id="自動轉型差異"><a href="#自動轉型差異" class="headerlink" title="自動轉型差異"></a>自動轉型差異</h2><p>&#x3D;&#x3D;：會依照規則轉型後再比較。<br>&#x3D;&#x3D;&#x3D;：不會轉型直接比較。</p>
-<h2 id="例外"><a href="#例外" class="headerlink" title="例外"></a>例外</h2><blockquote>
-<p>&#x3D;&#x3D; 寬鬆比對下等號兩邊為 undefined 和 null 則回傳 true。</p>
-</blockquote>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="literal">undefined</span> == <span class="literal">null</span>); <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>&#x3D;&#x3D; 寬鬆比對下空字串（字串為空或是僅有空白）則代表 false。</p>
-</blockquote>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;&#x27;</span> == <span class="literal">false</span>);    <span class="comment">// true，0 == 0</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;  &#x27;</span> == <span class="literal">false</span>);  <span class="comment">// true，0 == 0</span></span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>&#x3D;&#x3D; 寬鬆比對下等號兩邊型別不同時，除了 object 外幾乎是轉型成 number 在做比對，</p>
-</blockquote>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="literal">true</span> == <span class="number">1</span>);      <span class="comment">// true，1</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="literal">true</span> == <span class="string">&#x27;1&#x27;</span>);    <span class="comment">// true，1 == 1</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="literal">true</span> == <span class="string">&#x27;true&#x27;</span>); <span class="comment">// false，1 == NaN</span></span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>非基礎型別、symbols 還需要比較 reference，相同才會回傳 true。</p>
-</blockquote>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="literal">true</span> === <span class="literal">true</span>);           <span class="comment">// true</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">Symbol</span>(<span class="number">1</span>) === <span class="title class_">Symbol</span>(<span class="number">1</span>)); <span class="comment">// false</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(&#123;&#125; === &#123;&#125;);               <span class="comment">// false</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> obj = &#123;&#125;;</span><br><span class="line"><span class="keyword">const</span> sym = <span class="title class_">Symbol</span>();</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>([obj].<span class="title function_">includes</span>(obj));     <span class="comment">// true</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>([sym].<span class="title function_">includes</span>(sym));     <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>NaN</p>
-</blockquote>
-<ul>
-<li>等號其中一邊只要有 NaN 則回傳 false 。（一般會使用 isNan 去判斷 NaN）</li>
-</ul>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">NaN</span> == <span class="title class_">NaN</span>);  <span class="comment">// false</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">NaN</span> === <span class="title class_">NaN</span>); <span class="comment">// false</span></span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>兩者皆為 0 則回傳 true。（不管正負）</p>
-</blockquote>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="number">0</span> === -<span class="number">0</span>);    <span class="comment">// true</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="number">1</span> === -<span class="number">1</span>);    <span class="comment">// false</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="conclusion"><a href="#conclusion" class="headerlink" title="conclusion"></a>conclusion</h2><blockquote>
-<p>&#x3D;&#x3D; 特殊使用情境</p>
-</blockquote>
-<figure class="highlight js"><figcaption><span>判斷是否為 null、undefined</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> (x === <span class="literal">null</span> || x === <span class="literal">undefined</span>) &#123;</span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// == 特性等號左右兩邊為 null、undefined 會回傳 true</span></span><br><span class="line"><span class="keyword">if</span> (x == <span class="literal">null</span>) &#123;</span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight js"><figcaption><span>判斷 typeof 值</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="comment">// 因為 typeof 出來的值會是固定的 javascript 型別，只是可能隨著時間流逝版本會有差異（ex: bigint）</span></span><br><span class="line"><span class="keyword">if</span>( <span class="title function_">typeof</span>(x) == <span class="string">&#x27;string&#x27;</span>) &#123;</span><br><span class="line">   ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<div class="note default">
-            <p>建議還是使用 &#x3D;&#x3D;&#x3D; 嚴格比對。（除非非常暸解，且熟悉特殊情境時使用 ex：判斷是否為 null、undefined）</p>
-          </div>
-
-<h2 id="references"><a href="#references" class="headerlink" title="references"></a>references</h2><p><a href="https://ithelp.ithome.com.tw/articles/10282758">為了轉生而點技能-JavaScript，難題紀錄(二)隱式轉換規則及&#x3D;&#x3D;&#x3D;、&#x3D;&#x3D;</a><br><a href="https://eddychang.me/js-object-plus-object">JS中的 {} + {} 與 {} + [] 的結果是什麼？</a></p>
-]]></content>
-      <categories>
-        <category>JavaScript</category>
-      </categories>
-      <tags>
-        <tag>運算子</tag>
-        <tag>JavaScript</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>JS 比較運算子的自動轉型</title>
     <url>/javascript/2972146539/</url>
     <content><![CDATA[<p>比較運算子注意事項</p>
@@ -2030,11 +1922,6 @@ console.log(obj.name);  // kent
       </tags>
   </entry>
   <entry>
-    <title>JS String vs toString</title>
-    <url>/uncategorized/4119142473/</url>
-    <content><![CDATA[]]></content>
-  </entry>
-  <entry>
     <title>JS not defined vs. undefined</title>
     <url>/javascript/4170310433/</url>
     <content><![CDATA[<p><img src="https://imgur.com/3uvmsGO.png"></p>
@@ -2216,5 +2103,119 @@ console.log(obj.name);  // kent
         <tag>JavaScript</tag>
         <tag>JS 釘孤枝</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>JS == vs ===</title>
+    <url>/javascript/3699626031/</url>
+    <content><![CDATA[<p><img src="https://imgur.com/7TLQ2Yr.jpg" alt="綜合比較表 src：https://github.com/dorey/JavaScript-Equality-Table"></p>
+<p>比較運算子注意事項</p>
+<div class="note default">
+            <p>在 JavaScript 中除了基礎型別（Primitive Type）以外的型別（ex: 陣列、物件）在做比較時，判斷的是兩者是否指向同一個 <code>reference</code>，而非判斷兩者的值是否相同。</p>
+          </div>
+
+<p>e.g. 陣列判斷</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> a = [<span class="number">1</span> , <span class="number">2</span>];</span><br><span class="line"><span class="keyword">let</span> b = [<span class="number">1</span> , <span class="number">2</span>];</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(a == b); <span class="comment">// false</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> c = b;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(c == b); <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+
+<div class="note default">
+            <p>下方會範例會使用基礎型別（Primitive Type）來演示。</p>
+          </div>
+
+<h2 id="x3D"><a href="#x3D" class="headerlink" title="&#x3D;"></a>&#x3D;</h2><blockquote>
+<p><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Assignment">Assignment 賦值運算子</a></p>
+</blockquote>
+<div class="note primary">
+            <p>assignment：將等號右邊值賦予到左邊的變數。</p>
+          </div>
+
+<figure class="highlight js"><figcaption><span>e.g. 賦予值</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> num = <span class="number">10</span>;</span><br></pre></td></tr></table></figure>
+
+<h2 id="x3D-x3D"><a href="#x3D-x3D" class="headerlink" title="&#x3D;&#x3D;"></a>&#x3D;&#x3D;</h2><blockquote>
+<p><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Equality">Equality 相等比較</a>，</p>
+</blockquote>
+<div class="note primary">
+            <p>equality：比較等號兩邊值是否相同，當等號兩邊型別不同時，會先依照規則轉型再進行比對。（除了物件外，幾乎會轉型為 number 後在做比較）</p>
+          </div>
+
+<div class="note default">
+            <p>紀錄一下看到的其它名稱：<br>Double equals operator （寬鬆相等）<br>equality comparison operator（相等比較運算子）<br>abstract comparison operator（抽象比較運算子）</p>
+          </div>
+
+<figure class="highlight js"><figcaption><span>e.g. </span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;1&#x27;</span> == <span class="number">1</span>); <span class="comment">// true，1 == 1</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="https://imgur.com/9I2G4tQ.jpg" alt="== 比較表"></p>
+<h2 id="x3D-x3D-x3D"><a href="#x3D-x3D-x3D" class="headerlink" title="&#x3D;&#x3D;&#x3D;"></a>&#x3D;&#x3D;&#x3D;</h2><blockquote>
+<p><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Strict_equality">Strict equality 嚴格相等比較</a></p>
+</blockquote>
+<div class="note primary">
+            <p>strict equality：比較等號兩邊 <code>型別</code> 以及 <code>數值</code> 是否 <code>都相同</code>。</p>
+          </div>
+
+<div class="note default">
+            <p>紀錄一下看到的其它名稱：<br>identity comparison operator（身份比較運算子）<br>strict comparison operator（嚴格比較運算子）</p>
+          </div>
+
+<figure class="highlight js"><figcaption><span>e.g. </span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;1&#x27;</span> === <span class="number">1</span>); <span class="comment">// false</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="https://imgur.com/I3piMnw.jpg" alt="=== 比較表"></p>
+<h2 id="自動轉型差異"><a href="#自動轉型差異" class="headerlink" title="自動轉型差異"></a>自動轉型差異</h2><p>&#x3D;&#x3D;：會依照規則轉型後再比較。<br>&#x3D;&#x3D;&#x3D;：不會轉型直接比較。</p>
+<h2 id="例外"><a href="#例外" class="headerlink" title="例外"></a>例外</h2><blockquote>
+<p>&#x3D;&#x3D; 寬鬆比對下等號兩邊為 undefined 和 null 則回傳 true。</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="literal">undefined</span> == <span class="literal">null</span>); <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>&#x3D;&#x3D; 寬鬆比對下空字串（字串為空或是僅有空白）則代表 false。</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;&#x27;</span> == <span class="literal">false</span>);    <span class="comment">// true，0 == 0</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;  &#x27;</span> == <span class="literal">false</span>);  <span class="comment">// true，0 == 0</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>&#x3D;&#x3D; 寬鬆比對下等號兩邊型別不同時，除了 object 外幾乎是轉型成 number 在做比對，</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="literal">true</span> == <span class="number">1</span>);      <span class="comment">// true，1</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="literal">true</span> == <span class="string">&#x27;1&#x27;</span>);    <span class="comment">// true，1 == 1</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="literal">true</span> == <span class="string">&#x27;true&#x27;</span>); <span class="comment">// false，1 == NaN</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>非基礎型別、symbols 還需要比較 reference，相同才會回傳 true。</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="literal">true</span> === <span class="literal">true</span>);           <span class="comment">// true</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">Symbol</span>(<span class="number">1</span>) === <span class="title class_">Symbol</span>(<span class="number">1</span>)); <span class="comment">// false</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(&#123;&#125; === &#123;&#125;);               <span class="comment">// false</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> obj = &#123;&#125;;</span><br><span class="line"><span class="keyword">const</span> sym = <span class="title class_">Symbol</span>();</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>([obj].<span class="title function_">includes</span>(obj));     <span class="comment">// true</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>([sym].<span class="title function_">includes</span>(sym));     <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>NaN</p>
+</blockquote>
+<ul>
+<li>等號其中一邊只要有 NaN 則回傳 false 。（一般會使用 isNan 去判斷 NaN）</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">NaN</span> == <span class="title class_">NaN</span>);  <span class="comment">// false</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">NaN</span> === <span class="title class_">NaN</span>); <span class="comment">// false</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>兩者皆為 0 則回傳 true。（不管正負）</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="number">0</span> === -<span class="number">0</span>);    <span class="comment">// true</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="number">1</span> === -<span class="number">1</span>);    <span class="comment">// false</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="conclusion"><a href="#conclusion" class="headerlink" title="conclusion"></a>conclusion</h2><blockquote>
+<p>&#x3D;&#x3D; 特殊使用情境</p>
+</blockquote>
+<figure class="highlight js"><figcaption><span>判斷是否為 null、undefined</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> (x === <span class="literal">null</span> || x === <span class="literal">undefined</span>) &#123;</span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// == 特性等號左右兩邊為 null、undefined 會回傳 true</span></span><br><span class="line"><span class="keyword">if</span> (x == <span class="literal">null</span>) &#123;</span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight js"><figcaption><span>判斷 typeof 值</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="comment">// 因為 typeof 出來的值會是固定的 javascript 型別，只是可能隨著時間流逝版本會有差異（ex: bigint）</span></span><br><span class="line"><span class="keyword">if</span>( <span class="title function_">typeof</span>(x) == <span class="string">&#x27;string&#x27;</span>) &#123;</span><br><span class="line">   ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<div class="note default">
+            <p>建議還是使用 &#x3D;&#x3D;&#x3D; 嚴格比對。（除非非常暸解，且熟悉特殊情境時使用 ex：判斷是否為 null、undefined）</p>
+          </div>
+
+<h2 id="references"><a href="#references" class="headerlink" title="references"></a>references</h2><p><a href="https://ithelp.ithome.com.tw/articles/10282758">為了轉生而點技能-JavaScript，難題紀錄(二)隱式轉換規則及&#x3D;&#x3D;&#x3D;、&#x3D;&#x3D;</a><br><a href="https://eddychang.me/js-object-plus-object">JS中的 {} + {} 與 {} + [] 的結果是什麼？</a></p>
+]]></content>
+      <categories>
+        <category>JavaScript</category>
+      </categories>
+      <tags>
+        <tag>運算子</tag>
+        <tag>JavaScript</tag>
+        <tag>JS 釘孤枝</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>JS not defined vs. undefined</title>
+    <url>/uncategorized/4170310433/</url>
+    <content><![CDATA[]]></content>
   </entry>
 </search>
