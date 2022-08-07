@@ -31,9 +31,9 @@
     <category term="JavaScript" scheme="https://kentdoit.github.io/categories/javascript/"/>
     
     
-    <category term="JavaScript" scheme="https://kentdoit.github.io/tags/JavaScript/"/>
-    
     <category term="JS 釘孤枝" scheme="https://kentdoit.github.io/tags/JS-%E9%87%98%E5%AD%A4%E6%9E%9D/"/>
+    
+    <category term="JavaScript" scheme="https://kentdoit.github.io/tags/JavaScript/"/>
     
   </entry>
   
@@ -52,9 +52,9 @@
     <category term="JavaScript" scheme="https://kentdoit.github.io/categories/javascript/"/>
     
     
-    <category term="JavaScript" scheme="https://kentdoit.github.io/tags/JavaScript/"/>
-    
     <category term="JS 釘孤枝" scheme="https://kentdoit.github.io/tags/JS-%E9%87%98%E5%AD%A4%E6%9E%9D/"/>
+    
+    <category term="JavaScript" scheme="https://kentdoit.github.io/tags/JavaScript/"/>
     
   </entry>
   
@@ -145,7 +145,7 @@
     <link href="https://kentdoit.github.io/javascript/3900271525/"/>
     <id>https://kentdoit.github.io/javascript/3900271525/</id>
     <published>2022-08-05T09:03:08.000Z</published>
-    <updated>2022-08-06T02:58:28.478Z</updated>
+    <updated>2022-08-06T03:03:48.999Z</updated>
     
     
     <summary type="html">此篇學習在 JS 中如何透過這個 ES2020 新增的語法糖可選串連運算子，來避免遇到物件屬性不存在所導致的報錯。</summary>
@@ -187,7 +187,7 @@
     <link href="https://kentdoit.github.io/javascript/3525467973/"/>
     <id>https://kentdoit.github.io/javascript/3525467973/</id>
     <published>2022-06-20T05:48:52.000Z</published>
-    <updated>2022-08-05T08:52:25.081Z</updated>
+    <updated>2022-08-05T08:52:51.793Z</updated>
     
     
     <summary type="html">此篇會介紹 JS 中常用技巧「空值合併運算子」，以及其優缺點。</summary>
@@ -335,9 +335,9 @@
     
     <category term="運算子" scheme="https://kentdoit.github.io/tags/%E9%81%8B%E7%AE%97%E5%AD%90/"/>
     
-    <category term="JavaScript" scheme="https://kentdoit.github.io/tags/JavaScript/"/>
-    
     <category term="JS 釘孤枝" scheme="https://kentdoit.github.io/tags/JS-%E9%87%98%E5%AD%A4%E6%9E%9D/"/>
+    
+    <category term="JavaScript" scheme="https://kentdoit.github.io/tags/JavaScript/"/>
     
   </entry>
   
