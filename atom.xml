@@ -6,7 +6,7 @@
   <link href="https://kentdoit.github.io/atom.xml" rel="self"/>
   
   <link href="https://kentdoit.github.io/"/>
-  <updated>2022-08-06T03:39:08.093Z</updated>
+  <updated>2022-08-07T03:15:36.130Z</updated>
   <id>https://kentdoit.github.io/</id>
   
   <author>
@@ -17,11 +17,66 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>JS not defined vs. undefined</title>
+    <link href="https://kentdoit.github.io/javascript/4170310433/"/>
+    <id>https://kentdoit.github.io/javascript/4170310433/</id>
+    <published>2022-08-07T02:25:08.000Z</published>
+    <updated>2022-08-07T03:15:36.130Z</updated>
+    
+    
+    <summary type="html">探討 undefined、not defined 兩者區別以及注意事項。</summary>
+    
+    
+    
+    <category term="JavaScript" scheme="https://kentdoit.github.io/categories/javascript/"/>
+    
+    
+    <category term="JavaScript" scheme="https://kentdoit.github.io/tags/JavaScript/"/>
+    
+    <category term="JS 釘孤枝" scheme="https://kentdoit.github.io/tags/JS-%E9%87%98%E5%AD%A4%E6%9E%9D/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>JS null vs undefined</title>
+    <link href="https://kentdoit.github.io/javascript/3007200680/"/>
+    <id>https://kentdoit.github.io/javascript/3007200680/</id>
+    <published>2022-08-07T02:24:54.000Z</published>
+    <updated>2022-08-07T02:40:57.142Z</updated>
+    
+    
+    <summary type="html">此篇探討在 JS 中 null、undefined 的差異。</summary>
+    
+    
+    
+    <category term="JavaScript" scheme="https://kentdoit.github.io/categories/javascript/"/>
+    
+    
+    <category term="JavaScript" scheme="https://kentdoit.github.io/tags/JavaScript/"/>
+    
+    <category term="JS 釘孤枝" scheme="https://kentdoit.github.io/tags/JS-%E9%87%98%E5%AD%A4%E6%9E%9D/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>JS String vs toString</title>
+    <link href="https://kentdoit.github.io/uncategorized/4119142473/"/>
+    <id>https://kentdoit.github.io/uncategorized/4119142473/</id>
+    <published>2022-08-07T02:24:29.000Z</published>
+    <updated>2022-08-07T02:24:29.894Z</updated>
+    
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
     <title>JS 轉型 - 抽象的值運算 abstract operations</title>
     <link href="https://kentdoit.github.io/javascript/163319027/"/>
     <id>https://kentdoit.github.io/javascript/163319027/</id>
     <published>2022-08-06T03:36:54.000Z</published>
-    <updated>2022-08-06T03:39:08.093Z</updated>
+    <updated>2022-08-06T03:39:12.566Z</updated>
     
     
     <summary type="html">此篇主要透過 ECMAScript 中定義的規則，來講述幾個 JS 抽象的值運算 (abstract operations) 做轉型的過程。</summary>
@@ -370,63 +425,6 @@
     
     
     <category term="Hexo 優化" scheme="https://kentdoit.github.io/tags/Hexo-%E5%84%AA%E5%8C%96/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Hexo 新增文章和頁面 (二)</title>
-    <link href="https://kentdoit.github.io/hexo/356195859/"/>
-    <id>https://kentdoit.github.io/hexo/356195859/</id>
-    <published>2022-04-26T07:11:38.000Z</published>
-    <updated>2022-05-08T12:44:46.704Z</updated>
-    
-    
-    <summary type="html">此篇會如何在 Hexo 使用 new 新增指令。</summary>
-    
-    
-    
-    <category term="Hexo" scheme="https://kentdoit.github.io/categories/hexo/"/>
-    
-    
-    <category term="Hexo 部落格" scheme="https://kentdoit.github.io/tags/hexo-blog/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Hexo 主題 NexT 設置 (一)</title>
-    <link href="https://kentdoit.github.io/hexo/3802192554/"/>
-    <id>https://kentdoit.github.io/hexo/3802192554/</id>
-    <published>2022-04-24T16:30:34.000Z</published>
-    <updated>2022-05-18T01:42:44.879Z</updated>
-    
-    
-    <summary type="html">此篇會介紹如何設置 Hexo 主題 NexT 以及設置 Settings。</summary>
-    
-    
-    
-    <category term="Hexo" scheme="https://kentdoit.github.io/categories/hexo/"/>
-    
-    
-    <category term="Hexo 部落格" scheme="https://kentdoit.github.io/tags/hexo-blog/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>架設部落格 Hexo 部署 Github (零)</title>
-    <link href="https://kentdoit.github.io/hexo/1074258594/"/>
-    <id>https://kentdoit.github.io/hexo/1074258594/</id>
-    <published>2022-04-24T14:03:56.000Z</published>
-    <updated>2022-05-18T04:31:12.845Z</updated>
-    
-    
-    <summary type="html">此篇會手把手介紹如何透過 Hexo 架設部落格部並署到 Github。</summary>
-    
-    
-    
-    <category term="Hexo" scheme="https://kentdoit.github.io/categories/hexo/"/>
-    
-    
-    <category term="Hexo 部落格" scheme="https://kentdoit.github.io/tags/hexo-blog/"/>
     
   </entry>
   

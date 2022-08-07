@@ -2029,4 +2029,103 @@ console.log(obj.name);  // kent
         <tag>ECMAScript</tag>
       </tags>
   </entry>
+  <entry>
+    <title>JS String vs toString</title>
+    <url>/uncategorized/4119142473/</url>
+    <content><![CDATA[]]></content>
+  </entry>
+  <entry>
+    <title>JS not defined vs. undefined</title>
+    <url>/javascript/4170310433/</url>
+    <content><![CDATA[<p><img src="https://imgur.com/3uvmsGO.png"></p>
+<h2 id="undefined"><a href="#undefined" class="headerlink" title="undefined"></a>undefined</h2><div class="note primary">
+            <p><a href="https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Global_Objects/undefined">MDN</a>：屬於 <code>primitive value</code> 之一、全域物件的 <code>property</code>。</p>
+          </div>
+
+<blockquote>
+<p>Tips</p>
+</blockquote>
+<ol>
+<li><p>預設值<br>表示變數 <code>尚未宣告</code> 或者是已經宣告了但 <code>尚未賦值</code>。</p>
+</li>
+<li><p>特殊關鍵字<br>可以當作一個值去賦予不會噴錯，但 <code>千萬不要</code> 這麼做。</p>
+</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> b;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(b); <span class="comment">// undefined</span></span><br><span class="line"></span><br><span class="line">b = <span class="literal">undefined</span>; <span class="comment">// 不要這麼做</span></span><br></pre></td></tr></table></figure>
+
+<div class="note default">
+            <p>下方會演示兩種 undefined 錯誤應用，並解析問題。</p>
+          </div>
+
+<h3 id="不建議賦值為-undefined"><a href="#不建議賦值為-undefined" class="headerlink" title="不建議賦值為 undefined"></a>不建議賦值為 undefined</h3><div class="note danger">
+            <p>問題：造成無法看出此變數是否有被賦予值。</p>
+          </div>
+
+<p>解法：</p>
+<ol>
+<li>使用 null，更符合空值的意義。</li>
+<li>宣告變數不帶值，預設就會賦予 undefined。</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 不建議寫法</span></span><br><span class="line"><span class="keyword">let</span> a = <span class="literal">undefined</span>; <span class="comment">// undefined</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 替代方式</span></span><br><span class="line"><span class="keyword">let</span> a;             <span class="comment">// undefined</span></span><br><span class="line"><span class="keyword">let</span> a = <span class="literal">null</span>;      <span class="comment">// undefined</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="不建議變數名稱命名為-undefined"><a href="#不建議變數名稱命名為-undefined" class="headerlink" title="不建議變數名稱命名為 undefined"></a>不建議變數名稱命名為 undefined</h3><div class="note danger">
+            <p>問題：javascript 會過，但無法正常運作。</p>
+          </div>
+
+<p>解法：</p>
+<ol>
+<li>直接不要用 undefined 命名</li>
+<li>不要用 var 改用 let、const（ES6 中已修正此問題，因此無法使用 undefined 命名）</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 不建議寫法</span></span><br><span class="line"><span class="keyword">var</span> <span class="literal">undefined</span> = <span class="string">&#x27;un&#x27;</span>;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="literal">undefined</span>); <span class="comment">// undefined，無法正常顯示值</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// let、const</span></span><br><span class="line"><span class="keyword">let</span> <span class="literal">undefined</span> = <span class="string">&#x27;un&#x27;</span>;   <span class="comment">// Uncaught SyntaxError: Identifier &#x27;undefined&#x27; has already been declared</span></span><br><span class="line"><span class="keyword">const</span> <span class="literal">undefined</span> = <span class="string">&#x27;un&#x27;</span>; <span class="comment">// Uncaught SyntaxError: Identifier &#x27;undefined&#x27; has already been declared</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="not-defined"><a href="#not-defined" class="headerlink" title="not defined"></a>not defined</h2><div class="note primary">
+            <p>屬於 error，會噴錯誤訊息。（throw a ReferenceError exception）</p>
+          </div>
+
+<blockquote>
+<p>Tip</p>
+</blockquote>
+<ul>
+<li>常見的原因是使用了<code>尚未宣告</code>的變數或函式，所導致的 Error。</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(c); <span class="comment">// ReferenceError: c is not defined</span></span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="different"><a href="#different" class="headerlink" title="different"></a>different</h2><ul>
+<li>undefined：宣告(declaration) 後<code>尚未賦予值</code>。</li>
+<li>not defined：<code>尚未被宣告</code>(declaration)。</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> b;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(b); <span class="comment">// undefined</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(c); <span class="comment">// ReferenceError: c is not defined</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="conclusion"><a href="#conclusion" class="headerlink" title="conclusion"></a>conclusion</h2><p><img src="https://imgur.com/bGXwBgw.png"></p>
+<h2 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h2><ul>
+<li><a href="https://hsiangfeng.github.io/javascript/20200510/2581786882/">JavaScript 核心觀念(7)-執行環境與作用域-not defined VS undefined</a></li>
+<li><a href="https://ithelp.ithome.com.tw/articles/10190904">Day04　undefined與not defined</a></li>
+</ul>
+<p>延伸閱讀</p>
+<ul>
+<li>JS null vs undefined</li>
+</ul>
+]]></content>
+      <categories>
+        <category>JavaScript</category>
+      </categories>
+      <tags>
+        <tag>JavaScript</tag>
+        <tag>JS 釘孤枝</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>JS null vs undefined</title>
+    <url>/javascript/3007200680/</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>JavaScript</category>
+      </categories>
+      <tags>
+        <tag>JavaScript</tag>
+        <tag>JS 釘孤枝</tag>
+      </tags>
+  </entry>
 </search>
