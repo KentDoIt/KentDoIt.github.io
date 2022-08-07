@@ -621,6 +621,94 @@
       </tags>
   </entry>
   <entry>
+    <title>Hexo Sitemap 建立索引 無法擷取</title>
+    <url>/hexo/2629412870/</url>
+    <content><![CDATA[<div class="note default">
+            <p>此篇內容為 <a href="https://kentdoit.github.io/hexo/599670072/">Hexo 設置 GA、Sitemap（四）</a>的 Debug 延續篇，介紹如何解決無法擷取以及設置索引。</p>
+          </div>
+
+<h2 id="範例的環境版本"><a href="#範例的環境版本" class="headerlink" title="範例的環境版本"></a>範例的環境版本</h2><p>hexo 版本：6.0.1<br>hexo-cli 版本：4.3.0<br>next 版本：7.8.0</p>
+<h2 id="無法擷取"><a href="#無法擷取" class="headerlink" title="無法擷取"></a>無法擷取</h2><p><img src="https://imgur.com/UH0jdLH.jpg"></p>
+<div class="note default">
+            <p>下方會介紹四種我嘗試過的方法。</p>
+          </div>
+
+<h3 id="擁有權驗證"><a href="#擁有權驗證" class="headerlink" title="擁有權驗證"></a>擁有權驗證</h3><p>❌ 方法一：添加其他驗證方式（本來只有用 GA）</p>
+<p>Step1：取得 content 值</p>
+<ul>
+<li>記得在複製內容中只擷取 content 值就好。</li>
+</ul>
+<p><img src="https://imgur.com/N623p1p.jpg" alt="演示四步驟取得 content"></p>
+<p>Step2：修改 NexT 主題中 _config.yml 參數 google_site_verification</p>
+<ul>
+<li>貼上取得的 content 值。</li>
+</ul>
+<figure class="highlight diff"><figcaption><span>.git/config</span></figcaption><table><tr><td class="code"><pre><span class="line"># Google Webmaster tools verification.</span><br><span class="line"># See: https://www.google.com/webmasters</span><br><span class="line"><span class="addition">+ google_site_verification: 25miYVaewg4Qur_GPtoF9-GhCZZJNidmq2kqy6wRE9g</span></span><br><span class="line"><span class="deletion">- google_site_verification:</span></span><br></pre></td></tr></table></figure>
+
+<p>Step3：重新部署</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">hexo g -d</span><br></pre></td></tr></table></figure>
+
+<p>Step4：重新部署後，檢查網站中是否包含 google-site-verification</p>
+<p><img src="https://imgur.com/RVLo57e.jpg" alt="搜尋 google-site-verification"></p>
+<h3 id="檢查-Sitemap-格式"><a href="#檢查-Sitemap-格式" class="headerlink" title="檢查 Sitemap 格式"></a>檢查 Sitemap 格式</h3><p>❌ 方法二：檢查 Sitemap 格式</p>
+<blockquote>
+<p>發覺我的 sitemap.xml 格式和官方範例不同，所以需要將多的標籤移除。</p>
+</blockquote>
+<p><img src="https://imgur.com/QnPnMb0.jpg" alt="格式比較"></p>
+<p>Step1：將 node_modules&#x2F;hexo-generator-sitemap&#x2F;sitemap.xml 中的 <code>changefreq</code>、<code>priority</code> 標籤移除。</p>
+<p>Step2：重新部署</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">hexo g -d</span><br></pre></td></tr></table></figure>
+
+<div class="note default">
+            <p>參考這篇 <a href="https://zenreal.github.io/posts/7993/#google%E7%84%A1%E6%B3%95%E8%AE%80%E5%8F%96sitemap-%E4%B8%80%E8%88%AC%E7%9A%84http%E9%8C%AF%E8%AA%A4-%E8%A7%A3%E6%B1%BA%E6%96%B9%E5%BC%8F">Google無法讀取sitemap(一般的HTTP錯誤) 解決方式</a> 所提到的解法，雖然我沒有這個問題。</p>
+          </div>
+
+<p><img src="https://imgur.com/NkFfNmd.jpg" alt="記得要把所有多的標籤都移除呦，雖然也一樣沒成功"></p>
+<h3 id="建立索引"><a href="#建立索引" class="headerlink" title="建立索引"></a>建立索引</h3><blockquote>
+<p>為了將自己的網址透過 Google Search Console 建立索引，提交給 Google 使搜尋引擎能更容易地搜尋到我們的網站，這個也屬於提升 SEO 的其中一種方法。</p>
+</blockquote>
+<p>❌ 方法三：網址審查建立索引</p>
+<p>Step1：點擊網址審查，並在上方網址列貼上部落格網址（例如：<a href="https://kentdoit.github.io/%EF%BC%89">https://kentdoit.github.io/）</a></p>
+<p>Step2：按下建立索引</p>
+<p><img src="https://imgur.com/VwNKDrB.jpg" alt="兩步驟建立索引"></p>
+<div class="note default">
+            <p>過一陣子之後再到網址審查中檢查就會看到綠色勾勾了，也代表建立索引成功了～～～<br>雖然不確定是時間還沒到還是因為 .nojekyll，但至少之後用其他文章連結也有成功建立索引 (੭•̀ᴗ•̀)੭</p>
+          </div>
+
+<p><img src="https://imgur.com/iR7NAzQ.jpg" alt="網址審查通過"></p>
+<h3 id="建立-nojekyll"><a href="#建立-nojekyll" class="headerlink" title="建立 .nojekyll"></a>建立 .nojekyll</h3><p>❌ 方法四：建立 .nojekyll</p>
+<p>Step1：進入根目錄 source 資料夾底下</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">cd source</span><br></pre></td></tr></table></figure>
+
+<p>Step2：建立一個空白的 .nojekyll 檔案</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">touch .nojekyll</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://imgur.com/BFbbf5V.jpg"></p>
+<div class="note default">
+            <p>接下來設定是為了讓每次部署產生的 public 資料夾中也能存在 .nojekyll 檔案</p>
+          </div>
+
+<p>Step3：修改根目錄 _config.yml 參數</p>
+<figure class="highlight diff"><figcaption><span>_config.yml</span></figcaption><table><tr><td class="code"><pre><span class="line"># Include / Exclude file(s)</span><br><span class="line">## include:/exclude: options only apply to the &#x27;source/&#x27; folder</span><br><span class="line">include:</span><br><span class="line"><span class="addition">+  .nojekyll</span></span><br><span class="line">exclude:</span><br><span class="line">ignore:</span><br></pre></td></tr></table></figure>
+
+<p>Step4：重新部署</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">hexo cl</span><br><span class="line">hexo g -d</span><br></pre></td></tr></table></figure>
+
+<div class="note default">
+            <p>雖然建立索引成功了，但 Sitemap 狀態還是呈現 <code>無法擷取</code> 以及 <code>未提交至 Sitemap</code>，最後沒辦法只好靜待幾天看看會不會發生奇蹟</p>
+          </div>
+
+<h2 id="未提交至-Sitemap"><a href="#未提交至-Sitemap" class="headerlink" title="未提交至 Sitemap"></a>未提交至 Sitemap</h2><h2 id="可讀取-Sitemap，但其中含有錯誤"><a href="#可讀取-Sitemap，但其中含有錯誤" class="headerlink" title="可讀取 Sitemap，但其中含有錯誤"></a>可讀取 Sitemap，但其中含有錯誤</h2><p><img src="https://imgur.com/tYWXLmz.jpg"></p>
+<h2 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h2><p><a href="https://blog.kyomind.tw/adding-sitemap-issue/">解決 Hexo + Github Pages 新增 sitemap.xml 找不到頁面</a><br><a href="https://blog.balabambe.com/2021/12/01/%E8%A7%A3%E6%B1%BA-Google-Search-Console-%E6%8A%93%E4%B8%8D%E5%88%B0-Hexo-%E6%94%BE%E5%9C%A8-Github-Pages-%E7%9A%84-sitemap-xml-%E7%9A%84%E5%95%8F%E9%A1%8C/">解決 Google Search Console 抓不到 Hexo 放在 Github Pages 的 sitemap.xml 的問題</a></p>
+]]></content>
+      <categories>
+        <category>Hexo</category>
+      </categories>
+      <tags>
+        <tag>Hexo SEO</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>JS == vs ===</title>
     <url>/javascript/3699626031/</url>
     <content><![CDATA[<p><img src="https://imgur.com/7TLQ2Yr.jpg" alt="綜合比較表 src：https://github.com/dorey/JavaScript-Equality-Table"></p>
@@ -727,94 +815,6 @@
         <tag>運算子</tag>
         <tag>JS 釘孤枝</tag>
         <tag>JavaScript</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Hexo Sitemap 建立索引 無法擷取</title>
-    <url>/hexo/2629412870/</url>
-    <content><![CDATA[<div class="note default">
-            <p>此篇內容為 <a href="https://kentdoit.github.io/hexo/599670072/">Hexo 設置 GA、Sitemap（四）</a>的 Debug 延續篇，介紹如何解決無法擷取以及設置索引。</p>
-          </div>
-
-<h2 id="範例的環境版本"><a href="#範例的環境版本" class="headerlink" title="範例的環境版本"></a>範例的環境版本</h2><p>hexo 版本：6.0.1<br>hexo-cli 版本：4.3.0<br>next 版本：7.8.0</p>
-<h2 id="無法擷取"><a href="#無法擷取" class="headerlink" title="無法擷取"></a>無法擷取</h2><p><img src="https://imgur.com/UH0jdLH.jpg"></p>
-<div class="note default">
-            <p>下方會介紹四種我嘗試過的方法。</p>
-          </div>
-
-<h3 id="擁有權驗證"><a href="#擁有權驗證" class="headerlink" title="擁有權驗證"></a>擁有權驗證</h3><p>❌ 方法一：添加其他驗證方式（本來只有用 GA）</p>
-<p>Step1：取得 content 值</p>
-<ul>
-<li>記得在複製內容中只擷取 content 值就好。</li>
-</ul>
-<p><img src="https://imgur.com/N623p1p.jpg" alt="演示四步驟取得 content"></p>
-<p>Step2：修改 NexT 主題中 _config.yml 參數 google_site_verification</p>
-<ul>
-<li>貼上取得的 content 值。</li>
-</ul>
-<figure class="highlight diff"><figcaption><span>.git/config</span></figcaption><table><tr><td class="code"><pre><span class="line"># Google Webmaster tools verification.</span><br><span class="line"># See: https://www.google.com/webmasters</span><br><span class="line"><span class="addition">+ google_site_verification: 25miYVaewg4Qur_GPtoF9-GhCZZJNidmq2kqy6wRE9g</span></span><br><span class="line"><span class="deletion">- google_site_verification:</span></span><br></pre></td></tr></table></figure>
-
-<p>Step3：重新部署</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">hexo g -d</span><br></pre></td></tr></table></figure>
-
-<p>Step4：重新部署後，檢查網站中是否包含 google-site-verification</p>
-<p><img src="https://imgur.com/RVLo57e.jpg" alt="搜尋 google-site-verification"></p>
-<h3 id="檢查-Sitemap-格式"><a href="#檢查-Sitemap-格式" class="headerlink" title="檢查 Sitemap 格式"></a>檢查 Sitemap 格式</h3><p>❌ 方法二：檢查 Sitemap 格式</p>
-<blockquote>
-<p>發覺我的 sitemap.xml 格式和官方範例不同，所以需要將多的標籤移除。</p>
-</blockquote>
-<p><img src="https://imgur.com/QnPnMb0.jpg" alt="格式比較"></p>
-<p>Step1：將 node_modules&#x2F;hexo-generator-sitemap&#x2F;sitemap.xml 中的 <code>changefreq</code>、<code>priority</code> 標籤移除。</p>
-<p>Step2：重新部署</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">hexo g -d</span><br></pre></td></tr></table></figure>
-
-<div class="note default">
-            <p>參考這篇 <a href="https://zenreal.github.io/posts/7993/#google%E7%84%A1%E6%B3%95%E8%AE%80%E5%8F%96sitemap-%E4%B8%80%E8%88%AC%E7%9A%84http%E9%8C%AF%E8%AA%A4-%E8%A7%A3%E6%B1%BA%E6%96%B9%E5%BC%8F">Google無法讀取sitemap(一般的HTTP錯誤) 解決方式</a> 所提到的解法，雖然我沒有這個問題。</p>
-          </div>
-
-<p><img src="https://imgur.com/NkFfNmd.jpg" alt="記得要把所有多的標籤都移除呦，雖然也一樣沒成功"></p>
-<h3 id="建立索引"><a href="#建立索引" class="headerlink" title="建立索引"></a>建立索引</h3><blockquote>
-<p>為了將自己的網址透過 Google Search Console 建立索引，提交給 Google 使搜尋引擎能更容易地搜尋到我們的網站，這個也屬於提升 SEO 的其中一種方法。</p>
-</blockquote>
-<p>❌ 方法三：網址審查建立索引</p>
-<p>Step1：點擊網址審查，並在上方網址列貼上部落格網址（例如：<a href="https://kentdoit.github.io/%EF%BC%89">https://kentdoit.github.io/）</a></p>
-<p>Step2：按下建立索引</p>
-<p><img src="https://imgur.com/VwNKDrB.jpg" alt="兩步驟建立索引"></p>
-<div class="note default">
-            <p>過一陣子之後再到網址審查中檢查就會看到綠色勾勾了，也代表建立索引成功了～～～<br>雖然不確定是時間還沒到還是因為 .nojekyll，但至少之後用其他文章連結也有成功建立索引 (੭•̀ᴗ•̀)੭</p>
-          </div>
-
-<p><img src="https://imgur.com/iR7NAzQ.jpg" alt="網址審查通過"></p>
-<h3 id="建立-nojekyll"><a href="#建立-nojekyll" class="headerlink" title="建立 .nojekyll"></a>建立 .nojekyll</h3><p>❌ 方法四：建立 .nojekyll</p>
-<p>Step1：進入根目錄 source 資料夾底下</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">cd source</span><br></pre></td></tr></table></figure>
-
-<p>Step2：建立一個空白的 .nojekyll 檔案</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">touch .nojekyll</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://imgur.com/BFbbf5V.jpg"></p>
-<div class="note default">
-            <p>接下來設定是為了讓每次部署產生的 public 資料夾中也能存在 .nojekyll 檔案</p>
-          </div>
-
-<p>Step3：修改根目錄 _config.yml 參數</p>
-<figure class="highlight diff"><figcaption><span>_config.yml</span></figcaption><table><tr><td class="code"><pre><span class="line"># Include / Exclude file(s)</span><br><span class="line">## include:/exclude: options only apply to the &#x27;source/&#x27; folder</span><br><span class="line">include:</span><br><span class="line"><span class="addition">+  .nojekyll</span></span><br><span class="line">exclude:</span><br><span class="line">ignore:</span><br></pre></td></tr></table></figure>
-
-<p>Step4：重新部署</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">hexo cl</span><br><span class="line">hexo g -d</span><br></pre></td></tr></table></figure>
-
-<div class="note default">
-            <p>雖然建立索引成功了，但 Sitemap 狀態還是呈現 <code>無法擷取</code> 以及 <code>未提交至 Sitemap</code>，最後沒辦法只好靜待幾天看看會不會發生奇蹟</p>
-          </div>
-
-<h2 id="未提交至-Sitemap"><a href="#未提交至-Sitemap" class="headerlink" title="未提交至 Sitemap"></a>未提交至 Sitemap</h2><h2 id="可讀取-Sitemap，但其中含有錯誤"><a href="#可讀取-Sitemap，但其中含有錯誤" class="headerlink" title="可讀取 Sitemap，但其中含有錯誤"></a>可讀取 Sitemap，但其中含有錯誤</h2><p><img src="https://imgur.com/tYWXLmz.jpg"></p>
-<h2 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h2><p><a href="https://blog.kyomind.tw/adding-sitemap-issue/">解決 Hexo + Github Pages 新增 sitemap.xml 找不到頁面</a><br><a href="https://blog.balabambe.com/2021/12/01/%E8%A7%A3%E6%B1%BA-Google-Search-Console-%E6%8A%93%E4%B8%8D%E5%88%B0-Hexo-%E6%94%BE%E5%9C%A8-Github-Pages-%E7%9A%84-sitemap-xml-%E7%9A%84%E5%95%8F%E9%A1%8C/">解決 Google Search Console 抓不到 Hexo 放在 Github Pages 的 sitemap.xml 的問題</a></p>
-]]></content>
-      <categories>
-        <category>Hexo</category>
-      </categories>
-      <tags>
-        <tag>Hexo SEO</tag>
       </tags>
   </entry>
   <entry>
@@ -1653,6 +1653,82 @@ console.log(obj.name);  // kent
       </tags>
   </entry>
   <entry>
+    <title>JS 可選串連運算子 Optional chaining operator</title>
+    <url>/javascript/3900271525/</url>
+    <content><![CDATA[<h2 id="可選串連運算子-Optional-chaining-operator"><a href="#可選串連運算子-Optional-chaining-operator" class="headerlink" title="可選串連運算子 Optional chaining operator"></a>可選串連運算子 Optional chaining operator</h2><div class="note primary">
+            <p><a href="https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Operators/Optional_chaining">MDN</a>：<br>可選串連運算子 <strong><code>?.</code></strong> 允許進行深層次的物件值存取，而無需透過明確的物件值串連驗證。<code>?.</code> 運算子的操作與 <code>.</code> 屬性存取運算子相似，後者會在參照到 <a href="https://developer.mozilla.org/en-US/docs/Glossary/Nullish">nullish (en-US)</a> 的值為 <a href="https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Global_Objects/null">null</a> or <a href="https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Global_Objects/undefined">undefined</a> 來判斷當不存在時會出現錯誤，而前者可選串連則回傳 <code>undefined</code>。 當需要存取一個函數，而這函數並不存在時，則會回傳 <code>undefined</code>。</p>
+          </div>
+
+<div class="note default">
+            <p>白話文：存取一層以上的物件屬性時，就算屬性不存在也不會報錯，而是回傳 undefined。</p>
+          </div>
+
+<p>語法：在 <code>.</code> 前方加上 <code>?</code>。</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">obj?.prop</span><br><span class="line">obj?.[expr]</span><br><span class="line">arr?.[index]</span><br><span class="line">func?.(args)</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>Tips</p>
+</blockquote>
+<ul>
+<li>當 <code>?.</code> 左側屬性不存在，回傳 <code>undefined</code> 而非 TypeError。</li>
+</ul>
+<div class="note primary">
+            <p>物件特性：取用未定義屬性則會回傳 undefined，但僅限一層！不然會噴 TypeError。<br>（因此有了可選串連運算子的誕生）</p>
+          </div>
+
+<h3 id="語法差異"><a href="#語法差異" class="headerlink" title="語法差異"></a>語法差異</h3><div class="note info">
+            <p>舊方法：手動判斷 typeof 是否為 undefined。<br>新方法：直接在屬性 <code>.</code> 前方加上 <code>?</code>。</p>
+          </div>
+
+<div class="note primary">
+            <p>判斷是否存在會依照 <a href="https://developer.mozilla.org/en-US/docs/Glossary/Nullish">nullish value</a> （null、undefined）直來判斷，若值為 nullish value 就表示不存在。</p>
+          </div>
+
+<figure class="highlight js"><figcaption><span>e.g. 新舊寫法差異</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> school = &#123;</span><br><span class="line">  <span class="attr">info</span>: &#123;</span><br><span class="line">    <span class="attr">student</span>: &#123;</span><br><span class="line">      <span class="attr">name</span>: <span class="string">&#x27;kent&#x27;</span>,</span><br><span class="line">      <span class="attr">age</span>: <span class="number">18</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// TypeError: Cannot read properties of undefined (reading &#x27;name&#x27;)</span></span><br><span class="line"><span class="keyword">let</span> name = school.<span class="property">info</span>.<span class="property">teacher</span>.<span class="property">name</span>; </span><br><span class="line"></span><br><span class="line"><span class="comment">// 舊方法</span></span><br><span class="line"><span class="keyword">if</span> (<span class="keyword">typeof</span> (school.<span class="property">info</span>.<span class="property">teacher</span>) !== <span class="string">&#x27;undefined&#x27;</span>)&#123;</span><br><span class="line">  <span class="keyword">let</span> name = school.<span class="property">info</span>.<span class="property">teacher</span>.<span class="property">name</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 新方法</span></span><br><span class="line"><span class="keyword">let</span> name = school.<span class="property">info</span>.<span class="property">teacher</span>?.<span class="property">name</span>;</span><br></pre></td></tr></table></figure>
+
+<div class="note default">
+            <p>下方會用更多範例來介紹，範例中會使用<a href="https://kentdoit.github.io/javascript/350805089/">短路求值</a>的方式來演示，還不暸解的朋友可以參考這篇文章。</p>
+          </div>
+
+<hr>
+<h2 id="情境範例"><a href="#情境範例" class="headerlink" title="情境範例"></a>情境範例</h2><h3 id="判斷物件屬性是否存在"><a href="#判斷物件屬性是否存在" class="headerlink" title="判斷物件屬性是否存在"></a>判斷物件屬性是否存在</h3><ul>
+<li>舊方法：<code>&amp;&amp;</code><ul>
+<li>會先判斷上一層屬性是否存在，<code>&amp;&amp; 左邊</code> 是否為 nullish value （null 或 undefined）</li>
+<li>不是null 或 undefined 才繼續執行 <code>&amp;&amp; 右邊</code>。</li>
+</ul>
+</li>
+<li>新方法：<code>?.</code><ul>
+<li>當 <code>?.</code> 左側屬性是否為 nullish value （null 或 undefined），則回傳 undefined。</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> school = &#123;</span><br><span class="line">  <span class="attr">info</span>: &#123;</span><br><span class="line">    <span class="attr">student</span>: &#123;</span><br><span class="line">      <span class="attr">name</span>: <span class="string">&#x27;kent&#x27;</span>,</span><br><span class="line">      <span class="attr">age</span>: <span class="number">18</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 問題</span></span><br><span class="line"><span class="keyword">let</span> name = school.<span class="property">info</span>.<span class="property">teacher</span>.<span class="property">name</span>; <span class="comment">// TypeError: Cannot read properties of undefined (reading &#x27;name&#x27;)</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 舊方法</span></span><br><span class="line"><span class="keyword">let</span> name = school.<span class="property">info</span>.<span class="property">teacher</span> &amp;&amp; school.<span class="property">info</span>.<span class="property">teacher</span>.<span class="property">name</span>;   <span class="comment">// undefined</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 新方法</span></span><br><span class="line"><span class="keyword">let</span> name = school.<span class="property">info</span>.<span class="property">teacher</span>?.<span class="property">name</span>;      <span class="comment">// undefined</span></span><br><span class="line"><span class="keyword">let</span> name = school.<span class="property">info</span>[<span class="string">&#x27;teacher&#x27;</span>]?.<span class="property">name</span>;   <span class="comment">// undefined</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="延伸應用"><a href="#延伸應用" class="headerlink" title="延伸應用"></a>延伸應用</h2><h3 id="預防方法不存在"><a href="#預防方法不存在" class="headerlink" title="預防方法不存在"></a>預防方法不存在</h3><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> obj = &#123;</span><br><span class="line">  <span class="attr">fn</span>: <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;fn&#x27;</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(obj.<span class="title function_">fnn</span>());   <span class="comment">// TypeError: obj.fnn is not a function</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(obj.<span class="property">fnn</span>?.()); <span class="comment">// undefined</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="結合空值合併運算符（-）來設置預設值"><a href="#結合空值合併運算符（-）來設置預設值" class="headerlink" title="結合空值合併運算符（??）來設置預設值"></a>結合空值合併運算符（??）來設置預設值</h3><figure class="highlight js"><figcaption><span>延續上方的程式碼</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> name = school.<span class="property">info</span>.<span class="property">teacher</span>?.<span class="property">name</span> ?? <span class="string">&#x27;陳怡君&#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+<h2 id="conclusion"><a href="#conclusion" class="headerlink" title="conclusion"></a>conclusion</h2><div class="note default">
+            <p>比較直接透過錯誤訊息判斷問題（難追尋問題原因），但如果觀念夠的話，還是可以透過邏輯拆解一步一步尋找。</p>
+          </div>
+
+<h2 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h2><ul>
+<li><a href="https://github.com/HelloJunWei/blog/issues/7">我所不知道的javascript #7</a></li>
+</ul>
+<p>延伸閱讀</p>
+<ul>
+<li>程式猿吃香蕉：<a href="https://medium.com/%E7%A8%8B%E5%BC%8F%E7%8C%BF%E5%90%83%E9%A6%99%E8%95%89/%E4%BE%86%E8%AB%87-javascript-%E7%9A%84-optional-chaining-%E5%92%8C-nullish-coalescing-part-i-992625a1861d">前端開發 🦏 來談 JavaScript 的 Optional Chaining 和 Nullish Coalescing (一)</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>JavaScript</category>
+      </categories>
+      <tags>
+        <tag>JavaScript</tag>
+        <tag>ES6</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>JS 展開運算子、其餘運算子</title>
     <url>/javascript/1214648668/</url>
     <content><![CDATA[<h2 id="展開運算子（Spread-Operator）"><a href="#展開運算子（Spread-Operator）" class="headerlink" title="展開運算子（Spread Operator）"></a>展開運算子（Spread Operator）</h2><div class="note primary">
@@ -1748,82 +1824,6 @@ console.log(obj.name);  // kent
 <li><a href="https://ithelp.ithome.com.tw/articles/10195477">[ES6-重點紀錄] 擴展運算子 Spread Operator</a></li>
 <li>竹白大 <a href="https://chupai.github.io/posts/200513_js_spread_and_rest_operator/">展開／其餘運算子</a></li>
 <li><a href="https://eyesofkids.gitbooks.io/javascript-start-from-es6/content/part4/rest_spread.html">展開運算符與其餘運算符</a></li>
-</ul>
-]]></content>
-      <categories>
-        <category>JavaScript</category>
-      </categories>
-      <tags>
-        <tag>JavaScript</tag>
-        <tag>ES6</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>JS 可選串連運算子 Optional chaining operator</title>
-    <url>/javascript/3900271525/</url>
-    <content><![CDATA[<h2 id="可選串連運算子-Optional-chaining-operator"><a href="#可選串連運算子-Optional-chaining-operator" class="headerlink" title="可選串連運算子 Optional chaining operator"></a>可選串連運算子 Optional chaining operator</h2><div class="note primary">
-            <p><a href="https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Operators/Optional_chaining">MDN</a>：<br>可選串連運算子 <strong><code>?.</code></strong> 允許進行深層次的物件值存取，而無需透過明確的物件值串連驗證。<code>?.</code> 運算子的操作與 <code>.</code> 屬性存取運算子相似，後者會在參照到 <a href="https://developer.mozilla.org/en-US/docs/Glossary/Nullish">nullish (en-US)</a> 的值為 <a href="https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Global_Objects/null">null</a> or <a href="https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Global_Objects/undefined">undefined</a> 來判斷當不存在時會出現錯誤，而前者可選串連則回傳 <code>undefined</code>。 當需要存取一個函數，而這函數並不存在時，則會回傳 <code>undefined</code>。</p>
-          </div>
-
-<div class="note default">
-            <p>白話文：存取一層以上的物件屬性時，就算屬性不存在也不會報錯，而是回傳 undefined。</p>
-          </div>
-
-<p>語法：在 <code>.</code> 前方加上 <code>?</code>。</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">obj?.prop</span><br><span class="line">obj?.[expr]</span><br><span class="line">arr?.[index]</span><br><span class="line">func?.(args)</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>Tips</p>
-</blockquote>
-<ul>
-<li>當 <code>?.</code> 左側屬性不存在，回傳 <code>undefined</code> 而非 TypeError。</li>
-</ul>
-<div class="note primary">
-            <p>物件特性：取用未定義屬性則會回傳 undefined，但僅限一層！不然會噴 TypeError。<br>（因此有了可選串連運算子的誕生）</p>
-          </div>
-
-<h3 id="語法差異"><a href="#語法差異" class="headerlink" title="語法差異"></a>語法差異</h3><div class="note info">
-            <p>舊方法：手動判斷 typeof 是否為 undefined。<br>新方法：直接在屬性 <code>.</code> 前方加上 <code>?</code>。</p>
-          </div>
-
-<div class="note primary">
-            <p>判斷是否存在會依照 <a href="https://developer.mozilla.org/en-US/docs/Glossary/Nullish">nullish value</a> （null、undefined）直來判斷，若值為 nullish value 就表示不存在。</p>
-          </div>
-
-<figure class="highlight js"><figcaption><span>e.g. 新舊寫法差異</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> school = &#123;</span><br><span class="line">  <span class="attr">info</span>: &#123;</span><br><span class="line">    <span class="attr">student</span>: &#123;</span><br><span class="line">      <span class="attr">name</span>: <span class="string">&#x27;kent&#x27;</span>,</span><br><span class="line">      <span class="attr">age</span>: <span class="number">18</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// TypeError: Cannot read properties of undefined (reading &#x27;name&#x27;)</span></span><br><span class="line"><span class="keyword">let</span> name = school.<span class="property">info</span>.<span class="property">teacher</span>.<span class="property">name</span>; </span><br><span class="line"></span><br><span class="line"><span class="comment">// 舊方法</span></span><br><span class="line"><span class="keyword">if</span> (<span class="keyword">typeof</span> (school.<span class="property">info</span>.<span class="property">teacher</span>) !== <span class="string">&#x27;undefined&#x27;</span>)&#123;</span><br><span class="line">  <span class="keyword">let</span> name = school.<span class="property">info</span>.<span class="property">teacher</span>.<span class="property">name</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 新方法</span></span><br><span class="line"><span class="keyword">let</span> name = school.<span class="property">info</span>.<span class="property">teacher</span>?.<span class="property">name</span>;</span><br></pre></td></tr></table></figure>
-
-<div class="note default">
-            <p>下方會用更多範例來介紹，範例中會使用<a href="https://kentdoit.github.io/javascript/350805089/">短路求值</a>的方式來演示，還不暸解的朋友可以參考這篇文章。</p>
-          </div>
-
-<hr>
-<h2 id="情境範例"><a href="#情境範例" class="headerlink" title="情境範例"></a>情境範例</h2><h3 id="判斷物件屬性是否存在"><a href="#判斷物件屬性是否存在" class="headerlink" title="判斷物件屬性是否存在"></a>判斷物件屬性是否存在</h3><ul>
-<li>舊方法：<code>&amp;&amp;</code><ul>
-<li>會先判斷上一層屬性是否存在，<code>&amp;&amp; 左邊</code> 是否為 nullish value （null 或 undefined）</li>
-<li>不是null 或 undefined 才繼續執行 <code>&amp;&amp; 右邊</code>。</li>
-</ul>
-</li>
-<li>新方法：<code>?.</code><ul>
-<li>當 <code>?.</code> 左側屬性是否為 nullish value （null 或 undefined），則回傳 undefined。</li>
-</ul>
-</li>
-</ul>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> school = &#123;</span><br><span class="line">  <span class="attr">info</span>: &#123;</span><br><span class="line">    <span class="attr">student</span>: &#123;</span><br><span class="line">      <span class="attr">name</span>: <span class="string">&#x27;kent&#x27;</span>,</span><br><span class="line">      <span class="attr">age</span>: <span class="number">18</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 問題</span></span><br><span class="line"><span class="keyword">let</span> name = school.<span class="property">info</span>.<span class="property">teacher</span>.<span class="property">name</span>; <span class="comment">// TypeError: Cannot read properties of undefined (reading &#x27;name&#x27;)</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 舊方法</span></span><br><span class="line"><span class="keyword">let</span> name = school.<span class="property">info</span>.<span class="property">teacher</span> &amp;&amp; school.<span class="property">info</span>.<span class="property">teacher</span>.<span class="property">name</span>;   <span class="comment">// undefined</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 新方法</span></span><br><span class="line"><span class="keyword">let</span> name = school.<span class="property">info</span>.<span class="property">teacher</span>?.<span class="property">name</span>;      <span class="comment">// undefined</span></span><br><span class="line"><span class="keyword">let</span> name = school.<span class="property">info</span>[<span class="string">&#x27;teacher&#x27;</span>]?.<span class="property">name</span>;   <span class="comment">// undefined</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="延伸應用"><a href="#延伸應用" class="headerlink" title="延伸應用"></a>延伸應用</h2><h3 id="預防方法不存在"><a href="#預防方法不存在" class="headerlink" title="預防方法不存在"></a>預防方法不存在</h3><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> obj = &#123;</span><br><span class="line">  <span class="attr">fn</span>: <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;fn&#x27;</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(obj.<span class="title function_">fnn</span>());   <span class="comment">// TypeError: obj.fnn is not a function</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(obj.<span class="property">fnn</span>?.()); <span class="comment">// undefined</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="結合空值合併運算符（-）來設置預設值"><a href="#結合空值合併運算符（-）來設置預設值" class="headerlink" title="結合空值合併運算符（??）來設置預設值"></a>結合空值合併運算符（??）來設置預設值</h3><figure class="highlight js"><figcaption><span>延續上方的程式碼</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> name = school.<span class="property">info</span>.<span class="property">teacher</span>?.<span class="property">name</span> ?? <span class="string">&#x27;陳怡君&#x27;</span>;</span><br></pre></td></tr></table></figure>
-
-<h2 id="conclusion"><a href="#conclusion" class="headerlink" title="conclusion"></a>conclusion</h2><div class="note default">
-            <p>比較直接透過錯誤訊息判斷問題（難追尋問題原因），但如果觀念夠的話，還是可以透過邏輯拆解一步一步尋找。</p>
-          </div>
-
-<h2 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h2><ul>
-<li><a href="https://github.com/HelloJunWei/blog/issues/7">我所不知道的javascript #7</a></li>
-</ul>
-<p>延伸閱讀</p>
-<ul>
-<li>程式猿吃香蕉：<a href="https://medium.com/%E7%A8%8B%E5%BC%8F%E7%8C%BF%E5%90%83%E9%A6%99%E8%95%89/%E4%BE%86%E8%AB%87-javascript-%E7%9A%84-optional-chaining-%E5%92%8C-nullish-coalescing-part-i-992625a1861d">前端開發 🦏 來談 JavaScript 的 Optional Chaining 和 Nullish Coalescing (一)</a></li>
 </ul>
 ]]></content>
       <categories>
@@ -2019,6 +2019,62 @@ console.log(obj.name);  // kent
       </tags>
   </entry>
   <entry>
+    <title>JS 轉型 - 抽象的值運算 abstract operations</title>
+    <url>/javascript/163319027/</url>
+    <content><![CDATA[<h2 id="ToPrimitive"><a href="#ToPrimitive" class="headerlink" title="ToPrimitive"></a>ToPrimitive</h2>]]></content>
+      <categories>
+        <category>JavaScript</category>
+      </categories>
+      <tags>
+        <tag>JavaScript</tag>
+        <tag>ECMAScript</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>JS String vs toString</title>
+    <url>/javascript/4119142473/</url>
+    <content><![CDATA[<h2 id="String"><a href="#String" class="headerlink" title="String()"></a>String()</h2><div class="note primary">
+            <p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/String">MDN</a>：屬於建構函式，會將對象轉換為<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">字串</a>。</p>
+          </div>
+
+<p>優點：所有型別都能轉換為字串。<br>缺點：<code>不支援</code>轉進位制轉換。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="title class_">String</span>(<span class="literal">null</span>); <span class="comment">// &#x27;null&#x27;</span></span><br><span class="line"><span class="title class_">String</span>(<span class="literal">undefined</span>); <span class="comment">// &#x27;undefined&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="toString-NaN"><a href="#toString-NaN" class="headerlink" title="toString()"></a>toString()</h2><div class="note primary">
+            <p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/toString">MDN</a>：屬於方法，會回傳指定對象的字串樣子。</p>
+          </div>
+
+<p>優點：支援進位制轉換。<br>缺點：無法轉換  <code>null</code> 、 <code>undefined</code>（會報 Error）。</p>
+<figure class="highlight js"><figcaption><span>進位制轉換</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="comment">// 括號中填寫進位對應數值</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> num = <span class="number">10</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 二進位制</span></span><br><span class="line">num.<span class="title function_">toString</span>(<span class="number">2</span>); <span class="comment">// &#x27;1010&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 八進位制</span></span><br><span class="line">num.<span class="title function_">toString</span>(<span class="number">8</span>); <span class="comment">// &#x27;12&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 十進位制</span></span><br><span class="line">num.<span class="title function_">toString</span>(<span class="number">10</span>); <span class="comment">// &#x27;10&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 十六進位制</span></span><br><span class="line">num.<span class="title function_">toString</span>(<span class="number">16</span>); <span class="comment">// &#x27;a&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p>解法：可以使用 <code>try catch</code> 或 <code>短路求值</code> 來預防 Error。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> toNum = <span class="literal">null</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 解法一</span></span><br><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">  toNum.<span class="title function_">toString</span>();</span><br><span class="line">&#125; <span class="keyword">catch</span> (exception) &#123;</span><br><span class="line">  <span class="comment">//  TypeError: Cannot read properties of null (reading &#x27;toString&#x27;)</span></span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`<span class="subst">$&#123;exception.name&#125;</span>: <span class="subst">$&#123;exception&#125;</span>`</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 解法二</span></span><br><span class="line">toNum &amp;&amp; toNum.<span class="title function_">toString</span>();</span><br></pre></td></tr></table></figure>
+
+<h2 id="different-point"><a href="#different-point" class="headerlink" title="different point"></a>different point</h2><blockquote>
+<p>null、undefined</p>
+</blockquote>
+<p>toString：無法轉為字串（會噴 Error）<br>String：可以正確轉為字串</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> num = <span class="literal">null</span>;</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(num.<span class="title function_">toString</span>()); <span class="comment">// TypeError: Cannot read properties of null (reading &#x27;toString&#x27;)</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">String</span>(num));    <span class="comment">// &#x27;null&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>進位制</p>
+</blockquote>
+<p>toString：可以正確轉換<br>String：無法正確轉換</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> num = <span class="number">10</span>;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(num.<span class="title function_">toString</span>(<span class="number">2</span>)); <span class="comment">// &#x27;1010&#x27;</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">String</span>(num));     <span class="comment">// &#x27;10&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="conclusion"><a href="#conclusion" class="headerlink" title="conclusion"></a>conclusion</h2><div class="note default">
+            <p>需要做進位制轉換就使用 <code>toString</code>，否則就使用 <code>String</code>。<br>使用 <code>String</code> 時預防噴 Error。</p>
+          </div>
+]]></content>
+      <categories>
+        <category>JavaScript</category>
+      </categories>
+      <tags>
+        <tag>JS 釘孤枝</tag>
+        <tag>JavaScript</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>JS not defined vs undefined</title>
     <url>/javascript/4170310433/</url>
     <content><![CDATA[<p><img src="https://imgur.com/3uvmsGO.png"></p>
@@ -2098,18 +2154,6 @@ console.log(obj.name);  // kent
       <tags>
         <tag>JS 釘孤枝</tag>
         <tag>JavaScript</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>JS 轉型 - 抽象的值運算 abstract operations</title>
-    <url>/javascript/163319027/</url>
-    <content><![CDATA[<h2 id="ToPrimitive"><a href="#ToPrimitive" class="headerlink" title="ToPrimitive"></a>ToPrimitive</h2>]]></content>
-      <categories>
-        <category>JavaScript</category>
-      </categories>
-      <tags>
-        <tag>JavaScript</tag>
-        <tag>ECMAScript</tag>
       </tags>
   </entry>
   <entry>
@@ -2205,50 +2249,6 @@ console.log(obj.name);  // kent
 <h2 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h2><ul>
 <li>卡斯伯老師：<a href="https://wcc723.github.io/javascript/2017/12/08/javascript-typeof/">鐵人賽：動態型別的 JavaScript</a></li>
 </ul>
-]]></content>
-      <categories>
-        <category>JavaScript</category>
-      </categories>
-      <tags>
-        <tag>JS 釘孤枝</tag>
-        <tag>JavaScript</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>JS String vs toString</title>
-    <url>/javascript/4119142473/</url>
-    <content><![CDATA[<h2 id="String"><a href="#String" class="headerlink" title="String()"></a>String()</h2><div class="note primary">
-            <p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/String">MDN</a>：屬於建構函式，會將對象轉換為<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">字串</a>。</p>
-          </div>
-
-<p>優點：所有型別都能轉換為字串。<br>缺點：<code>不支援</code>轉進位制轉換。</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="title class_">String</span>(<span class="literal">null</span>); <span class="comment">// &#x27;null&#x27;</span></span><br><span class="line"><span class="title class_">String</span>(<span class="literal">undefined</span>); <span class="comment">// &#x27;undefined&#x27;</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="toString-NaN"><a href="#toString-NaN" class="headerlink" title="toString()"></a>toString()</h2><div class="note primary">
-            <p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/toString">MDN</a>：屬於方法，會回傳指定對象的字串樣子。</p>
-          </div>
-
-<p>優點：支援進位制轉換。<br>缺點：無法轉換  <code>null</code> 、 <code>undefined</code>（會報 Error）。</p>
-<figure class="highlight js"><figcaption><span>進位制轉換</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="comment">// 括號中填寫進位對應數值</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> num = <span class="number">10</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 二進位制</span></span><br><span class="line">num.<span class="title function_">toString</span>(<span class="number">2</span>); <span class="comment">// &#x27;1010&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 八進位制</span></span><br><span class="line">num.<span class="title function_">toString</span>(<span class="number">8</span>); <span class="comment">// &#x27;12&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 十進位制</span></span><br><span class="line">num.<span class="title function_">toString</span>(<span class="number">10</span>); <span class="comment">// &#x27;10&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 十六進位制</span></span><br><span class="line">num.<span class="title function_">toString</span>(<span class="number">16</span>); <span class="comment">// &#x27;a&#x27;</span></span><br></pre></td></tr></table></figure>
-
-<p>解法：可以使用 <code>try catch</code> 或 <code>短路求值</code> 來預防 Error。</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> toNum = <span class="literal">null</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 解法一</span></span><br><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">  toNum.<span class="title function_">toString</span>();</span><br><span class="line">&#125; <span class="keyword">catch</span> (exception) &#123;</span><br><span class="line">  <span class="comment">//  TypeError: Cannot read properties of null (reading &#x27;toString&#x27;)</span></span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`<span class="subst">$&#123;exception.name&#125;</span>: <span class="subst">$&#123;exception&#125;</span>`</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 解法二</span></span><br><span class="line">toNum &amp;&amp; toNum.<span class="title function_">toString</span>();</span><br></pre></td></tr></table></figure>
-
-<h2 id="different-point"><a href="#different-point" class="headerlink" title="different point"></a>different point</h2><blockquote>
-<p>null、undefined</p>
-</blockquote>
-<p>toString：無法轉為字串（會噴 Error）<br>String：可以正確轉為字串</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> num = <span class="literal">null</span>;</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(num.<span class="title function_">toString</span>()); <span class="comment">// TypeError: Cannot read properties of null (reading &#x27;toString&#x27;)</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">String</span>(num));    <span class="comment">// &#x27;null&#x27;</span></span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>進位制</p>
-</blockquote>
-<p>toString：可以正確轉換<br>String：無法正確轉換</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> num = <span class="number">10</span>;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(num.<span class="title function_">toString</span>(<span class="number">2</span>)); <span class="comment">// &#x27;1010&#x27;</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">String</span>(num));     <span class="comment">// &#x27;10&#x27;</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="conclusion"><a href="#conclusion" class="headerlink" title="conclusion"></a>conclusion</h2><div class="note default">
-            <p>需要做進位制轉換就使用 <code>toString</code>，否則就使用 <code>String</code>。<br>使用 <code>String</code> 時預防噴 Error。</p>
-          </div>
 ]]></content>
       <categories>
         <category>JavaScript</category>
