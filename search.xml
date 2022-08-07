@@ -2121,15 +2121,15 @@ console.log(obj.name);  // kent
 <blockquote>
 <p>常見應用</p>
 </blockquote>
-<p><code>undefined</code>：用來代表 <code>非預期</code>，或是 <code>錯誤</code> 沒有值。</p>
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined">undefined</a></p>
 <ul>
 <li>常用於表示尚未賦予值（預設值），或是錯誤的沒有值（ex：物件沒有的屬性、呼叫函數時缺少的參數）。</li>
 </ul>
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> obj = &#123; </span><br><span class="line">  <span class="attr">name</span>: <span class="string">&#x27;kent&#x27;</span>,</span><br><span class="line">&#125;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(obj.<span class="property">age</span>); <span class="comment">//undefined</span></span><br></pre></td></tr></table></figure>
 
-<p><code>null</code> ：用來 <code>明確</code> 表示 <code>預期中</code> 的沒有值。</p>
+<p><a href="https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Operators/null">null</a></p>
 <ul>
-<li>用來做 initialize，表示<code>現在</code>沒有值之後<code>可能會</code>有值。</li>
+<li>作為初始化（init）表示 <code>現在</code> 沒有值之後 <code>可能會</code> 有值。</li>
 </ul>
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> num = <span class="number">0</span>;</span><br><span class="line">num = <span class="number">100</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// init</span></span><br><span class="line"><span class="keyword">let</span> num = <span class="literal">null</span>;</span><br></pre></td></tr></table></figure>
 
