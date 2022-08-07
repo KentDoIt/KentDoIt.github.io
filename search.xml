@@ -2105,7 +2105,7 @@ console.log(obj.name);  // kent
 </ul>
 <p>延伸閱讀</p>
 <ul>
-<li>JS null vs undefined</li>
+<li><a href="https://kentdoit.github.io/javascript/3007200680/">JS null vs undefined</a></li>
 </ul>
 ]]></content>
       <categories>
@@ -2119,7 +2119,96 @@ console.log(obj.name);  // kent
   <entry>
     <title>JS null vs undefined</title>
     <url>/javascript/3007200680/</url>
-    <content><![CDATA[]]></content>
+    <content><![CDATA[<h2 id="定義"><a href="#定義" class="headerlink" title="定義"></a>定義</h2><p>null：表示變數 <code>沒有值</code>（空值）。<br>undefined：預設值，表示變數 <code>尚未宣告</code> 或者是已經宣告了但 <code>尚未賦值</code>。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> def;         <span class="comment">// undefined</span></span><br><span class="line"><span class="keyword">let</span> text = <span class="literal">null</span>; <span class="comment">// null</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>常見應用</p>
+</blockquote>
+<p><code>undefined</code>：用來代表 <code>非預期</code>，或是 <code>錯誤</code> 沒有值。</p>
+<ul>
+<li>常用於表示尚未賦予值（預設值），或是錯誤的沒有值（ex：物件沒有的屬性、呼叫函數時缺少的參數）。</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> obj = &#123; </span><br><span class="line">  <span class="attr">name</span>: <span class="string">&#x27;kent&#x27;</span>,</span><br><span class="line">&#125;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(obj.<span class="property">age</span>); <span class="comment">//undefined</span></span><br></pre></td></tr></table></figure>
+
+<p><code>null</code> ：用來 <code>明確</code> 表示 <code>預期中</code> 的沒有值。</p>
+<ul>
+<li>用來做 initialize，表示<code>現在</code>沒有值之後<code>可能會</code>有值。</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> num = <span class="number">0</span>;</span><br><span class="line">num = <span class="number">100</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// init</span></span><br><span class="line"><span class="keyword">let</span> num = <span class="literal">null</span>;</span><br></pre></td></tr></table></figure>
+
+<div class="note default">
+            <p>發覺和其他語言不同在 JS 中，大多是人不會將值設定為 <code>null</code>，而是依照不同型別來設置 init，我猜測和 JS 擁有非常多可惡的自動轉型規則有關係。</p>
+          </div>
+
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> obj = &#123;&#125;;</span><br><span class="line"><span class="keyword">let</span> num = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">let</span> str = <span class="string">&#x27;&#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+<div class="note default">
+            <p>JS 中某些特定情況時會回傳 null。（下方介紹兩個在 JS 中會出現 null 的情境）</p>
+          </div>
+
+<p>情境一：閉包 closure、作用域鏈 scope chain</p>
+<ul>
+<li>當不存在的變數、函式，JS 會往上一層去尋找，直到 null 就會噴 not define error。。</li>
+</ul>
+<p>情境二：獲取 DOM 元素時</p>
+<ul>
+<li>若元素不存在會回傳 null。</li>
+</ul>
+<h2 id="same-point"><a href="#same-point" class="headerlink" title="same point"></a>same point</h2><ol>
+<li>基礎型別（primitives type）</li>
+<li>null、undefined 都是假值 Falsy (Boolean 為 false)</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">Boolean</span>(<span class="literal">undefined</span>));  <span class="comment">// false</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">Boolean</span>(<span class="literal">null</span>));       <span class="comment">// false</span></span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="literal">undefined</span> == <span class="literal">null</span>);   <span class="comment">// true，因為都是 false</span></span><br></pre></td></tr></table></figure>
+
+<div class="note default">
+            <p>想暸解 undefined &#x3D;&#x3D; null 為什麼是 true，可以參考這篇<a href="https://kentdoit.github.io/javascript/2972146539/#x3D-x3D">文章</a>（裡面有提到是因為 &#x3D;&#x3D; 的規則導致）</p>
+          </div>
+
+<hr>
+<h2 id="different-point"><a href="#different-point" class="headerlink" title="different point"></a>different point</h2><div class="note default">
+            <p>下方透過四個方向來演示兩者結果差異。</p>
+          </div>
+
+<blockquote>
+<p>Number</p>
+</blockquote>
+<p>null：<code>Number(null)</code> 結果為 <code>0</code><br>undefined：<code>Number(undefined)</code> 結果為 <code>NaN</code>。</p>
+<div class="note default">
+            <p>NaN：代表不是數值（not a number）</p>
+          </div>
+
+<blockquote>
+<p>typeof</p>
+</blockquote>
+<p>null：<code>typeof undefined</code> 結果為 <code>undefined</code>。<br>undefined：<code>typeof null</code> 結果為 <code>Object</code>。</p>
+<blockquote>
+<p>JSON</p>
+</blockquote>
+<p>null：<code>有效</code>的 JSON 值。<br>undefined：<code>無效</code>的 JSON 值。</p>
+<blockquote>
+<p>keyword</p>
+</blockquote>
+<p>null：是 keywords。（沒辦法作為變數名稱）<br>undefined：不是 keywords。（但 <code>千萬不要</code> 將變數名稱設為 undefined）</p>
+<h2 id="conclusion"><a href="#conclusion" class="headerlink" title="conclusion"></a>conclusion</h2><div class="note default">
+            <p>JS 中變數 undefined 比起 null，更相似其它語言的 NULL。（因為預設值）</p>
+          </div>
+
+<div class="note danger">
+            <p>除非很熟悉，不然新手一律不建議將變數設置 <code>null</code> 或 <code>undefined</code>。</p>
+          </div>
+
+<p>有興趣可以參考下方幾篇 stackoverflow 的討論</p>
+<ul>
+<li><a href="https://stackoverflow.com/questions/16474796/set-javascript-variable-null-or-leave-undefined/16474917#16474917">Set JavaScript variable &#x3D; null, or leave undefined?</a></li>
+<li><a href="https://stackoverflow.com/questions/13142912/when-do-i-initialize-variables-in-javascript-with-null-or-not-at-all/13142982#13142982">When do I initialize variables in JavaScript with null or not at all?</a></li>
+<li><a href="https://stackoverflow.com/questions/6604749/what-reason-is-there-to-use-null-instead-of-undefined-in-javascript/48197438#48197438">What reason is there to use null instead of undefined in JavaScript?</a></li>
+<li><a href="https://stackoverflow.com/questions/6604749/what-reason-is-there-to-use-null-instead-of-undefined-in-javascript/6604783#6604783">What reason is there to use null instead of undefined in JavaScript?</a></li>
+</ul>
+<h2 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h2><ul>
+<li>卡斯伯老師：<a href="https://wcc723.github.io/javascript/2017/12/08/javascript-typeof/">鐵人賽：動態型別的 JavaScript</a></li>
+</ul>
+]]></content>
       <categories>
         <category>JavaScript</category>
       </categories>
