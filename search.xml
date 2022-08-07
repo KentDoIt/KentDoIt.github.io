@@ -2114,10 +2114,10 @@ console.log(obj.name);  // kent
 
 <details>
   <summary>有興趣可以參考下方幾篇 stackoverflow 的討論</summary>
-  <a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/16474796/set-javascript-variable-null-or-leave-undefined/16474917#16474917">Set JavaScript variable = null, or leave undefined?</a>
-  <a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/13142912/when-do-i-initialize-variables-in-javascript-with-null-or-not-at-all/13142982#13142982">When do I initialize variables in JavaScript with null or not at all?</a>
-  <a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/6604749/what-reason-is-there-to-use-null-instead-of-undefined-in-javascript/48197438#48197438">What reason is there to use null instead of undefined in JavaScript?</a>
-  <a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/6604749/what-reason-is-there-to-use-null-instead-of-undefined-in-javascript/6604783#6604783">What reason is there to use null instead of undefined in JavaScript?</a>
+  <a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/16474796/set-javascript-variable-null-or-leave-undefined/16474917#16474917">1. Set JavaScript variable = null, or leave undefined?</a></br>
+  <a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/13142912/when-do-i-initialize-variables-in-javascript-with-null-or-not-at-all/13142982#13142982">2. When do I initialize variables in JavaScript with null or not at all?</a></br>
+  <a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/6604749/what-reason-is-there-to-use-null-instead-of-undefined-in-javascript/48197438#48197438">3. What reason is there to use null instead of undefined in JavaScript?</a></br>
+  <a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/6604749/what-reason-is-there-to-use-null-instead-of-undefined-in-javascript/6604783#6604783">4. What reason is there to use null instead of undefined in JavaScript?</a></br>
 </details>
 
 <h2 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h2><ul>
