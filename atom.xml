@@ -6,7 +6,7 @@
   <link href="https://kentdoit.github.io/atom.xml" rel="self"/>
   
   <link href="https://kentdoit.github.io/"/>
-  <updated>2022-08-07T04:52:46.083Z</updated>
+  <updated>2022-08-12T12:00:52.169Z</updated>
   <id>https://kentdoit.github.io/</id>
   
   <author>
@@ -17,11 +17,30 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>JS 傳值 by Value、傳址 by Reference、傳共享 by sharing</title>
+    <link href="https://kentdoit.github.io/javascript/3842658283/"/>
+    <id>https://kentdoit.github.io/javascript/3842658283/</id>
+    <published>2022-08-06T03:00:04.007Z</published>
+    <updated>2022-08-12T12:00:52.169Z</updated>
+    
+    
+    <summary type="html">此篇會用 Stack &amp; Heap 來探討，傳值 by Value、傳址 by Reference、傳共享 by sharing 三者的差異</summary>
+    
+    
+    
+    <category term="JavaScript" scheme="https://kentdoit.github.io/categories/javascript/"/>
+    
+    
+    <category term="JavaScript" scheme="https://kentdoit.github.io/tags/JavaScript/"/>
+    
+  </entry>
+  
+  <entry>
     <title>JS String vs toString</title>
     <link href="https://kentdoit.github.io/javascript/4119142473/"/>
     <id>https://kentdoit.github.io/javascript/4119142473/</id>
-    <published>2022-08-07T04:17:59.000Z</published>
-    <updated>2022-08-07T04:52:46.083Z</updated>
+    <published>2022-08-03T04:17:59.000Z</published>
+    <updated>2022-08-12T12:02:01.491Z</updated>
     
     
     <summary type="html">此篇主要探討 String()、toString() 兩種轉換字串方法的差異，以及使用情境。</summary>
@@ -41,8 +60,8 @@
     <title>JS not defined vs undefined</title>
     <link href="https://kentdoit.github.io/javascript/4170310433/"/>
     <id>https://kentdoit.github.io/javascript/4170310433/</id>
-    <published>2022-08-07T02:25:08.000Z</published>
-    <updated>2022-08-07T03:52:45.795Z</updated>
+    <published>2022-07-30T02:25:08.000Z</published>
+    <updated>2022-08-12T12:01:44.426Z</updated>
     
     
     <summary type="html">探討 undefined、not defined 兩者區別以及注意事項。</summary>
@@ -62,8 +81,8 @@
     <title>JS null vs undefined</title>
     <link href="https://kentdoit.github.io/javascript/3007200680/"/>
     <id>https://kentdoit.github.io/javascript/3007200680/</id>
-    <published>2022-08-07T02:24:54.000Z</published>
-    <updated>2022-08-07T04:55:55.876Z</updated>
+    <published>2022-07-25T02:24:54.000Z</published>
+    <updated>2022-08-12T12:01:22.328Z</updated>
     
     
     <summary type="html">此篇探討在 JS 中 null、undefined 的差異。</summary>
@@ -83,8 +102,8 @@
     <title>JS 轉型 - 抽象的值運算 abstract operations</title>
     <link href="https://kentdoit.github.io/javascript/163319027/"/>
     <id>https://kentdoit.github.io/javascript/163319027/</id>
-    <published>2022-08-06T03:36:54.000Z</published>
-    <updated>2022-08-06T03:39:12.566Z</updated>
+    <published>2022-07-21T03:36:54.000Z</published>
+    <updated>2022-08-12T12:01:08.021Z</updated>
     
     
     <summary type="html">此篇主要透過 ECMAScript 中定義的規則，來講述幾個 JS 抽象的值運算 (abstract operations) 做轉型的過程。</summary>
@@ -101,30 +120,11 @@
   </entry>
   
   <entry>
-    <title>JS 傳值 by Value、傳址 by Reference、傳共享 by sharing</title>
-    <link href="https://kentdoit.github.io/javascript/3842658283/"/>
-    <id>https://kentdoit.github.io/javascript/3842658283/</id>
-    <published>2022-08-06T03:00:03.000Z</published>
-    <updated>2022-08-06T03:00:38.608Z</updated>
-    
-    
-    <summary type="html">此篇會用 Stack &amp; Heap 來探討，傳值 by Value、傳址 by Reference、傳共享 by sharing 三者的差異</summary>
-    
-    
-    
-    <category term="JavaScript" scheme="https://kentdoit.github.io/categories/javascript/"/>
-    
-    
-    <category term="JavaScript" scheme="https://kentdoit.github.io/tags/JavaScript/"/>
-    
-  </entry>
-  
-  <entry>
     <title>JS 解構賦值 Destructuring Assignment</title>
     <link href="https://kentdoit.github.io/javascript/4089638591/"/>
     <id>https://kentdoit.github.io/javascript/4089638591/</id>
-    <published>2022-08-05T09:03:44.000Z</published>
-    <updated>2022-08-06T03:28:18.126Z</updated>
+    <published>2022-07-10T09:03:44.000Z</published>
+    <updated>2022-08-12T12:02:17.455Z</updated>
     
     
     <summary type="html">此篇會介紹 JS ES6 新增的語法解構賦值的概念以及如何使用。</summary>
@@ -144,8 +144,8 @@
     <title>JS 展開運算子、其餘運算子</title>
     <link href="https://kentdoit.github.io/javascript/1214648668/"/>
     <id>https://kentdoit.github.io/javascript/1214648668/</id>
-    <published>2022-08-05T09:03:32.000Z</published>
-    <updated>2022-08-05T15:30:07.755Z</updated>
+    <published>2022-07-05T09:03:32.000Z</published>
+    <updated>2022-08-12T11:59:35.940Z</updated>
     
     
     <summary type="html">此篇會介紹 ES6 新增的展開運算子 Spread Operator 的兩種類型。</summary>
@@ -165,8 +165,8 @@
     <title>JS 可選串連運算子 Optional chaining operator</title>
     <link href="https://kentdoit.github.io/javascript/3900271525/"/>
     <id>https://kentdoit.github.io/javascript/3900271525/</id>
-    <published>2022-08-05T09:03:08.000Z</published>
-    <updated>2022-08-06T03:03:48.999Z</updated>
+    <published>2022-06-28T09:03:08.000Z</published>
+    <updated>2022-08-12T11:59:18.619Z</updated>
     
     
     <summary type="html">此篇學習在 JS 中如何透過這個 ES2020 新增的語法糖可選串連運算子，來避免遇到物件屬性不存在所導致的報錯。</summary>

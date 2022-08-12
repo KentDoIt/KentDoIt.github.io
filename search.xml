@@ -523,6 +523,94 @@
       </tags>
   </entry>
   <entry>
+    <title>Hexo Sitemap 建立索引 無法擷取</title>
+    <url>/hexo/2629412870/</url>
+    <content><![CDATA[<div class="note default">
+            <p>此篇內容為 <a href="https://kentdoit.github.io/hexo/599670072/">Hexo 設置 GA、Sitemap（四）</a>的 Debug 延續篇，介紹如何解決無法擷取以及設置索引。</p>
+          </div>
+
+<h2 id="範例的環境版本"><a href="#範例的環境版本" class="headerlink" title="範例的環境版本"></a>範例的環境版本</h2><p>hexo 版本：6.0.1<br>hexo-cli 版本：4.3.0<br>next 版本：7.8.0</p>
+<h2 id="無法擷取"><a href="#無法擷取" class="headerlink" title="無法擷取"></a>無法擷取</h2><p><img src="https://imgur.com/UH0jdLH.jpg"></p>
+<div class="note default">
+            <p>下方會介紹四種我嘗試過的方法。</p>
+          </div>
+
+<h3 id="擁有權驗證"><a href="#擁有權驗證" class="headerlink" title="擁有權驗證"></a>擁有權驗證</h3><p>❌ 方法一：添加其他驗證方式（本來只有用 GA）</p>
+<p>Step1：取得 content 值</p>
+<ul>
+<li>記得在複製內容中只擷取 content 值就好。</li>
+</ul>
+<p><img src="https://imgur.com/N623p1p.jpg" alt="演示四步驟取得 content"></p>
+<p>Step2：修改 NexT 主題中 _config.yml 參數 google_site_verification</p>
+<ul>
+<li>貼上取得的 content 值。</li>
+</ul>
+<figure class="highlight diff"><figcaption><span>.git/config</span></figcaption><table><tr><td class="code"><pre><span class="line"># Google Webmaster tools verification.</span><br><span class="line"># See: https://www.google.com/webmasters</span><br><span class="line"><span class="addition">+ google_site_verification: 25miYVaewg4Qur_GPtoF9-GhCZZJNidmq2kqy6wRE9g</span></span><br><span class="line"><span class="deletion">- google_site_verification:</span></span><br></pre></td></tr></table></figure>
+
+<p>Step3：重新部署</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">hexo g -d</span><br></pre></td></tr></table></figure>
+
+<p>Step4：重新部署後，檢查網站中是否包含 google-site-verification</p>
+<p><img src="https://imgur.com/RVLo57e.jpg" alt="搜尋 google-site-verification"></p>
+<h3 id="檢查-Sitemap-格式"><a href="#檢查-Sitemap-格式" class="headerlink" title="檢查 Sitemap 格式"></a>檢查 Sitemap 格式</h3><p>❌ 方法二：檢查 Sitemap 格式</p>
+<blockquote>
+<p>發覺我的 sitemap.xml 格式和官方範例不同，所以需要將多的標籤移除。</p>
+</blockquote>
+<p><img src="https://imgur.com/QnPnMb0.jpg" alt="格式比較"></p>
+<p>Step1：將 node_modules&#x2F;hexo-generator-sitemap&#x2F;sitemap.xml 中的 <code>changefreq</code>、<code>priority</code> 標籤移除。</p>
+<p>Step2：重新部署</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">hexo g -d</span><br></pre></td></tr></table></figure>
+
+<div class="note default">
+            <p>參考這篇 <a href="https://zenreal.github.io/posts/7993/#google%E7%84%A1%E6%B3%95%E8%AE%80%E5%8F%96sitemap-%E4%B8%80%E8%88%AC%E7%9A%84http%E9%8C%AF%E8%AA%A4-%E8%A7%A3%E6%B1%BA%E6%96%B9%E5%BC%8F">Google無法讀取sitemap(一般的HTTP錯誤) 解決方式</a> 所提到的解法，雖然我沒有這個問題。</p>
+          </div>
+
+<p><img src="https://imgur.com/NkFfNmd.jpg" alt="記得要把所有多的標籤都移除呦，雖然也一樣沒成功"></p>
+<h3 id="建立索引"><a href="#建立索引" class="headerlink" title="建立索引"></a>建立索引</h3><blockquote>
+<p>為了將自己的網址透過 Google Search Console 建立索引，提交給 Google 使搜尋引擎能更容易地搜尋到我們的網站，這個也屬於提升 SEO 的其中一種方法。</p>
+</blockquote>
+<p>❌ 方法三：網址審查建立索引</p>
+<p>Step1：點擊網址審查，並在上方網址列貼上部落格網址（例如：<a href="https://kentdoit.github.io/%EF%BC%89">https://kentdoit.github.io/）</a></p>
+<p>Step2：按下建立索引</p>
+<p><img src="https://imgur.com/VwNKDrB.jpg" alt="兩步驟建立索引"></p>
+<div class="note default">
+            <p>過一陣子之後再到網址審查中檢查就會看到綠色勾勾了，也代表建立索引成功了～～～<br>雖然不確定是時間還沒到還是因為 .nojekyll，但至少之後用其他文章連結也有成功建立索引 (੭•̀ᴗ•̀)੭</p>
+          </div>
+
+<p><img src="https://imgur.com/iR7NAzQ.jpg" alt="網址審查通過"></p>
+<h3 id="建立-nojekyll"><a href="#建立-nojekyll" class="headerlink" title="建立 .nojekyll"></a>建立 .nojekyll</h3><p>❌ 方法四：建立 .nojekyll</p>
+<p>Step1：進入根目錄 source 資料夾底下</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">cd source</span><br></pre></td></tr></table></figure>
+
+<p>Step2：建立一個空白的 .nojekyll 檔案</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">touch .nojekyll</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://imgur.com/BFbbf5V.jpg"></p>
+<div class="note default">
+            <p>接下來設定是為了讓每次部署產生的 public 資料夾中也能存在 .nojekyll 檔案</p>
+          </div>
+
+<p>Step3：修改根目錄 _config.yml 參數</p>
+<figure class="highlight diff"><figcaption><span>_config.yml</span></figcaption><table><tr><td class="code"><pre><span class="line"># Include / Exclude file(s)</span><br><span class="line">## include:/exclude: options only apply to the &#x27;source/&#x27; folder</span><br><span class="line">include:</span><br><span class="line"><span class="addition">+  .nojekyll</span></span><br><span class="line">exclude:</span><br><span class="line">ignore:</span><br></pre></td></tr></table></figure>
+
+<p>Step4：重新部署</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">hexo cl</span><br><span class="line">hexo g -d</span><br></pre></td></tr></table></figure>
+
+<div class="note default">
+            <p>雖然建立索引成功了，但 Sitemap 狀態還是呈現 <code>無法擷取</code> 以及 <code>未提交至 Sitemap</code>，最後沒辦法只好靜待幾天看看會不會發生奇蹟</p>
+          </div>
+
+<h2 id="未提交至-Sitemap"><a href="#未提交至-Sitemap" class="headerlink" title="未提交至 Sitemap"></a>未提交至 Sitemap</h2><h2 id="可讀取-Sitemap，但其中含有錯誤"><a href="#可讀取-Sitemap，但其中含有錯誤" class="headerlink" title="可讀取 Sitemap，但其中含有錯誤"></a>可讀取 Sitemap，但其中含有錯誤</h2><p><img src="https://imgur.com/tYWXLmz.jpg"></p>
+<h2 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h2><p><a href="https://blog.kyomind.tw/adding-sitemap-issue/">解決 Hexo + Github Pages 新增 sitemap.xml 找不到頁面</a><br><a href="https://blog.balabambe.com/2021/12/01/%E8%A7%A3%E6%B1%BA-Google-Search-Console-%E6%8A%93%E4%B8%8D%E5%88%B0-Hexo-%E6%94%BE%E5%9C%A8-Github-Pages-%E7%9A%84-sitemap-xml-%E7%9A%84%E5%95%8F%E9%A1%8C/">解決 Google Search Console 抓不到 Hexo 放在 Github Pages 的 sitemap.xml 的問題</a></p>
+]]></content>
+      <categories>
+        <category>Hexo</category>
+      </categories>
+      <tags>
+        <tag>Hexo SEO</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>架設部落格 Hexo 部署 Github (零)</title>
     <url>/hexo/1074258594/</url>
     <content><![CDATA[<h2 id="Hexo-環境"><a href="#Hexo-環境" class="headerlink" title="Hexo 環境"></a>Hexo 環境</h2><p>Step1：下載 Hexo 環境</p>
@@ -618,94 +706,6 @@
       </categories>
       <tags>
         <tag>Hexo 部落格</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Hexo Sitemap 建立索引 無法擷取</title>
-    <url>/hexo/2629412870/</url>
-    <content><![CDATA[<div class="note default">
-            <p>此篇內容為 <a href="https://kentdoit.github.io/hexo/599670072/">Hexo 設置 GA、Sitemap（四）</a>的 Debug 延續篇，介紹如何解決無法擷取以及設置索引。</p>
-          </div>
-
-<h2 id="範例的環境版本"><a href="#範例的環境版本" class="headerlink" title="範例的環境版本"></a>範例的環境版本</h2><p>hexo 版本：6.0.1<br>hexo-cli 版本：4.3.0<br>next 版本：7.8.0</p>
-<h2 id="無法擷取"><a href="#無法擷取" class="headerlink" title="無法擷取"></a>無法擷取</h2><p><img src="https://imgur.com/UH0jdLH.jpg"></p>
-<div class="note default">
-            <p>下方會介紹四種我嘗試過的方法。</p>
-          </div>
-
-<h3 id="擁有權驗證"><a href="#擁有權驗證" class="headerlink" title="擁有權驗證"></a>擁有權驗證</h3><p>❌ 方法一：添加其他驗證方式（本來只有用 GA）</p>
-<p>Step1：取得 content 值</p>
-<ul>
-<li>記得在複製內容中只擷取 content 值就好。</li>
-</ul>
-<p><img src="https://imgur.com/N623p1p.jpg" alt="演示四步驟取得 content"></p>
-<p>Step2：修改 NexT 主題中 _config.yml 參數 google_site_verification</p>
-<ul>
-<li>貼上取得的 content 值。</li>
-</ul>
-<figure class="highlight diff"><figcaption><span>.git/config</span></figcaption><table><tr><td class="code"><pre><span class="line"># Google Webmaster tools verification.</span><br><span class="line"># See: https://www.google.com/webmasters</span><br><span class="line"><span class="addition">+ google_site_verification: 25miYVaewg4Qur_GPtoF9-GhCZZJNidmq2kqy6wRE9g</span></span><br><span class="line"><span class="deletion">- google_site_verification:</span></span><br></pre></td></tr></table></figure>
-
-<p>Step3：重新部署</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">hexo g -d</span><br></pre></td></tr></table></figure>
-
-<p>Step4：重新部署後，檢查網站中是否包含 google-site-verification</p>
-<p><img src="https://imgur.com/RVLo57e.jpg" alt="搜尋 google-site-verification"></p>
-<h3 id="檢查-Sitemap-格式"><a href="#檢查-Sitemap-格式" class="headerlink" title="檢查 Sitemap 格式"></a>檢查 Sitemap 格式</h3><p>❌ 方法二：檢查 Sitemap 格式</p>
-<blockquote>
-<p>發覺我的 sitemap.xml 格式和官方範例不同，所以需要將多的標籤移除。</p>
-</blockquote>
-<p><img src="https://imgur.com/QnPnMb0.jpg" alt="格式比較"></p>
-<p>Step1：將 node_modules&#x2F;hexo-generator-sitemap&#x2F;sitemap.xml 中的 <code>changefreq</code>、<code>priority</code> 標籤移除。</p>
-<p>Step2：重新部署</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">hexo g -d</span><br></pre></td></tr></table></figure>
-
-<div class="note default">
-            <p>參考這篇 <a href="https://zenreal.github.io/posts/7993/#google%E7%84%A1%E6%B3%95%E8%AE%80%E5%8F%96sitemap-%E4%B8%80%E8%88%AC%E7%9A%84http%E9%8C%AF%E8%AA%A4-%E8%A7%A3%E6%B1%BA%E6%96%B9%E5%BC%8F">Google無法讀取sitemap(一般的HTTP錯誤) 解決方式</a> 所提到的解法，雖然我沒有這個問題。</p>
-          </div>
-
-<p><img src="https://imgur.com/NkFfNmd.jpg" alt="記得要把所有多的標籤都移除呦，雖然也一樣沒成功"></p>
-<h3 id="建立索引"><a href="#建立索引" class="headerlink" title="建立索引"></a>建立索引</h3><blockquote>
-<p>為了將自己的網址透過 Google Search Console 建立索引，提交給 Google 使搜尋引擎能更容易地搜尋到我們的網站，這個也屬於提升 SEO 的其中一種方法。</p>
-</blockquote>
-<p>❌ 方法三：網址審查建立索引</p>
-<p>Step1：點擊網址審查，並在上方網址列貼上部落格網址（例如：<a href="https://kentdoit.github.io/%EF%BC%89">https://kentdoit.github.io/）</a></p>
-<p>Step2：按下建立索引</p>
-<p><img src="https://imgur.com/VwNKDrB.jpg" alt="兩步驟建立索引"></p>
-<div class="note default">
-            <p>過一陣子之後再到網址審查中檢查就會看到綠色勾勾了，也代表建立索引成功了～～～<br>雖然不確定是時間還沒到還是因為 .nojekyll，但至少之後用其他文章連結也有成功建立索引 (੭•̀ᴗ•̀)੭</p>
-          </div>
-
-<p><img src="https://imgur.com/iR7NAzQ.jpg" alt="網址審查通過"></p>
-<h3 id="建立-nojekyll"><a href="#建立-nojekyll" class="headerlink" title="建立 .nojekyll"></a>建立 .nojekyll</h3><p>❌ 方法四：建立 .nojekyll</p>
-<p>Step1：進入根目錄 source 資料夾底下</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">cd source</span><br></pre></td></tr></table></figure>
-
-<p>Step2：建立一個空白的 .nojekyll 檔案</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">touch .nojekyll</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://imgur.com/BFbbf5V.jpg"></p>
-<div class="note default">
-            <p>接下來設定是為了讓每次部署產生的 public 資料夾中也能存在 .nojekyll 檔案</p>
-          </div>
-
-<p>Step3：修改根目錄 _config.yml 參數</p>
-<figure class="highlight diff"><figcaption><span>_config.yml</span></figcaption><table><tr><td class="code"><pre><span class="line"># Include / Exclude file(s)</span><br><span class="line">## include:/exclude: options only apply to the &#x27;source/&#x27; folder</span><br><span class="line">include:</span><br><span class="line"><span class="addition">+  .nojekyll</span></span><br><span class="line">exclude:</span><br><span class="line">ignore:</span><br></pre></td></tr></table></figure>
-
-<p>Step4：重新部署</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">hexo cl</span><br><span class="line">hexo g -d</span><br></pre></td></tr></table></figure>
-
-<div class="note default">
-            <p>雖然建立索引成功了，但 Sitemap 狀態還是呈現 <code>無法擷取</code> 以及 <code>未提交至 Sitemap</code>，最後沒辦法只好靜待幾天看看會不會發生奇蹟</p>
-          </div>
-
-<h2 id="未提交至-Sitemap"><a href="#未提交至-Sitemap" class="headerlink" title="未提交至 Sitemap"></a>未提交至 Sitemap</h2><h2 id="可讀取-Sitemap，但其中含有錯誤"><a href="#可讀取-Sitemap，但其中含有錯誤" class="headerlink" title="可讀取 Sitemap，但其中含有錯誤"></a>可讀取 Sitemap，但其中含有錯誤</h2><p><img src="https://imgur.com/tYWXLmz.jpg"></p>
-<h2 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h2><p><a href="https://blog.kyomind.tw/adding-sitemap-issue/">解決 Hexo + Github Pages 新增 sitemap.xml 找不到頁面</a><br><a href="https://blog.balabambe.com/2021/12/01/%E8%A7%A3%E6%B1%BA-Google-Search-Console-%E6%8A%93%E4%B8%8D%E5%88%B0-Hexo-%E6%94%BE%E5%9C%A8-Github-Pages-%E7%9A%84-sitemap-xml-%E7%9A%84%E5%95%8F%E9%A1%8C/">解決 Google Search Console 抓不到 Hexo 放在 Github Pages 的 sitemap.xml 的問題</a></p>
-]]></content>
-      <categories>
-        <category>Hexo</category>
-      </categories>
-      <tags>
-        <tag>Hexo SEO</tag>
       </tags>
   </entry>
   <entry>
@@ -1260,6 +1260,72 @@ console.log(obj.name);  // kent
       </tags>
   </entry>
   <entry>
+    <title>JS 短路求值 Short-circuit evaluation</title>
+    <url>/javascript/350805089/</url>
+    <content><![CDATA[<div class="note primary">
+            <p>快速複習一下<a href="https://kentdoit.github.io/javascript/1047366401/">邏輯運算子</a>：「當 AND 的第一個運算數的值為 false 時，其結果必定為 false；當 OR 的第一個運算數為 true 時，最後結果必定為 true。」</p>
+          </div>
+
+<div class="note default">
+            <p>不熟悉 <code>真值（truthy）</code>、<code>假值（falsy）</code> 可以參考這篇<a href="https://kentdoit.github.io/javascript/1047366401/#%E7%9C%9F%E5%80%BC%EF%BC%88truthy%EF%BC%89%E3%80%81%E5%81%87%E5%80%BC%EF%BC%88falsy%EF%BC%89">文章</a>。</p>
+          </div>
+
+<blockquote>
+<p>口訣</p>
+</blockquote>
+<ul>
+<li><code>&amp;&amp;</code> 左邊是 <code>假值(falsy)</code> 則不會執行右邊。</li>
+<li><code>||</code> 左邊是 <code>真值(truthy)</code> 則不會執行右邊。</li>
+</ul>
+<div class="note default">
+            <p>下方範例運用 &amp;&amp;、|| 特性，演示將左右兩邊的 <code>表達式</code> 達到和 if 判斷式一樣的效果。</p>
+          </div>
+
+<p>e.g. 使用 <code>||</code> 來實作賦予預設值功能</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> a = <span class="literal">null</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 短路求值寫法</span></span><br><span class="line"><span class="keyword">let</span> b = a || <span class="number">1</span>; <span class="comment">// a 不是真值所以會執行右邊，將 1 賦予到 b 變數上。</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// if 寫法</span></span><br><span class="line"><span class="keyword">if</span> (!a) &#123;</span><br><span class="line">  <span class="keyword">let</span> b = a;</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">  <span class="keyword">let</span> b = <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 三元運算寫法</span></span><br><span class="line"><span class="keyword">let</span> b = a ? a : <span class="number">1</span>;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>e.g. <code>&amp;&amp;</code> 透過判斷 <code>真假值</code> 來決定是否執行表達式（也可以執行函式）</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> person1 = &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&#x27;kent&#x27;</span>,</span><br><span class="line">  <span class="attr">age</span>: <span class="number">18</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 短路求值寫法（僅適用於只有一種結果的判斷式）</span></span><br><span class="line">person1.<span class="property">age</span> &gt;= <span class="number">18</span> &amp;&amp; <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`<span class="subst">$&#123;person1.name&#125;</span> 已成年`</span>); <span class="comment">// person1.age &gt;= 18 是 true 所有會執行右邊 console.log</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// if 寫法</span></span><br><span class="line"><span class="keyword">if</span> (person1.<span class="property">age</span> &gt;= <span class="number">18</span>) <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`<span class="subst">$&#123;person1.name&#125;</span> 已成年`</span>);</span><br></pre></td></tr></table></figure>
+
+<p>e.g. 判斷物件屬性是否存在</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> school = &#123;</span><br><span class="line">  <span class="attr">info</span>: &#123;</span><br><span class="line">    <span class="attr">student</span>: &#123;</span><br><span class="line">      <span class="attr">name</span>: <span class="string">&#x27;kent&#x27;</span>,</span><br><span class="line">      <span class="attr">age</span>: <span class="number">18</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 短路求值寫法</span></span><br><span class="line"><span class="keyword">let</span> name = obj.<span class="property">info</span>.<span class="property">teacher</span> &amp;&amp; obj.<span class="property">info</span>.<span class="property">teacher</span>.<span class="property">name</span>; <span class="comment">// 會透過先判斷上一層屬性是否存在，來預防噴錯</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// if 寫法</span></span><br><span class="line"><span class="keyword">let</span> name = obj.<span class="property">info</span>.<span class="property">teacher</span>.<span class="property">name</span>; <span class="comment">// TypeError: Cannot read properties of undefined (reading &#x27;name&#x27;)</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (obj.<span class="property">info</span>.<span class="property">teacher</span>) &#123;</span><br><span class="line">  <span class="keyword">let</span> name = obj.<span class="property">info</span>.<span class="property">teacher</span>.<span class="property">name</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>短路求值 tips</p>
+</blockquote>
+<ol>
+<li><code>短路求值</code> 使用表達式的情況下，只適用於沒有 else 的判斷式，需要有 else 可以使用 <code>三元運算子</code>。</li>
+<li><code>短路求值</code> 不能帶 return。</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">isAdult</span>(<span class="params">age</span>) &#123; </span><br><span class="line">  <span class="comment">// 判斷是否為假值</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">// 短路求值寫法（短路求值帶 return 會噴 error）</span></span><br><span class="line">  age &amp;&amp; <span class="keyword">return</span> <span class="string">&#x27;資料錯誤&#x27;</span>; <span class="comment">// SyntaxError: Unexpected token &#x27;return&#x27;</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">// if 寫法</span></span><br><span class="line">  <span class="keyword">if</span> (!age) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&#x27;資料錯誤&#x27;</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  <span class="comment">// 下方範例不適合用短路求值，因為會缺少 else 表達式。</span></span><br><span class="line">  <span class="keyword">let</span> res</span><br><span class="line">  <span class="comment">// 短路求值寫法</span></span><br><span class="line">  res = (age &gt;= <span class="number">18</span>) &amp;&amp; <span class="string">&#x27;已成年&#x27;</span>;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 三元運算子寫法</span></span><br><span class="line">  res = age &gt;= <span class="number">18</span> ? <span class="string">&#x27;已成年&#x27;</span> : <span class="string">&#x27;未成年&#x27;</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title function_">isAdult</span>(<span class="literal">null</span>);  <span class="comment">// 資料錯誤</span></span><br><span class="line"><span class="title function_">isAdult</span>(<span class="number">18</span>); <span class="comment">// 已成年</span></span><br><span class="line"><span class="title function_">isAdult</span>(<span class="number">17</span>);  <span class="comment">// 未成年</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="詬病「不夠嚴謹」"><a href="#詬病「不夠嚴謹」" class="headerlink" title="詬病「不夠嚴謹」"></a>詬病「不夠嚴謹」</h3><div class="note default">
+            <p>👨‍💻 當變數為 <code>false</code>、<code>0</code> 或空字串 <code>&quot;&quot;</code> 其中之一時， 則布林值也會轉型為<code>假值 (falsy)</code>，對於判斷變數是否使用過來說是相當不方便的一件事。</p>
+          </div>
+
+<figure class="highlight js"><figcaption><span>e.g. 判斷某個變數是否使用過，有的話就作初始化。</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> time = <span class="number">1</span> - <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 判斷變數是否使用過，有的話將其初始化</span></span><br><span class="line"><span class="keyword">if</span> (time) &#123;</span><br><span class="line">  <span class="comment">// 初始化失敗</span></span><br><span class="line">  time = <span class="literal">null</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 初始化失敗</span></span><br><span class="line">time = time &amp;&amp; <span class="literal">null</span>;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight js"><figcaption><span>e.g. 假設有一間銀行，發給新辦用戶 100 摳，結果連舊客戶都發了...</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> person1 = &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&#x27;kent&#x27;</span>,</span><br><span class="line">  <span class="attr">age</span>: <span class="number">18</span>,</span><br><span class="line">  <span class="attr">wallet</span>: <span class="number">0</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> person2 = &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&#x27;clark&#x27;</span>,</span><br><span class="line">  <span class="attr">age</span>: <span class="number">20</span>,</span><br><span class="line">  <span class="attr">wallet</span>: <span class="literal">null</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">person1.<span class="property">wallet</span> || &#123;person1, ...&#123;<span class="attr">wallet</span>: <span class="number">100</span>&#125;&#125;; <span class="comment">// &#123;person1: &#123;…&#125;, wallet: 100&#125;</span></span><br><span class="line">person2.<span class="property">wallet</span> || &#123;person2, ...&#123;<span class="attr">wallet</span>: <span class="number">100</span>&#125;&#125;; <span class="comment">// &#123;person2: &#123;…&#125;, wallet: 100&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 發現活動還沒開跑，已經發了幾百萬出去</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="https://imgur.com/yNnVS12.jpg" alt="部署後的工程師"></p>
+<div class="note default">
+            <p>javascript 後來增加了一種 <a href="https://kentdoit.github.io/javascript/3525467973/"><code>空值合併運算子</code></a> 用來解決不夠嚴謹的問題。</p>
+          </div>
+
+<h2 id="conclusion"><a href="#conclusion" class="headerlink" title="conclusion"></a>conclusion</h2><p><img src="https://imgur.com/w9OtDHw.png" alt="||、&amp;&amp; 使用口訣"></p>
+<h2 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h2><ul>
+<li><a href="https://bolaslien.github.io/blog/2021/06/18/js-short-circuit-evaluation/">用邏輯判斷 ||(OR) 及 &amp;&amp;(AND) 來改寫 if (短路求值 Short-circuit evaluation)</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>JavaScript</category>
+      </categories>
+      <tags>
+        <tag>運算子</tag>
+        <tag>JavaScript</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>JS 箭頭函式 arrow function</title>
     <url>/javascript/2638792469/</url>
     <content><![CDATA[<div class="note default">
@@ -1401,72 +1467,6 @@ console.log(obj.name);  // kent
         <tag>箭頭函式</tag>
         <tag>this</tag>
         <tag>arguments</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>JS 短路求值 Short-circuit evaluation</title>
-    <url>/javascript/350805089/</url>
-    <content><![CDATA[<div class="note primary">
-            <p>快速複習一下<a href="https://kentdoit.github.io/javascript/1047366401/">邏輯運算子</a>：「當 AND 的第一個運算數的值為 false 時，其結果必定為 false；當 OR 的第一個運算數為 true 時，最後結果必定為 true。」</p>
-          </div>
-
-<div class="note default">
-            <p>不熟悉 <code>真值（truthy）</code>、<code>假值（falsy）</code> 可以參考這篇<a href="https://kentdoit.github.io/javascript/1047366401/#%E7%9C%9F%E5%80%BC%EF%BC%88truthy%EF%BC%89%E3%80%81%E5%81%87%E5%80%BC%EF%BC%88falsy%EF%BC%89">文章</a>。</p>
-          </div>
-
-<blockquote>
-<p>口訣</p>
-</blockquote>
-<ul>
-<li><code>&amp;&amp;</code> 左邊是 <code>假值(falsy)</code> 則不會執行右邊。</li>
-<li><code>||</code> 左邊是 <code>真值(truthy)</code> 則不會執行右邊。</li>
-</ul>
-<div class="note default">
-            <p>下方範例運用 &amp;&amp;、|| 特性，演示將左右兩邊的 <code>表達式</code> 達到和 if 判斷式一樣的效果。</p>
-          </div>
-
-<p>e.g. 使用 <code>||</code> 來實作賦予預設值功能</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> a = <span class="literal">null</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 短路求值寫法</span></span><br><span class="line"><span class="keyword">let</span> b = a || <span class="number">1</span>; <span class="comment">// a 不是真值所以會執行右邊，將 1 賦予到 b 變數上。</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// if 寫法</span></span><br><span class="line"><span class="keyword">if</span> (!a) &#123;</span><br><span class="line">  <span class="keyword">let</span> b = a;</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">  <span class="keyword">let</span> b = <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 三元運算寫法</span></span><br><span class="line"><span class="keyword">let</span> b = a ? a : <span class="number">1</span>;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>e.g. <code>&amp;&amp;</code> 透過判斷 <code>真假值</code> 來決定是否執行表達式（也可以執行函式）</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> person1 = &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&#x27;kent&#x27;</span>,</span><br><span class="line">  <span class="attr">age</span>: <span class="number">18</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 短路求值寫法（僅適用於只有一種結果的判斷式）</span></span><br><span class="line">person1.<span class="property">age</span> &gt;= <span class="number">18</span> &amp;&amp; <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`<span class="subst">$&#123;person1.name&#125;</span> 已成年`</span>); <span class="comment">// person1.age &gt;= 18 是 true 所有會執行右邊 console.log</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// if 寫法</span></span><br><span class="line"><span class="keyword">if</span> (person1.<span class="property">age</span> &gt;= <span class="number">18</span>) <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`<span class="subst">$&#123;person1.name&#125;</span> 已成年`</span>);</span><br></pre></td></tr></table></figure>
-
-<p>e.g. 判斷物件屬性是否存在</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> school = &#123;</span><br><span class="line">  <span class="attr">info</span>: &#123;</span><br><span class="line">    <span class="attr">student</span>: &#123;</span><br><span class="line">      <span class="attr">name</span>: <span class="string">&#x27;kent&#x27;</span>,</span><br><span class="line">      <span class="attr">age</span>: <span class="number">18</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 短路求值寫法</span></span><br><span class="line"><span class="keyword">let</span> name = obj.<span class="property">info</span>.<span class="property">teacher</span> &amp;&amp; obj.<span class="property">info</span>.<span class="property">teacher</span>.<span class="property">name</span>; <span class="comment">// 會透過先判斷上一層屬性是否存在，來預防噴錯</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// if 寫法</span></span><br><span class="line"><span class="keyword">let</span> name = obj.<span class="property">info</span>.<span class="property">teacher</span>.<span class="property">name</span>; <span class="comment">// TypeError: Cannot read properties of undefined (reading &#x27;name&#x27;)</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (obj.<span class="property">info</span>.<span class="property">teacher</span>) &#123;</span><br><span class="line">  <span class="keyword">let</span> name = obj.<span class="property">info</span>.<span class="property">teacher</span>.<span class="property">name</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>短路求值 tips</p>
-</blockquote>
-<ol>
-<li><code>短路求值</code> 使用表達式的情況下，只適用於沒有 else 的判斷式，需要有 else 可以使用 <code>三元運算子</code>。</li>
-<li><code>短路求值</code> 不能帶 return。</li>
-</ol>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">isAdult</span>(<span class="params">age</span>) &#123; </span><br><span class="line">  <span class="comment">// 判斷是否為假值</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">// 短路求值寫法（短路求值帶 return 會噴 error）</span></span><br><span class="line">  age &amp;&amp; <span class="keyword">return</span> <span class="string">&#x27;資料錯誤&#x27;</span>; <span class="comment">// SyntaxError: Unexpected token &#x27;return&#x27;</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">// if 寫法</span></span><br><span class="line">  <span class="keyword">if</span> (!age) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&#x27;資料錯誤&#x27;</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  <span class="comment">// 下方範例不適合用短路求值，因為會缺少 else 表達式。</span></span><br><span class="line">  <span class="keyword">let</span> res</span><br><span class="line">  <span class="comment">// 短路求值寫法</span></span><br><span class="line">  res = (age &gt;= <span class="number">18</span>) &amp;&amp; <span class="string">&#x27;已成年&#x27;</span>;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 三元運算子寫法</span></span><br><span class="line">  res = age &gt;= <span class="number">18</span> ? <span class="string">&#x27;已成年&#x27;</span> : <span class="string">&#x27;未成年&#x27;</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title function_">isAdult</span>(<span class="literal">null</span>);  <span class="comment">// 資料錯誤</span></span><br><span class="line"><span class="title function_">isAdult</span>(<span class="number">18</span>); <span class="comment">// 已成年</span></span><br><span class="line"><span class="title function_">isAdult</span>(<span class="number">17</span>);  <span class="comment">// 未成年</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="詬病「不夠嚴謹」"><a href="#詬病「不夠嚴謹」" class="headerlink" title="詬病「不夠嚴謹」"></a>詬病「不夠嚴謹」</h3><div class="note default">
-            <p>👨‍💻 當變數為 <code>false</code>、<code>0</code> 或空字串 <code>&quot;&quot;</code> 其中之一時， 則布林值也會轉型為<code>假值 (falsy)</code>，對於判斷變數是否使用過來說是相當不方便的一件事。</p>
-          </div>
-
-<figure class="highlight js"><figcaption><span>e.g. 判斷某個變數是否使用過，有的話就作初始化。</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> time = <span class="number">1</span> - <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 判斷變數是否使用過，有的話將其初始化</span></span><br><span class="line"><span class="keyword">if</span> (time) &#123;</span><br><span class="line">  <span class="comment">// 初始化失敗</span></span><br><span class="line">  time = <span class="literal">null</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 初始化失敗</span></span><br><span class="line">time = time &amp;&amp; <span class="literal">null</span>;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight js"><figcaption><span>e.g. 假設有一間銀行，發給新辦用戶 100 摳，結果連舊客戶都發了...</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> person1 = &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&#x27;kent&#x27;</span>,</span><br><span class="line">  <span class="attr">age</span>: <span class="number">18</span>,</span><br><span class="line">  <span class="attr">wallet</span>: <span class="number">0</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> person2 = &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&#x27;clark&#x27;</span>,</span><br><span class="line">  <span class="attr">age</span>: <span class="number">20</span>,</span><br><span class="line">  <span class="attr">wallet</span>: <span class="literal">null</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">person1.<span class="property">wallet</span> || &#123;person1, ...&#123;<span class="attr">wallet</span>: <span class="number">100</span>&#125;&#125;; <span class="comment">// &#123;person1: &#123;…&#125;, wallet: 100&#125;</span></span><br><span class="line">person2.<span class="property">wallet</span> || &#123;person2, ...&#123;<span class="attr">wallet</span>: <span class="number">100</span>&#125;&#125;; <span class="comment">// &#123;person2: &#123;…&#125;, wallet: 100&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 發現活動還沒開跑，已經發了幾百萬出去</span></span><br></pre></td></tr></table></figure>
-
-<p><img src="https://imgur.com/yNnVS12.jpg" alt="部署後的工程師"></p>
-<div class="note default">
-            <p>javascript 後來增加了一種 <a href="https://kentdoit.github.io/javascript/3525467973/"><code>空值合併運算子</code></a> 用來解決不夠嚴謹的問題。</p>
-          </div>
-
-<h2 id="conclusion"><a href="#conclusion" class="headerlink" title="conclusion"></a>conclusion</h2><p><img src="https://imgur.com/w9OtDHw.png" alt="||、&amp;&amp; 使用口訣"></p>
-<h2 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h2><ul>
-<li><a href="https://bolaslien.github.io/blog/2021/06/18/js-short-circuit-evaluation/">用邏輯判斷 ||(OR) 及 &amp;&amp;(AND) 來改寫 if (短路求值 Short-circuit evaluation)</a></li>
-</ul>
-]]></content>
-      <categories>
-        <category>JavaScript</category>
-      </categories>
-      <tags>
-        <tag>運算子</tag>
-        <tag>JavaScript</tag>
       </tags>
   </entry>
   <entry>
@@ -1726,6 +1726,17 @@ console.log(obj.name);  // kent
       <tags>
         <tag>JavaScript</tag>
         <tag>ES6</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>JS 傳值 by Value、傳址 by Reference、傳共享 by sharing</title>
+    <url>/javascript/3842658283/</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>JavaScript</category>
+      </categories>
+      <tags>
+        <tag>JavaScript</tag>
       </tags>
   </entry>
   <entry>
@@ -2005,17 +2016,6 @@ console.log(obj.name);  // kent
       <tags>
         <tag>JavaScript</tag>
         <tag>ES6</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>JS 傳值 by Value、傳址 by Reference、傳共享 by sharing</title>
-    <url>/javascript/3842658283/</url>
-    <content><![CDATA[]]></content>
-      <categories>
-        <category>JavaScript</category>
-      </categories>
-      <tags>
-        <tag>JavaScript</tag>
       </tags>
   </entry>
   <entry>
