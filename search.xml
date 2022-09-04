@@ -1,186 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Hexo 檔案名稱 Url 優化（三）</title>
-    <url>/hexo/821499080/</url>
-    <content><![CDATA[<div class="note default">
-            <p>建議此篇內容越早更改設定越好！<br>不然文章一多起來也懶得調整前面的文章 QQ</p>
-          </div>
-
-<h2 id="範例的環境版本"><a href="#範例的環境版本" class="headerlink" title="範例的環境版本"></a>範例的環境版本</h2><p>hexo 版本：6.0.1<br>hexo-cli 版本：4.3.0<br>next 版本：7.8.0</p>
-<h2 id="修改文章名稱參數"><a href="#修改文章名稱參數" class="headerlink" title="修改文章名稱參數"></a>修改文章名稱參數</h2><blockquote>
-<p>預設名稱會帶入 title 參數，如果文章多起來檔名只有 title 的話，要對文章做一些管理或分類都很難下手，因此因要修改檔名參數來解決這個問題，下方示範在檔名參數添加日期。</p>
-</blockquote>
-<p><img src="https://imgur.com/MzSJZrG.jpg" alt="結果圖"></p>
-<p>Step1：進入根目錄 _config.yml 搜尋 <code>#Writing</code></p>
-<p>Step2：修改參數 <code>new_post_name</code></p>
-<p><a href="https://hexo.io/zh-tw/docs/writing#%E6%AA%94%E6%A1%88%E5%90%8D%E7%A8%B1">官方文件</a>提供的參數</p>
-<ul>
-<li><code>:title</code>：標題</li>
-<li><code>:year</code>：建立年份（4 位數）</li>
-<li><code>:month</code>：建立月份（2 位數）</li>
-<li><code>:i_month</code>：建立月份（去掉開頭的零）</li>
-<li><code>:day</code>：建立日期（2 位數）</li>
-<li><code>:i_day</code>：建立日期（去掉開頭的零）</li>
-</ul>
-<figure class="highlight diff"><figcaption><span>_config.yml</span></figcaption><table><tr><td class="code"><pre><span class="line"># Writing</span><br><span class="line"><span class="deletion">- new_post_name: :title.md # File name of new posts</span></span><br><span class="line"><span class="addition">+ new_post_name: :year-:month-:day-:title.md</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="Url-優化"><a href="#Url-優化" class="headerlink" title="Url 優化"></a>Url 優化</h2><blockquote>
-<p>預設路徑格式為 年&#x2F;月&#x2F;日&#x2F;名稱，如果是英文的話倒還好中文其實會很醜，且有空格的話會有用 <code>破折號 -</code> 替代，因此下方會介紹如何優化這個醜醜的 url。</p>
-</blockquote>
-<p><img src="https://imgur.com/A4msRQp.jpg" alt="比較圖"></p>
-<p>Step1：安裝 abbrlink 套件</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">npm install hexo-abbrlink --save</span><br></pre></td></tr></table></figure>
-
-<p>Step2：進入根目錄 _config.yml 搜尋 <code>#URL</code><br>Step3：修改參數 <code>permalink</code></p>
-<div class="note default">
-            <p>之後只要 hexo s 就會自動幫我們在文章 front-matter 中添加 <code>abbrlink</code> 參數並帶上一串英文作為值，這串英文就可以做為 permalink 參數，詳細參數設置可以參考<a href="https://hexo.io/zh-tw/docs/permalinks">官方文件</a>。</p>
-          </div>
-
-<figure class="highlight diff"><figcaption><span>_config.yml</span></figcaption><table><tr><td class="code"><pre><span class="line"># Writing</span><br><span class="line"># URL</span><br><span class="line">## Set your site url here. For example, if you use GitHub Page, set url as &#x27;https://username.github.io/project&#x27;</span><br><span class="line">url: https://kentdoit.github.io/</span><br><span class="line"><span class="deletion">- permalink: :year/:month/:day/:title/</span></span><br><span class="line"><span class="addition">+ permalink: :category/:year:month:day/:abbrlink/</span></span><br></pre></td></tr></table></figure>
-
-<p>Step4：檔案底部添加新參數</p>
-<figure class="highlight yml"><figcaption><span>_config.yml</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="comment"># abbrlink config</span></span><br><span class="line"><span class="attr">abbrlink:</span></span><br><span class="line">  <span class="attr">alg:</span> <span class="string">crc32</span>  <span class="comment"># 演算法：crc16(default) and crc32 </span></span><br><span class="line">  <span class="attr">rep:</span> <span class="string">dec</span>    <span class="comment"># 進位制：dec(default) and hex</span></span><br></pre></td></tr></table></figure>
-
-<p>Step5：優化 Category &amp; Tag</p>
-<ul>
-<li>可以在 _config.yml 中對 Category、Tag 設置對應轉換的字串。</li>
-<li>分別在 category_map、tag_map 參數中設置轉換字串。（請參考下方範例）<div class="note default">
-            <p>這樣在 url 中使用 category 就可轉換為自己想要的字串。（例如：Hexo ➞ hexo）</p>
-          </div></li>
-</ul>
-<figure class="highlight yml"><figcaption><span>_config.yml</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="comment"># Category &amp; Tag</span></span><br><span class="line"><span class="attr">category_map:</span></span><br><span class="line">  <span class="attr">Hexo:</span> <span class="string">hexo</span></span><br><span class="line"><span class="attr">tag_map:</span></span><br><span class="line">  <span class="string">Hexo</span> <span class="string">部落格:</span> <span class="string">hexo</span> <span class="string">blog</span></span><br></pre></td></tr></table></figure>
-
-<div class="note default">
-            <p>有了這招就算 permalink 中的 title 參數有中文也可以透過轉換變為英文，另外在記錄一個可以將中文轉英文的方法。（p.s. 我自己沒有嘗試過所以不確定可不可行）</p>
-          </div>
-
-<figure class="highlight diff"><figcaption><span>_config.yml</span><a href="https://blog.51cto.com/u_14032861/2952031">src</a></figcaption><table><tr><td class="code"><pre><span class="line"># Directory</span><br><span class="line"><span class="deletion">- source_dir: source</span></span><br><span class="line"><span class="addition">+ source_dir: source-en</span></span><br><span class="line"><span class="deletion">- public_dir: public</span></span><br><span class="line"><span class="addition">+ public_dir: public-en</span></span><br></pre></td></tr></table></figure>
-
-<div class="note default">
-            <p>到這邊部署後有可能會出現 404 畫面，我這邊的問題是因為 <code>路徑大小</code> 寫造成的。</p>
-          </div>
-
-<p><img src="https://imgur.com/NtTxON5.jpg" alt="路徑比較圖"></p>
-<p>原因：git 命令默認會忽略文件名稱的大小寫，因此大小寫發生變化會被忽略也導致沒有更新。<br>解法：修改 git ignorecase 參數。</p>
-<p>Step1：進到根目錄 deploy_git 資料夾</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">cd .deploy_git</span><br></pre></td></tr></table></figure>
-
-<p>Step2：編輯 git 設定檔</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">vim .git/config</span><br></pre></td></tr></table></figure>
-
-<p>Step3：修改 ignorecase 參數為 false（要先按小寫 i 才能修改）</p>
-<figure class="highlight diff"><figcaption><span>.git/config</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="addition">+ ignorecase = false</span></span><br><span class="line"><span class="deletion">- ignorecase = true</span></span><br></pre></td></tr></table></figure>
-
-<p>Step4：修改完後儲存並離開檔案，先按 Esc 後直接輸入以下指令</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">:wq</span><br></pre></td></tr></table></figure>
-
-<p>Step5：接下來的三個指令是為了更新 server 上的檔案（先刪除在新增）</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">git rm -rf *</span><br><span class="line">git commit -m &#x27;clean all file&#x27;</span><br><span class="line">git push</span><br></pre></td></tr></table></figure>
-
-<p>Step6：接下來指令是回到根目錄並清除快取檔案 (db.json) 和已產生的靜態檔案 (public)，最後就是重新部署</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">cd ..</span><br><span class="line">hexo clean</span><br><span class="line">hexo g -d</span><br></pre></td></tr></table></figure>
-
-<h2 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h2><p><a href="https://trifond.github.io/2018/12/05/hexo-folder-ignore-case/">Hexo部署到Github后文件夹名大小写引起的问题</a><br><a href="https://israynotarray.com/hexo/20190517/2562079032/">Hexo Url優化(SEO)</a></p>
-]]></content>
-      <categories>
-        <category>Hexo</category>
-      </categories>
-      <tags>
-        <tag>Hexo 優化</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Hexo 主題 NexT 設置 (一)</title>
-    <url>/hexo/3802192554/</url>
-    <content><![CDATA[<h2 id="範例的環境版本"><a href="#範例的環境版本" class="headerlink" title="範例的環境版本"></a>範例的環境版本</h2><p>hexo 版本：6.0.1<br>hexo-cli 版本：4.3.0<br>next 版本：7.8.0</p>
-<h2 id="更換主題-theme"><a href="#更換主題-theme" class="headerlink" title="更換主題 theme"></a>更換主題 theme</h2><p>Step1：從<a href="https://hexo.io/themes/">官方</a>主題找尋自己順眼的</p>
-<div class="note default">
-            <p>最近主流有兩個推薦的（我選擇 Next）</p>
-          </div>
-
-<ul>
-<li><a href="https://github.com/theme-next/hexo-theme-next">Next</a></li>
-<li><a href="https://github.com/fluid-dev/hexo-theme-fluid">Fluid</a></li>
-</ul>
-<p>Step2：下載主題 Download 或 clone 到 themes 資料夾底下</p>
-<div class="note danger">
-            <p>切記要先進入該專案根目錄的 themes 資料夾底下</p>
-          </div>
-
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">cd themes</span><br><span class="line">git clone https://github.com/theme-next/hexo-theme-next.git</span><br></pre></td></tr></table></figure>
-
-<p>Step3：修改根目錄 _config.yml 中的 theme 參數（預設是 landscape）</p>
-<figure class="highlight diff"><figcaption><span>_config.yml</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="addition">+theme: landscape</span></span><br><span class="line"><span class="deletion">-theme: hexo-theme-next</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="NexT-樣式設定"><a href="#NexT-樣式設定" class="headerlink" title="NexT 樣式設定"></a>NexT 樣式設定</h2><blockquote>
-<p>下方會介紹部落格樣式中最基礎的設置。</p>
-</blockquote>
-<h3 id="Scheme-Settings"><a href="#Scheme-Settings" class="headerlink" title="Scheme Settings"></a>Scheme Settings</h3><blockquote>
-<p>第一個介紹的一定非 Scheme 莫屬，替部落格換上喜歡的皮。</p>
-</blockquote>
-<p>Step1：搜尋 Scheme</p>
-<p>Step2：將選擇的 scheme 取消註解（我選擇 Mist）</p>
-<figure class="highlight diff"><figcaption><span>themes/hexo-theme-next/_config.yml</span></figcaption><table><tr><td class="code"><pre><span class="line"># Schemes</span><br><span class="line"># scheme: Muse</span><br><span class="line">scheme: Mist</span><br><span class="line"># scheme: Pisces</span><br><span class="line"># scheme: Gemini</span><br></pre></td></tr></table></figure>
-
-<div class="note default">
-            <p>下方演示 NexT 提供的四種 schemes</p>
-          </div>
-
-<p><img src="https://imgur.com/tq9H5Eb.png" alt="NexT 提供的四種 schemes"></p>
-<h3 id="程式碼區塊樣式"><a href="#程式碼區塊樣式" class="headerlink" title="程式碼區塊樣式"></a>程式碼區塊樣式</h3><blockquote>
-<p>撰寫技術文章絕對不能缺少的 code block，換上舒服的樣式好比設置編輯器的樣式一樣。</p>
-</blockquote>
-<p>Step1：搜尋 codeblock</p>
-<p>Step2：設置參數</p>
-<ul>
-<li>highlight_theme：代碼高亮（我選擇 galactic，後來因為要客製化所以選擇 normal）<ul>
-<li>由於不同的 Next 版本可能有的 highlight_theme 樣式不同，因此建議大家都可以都試試看在選擇比較喜歡的。</li>
-</ul>
-</li>
-<li>copy_button：hover 會顯示複製按鈕</li>
-<li>style：外觀樣式（我選擇原本是選 mac，後來發現 flat 比較適合客製化其它樣式）</li>
-</ul>
-<figure class="highlight diff"><figcaption><span>themes/hexo-theme-next/_config.yml</span></figcaption><table><tr><td class="code"><pre><span class="line">codeblock:</span><br><span class="line">  # Code Highlight theme</span><br><span class="line">  # Available values: normal | night | night eighties | night blue | night bright | solarized | solarized dark | galactic</span><br><span class="line">  # See: https://github.com/chriskempson/tomorrow-theme</span><br><span class="line"><span class="deletion">-  highlight_theme: normal</span></span><br><span class="line"><span class="addition">+  highlight_theme: galactic</span></span><br><span class="line">  # Add copy button on codeblock</span><br><span class="line">  copy_button:</span><br><span class="line"><span class="deletion">-    enable: false</span></span><br><span class="line"><span class="addition">+    enable: true</span></span><br><span class="line">    # Show text copy result.</span><br><span class="line"><span class="deletion">-    show_result: false</span></span><br><span class="line"><span class="addition">+    show_result: false</span></span><br><span class="line">    # Available values: default | flat | mac</span><br><span class="line"><span class="deletion">-    style:</span></span><br><span class="line"><span class="addition">+    style: flat</span></span><br></pre></td></tr></table></figure>
-
-<div class="note danger">
-            <p>如果上面設置完沒有效果，請確認根目錄 _config.yml 檔案中的 <code>highlight</code> 參數 enable 是否設置為 true。</p>
-          </div>
-
-<figure class="highlight diff"><figcaption><span>_config.yml</span></figcaption><table><tr><td class="code"><pre><span class="line">highlight:</span><br><span class="line">  enable: true</span><br></pre></td></tr></table></figure>
-
-<h3 id="Menu-設置"><a href="#Menu-設置" class="headerlink" title="Menu 設置"></a>Menu 設置</h3><blockquote>
-<p>設置 menu 選單列的內容（home、about、tags、categories、archives、schedule、sitemap、commonweal），預設只有開啟兩個（home、archives）。</p>
-</blockquote>
-<p>Step1：搜尋 Menu Settings</p>
-<p>Step2：設置參數</p>
-<ul>
-<li>需要啟用就將對應的註解移除，下方範例示範開啟 tags、categories</li>
-</ul>
-<figure class="highlight diff"><figcaption><span>themes/hexo-theme-next/_config.yml</span></figcaption><table><tr><td class="code"><pre><span class="line">menu:</span><br><span class="line">  home: / || fa fa-home</span><br><span class="line">  #about: /about/ || fa fa-user</span><br><span class="line"><span class="deletion">- #tags: /tags/ || fa fa-tags</span></span><br><span class="line"><span class="addition">+ tags: /tags/ || fa fa-tags</span></span><br><span class="line"><span class="deletion">- #categories: /categories/ || fa fa-th</span></span><br><span class="line"><span class="addition">+ categories: /categories/ || fa fa-th</span></span><br><span class="line">  archives: /archives/ || fa fa-archive</span><br><span class="line">  #schedule: /schedule/ || fa fa-calendar</span><br><span class="line">  #sitemap: /sitemap.xml || fa fa-sitemap</span><br><span class="line">  #commonweal: /404/ || fa fa-heartbeat</span><br></pre></td></tr></table></figure>
-
-<div class="note default">
-            <p>Hexo 原生是使用 Font Awesome icon（註解中有寫），並透過 <code>短路求值（Short-circuit evaluation）</code> 的方式在路徑後方加上 icon 樣式（可以修改其它 icon 樣式）。</p>
-          </div>
-
-<p>Step3：menu 可以設置是否要開啟 icon 圖示 以及 badges 數量（用來顯示對應的數量）。</p>
-<figure class="highlight diff"><figcaption><span>themes/hexo-theme-next/_config.yml</span></figcaption><table><tr><td class="code"><pre><span class="line"># Enable / Disable menu icons / item badges.</span><br><span class="line">menu_settings:</span><br><span class="line">  icons: true</span><br><span class="line"><span class="deletion">-  badges: false</span></span><br><span class="line"><span class="addition">+  badges: true</span></span><br></pre></td></tr></table></figure>
-
-<p><img src="https://imgur.com/AbQvbMt.png" alt="menu tag"></p>
-<div class="note danger">
-            <p>點選 menu 中預設（home、archives）之外的路徑，會出現路徑錯誤（例如：Cannot GET&#x2F;about&#x2F;），因為我們還沒新增對應的頁面，從根目錄 source 資料夾中是否有對應的資料夾，新增頁面作法可以參考下一篇文章。</p>
-          </div>
-
-<p><img src="https://imgur.com/W1W5iaB.png" alt="路徑錯誤"></p>
-]]></content>
-      <categories>
-        <category>Hexo</category>
-      </categories>
-      <tags>
-        <tag>Hexo 部落格</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Hexo 新增文章和頁面 (二)</title>
     <url>/hexo/356195859/</url>
     <content><![CDATA[<h2 id="範例的環境版本"><a href="#範例的環境版本" class="headerlink" title="範例的環境版本"></a>範例的環境版本</h2><p>hexo 版本：6.0.1<br>hexo-cli 版本：4.3.0<br>next 版本：7.8.0</p>
@@ -386,6 +206,96 @@
 
 <p><img src="https://imgur.com/wuOgMjr.png" alt="WARN 警告提示"></p>
 <h2 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h2><p><a href="https://israynotarray.com/hexo/20200923/2032860736/">試著學 Hexo - 新增頁面</a></p>
+]]></content>
+      <categories>
+        <category>Hexo</category>
+      </categories>
+      <tags>
+        <tag>Hexo 部落格</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Hexo 主題 NexT 設置 (一)</title>
+    <url>/hexo/3802192554/</url>
+    <content><![CDATA[<h2 id="範例的環境版本"><a href="#範例的環境版本" class="headerlink" title="範例的環境版本"></a>範例的環境版本</h2><p>hexo 版本：6.0.1<br>hexo-cli 版本：4.3.0<br>next 版本：7.8.0</p>
+<h2 id="更換主題-theme"><a href="#更換主題-theme" class="headerlink" title="更換主題 theme"></a>更換主題 theme</h2><p>Step1：從<a href="https://hexo.io/themes/">官方</a>主題找尋自己順眼的</p>
+<div class="note default">
+            <p>最近主流有兩個推薦的（我選擇 Next）</p>
+          </div>
+
+<ul>
+<li><a href="https://github.com/theme-next/hexo-theme-next">Next</a></li>
+<li><a href="https://github.com/fluid-dev/hexo-theme-fluid">Fluid</a></li>
+</ul>
+<p>Step2：下載主題 Download 或 clone 到 themes 資料夾底下</p>
+<div class="note danger">
+            <p>切記要先進入該專案根目錄的 themes 資料夾底下</p>
+          </div>
+
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">cd themes</span><br><span class="line">git clone https://github.com/theme-next/hexo-theme-next.git</span><br></pre></td></tr></table></figure>
+
+<p>Step3：修改根目錄 _config.yml 中的 theme 參數（預設是 landscape）</p>
+<figure class="highlight diff"><figcaption><span>_config.yml</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="addition">+theme: landscape</span></span><br><span class="line"><span class="deletion">-theme: hexo-theme-next</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="NexT-樣式設定"><a href="#NexT-樣式設定" class="headerlink" title="NexT 樣式設定"></a>NexT 樣式設定</h2><blockquote>
+<p>下方會介紹部落格樣式中最基礎的設置。</p>
+</blockquote>
+<h3 id="Scheme-Settings"><a href="#Scheme-Settings" class="headerlink" title="Scheme Settings"></a>Scheme Settings</h3><blockquote>
+<p>第一個介紹的一定非 Scheme 莫屬，替部落格換上喜歡的皮。</p>
+</blockquote>
+<p>Step1：搜尋 Scheme</p>
+<p>Step2：將選擇的 scheme 取消註解（我選擇 Mist）</p>
+<figure class="highlight diff"><figcaption><span>themes/hexo-theme-next/_config.yml</span></figcaption><table><tr><td class="code"><pre><span class="line"># Schemes</span><br><span class="line"># scheme: Muse</span><br><span class="line">scheme: Mist</span><br><span class="line"># scheme: Pisces</span><br><span class="line"># scheme: Gemini</span><br></pre></td></tr></table></figure>
+
+<div class="note default">
+            <p>下方演示 NexT 提供的四種 schemes</p>
+          </div>
+
+<p><img src="https://imgur.com/tq9H5Eb.png" alt="NexT 提供的四種 schemes"></p>
+<h3 id="程式碼區塊樣式"><a href="#程式碼區塊樣式" class="headerlink" title="程式碼區塊樣式"></a>程式碼區塊樣式</h3><blockquote>
+<p>撰寫技術文章絕對不能缺少的 code block，換上舒服的樣式好比設置編輯器的樣式一樣。</p>
+</blockquote>
+<p>Step1：搜尋 codeblock</p>
+<p>Step2：設置參數</p>
+<ul>
+<li>highlight_theme：代碼高亮（我選擇 galactic，後來因為要客製化所以選擇 normal）<ul>
+<li>由於不同的 Next 版本可能有的 highlight_theme 樣式不同，因此建議大家都可以都試試看在選擇比較喜歡的。</li>
+</ul>
+</li>
+<li>copy_button：hover 會顯示複製按鈕</li>
+<li>style：外觀樣式（我選擇原本是選 mac，後來發現 flat 比較適合客製化其它樣式）</li>
+</ul>
+<figure class="highlight diff"><figcaption><span>themes/hexo-theme-next/_config.yml</span></figcaption><table><tr><td class="code"><pre><span class="line">codeblock:</span><br><span class="line">  # Code Highlight theme</span><br><span class="line">  # Available values: normal | night | night eighties | night blue | night bright | solarized | solarized dark | galactic</span><br><span class="line">  # See: https://github.com/chriskempson/tomorrow-theme</span><br><span class="line"><span class="deletion">-  highlight_theme: normal</span></span><br><span class="line"><span class="addition">+  highlight_theme: galactic</span></span><br><span class="line">  # Add copy button on codeblock</span><br><span class="line">  copy_button:</span><br><span class="line"><span class="deletion">-    enable: false</span></span><br><span class="line"><span class="addition">+    enable: true</span></span><br><span class="line">    # Show text copy result.</span><br><span class="line"><span class="deletion">-    show_result: false</span></span><br><span class="line"><span class="addition">+    show_result: false</span></span><br><span class="line">    # Available values: default | flat | mac</span><br><span class="line"><span class="deletion">-    style:</span></span><br><span class="line"><span class="addition">+    style: flat</span></span><br></pre></td></tr></table></figure>
+
+<div class="note danger">
+            <p>如果上面設置完沒有效果，請確認根目錄 _config.yml 檔案中的 <code>highlight</code> 參數 enable 是否設置為 true。</p>
+          </div>
+
+<figure class="highlight diff"><figcaption><span>_config.yml</span></figcaption><table><tr><td class="code"><pre><span class="line">highlight:</span><br><span class="line">  enable: true</span><br></pre></td></tr></table></figure>
+
+<h3 id="Menu-設置"><a href="#Menu-設置" class="headerlink" title="Menu 設置"></a>Menu 設置</h3><blockquote>
+<p>設置 menu 選單列的內容（home、about、tags、categories、archives、schedule、sitemap、commonweal），預設只有開啟兩個（home、archives）。</p>
+</blockquote>
+<p>Step1：搜尋 Menu Settings</p>
+<p>Step2：設置參數</p>
+<ul>
+<li>需要啟用就將對應的註解移除，下方範例示範開啟 tags、categories</li>
+</ul>
+<figure class="highlight diff"><figcaption><span>themes/hexo-theme-next/_config.yml</span></figcaption><table><tr><td class="code"><pre><span class="line">menu:</span><br><span class="line">  home: / || fa fa-home</span><br><span class="line">  #about: /about/ || fa fa-user</span><br><span class="line"><span class="deletion">- #tags: /tags/ || fa fa-tags</span></span><br><span class="line"><span class="addition">+ tags: /tags/ || fa fa-tags</span></span><br><span class="line"><span class="deletion">- #categories: /categories/ || fa fa-th</span></span><br><span class="line"><span class="addition">+ categories: /categories/ || fa fa-th</span></span><br><span class="line">  archives: /archives/ || fa fa-archive</span><br><span class="line">  #schedule: /schedule/ || fa fa-calendar</span><br><span class="line">  #sitemap: /sitemap.xml || fa fa-sitemap</span><br><span class="line">  #commonweal: /404/ || fa fa-heartbeat</span><br></pre></td></tr></table></figure>
+
+<div class="note default">
+            <p>Hexo 原生是使用 Font Awesome icon（註解中有寫），並透過 <code>短路求值（Short-circuit evaluation）</code> 的方式在路徑後方加上 icon 樣式（可以修改其它 icon 樣式）。</p>
+          </div>
+
+<p>Step3：menu 可以設置是否要開啟 icon 圖示 以及 badges 數量（用來顯示對應的數量）。</p>
+<figure class="highlight diff"><figcaption><span>themes/hexo-theme-next/_config.yml</span></figcaption><table><tr><td class="code"><pre><span class="line"># Enable / Disable menu icons / item badges.</span><br><span class="line">menu_settings:</span><br><span class="line">  icons: true</span><br><span class="line"><span class="deletion">-  badges: false</span></span><br><span class="line"><span class="addition">+  badges: true</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="https://imgur.com/AbQvbMt.png" alt="menu tag"></p>
+<div class="note danger">
+            <p>點選 menu 中預設（home、archives）之外的路徑，會出現路徑錯誤（例如：Cannot GET&#x2F;about&#x2F;），因為我們還沒新增對應的頁面，從根目錄 source 資料夾中是否有對應的資料夾，新增頁面作法可以參考下一篇文章。</p>
+          </div>
+
+<p><img src="https://imgur.com/W1W5iaB.png" alt="路徑錯誤"></p>
 ]]></content>
       <categories>
         <category>Hexo</category>
@@ -815,6 +725,96 @@
         <tag>運算子</tag>
         <tag>JS 釘孤枝</tag>
         <tag>JavaScript</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Hexo 檔案名稱 Url 優化（三）</title>
+    <url>/hexo/821499080/</url>
+    <content><![CDATA[<div class="note default">
+            <p>建議此篇內容越早更改設定越好！<br>不然文章一多起來也懶得調整前面的文章 QQ</p>
+          </div>
+
+<h2 id="範例的環境版本"><a href="#範例的環境版本" class="headerlink" title="範例的環境版本"></a>範例的環境版本</h2><p>hexo 版本：6.0.1<br>hexo-cli 版本：4.3.0<br>next 版本：7.8.0</p>
+<h2 id="修改文章名稱參數"><a href="#修改文章名稱參數" class="headerlink" title="修改文章名稱參數"></a>修改文章名稱參數</h2><blockquote>
+<p>預設名稱會帶入 title 參數，如果文章多起來檔名只有 title 的話，要對文章做一些管理或分類都很難下手，因此因要修改檔名參數來解決這個問題，下方示範在檔名參數添加日期。</p>
+</blockquote>
+<p><img src="https://imgur.com/MzSJZrG.jpg" alt="結果圖"></p>
+<p>Step1：進入根目錄 _config.yml 搜尋 <code>#Writing</code></p>
+<p>Step2：修改參數 <code>new_post_name</code></p>
+<p><a href="https://hexo.io/zh-tw/docs/writing#%E6%AA%94%E6%A1%88%E5%90%8D%E7%A8%B1">官方文件</a>提供的參數</p>
+<ul>
+<li><code>:title</code>：標題</li>
+<li><code>:year</code>：建立年份（4 位數）</li>
+<li><code>:month</code>：建立月份（2 位數）</li>
+<li><code>:i_month</code>：建立月份（去掉開頭的零）</li>
+<li><code>:day</code>：建立日期（2 位數）</li>
+<li><code>:i_day</code>：建立日期（去掉開頭的零）</li>
+</ul>
+<figure class="highlight diff"><figcaption><span>_config.yml</span></figcaption><table><tr><td class="code"><pre><span class="line"># Writing</span><br><span class="line"><span class="deletion">- new_post_name: :title.md # File name of new posts</span></span><br><span class="line"><span class="addition">+ new_post_name: :year-:month-:day-:title.md</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="Url-優化"><a href="#Url-優化" class="headerlink" title="Url 優化"></a>Url 優化</h2><blockquote>
+<p>預設路徑格式為 年&#x2F;月&#x2F;日&#x2F;名稱，如果是英文的話倒還好中文其實會很醜，且有空格的話會有用 <code>破折號 -</code> 替代，因此下方會介紹如何優化這個醜醜的 url。</p>
+</blockquote>
+<p><img src="https://imgur.com/A4msRQp.jpg" alt="比較圖"></p>
+<p>Step1：安裝 abbrlink 套件</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">npm install hexo-abbrlink --save</span><br></pre></td></tr></table></figure>
+
+<p>Step2：進入根目錄 _config.yml 搜尋 <code>#URL</code><br>Step3：修改參數 <code>permalink</code></p>
+<div class="note default">
+            <p>之後只要 hexo s 就會自動幫我們在文章 front-matter 中添加 <code>abbrlink</code> 參數並帶上一串英文作為值，這串英文就可以做為 permalink 參數，詳細參數設置可以參考<a href="https://hexo.io/zh-tw/docs/permalinks">官方文件</a>。</p>
+          </div>
+
+<figure class="highlight diff"><figcaption><span>_config.yml</span></figcaption><table><tr><td class="code"><pre><span class="line"># Writing</span><br><span class="line"># URL</span><br><span class="line">## Set your site url here. For example, if you use GitHub Page, set url as &#x27;https://username.github.io/project&#x27;</span><br><span class="line">url: https://kentdoit.github.io/</span><br><span class="line"><span class="deletion">- permalink: :year/:month/:day/:title/</span></span><br><span class="line"><span class="addition">+ permalink: :category/:year:month:day/:abbrlink/</span></span><br></pre></td></tr></table></figure>
+
+<p>Step4：檔案底部添加新參數</p>
+<figure class="highlight yml"><figcaption><span>_config.yml</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="comment"># abbrlink config</span></span><br><span class="line"><span class="attr">abbrlink:</span></span><br><span class="line">  <span class="attr">alg:</span> <span class="string">crc32</span>  <span class="comment"># 演算法：crc16(default) and crc32 </span></span><br><span class="line">  <span class="attr">rep:</span> <span class="string">dec</span>    <span class="comment"># 進位制：dec(default) and hex</span></span><br></pre></td></tr></table></figure>
+
+<p>Step5：優化 Category &amp; Tag</p>
+<ul>
+<li>可以在 _config.yml 中對 Category、Tag 設置對應轉換的字串。</li>
+<li>分別在 category_map、tag_map 參數中設置轉換字串。（請參考下方範例）<div class="note default">
+            <p>這樣在 url 中使用 category 就可轉換為自己想要的字串。（例如：Hexo ➞ hexo）</p>
+          </div></li>
+</ul>
+<figure class="highlight yml"><figcaption><span>_config.yml</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="comment"># Category &amp; Tag</span></span><br><span class="line"><span class="attr">category_map:</span></span><br><span class="line">  <span class="attr">Hexo:</span> <span class="string">hexo</span></span><br><span class="line"><span class="attr">tag_map:</span></span><br><span class="line">  <span class="string">Hexo</span> <span class="string">部落格:</span> <span class="string">hexo</span> <span class="string">blog</span></span><br></pre></td></tr></table></figure>
+
+<div class="note default">
+            <p>有了這招就算 permalink 中的 title 參數有中文也可以透過轉換變為英文，另外在記錄一個可以將中文轉英文的方法。（p.s. 我自己沒有嘗試過所以不確定可不可行）</p>
+          </div>
+
+<figure class="highlight diff"><figcaption><span>_config.yml</span><a href="https://blog.51cto.com/u_14032861/2952031">src</a></figcaption><table><tr><td class="code"><pre><span class="line"># Directory</span><br><span class="line"><span class="deletion">- source_dir: source</span></span><br><span class="line"><span class="addition">+ source_dir: source-en</span></span><br><span class="line"><span class="deletion">- public_dir: public</span></span><br><span class="line"><span class="addition">+ public_dir: public-en</span></span><br></pre></td></tr></table></figure>
+
+<div class="note default">
+            <p>到這邊部署後有可能會出現 404 畫面，我這邊的問題是因為 <code>路徑大小</code> 寫造成的。</p>
+          </div>
+
+<p><img src="https://imgur.com/NtTxON5.jpg" alt="路徑比較圖"></p>
+<p>原因：git 命令默認會忽略文件名稱的大小寫，因此大小寫發生變化會被忽略也導致沒有更新。<br>解法：修改 git ignorecase 參數。</p>
+<p>Step1：進到根目錄 deploy_git 資料夾</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">cd .deploy_git</span><br></pre></td></tr></table></figure>
+
+<p>Step2：編輯 git 設定檔</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">vim .git/config</span><br></pre></td></tr></table></figure>
+
+<p>Step3：修改 ignorecase 參數為 false（要先按小寫 i 才能修改）</p>
+<figure class="highlight diff"><figcaption><span>.git/config</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="addition">+ ignorecase = false</span></span><br><span class="line"><span class="deletion">- ignorecase = true</span></span><br></pre></td></tr></table></figure>
+
+<p>Step4：修改完後儲存並離開檔案，先按 Esc 後直接輸入以下指令</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">:wq</span><br></pre></td></tr></table></figure>
+
+<p>Step5：接下來的三個指令是為了更新 server 上的檔案（先刪除在新增）</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">git rm -rf *</span><br><span class="line">git commit -m &#x27;clean all file&#x27;</span><br><span class="line">git push</span><br></pre></td></tr></table></figure>
+
+<p>Step6：接下來指令是回到根目錄並清除快取檔案 (db.json) 和已產生的靜態檔案 (public)，最後就是重新部署</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">cd ..</span><br><span class="line">hexo clean</span><br><span class="line">hexo g -d</span><br></pre></td></tr></table></figure>
+
+<h2 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h2><p><a href="https://trifond.github.io/2018/12/05/hexo-folder-ignore-case/">Hexo部署到Github后文件夹名大小写引起的问题</a><br><a href="https://israynotarray.com/hexo/20190517/2562079032/">Hexo Url優化(SEO)</a></p>
+]]></content>
+      <categories>
+        <category>Hexo</category>
+      </categories>
+      <tags>
+        <tag>Hexo 優化</tag>
       </tags>
   </entry>
   <entry>
