@@ -2258,4 +2258,51 @@ console.log(obj.name);  // kent
         <tag>JavaScript</tag>
       </tags>
   </entry>
+  <entry>
+    <title>JS 類陣列 （ Array-like ）</title>
+    <url>/javascript/3574120313/</url>
+    <content><![CDATA[<h2 id="Array-like"><a href="#Array-like" class="headerlink" title="Array-like"></a>Array-like</h2><div class="note primary">
+            <p>Array-like object 就是一個類陣列物件（很像陣列的物件），和一般陣會最大差異就是，類陣列<code>沒有</code>陣列內建的方法。</p>
+          </div>
+
+<h3 id="常見的類陣列"><a href="#常見的類陣列" class="headerlink" title="常見的類陣列"></a>常見的類陣列</h3><ul>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/arguments">arguments object</a><ul>
+<li>函式中用來接收所有引數。</li>
+</ul>
+</li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLCollection">HTMLCollection</a><ul>
+<li>透過方法（ex：getElementsByTagName）取得的 DOM 物件。</li>
+</ul>
+</li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/NodeList">NodeList</a><ul>
+<li>透過方法（ex：querySelectorAll）取得的節點集合。</li>
+</ul>
+</li>
+</ul>
+<div class="note danger">
+            <p>要注意，類陣列 <code>不是真正</code> 的陣列。</p>
+          </div>
+
+<h3 id="類陣列特性"><a href="#類陣列特性" class="headerlink" title="類陣列特性"></a>類陣列特性</h3><ul>
+<li>可以使用<code>索引值</code>取得值。</li>
+<li>可以使用 <code>length</code> 屬性。</li>
+<li>可以使用 <code>callee</code> 屬性。<ul>
+<li>取得目前執行的函式，常用於使匿名函式也可以進行遞迴。（但在 ES5 嚴格模式底下已禁用，詳細原因請參考 <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/arguments/callee">MDN</a>）</li>
+</ul>
+</li>
+<li><code>沒有</code> 陣列內建的 <code>方法</code>。（ex：indexOf、concat、forEach）</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">add</span>(<span class="params">num1, num2</span>) &#123;</span><br><span class="line">	<span class="keyword">let</span> arr = [<span class="number">2000</span>, <span class="number">22</span>];</span><br><span class="line">	<span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">arguments</span>[<span class="number">0</span>]);     <span class="comment">// 2000</span></span><br><span class="line">	<span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">arguments</span>.<span class="property">length</span>); <span class="comment">// 2</span></span><br><span class="line">	<span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">arguments</span>.<span class="property">callee</span>); <span class="comment">// function code</span></span><br><span class="line">	<span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">arguments</span>, arr);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> constNum = <span class="title function_">add</span>(<span class="number">2000</span>, <span class="number">22</span>);</span><br></pre></td></tr></table></figure>
+
+<p>下方圖片為 <code>console.log(arguments, arr);</code> 的結果，可以從Prototype 看出 arguments object <code>沒有</code>內建陣列方法。</p>
+<div class="note default">
+            <p>雖然上述類陣列看起來這麼不方便，但可以將類陣列轉為陣列，來使用陣列操作。</p>
+          </div>]]></content>
+      <categories>
+        <category>JavaScript</category>
+      </categories>
+      <tags>
+        <tag>JavaScript</tag>
+      </tags>
+  </entry>
 </search>

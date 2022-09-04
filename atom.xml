@@ -6,7 +6,7 @@
   <link href="https://kentdoit.github.io/atom.xml" rel="self"/>
   
   <link href="https://kentdoit.github.io/"/>
-  <updated>2022-08-12T12:02:01.491Z</updated>
+  <updated>2022-09-04T04:07:11.017Z</updated>
   <id>https://kentdoit.github.io/</id>
   
   <author>
@@ -17,11 +17,30 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>JS 類陣列 （ Array-like ）</title>
+    <link href="https://kentdoit.github.io/javascript/3574120313/"/>
+    <id>https://kentdoit.github.io/javascript/3574120313/</id>
+    <published>2022-09-04T03:54:00.000Z</published>
+    <updated>2022-09-04T04:07:11.017Z</updated>
+    
+    
+    <summary type="html">此篇主要講解 Array-like 和一般陣列有什麼差異，最後也會介紹三種將類陣列轉成陣列的方法。</summary>
+    
+    
+    
+    <category term="JavaScript" scheme="https://kentdoit.github.io/categories/javascript/"/>
+    
+    
+    <category term="JavaScript" scheme="https://kentdoit.github.io/tags/JavaScript/"/>
+    
+  </entry>
+  
+  <entry>
     <title>JS String vs toString</title>
     <link href="https://kentdoit.github.io/javascript/4119142473/"/>
     <id>https://kentdoit.github.io/javascript/4119142473/</id>
     <published>2022-08-03T04:17:59.000Z</published>
-    <updated>2022-08-12T12:02:01.491Z</updated>
+    <updated>2022-08-12T12:02:01.000Z</updated>
     
     
     <summary type="html">此篇主要探討 String()、toString() 兩種轉換字串方法的差異，以及使用情境。</summary>
@@ -42,7 +61,7 @@
     <link href="https://kentdoit.github.io/javascript/4170310433/"/>
     <id>https://kentdoit.github.io/javascript/4170310433/</id>
     <published>2022-07-30T02:25:08.000Z</published>
-    <updated>2022-08-12T12:01:44.426Z</updated>
+    <updated>2022-08-12T12:01:44.000Z</updated>
     
     
     <summary type="html">探討 undefined、not defined 兩者區別以及注意事項。</summary>
@@ -63,7 +82,7 @@
     <link href="https://kentdoit.github.io/javascript/3007200680/"/>
     <id>https://kentdoit.github.io/javascript/3007200680/</id>
     <published>2022-07-25T02:24:54.000Z</published>
-    <updated>2022-08-12T12:01:22.328Z</updated>
+    <updated>2022-08-12T12:01:22.000Z</updated>
     
     
     <summary type="html">此篇探討在 JS 中 null、undefined 的差異。</summary>
@@ -84,7 +103,7 @@
     <link href="https://kentdoit.github.io/javascript/163319027/"/>
     <id>https://kentdoit.github.io/javascript/163319027/</id>
     <published>2022-07-21T03:36:54.000Z</published>
-    <updated>2022-08-12T12:01:08.021Z</updated>
+    <updated>2022-08-12T12:01:08.000Z</updated>
     
     
     <summary type="html">此篇主要透過 ECMAScript 中定義的規則，來講述幾個 JS 抽象的值運算 (abstract operations) 做轉型的過程。</summary>
@@ -105,7 +124,7 @@
     <link href="https://kentdoit.github.io/javascript/3842658283/"/>
     <id>https://kentdoit.github.io/javascript/3842658283/</id>
     <published>2022-07-15T03:00:03.000Z</published>
-    <updated>2022-08-12T12:11:03.285Z</updated>
+    <updated>2022-08-12T12:11:03.000Z</updated>
     
     
     <summary type="html">此篇會用 Stack &amp; Heap 來探討，傳值 by Value、傳址 by Reference、傳共享 by sharing 三者的差異</summary>
@@ -124,7 +143,7 @@
     <link href="https://kentdoit.github.io/javascript/4089638591/"/>
     <id>https://kentdoit.github.io/javascript/4089638591/</id>
     <published>2022-07-10T09:03:44.000Z</published>
-    <updated>2022-08-12T12:02:17.455Z</updated>
+    <updated>2022-08-12T12:02:17.000Z</updated>
     
     
     <summary type="html">此篇會介紹 JS ES6 新增的語法解構賦值的概念以及如何使用。</summary>
@@ -145,7 +164,7 @@
     <link href="https://kentdoit.github.io/javascript/1214648668/"/>
     <id>https://kentdoit.github.io/javascript/1214648668/</id>
     <published>2022-07-05T09:03:32.000Z</published>
-    <updated>2022-08-12T11:59:35.940Z</updated>
+    <updated>2022-08-12T11:59:35.000Z</updated>
     
     
     <summary type="html">此篇會介紹 ES6 新增的展開運算子 Spread Operator 的兩種類型。</summary>
@@ -166,7 +185,7 @@
     <link href="https://kentdoit.github.io/javascript/3900271525/"/>
     <id>https://kentdoit.github.io/javascript/3900271525/</id>
     <published>2022-06-28T09:03:08.000Z</published>
-    <updated>2022-08-12T11:59:18.619Z</updated>
+    <updated>2022-08-12T11:59:18.000Z</updated>
     
     
     <summary type="html">此篇學習在 JS 中如何透過這個 ES2020 新增的語法糖可選串連運算子，來避免遇到物件屬性不存在所導致的報錯。</summary>
@@ -187,7 +206,7 @@
     <link href="https://kentdoit.github.io/javascript/2204307334/"/>
     <id>https://kentdoit.github.io/javascript/2204307334/</id>
     <published>2022-06-23T04:01:24.000Z</published>
-    <updated>2022-08-05T09:36:38.596Z</updated>
+    <updated>2022-08-05T09:36:38.000Z</updated>
     
     
     <summary type="html">此篇會介紹 ES6 新增的「板字面值 Template Literal」。</summary>
@@ -208,7 +227,7 @@
     <link href="https://kentdoit.github.io/javascript/3525467973/"/>
     <id>https://kentdoit.github.io/javascript/3525467973/</id>
     <published>2022-06-20T05:48:52.000Z</published>
-    <updated>2022-08-05T08:52:51.793Z</updated>
+    <updated>2022-08-05T08:52:51.000Z</updated>
     
     
     <summary type="html">此篇會介紹 JS 中常用技巧「空值合併運算子」，以及其優缺點。</summary>
@@ -229,7 +248,7 @@
     <link href="https://kentdoit.github.io/javascript/350805089/"/>
     <id>https://kentdoit.github.io/javascript/350805089/</id>
     <published>2022-06-20T05:34:38.000Z</published>
-    <updated>2022-06-20T07:15:44.818Z</updated>
+    <updated>2022-06-20T07:15:44.000Z</updated>
     
     
     <summary type="html">此篇會介紹 JS 中常用技巧，將 &amp;&amp;、|| 運用「短路求值」的方式來提升 coding 效率。</summary>
@@ -250,7 +269,7 @@
     <link href="https://kentdoit.github.io/javascript/2638792469/"/>
     <id>https://kentdoit.github.io/javascript/2638792469/</id>
     <published>2022-06-17T03:02:37.000Z</published>
-    <updated>2022-06-17T05:47:46.226Z</updated>
+    <updated>2022-06-17T05:47:46.000Z</updated>
     
     
     <summary type="html">此篇會用範例來了解什麼是箭頭函式以及特性。</summary>
@@ -275,7 +294,7 @@
     <link href="https://kentdoit.github.io/javascript/2900651289/"/>
     <id>https://kentdoit.github.io/javascript/2900651289/</id>
     <published>2022-06-13T02:53:10.000Z</published>
-    <updated>2022-07-30T07:03:39.646Z</updated>
+    <updated>2022-07-30T07:03:39.000Z</updated>
     
     
     <summary type="html">此篇會介紹 物件實字 Object Literal 的作用以及特性。</summary>
@@ -298,7 +317,7 @@
     <link href="https://kentdoit.github.io/javascript/1047366401/"/>
     <id>https://kentdoit.github.io/javascript/1047366401/</id>
     <published>2022-06-03T06:35:27.000Z</published>
-    <updated>2022-08-05T08:56:30.637Z</updated>
+    <updated>2022-08-05T08:56:30.000Z</updated>
     
     
     <summary type="html">此篇透過邏輯運算子切入學習真值（truthy）、假值（falsy）。</summary>
@@ -321,7 +340,7 @@
     <link href="https://kentdoit.github.io/javascript/2972146539/"/>
     <id>https://kentdoit.github.io/javascript/2972146539/</id>
     <published>2022-05-15T04:36:46.000Z</published>
-    <updated>2022-06-09T12:56:12.875Z</updated>
+    <updated>2022-06-09T12:56:12.000Z</updated>
     
     
     <summary type="html">此篇會依照 ECMA-262 11th（ES2020）規則，來深入探討比較運算子轉型的規則。</summary>
@@ -344,7 +363,7 @@
     <link href="https://kentdoit.github.io/javascript/3699626031/"/>
     <id>https://kentdoit.github.io/javascript/3699626031/</id>
     <published>2022-05-10T03:07:50.000Z</published>
-    <updated>2022-08-07T03:41:36.401Z</updated>
+    <updated>2022-08-07T03:41:36.000Z</updated>
     
     
     <summary type="html">此篇主要探討兩種比較運算子 ==、=== 的差異。</summary>
@@ -367,7 +386,7 @@
     <link href="https://kentdoit.github.io/hexo/2629412870/"/>
     <id>https://kentdoit.github.io/hexo/2629412870/</id>
     <published>2022-05-09T23:51:46.000Z</published>
-    <updated>2022-06-02T06:45:29.557Z</updated>
+    <updated>2022-06-02T06:45:29.000Z</updated>
     
     
     <summary type="html">此篇會介紹 Sitemap 所遇到的一切問題。</summary>
@@ -386,7 +405,7 @@
     <link href="https://kentdoit.github.io/hexo/3578178281/"/>
     <id>https://kentdoit.github.io/hexo/3578178281/</id>
     <published>2022-05-04T12:26:06.000Z</published>
-    <updated>2022-05-08T12:44:15.337Z</updated>
+    <updated>2022-05-08T12:44:15.000Z</updated>
     
     
     <summary type="html">此篇介紹如何設置 robots.txt 來管理爬蟲檔案爬取的權限。</summary>
@@ -405,7 +424,7 @@
     <link href="https://kentdoit.github.io/hexo/599670072/"/>
     <id>https://kentdoit.github.io/hexo/599670072/</id>
     <published>2022-05-01T06:10:25.000Z</published>
-    <updated>2022-05-10T01:52:49.063Z</updated>
+    <updated>2022-05-10T01:52:49.000Z</updated>
     
     
     <summary type="html">此篇介紹如何為部落格設置 GA 以及 Sitemap。</summary>
@@ -416,25 +435,6 @@
     
     
     <category term="Hexo SEO" scheme="https://kentdoit.github.io/tags/Hexo-SEO/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Hexo 檔案名稱 Url 優化（三）</title>
-    <link href="https://kentdoit.github.io/hexo/821499080/"/>
-    <id>https://kentdoit.github.io/hexo/821499080/</id>
-    <published>2022-04-28T14:20:08.000Z</published>
-    <updated>2022-05-08T12:44:14.484Z</updated>
-    
-    
-    <summary type="html">此篇介紹如何變更新增文章名稱帶入的參數以及對於 url 的優化。</summary>
-    
-    
-    
-    <category term="Hexo" scheme="https://kentdoit.github.io/categories/hexo/"/>
-    
-    
-    <category term="Hexo 優化" scheme="https://kentdoit.github.io/tags/Hexo-%E5%84%AA%E5%8C%96/"/>
     
   </entry>
   

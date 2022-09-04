@@ -40,17 +40,20 @@
   gtag('config', 'G-K8QW91NNBQ');
 </script>
 
-  <meta name="description" content="Blog">
-<meta property="og:type" content="website">
-<meta property="og:title" content="KentDoIt">
-<meta property="og:url" content="https://kentdoit.github.io/tags/Hexo-%E5%84%AA%E5%8C%96/index.html">
+  <meta name="description" content="此篇主要講解 Array-like 和一般陣列有什麼差異，最後也會介紹三種將類陣列轉成陣列的方法。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JS 類陣列 （ Array-like ）">
+<meta property="og:url" content="https://kentdoit.github.io/javascript/3574120313/index.html">
 <meta property="og:site_name" content="KentDoIt">
-<meta property="og:description" content="Blog">
+<meta property="og:description" content="此篇主要講解 Array-like 和一般陣列有什麼差異，最後也會介紹三種將類陣列轉成陣列的方法。">
 <meta property="og:locale" content="zh_TW">
+<meta property="article:published_time" content="2022-09-04T03:54:00.000Z">
+<meta property="article:modified_time" content="2022-09-04T04:07:11.017Z">
 <meta property="article:author" content="Kent">
+<meta property="article:tag" content="JavaScript">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="https://kentdoit.github.io/tags/Hexo-%E5%84%AA%E5%8C%96/">
+<link rel="canonical" href="https://kentdoit.github.io/javascript/3574120313/">
 
 
 <script id="page-configurations">
@@ -58,12 +61,12 @@
   CONFIG.page = {
     sidebar: "",
     isHome : false,
-    isPost : false,
+    isPost : true,
     lang   : 'zh-TW'
   };
 </script>
 
-  <title>標籤: Hexo 優化 | KentDoIt</title>
+  <title>JS 類陣列 （ Array-like ） | KentDoIt</title>
   
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-K8QW91NNBQ"></script>
     <script>
@@ -227,77 +230,168 @@
         <div class="content-wrap">
           
 
-          <div class="content tag">
+          <div class="content post posts-expand">
             
 
+    
   
   
-  
-  <div class="post-block">
-    <div class="posts-collapse">
-      <div class="collection-title">
-        <h2 class="collection-header">Hexo 優化
-          <small>標籤</small>
-        </h2>
-      </div>
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="https://kentdoit.github.io/javascript/3574120313/">
 
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/headshost_ya.jpg">
+      <meta itemprop="name" content="Kent">
+      <meta itemprop="description" content="Blog">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="KentDoIt">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          JS 類陣列 （ Array-like ）
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <!--<i class="far fa-folder"></i>-->
+                <i class="far fa-folder-open"></i>
+              </span>
+              <!--<span class="post-meta-item-text">分類於</span>-->
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/javascript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
+                </span>
+            </span>
+            <span class="post-meta-item" title="所需閱讀時間">
+              <!--<span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>-->
+              <span>1 分鐘閱讀時間</span>
+            </span>
+            <span class="post-meta-item">
+              <!--<span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>-->
+              <br>
+              <time title="創建時間：2022-09-04 11:54:00" itemprop="dateCreated datePublished" datetime="2022-09-04T11:54:00+08:00">2022-09-04</time>
+            </span>
+
+          
+            <div class="post-description">此篇主要講解 Array-like 和一般陣列有什麼差異，最後也會介紹三種將類陣列轉成陣列的方法。</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <blockquote class="blockquote-center">
+          <i class="fa fa-quote-left"></i>
+          <p>此篇主要講解 Array-like 和一般陣列有什麼差異，最後也會介紹三種將類陣列轉成陣列的方法。</p>
+          <i class="fa fa-quote-right"></i>
+        </blockquote>
       
-    <div class="collection-year">
-      <span class="collection-header">2022</span>
+        <h2 id="Array-like"><a href="#Array-like" class="headerlink" title="Array-like"></a>Array-like</h2><div class="note primary">
+            <p>Array-like object 就是一個類陣列物件（很像陣列的物件），和一般陣會最大差異就是，類陣列<code>沒有</code>陣列內建的方法。</p>
+          </div>
+
+<h3 id="常見的類陣列"><a href="#常見的類陣列" class="headerlink" title="常見的類陣列"></a>常見的類陣列</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/arguments">arguments object</a><ul>
+<li>函式中用來接收所有引數。</li>
+</ul>
+</li>
+<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLCollection">HTMLCollection</a><ul>
+<li>透過方法（ex：getElementsByTagName）取得的 DOM 物件。</li>
+</ul>
+</li>
+<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/API/NodeList">NodeList</a><ul>
+<li>透過方法（ex：querySelectorAll）取得的節點集合。</li>
+</ul>
+</li>
+</ul>
+<div class="note danger">
+            <p>要注意，類陣列 <code>不是真正</code> 的陣列。</p>
+          </div>
+
+<h3 id="類陣列特性"><a href="#類陣列特性" class="headerlink" title="類陣列特性"></a>類陣列特性</h3><ul>
+<li>可以使用<code>索引值</code>取得值。</li>
+<li>可以使用 <code>length</code> 屬性。</li>
+<li>可以使用 <code>callee</code> 屬性。<ul>
+<li>取得目前執行的函式，常用於使匿名函式也可以進行遞迴。（但在 ES5 嚴格模式底下已禁用，詳細原因請參考 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/arguments/callee">MDN</a>）</li>
+</ul>
+</li>
+<li><code>沒有</code> 陣列內建的 <code>方法</code>。（ex：indexOf、concat、forEach）</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">add</span>(<span class="params">num1, num2</span>) &#123;</span><br><span class="line">	<span class="keyword">let</span> arr = [<span class="number">2000</span>, <span class="number">22</span>];</span><br><span class="line">	<span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">arguments</span>[<span class="number">0</span>]);     <span class="comment">// 2000</span></span><br><span class="line">	<span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">arguments</span>.<span class="property">length</span>); <span class="comment">// 2</span></span><br><span class="line">	<span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">arguments</span>.<span class="property">callee</span>); <span class="comment">// function code</span></span><br><span class="line">	<span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">arguments</span>, arr);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> constNum = <span class="title function_">add</span>(<span class="number">2000</span>, <span class="number">22</span>);</span><br></pre></td></tr></table></figure>
+
+<p>下方圖片為 <code>console.log(arguments, arr);</code> 的結果，可以從Prototype 看出 arguments object <code>沒有</code>內建陣列方法。</p>
+<div class="note default">
+            <p>雖然上述類陣列看起來這麼不方便，但可以將類陣列轉為陣列，來使用陣列操作。</p>
+          </div>
     </div>
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+    
+    
+    
+        
 
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2022-05-04T20:26:06+08:00"
-              content="2022-05-04">
-          05-04
-        </time>
-      </div>
+<div>
+<hr style="margin-top: 40px">
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>作者： </strong>Kent
+  </li>
+  <li class="post-copyright-link">
+    <strong>文章連結：</strong>
+    <a href="https://kentdoit.github.io/javascript/3574120313/" title="JS 類陣列 （ Array-like ）">https://kentdoit.github.io/javascript/3574120313/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版權聲明： </strong>本網誌所有文章除特別聲明外，均採用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh_TW" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 許可協議。轉載請註明出處！
+  </li>
+</ul>
+</div>
 
-      <div class="post-title">
-          <a class="post-title-link" href="/hexo/3578178281/" itemprop="url">
-            <span itemprop="name">Hexo 管理爬蟲 robots.txt（五）</span>
-          </a>
-      </div>
 
-    </header>
-  </article>
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+              <a href="/tags/JavaScript/" rel="tag"><i class="fas fa-hashtag"></i> JavaScript</a>
+          </div>
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+        
 
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2022-04-28T22:20:08+08:00"
-              content="2022-04-28">
-          04-28
-        </time>
-      </div>
 
-      <div class="post-title">
-          <a class="post-title-link" href="/hexo/821499080/" itemprop="url">
-            <span itemprop="name">Hexo 檔案名稱 Url 優化（三）</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/javascript/4119142473/" rel="prev" title="JS String vs toString">
+      <i class="fa fa-chevron-left"></i> JS String vs toString
+    </a></div>
+      <div class="post-nav-item"></div>
     </div>
-  </div>
+      </footer>
+    
+  </article>
   
   
-  
-
   
 
 
 
           </div>
           
+  <script src="https://utteranc.es/client.js"
+          repo="KentDoIt/hexo-theme-next"
+          issue-term="pathname"
+          label="blog comment"
+          theme="github-light"
+          crossorigin="anonymous"
+          async>
+  </script>
 
 <script>
   window.addEventListener('tabs:register', () => {
@@ -344,6 +438,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Array-like"><span class="nav-text">Array-like</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B8%B8%E8%A6%8B%E7%9A%84%E9%A1%9E%E9%99%A3%E5%88%97"><span class="nav-text">常見的類陣列</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A1%9E%E9%99%A3%E5%88%97%E7%89%B9%E6%80%A7"><span class="nav-text">類陣列特性</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
