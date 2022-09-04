@@ -47,11 +47,18 @@
 <meta property="og:site_name" content="KentDoIt">
 <meta property="og:description" content="此篇主要講解 Array-like 和一般陣列有什麼差異，最後也會介紹三種將類陣列轉成陣列的方法。">
 <meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="https://imgur.com/tsnSGYm.jpg">
+<meta property="og:image" content="https://imgur.com/2HqYyra.jpg">
+<meta property="og:image" content="https://imgur.com/WlvvvyC.jpg">
+<meta property="og:image" content="https://imgur.com/wANgTbr.jpg">
+<meta property="og:image" content="https://imgur.com/sGiyYxv.jpg">
+<meta property="og:image" content="https://imgur.com/R7GWrno.jpg">
 <meta property="article:published_time" content="2022-09-04T03:54:00.000Z">
-<meta property="article:modified_time" content="2022-09-04T04:07:11.017Z">
+<meta property="article:modified_time" content="2022-09-04T04:32:12.011Z">
 <meta property="article:author" content="Kent">
 <meta property="article:tag" content="JavaScript">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://imgur.com/tsnSGYm.jpg">
 
 <link rel="canonical" href="https://kentdoit.github.io/javascript/3574120313/">
 
@@ -268,7 +275,7 @@
               <!--<span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>-->
-              <span>1 分鐘閱讀時間</span>
+              <span>2 分鐘閱讀時間</span>
             </span>
             <span class="post-meta-item">
               <!--<span class="post-meta-item-icon">
@@ -329,9 +336,56 @@
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">add</span>(<span class="params">num1, num2</span>) &#123;</span><br><span class="line">	<span class="keyword">let</span> arr = [<span class="number">2000</span>, <span class="number">22</span>];</span><br><span class="line">	<span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">arguments</span>[<span class="number">0</span>]);     <span class="comment">// 2000</span></span><br><span class="line">	<span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">arguments</span>.<span class="property">length</span>); <span class="comment">// 2</span></span><br><span class="line">	<span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">arguments</span>.<span class="property">callee</span>); <span class="comment">// function code</span></span><br><span class="line">	<span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">arguments</span>, arr);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> constNum = <span class="title function_">add</span>(<span class="number">2000</span>, <span class="number">22</span>);</span><br></pre></td></tr></table></figure>
 
 <p>下方圖片為 <code>console.log(arguments, arr);</code> 的結果，可以從Prototype 看出 arguments object <code>沒有</code>內建陣列方法。</p>
+<p><img src="https://imgur.com/tsnSGYm.jpg"></p>
 <div class="note default">
             <p>雖然上述類陣列看起來這麼不方便，但可以將類陣列轉為陣列，來使用陣列操作。</p>
           </div>
+
+<h2 id="類陣列轉陣列的三種方法"><a href="#類陣列轉陣列的三種方法" class="headerlink" title="類陣列轉陣列的三種方法"></a>類陣列轉陣列的三種方法</h2><div class="note default">
+            <p>下列介紹的三種都是淺拷貝（shallow-copied）</p>
+          </div>
+
+<ul>
+<li>ES5 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/slice#array-like_objects">slice</a>：<code>Array.prototype.slice.call(arguments);</code></li>
+<li>ES6 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/from">Array.from</a>：<code>Array.from(arguments)</code></li>
+<li>ES6 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/rest_parameters">Rest parameters（解構式）</a>：<code>[...arguments];</code></li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">add</span>(<span class="params">num1, num2</span>) &#123;</span><br><span class="line">	<span class="keyword">let</span> arr1 = <span class="title class_">Array</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">slice</span>.<span class="title function_">call</span>(<span class="variable language_">arguments</span>);</span><br><span class="line">	<span class="keyword">let</span> arr2 = [...<span class="variable language_">arguments</span>]; <span class="comment">// 寫法相對簡潔</span></span><br><span class="line">	<span class="keyword">let</span> arr3 = <span class="title class_">Array</span>.<span class="title function_">from</span>(<span class="variable language_">arguments</span>);</span><br><span class="line">	<span class="variable language_">console</span>.<span class="title function_">log</span>(arr1, arr2, arr3);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> constNum = <span class="title function_">add</span>(<span class="number">2000</span>, <span class="number">22</span>);</span><br></pre></td></tr></table></figure>
+
+<p>由下方圖片可得知三者是陣列。</p>
+<p><img src="https://imgur.com/2HqYyra.jpg"></p>
+<div class="note default">
+            <p>下方會透過效能、支援度這兩個方面來對這三種方法做比較</p>
+          </div>
+
+<h3 id="performance"><a href="#performance" class="headerlink" title="performance"></a>performance</h3><div class="note default">
+            <p>有一篇文章：<a target="_blank" rel="noopener" href="https://catalin.red/js-array-from-array-like-object/">JS array from an array-like object</a> 有對上述提到的三種方法，進行效能的評測，結果如下圖。</p>
+          </div>
+
+<p><img src="https://imgur.com/WlvvvyC.jpg"></p>
+<div class="note default">
+            <p>從上方圖片可得知 <code>slice</code> 方法的速度是優於另外兩種蠻多的。</p>
+          </div>
+
+<h3 id="support"><a href="#support" class="headerlink" title="support"></a>support</h3><div class="note default">
+            <p>從 <a target="_blank" rel="noopener" href="https://caniuse.com/">caniuse</a> 來看三種方法對於瀏覽器的支援度。</p>
+          </div>
+
+<p><img src="https://imgur.com/wANgTbr.jpg"><br><img src="https://imgur.com/sGiyYxv.jpg"><br><img src="https://imgur.com/R7GWrno.jpg"></p>
+<div class="note default">
+            <p><code>slice</code> 方法的支援度是最好的。</p>
+          </div>
+
+<h2 id="conclusion"><a href="#conclusion" class="headerlink" title="conclusion"></a>conclusion</h2><div class="note default">
+            <p>對於上述三種方法若從效能和支援度方面來抉擇，我會選 <code>Array.prototype.slice.call</code>。</p>
+          </div>
+
+<h2 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://zh-tw.coderbridge.com/series/9e5162da940f473a9f1cfeece124ee98/posts/3df8bdb9dfdd4fef9f8b2d1b12eb5bf0">[12] 值 - 陣列、類陣列</a></li>
+<li><a target="_blank" rel="noopener" href="https://catalin.red/js-array-from-array-like-object/">JS array from an array-like object</a></li>
+<li><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/29707568/javascript-difference-between-array-and-array-like-object">JavaScript - Difference between Array and Array-like object</a></li>
+</ul>
+
     </div>
 
     
@@ -438,7 +492,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Array-like"><span class="nav-text">Array-like</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B8%B8%E8%A6%8B%E7%9A%84%E9%A1%9E%E9%99%A3%E5%88%97"><span class="nav-text">常見的類陣列</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A1%9E%E9%99%A3%E5%88%97%E7%89%B9%E6%80%A7"><span class="nav-text">類陣列特性</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Array-like"><span class="nav-text">Array-like</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B8%B8%E8%A6%8B%E7%9A%84%E9%A1%9E%E9%99%A3%E5%88%97"><span class="nav-text">常見的類陣列</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A1%9E%E9%99%A3%E5%88%97%E7%89%B9%E6%80%A7"><span class="nav-text">類陣列特性</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A1%9E%E9%99%A3%E5%88%97%E8%BD%89%E9%99%A3%E5%88%97%E7%9A%84%E4%B8%89%E7%A8%AE%E6%96%B9%E6%B3%95"><span class="nav-text">類陣列轉陣列的三種方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#performance"><span class="nav-text">performance</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#support"><span class="nav-text">support</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#conclusion"><span class="nav-text">conclusion</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#reference"><span class="nav-text">reference</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
