@@ -6,7 +6,7 @@
   <link href="https://kentdoit.github.io/atom.xml" rel="self"/>
   
   <link href="https://kentdoit.github.io/"/>
-  <updated>2022-09-04T04:43:17.683Z</updated>
+  <updated>2022-09-10T03:07:49.169Z</updated>
   <id>https://kentdoit.github.io/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://kentdoit.github.io/javascript/3574120313/"/>
     <id>https://kentdoit.github.io/javascript/3574120313/</id>
     <published>2022-08-10T03:54:00.000Z</published>
-    <updated>2022-09-04T04:43:17.683Z</updated>
+    <updated>2022-09-10T03:07:49.169Z</updated>
     
     
     <summary type="html">此篇主要講解 Array-like 和一般陣列有什麼差異，最後也會介紹三種將類陣列轉成陣列的方法。</summary>
