@@ -2370,7 +2370,7 @@ console.log(obj.name);  // kent
 <h3 id="Hoisting"><a href="#Hoisting" class="headerlink" title="Hoisting"></a>Hoisting</h3><blockquote>
 <p>白話文：將陳述式（ Statement ）提升（Hoisting），其特性使其在定義前，使用也可以運行。</p>
 </blockquote>
-<p>下方圖片左邊程式碼因為 <code>Hoisting 特性</code> 使其可以運行，其效果可以參考圖片中右邊程式碼，想像 <code>Hoisting</code> 就是將宣告的部分提升至最前面，使其在宣告前使用不會因為<code>尚未定義</code> 就噴 not defined。</p>
+<p>下方圖片中左邊程式碼因為 <code>Hoisting 特性</code> 使其可以運行，其效果可以參考圖片中右邊程式碼，想像 <code>Hoisting</code> 就是將宣告的部分提升至最前面，使其在宣告前使用不會因為<code>尚未定義</code> 就噴 not defined。</p>
 <p><img src="https://imgur.com/jAJH5Yd.png"></p>
 <h3 id="TDZ"><a href="#TDZ" class="headerlink" title="TDZ"></a>TDZ</h3><blockquote>
 <p>白話文：在 let、const 情況下<code>宣告後</code>以及<code>尚未賦予值</code>前都無法取用，因為會進入 TDZ（暫時性死區中）。</p>
