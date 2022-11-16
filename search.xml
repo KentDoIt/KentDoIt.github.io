@@ -2356,10 +2356,10 @@ console.log(obj.name);  // kent
   <entry>
     <title>JS 宣告變數 var、let、const 差異</title>
     <url>/javascript/475274378/</url>
-    <content><![CDATA[<blockquote>
-<p>再開始之前先簡單科普幾個名詞</p>
+    <content><![CDATA[<h2 id="科普"><a href="#科普" class="headerlink" title="科普"></a>科普</h2><blockquote>
+<p>再開始之前先簡單科普幾個名詞，有助於理解後面篇幅內容。</p>
 </blockquote>
-<h2 id="科普"><a href="#科普" class="headerlink" title="科普"></a>科普</h2><h3 id="Scope"><a href="#Scope" class="headerlink" title="Scope"></a>Scope</h3><blockquote>
+<h3 id="Scope"><a href="#Scope" class="headerlink" title="Scope"></a>Scope</h3><blockquote>
 <p>白話文：程式碼的作用域。（想看 MDN 定義的請往這邊 <a href="https://developer.mozilla.org/en-US/docs/Glossary/Scope">scope</a>）</p>
 </blockquote>
 <p>編譯器或 JavaScript 引擎藉由 <code>識別字名稱</code>（identifier name）去查找變數，查找的規則是依循 RHS、LHS，而 <code>RHS、LHS</code> 是有範圍限制的（如果沒有範圍限制，全部的都變成全域不就 GG 了），所以透過定義出了三種 scope type（global scope、function scope、block scope）來區分 <code>RHS、LHS</code> 的使用範圍。</p>
