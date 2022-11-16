@@ -1318,7 +1318,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #59d6f5;
+  background: #e2ff5c;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
@@ -2791,6 +2791,7 @@ pre .deletion {
   display: none;
 }
 answer {
+  display: inline-block;
   margin-left: 18px;
 }
 details:hover {

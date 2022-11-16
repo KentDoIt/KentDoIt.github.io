@@ -1,96 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Hexo 檔案名稱 Url 優化（三）</title>
-    <url>/hexo/821499080/</url>
-    <content><![CDATA[<div class="note default">
-            <p>建議此篇內容越早更改設定越好！<br>不然文章一多起來也懶得調整前面的文章 QQ</p>
-          </div>
-
-<h2 id="範例的環境版本"><a href="#範例的環境版本" class="headerlink" title="範例的環境版本"></a>範例的環境版本</h2><p>hexo 版本：6.0.1<br>hexo-cli 版本：4.3.0<br>next 版本：7.8.0</p>
-<h2 id="修改文章名稱參數"><a href="#修改文章名稱參數" class="headerlink" title="修改文章名稱參數"></a>修改文章名稱參數</h2><blockquote>
-<p>預設名稱會帶入 title 參數，如果文章多起來檔名只有 title 的話，要對文章做一些管理或分類都很難下手，因此因要修改檔名參數來解決這個問題，下方示範在檔名參數添加日期。</p>
-</blockquote>
-<p><img src="https://imgur.com/MzSJZrG.jpg" alt="結果圖"></p>
-<p>Step1：進入根目錄 _config.yml 搜尋 <code>#Writing</code></p>
-<p>Step2：修改參數 <code>new_post_name</code></p>
-<p><a href="https://hexo.io/zh-tw/docs/writing#%E6%AA%94%E6%A1%88%E5%90%8D%E7%A8%B1">官方文件</a>提供的參數</p>
-<ul>
-<li><code>:title</code>：標題</li>
-<li><code>:year</code>：建立年份（4 位數）</li>
-<li><code>:month</code>：建立月份（2 位數）</li>
-<li><code>:i_month</code>：建立月份（去掉開頭的零）</li>
-<li><code>:day</code>：建立日期（2 位數）</li>
-<li><code>:i_day</code>：建立日期（去掉開頭的零）</li>
-</ul>
-<figure class="highlight diff"><figcaption><span>_config.yml</span></figcaption><table><tr><td class="code"><pre><span class="line"># Writing</span><br><span class="line"><span class="deletion">- new_post_name: :title.md # File name of new posts</span></span><br><span class="line"><span class="addition">+ new_post_name: :year-:month-:day-:title.md</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="Url-優化"><a href="#Url-優化" class="headerlink" title="Url 優化"></a>Url 優化</h2><blockquote>
-<p>預設路徑格式為 年&#x2F;月&#x2F;日&#x2F;名稱，如果是英文的話倒還好中文其實會很醜，且有空格的話會有用 <code>破折號 -</code> 替代，因此下方會介紹如何優化這個醜醜的 url。</p>
-</blockquote>
-<p><img src="https://imgur.com/A4msRQp.jpg" alt="比較圖"></p>
-<p>Step1：安裝 abbrlink 套件</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">npm install hexo-abbrlink --save</span><br></pre></td></tr></table></figure>
-
-<p>Step2：進入根目錄 _config.yml 搜尋 <code>#URL</code><br>Step3：修改參數 <code>permalink</code></p>
-<div class="note default">
-            <p>之後只要 hexo s 就會自動幫我們在文章 front-matter 中添加 <code>abbrlink</code> 參數並帶上一串英文作為值，這串英文就可以做為 permalink 參數，詳細參數設置可以參考<a href="https://hexo.io/zh-tw/docs/permalinks">官方文件</a>。</p>
-          </div>
-
-<figure class="highlight diff"><figcaption><span>_config.yml</span></figcaption><table><tr><td class="code"><pre><span class="line"># Writing</span><br><span class="line"># URL</span><br><span class="line">## Set your site url here. For example, if you use GitHub Page, set url as &#x27;https://username.github.io/project&#x27;</span><br><span class="line">url: https://kentdoit.github.io/</span><br><span class="line"><span class="deletion">- permalink: :year/:month/:day/:title/</span></span><br><span class="line"><span class="addition">+ permalink: :category/:year:month:day/:abbrlink/</span></span><br></pre></td></tr></table></figure>
-
-<p>Step4：檔案底部添加新參數</p>
-<figure class="highlight yml"><figcaption><span>_config.yml</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="comment"># abbrlink config</span></span><br><span class="line"><span class="attr">abbrlink:</span></span><br><span class="line">  <span class="attr">alg:</span> <span class="string">crc32</span>  <span class="comment"># 演算法：crc16(default) and crc32 </span></span><br><span class="line">  <span class="attr">rep:</span> <span class="string">dec</span>    <span class="comment"># 進位制：dec(default) and hex</span></span><br></pre></td></tr></table></figure>
-
-<p>Step5：優化 Category &amp; Tag</p>
-<ul>
-<li>可以在 _config.yml 中對 Category、Tag 設置對應轉換的字串。</li>
-<li>分別在 category_map、tag_map 參數中設置轉換字串。（請參考下方範例）<div class="note default">
-            <p>這樣在 url 中使用 category 就可轉換為自己想要的字串。（例如：Hexo ➞ hexo）</p>
-          </div></li>
-</ul>
-<figure class="highlight yml"><figcaption><span>_config.yml</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="comment"># Category &amp; Tag</span></span><br><span class="line"><span class="attr">category_map:</span></span><br><span class="line">  <span class="attr">Hexo:</span> <span class="string">hexo</span></span><br><span class="line"><span class="attr">tag_map:</span></span><br><span class="line">  <span class="string">Hexo</span> <span class="string">部落格:</span> <span class="string">hexo</span> <span class="string">blog</span></span><br></pre></td></tr></table></figure>
-
-<div class="note default">
-            <p>有了這招就算 permalink 中的 title 參數有中文也可以透過轉換變為英文，另外在記錄一個可以將中文轉英文的方法。（p.s. 我自己沒有嘗試過所以不確定可不可行）</p>
-          </div>
-
-<figure class="highlight diff"><figcaption><span>_config.yml</span><a href="https://blog.51cto.com/u_14032861/2952031">src</a></figcaption><table><tr><td class="code"><pre><span class="line"># Directory</span><br><span class="line"><span class="deletion">- source_dir: source</span></span><br><span class="line"><span class="addition">+ source_dir: source-en</span></span><br><span class="line"><span class="deletion">- public_dir: public</span></span><br><span class="line"><span class="addition">+ public_dir: public-en</span></span><br></pre></td></tr></table></figure>
-
-<div class="note default">
-            <p>到這邊部署後有可能會出現 404 畫面，我這邊的問題是因為 <code>路徑大小</code> 寫造成的。</p>
-          </div>
-
-<p><img src="https://imgur.com/NtTxON5.jpg" alt="路徑比較圖"></p>
-<p>原因：git 命令默認會忽略文件名稱的大小寫，因此大小寫發生變化會被忽略也導致沒有更新。<br>解法：修改 git ignorecase 參數。</p>
-<p>Step1：進到根目錄 deploy_git 資料夾</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">cd .deploy_git</span><br></pre></td></tr></table></figure>
-
-<p>Step2：編輯 git 設定檔</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">vim .git/config</span><br></pre></td></tr></table></figure>
-
-<p>Step3：修改 ignorecase 參數為 false（要先按小寫 i 才能修改）</p>
-<figure class="highlight diff"><figcaption><span>.git/config</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="addition">+ ignorecase = false</span></span><br><span class="line"><span class="deletion">- ignorecase = true</span></span><br></pre></td></tr></table></figure>
-
-<p>Step4：修改完後儲存並離開檔案，先按 Esc 後直接輸入以下指令</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">:wq</span><br></pre></td></tr></table></figure>
-
-<p>Step5：接下來的三個指令是為了更新 server 上的檔案（先刪除在新增）</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">git rm -rf *</span><br><span class="line">git commit -m &#x27;clean all file&#x27;</span><br><span class="line">git push</span><br></pre></td></tr></table></figure>
-
-<p>Step6：接下來指令是回到根目錄並清除快取檔案 (db.json) 和已產生的靜態檔案 (public)，最後就是重新部署</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">cd ..</span><br><span class="line">hexo clean</span><br><span class="line">hexo g -d</span><br></pre></td></tr></table></figure>
-
-<h2 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h2><p><a href="https://trifond.github.io/2018/12/05/hexo-folder-ignore-case/">Hexo部署到Github后文件夹名大小写引起的问题</a><br><a href="https://israynotarray.com/hexo/20190517/2562079032/">Hexo Url優化(SEO)</a></p>
-]]></content>
-      <categories>
-        <category>Hexo</category>
-      </categories>
-      <tags>
-        <tag>Hexo 優化</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Hexo 主題 NexT 設置 (一)</title>
     <url>/hexo/3802192554/</url>
     <content><![CDATA[<h2 id="範例的環境版本"><a href="#範例的環境版本" class="headerlink" title="範例的環境版本"></a>範例的環境版本</h2><p>hexo 版本：6.0.1<br>hexo-cli 版本：4.3.0<br>next 版本：7.8.0</p>
@@ -178,6 +88,96 @@
       </categories>
       <tags>
         <tag>Hexo 部落格</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Hexo 檔案名稱 Url 優化（三）</title>
+    <url>/hexo/821499080/</url>
+    <content><![CDATA[<div class="note default">
+            <p>建議此篇內容越早更改設定越好！<br>不然文章一多起來也懶得調整前面的文章 QQ</p>
+          </div>
+
+<h2 id="範例的環境版本"><a href="#範例的環境版本" class="headerlink" title="範例的環境版本"></a>範例的環境版本</h2><p>hexo 版本：6.0.1<br>hexo-cli 版本：4.3.0<br>next 版本：7.8.0</p>
+<h2 id="修改文章名稱參數"><a href="#修改文章名稱參數" class="headerlink" title="修改文章名稱參數"></a>修改文章名稱參數</h2><blockquote>
+<p>預設名稱會帶入 title 參數，如果文章多起來檔名只有 title 的話，要對文章做一些管理或分類都很難下手，因此因要修改檔名參數來解決這個問題，下方示範在檔名參數添加日期。</p>
+</blockquote>
+<p><img src="https://imgur.com/MzSJZrG.jpg" alt="結果圖"></p>
+<p>Step1：進入根目錄 _config.yml 搜尋 <code>#Writing</code></p>
+<p>Step2：修改參數 <code>new_post_name</code></p>
+<p><a href="https://hexo.io/zh-tw/docs/writing#%E6%AA%94%E6%A1%88%E5%90%8D%E7%A8%B1">官方文件</a>提供的參數</p>
+<ul>
+<li><code>:title</code>：標題</li>
+<li><code>:year</code>：建立年份（4 位數）</li>
+<li><code>:month</code>：建立月份（2 位數）</li>
+<li><code>:i_month</code>：建立月份（去掉開頭的零）</li>
+<li><code>:day</code>：建立日期（2 位數）</li>
+<li><code>:i_day</code>：建立日期（去掉開頭的零）</li>
+</ul>
+<figure class="highlight diff"><figcaption><span>_config.yml</span></figcaption><table><tr><td class="code"><pre><span class="line"># Writing</span><br><span class="line"><span class="deletion">- new_post_name: :title.md # File name of new posts</span></span><br><span class="line"><span class="addition">+ new_post_name: :year-:month-:day-:title.md</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="Url-優化"><a href="#Url-優化" class="headerlink" title="Url 優化"></a>Url 優化</h2><blockquote>
+<p>預設路徑格式為 年&#x2F;月&#x2F;日&#x2F;名稱，如果是英文的話倒還好中文其實會很醜，且有空格的話會有用 <code>破折號 -</code> 替代，因此下方會介紹如何優化這個醜醜的 url。</p>
+</blockquote>
+<p><img src="https://imgur.com/A4msRQp.jpg" alt="比較圖"></p>
+<p>Step1：安裝 abbrlink 套件</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">npm install hexo-abbrlink --save</span><br></pre></td></tr></table></figure>
+
+<p>Step2：進入根目錄 _config.yml 搜尋 <code>#URL</code><br>Step3：修改參數 <code>permalink</code></p>
+<div class="note default">
+            <p>之後只要 hexo s 就會自動幫我們在文章 front-matter 中添加 <code>abbrlink</code> 參數並帶上一串英文作為值，這串英文就可以做為 permalink 參數，詳細參數設置可以參考<a href="https://hexo.io/zh-tw/docs/permalinks">官方文件</a>。</p>
+          </div>
+
+<figure class="highlight diff"><figcaption><span>_config.yml</span></figcaption><table><tr><td class="code"><pre><span class="line"># Writing</span><br><span class="line"># URL</span><br><span class="line">## Set your site url here. For example, if you use GitHub Page, set url as &#x27;https://username.github.io/project&#x27;</span><br><span class="line">url: https://kentdoit.github.io/</span><br><span class="line"><span class="deletion">- permalink: :year/:month/:day/:title/</span></span><br><span class="line"><span class="addition">+ permalink: :category/:year:month:day/:abbrlink/</span></span><br></pre></td></tr></table></figure>
+
+<p>Step4：檔案底部添加新參數</p>
+<figure class="highlight yml"><figcaption><span>_config.yml</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="comment"># abbrlink config</span></span><br><span class="line"><span class="attr">abbrlink:</span></span><br><span class="line">  <span class="attr">alg:</span> <span class="string">crc32</span>  <span class="comment"># 演算法：crc16(default) and crc32 </span></span><br><span class="line">  <span class="attr">rep:</span> <span class="string">dec</span>    <span class="comment"># 進位制：dec(default) and hex</span></span><br></pre></td></tr></table></figure>
+
+<p>Step5：優化 Category &amp; Tag</p>
+<ul>
+<li>可以在 _config.yml 中對 Category、Tag 設置對應轉換的字串。</li>
+<li>分別在 category_map、tag_map 參數中設置轉換字串。（請參考下方範例）<div class="note default">
+            <p>這樣在 url 中使用 category 就可轉換為自己想要的字串。（例如：Hexo ➞ hexo）</p>
+          </div></li>
+</ul>
+<figure class="highlight yml"><figcaption><span>_config.yml</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="comment"># Category &amp; Tag</span></span><br><span class="line"><span class="attr">category_map:</span></span><br><span class="line">  <span class="attr">Hexo:</span> <span class="string">hexo</span></span><br><span class="line"><span class="attr">tag_map:</span></span><br><span class="line">  <span class="string">Hexo</span> <span class="string">部落格:</span> <span class="string">hexo</span> <span class="string">blog</span></span><br></pre></td></tr></table></figure>
+
+<div class="note default">
+            <p>有了這招就算 permalink 中的 title 參數有中文也可以透過轉換變為英文，另外在記錄一個可以將中文轉英文的方法。（p.s. 我自己沒有嘗試過所以不確定可不可行）</p>
+          </div>
+
+<figure class="highlight diff"><figcaption><span>_config.yml</span><a href="https://blog.51cto.com/u_14032861/2952031">src</a></figcaption><table><tr><td class="code"><pre><span class="line"># Directory</span><br><span class="line"><span class="deletion">- source_dir: source</span></span><br><span class="line"><span class="addition">+ source_dir: source-en</span></span><br><span class="line"><span class="deletion">- public_dir: public</span></span><br><span class="line"><span class="addition">+ public_dir: public-en</span></span><br></pre></td></tr></table></figure>
+
+<div class="note default">
+            <p>到這邊部署後有可能會出現 404 畫面，我這邊的問題是因為 <code>路徑大小</code> 寫造成的。</p>
+          </div>
+
+<p><img src="https://imgur.com/NtTxON5.jpg" alt="路徑比較圖"></p>
+<p>原因：git 命令默認會忽略文件名稱的大小寫，因此大小寫發生變化會被忽略也導致沒有更新。<br>解法：修改 git ignorecase 參數。</p>
+<p>Step1：進到根目錄 deploy_git 資料夾</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">cd .deploy_git</span><br></pre></td></tr></table></figure>
+
+<p>Step2：編輯 git 設定檔</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">vim .git/config</span><br></pre></td></tr></table></figure>
+
+<p>Step3：修改 ignorecase 參數為 false（要先按小寫 i 才能修改）</p>
+<figure class="highlight diff"><figcaption><span>.git/config</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="addition">+ ignorecase = false</span></span><br><span class="line"><span class="deletion">- ignorecase = true</span></span><br></pre></td></tr></table></figure>
+
+<p>Step4：修改完後儲存並離開檔案，先按 Esc 後直接輸入以下指令</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">:wq</span><br></pre></td></tr></table></figure>
+
+<p>Step5：接下來的三個指令是為了更新 server 上的檔案（先刪除在新增）</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">git rm -rf *</span><br><span class="line">git commit -m &#x27;clean all file&#x27;</span><br><span class="line">git push</span><br></pre></td></tr></table></figure>
+
+<p>Step6：接下來指令是回到根目錄並清除快取檔案 (db.json) 和已產生的靜態檔案 (public)，最後就是重新部署</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">cd ..</span><br><span class="line">hexo clean</span><br><span class="line">hexo g -d</span><br></pre></td></tr></table></figure>
+
+<h2 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h2><p><a href="https://trifond.github.io/2018/12/05/hexo-folder-ignore-case/">Hexo部署到Github后文件夹名大小写引起的问题</a><br><a href="https://israynotarray.com/hexo/20190517/2562079032/">Hexo Url優化(SEO)</a></p>
+]]></content>
+      <categories>
+        <category>Hexo</category>
+      </categories>
+      <tags>
+        <tag>Hexo 優化</tag>
       </tags>
   </entry>
   <entry>
@@ -621,94 +621,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Hexo Sitemap 建立索引 無法擷取</title>
-    <url>/hexo/2629412870/</url>
-    <content><![CDATA[<div class="note default">
-            <p>此篇內容為 <a href="https://kentdoit.github.io/hexo/599670072/">Hexo 設置 GA、Sitemap（四）</a>的 Debug 延續篇，介紹如何解決無法擷取以及設置索引。</p>
-          </div>
-
-<h2 id="範例的環境版本"><a href="#範例的環境版本" class="headerlink" title="範例的環境版本"></a>範例的環境版本</h2><p>hexo 版本：6.0.1<br>hexo-cli 版本：4.3.0<br>next 版本：7.8.0</p>
-<h2 id="無法擷取"><a href="#無法擷取" class="headerlink" title="無法擷取"></a>無法擷取</h2><p><img src="https://imgur.com/UH0jdLH.jpg"></p>
-<div class="note default">
-            <p>下方會介紹四種我嘗試過的方法。</p>
-          </div>
-
-<h3 id="擁有權驗證"><a href="#擁有權驗證" class="headerlink" title="擁有權驗證"></a>擁有權驗證</h3><p>❌ 方法一：添加其他驗證方式（本來只有用 GA）</p>
-<p>Step1：取得 content 值</p>
-<ul>
-<li>記得在複製內容中只擷取 content 值就好。</li>
-</ul>
-<p><img src="https://imgur.com/N623p1p.jpg" alt="演示四步驟取得 content"></p>
-<p>Step2：修改 NexT 主題中 _config.yml 參數 google_site_verification</p>
-<ul>
-<li>貼上取得的 content 值。</li>
-</ul>
-<figure class="highlight diff"><figcaption><span>.git/config</span></figcaption><table><tr><td class="code"><pre><span class="line"># Google Webmaster tools verification.</span><br><span class="line"># See: https://www.google.com/webmasters</span><br><span class="line"><span class="addition">+ google_site_verification: 25miYVaewg4Qur_GPtoF9-GhCZZJNidmq2kqy6wRE9g</span></span><br><span class="line"><span class="deletion">- google_site_verification:</span></span><br></pre></td></tr></table></figure>
-
-<p>Step3：重新部署</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">hexo g -d</span><br></pre></td></tr></table></figure>
-
-<p>Step4：重新部署後，檢查網站中是否包含 google-site-verification</p>
-<p><img src="https://imgur.com/RVLo57e.jpg" alt="搜尋 google-site-verification"></p>
-<h3 id="檢查-Sitemap-格式"><a href="#檢查-Sitemap-格式" class="headerlink" title="檢查 Sitemap 格式"></a>檢查 Sitemap 格式</h3><p>❌ 方法二：檢查 Sitemap 格式</p>
-<blockquote>
-<p>發覺我的 sitemap.xml 格式和官方範例不同，所以需要將多的標籤移除。</p>
-</blockquote>
-<p><img src="https://imgur.com/QnPnMb0.jpg" alt="格式比較"></p>
-<p>Step1：將 node_modules&#x2F;hexo-generator-sitemap&#x2F;sitemap.xml 中的 <code>changefreq</code>、<code>priority</code> 標籤移除。</p>
-<p>Step2：重新部署</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">hexo g -d</span><br></pre></td></tr></table></figure>
-
-<div class="note default">
-            <p>參考這篇 <a href="https://zenreal.github.io/posts/7993/#google%E7%84%A1%E6%B3%95%E8%AE%80%E5%8F%96sitemap-%E4%B8%80%E8%88%AC%E7%9A%84http%E9%8C%AF%E8%AA%A4-%E8%A7%A3%E6%B1%BA%E6%96%B9%E5%BC%8F">Google無法讀取sitemap(一般的HTTP錯誤) 解決方式</a> 所提到的解法，雖然我沒有這個問題。</p>
-          </div>
-
-<p><img src="https://imgur.com/NkFfNmd.jpg" alt="記得要把所有多的標籤都移除呦，雖然也一樣沒成功"></p>
-<h3 id="建立索引"><a href="#建立索引" class="headerlink" title="建立索引"></a>建立索引</h3><blockquote>
-<p>為了將自己的網址透過 Google Search Console 建立索引，提交給 Google 使搜尋引擎能更容易地搜尋到我們的網站，這個也屬於提升 SEO 的其中一種方法。</p>
-</blockquote>
-<p>❌ 方法三：網址審查建立索引</p>
-<p>Step1：點擊網址審查，並在上方網址列貼上部落格網址（例如：<a href="https://kentdoit.github.io/%EF%BC%89">https://kentdoit.github.io/）</a></p>
-<p>Step2：按下建立索引</p>
-<p><img src="https://imgur.com/VwNKDrB.jpg" alt="兩步驟建立索引"></p>
-<div class="note default">
-            <p>過一陣子之後再到網址審查中檢查就會看到綠色勾勾了，也代表建立索引成功了～～～<br>雖然不確定是時間還沒到還是因為 .nojekyll，但至少之後用其他文章連結也有成功建立索引 (੭•̀ᴗ•̀)੭</p>
-          </div>
-
-<p><img src="https://imgur.com/iR7NAzQ.jpg" alt="網址審查通過"></p>
-<h3 id="建立-nojekyll"><a href="#建立-nojekyll" class="headerlink" title="建立 .nojekyll"></a>建立 .nojekyll</h3><p>❌ 方法四：建立 .nojekyll</p>
-<p>Step1：進入根目錄 source 資料夾底下</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">cd source</span><br></pre></td></tr></table></figure>
-
-<p>Step2：建立一個空白的 .nojekyll 檔案</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">touch .nojekyll</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://imgur.com/BFbbf5V.jpg"></p>
-<div class="note default">
-            <p>接下來設定是為了讓每次部署產生的 public 資料夾中也能存在 .nojekyll 檔案</p>
-          </div>
-
-<p>Step3：修改根目錄 _config.yml 參數</p>
-<figure class="highlight diff"><figcaption><span>_config.yml</span></figcaption><table><tr><td class="code"><pre><span class="line"># Include / Exclude file(s)</span><br><span class="line">## include:/exclude: options only apply to the &#x27;source/&#x27; folder</span><br><span class="line">include:</span><br><span class="line"><span class="addition">+  .nojekyll</span></span><br><span class="line">exclude:</span><br><span class="line">ignore:</span><br></pre></td></tr></table></figure>
-
-<p>Step4：重新部署</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">hexo cl</span><br><span class="line">hexo g -d</span><br></pre></td></tr></table></figure>
-
-<div class="note default">
-            <p>雖然建立索引成功了，但 Sitemap 狀態還是呈現 <code>無法擷取</code> 以及 <code>未提交至 Sitemap</code>，最後沒辦法只好靜待幾天看看會不會發生奇蹟</p>
-          </div>
-
-<h2 id="未提交至-Sitemap"><a href="#未提交至-Sitemap" class="headerlink" title="未提交至 Sitemap"></a>未提交至 Sitemap</h2><h2 id="可讀取-Sitemap，但其中含有錯誤"><a href="#可讀取-Sitemap，但其中含有錯誤" class="headerlink" title="可讀取 Sitemap，但其中含有錯誤"></a>可讀取 Sitemap，但其中含有錯誤</h2><p><img src="https://imgur.com/tYWXLmz.jpg"></p>
-<h2 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h2><p><a href="https://blog.kyomind.tw/adding-sitemap-issue/">解決 Hexo + Github Pages 新增 sitemap.xml 找不到頁面</a><br><a href="https://blog.balabambe.com/2021/12/01/%E8%A7%A3%E6%B1%BA-Google-Search-Console-%E6%8A%93%E4%B8%8D%E5%88%B0-Hexo-%E6%94%BE%E5%9C%A8-Github-Pages-%E7%9A%84-sitemap-xml-%E7%9A%84%E5%95%8F%E9%A1%8C/">解決 Google Search Console 抓不到 Hexo 放在 Github Pages 的 sitemap.xml 的問題</a></p>
-]]></content>
-      <categories>
-        <category>Hexo</category>
-      </categories>
-      <tags>
-        <tag>Hexo SEO</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>JS == vs ===</title>
     <url>/javascript/3699626031/</url>
     <content><![CDATA[<p><img src="https://imgur.com/7TLQ2Yr.jpg" alt="綜合比較表 src：https://github.com/dorey/JavaScript-Equality-Table"></p>
@@ -1102,6 +1014,238 @@
       </tags>
   </entry>
   <entry>
+    <title>Hexo Sitemap 建立索引 無法擷取</title>
+    <url>/hexo/2629412870/</url>
+    <content><![CDATA[<div class="note default">
+            <p>此篇內容為 <a href="https://kentdoit.github.io/hexo/599670072/">Hexo 設置 GA、Sitemap（四）</a>的 Debug 延續篇，介紹如何解決無法擷取以及設置索引。</p>
+          </div>
+
+<h2 id="範例的環境版本"><a href="#範例的環境版本" class="headerlink" title="範例的環境版本"></a>範例的環境版本</h2><p>hexo 版本：6.0.1<br>hexo-cli 版本：4.3.0<br>next 版本：7.8.0</p>
+<h2 id="無法擷取"><a href="#無法擷取" class="headerlink" title="無法擷取"></a>無法擷取</h2><p><img src="https://imgur.com/UH0jdLH.jpg"></p>
+<div class="note default">
+            <p>下方會介紹四種我嘗試過的方法。</p>
+          </div>
+
+<h3 id="擁有權驗證"><a href="#擁有權驗證" class="headerlink" title="擁有權驗證"></a>擁有權驗證</h3><p>❌ 方法一：添加其他驗證方式（本來只有用 GA）</p>
+<p>Step1：取得 content 值</p>
+<ul>
+<li>記得在複製內容中只擷取 content 值就好。</li>
+</ul>
+<p><img src="https://imgur.com/N623p1p.jpg" alt="演示四步驟取得 content"></p>
+<p>Step2：修改 NexT 主題中 _config.yml 參數 google_site_verification</p>
+<ul>
+<li>貼上取得的 content 值。</li>
+</ul>
+<figure class="highlight diff"><figcaption><span>.git/config</span></figcaption><table><tr><td class="code"><pre><span class="line"># Google Webmaster tools verification.</span><br><span class="line"># See: https://www.google.com/webmasters</span><br><span class="line"><span class="addition">+ google_site_verification: 25miYVaewg4Qur_GPtoF9-GhCZZJNidmq2kqy6wRE9g</span></span><br><span class="line"><span class="deletion">- google_site_verification:</span></span><br></pre></td></tr></table></figure>
+
+<p>Step3：重新部署</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">hexo g -d</span><br></pre></td></tr></table></figure>
+
+<p>Step4：重新部署後，檢查網站中是否包含 google-site-verification</p>
+<p><img src="https://imgur.com/RVLo57e.jpg" alt="搜尋 google-site-verification"></p>
+<h3 id="檢查-Sitemap-格式"><a href="#檢查-Sitemap-格式" class="headerlink" title="檢查 Sitemap 格式"></a>檢查 Sitemap 格式</h3><p>❌ 方法二：檢查 Sitemap 格式</p>
+<blockquote>
+<p>發覺我的 sitemap.xml 格式和官方範例不同，所以需要將多的標籤移除。</p>
+</blockquote>
+<p><img src="https://imgur.com/QnPnMb0.jpg" alt="格式比較"></p>
+<p>Step1：將 node_modules&#x2F;hexo-generator-sitemap&#x2F;sitemap.xml 中的 <code>changefreq</code>、<code>priority</code> 標籤移除。</p>
+<p>Step2：重新部署</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">hexo g -d</span><br></pre></td></tr></table></figure>
+
+<div class="note default">
+            <p>參考這篇 <a href="https://zenreal.github.io/posts/7993/#google%E7%84%A1%E6%B3%95%E8%AE%80%E5%8F%96sitemap-%E4%B8%80%E8%88%AC%E7%9A%84http%E9%8C%AF%E8%AA%A4-%E8%A7%A3%E6%B1%BA%E6%96%B9%E5%BC%8F">Google無法讀取sitemap(一般的HTTP錯誤) 解決方式</a> 所提到的解法，雖然我沒有這個問題。</p>
+          </div>
+
+<p><img src="https://imgur.com/NkFfNmd.jpg" alt="記得要把所有多的標籤都移除呦，雖然也一樣沒成功"></p>
+<h3 id="建立索引"><a href="#建立索引" class="headerlink" title="建立索引"></a>建立索引</h3><blockquote>
+<p>為了將自己的網址透過 Google Search Console 建立索引，提交給 Google 使搜尋引擎能更容易地搜尋到我們的網站，這個也屬於提升 SEO 的其中一種方法。</p>
+</blockquote>
+<p>❌ 方法三：網址審查建立索引</p>
+<p>Step1：點擊網址審查，並在上方網址列貼上部落格網址（例如：<a href="https://kentdoit.github.io/%EF%BC%89">https://kentdoit.github.io/）</a></p>
+<p>Step2：按下建立索引</p>
+<p><img src="https://imgur.com/VwNKDrB.jpg" alt="兩步驟建立索引"></p>
+<div class="note default">
+            <p>過一陣子之後再到網址審查中檢查就會看到綠色勾勾了，也代表建立索引成功了～～～<br>雖然不確定是時間還沒到還是因為 .nojekyll，但至少之後用其他文章連結也有成功建立索引 (੭•̀ᴗ•̀)੭</p>
+          </div>
+
+<p><img src="https://imgur.com/iR7NAzQ.jpg" alt="網址審查通過"></p>
+<h3 id="建立-nojekyll"><a href="#建立-nojekyll" class="headerlink" title="建立 .nojekyll"></a>建立 .nojekyll</h3><p>❌ 方法四：建立 .nojekyll</p>
+<p>Step1：進入根目錄 source 資料夾底下</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">cd source</span><br></pre></td></tr></table></figure>
+
+<p>Step2：建立一個空白的 .nojekyll 檔案</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">touch .nojekyll</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://imgur.com/BFbbf5V.jpg"></p>
+<div class="note default">
+            <p>接下來設定是為了讓每次部署產生的 public 資料夾中也能存在 .nojekyll 檔案</p>
+          </div>
+
+<p>Step3：修改根目錄 _config.yml 參數</p>
+<figure class="highlight diff"><figcaption><span>_config.yml</span></figcaption><table><tr><td class="code"><pre><span class="line"># Include / Exclude file(s)</span><br><span class="line">## include:/exclude: options only apply to the &#x27;source/&#x27; folder</span><br><span class="line">include:</span><br><span class="line"><span class="addition">+  .nojekyll</span></span><br><span class="line">exclude:</span><br><span class="line">ignore:</span><br></pre></td></tr></table></figure>
+
+<p>Step4：重新部署</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">hexo cl</span><br><span class="line">hexo g -d</span><br></pre></td></tr></table></figure>
+
+<div class="note default">
+            <p>雖然建立索引成功了，但 Sitemap 狀態還是呈現 <code>無法擷取</code> 以及 <code>未提交至 Sitemap</code>，最後沒辦法只好靜待幾天看看會不會發生奇蹟</p>
+          </div>
+
+<h2 id="未提交至-Sitemap"><a href="#未提交至-Sitemap" class="headerlink" title="未提交至 Sitemap"></a>未提交至 Sitemap</h2><h2 id="可讀取-Sitemap，但其中含有錯誤"><a href="#可讀取-Sitemap，但其中含有錯誤" class="headerlink" title="可讀取 Sitemap，但其中含有錯誤"></a>可讀取 Sitemap，但其中含有錯誤</h2><p><img src="https://imgur.com/tYWXLmz.jpg"></p>
+<h2 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h2><p><a href="https://blog.kyomind.tw/adding-sitemap-issue/">解決 Hexo + Github Pages 新增 sitemap.xml 找不到頁面</a><br><a href="https://blog.balabambe.com/2021/12/01/%E8%A7%A3%E6%B1%BA-Google-Search-Console-%E6%8A%93%E4%B8%8D%E5%88%B0-Hexo-%E6%94%BE%E5%9C%A8-Github-Pages-%E7%9A%84-sitemap-xml-%E7%9A%84%E5%95%8F%E9%A1%8C/">解決 Google Search Console 抓不到 Hexo 放在 Github Pages 的 sitemap.xml 的問題</a></p>
+]]></content>
+      <categories>
+        <category>Hexo</category>
+      </categories>
+      <tags>
+        <tag>Hexo SEO</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>JS 箭頭函式 arrow function</title>
+    <url>/javascript/2638792469/</url>
+    <content><![CDATA[<div class="note default">
+            <p>箭頭函式是 ES6 新的語法糖，白話文來說，箭頭函式是傳統函式的<code>縮寫</code>，但有一些特性和邏輯不盡相同尤其是 this 的部分。</p>
+          </div>
+
+<p><a href="https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Functions/Arrow_functions">MDN 語法</a></p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">([param] [, param]) =&gt; &#123;</span><br><span class="line">  statements</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">param =&gt; expression</span><br></pre></td></tr></table></figure>
+
+<h2 id="縮寫特性"><a href="#縮寫特性" class="headerlink" title="縮寫特性"></a>縮寫特性</h2><blockquote>
+<p>用一張圖來看箭頭函式這個語法糖究竟簡化了些什麼？</p>
+</blockquote>
+<div class="note default">
+            <p>將 function 簡化為<code>箭頭 =&gt;</code>。</p>
+          </div>
+
+<p><img src="https://imgur.com/okxB6Sa.jpg"></p>
+<h3 id="單行型式縮寫"><a href="#單行型式縮寫" class="headerlink" title="單行型式縮寫"></a>單行型式縮寫</h3><blockquote>
+<p>規則</p>
+</blockquote>
+<ol>
+<li>大括號括號可省略。</li>
+<li>參數只有一個時，可以把參數的小括號省略。（沒有參數、兩個參數以上時不可省略小括號）</li>
+<li>若需要回傳值則可省略 return。</li>
+</ol>
+<p><img src="https://imgur.com/hdFhyyI.jpg"></p>
+<h3 id="縮寫-tips"><a href="#縮寫-tips" class="headerlink" title="縮寫 tips"></a>縮寫 tips</h3><div class="note default">
+            <p>下方會用範例來演示撰寫箭頭函式時需要注意的 tips。</p>
+          </div>
+
+<ul>
+<li>只有一個參數才不用加 <code>括號()</code>，否則會噴錯。</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 錯誤</span></span><br><span class="line"><span class="keyword">const</span> arrowFn = =&gt; <span class="string">&#x27;箭頭函式&#x27;</span>; <span class="comment">// SyntaxError: Unexpected token &#x27;=&gt;&#x27;</span></span><br><span class="line"><span class="keyword">const</span> arrowFn = item, <span class="function"><span class="params">index</span> =&gt;</span> <span class="string">&#x27;箭頭函式&#x27;</span>; <span class="comment">// SyntaxError: Unexpected token &#x27;=&gt;&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 正確</span></span><br><span class="line"><span class="keyword">const</span> <span class="title function_">arrowFn</span> = (<span class="params"></span>) =&gt; <span class="string">&#x27;箭頭函式&#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>參數、return 值有包含 <code>大括號 &#123;&#125;</code> 物件，則需要在外圍加上<code>小括號()</code> 將其包裹起來。</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 錯誤</span></span><br><span class="line"><span class="keyword">const</span> arrowFn = &#123;name, sex&#125; =&gt; name;                 <span class="comment">// SyntaxError: Malformed arrow function parameter list</span></span><br><span class="line"><span class="keyword">const</span> <span class="title function_">arrowFn2</span> = (<span class="params"></span>) =&gt; &#123;<span class="attr">name</span>: <span class="string">&#x27;kent&#x27;</span>, <span class="attr">sex</span>: <span class="string">&#x27;male&#x27;</span>&#125;;  <span class="comment">// SyntaxError: Unexpected token &#x27;:&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 正確</span></span><br><span class="line"><span class="keyword">const</span> <span class="title function_">arrowFn</span> = (<span class="params">&#123;name, sex&#125;</span>) =&gt; name;</span><br><span class="line"><span class="keyword">const</span> <span class="title function_">arrowFn2</span> = (<span class="params"></span>) =&gt; (&#123;<span class="attr">name</span>: <span class="string">&#x27;kent&#x27;</span>, <span class="attr">sex</span>: <span class="string">&#x27;male&#x27;</span>&#125;);</span><br></pre></td></tr></table></figure>
+
+<h2 id="this"><a href="#this" class="headerlink" title="this"></a>this</h2><div class="note primary">
+            <p>箭頭函數中的 this 在<code>定義</code>時就綁定了不會更改，會將其綁定在定義的<code>執行環境</code>，另一種說法是會指向上一層的 this。</p>
+          </div>
+
+<figure class="highlight js"><figcaption><span>e.g. this 指向</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="comment">// 傳統函式</span></span><br><span class="line"><span class="keyword">const</span> obj = &#123;</span><br><span class="line">  <span class="attr">fn</span>: <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="variable language_">this</span>;</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 箭頭函式</span></span><br><span class="line"><span class="keyword">const</span> obj1 = &#123;</span><br><span class="line">  <span class="attr">arrowFn</span>: <span class="function">() =&gt;</span> <span class="variable language_">this</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(obj.<span class="title function_">fn</span>());         <span class="comment">// obj 物件</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(obj1.<span class="title function_">arrowFn</span>());   <span class="comment">// window 物件</span></span><br></pre></td></tr></table></figure>
+
+<div class="note danger">
+            <p>但有幾種特例情況會造成箭頭函式的 this 指向改變，而傳統函式的 this 物件指向是可變的，會隨著其呼叫的物件而有所改變。</p>
+          </div>
+
+<div class="note default">
+            <p>下方範例會掩飾在不同的情況下，箭頭函式以及傳統函式兩者 this 指向的結果。（不會對 this 做詳細的介紹）</p>
+          </div>
+
+<h3 id="嚴格模式-simple-call"><a href="#嚴格模式-simple-call" class="headerlink" title="嚴格模式 simple call"></a>嚴格模式 simple call</h3><ul>
+<li>傳統函式：指向 window，當函式 <code>沒有</code> 指定<code>呼叫物件</code>時，默認就會綁定在 <code>全域物件 window</code>。</li>
+<li>箭頭函式：指向 undefined，因為不允許默認綁定。</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title function_">fn</span> = (<span class="params"></span>) =&gt; &#123; </span><br><span class="line">  <span class="string">&#x27;use strict&#x27;</span>;</span><br><span class="line">  <span class="keyword">return</span> <span class="variable language_">this</span>; </span><br><span class="line">&#125;;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">fn</span>()); <span class="comment">//window物件</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> arrowFn = <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="string">&#x27;use strict&#x27;</span>; </span><br><span class="line">  <span class="keyword">const</span> <span class="title function_">arrowFn2</span> = (<span class="params"></span>) =&gt; <span class="variable language_">this</span>;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">arrowFn2</span>()); <span class="comment">//undefined </span></span><br><span class="line">  <span class="keyword">return</span> <span class="variable language_">this</span>; </span><br><span class="line">&#125;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">arrowFn</span>()); <span class="comment">//undefined </span></span><br></pre></td></tr></table></figure>
+
+<h3 id="物件實字（object-literal）方法"><a href="#物件實字（object-literal）方法" class="headerlink" title="物件實字（object literal）方法"></a>物件實字（object literal）方法</h3><ul>
+<li>傳統函式：指向 obj 物件，因此印出傳統函式。</li>
+<li>箭頭函式：指向上一層 window 物件，由於物件特性沒有定義 type 會回傳 undefined。</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 傳統函式</span></span><br><span class="line"><span class="keyword">const</span> obj = &#123;</span><br><span class="line">  <span class="attr">type</span>: <span class="string">&#x27;傳統函式&#x27;</span>,</span><br><span class="line">  <span class="attr">fn</span>: <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>.<span class="property">type</span>);  <span class="comment">// 傳統函式</span></span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 箭頭函式</span></span><br><span class="line"><span class="keyword">const</span> obj1 = &#123;</span><br><span class="line">  <span class="attr">type</span>: <span class="string">&#x27;箭頭函式&#x27;</span>,</span><br><span class="line">  <span class="attr">arrowFn</span>: <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>.<span class="property">type</span>);  <span class="comment">// undefined</span></span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">obj.<span class="title function_">fn</span>();         </span><br><span class="line">obj1.<span class="title function_">arrowFn</span>();</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://imgur.com/wzpfSYj.jpg"></p>
+<h3 id="call、apply、bind-方法"><a href="#call、apply、bind-方法" class="headerlink" title="call、apply、bind 方法"></a>call、apply、bind 方法</h3><div class="note default">
+            <p>這三種方法會透過傳入物件，並將函式 this 指向其物件。</p>
+          </div>
+
+<ul>
+<li>傳統函式：指向 obj 物件，因此印出傳統函式。</li>
+<li>箭頭函式：指向 window 物件，由於箭頭函式特性（this 在 <code>定義</code> 時就綁定了不會更改）使其無法重新改變 this 指向。</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> obj = &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&#x27;Kent&#x27;</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> fn = <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>);  <span class="comment">// obj 物件</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> <span class="title function_">fnArrow</span> = (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>);  <span class="comment">// window 物件</span></span><br><span class="line">&#125;</span><br><span class="line">fnArrow.<span class="title function_">call</span>(obj); </span><br><span class="line">fn.<span class="title function_">call</span>(obj);</span><br></pre></td></tr></table></figure>
+
+<h3 id="Prototype-物件原型"><a href="#Prototype-物件原型" class="headerlink" title="Prototype 物件原型"></a>Prototype 物件原型</h3><ul>
+<li>傳統函式：回傳 5，指向 Member 物件。</li>
+<li>箭頭函式：回傳 undefined，指向上一層 window 物件。</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> type = <span class="string">&quot;window&quot;</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="title class_">Member</span> = <span class="keyword">function</span>(<span class="params">name, age</span>) &#123;</span><br><span class="line">  <span class="variable language_">this</span>.<span class="property">name</span> = name;</span><br><span class="line">  <span class="variable language_">this</span>.<span class="property">age</span> = age;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="title class_">Member</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">getAge</span> = <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>.<span class="property">age</span> ,<span class="variable language_">this</span>); <span class="comment">// 5, Member 物件</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="title class_">Member</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">getAgeArrow</span> = <span class="function">() =&gt;</span> <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>.<span class="property">age</span> ,<span class="variable language_">this</span>); <span class="comment">// undefined, window 物件</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> customer = <span class="keyword">new</span> <span class="title class_">Member</span>(<span class="string">&#x27;Kent&#x27;</span>, <span class="number">5</span>);</span><br><span class="line">customer.<span class="title function_">getAge</span>();</span><br><span class="line">customer.<span class="title function_">getAgeArrow</span>();</span><br></pre></td></tr></table></figure>
+
+<h3 id="DOM-監聽函式"><a href="#DOM-監聽函式" class="headerlink" title="DOM 監聽函式"></a>DOM 監聽函式</h3><div class="note default">
+            <p>DOM 擁有自己的 this，當事件觸發時會將 this 指向觸發事件的元素本身。</p>
+          </div>
+
+<ul>
+<li>傳統函式：函式被執行時指向元素本身。</li>
+<li>箭頭函式：函式被執行時指向 window 物件。</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> btn = <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;button&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> obj = &#123;</span><br><span class="line">  <span class="attr">type</span>: <span class="string">&#x27;傳統函式&#x27;</span>,</span><br><span class="line">  <span class="attr">fn</span>: <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>, <span class="variable language_">this</span>.<span class="property">type</span>); <span class="comment">// DOM element, &#x27;button&#x27;</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">btn.<span class="title function_">addEventListener</span>(<span class="string">&#x27;click&#x27;</span>, obj.<span class="property">fn</span>);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> obj1 = &#123;</span><br><span class="line">  <span class="attr">type</span>: <span class="string">&#x27;箭頭函式&#x27;</span>,</span><br><span class="line">  <span class="attr">fnArrow</span>: <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>, <span class="variable language_">this</span>.<span class="property">type</span>); <span class="comment">// // window 物件, undefined</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">btn.<span class="title function_">addEventListener</span>(<span class="string">&#x27;click&#x27;</span>, obj1.<span class="property">fnArrow</span>);</span><br></pre></td></tr></table></figure>
+
+<h2 id="arguments-參數"><a href="#arguments-參數" class="headerlink" title="arguments 參數"></a>arguments 參數</h2><div class="note danger">
+            <p>箭頭函式沒有 arguments 參數使用的話會噴 Error。</p>
+          </div>
+
+<div class="note default">
+            <p>解法：使用其餘參數（rest parameter）來替代，（arguments 是類陣列，其餘參數是陣列）</p>
+          </div>
+
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> fn = <span class="keyword">function</span> (<span class="params">parm</span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">arguments</span>);</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">const</span> <span class="title function_">arrowFn</span> = (<span class="params">parm</span>) =&gt; &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">arguments</span>);</span><br><span class="line">&#125;;</span><br><span class="line"><span class="title function_">fn</span>(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>);      <span class="comment">// Arguments(3)</span></span><br><span class="line"><span class="title function_">arrowFn</span>(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>); <span class="comment">// ReferenceError: arguments is not defined</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 其餘參數（rest parameter）</span></span><br><span class="line"><span class="keyword">const</span> <span class="title function_">arrowRestFn</span> = (<span class="params">...parm</span>) =&gt; &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(parm);</span><br><span class="line">&#125;;</span><br><span class="line"><span class="title function_">arrowRestFn</span>(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>); <span class="comment">// [1, 2, 3]</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="constructor、prototype"><a href="#constructor、prototype" class="headerlink" title="constructor、prototype"></a>constructor、prototype</h2><ul>
+<li>沒有原型（prototype）屬性，使用會回傳 undefined。</li>
+<li>若使用於建構式（constructor），會在使用 new 時候噴 error。</li>
+</ul>
+<div class="note default">
+            <p>在實體化物件的時候會改變 this 的指向，指向新的實體物件，但由於箭頭函式無法指向新的實體物件所以會噴錯。</p>
+          </div>
+
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> fn = <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>);</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">const</span> <span class="title function_">arrowFn</span> = (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>);</span><br><span class="line">&#125;;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(fn.<span class="property"><span class="keyword">prototype</span></span>);      <span class="comment">// &#123;constructor: ƒ&#125;</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(arrowFn.<span class="property"><span class="keyword">prototype</span></span>); <span class="comment">// undefined</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">new</span> <span class="title function_">fn</span>();</span><br><span class="line"><span class="keyword">new</span> <span class="title function_">arrowFn</span>(); <span class="comment">// TypeError: arrowFn is not a constructor</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="Array-prototype、陣列方法"><a href="#Array-prototype、陣列方法" class="headerlink" title="Array.prototype、陣列方法"></a>Array.prototype、陣列方法</h2><p><img src="https://imgur.com/oQML1lh.jpg" alt="正常傳統函式中的 Array 屬性"></p>
+<div class="note default">
+            <p>箭頭函式由於沒有 <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a> 這個屬性，因此無法使用陣列方法</p>
+          </div>
+
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> calculate = &#123;</span><br><span class="line">  <span class="attr">array</span>: [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>],</span><br><span class="line">  <span class="attr">sum</span>: <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="variable language_">this</span>.<span class="property">array</span>.<span class="title function_">reduce</span>(<span class="function">(<span class="params">result, item</span>) =&gt;</span> result + item)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//TypeError: Cannot read property &#x27;array&#x27; of undefined</span></span><br><span class="line">calculate.<span class="title function_">sum</span>()</span><br></pre></td></tr></table></figure>
+
+<h2 id="conclusion"><a href="#conclusion" class="headerlink" title="conclusion"></a>conclusion</h2><p>箭頭函式 tips</p>
+<ul>
+<li>傳統函式縮寫且只有一個參數才不用加<code>括號 ()</code>。</li>
+<li>特殊情況會造成 this 指向<code>改變</code>。</li>
+<li>沒有 arguments 參數。</li>
+<li>沒有 constructor、prototype。</li>
+<li>沒有 Array 無法使用陣列方法。</li>
+</ul>
+<h2 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h2><ul>
+<li><a href="https://pjchender.dev/javascript/js-arrow-function/">[JS] 箭頭函式（arrow function）和它對 this 的影響</a></li>
+<li><a href="https://ithelp.ithome.com.tw/articles/10249940">JavaScript基本功修練：Day21 - 箭頭函式</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>JavaScript</category>
+      </categories>
+      <tags>
+        <tag>JavaScript</tag>
+        <tag>箭頭函式</tag>
+        <tag>this</tag>
+        <tag>arguments</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>JS 短路求值 Short-circuit evaluation</title>
     <url>/javascript/350805089/</url>
     <content><![CDATA[<div class="note primary">
@@ -1157,58 +1301,6 @@
 <h2 id="conclusion"><a href="#conclusion" class="headerlink" title="conclusion"></a>conclusion</h2><p><img src="https://imgur.com/w9OtDHw.png" alt="||、&amp;&amp; 使用口訣"></p>
 <h2 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h2><ul>
 <li><a href="https://bolaslien.github.io/blog/2021/06/18/js-short-circuit-evaluation/">用邏輯判斷 ||(OR) 及 &amp;&amp;(AND) 來改寫 if (短路求值 Short-circuit evaluation)</a></li>
-</ul>
-]]></content>
-      <categories>
-        <category>JavaScript</category>
-      </categories>
-      <tags>
-        <tag>運算子</tag>
-        <tag>JavaScript</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>JS 空值合併運算子 Nullish coalescing operator</title>
-    <url>/javascript/3525467973/</url>
-    <content><![CDATA[<div class="note default">
-            <p>建議先閱讀前一篇「<a href="https://kentdoit.github.io/javascript/350805089/">JS 短路求值 Short-circuit evaluation</a>」後再接下去閱讀。</p>
-          </div>
-
-<div class="note primary">
-            <p><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Nullish_coalescing_operator">MDN</a>：<code>??</code> 左邊是 <code>null</code> 或 <code>undefined</code> 則不會執行右邊。</p>
-          </div>
-
-<p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Nullish_coalescing_operator#syntax">MDN 語法</a></p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">leftExpr ?? rightExpr</span><br></pre></td></tr></table></figure>
-
-<p>e.g. 判斷是否使用過</p>
-<div class="note default">
-            <p>情境：假設有一間銀行，發給新辦用戶 100 摳</p>
-          </div>
-
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> person1 = &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&#x27;kent&#x27;</span>,</span><br><span class="line">  <span class="attr">age</span>: <span class="number">18</span>,</span><br><span class="line">  <span class="attr">wallet</span>: <span class="number">0</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> person2 = &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&#x27;clark&#x27;</span>,</span><br><span class="line">  <span class="attr">age</span>: <span class="number">20</span>,</span><br><span class="line">  <span class="attr">wallet</span>: <span class="literal">null</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">person1.<span class="property">wallet</span> ?? &#123;personOld, ...&#123;<span class="attr">wallet</span>: <span class="number">100</span>&#125;&#125;; <span class="comment">// &#123;person1: &#123;…&#125;, wallet: 0&#125;</span></span><br><span class="line">person2.<span class="property">wallet</span> ?? &#123;personNew, ...&#123;<span class="attr">wallet</span>: <span class="number">100</span>&#125;&#125;; <span class="comment">// &#123;person2: &#123;…&#125;, wallet: 100&#125;</span></span><br></pre></td></tr></table></figure>
-
-<p>e.g. 預設值</p>
-<ul>
-<li>再賦予值的過程透過 <code>??</code> 來設置預設值，只要 <code>?? 左邊</code> 為 null、undefined 則就會賦予 <code>?? 右邊</code> 為新值。</li>
-</ul>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> n;</span><br><span class="line"><span class="keyword">let</span> num = n ?? <span class="string">&#x27;0&#x27;</span>;</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>使用 tips</p>
-</blockquote>
-<div class="note danger">
-            <p>不能與 &amp;&amp;、|| 一起使用。（不然會噴 SyntaxError）</p>
-          </div>
-
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="literal">null</span> || <span class="literal">undefined</span> ?? <span class="string">&quot;foo&quot;</span>; <span class="comment">// 噴 SyntaxError</span></span><br><span class="line">(<span class="literal">null</span> || <span class="literal">undefined</span> ) ?? <span class="string">&quot;foo&quot;</span>; <span class="comment">// 返回 &quot;foo&quot;</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="conclusion"><a href="#conclusion" class="headerlink" title="conclusion"></a>conclusion</h2><ul>
-<li><code>空值合併 ??</code> 相較於 <a href="https://kentdoit.github.io/javascript/350805089/"><code>短路求值 ||</code></a> 更加嚴謹。</li>
-</ul>
-<p><img src="https://imgur.com/2sYcGjJ.jpg"></p>
-<h2 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h2><ul>
-<li><a href="https://cloud.tencent.com/developer/article/1954297">谈谈 JavaScript 中的空值合并操作符 Nullish coalescing operator</a></li>
 </ul>
 ]]></content>
       <categories>
@@ -1378,147 +1470,55 @@ console.log(obj.name);  // kent
       </tags>
   </entry>
   <entry>
-    <title>JS 箭頭函式 arrow function</title>
-    <url>/javascript/2638792469/</url>
+    <title>JS 空值合併運算子 Nullish coalescing operator</title>
+    <url>/javascript/3525467973/</url>
     <content><![CDATA[<div class="note default">
-            <p>箭頭函式是 ES6 新的語法糖，白話文來說，箭頭函式是傳統函式的<code>縮寫</code>，但有一些特性和邏輯不盡相同尤其是 this 的部分。</p>
+            <p>建議先閱讀前一篇「<a href="https://kentdoit.github.io/javascript/350805089/">JS 短路求值 Short-circuit evaluation</a>」後再接下去閱讀。</p>
           </div>
 
-<p><a href="https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Functions/Arrow_functions">MDN 語法</a></p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">([param] [, param]) =&gt; &#123;</span><br><span class="line">  statements</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">param =&gt; expression</span><br></pre></td></tr></table></figure>
+<div class="note primary">
+            <p><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Nullish_coalescing_operator">MDN</a>：<code>??</code> 左邊是 <code>null</code> 或 <code>undefined</code> 則不會執行右邊。</p>
+          </div>
 
-<h2 id="縮寫特性"><a href="#縮寫特性" class="headerlink" title="縮寫特性"></a>縮寫特性</h2><blockquote>
-<p>用一張圖來看箭頭函式這個語法糖究竟簡化了些什麼？</p>
-</blockquote>
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Nullish_coalescing_operator#syntax">MDN 語法</a></p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">leftExpr ?? rightExpr</span><br></pre></td></tr></table></figure>
+
+<p>e.g. 判斷是否使用過</p>
 <div class="note default">
-            <p>將 function 簡化為<code>箭頭 =&gt;</code>。</p>
+            <p>情境：假設有一間銀行，發給新辦用戶 100 摳</p>
           </div>
 
-<p><img src="https://imgur.com/okxB6Sa.jpg"></p>
-<h3 id="單行型式縮寫"><a href="#單行型式縮寫" class="headerlink" title="單行型式縮寫"></a>單行型式縮寫</h3><blockquote>
-<p>規則</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> person1 = &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&#x27;kent&#x27;</span>,</span><br><span class="line">  <span class="attr">age</span>: <span class="number">18</span>,</span><br><span class="line">  <span class="attr">wallet</span>: <span class="number">0</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> person2 = &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&#x27;clark&#x27;</span>,</span><br><span class="line">  <span class="attr">age</span>: <span class="number">20</span>,</span><br><span class="line">  <span class="attr">wallet</span>: <span class="literal">null</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">person1.<span class="property">wallet</span> ?? &#123;personOld, ...&#123;<span class="attr">wallet</span>: <span class="number">100</span>&#125;&#125;; <span class="comment">// &#123;person1: &#123;…&#125;, wallet: 0&#125;</span></span><br><span class="line">person2.<span class="property">wallet</span> ?? &#123;personNew, ...&#123;<span class="attr">wallet</span>: <span class="number">100</span>&#125;&#125;; <span class="comment">// &#123;person2: &#123;…&#125;, wallet: 100&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>e.g. 預設值</p>
+<ul>
+<li>再賦予值的過程透過 <code>??</code> 來設置預設值，只要 <code>?? 左邊</code> 為 null、undefined 則就會賦予 <code>?? 右邊</code> 為新值。</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> n;</span><br><span class="line"><span class="keyword">let</span> num = n ?? <span class="string">&#x27;0&#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>使用 tips</p>
 </blockquote>
-<ol>
-<li>大括號括號可省略。</li>
-<li>參數只有一個時，可以把參數的小括號省略。（沒有參數、兩個參數以上時不可省略小括號）</li>
-<li>若需要回傳值則可省略 return。</li>
-</ol>
-<p><img src="https://imgur.com/hdFhyyI.jpg"></p>
-<h3 id="縮寫-tips"><a href="#縮寫-tips" class="headerlink" title="縮寫 tips"></a>縮寫 tips</h3><div class="note default">
-            <p>下方會用範例來演示撰寫箭頭函式時需要注意的 tips。</p>
-          </div>
-
-<ul>
-<li>只有一個參數才不用加 <code>括號()</code>，否則會噴錯。</li>
-</ul>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 錯誤</span></span><br><span class="line"><span class="keyword">const</span> arrowFn = =&gt; <span class="string">&#x27;箭頭函式&#x27;</span>; <span class="comment">// SyntaxError: Unexpected token &#x27;=&gt;&#x27;</span></span><br><span class="line"><span class="keyword">const</span> arrowFn = item, <span class="function"><span class="params">index</span> =&gt;</span> <span class="string">&#x27;箭頭函式&#x27;</span>; <span class="comment">// SyntaxError: Unexpected token &#x27;=&gt;&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 正確</span></span><br><span class="line"><span class="keyword">const</span> <span class="title function_">arrowFn</span> = (<span class="params"></span>) =&gt; <span class="string">&#x27;箭頭函式&#x27;</span>;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>參數、return 值有包含 <code>大括號 &#123;&#125;</code> 物件，則需要在外圍加上<code>小括號()</code> 將其包裹起來。</li>
-</ul>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 錯誤</span></span><br><span class="line"><span class="keyword">const</span> arrowFn = &#123;name, sex&#125; =&gt; name;                 <span class="comment">// SyntaxError: Malformed arrow function parameter list</span></span><br><span class="line"><span class="keyword">const</span> <span class="title function_">arrowFn2</span> = (<span class="params"></span>) =&gt; &#123;<span class="attr">name</span>: <span class="string">&#x27;kent&#x27;</span>, <span class="attr">sex</span>: <span class="string">&#x27;male&#x27;</span>&#125;;  <span class="comment">// SyntaxError: Unexpected token &#x27;:&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 正確</span></span><br><span class="line"><span class="keyword">const</span> <span class="title function_">arrowFn</span> = (<span class="params">&#123;name, sex&#125;</span>) =&gt; name;</span><br><span class="line"><span class="keyword">const</span> <span class="title function_">arrowFn2</span> = (<span class="params"></span>) =&gt; (&#123;<span class="attr">name</span>: <span class="string">&#x27;kent&#x27;</span>, <span class="attr">sex</span>: <span class="string">&#x27;male&#x27;</span>&#125;);</span><br></pre></td></tr></table></figure>
-
-<h2 id="this"><a href="#this" class="headerlink" title="this"></a>this</h2><div class="note primary">
-            <p>箭頭函數中的 this 在<code>定義</code>時就綁定了不會更改，會將其綁定在定義的<code>執行環境</code>，另一種說法是會指向上一層的 this。</p>
-          </div>
-
-<figure class="highlight js"><figcaption><span>e.g. this 指向</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="comment">// 傳統函式</span></span><br><span class="line"><span class="keyword">const</span> obj = &#123;</span><br><span class="line">  <span class="attr">fn</span>: <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="variable language_">this</span>;</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 箭頭函式</span></span><br><span class="line"><span class="keyword">const</span> obj1 = &#123;</span><br><span class="line">  <span class="attr">arrowFn</span>: <span class="function">() =&gt;</span> <span class="variable language_">this</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(obj.<span class="title function_">fn</span>());         <span class="comment">// obj 物件</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(obj1.<span class="title function_">arrowFn</span>());   <span class="comment">// window 物件</span></span><br></pre></td></tr></table></figure>
-
 <div class="note danger">
-            <p>但有幾種特例情況會造成箭頭函式的 this 指向改變，而傳統函式的 this 物件指向是可變的，會隨著其呼叫的物件而有所改變。</p>
+            <p>不能與 &amp;&amp;、|| 一起使用。（不然會噴 SyntaxError）</p>
           </div>
 
-<div class="note default">
-            <p>下方範例會掩飾在不同的情況下，箭頭函式以及傳統函式兩者 this 指向的結果。（不會對 this 做詳細的介紹）</p>
-          </div>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="literal">null</span> || <span class="literal">undefined</span> ?? <span class="string">&quot;foo&quot;</span>; <span class="comment">// 噴 SyntaxError</span></span><br><span class="line">(<span class="literal">null</span> || <span class="literal">undefined</span> ) ?? <span class="string">&quot;foo&quot;</span>; <span class="comment">// 返回 &quot;foo&quot;</span></span><br></pre></td></tr></table></figure>
 
-<h3 id="嚴格模式-simple-call"><a href="#嚴格模式-simple-call" class="headerlink" title="嚴格模式 simple call"></a>嚴格模式 simple call</h3><ul>
-<li>傳統函式：指向 window，當函式 <code>沒有</code> 指定<code>呼叫物件</code>時，默認就會綁定在 <code>全域物件 window</code>。</li>
-<li>箭頭函式：指向 undefined，因為不允許默認綁定。</li>
+<h2 id="conclusion"><a href="#conclusion" class="headerlink" title="conclusion"></a>conclusion</h2><ul>
+<li><code>空值合併 ??</code> 相較於 <a href="https://kentdoit.github.io/javascript/350805089/"><code>短路求值 ||</code></a> 更加嚴謹。</li>
 </ul>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title function_">fn</span> = (<span class="params"></span>) =&gt; &#123; </span><br><span class="line">  <span class="string">&#x27;use strict&#x27;</span>;</span><br><span class="line">  <span class="keyword">return</span> <span class="variable language_">this</span>; </span><br><span class="line">&#125;;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">fn</span>()); <span class="comment">//window物件</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> arrowFn = <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="string">&#x27;use strict&#x27;</span>; </span><br><span class="line">  <span class="keyword">const</span> <span class="title function_">arrowFn2</span> = (<span class="params"></span>) =&gt; <span class="variable language_">this</span>;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">arrowFn2</span>()); <span class="comment">//undefined </span></span><br><span class="line">  <span class="keyword">return</span> <span class="variable language_">this</span>; </span><br><span class="line">&#125;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">arrowFn</span>()); <span class="comment">//undefined </span></span><br></pre></td></tr></table></figure>
-
-<h3 id="物件實字（object-literal）方法"><a href="#物件實字（object-literal）方法" class="headerlink" title="物件實字（object literal）方法"></a>物件實字（object literal）方法</h3><ul>
-<li>傳統函式：指向 obj 物件，因此印出傳統函式。</li>
-<li>箭頭函式：指向上一層 window 物件，由於物件特性沒有定義 type 會回傳 undefined。</li>
-</ul>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 傳統函式</span></span><br><span class="line"><span class="keyword">const</span> obj = &#123;</span><br><span class="line">  <span class="attr">type</span>: <span class="string">&#x27;傳統函式&#x27;</span>,</span><br><span class="line">  <span class="attr">fn</span>: <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>.<span class="property">type</span>);  <span class="comment">// 傳統函式</span></span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 箭頭函式</span></span><br><span class="line"><span class="keyword">const</span> obj1 = &#123;</span><br><span class="line">  <span class="attr">type</span>: <span class="string">&#x27;箭頭函式&#x27;</span>,</span><br><span class="line">  <span class="attr">arrowFn</span>: <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>.<span class="property">type</span>);  <span class="comment">// undefined</span></span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">obj.<span class="title function_">fn</span>();         </span><br><span class="line">obj1.<span class="title function_">arrowFn</span>();</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://imgur.com/wzpfSYj.jpg"></p>
-<h3 id="call、apply、bind-方法"><a href="#call、apply、bind-方法" class="headerlink" title="call、apply、bind 方法"></a>call、apply、bind 方法</h3><div class="note default">
-            <p>這三種方法會透過傳入物件，並將函式 this 指向其物件。</p>
-          </div>
-
-<ul>
-<li>傳統函式：指向 obj 物件，因此印出傳統函式。</li>
-<li>箭頭函式：指向 window 物件，由於箭頭函式特性（this 在 <code>定義</code> 時就綁定了不會更改）使其無法重新改變 this 指向。</li>
-</ul>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> obj = &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&#x27;Kent&#x27;</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> fn = <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>);  <span class="comment">// obj 物件</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> <span class="title function_">fnArrow</span> = (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>);  <span class="comment">// window 物件</span></span><br><span class="line">&#125;</span><br><span class="line">fnArrow.<span class="title function_">call</span>(obj); </span><br><span class="line">fn.<span class="title function_">call</span>(obj);</span><br></pre></td></tr></table></figure>
-
-<h3 id="Prototype-物件原型"><a href="#Prototype-物件原型" class="headerlink" title="Prototype 物件原型"></a>Prototype 物件原型</h3><ul>
-<li>傳統函式：回傳 5，指向 Member 物件。</li>
-<li>箭頭函式：回傳 undefined，指向上一層 window 物件。</li>
-</ul>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> type = <span class="string">&quot;window&quot;</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="title class_">Member</span> = <span class="keyword">function</span>(<span class="params">name, age</span>) &#123;</span><br><span class="line">  <span class="variable language_">this</span>.<span class="property">name</span> = name;</span><br><span class="line">  <span class="variable language_">this</span>.<span class="property">age</span> = age;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="title class_">Member</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">getAge</span> = <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>.<span class="property">age</span> ,<span class="variable language_">this</span>); <span class="comment">// 5, Member 物件</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="title class_">Member</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">getAgeArrow</span> = <span class="function">() =&gt;</span> <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>.<span class="property">age</span> ,<span class="variable language_">this</span>); <span class="comment">// undefined, window 物件</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> customer = <span class="keyword">new</span> <span class="title class_">Member</span>(<span class="string">&#x27;Kent&#x27;</span>, <span class="number">5</span>);</span><br><span class="line">customer.<span class="title function_">getAge</span>();</span><br><span class="line">customer.<span class="title function_">getAgeArrow</span>();</span><br></pre></td></tr></table></figure>
-
-<h3 id="DOM-監聽函式"><a href="#DOM-監聽函式" class="headerlink" title="DOM 監聽函式"></a>DOM 監聽函式</h3><div class="note default">
-            <p>DOM 擁有自己的 this，當事件觸發時會將 this 指向觸發事件的元素本身。</p>
-          </div>
-
-<ul>
-<li>傳統函式：函式被執行時指向元素本身。</li>
-<li>箭頭函式：函式被執行時指向 window 物件。</li>
-</ul>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> btn = <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;button&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> obj = &#123;</span><br><span class="line">  <span class="attr">type</span>: <span class="string">&#x27;傳統函式&#x27;</span>,</span><br><span class="line">  <span class="attr">fn</span>: <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>, <span class="variable language_">this</span>.<span class="property">type</span>); <span class="comment">// DOM element, &#x27;button&#x27;</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">btn.<span class="title function_">addEventListener</span>(<span class="string">&#x27;click&#x27;</span>, obj.<span class="property">fn</span>);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> obj1 = &#123;</span><br><span class="line">  <span class="attr">type</span>: <span class="string">&#x27;箭頭函式&#x27;</span>,</span><br><span class="line">  <span class="attr">fnArrow</span>: <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>, <span class="variable language_">this</span>.<span class="property">type</span>); <span class="comment">// // window 物件, undefined</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">btn.<span class="title function_">addEventListener</span>(<span class="string">&#x27;click&#x27;</span>, obj1.<span class="property">fnArrow</span>);</span><br></pre></td></tr></table></figure>
-
-<h2 id="arguments-參數"><a href="#arguments-參數" class="headerlink" title="arguments 參數"></a>arguments 參數</h2><div class="note danger">
-            <p>箭頭函式沒有 arguments 參數使用的話會噴 Error。</p>
-          </div>
-
-<div class="note default">
-            <p>解法：使用其餘參數（rest parameter）來替代，（arguments 是類陣列，其餘參數是陣列）</p>
-          </div>
-
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> fn = <span class="keyword">function</span> (<span class="params">parm</span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">arguments</span>);</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">const</span> <span class="title function_">arrowFn</span> = (<span class="params">parm</span>) =&gt; &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">arguments</span>);</span><br><span class="line">&#125;;</span><br><span class="line"><span class="title function_">fn</span>(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>);      <span class="comment">// Arguments(3)</span></span><br><span class="line"><span class="title function_">arrowFn</span>(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>); <span class="comment">// ReferenceError: arguments is not defined</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 其餘參數（rest parameter）</span></span><br><span class="line"><span class="keyword">const</span> <span class="title function_">arrowRestFn</span> = (<span class="params">...parm</span>) =&gt; &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(parm);</span><br><span class="line">&#125;;</span><br><span class="line"><span class="title function_">arrowRestFn</span>(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>); <span class="comment">// [1, 2, 3]</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h2 id="constructor、prototype"><a href="#constructor、prototype" class="headerlink" title="constructor、prototype"></a>constructor、prototype</h2><ul>
-<li>沒有原型（prototype）屬性，使用會回傳 undefined。</li>
-<li>若使用於建構式（constructor），會在使用 new 時候噴 error。</li>
-</ul>
-<div class="note default">
-            <p>在實體化物件的時候會改變 this 的指向，指向新的實體物件，但由於箭頭函式無法指向新的實體物件所以會噴錯。</p>
-          </div>
-
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> fn = <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>);</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">const</span> <span class="title function_">arrowFn</span> = (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>);</span><br><span class="line">&#125;;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(fn.<span class="property"><span class="keyword">prototype</span></span>);      <span class="comment">// &#123;constructor: ƒ&#125;</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(arrowFn.<span class="property"><span class="keyword">prototype</span></span>); <span class="comment">// undefined</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">new</span> <span class="title function_">fn</span>();</span><br><span class="line"><span class="keyword">new</span> <span class="title function_">arrowFn</span>(); <span class="comment">// TypeError: arrowFn is not a constructor</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="Array-prototype、陣列方法"><a href="#Array-prototype、陣列方法" class="headerlink" title="Array.prototype、陣列方法"></a>Array.prototype、陣列方法</h2><p><img src="https://imgur.com/oQML1lh.jpg" alt="正常傳統函式中的 Array 屬性"></p>
-<div class="note default">
-            <p>箭頭函式由於沒有 <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a> 這個屬性，因此無法使用陣列方法</p>
-          </div>
-
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> calculate = &#123;</span><br><span class="line">  <span class="attr">array</span>: [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>],</span><br><span class="line">  <span class="attr">sum</span>: <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="variable language_">this</span>.<span class="property">array</span>.<span class="title function_">reduce</span>(<span class="function">(<span class="params">result, item</span>) =&gt;</span> result + item)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//TypeError: Cannot read property &#x27;array&#x27; of undefined</span></span><br><span class="line">calculate.<span class="title function_">sum</span>()</span><br></pre></td></tr></table></figure>
-
-<h2 id="conclusion"><a href="#conclusion" class="headerlink" title="conclusion"></a>conclusion</h2><p>箭頭函式 tips</p>
-<ul>
-<li>傳統函式縮寫且只有一個參數才不用加<code>括號 ()</code>。</li>
-<li>特殊情況會造成 this 指向<code>改變</code>。</li>
-<li>沒有 arguments 參數。</li>
-<li>沒有 constructor、prototype。</li>
-<li>沒有 Array 無法使用陣列方法。</li>
-</ul>
+<p><img src="https://imgur.com/2sYcGjJ.jpg"></p>
 <h2 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h2><ul>
-<li><a href="https://pjchender.dev/javascript/js-arrow-function/">[JS] 箭頭函式（arrow function）和它對 this 的影響</a></li>
-<li><a href="https://ithelp.ithome.com.tw/articles/10249940">JavaScript基本功修練：Day21 - 箭頭函式</a></li>
+<li><a href="https://cloud.tencent.com/developer/article/1954297">谈谈 JavaScript 中的空值合并操作符 Nullish coalescing operator</a></li>
 </ul>
 ]]></content>
       <categories>
         <category>JavaScript</category>
       </categories>
       <tags>
+        <tag>運算子</tag>
         <tag>JavaScript</tag>
-        <tag>箭頭函式</tag>
-        <tag>this</tag>
-        <tag>arguments</tag>
       </tags>
   </entry>
   <entry>
@@ -2008,6 +2008,17 @@ console.log(obj.name);  // kent
       </tags>
   </entry>
   <entry>
+    <title>JS 傳值 by Value、傳址 by Reference、傳共享 by sharing</title>
+    <url>/javascript/3842658283/</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>JavaScript</category>
+      </categories>
+      <tags>
+        <tag>JavaScript</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>JS 轉型 - 抽象的值運算 abstract operations</title>
     <url>/javascript/163319027/</url>
     <content><![CDATA[<h2 id="ToPrimitive"><a href="#ToPrimitive" class="headerlink" title="ToPrimitive"></a>ToPrimitive</h2>]]></content>
@@ -2017,17 +2028,6 @@ console.log(obj.name);  // kent
       <tags>
         <tag>JavaScript</tag>
         <tag>ECMAScript</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>JS 傳值 by Value、傳址 by Reference、傳共享 by sharing</title>
-    <url>/javascript/3842658283/</url>
-    <content><![CDATA[]]></content>
-      <categories>
-        <category>JavaScript</category>
-      </categories>
-      <tags>
-        <tag>JavaScript</tag>
       </tags>
   </entry>
   <entry>
@@ -2415,7 +2415,7 @@ console.log(obj.name);  // kent
 <details>
   <summary>Q1：const 可不可以修改？</summary>
   <answer>A1：基礎型別不行，但物件型別可以，因為const 僅限制無法修改 value（無法重新賦予值），但可以修改 reference 原物件的值。</answer>
-  <pre>補充：使用 freeze()，可以防止物件 reference 的 property 被更動。</pre>
+  <answer>補充：使用 freeze()，可以防止物件 reference 的 property 被更動。</answer>
 </details>
 
 <details>
