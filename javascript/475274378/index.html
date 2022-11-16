@@ -51,7 +51,7 @@
 <meta property="og:image" content="https://imgur.com/Em9khl0.png">
 <meta property="og:image" content="https://imgur.com/wSB9bbW.png">
 <meta property="article:published_time" content="2022-11-16T08:39:15.000Z">
-<meta property="article:modified_time" content="2022-11-16T09:16:05.439Z">
+<meta property="article:modified_time" content="2022-11-16T10:32:15.001Z">
 <meta property="article:author" content="Kent">
 <meta property="article:tag" content="JavaScript">
 <meta name="twitter:card" content="summary">
@@ -337,21 +337,20 @@
 <p>let 作用域在 <code>&#123;&#125;、()</code> 。</p>
 </blockquote>
 <p>若在作用域外使用變數，會因為 TDZ 特性造成 <code>Reference Error</code>。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// block scope</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(msg); <span class="comment">// ReferenceError: not defined</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="keyword">let</span> msg = <span class="string">&quot;我是誰&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 無法重複宣告</span></span><br><span class="line"><span class="keyword">let</span> msg2 = <span class="string">&quot;我是誰&quot;</span>;</span><br><span class="line">msg2 = <span class="string">&quot;我在哪裡&quot;</span>;</span><br><span class="line"><span class="keyword">let</span> msg2 = <span class="string">&quot;我在幹嘛&quot;</span>;  <span class="comment">// SyntaxError: Identifier &#x27;msg&#x27; has already been declared</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// block scope</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(msg); <span class="comment">// ReferenceError: not defined</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">let</span> msg = <span class="string">&quot;我是誰&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 無法重複宣告</span></span><br><span class="line"><span class="keyword">let</span> msg2 = <span class="string">&quot;我是誰&quot;</span>;</span><br><span class="line">msg2 = <span class="string">&quot;我在哪裡&quot;</span>;</span><br><span class="line"><span class="keyword">let</span> msg2 = <span class="string">&quot;我在幹嘛&quot;</span>;  <span class="comment">// SyntaxError: Identifier &#x27;msg&#x27; has already been declared</span></span><br></pre></td></tr></table></figure>
 
 <hr>
 <h2 id="const"><a href="#const" class="headerlink" title="const"></a>const</h2><blockquote>
 <p>const 作用域在 <code>&#123;&#125;、()</code> 。</p>
 </blockquote>
 <p>若在作用域外使用變數，會因為 TDZ 特性造成 <code>Reference Error</code>，且宣告時<code>必須</code>賦予值，否則會噴 <code>SyntaxError</code> 錯誤。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(msg);</span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">const</span> msg; <span class="comment">// SyntaxError: Missing initializer in const declaration</span></span><br><span class="line">	<span class="keyword">const</span> msg1 = <span class="string">&#x27;success&#x27;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 無法重複宣告</span></span><br><span class="line"><span class="keyword">const</span> msg2 = <span class="string">&quot;我是誰&quot;</span>;</span><br><span class="line"><span class="keyword">const</span> msg2 = <span class="string">&quot;我在哪裡&quot;</span>;  <span class="comment">// SyntaxError: Identifier &#x27;msg&#x27; has already been declared</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 不可修改，除非是值是 reference（物件、陣列）</span></span><br><span class="line"><span class="keyword">const</span> msg3 = <span class="string">&quot;我是誰&quot;</span>;</span><br><span class="line">msg3 = <span class="string">&quot;我在哪裡&quot;</span>; <span class="comment">// // TypeError: Assignment to constant variable</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(msg);</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">const</span> msg; <span class="comment">// SyntaxError: Missing initializer in const declaration</span></span><br><span class="line">	<span class="keyword">const</span> msg1 = <span class="string">&#x27;success&#x27;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 無法重複宣告</span></span><br><span class="line"><span class="keyword">const</span> msg2 = <span class="string">&quot;我是誰&quot;</span>;</span><br><span class="line"><span class="keyword">const</span> msg2 = <span class="string">&quot;我在哪裡&quot;</span>;  <span class="comment">// SyntaxError: Identifier &#x27;msg&#x27; has already been declared</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 不可修改，除非是值是 reference（物件、陣列）</span></span><br><span class="line"><span class="keyword">const</span> msg3 = <span class="string">&quot;我是誰&quot;</span>;</span><br><span class="line">msg3 = <span class="string">&quot;我在哪裡&quot;</span>; <span class="comment">// // TypeError: Assignment to constant variable</span></span><br></pre></td></tr></table></figure>
 
 <hr>
 <h2 id="conclusion"><a href="#conclusion" class="headerlink" title="conclusion"></a>conclusion</h2><div class="note danger">
             <p>三者最大差異是 <code>作用域 Scope</code>。</p>
           </div>
 
-<hr>
 <div class="note info">
             <p>最後用兩個問題來複習這篇文章，大家可以試著回答看看。</p>
           </div>
@@ -359,7 +358,7 @@
 <details>
   <summary>Q1：const 可不可以修改？</summary>
   <answer>A1：基礎型別不行，但物件型別可以，因為const 僅限制無法修改 value（無法重新賦予值），但可以修改 reference 原物件的值。</answer>
-  <answer>補充：使用 freeze()，可以防止物件 reference 的 property 被更動。</answer>
+  <pre>補充：使用 freeze()，可以防止物件 reference 的 property 被更動。</pre>
 </details>
 
 <details>
