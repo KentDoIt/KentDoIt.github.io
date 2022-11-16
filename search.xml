@@ -2407,7 +2407,26 @@ console.log(obj.name);  // kent
 <h2 id="conclusion"><a href="#conclusion" class="headerlink" title="conclusion"></a>conclusion</h2><div class="note danger">
             <p>三者最大差異是 <code>作用域 Scope</code>。</p>
           </div>
-]]></content>
+
+<hr>
+<div class="note info">
+            <p>最後用三個問題來結束這回合，大家可以試著回答看看。</p>
+          </div>
+
+<details>
+  <summary>Q1：const 可不可以修改？</summary>
+  <answer>A1：基礎型別不行，但物件型別可以，因為const 僅限制無法修改 value（無法重新賦予值），但可以修改 reference 原物件的值。</answer>
+</details>
+
+<details>
+  <summary>如何讓 reference 不能被修改？</summary>
+  <answer>使用 freeze()，防止 const 的 property 被更動。</answer>
+</details>
+
+<details>
+  <summary>Q3：對於 JS 來說 const 效能勝過 let 和 var，那應該多使用 const 嗎？</summary>
+  <answer>A3：const 特點是防止變數被改變，應該照這個邏輯去規劃程式中哪些是可以修改以及不能修改的，並讓程式碼透過 const 達到這個目的，以及提升可讀性，並非一昧盲目使用 const。</answer>
+</details>]]></content>
       <categories>
         <category>JavaScript</category>
       </categories>
