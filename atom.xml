@@ -6,7 +6,7 @@
   <link href="https://kentdoit.github.io/atom.xml" rel="self"/>
   
   <link href="https://kentdoit.github.io/"/>
-  <updated>2022-09-10T03:07:49.169Z</updated>
+  <updated>2022-11-16T09:03:19.815Z</updated>
   <id>https://kentdoit.github.io/</id>
   
   <author>
@@ -17,11 +17,30 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>JS 宣告變數 var、let、const 差異</title>
+    <link href="https://kentdoit.github.io/javascript/475274378/"/>
+    <id>https://kentdoit.github.io/javascript/475274378/</id>
+    <published>2022-11-16T08:39:15.000Z</published>
+    <updated>2022-11-16T09:03:19.815Z</updated>
+    
+    
+    <summary type="html">此篇從幾個不同面向來探討 var、let、const 的差異。</summary>
+    
+    
+    
+    <category term="JavaScript" scheme="https://kentdoit.github.io/categories/javascript/"/>
+    
+    
+    <category term="JavaScript" scheme="https://kentdoit.github.io/tags/JavaScript/"/>
+    
+  </entry>
+  
+  <entry>
     <title>JS 類陣列 （ Array-like ）</title>
     <link href="https://kentdoit.github.io/javascript/3574120313/"/>
     <id>https://kentdoit.github.io/javascript/3574120313/</id>
     <published>2022-08-10T03:54:00.000Z</published>
-    <updated>2022-09-10T03:07:49.169Z</updated>
+    <updated>2022-11-16T08:37:02.003Z</updated>
     
     
     <summary type="html">此篇主要講解 Array-like 和一般陣列有什麼差異，最後也會介紹三種將類陣列轉成陣列的方法。</summary>
@@ -416,25 +435,6 @@
     
     
     <category term="Hexo 優化" scheme="https://kentdoit.github.io/tags/Hexo-%E5%84%AA%E5%8C%96/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Hexo 設置 GA、Sitemap（四）</title>
-    <link href="https://kentdoit.github.io/hexo/599670072/"/>
-    <id>https://kentdoit.github.io/hexo/599670072/</id>
-    <published>2022-05-01T06:10:25.000Z</published>
-    <updated>2022-05-10T01:52:49.000Z</updated>
-    
-    
-    <summary type="html">此篇介紹如何為部落格設置 GA 以及 Sitemap。</summary>
-    
-    
-    
-    <category term="Hexo" scheme="https://kentdoit.github.io/categories/hexo/"/>
-    
-    
-    <category term="Hexo SEO" scheme="https://kentdoit.github.io/tags/Hexo-SEO/"/>
     
   </entry>
   

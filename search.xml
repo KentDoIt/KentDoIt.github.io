@@ -181,6 +181,220 @@
       </tags>
   </entry>
   <entry>
+    <title>Hexo 新增文章和頁面 (二)</title>
+    <url>/hexo/356195859/</url>
+    <content><![CDATA[<h2 id="範例的環境版本"><a href="#範例的環境版本" class="headerlink" title="範例的環境版本"></a>範例的環境版本</h2><p>hexo 版本：6.0.1<br>hexo-cli 版本：4.3.0<br>next 版本：7.8.0</p>
+<h2 id="新增指令"><a href="#新增指令" class="headerlink" title="新增指令"></a>新增指令</h2><blockquote>
+<p>新增文章、草稿、草稿三種語法都一樣是使用 new 指令，只差別在 layout 參數。</p>
+</blockquote>
+<p>指令</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">hexo new [layout] &lt;title&gt;</span><br></pre></td></tr></table></figure>
+
+<p>參數</p>
+<p>title：文章標題</p>
+<ul>
+<li>若文章標題包含空格，需使用 <code>引號</code> 刮起來（雙引號、單引號都可以），否則會以最後一個空格後面的字作為 title。</li>
+</ul>
+<p>layout：模板種類，有以下三種不同的種類</p>
+<ul>
+<li>draft.md（新增草稿）</li>
+<li>page.md（新增頁面）</li>
+<li>post.md（預設值，新增文章）</li>
+</ul>
+<div class="note default">
+            <p>如果沒有加上 layout 參數，則會帶入根目錄 _config.yml 檔案中的 <code>default_layout</code> 參數，預設為 post。</p>
+          </div>
+
+<blockquote>
+<p>再下新增指令前，還需要先暸解一些設定以及檔案路徑。</p>
+</blockquote>
+<h3 id="存放路徑"><a href="#存放路徑" class="headerlink" title="存放路徑"></a>存放路徑</h3><blockquote>
+<p>新增的文章會存放於根目錄 source&#x2F;_post 路徑底下，會用 .md 檔作為筆記的副檔名。</p>
+</blockquote>
+<p><img src="https://imgur.com/XWXBS2c.png"></p>
+<div class="note default">
+            <p>如果想獲取已發佈的文章，則可以直接複製 source&#x2F;_post 資料夾，就可以獲得發佈過的 md 檔案。</p>
+          </div>
+
+<h3 id="設置模版參數"><a href="#設置模版參數" class="headerlink" title="設置模版參數"></a>設置模版參數</h3><blockquote>
+<p>根目錄 scaffolds 資料夾中的 layout 檔案（draft.md、page.md、post.md），分別代表三種種 layout 模板的設置。</p>
+</blockquote>
+<p><img src="https://imgur.com/8Cyd1Pz.png"></p>
+<h3 id="模版參數種類"><a href="#模版參數種類" class="headerlink" title="模版參數種類"></a>模版參數種類</h3><blockquote>
+<p>參數是 <code>Front-matter</code>，檔案最上方以 <code>---</code> 分隔的區域）作為模版預設樣式的參數。</p>
+</blockquote>
+<p>常用的四種參數</p>
+<ul>
+<li>title：會自動帶上當 title 值，並以 h1 tag 的方式呈現。</li>
+<li>date：會自動帶上當下日期。</li>
+<li>categories：分類（多筆會用 <code>破折號 -</code> 的方式輸入）。</li>
+<li>tags：分類（多筆會用 <code>破折號 -</code> 的方式輸入）。</li>
+</ul>
+<figure class="highlight js"><figcaption><span>示範 scaffolds 中如何用 &#123;&#123;&#125;&#125; 設置 Front-matter 參數</span></figcaption><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line"><span class="attr">title</span>: &#123;&#123; title &#125;&#125; <span class="comment">// 預設值，文章名稱（會自動帶入）</span></span><br><span class="line"><span class="attr">date</span>: &#123;&#123; date &#125;&#125; <span class="comment">// 預設值，文章時間（會自動帶入）</span></span><br><span class="line"><span class="attr">tags</span>: &#123;&#123; tags &#125;&#125; <span class="comment">// 標籤</span></span><br><span class="line"><span class="attr">categories</span>: &#123;&#123; categories &#125;&#125; <span class="comment">// 分類</span></span><br><span class="line"><span class="attr">thumbnail</span>: <span class="comment">// 預覽圖</span></span><br><span class="line"><span class="attr">banner</span>: <span class="comment">// 文章開頭圖</span></span><br><span class="line">---</span><br></pre></td></tr></table></figure>
+
+<div class="note default">
+            <p>其他參數請參考<a href="https://hexo.io/zh-tw/docs/front-matter">官方文件</a></p>
+          </div>
+
+<h2 id="新增頁面"><a href="#新增頁面" class="headerlink" title="新增頁面"></a>新增頁面</h2><blockquote>
+<p>此小節也會介紹如何解決上一篇文章結尾提到的徑錯誤（例如：Cannot GET&#x2F;about&#x2F;）。</p>
+</blockquote>
+<p>語法</p>
+<ul>
+<li><code>hexo new page &lt;title&gt;</code></li>
+</ul>
+<div class="note default">
+            <p>下方會演釋如何透過指令建立 menu 所需頁面，以及建立後需要設置什麼？</p>
+          </div>
+
+<p>Step1：輸入新增頁面指令</p>
+<ul>
+<li>示範新增 tags 頁面</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">hexo new page tags</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://imgur.com/6OCF161.png" alt="tags 畫面"></p>
+<div class="note default">
+            <p>這樣路徑就不會錯誤拉，只是會發現空空如也，那是因為還需要設置對應的 type 參數。</p>
+          </div>
+
+<p>Step2：修改 index.md 中 Front-matter 參數 type</p>
+<div class="note default">
+            <p>進入根目錄 source 資料夾中，剛剛新增的 tags 資料夾底下，會有一個 index.md，這隻檔案使用 Front-matter（檔案最上方以 — 分隔的區域） 作為模版預設樣式的參數。</p>
+          </div>
+
+<ul>
+<li>title：會自動帶入指令中的 title（tags）</li>
+<li>date：會自動帶入檔案檔案建立日期</li>
+<li>type: 才會對應類別的文章</li>
+</ul>
+<figure class="highlight plaintext"><figcaption><span>source/tags/index.md</span></figcaption><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">title: tags</span><br><span class="line">date: 2022-04-25 13:15:09</span><br><span class="line">type: tags</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://imgur.com/bRVlExe.png" alt="tags 畫面"></p>
+<p>延伸閱讀：ray 大 <a href="https://israynotarray.com/hexo/20200923/2032860736/">試著學 Hexo - 新增頁面</a></p>
+<div class="note default">
+            <p>文章中有提到如何去除模板，不使用預設產生的樣板而是改用手刻的 .html 檔案。</p>
+          </div>
+
+<h2 id="新增文章"><a href="#新增文章" class="headerlink" title="新增文章"></a>新增文章</h2><p>語法</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">hexo new &lt;title&gt;</span><br></pre></td></tr></table></figure>
+
+<div class="note default">
+            <p>下方如何透過指令新增文章，以及建立後需要設置什麼？</p>
+          </div>
+
+<p>Step1：新增文章</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">hexo new &lt;title&gt;</span><br></pre></td></tr></table></figure>
+
+<p>Step2：清除快取檔案 (db.json) 和已產生的靜態檔案 (public)</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">hexo cl</span><br></pre></td></tr></table></figure>
+
+<p>Step3：產生靜態檔案以及重新部署</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">hexo d -g</span><br></pre></td></tr></table></figure>
+
+<div class="note default">
+            <p>示範新增文章需要做的三個指令</p>
+          </div>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">hexo new &#x27;架設部落格 Hexo 部署 Github (零)&#x27;</span><br><span class="line">hexo cl</span><br><span class="line">hexo d -g</span><br></pre></td></tr></table></figure>
+
+<div class="note default">
+            <p>那如何在文章中添加圖片以及刪除文章呢？</p>
+          </div>
+
+<h3 id="刪除文章"><a href="#刪除文章" class="headerlink" title="刪除文章"></a>刪除文章</h3><p>Step1：直接刪除路徑 .&#x2F;source&#x2F;_posts 對應的文章 .md 檔案。</p>
+<p>Step2：清除快取檔案和已產生的靜態檔案。</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">hexo cl</span><br></pre></td></tr></table></figure>
+
+<p>Step3：重新部署</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">hexo d -g</span><br></pre></td></tr></table></figure>
+
+<h3 id="文章圖片"><a href="#文章圖片" class="headerlink" title="文章圖片"></a>文章圖片</h3><blockquote>
+<p>Hexo 本身並沒有提供上傳圖片的功能，因此需要另外尋找上傳圖片的服務，下面介紹兩種方法。</p>
+</blockquote>
+<p>方法一：在創建文章時會 <code>自動產生</code> 一個和文章同名的資料夾，用於存放圖片。</p>
+<blockquote>
+<p>透過部署時一併上傳到 github。</p>
+</blockquote>
+<p>Step1：搜尋 Writing<br>Step2：修改 post_asset_folder 參數（預設是 false）</p>
+<figure class="highlight diff"><figcaption><span>_config.yml</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="deletion">- post_asset_folder: false</span></span><br><span class="line"><span class="addition">+ post_asset_folder: true</span></span><br></pre></td></tr></table></figure>
+
+<div class="note default">
+            <p>後期不建議使用這種方式，因為 github repository 限制 5GB，當文件大小超過 50 MB 將收到警告，無法上傳超過 100 MB 的文件。</p><p>src：<a href="https://www.modb.pro/db/154051">GitHub、Gitlab、Gitee的容量及文件大小限制</a></p>
+          </div>
+
+<p>方法二：上傳其它圖片空間在用圖片超連結的方式插入到文章的 md 檔案。</p>
+<blockquote>
+<p>免費圖片空間：<a href="https://imgur.com/">Imgur</a>、<a href="https://upload.cc/">Upload.cc</a>、firebase</p>
+</blockquote>
+<p>Step1：上傳圖片到免費空間中<br>Step2：複製圖片連結<br>Step3：插入到文章中</p>
+<figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">![<span class="string">type</span>](<span class="link">https://imgur.com/bRVlExe.png</span>)</span><br></pre></td></tr></table></figure>
+
+<div class="note default">
+            <p>免費圖片空間注意事項</p><ol><li>是否有時間限制（例如：超過 60 天沒有瀏覽就刪除）</li><li>圖片是否可外連（例如：有些空間是不支援直接獲取圖片連結）</li><li>圖片流量限制（例如：限制圖片的讀取數量以及流出數量）</li></ol>
+          </div>
+
+<h2 id="新增草稿"><a href="#新增草稿" class="headerlink" title="新增草稿"></a>新增草稿</h2><div class="note default">
+            <p>草稿優勢為，預設不會被編譯出來，下方會介紹兩種不會被編譯的方法。</p>
+          </div>
+
+<p>指令</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">hexo new draft &lt;title&gt;</span><br></pre></td></tr></table></figure>
+
+<p>方法一：_drafts 資料夾（草稿資料夾）內的文章</p>
+<div class="note default">
+            <p>新增的草稿會存放於 _drafts 資料夾中，若資料夾不存在則會自動生成一個。</p>
+          </div>
+
+<p>Step1：輸入新增草稿文章指令</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">hexo new draft &lt;title&gt;</span><br></pre></td></tr></table></figure>
+
+<p>方法二：新增底線開頭資料夾</p>
+<p>Step1：根目錄 source&#x2F;_post 資料夾內，新增底線開頭的資料夾（例如：_草稿、_draft）<br>Step2：將還沒有要發布的文章手動搬移到到該資料夾底下</p>
+<p><img src="https://imgur.com/7XKWLNt.png" alt="草稿資料夾"></p>
+<div class="note default">
+            <p>那如果寫完了怎麼轉成文章？</p>
+          </div>
+
+<h3 id="草稿轉文章"><a href="#草稿轉文章" class="headerlink" title="草稿轉文章"></a>草稿轉文章</h3><div class="note default">
+            <p>下面介紹兩種方法。</p>
+          </div>
+
+<p>方法一：手動搬移</p>
+<ul>
+<li>將草稿文章手動搬移到 source&#x2F;_post 資料夾中。</li>
+</ul>
+<p>方法二：輸入 publish 指令</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">hexo publish draft &lt;title&gt;</span><br></pre></td></tr></table></figure>
+
+<div class="note danger">
+            <p>有限制，僅適用於存在 _drafts 資料夾底下的草稿，因為會自動從 source&#x2F;_drafts 尋找對應的草稿文章，因此不在該資料夾底下則會搜尋不到。</p>
+          </div>
+
+<p><img src="https://imgur.com/vmJTEpM.png" alt="草稿 error"></p>
+<h3 id="編譯草稿"><a href="#編譯草稿" class="headerlink" title="編譯草稿"></a>編譯草稿</h3><blockquote>
+<p>上面有提到，預設是不會將編譯草稿編譯出來，但如果要讓本地端 server 看見還是有辦法可以將其編譯出來的，下方介紹兩種方法。</p>
+</blockquote>
+<p>方法一：reu server 時帶入 <code>--draft</code></p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">hexo s --draft</span><br></pre></td></tr></table></figure>
+
+<p>方法二：修改根目錄 _config.yml 中的 <code>render_drafts</code> 參數（預設為 false）</p>
+<figure class="highlight diff"><table><tr><td class="code"><pre><span class="line"><span class="deletion">-render_drafts: false</span></span><br><span class="line"><span class="addition">+render_drafts: true</span></span><br></pre></td></tr></table></figure>
+
+<div class="note danger">
+            <p>但要注意使用方法二，運行時會出現警告提醒。（可以忽略沒關係）</p>
+          </div>
+
+<p><img src="https://imgur.com/wuOgMjr.png" alt="WARN 警告提示"></p>
+<h2 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h2><p><a href="https://israynotarray.com/hexo/20200923/2032860736/">試著學 Hexo - 新增頁面</a></p>
+]]></content>
+      <categories>
+        <category>Hexo</category>
+      </categories>
+      <tags>
+        <tag>Hexo 部落格</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Hexo 管理爬蟲 robots.txt（五）</title>
     <url>/hexo/3578178281/</url>
     <content><![CDATA[<h2 id="範例的環境版本"><a href="#範例的環境版本" class="headerlink" title="範例的環境版本"></a>範例的環境版本</h2><p>hexo 版本：6.0.1<br>hexo-cli 版本：4.3.0<br>next 版本：7.8.0</p>
@@ -398,220 +612,6 @@
 <li><a href="https://ed521.github.io/2019/07/hexo-install/">[教學] 使用 GitHub Pages + Hexo 來架設個人部落格</a></li>
 <li>ray <a href="https://israynotarray.com/hexo/20200917/636983586/">(4) 試著學 Hexo - 認識 Hexo 目錄結構</a></li>
 </ul>
-]]></content>
-      <categories>
-        <category>Hexo</category>
-      </categories>
-      <tags>
-        <tag>Hexo 部落格</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Hexo 新增文章和頁面 (二)</title>
-    <url>/hexo/356195859/</url>
-    <content><![CDATA[<h2 id="範例的環境版本"><a href="#範例的環境版本" class="headerlink" title="範例的環境版本"></a>範例的環境版本</h2><p>hexo 版本：6.0.1<br>hexo-cli 版本：4.3.0<br>next 版本：7.8.0</p>
-<h2 id="新增指令"><a href="#新增指令" class="headerlink" title="新增指令"></a>新增指令</h2><blockquote>
-<p>新增文章、草稿、草稿三種語法都一樣是使用 new 指令，只差別在 layout 參數。</p>
-</blockquote>
-<p>指令</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">hexo new [layout] &lt;title&gt;</span><br></pre></td></tr></table></figure>
-
-<p>參數</p>
-<p>title：文章標題</p>
-<ul>
-<li>若文章標題包含空格，需使用 <code>引號</code> 刮起來（雙引號、單引號都可以），否則會以最後一個空格後面的字作為 title。</li>
-</ul>
-<p>layout：模板種類，有以下三種不同的種類</p>
-<ul>
-<li>draft.md（新增草稿）</li>
-<li>page.md（新增頁面）</li>
-<li>post.md（預設值，新增文章）</li>
-</ul>
-<div class="note default">
-            <p>如果沒有加上 layout 參數，則會帶入根目錄 _config.yml 檔案中的 <code>default_layout</code> 參數，預設為 post。</p>
-          </div>
-
-<blockquote>
-<p>再下新增指令前，還需要先暸解一些設定以及檔案路徑。</p>
-</blockquote>
-<h3 id="存放路徑"><a href="#存放路徑" class="headerlink" title="存放路徑"></a>存放路徑</h3><blockquote>
-<p>新增的文章會存放於根目錄 source&#x2F;_post 路徑底下，會用 .md 檔作為筆記的副檔名。</p>
-</blockquote>
-<p><img src="https://imgur.com/XWXBS2c.png"></p>
-<div class="note default">
-            <p>如果想獲取已發佈的文章，則可以直接複製 source&#x2F;_post 資料夾，就可以獲得發佈過的 md 檔案。</p>
-          </div>
-
-<h3 id="設置模版參數"><a href="#設置模版參數" class="headerlink" title="設置模版參數"></a>設置模版參數</h3><blockquote>
-<p>根目錄 scaffolds 資料夾中的 layout 檔案（draft.md、page.md、post.md），分別代表三種種 layout 模板的設置。</p>
-</blockquote>
-<p><img src="https://imgur.com/8Cyd1Pz.png"></p>
-<h3 id="模版參數種類"><a href="#模版參數種類" class="headerlink" title="模版參數種類"></a>模版參數種類</h3><blockquote>
-<p>參數是 <code>Front-matter</code>，檔案最上方以 <code>---</code> 分隔的區域）作為模版預設樣式的參數。</p>
-</blockquote>
-<p>常用的四種參數</p>
-<ul>
-<li>title：會自動帶上當 title 值，並以 h1 tag 的方式呈現。</li>
-<li>date：會自動帶上當下日期。</li>
-<li>categories：分類（多筆會用 <code>破折號 -</code> 的方式輸入）。</li>
-<li>tags：分類（多筆會用 <code>破折號 -</code> 的方式輸入）。</li>
-</ul>
-<figure class="highlight js"><figcaption><span>示範 scaffolds 中如何用 &#123;&#123;&#125;&#125; 設置 Front-matter 參數</span></figcaption><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line"><span class="attr">title</span>: &#123;&#123; title &#125;&#125; <span class="comment">// 預設值，文章名稱（會自動帶入）</span></span><br><span class="line"><span class="attr">date</span>: &#123;&#123; date &#125;&#125; <span class="comment">// 預設值，文章時間（會自動帶入）</span></span><br><span class="line"><span class="attr">tags</span>: &#123;&#123; tags &#125;&#125; <span class="comment">// 標籤</span></span><br><span class="line"><span class="attr">categories</span>: &#123;&#123; categories &#125;&#125; <span class="comment">// 分類</span></span><br><span class="line"><span class="attr">thumbnail</span>: <span class="comment">// 預覽圖</span></span><br><span class="line"><span class="attr">banner</span>: <span class="comment">// 文章開頭圖</span></span><br><span class="line">---</span><br></pre></td></tr></table></figure>
-
-<div class="note default">
-            <p>其他參數請參考<a href="https://hexo.io/zh-tw/docs/front-matter">官方文件</a></p>
-          </div>
-
-<h2 id="新增頁面"><a href="#新增頁面" class="headerlink" title="新增頁面"></a>新增頁面</h2><blockquote>
-<p>此小節也會介紹如何解決上一篇文章結尾提到的徑錯誤（例如：Cannot GET&#x2F;about&#x2F;）。</p>
-</blockquote>
-<p>語法</p>
-<ul>
-<li><code>hexo new page &lt;title&gt;</code></li>
-</ul>
-<div class="note default">
-            <p>下方會演釋如何透過指令建立 menu 所需頁面，以及建立後需要設置什麼？</p>
-          </div>
-
-<p>Step1：輸入新增頁面指令</p>
-<ul>
-<li>示範新增 tags 頁面</li>
-</ul>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">hexo new page tags</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://imgur.com/6OCF161.png" alt="tags 畫面"></p>
-<div class="note default">
-            <p>這樣路徑就不會錯誤拉，只是會發現空空如也，那是因為還需要設置對應的 type 參數。</p>
-          </div>
-
-<p>Step2：修改 index.md 中 Front-matter 參數 type</p>
-<div class="note default">
-            <p>進入根目錄 source 資料夾中，剛剛新增的 tags 資料夾底下，會有一個 index.md，這隻檔案使用 Front-matter（檔案最上方以 — 分隔的區域） 作為模版預設樣式的參數。</p>
-          </div>
-
-<ul>
-<li>title：會自動帶入指令中的 title（tags）</li>
-<li>date：會自動帶入檔案檔案建立日期</li>
-<li>type: 才會對應類別的文章</li>
-</ul>
-<figure class="highlight plaintext"><figcaption><span>source/tags/index.md</span></figcaption><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">title: tags</span><br><span class="line">date: 2022-04-25 13:15:09</span><br><span class="line">type: tags</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://imgur.com/bRVlExe.png" alt="tags 畫面"></p>
-<p>延伸閱讀：ray 大 <a href="https://israynotarray.com/hexo/20200923/2032860736/">試著學 Hexo - 新增頁面</a></p>
-<div class="note default">
-            <p>文章中有提到如何去除模板，不使用預設產生的樣板而是改用手刻的 .html 檔案。</p>
-          </div>
-
-<h2 id="新增文章"><a href="#新增文章" class="headerlink" title="新增文章"></a>新增文章</h2><p>語法</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">hexo new &lt;title&gt;</span><br></pre></td></tr></table></figure>
-
-<div class="note default">
-            <p>下方如何透過指令新增文章，以及建立後需要設置什麼？</p>
-          </div>
-
-<p>Step1：新增文章</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">hexo new &lt;title&gt;</span><br></pre></td></tr></table></figure>
-
-<p>Step2：清除快取檔案 (db.json) 和已產生的靜態檔案 (public)</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">hexo cl</span><br></pre></td></tr></table></figure>
-
-<p>Step3：產生靜態檔案以及重新部署</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">hexo d -g</span><br></pre></td></tr></table></figure>
-
-<div class="note default">
-            <p>示範新增文章需要做的三個指令</p>
-          </div>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">hexo new &#x27;架設部落格 Hexo 部署 Github (零)&#x27;</span><br><span class="line">hexo cl</span><br><span class="line">hexo d -g</span><br></pre></td></tr></table></figure>
-
-<div class="note default">
-            <p>那如何在文章中添加圖片以及刪除文章呢？</p>
-          </div>
-
-<h3 id="刪除文章"><a href="#刪除文章" class="headerlink" title="刪除文章"></a>刪除文章</h3><p>Step1：直接刪除路徑 .&#x2F;source&#x2F;_posts 對應的文章 .md 檔案。</p>
-<p>Step2：清除快取檔案和已產生的靜態檔案。</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">hexo cl</span><br></pre></td></tr></table></figure>
-
-<p>Step3：重新部署</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">hexo d -g</span><br></pre></td></tr></table></figure>
-
-<h3 id="文章圖片"><a href="#文章圖片" class="headerlink" title="文章圖片"></a>文章圖片</h3><blockquote>
-<p>Hexo 本身並沒有提供上傳圖片的功能，因此需要另外尋找上傳圖片的服務，下面介紹兩種方法。</p>
-</blockquote>
-<p>方法一：在創建文章時會 <code>自動產生</code> 一個和文章同名的資料夾，用於存放圖片。</p>
-<blockquote>
-<p>透過部署時一併上傳到 github。</p>
-</blockquote>
-<p>Step1：搜尋 Writing<br>Step2：修改 post_asset_folder 參數（預設是 false）</p>
-<figure class="highlight diff"><figcaption><span>_config.yml</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="deletion">- post_asset_folder: false</span></span><br><span class="line"><span class="addition">+ post_asset_folder: true</span></span><br></pre></td></tr></table></figure>
-
-<div class="note default">
-            <p>後期不建議使用這種方式，因為 github repository 限制 5GB，當文件大小超過 50 MB 將收到警告，無法上傳超過 100 MB 的文件。</p><p>src：<a href="https://www.modb.pro/db/154051">GitHub、Gitlab、Gitee的容量及文件大小限制</a></p>
-          </div>
-
-<p>方法二：上傳其它圖片空間在用圖片超連結的方式插入到文章的 md 檔案。</p>
-<blockquote>
-<p>免費圖片空間：<a href="https://imgur.com/">Imgur</a>、<a href="https://upload.cc/">Upload.cc</a>、firebase</p>
-</blockquote>
-<p>Step1：上傳圖片到免費空間中<br>Step2：複製圖片連結<br>Step3：插入到文章中</p>
-<figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">![<span class="string">type</span>](<span class="link">https://imgur.com/bRVlExe.png</span>)</span><br></pre></td></tr></table></figure>
-
-<div class="note default">
-            <p>免費圖片空間注意事項</p><ol><li>是否有時間限制（例如：超過 60 天沒有瀏覽就刪除）</li><li>圖片是否可外連（例如：有些空間是不支援直接獲取圖片連結）</li><li>圖片流量限制（例如：限制圖片的讀取數量以及流出數量）</li></ol>
-          </div>
-
-<h2 id="新增草稿"><a href="#新增草稿" class="headerlink" title="新增草稿"></a>新增草稿</h2><div class="note default">
-            <p>草稿優勢為，預設不會被編譯出來，下方會介紹兩種不會被編譯的方法。</p>
-          </div>
-
-<p>指令</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">hexo new draft &lt;title&gt;</span><br></pre></td></tr></table></figure>
-
-<p>方法一：_drafts 資料夾（草稿資料夾）內的文章</p>
-<div class="note default">
-            <p>新增的草稿會存放於 _drafts 資料夾中，若資料夾不存在則會自動生成一個。</p>
-          </div>
-
-<p>Step1：輸入新增草稿文章指令</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">hexo new draft &lt;title&gt;</span><br></pre></td></tr></table></figure>
-
-<p>方法二：新增底線開頭資料夾</p>
-<p>Step1：根目錄 source&#x2F;_post 資料夾內，新增底線開頭的資料夾（例如：_草稿、_draft）<br>Step2：將還沒有要發布的文章手動搬移到到該資料夾底下</p>
-<p><img src="https://imgur.com/7XKWLNt.png" alt="草稿資料夾"></p>
-<div class="note default">
-            <p>那如果寫完了怎麼轉成文章？</p>
-          </div>
-
-<h3 id="草稿轉文章"><a href="#草稿轉文章" class="headerlink" title="草稿轉文章"></a>草稿轉文章</h3><div class="note default">
-            <p>下面介紹兩種方法。</p>
-          </div>
-
-<p>方法一：手動搬移</p>
-<ul>
-<li>將草稿文章手動搬移到 source&#x2F;_post 資料夾中。</li>
-</ul>
-<p>方法二：輸入 publish 指令</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">hexo publish draft &lt;title&gt;</span><br></pre></td></tr></table></figure>
-
-<div class="note danger">
-            <p>有限制，僅適用於存在 _drafts 資料夾底下的草稿，因為會自動從 source&#x2F;_drafts 尋找對應的草稿文章，因此不在該資料夾底下則會搜尋不到。</p>
-          </div>
-
-<p><img src="https://imgur.com/vmJTEpM.png" alt="草稿 error"></p>
-<h3 id="編譯草稿"><a href="#編譯草稿" class="headerlink" title="編譯草稿"></a>編譯草稿</h3><blockquote>
-<p>上面有提到，預設是不會將編譯草稿編譯出來，但如果要讓本地端 server 看見還是有辦法可以將其編譯出來的，下方介紹兩種方法。</p>
-</blockquote>
-<p>方法一：reu server 時帶入 <code>--draft</code></p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">hexo s --draft</span><br></pre></td></tr></table></figure>
-
-<p>方法二：修改根目錄 _config.yml 中的 <code>render_drafts</code> 參數（預設為 false）</p>
-<figure class="highlight diff"><table><tr><td class="code"><pre><span class="line"><span class="deletion">-render_drafts: false</span></span><br><span class="line"><span class="addition">+render_drafts: true</span></span><br></pre></td></tr></table></figure>
-
-<div class="note danger">
-            <p>但要注意使用方法二，運行時會出現警告提醒。（可以忽略沒關係）</p>
-          </div>
-
-<p><img src="https://imgur.com/wuOgMjr.png" alt="WARN 警告提示"></p>
-<h2 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h2><p><a href="https://israynotarray.com/hexo/20200923/2032860736/">試著學 Hexo - 新增頁面</a></p>
 ]]></content>
       <categories>
         <category>Hexo</category>
@@ -2295,14 +2295,15 @@ console.log(obj.name);  // kent
 </ul>
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">add</span>(<span class="params">num1, num2</span>) &#123;</span><br><span class="line">	<span class="keyword">let</span> arr = [<span class="number">2000</span>, <span class="number">22</span>];</span><br><span class="line">	<span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">arguments</span>[<span class="number">0</span>]);     <span class="comment">// 2000</span></span><br><span class="line">	<span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">arguments</span>.<span class="property">length</span>); <span class="comment">// 2</span></span><br><span class="line">	<span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">arguments</span>.<span class="property">callee</span>); <span class="comment">// function code</span></span><br><span class="line">	<span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">arguments</span>, arr);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> constNum = <span class="title function_">add</span>(<span class="number">2000</span>, <span class="number">22</span>);</span><br></pre></td></tr></table></figure>
 
-<p>下方圖片為 <code>console.log(arguments, arr);</code> 的結果，可以從Prototype 看出 arguments object <code>沒有</code>內建陣列方法。</p>
+<p>下方圖片為 <code>console.log(arguments, arr);</code> 的結果，可以從 Prototype 看出 arguments object 中<code>沒有</code>內建陣列方法。</p>
 <p><img src="https://imgur.com/tsnSGYm.jpg"></p>
 <div class="note default">
-            <p>雖然上述類陣列看起來這麼不方便，但可以將類陣列轉為陣列，來使用陣列操作。</p>
+            <p>雖然上述類陣列看起來這麼不方便，但可以將類陣列<code>轉為</code>陣列，來使用陣列方法。</p>
           </div>
 
+<hr>
 <h2 id="類陣列轉陣列的三種方法"><a href="#類陣列轉陣列的三種方法" class="headerlink" title="類陣列轉陣列的三種方法"></a>類陣列轉陣列的三種方法</h2><div class="note default">
-            <p>下列介紹的三種都是淺拷貝（shallow-copied）</p>
+            <p>下列介紹的三種都屬於淺拷貝（shallow-copied）的方式</p>
           </div>
 
 <ul>
@@ -2312,32 +2313,31 @@ console.log(obj.name);  // kent
 </ul>
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">add</span>(<span class="params">num1, num2</span>) &#123;</span><br><span class="line">	<span class="keyword">let</span> arr1 = <span class="title class_">Array</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">slice</span>.<span class="title function_">call</span>(<span class="variable language_">arguments</span>);</span><br><span class="line">	<span class="keyword">let</span> arr2 = [...<span class="variable language_">arguments</span>]; <span class="comment">// 寫法相對簡潔</span></span><br><span class="line">	<span class="keyword">let</span> arr3 = <span class="title class_">Array</span>.<span class="title function_">from</span>(<span class="variable language_">arguments</span>);</span><br><span class="line">	<span class="variable language_">console</span>.<span class="title function_">log</span>(arr1, arr2, arr3);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> constNum = <span class="title function_">add</span>(<span class="number">2000</span>, <span class="number">22</span>);</span><br></pre></td></tr></table></figure>
 
-<p>由下方圖片可得知三者是陣列。</p>
+<p>由下方圖片的中的 Prototype 看得出來三者皆是陣列。</p>
 <p><img src="https://imgur.com/2HqYyra.jpg"></p>
 <div class="note default">
             <p>下方會透過效能、支援度這兩個方面來對這三種方法做比較</p>
           </div>
 
-<h3 id="performance"><a href="#performance" class="headerlink" title="performance"></a>performance</h3><div class="note default">
-            <p>有一篇文章：<a href="https://catalin.red/js-array-from-array-like-object/">JS array from an array-like object</a> 有對上述提到的三種方法，進行效能的評測，結果如下圖。</p>
-          </div>
-
+<hr>
+<h2 id="performance-效能差異"><a href="#performance-效能差異" class="headerlink" title="performance 效能差異"></a>performance 效能差異</h2><blockquote>
+<p>圖片來自 <a href="https://catalin.red/js-array-from-array-like-object/">JS array from an array-like object</a> 文章，內文中有對上述提到的三種方法，進行效能的評測。</p>
+</blockquote>
 <p><img src="https://imgur.com/WlvvvyC.jpg"></p>
 <div class="note default">
-            <p>從上方圖片可得知 <code>slice</code> 方法的速度是優於另外兩種蠻多的。</p>
+            <p>從上方圖片可得知 <code>slice</code> 方法的速度是較快的，優於另外兩種方法不少。</p>
           </div>
 
-<h3 id="support"><a href="#support" class="headerlink" title="support"></a>support</h3><div class="note default">
-            <p>從 <a href="https://caniuse.com/">caniuse</a> 來看三種方法對於瀏覽器的支援度。</p>
-          </div>
-
+<h3 id="support-支援度"><a href="#support-支援度" class="headerlink" title="support 支援度"></a>support 支援度</h3><blockquote>
+<p>下方截圖是來自 <a href="https://caniuse.com/">caniuse</a>，比對上述三種方法對於瀏覽器的支援度。</p>
+</blockquote>
 <p><img src="https://imgur.com/wANgTbr.jpg"><br><img src="https://imgur.com/sGiyYxv.jpg"><br><img src="https://imgur.com/R7GWrno.jpg"></p>
 <div class="note default">
-            <p><code>slice</code> 方法的支援度是最好的。</p>
+            <p>最後結果可以得知 <code>slice</code> 方法的支援度是最好的。</p>
           </div>
 
 <h2 id="conclusion"><a href="#conclusion" class="headerlink" title="conclusion"></a>conclusion</h2><div class="note default">
-            <p>上述三種方法若從效能和支援度方面來抉擇<br>我會選擇 <code>Array.prototype.slice.call</code></p>
+            <p>上述三種方法若從效能和支援度方面來看，<code>slice</code> 勝。</p>
           </div>
 
 <h2 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h2><ul>
@@ -2345,6 +2345,68 @@ console.log(obj.name);  // kent
 <li><a href="https://catalin.red/js-array-from-array-like-object/">JS array from an array-like object</a></li>
 <li><a href="https://stackoverflow.com/questions/29707568/javascript-difference-between-array-and-array-like-object">JavaScript - Difference between Array and Array-like object</a></li>
 </ul>
+]]></content>
+      <categories>
+        <category>JavaScript</category>
+      </categories>
+      <tags>
+        <tag>JavaScript</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>JS 宣告變數 var、let、const 差異</title>
+    <url>/javascript/475274378/</url>
+    <content><![CDATA[<blockquote>
+<p>再開始之前先簡單科普幾個名詞</p>
+</blockquote>
+<h2 id="科普"><a href="#科普" class="headerlink" title="科普"></a>科普</h2><h3 id="Scope"><a href="#Scope" class="headerlink" title="Scope"></a>Scope</h3><blockquote>
+<p>白話文：程式碼的作用域。（想看 MDN 定義的請往這邊 <a href="https://developer.mozilla.org/en-US/docs/Glossary/Scope">scope</a>）</p>
+</blockquote>
+<p>編譯器或 JavaScript 引擎藉由 <code>識別字名稱</code>（identifier name）去查找變數，查找的規則是依循 RHS、LHS，而 <code>RHS、LHS</code> 是有範圍限制的（如果沒有範圍限制，全部的都變成全域不就 GG 了），所以透過定義出了三種 scope type（global scope、function scope、block scope）來區分 <code>RHS、LHS</code> 的使用範圍。</p>
+<p>更多 Scope 運作原理可以參考下方文章：</p>
+<ul>
+<li>summer 大大（超爆詳細）：<a href="https://cythilya.github.io/2018/10/19/function-vs-block-scope/">你懂 JavaScript 嗎？#12 函式範疇與區塊範疇（Function vs Block Scope）</a></li>
+</ul>
+<h3 id="Hoisting"><a href="#Hoisting" class="headerlink" title="Hoisting"></a>Hoisting</h3><blockquote>
+<p>白話文：將陳述式（ Statement ）提升（Hoisting），其特性使其在定義前，使用也可以運行。</p>
+</blockquote>
+<p>下方圖片左邊程式碼因為 <code>Hoisting 特性</code> 使其可以運行，其效果可以參考圖片中右邊程式碼，想像 <code>Hoisting</code> 就是將宣告的部分提升至最前面，使其在宣告前使用不會因為<code>尚未定義</code> 就噴 not defined。</p>
+<p><img src="https://imgur.com/jAJH5Yd.png"></p>
+<h3 id="TDZ"><a href="#TDZ" class="headerlink" title="TDZ"></a>TDZ</h3><blockquote>
+<p>白話文：在 let、const 情況下<code>宣告後</code>以及<code>尚未賦予值</code>前都無法取用，因為會進入 TDZ（暫時性死區中）。</p>
+</blockquote>
+<p>下方圖片透過具象化方式來幫助理解<code>暫時性死區</code>，範例中宣告時會進入 TDZ，當賦予值時才會離開。</p>
+<p><img src="https://imgur.com/Em9khl0.png"></p>
+<div class="note danger">
+            <p>科普就到這邊，下方開始會透過範例來解析 var、let、const 三者差異。</p>
+          </div>
+
+<p>下方圖片是三者比較表，在後續的篇文中可以搭配範例一起服用。<br><img src="https://imgur.com/wSB9bbW.png"></p>
+<hr>
+<h2 id="var"><a href="#var" class="headerlink" title="var"></a>var</h2><blockquote>
+<p>var 作用域<code>僅限</code>於<code>函式</code>。</p>
+</blockquote>
+<p>若在其他區塊（ex：for、while、if）宣告 var，會被當成<code>全域</code>使用。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// function scope</span></span><br><span class="line"><span class="keyword">var</span> msg = <span class="string">&quot;我是誰&quot;</span>;</span><br><span class="line"><span class="keyword">function</span> <span class="title function_">message</span>(<span class="params"></span>) &#123;</span><br><span class="line">	<span class="keyword">var</span> msg = <span class="string">&quot;我在哪裡&quot;</span>;</span><br><span class="line">	<span class="variable language_">console</span>.<span class="title function_">log</span>(msg);  <span class="comment">// 我在哪裡</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">message</span>()</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(msg);    <span class="comment">// 我是誰</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 可以重複宣告，var 特性導致當成全域變數重複宣告並覆蓋。</span></span><br><span class="line"><span class="keyword">var</span> msg2 = <span class="string">&quot;我是誰&quot;</span>;</span><br><span class="line"><span class="keyword">if</span> (<span class="literal">true</span>) &#123;</span><br><span class="line">	<span class="keyword">var</span> msg2 = <span class="string">&quot;我在哪裡&quot;</span>;</span><br><span class="line">	<span class="variable language_">console</span>.<span class="title function_">log</span>(msg2);   <span class="comment">// 我在哪裡</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(msg2);     <span class="comment">// 我在哪裡</span></span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="let"><a href="#let" class="headerlink" title="let"></a>let</h2><blockquote>
+<p>let 作用域在 <code>&#123;&#125;、()</code> 。</p>
+</blockquote>
+<p>若在作用域外使用變數，會因為 TDZ 特性造成 <code>Reference Error</code>。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// block scope</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(msg); <span class="comment">// ReferenceError: not defined</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="keyword">let</span> msg = <span class="string">&quot;我是誰&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 無法重複宣告</span></span><br><span class="line"><span class="keyword">let</span> msg2 = <span class="string">&quot;我是誰&quot;</span>;</span><br><span class="line">msg2 = <span class="string">&quot;我在哪裡&quot;</span>;</span><br><span class="line"><span class="keyword">let</span> msg2 = <span class="string">&quot;我在幹嘛&quot;</span>;  <span class="comment">// SyntaxError: Identifier &#x27;msg&#x27; has already been declared</span></span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="const"><a href="#const" class="headerlink" title="const"></a>const</h2><blockquote>
+<p>const 作用域在 <code>&#123;&#125;、()</code> 。</p>
+</blockquote>
+<p>若在作用域外使用變數，會因為 TDZ 特性造成 <code>Reference Error</code>，且宣告時<code>必須</code>賦予值，否則會噴 <code>SyntaxError</code> 錯誤。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(msg);</span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">const</span> msg; <span class="comment">// SyntaxError: Missing initializer in const declaration</span></span><br><span class="line">	<span class="keyword">const</span> msg1 = <span class="string">&#x27;success&#x27;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 無法重複宣告</span></span><br><span class="line"><span class="keyword">const</span> msg2 = <span class="string">&quot;我是誰&quot;</span>;</span><br><span class="line"><span class="keyword">const</span> msg2 = <span class="string">&quot;我在哪裡&quot;</span>;  <span class="comment">// SyntaxError: Identifier &#x27;msg&#x27; has already been declared</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 不可修改，除非是值是 reference（物件、陣列）</span></span><br><span class="line"><span class="keyword">const</span> msg3 = <span class="string">&quot;我是誰&quot;</span>;</span><br><span class="line">msg3 = <span class="string">&quot;我在哪裡&quot;</span>; <span class="comment">// // TypeError: Assignment to constant variable</span></span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="conclusion"><a href="#conclusion" class="headerlink" title="conclusion"></a>conclusion</h2><div class="note danger">
+            <p>三者最大差異是 <code>作用域 Scope</code>。</p>
+          </div>
 ]]></content>
       <categories>
         <category>JavaScript</category>
