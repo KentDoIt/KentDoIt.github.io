@@ -39,8 +39,8 @@
     <title>JS 類陣列 （ Array-like ）</title>
     <link href="https://kentdoit.github.io/javascript/3574120313/"/>
     <id>https://kentdoit.github.io/javascript/3574120313/</id>
-    <published>2022-08-10T03:54:00.000Z</published>
-    <updated>2022-11-16T08:37:02.003Z</updated>
+    <published>2022-08-20T03:54:00.000Z</published>
+    <updated>2022-11-16T09:09:14.029Z</updated>
     
     
     <summary type="html">此篇主要講解 Array-like 和一般陣列有什麼差異，最後也會介紹三種將類陣列轉成陣列的方法。</summary>
