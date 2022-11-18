@@ -1,96 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Hexo 主題 NexT 設置 (一)</title>
-    <url>/hexo/3802192554/</url>
-    <content><![CDATA[<h2 id="範例的環境版本"><a href="#範例的環境版本" class="headerlink" title="範例的環境版本"></a>範例的環境版本</h2><p>hexo 版本：6.0.1<br>hexo-cli 版本：4.3.0<br>next 版本：7.8.0</p>
-<h2 id="更換主題-theme"><a href="#更換主題-theme" class="headerlink" title="更換主題 theme"></a>更換主題 theme</h2><p>Step1：從<a href="https://hexo.io/themes/">官方</a>主題找尋自己順眼的</p>
-<div class="note default">
-            <p>最近主流有兩個推薦的（我選擇 Next）</p>
-          </div>
-
-<ul>
-<li><a href="https://github.com/theme-next/hexo-theme-next">Next</a></li>
-<li><a href="https://github.com/fluid-dev/hexo-theme-fluid">Fluid</a></li>
-</ul>
-<p>Step2：下載主題 Download 或 clone 到 themes 資料夾底下</p>
-<div class="note danger">
-            <p>切記要先進入該專案根目錄的 themes 資料夾底下</p>
-          </div>
-
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">cd themes</span><br><span class="line">git clone https://github.com/theme-next/hexo-theme-next.git</span><br></pre></td></tr></table></figure>
-
-<p>Step3：修改根目錄 _config.yml 中的 theme 參數（預設是 landscape）</p>
-<figure class="highlight diff"><figcaption><span>_config.yml</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="addition">+theme: landscape</span></span><br><span class="line"><span class="deletion">-theme: hexo-theme-next</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="NexT-樣式設定"><a href="#NexT-樣式設定" class="headerlink" title="NexT 樣式設定"></a>NexT 樣式設定</h2><blockquote>
-<p>下方會介紹部落格樣式中最基礎的設置。</p>
-</blockquote>
-<h3 id="Scheme-Settings"><a href="#Scheme-Settings" class="headerlink" title="Scheme Settings"></a>Scheme Settings</h3><blockquote>
-<p>第一個介紹的一定非 Scheme 莫屬，替部落格換上喜歡的皮。</p>
-</blockquote>
-<p>Step1：搜尋 Scheme</p>
-<p>Step2：將選擇的 scheme 取消註解（我選擇 Mist）</p>
-<figure class="highlight diff"><figcaption><span>themes/hexo-theme-next/_config.yml</span></figcaption><table><tr><td class="code"><pre><span class="line"># Schemes</span><br><span class="line"># scheme: Muse</span><br><span class="line">scheme: Mist</span><br><span class="line"># scheme: Pisces</span><br><span class="line"># scheme: Gemini</span><br></pre></td></tr></table></figure>
-
-<div class="note default">
-            <p>下方演示 NexT 提供的四種 schemes</p>
-          </div>
-
-<p><img src="https://imgur.com/tq9H5Eb.png" alt="NexT 提供的四種 schemes"></p>
-<h3 id="程式碼區塊樣式"><a href="#程式碼區塊樣式" class="headerlink" title="程式碼區塊樣式"></a>程式碼區塊樣式</h3><blockquote>
-<p>撰寫技術文章絕對不能缺少的 code block，換上舒服的樣式好比設置編輯器的樣式一樣。</p>
-</blockquote>
-<p>Step1：搜尋 codeblock</p>
-<p>Step2：設置參數</p>
-<ul>
-<li>highlight_theme：代碼高亮（我選擇 galactic，後來因為要客製化所以選擇 normal）<ul>
-<li>由於不同的 Next 版本可能有的 highlight_theme 樣式不同，因此建議大家都可以都試試看在選擇比較喜歡的。</li>
-</ul>
-</li>
-<li>copy_button：hover 會顯示複製按鈕</li>
-<li>style：外觀樣式（我選擇原本是選 mac，後來發現 flat 比較適合客製化其它樣式）</li>
-</ul>
-<figure class="highlight diff"><figcaption><span>themes/hexo-theme-next/_config.yml</span></figcaption><table><tr><td class="code"><pre><span class="line">codeblock:</span><br><span class="line">  # Code Highlight theme</span><br><span class="line">  # Available values: normal | night | night eighties | night blue | night bright | solarized | solarized dark | galactic</span><br><span class="line">  # See: https://github.com/chriskempson/tomorrow-theme</span><br><span class="line"><span class="deletion">-  highlight_theme: normal</span></span><br><span class="line"><span class="addition">+  highlight_theme: galactic</span></span><br><span class="line">  # Add copy button on codeblock</span><br><span class="line">  copy_button:</span><br><span class="line"><span class="deletion">-    enable: false</span></span><br><span class="line"><span class="addition">+    enable: true</span></span><br><span class="line">    # Show text copy result.</span><br><span class="line"><span class="deletion">-    show_result: false</span></span><br><span class="line"><span class="addition">+    show_result: false</span></span><br><span class="line">    # Available values: default | flat | mac</span><br><span class="line"><span class="deletion">-    style:</span></span><br><span class="line"><span class="addition">+    style: flat</span></span><br></pre></td></tr></table></figure>
-
-<div class="note danger">
-            <p>如果上面設置完沒有效果，請確認根目錄 _config.yml 檔案中的 <code>highlight</code> 參數 enable 是否設置為 true。</p>
-          </div>
-
-<figure class="highlight diff"><figcaption><span>_config.yml</span></figcaption><table><tr><td class="code"><pre><span class="line">highlight:</span><br><span class="line">  enable: true</span><br></pre></td></tr></table></figure>
-
-<h3 id="Menu-設置"><a href="#Menu-設置" class="headerlink" title="Menu 設置"></a>Menu 設置</h3><blockquote>
-<p>設置 menu 選單列的內容（home、about、tags、categories、archives、schedule、sitemap、commonweal），預設只有開啟兩個（home、archives）。</p>
-</blockquote>
-<p>Step1：搜尋 Menu Settings</p>
-<p>Step2：設置參數</p>
-<ul>
-<li>需要啟用就將對應的註解移除，下方範例示範開啟 tags、categories</li>
-</ul>
-<figure class="highlight diff"><figcaption><span>themes/hexo-theme-next/_config.yml</span></figcaption><table><tr><td class="code"><pre><span class="line">menu:</span><br><span class="line">  home: / || fa fa-home</span><br><span class="line">  #about: /about/ || fa fa-user</span><br><span class="line"><span class="deletion">- #tags: /tags/ || fa fa-tags</span></span><br><span class="line"><span class="addition">+ tags: /tags/ || fa fa-tags</span></span><br><span class="line"><span class="deletion">- #categories: /categories/ || fa fa-th</span></span><br><span class="line"><span class="addition">+ categories: /categories/ || fa fa-th</span></span><br><span class="line">  archives: /archives/ || fa fa-archive</span><br><span class="line">  #schedule: /schedule/ || fa fa-calendar</span><br><span class="line">  #sitemap: /sitemap.xml || fa fa-sitemap</span><br><span class="line">  #commonweal: /404/ || fa fa-heartbeat</span><br></pre></td></tr></table></figure>
-
-<div class="note default">
-            <p>Hexo 原生是使用 Font Awesome icon（註解中有寫），並透過 <code>短路求值（Short-circuit evaluation）</code> 的方式在路徑後方加上 icon 樣式（可以修改其它 icon 樣式）。</p>
-          </div>
-
-<p>Step3：menu 可以設置是否要開啟 icon 圖示 以及 badges 數量（用來顯示對應的數量）。</p>
-<figure class="highlight diff"><figcaption><span>themes/hexo-theme-next/_config.yml</span></figcaption><table><tr><td class="code"><pre><span class="line"># Enable / Disable menu icons / item badges.</span><br><span class="line">menu_settings:</span><br><span class="line">  icons: true</span><br><span class="line"><span class="deletion">-  badges: false</span></span><br><span class="line"><span class="addition">+  badges: true</span></span><br></pre></td></tr></table></figure>
-
-<p><img src="https://imgur.com/AbQvbMt.png" alt="menu tag"></p>
-<div class="note danger">
-            <p>點選 menu 中預設（home、archives）之外的路徑，會出現路徑錯誤（例如：Cannot GET&#x2F;about&#x2F;），因為我們還沒新增對應的頁面，從根目錄 source 資料夾中是否有對應的資料夾，新增頁面作法可以參考下一篇文章。</p>
-          </div>
-
-<p><img src="https://imgur.com/W1W5iaB.png" alt="路徑錯誤"></p>
-]]></content>
-      <categories>
-        <category>Hexo</category>
-      </categories>
-      <tags>
-        <tag>Hexo 部落格</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Hexo 檔案名稱 Url 優化（三）</title>
     <url>/hexo/821499080/</url>
     <content><![CDATA[<div class="note default">
@@ -178,6 +88,96 @@
       </categories>
       <tags>
         <tag>Hexo 優化</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Hexo 主題 NexT 設置 (一)</title>
+    <url>/hexo/3802192554/</url>
+    <content><![CDATA[<h2 id="範例的環境版本"><a href="#範例的環境版本" class="headerlink" title="範例的環境版本"></a>範例的環境版本</h2><p>hexo 版本：6.0.1<br>hexo-cli 版本：4.3.0<br>next 版本：7.8.0</p>
+<h2 id="更換主題-theme"><a href="#更換主題-theme" class="headerlink" title="更換主題 theme"></a>更換主題 theme</h2><p>Step1：從<a href="https://hexo.io/themes/">官方</a>主題找尋自己順眼的</p>
+<div class="note default">
+            <p>最近主流有兩個推薦的（我選擇 Next）</p>
+          </div>
+
+<ul>
+<li><a href="https://github.com/theme-next/hexo-theme-next">Next</a></li>
+<li><a href="https://github.com/fluid-dev/hexo-theme-fluid">Fluid</a></li>
+</ul>
+<p>Step2：下載主題 Download 或 clone 到 themes 資料夾底下</p>
+<div class="note danger">
+            <p>切記要先進入該專案根目錄的 themes 資料夾底下</p>
+          </div>
+
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">cd themes</span><br><span class="line">git clone https://github.com/theme-next/hexo-theme-next.git</span><br></pre></td></tr></table></figure>
+
+<p>Step3：修改根目錄 _config.yml 中的 theme 參數（預設是 landscape）</p>
+<figure class="highlight diff"><figcaption><span>_config.yml</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="addition">+theme: landscape</span></span><br><span class="line"><span class="deletion">-theme: hexo-theme-next</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="NexT-樣式設定"><a href="#NexT-樣式設定" class="headerlink" title="NexT 樣式設定"></a>NexT 樣式設定</h2><blockquote>
+<p>下方會介紹部落格樣式中最基礎的設置。</p>
+</blockquote>
+<h3 id="Scheme-Settings"><a href="#Scheme-Settings" class="headerlink" title="Scheme Settings"></a>Scheme Settings</h3><blockquote>
+<p>第一個介紹的一定非 Scheme 莫屬，替部落格換上喜歡的皮。</p>
+</blockquote>
+<p>Step1：搜尋 Scheme</p>
+<p>Step2：將選擇的 scheme 取消註解（我選擇 Mist）</p>
+<figure class="highlight diff"><figcaption><span>themes/hexo-theme-next/_config.yml</span></figcaption><table><tr><td class="code"><pre><span class="line"># Schemes</span><br><span class="line"># scheme: Muse</span><br><span class="line">scheme: Mist</span><br><span class="line"># scheme: Pisces</span><br><span class="line"># scheme: Gemini</span><br></pre></td></tr></table></figure>
+
+<div class="note default">
+            <p>下方演示 NexT 提供的四種 schemes</p>
+          </div>
+
+<p><img src="https://imgur.com/tq9H5Eb.png" alt="NexT 提供的四種 schemes"></p>
+<h3 id="程式碼區塊樣式"><a href="#程式碼區塊樣式" class="headerlink" title="程式碼區塊樣式"></a>程式碼區塊樣式</h3><blockquote>
+<p>撰寫技術文章絕對不能缺少的 code block，換上舒服的樣式好比設置編輯器的樣式一樣。</p>
+</blockquote>
+<p>Step1：搜尋 codeblock</p>
+<p>Step2：設置參數</p>
+<ul>
+<li>highlight_theme：代碼高亮（我選擇 galactic，後來因為要客製化所以選擇 normal）<ul>
+<li>由於不同的 Next 版本可能有的 highlight_theme 樣式不同，因此建議大家都可以都試試看在選擇比較喜歡的。</li>
+</ul>
+</li>
+<li>copy_button：hover 會顯示複製按鈕</li>
+<li>style：外觀樣式（我選擇原本是選 mac，後來發現 flat 比較適合客製化其它樣式）</li>
+</ul>
+<figure class="highlight diff"><figcaption><span>themes/hexo-theme-next/_config.yml</span></figcaption><table><tr><td class="code"><pre><span class="line">codeblock:</span><br><span class="line">  # Code Highlight theme</span><br><span class="line">  # Available values: normal | night | night eighties | night blue | night bright | solarized | solarized dark | galactic</span><br><span class="line">  # See: https://github.com/chriskempson/tomorrow-theme</span><br><span class="line"><span class="deletion">-  highlight_theme: normal</span></span><br><span class="line"><span class="addition">+  highlight_theme: galactic</span></span><br><span class="line">  # Add copy button on codeblock</span><br><span class="line">  copy_button:</span><br><span class="line"><span class="deletion">-    enable: false</span></span><br><span class="line"><span class="addition">+    enable: true</span></span><br><span class="line">    # Show text copy result.</span><br><span class="line"><span class="deletion">-    show_result: false</span></span><br><span class="line"><span class="addition">+    show_result: false</span></span><br><span class="line">    # Available values: default | flat | mac</span><br><span class="line"><span class="deletion">-    style:</span></span><br><span class="line"><span class="addition">+    style: flat</span></span><br></pre></td></tr></table></figure>
+
+<div class="note danger">
+            <p>如果上面設置完沒有效果，請確認根目錄 _config.yml 檔案中的 <code>highlight</code> 參數 enable 是否設置為 true。</p>
+          </div>
+
+<figure class="highlight diff"><figcaption><span>_config.yml</span></figcaption><table><tr><td class="code"><pre><span class="line">highlight:</span><br><span class="line">  enable: true</span><br></pre></td></tr></table></figure>
+
+<h3 id="Menu-設置"><a href="#Menu-設置" class="headerlink" title="Menu 設置"></a>Menu 設置</h3><blockquote>
+<p>設置 menu 選單列的內容（home、about、tags、categories、archives、schedule、sitemap、commonweal），預設只有開啟兩個（home、archives）。</p>
+</blockquote>
+<p>Step1：搜尋 Menu Settings</p>
+<p>Step2：設置參數</p>
+<ul>
+<li>需要啟用就將對應的註解移除，下方範例示範開啟 tags、categories</li>
+</ul>
+<figure class="highlight diff"><figcaption><span>themes/hexo-theme-next/_config.yml</span></figcaption><table><tr><td class="code"><pre><span class="line">menu:</span><br><span class="line">  home: / || fa fa-home</span><br><span class="line">  #about: /about/ || fa fa-user</span><br><span class="line"><span class="deletion">- #tags: /tags/ || fa fa-tags</span></span><br><span class="line"><span class="addition">+ tags: /tags/ || fa fa-tags</span></span><br><span class="line"><span class="deletion">- #categories: /categories/ || fa fa-th</span></span><br><span class="line"><span class="addition">+ categories: /categories/ || fa fa-th</span></span><br><span class="line">  archives: /archives/ || fa fa-archive</span><br><span class="line">  #schedule: /schedule/ || fa fa-calendar</span><br><span class="line">  #sitemap: /sitemap.xml || fa fa-sitemap</span><br><span class="line">  #commonweal: /404/ || fa fa-heartbeat</span><br></pre></td></tr></table></figure>
+
+<div class="note default">
+            <p>Hexo 原生是使用 Font Awesome icon（註解中有寫），並透過 <code>短路求值（Short-circuit evaluation）</code> 的方式在路徑後方加上 icon 樣式（可以修改其它 icon 樣式）。</p>
+          </div>
+
+<p>Step3：menu 可以設置是否要開啟 icon 圖示 以及 badges 數量（用來顯示對應的數量）。</p>
+<figure class="highlight diff"><figcaption><span>themes/hexo-theme-next/_config.yml</span></figcaption><table><tr><td class="code"><pre><span class="line"># Enable / Disable menu icons / item badges.</span><br><span class="line">menu_settings:</span><br><span class="line">  icons: true</span><br><span class="line"><span class="deletion">-  badges: false</span></span><br><span class="line"><span class="addition">+  badges: true</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="https://imgur.com/AbQvbMt.png" alt="menu tag"></p>
+<div class="note danger">
+            <p>點選 menu 中預設（home、archives）之外的路徑，會出現路徑錯誤（例如：Cannot GET&#x2F;about&#x2F;），因為我們還沒新增對應的頁面，從根目錄 source 資料夾中是否有對應的資料夾，新增頁面作法可以參考下一篇文章。</p>
+          </div>
+
+<p><img src="https://imgur.com/W1W5iaB.png" alt="路徑錯誤"></p>
+]]></content>
+      <categories>
+        <category>Hexo</category>
+      </categories>
+      <tags>
+        <tag>Hexo 部落格</tag>
       </tags>
   </entry>
   <entry>
@@ -395,6 +395,134 @@
       </tags>
   </entry>
   <entry>
+    <title>Hexo 設置 GA、Sitemap（四）</title>
+    <url>/hexo/599670072/</url>
+    <content><![CDATA[<div class="note default">
+            <p>會把這篇內容放在前面是因為我深受其害，因此我誠心建議這些設定越早弄完越好。</p>
+          </div>
+
+<h2 id="範例的環境版本"><a href="#範例的環境版本" class="headerlink" title="範例的環境版本"></a>範例的環境版本</h2><p>hexo 版本：6.0.1<br>hexo-cli 版本：4.3.0<br>next 版本：7.8.0</p>
+<h2 id="Google-Analytics"><a href="#Google-Analytics" class="headerlink" title="Google Analytics"></a>Google Analytics</h2><blockquote>
+<p>下面分成兩個方向來設置：設置追蹤碼、埋追蹤碼。</p>
+</blockquote>
+<div class="note default">
+            <p>想看詳細過程介紹可以參考：Gui <a href="https://guiblogs.com/hexo30-12/">Day 12：為 Hexo 裝設 Google Analytics，追蹤你的部落格流量（使用 Next 佈景主題）</a></p>
+          </div>
+
+<h3 id="設置追蹤碼（製評估-ID）"><a href="#設置追蹤碼（製評估-ID）" class="headerlink" title="設置追蹤碼（製評估 ID）"></a>設置追蹤碼（製評估 ID）</h3><p>Step1：<a href="https://analytics.google.com/analytics/web/provision/#/provision">Google Analytics</a> 申請帳號<br>Step2：複製評估 ID（<code>G-</code> 開頭）<br>Step3：修改 NexT 主題中 _config.yml 參數</p>
+<figure class="highlight diff"><figcaption><span>themes/hexo-theme-next/_config.yml</span></figcaption><table><tr><td class="code"><pre><span class="line"># Google Analytics</span><br><span class="line">google_analytics:</span><br><span class="line"><span class="deletion">-  tracking_id: # &lt;app_id&gt;</span></span><br><span class="line"><span class="addition">+  tracking_id: #貼上剛剛複製的評估 ID</span></span><br><span class="line">  # By default, NexT will load an external gtag.js script on your site.</span><br><span class="line">  # If you only need the pageview feature, set the following option to true to get a better performance.</span><br><span class="line">  only_pageview: false</span><br></pre></td></tr></table></figure>
+
+<h3 id="埋追蹤碼"><a href="#埋追蹤碼" class="headerlink" title="埋追蹤碼"></a>埋追蹤碼</h3><p>Step1：複製追蹤碼</p>
+<p><img src="https://imgur.com/mjvgxfs.jpg" alt="步驟演示：資料串流 →  全域網站代碼 → 複製"></p>
+<p>Step2：檔案 themes&#x2F;hexo-theme-next&#x2F;layout&#x2F;_partials&#x2F;head&#x2F;head.swig 最後貼上追蹤碼</p>
+<figure class="highlight diff"><figcaption><span>themes/hexo-theme-next/layout/_partials/head/head.swig</span></figcaption><table><tr><td class="code"><pre><span class="line">&#123;&#123; next_config() &#125;&#125;</span><br><span class="line"><span class="addition">+ &lt;!-- Global site tag (gtag.js) - Google Analytics --&gt;</span></span><br><span class="line"><span class="addition">+ &lt;script async src=&quot;https://www.googletagmanager.com/gtag/js?id=G-K8QW91NNBQ&quot;&gt;&lt;/script&gt;</span></span><br><span class="line"><span class="addition">+ &lt;script&gt;</span></span><br><span class="line"><span class="addition">+   window.dataLayer = window.dataLayer || [];</span></span><br><span class="line"><span class="addition">+   function gtag()&#123;dataLayer.push(arguments);&#125;</span></span><br><span class="line"><span class="addition">+   gtag(&#x27;js&#x27;, new Date());</span></span><br><span class="line"><span class="addition">+ </span></span><br><span class="line"><span class="addition">+   gtag(&#x27;config&#x27;, &#x27;G-K8QW91NNBQ&#x27;);</span></span><br><span class="line"><span class="addition">+ &lt;/script&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>Step3：重新部署</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">hexo g -d</span><br></pre></td></tr></table></figure>
+
+<div class="note default">
+            <p>完成上面兩個設置就可以重新部署後再次檢查 GA 是否成功。</p>
+          </div>
+
+<p><img src="https://imgur.com/60AW6rA.jpg" alt="進到 GA 中點選左邊側邊欄報表，有看到數字 1 就成功了！"></p>
+<h2 id="Sitemap"><a href="#Sitemap" class="headerlink" title="Sitemap"></a>Sitemap</h2><blockquote>
+<p>Sitemap 檔案會提供網頁中的相關資訊給搜尋引擎，Google 的爬蟲會定期爬 sitemap.xml 檔案，若有更新他就會去爬你的網站並加入到搜尋引擎中。</p>
+</blockquote>
+<p>Step1：安裝指令</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">npm install hexo-generator-sitemap</span><br></pre></td></tr></table></figure>
+
+<p>Step2：根目錄 _config.yml 在最後面添加新參數</p>
+<ul>
+<li>之後只要指令有 <code>hexo g</code> 時，就會自動生成 sitemap.xml。</li>
+</ul>
+<figure class="highlight diff"><figcaption><span>.git/config</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="addition">+ # Sitemap</span></span><br><span class="line"><span class="addition">+ sitemap:</span></span><br><span class="line"><span class="addition">+   path: sitemap.xml</span></span><br></pre></td></tr></table></figure>
+
+<p>Step3：重新部署</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">hexo d -g</span><br></pre></td></tr></table></figure>
+
+<p>Step4：<a href="https://search.google.com/search-console/about?hl=zh-tw">Google Search</a> 設置加入網站連結</p>
+<ul>
+<li>GA 屬於一種驗證方式，剛剛有成功設置 GA 所以會自動驗證成功。</li>
+</ul>
+<p><img src="https://imgur.com/MCx0dFO.jpg"></p>
+<p>Step5：提交 sitemap</p>
+<ul>
+<li>在新增 Sitemap 欄位中輸入 <code>sitemap.xml</code></li>
+</ul>
+<p><img src="https://imgur.com/D2VrXHx.jpg"></p>
+<p>Step6：檢查 sitemap</p>
+<ul>
+<li>檢查自己的網址後面加上 <code>/sitemap</code> 或 <code>/sitemap.xml</code> 後查看是否有內容。</li>
+</ul>
+<p><img src="https://imgur.com/2yYRM6p.jpg" alt="https://kentdoit.github.io/sitemap"></p>
+<div class="note default">
+            <p>如果<strong>運氣好</strong>到這邊應該是成功了，<del>運氣不好</del>會發覺網址看有內容，但是狀態為<code>無法擷取</code>。</p>
+          </div>
+
+<p><img src="https://imgur.com/Ae8Sllt.jpg"></p>
+<div class="note default">
+            <p>礙於 debug 篇幅過長，將過程記錄在另一篇 <a href="https://kentdoit.github.io/hexo/2629412870/">Hexo Sitemap 建立索引 無法擷取</a> 文章中。</p>
+          </div>
+
+<h2 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h2><p><a href="https://israynotarray.com/hexo/20190514/2072033203/">Hexo搜尋引擎優化</a><br><a href="https://zenreal.github.io/posts/7993/">Hexo 搭建系列 - SEO優化篇</a><br><a href="https://syj0905.github.io/hexo/20190906/285599935/">Hexo 架站攻略 - SEO 優化</a></p>
+]]></content>
+      <categories>
+        <category>Hexo</category>
+      </categories>
+      <tags>
+        <tag>Hexo SEO</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Hexo 管理爬蟲 robots.txt（五）</title>
+    <url>/hexo/3578178281/</url>
+    <content><![CDATA[<h2 id="範例的環境版本"><a href="#範例的環境版本" class="headerlink" title="範例的環境版本"></a>範例的環境版本</h2><p>hexo 版本：6.0.1<br>hexo-cli 版本：4.3.0<br>next 版本：7.8.0</p>
+<h2 id="Front-matter"><a href="#Front-matter" class="headerlink" title="Front-matter"></a>Front-matter</h2><blockquote>
+<p>如果有特定的頁面不希望被加入 sitemap.xml 中，可以在頁面的 markdown 中 Front-matter 設定 sitemap: false。</p>
+</blockquote>
+<figure class="highlight diff"><figcaption><span>text.md</span></figcaption><table><tr><td class="code"><pre><span class="line">title: 測試</span><br><span class="line">date: 2022-05-01 14:10:25</span><br><span class="line">categories:</span><br><span class="line">tags: </span><br><span class="line">description:</span><br><span class="line"><span class="addition">+ sitemap: false</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="robots-txt"><a href="#robots-txt" class="headerlink" title="robots.txt"></a>robots.txt</h2><blockquote>
+<p>設置搜尋引擎爬蟲哪些是可以爬的路徑哪些是不能爬的，也能增強 SEO。</p>
+</blockquote>
+<p>Step1：根目錄 source 資料夾底下新增 robots.txt 檔案</p>
+<p><img src="https://imgur.com/z1hRLbs.jpg"></p>
+<p>Step2：設置檔案參數</p>
+<p>User-agent : 爬蟲程式名字，必要項目</p>
+<ul>
+<li>可以在每項規則中指定一或多個 user-agen</li>
+<li>*：運行於所有搜尋引擎，也可以只允許指定搜尋引擎，例如<code>User-agent: Googlebot</code>。</li>
+</ul>
+<p>Allow：允許爬取路徑，至少要有一個</p>
+<ul>
+<li>相對路徑；若為目錄，則必須以 &#x2F; 作為結尾。</li>
+</ul>
+<p>Disallow：不允許爬取路徑，至少要有一個</p>
+<ul>
+<li>相對路徑；若為目錄，則必須以 &#x2F; 作為結尾。</li>
+</ul>
+<p>Sitemap：網站地圖的路徑，非必要</p>
+<ul>
+<li>使用絕對路徑。</li>
+</ul>
+<p>Crawl-delay：同伺服器每次連續請求所需的要間隔秒數，非必要</p>
+<figure class="highlight txt"><figcaption><span>source/robots.txt</span></figcaption><table><tr><td class="code"><pre><span class="line">User-agent: *</span><br><span class="line">Allow: /</span><br><span class="line">Allow: /archives/</span><br><span class="line">Allow: /categories/</span><br><span class="line">Allow: /tags/ </span><br><span class="line">Disallow: /vendors/</span><br><span class="line">Disallow: /fonts/</span><br><span class="line">Disallow: /vendors/</span><br><span class="line">Disallow: /fancybox/</span><br><span class="line">Sitemap: https://kentdoit.github.io/sitemap.xml</span><br></pre></td></tr></table></figure>
+
+<div class="note default">
+            <p><a href="https://israynotarray.com/other/20210627/3588736352/">ray 大</a>：『建議不要忽略 js、css 與 fonts 相關的檔案與資料夾，否則可能在 Google Console Search 會收到一些問題提示』。</p>
+          </div>
+
+<p>延伸閱讀：<a href="https://israynotarray.com/other/20210627/3588736352/">快速掌握 robots.txt 用途</a></p>
+<h2 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h2><p><a href="https://blog.yucheng.me/post/hexo-configuration/#sitemap-xml-%E6%90%9C%E5%B0%8B%E5%BC%95%E6%93%8E%E7%88%AC%E8%9F%B2">Hexo 基本配置</a><br><a href="https://israynotarray.com/other/20210627/3588736352/">快速掌握 robots.txt 用途</a></p>
+]]></content>
+      <categories>
+        <category>Hexo</category>
+      </categories>
+      <tags>
+        <tag>Hexo 優化</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>架設部落格 Hexo 部署 Github (零)</title>
     <url>/hexo/1074258594/</url>
     <content><![CDATA[<h2 id="Hexo-環境"><a href="#Hexo-環境" class="headerlink" title="Hexo 環境"></a>Hexo 環境</h2><p>Step1：下載 Hexo 環境</p>
@@ -490,134 +618,6 @@
       </categories>
       <tags>
         <tag>Hexo 部落格</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Hexo 管理爬蟲 robots.txt（五）</title>
-    <url>/hexo/3578178281/</url>
-    <content><![CDATA[<h2 id="範例的環境版本"><a href="#範例的環境版本" class="headerlink" title="範例的環境版本"></a>範例的環境版本</h2><p>hexo 版本：6.0.1<br>hexo-cli 版本：4.3.0<br>next 版本：7.8.0</p>
-<h2 id="Front-matter"><a href="#Front-matter" class="headerlink" title="Front-matter"></a>Front-matter</h2><blockquote>
-<p>如果有特定的頁面不希望被加入 sitemap.xml 中，可以在頁面的 markdown 中 Front-matter 設定 sitemap: false。</p>
-</blockquote>
-<figure class="highlight diff"><figcaption><span>text.md</span></figcaption><table><tr><td class="code"><pre><span class="line">title: 測試</span><br><span class="line">date: 2022-05-01 14:10:25</span><br><span class="line">categories:</span><br><span class="line">tags: </span><br><span class="line">description:</span><br><span class="line"><span class="addition">+ sitemap: false</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="robots-txt"><a href="#robots-txt" class="headerlink" title="robots.txt"></a>robots.txt</h2><blockquote>
-<p>設置搜尋引擎爬蟲哪些是可以爬的路徑哪些是不能爬的，也能增強 SEO。</p>
-</blockquote>
-<p>Step1：根目錄 source 資料夾底下新增 robots.txt 檔案</p>
-<p><img src="https://imgur.com/z1hRLbs.jpg"></p>
-<p>Step2：設置檔案參數</p>
-<p>User-agent : 爬蟲程式名字，必要項目</p>
-<ul>
-<li>可以在每項規則中指定一或多個 user-agen</li>
-<li>*：運行於所有搜尋引擎，也可以只允許指定搜尋引擎，例如<code>User-agent: Googlebot</code>。</li>
-</ul>
-<p>Allow：允許爬取路徑，至少要有一個</p>
-<ul>
-<li>相對路徑；若為目錄，則必須以 &#x2F; 作為結尾。</li>
-</ul>
-<p>Disallow：不允許爬取路徑，至少要有一個</p>
-<ul>
-<li>相對路徑；若為目錄，則必須以 &#x2F; 作為結尾。</li>
-</ul>
-<p>Sitemap：網站地圖的路徑，非必要</p>
-<ul>
-<li>使用絕對路徑。</li>
-</ul>
-<p>Crawl-delay：同伺服器每次連續請求所需的要間隔秒數，非必要</p>
-<figure class="highlight txt"><figcaption><span>source/robots.txt</span></figcaption><table><tr><td class="code"><pre><span class="line">User-agent: *</span><br><span class="line">Allow: /</span><br><span class="line">Allow: /archives/</span><br><span class="line">Allow: /categories/</span><br><span class="line">Allow: /tags/ </span><br><span class="line">Disallow: /vendors/</span><br><span class="line">Disallow: /fonts/</span><br><span class="line">Disallow: /vendors/</span><br><span class="line">Disallow: /fancybox/</span><br><span class="line">Sitemap: https://kentdoit.github.io/sitemap.xml</span><br></pre></td></tr></table></figure>
-
-<div class="note default">
-            <p><a href="https://israynotarray.com/other/20210627/3588736352/">ray 大</a>：『建議不要忽略 js、css 與 fonts 相關的檔案與資料夾，否則可能在 Google Console Search 會收到一些問題提示』。</p>
-          </div>
-
-<p>延伸閱讀：<a href="https://israynotarray.com/other/20210627/3588736352/">快速掌握 robots.txt 用途</a></p>
-<h2 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h2><p><a href="https://blog.yucheng.me/post/hexo-configuration/#sitemap-xml-%E6%90%9C%E5%B0%8B%E5%BC%95%E6%93%8E%E7%88%AC%E8%9F%B2">Hexo 基本配置</a><br><a href="https://israynotarray.com/other/20210627/3588736352/">快速掌握 robots.txt 用途</a></p>
-]]></content>
-      <categories>
-        <category>Hexo</category>
-      </categories>
-      <tags>
-        <tag>Hexo 優化</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Hexo 設置 GA、Sitemap（四）</title>
-    <url>/hexo/599670072/</url>
-    <content><![CDATA[<div class="note default">
-            <p>會把這篇內容放在前面是因為我深受其害，因此我誠心建議這些設定越早弄完越好。</p>
-          </div>
-
-<h2 id="範例的環境版本"><a href="#範例的環境版本" class="headerlink" title="範例的環境版本"></a>範例的環境版本</h2><p>hexo 版本：6.0.1<br>hexo-cli 版本：4.3.0<br>next 版本：7.8.0</p>
-<h2 id="Google-Analytics"><a href="#Google-Analytics" class="headerlink" title="Google Analytics"></a>Google Analytics</h2><blockquote>
-<p>下面分成兩個方向來設置：設置追蹤碼、埋追蹤碼。</p>
-</blockquote>
-<div class="note default">
-            <p>想看詳細過程介紹可以參考：Gui <a href="https://guiblogs.com/hexo30-12/">Day 12：為 Hexo 裝設 Google Analytics，追蹤你的部落格流量（使用 Next 佈景主題）</a></p>
-          </div>
-
-<h3 id="設置追蹤碼（製評估-ID）"><a href="#設置追蹤碼（製評估-ID）" class="headerlink" title="設置追蹤碼（製評估 ID）"></a>設置追蹤碼（製評估 ID）</h3><p>Step1：<a href="https://analytics.google.com/analytics/web/provision/#/provision">Google Analytics</a> 申請帳號<br>Step2：複製評估 ID（<code>G-</code> 開頭）<br>Step3：修改 NexT 主題中 _config.yml 參數</p>
-<figure class="highlight diff"><figcaption><span>themes/hexo-theme-next/_config.yml</span></figcaption><table><tr><td class="code"><pre><span class="line"># Google Analytics</span><br><span class="line">google_analytics:</span><br><span class="line"><span class="deletion">-  tracking_id: # &lt;app_id&gt;</span></span><br><span class="line"><span class="addition">+  tracking_id: #貼上剛剛複製的評估 ID</span></span><br><span class="line">  # By default, NexT will load an external gtag.js script on your site.</span><br><span class="line">  # If you only need the pageview feature, set the following option to true to get a better performance.</span><br><span class="line">  only_pageview: false</span><br></pre></td></tr></table></figure>
-
-<h3 id="埋追蹤碼"><a href="#埋追蹤碼" class="headerlink" title="埋追蹤碼"></a>埋追蹤碼</h3><p>Step1：複製追蹤碼</p>
-<p><img src="https://imgur.com/mjvgxfs.jpg" alt="步驟演示：資料串流 →  全域網站代碼 → 複製"></p>
-<p>Step2：檔案 themes&#x2F;hexo-theme-next&#x2F;layout&#x2F;_partials&#x2F;head&#x2F;head.swig 最後貼上追蹤碼</p>
-<figure class="highlight diff"><figcaption><span>themes/hexo-theme-next/layout/_partials/head/head.swig</span></figcaption><table><tr><td class="code"><pre><span class="line">&#123;&#123; next_config() &#125;&#125;</span><br><span class="line"><span class="addition">+ &lt;!-- Global site tag (gtag.js) - Google Analytics --&gt;</span></span><br><span class="line"><span class="addition">+ &lt;script async src=&quot;https://www.googletagmanager.com/gtag/js?id=G-K8QW91NNBQ&quot;&gt;&lt;/script&gt;</span></span><br><span class="line"><span class="addition">+ &lt;script&gt;</span></span><br><span class="line"><span class="addition">+   window.dataLayer = window.dataLayer || [];</span></span><br><span class="line"><span class="addition">+   function gtag()&#123;dataLayer.push(arguments);&#125;</span></span><br><span class="line"><span class="addition">+   gtag(&#x27;js&#x27;, new Date());</span></span><br><span class="line"><span class="addition">+ </span></span><br><span class="line"><span class="addition">+   gtag(&#x27;config&#x27;, &#x27;G-K8QW91NNBQ&#x27;);</span></span><br><span class="line"><span class="addition">+ &lt;/script&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>Step3：重新部署</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">hexo g -d</span><br></pre></td></tr></table></figure>
-
-<div class="note default">
-            <p>完成上面兩個設置就可以重新部署後再次檢查 GA 是否成功。</p>
-          </div>
-
-<p><img src="https://imgur.com/60AW6rA.jpg" alt="進到 GA 中點選左邊側邊欄報表，有看到數字 1 就成功了！"></p>
-<h2 id="Sitemap"><a href="#Sitemap" class="headerlink" title="Sitemap"></a>Sitemap</h2><blockquote>
-<p>Sitemap 檔案會提供網頁中的相關資訊給搜尋引擎，Google 的爬蟲會定期爬 sitemap.xml 檔案，若有更新他就會去爬你的網站並加入到搜尋引擎中。</p>
-</blockquote>
-<p>Step1：安裝指令</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">npm install hexo-generator-sitemap</span><br></pre></td></tr></table></figure>
-
-<p>Step2：根目錄 _config.yml 在最後面添加新參數</p>
-<ul>
-<li>之後只要指令有 <code>hexo g</code> 時，就會自動生成 sitemap.xml。</li>
-</ul>
-<figure class="highlight diff"><figcaption><span>.git/config</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="addition">+ # Sitemap</span></span><br><span class="line"><span class="addition">+ sitemap:</span></span><br><span class="line"><span class="addition">+   path: sitemap.xml</span></span><br></pre></td></tr></table></figure>
-
-<p>Step3：重新部署</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">hexo d -g</span><br></pre></td></tr></table></figure>
-
-<p>Step4：<a href="https://search.google.com/search-console/about?hl=zh-tw">Google Search</a> 設置加入網站連結</p>
-<ul>
-<li>GA 屬於一種驗證方式，剛剛有成功設置 GA 所以會自動驗證成功。</li>
-</ul>
-<p><img src="https://imgur.com/MCx0dFO.jpg"></p>
-<p>Step5：提交 sitemap</p>
-<ul>
-<li>在新增 Sitemap 欄位中輸入 <code>sitemap.xml</code></li>
-</ul>
-<p><img src="https://imgur.com/D2VrXHx.jpg"></p>
-<p>Step6：檢查 sitemap</p>
-<ul>
-<li>檢查自己的網址後面加上 <code>/sitemap</code> 或 <code>/sitemap.xml</code> 後查看是否有內容。</li>
-</ul>
-<p><img src="https://imgur.com/2yYRM6p.jpg" alt="https://kentdoit.github.io/sitemap"></p>
-<div class="note default">
-            <p>如果<strong>運氣好</strong>到這邊應該是成功了，<del>運氣不好</del>會發覺網址看有內容，但是狀態為<code>無法擷取</code>。</p>
-          </div>
-
-<p><img src="https://imgur.com/Ae8Sllt.jpg"></p>
-<div class="note default">
-            <p>礙於 debug 篇幅過長，將過程記錄在另一篇 <a href="https://kentdoit.github.io/hexo/2629412870/">Hexo Sitemap 建立索引 無法擷取</a> 文章中。</p>
-          </div>
-
-<h2 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h2><p><a href="https://israynotarray.com/hexo/20190514/2072033203/">Hexo搜尋引擎優化</a><br><a href="https://zenreal.github.io/posts/7993/">Hexo 搭建系列 - SEO優化篇</a><br><a href="https://syj0905.github.io/hexo/20190906/285599935/">Hexo 架站攻略 - SEO 優化</a></p>
-]]></content>
-      <categories>
-        <category>Hexo</category>
-      </categories>
-      <tags>
-        <tag>Hexo SEO</tag>
       </tags>
   </entry>
   <entry>
@@ -1470,213 +1470,6 @@ console.log(obj.name);  // kent
       </tags>
   </entry>
   <entry>
-    <title>JS 可選串連運算子 Optional chaining operator</title>
-    <url>/javascript/3900271525/</url>
-    <content><![CDATA[<h2 id="可選串連運算子-Optional-chaining-operator"><a href="#可選串連運算子-Optional-chaining-operator" class="headerlink" title="可選串連運算子 Optional chaining operator"></a>可選串連運算子 Optional chaining operator</h2><div class="note primary">
-            <p><a href="https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Operators/Optional_chaining">MDN</a>：<br>可選串連運算子 <strong><code>?.</code></strong> 允許進行深層次的物件值存取，而無需透過明確的物件值串連驗證。<code>?.</code> 運算子的操作與 <code>.</code> 屬性存取運算子相似，後者會在參照到 <a href="https://developer.mozilla.org/en-US/docs/Glossary/Nullish">nullish (en-US)</a> 的值為 <a href="https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Global_Objects/null">null</a> or <a href="https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Global_Objects/undefined">undefined</a> 來判斷當不存在時會出現錯誤，而前者可選串連則回傳 <code>undefined</code>。 當需要存取一個函數，而這函數並不存在時，則會回傳 <code>undefined</code>。</p>
-          </div>
-
-<div class="note default">
-            <p>白話文：存取一層以上的物件屬性時，就算屬性不存在也不會報錯，而是回傳 undefined。</p>
-          </div>
-
-<p>語法：在 <code>.</code> 前方加上 <code>?</code>。</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">obj?.prop</span><br><span class="line">obj?.[expr]</span><br><span class="line">arr?.[index]</span><br><span class="line">func?.(args)</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>Tips</p>
-</blockquote>
-<ul>
-<li>當 <code>?.</code> 左側屬性不存在，回傳 <code>undefined</code> 而非 TypeError。</li>
-</ul>
-<div class="note primary">
-            <p>物件特性：取用未定義屬性則會回傳 undefined，但僅限一層！不然會噴 TypeError。<br>（因此有了可選串連運算子的誕生）</p>
-          </div>
-
-<h3 id="語法差異"><a href="#語法差異" class="headerlink" title="語法差異"></a>語法差異</h3><div class="note info">
-            <p>舊方法：手動判斷 typeof 是否為 undefined。<br>新方法：直接在屬性 <code>.</code> 前方加上 <code>?</code>。</p>
-          </div>
-
-<div class="note primary">
-            <p>判斷是否存在會依照 <a href="https://developer.mozilla.org/en-US/docs/Glossary/Nullish">nullish value</a> （null、undefined）直來判斷，若值為 nullish value 就表示不存在。</p>
-          </div>
-
-<figure class="highlight js"><figcaption><span>e.g. 新舊寫法差異</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> school = &#123;</span><br><span class="line">  <span class="attr">info</span>: &#123;</span><br><span class="line">    <span class="attr">student</span>: &#123;</span><br><span class="line">      <span class="attr">name</span>: <span class="string">&#x27;kent&#x27;</span>,</span><br><span class="line">      <span class="attr">age</span>: <span class="number">18</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// TypeError: Cannot read properties of undefined (reading &#x27;name&#x27;)</span></span><br><span class="line"><span class="keyword">let</span> name = school.<span class="property">info</span>.<span class="property">teacher</span>.<span class="property">name</span>; </span><br><span class="line"></span><br><span class="line"><span class="comment">// 舊方法</span></span><br><span class="line"><span class="keyword">if</span> (<span class="keyword">typeof</span> (school.<span class="property">info</span>.<span class="property">teacher</span>) !== <span class="string">&#x27;undefined&#x27;</span>)&#123;</span><br><span class="line">  <span class="keyword">let</span> name = school.<span class="property">info</span>.<span class="property">teacher</span>.<span class="property">name</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 新方法</span></span><br><span class="line"><span class="keyword">let</span> name = school.<span class="property">info</span>.<span class="property">teacher</span>?.<span class="property">name</span>;</span><br></pre></td></tr></table></figure>
-
-<div class="note default">
-            <p>下方會用更多範例來介紹，範例中會使用<a href="https://kentdoit.github.io/javascript/350805089/">短路求值</a>的方式來演示，還不暸解的朋友可以參考這篇文章。</p>
-          </div>
-
-<hr>
-<h2 id="情境範例"><a href="#情境範例" class="headerlink" title="情境範例"></a>情境範例</h2><h3 id="判斷物件屬性是否存在"><a href="#判斷物件屬性是否存在" class="headerlink" title="判斷物件屬性是否存在"></a>判斷物件屬性是否存在</h3><ul>
-<li>舊方法：<code>&amp;&amp;</code><ul>
-<li>會先判斷上一層屬性是否存在，<code>&amp;&amp; 左邊</code> 是否為 nullish value （null 或 undefined）</li>
-<li>不是null 或 undefined 才繼續執行 <code>&amp;&amp; 右邊</code>。</li>
-</ul>
-</li>
-<li>新方法：<code>?.</code><ul>
-<li>當 <code>?.</code> 左側屬性是否為 nullish value （null 或 undefined），則回傳 undefined。</li>
-</ul>
-</li>
-</ul>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> school = &#123;</span><br><span class="line">  <span class="attr">info</span>: &#123;</span><br><span class="line">    <span class="attr">student</span>: &#123;</span><br><span class="line">      <span class="attr">name</span>: <span class="string">&#x27;kent&#x27;</span>,</span><br><span class="line">      <span class="attr">age</span>: <span class="number">18</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 問題</span></span><br><span class="line"><span class="keyword">let</span> name = school.<span class="property">info</span>.<span class="property">teacher</span>.<span class="property">name</span>; <span class="comment">// TypeError: Cannot read properties of undefined (reading &#x27;name&#x27;)</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 舊方法</span></span><br><span class="line"><span class="keyword">let</span> name = school.<span class="property">info</span>.<span class="property">teacher</span> &amp;&amp; school.<span class="property">info</span>.<span class="property">teacher</span>.<span class="property">name</span>;   <span class="comment">// undefined</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 新方法</span></span><br><span class="line"><span class="keyword">let</span> name = school.<span class="property">info</span>.<span class="property">teacher</span>?.<span class="property">name</span>;      <span class="comment">// undefined</span></span><br><span class="line"><span class="keyword">let</span> name = school.<span class="property">info</span>[<span class="string">&#x27;teacher&#x27;</span>]?.<span class="property">name</span>;   <span class="comment">// undefined</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="延伸應用"><a href="#延伸應用" class="headerlink" title="延伸應用"></a>延伸應用</h2><h3 id="預防方法不存在"><a href="#預防方法不存在" class="headerlink" title="預防方法不存在"></a>預防方法不存在</h3><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> obj = &#123;</span><br><span class="line">  <span class="attr">fn</span>: <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;fn&#x27;</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(obj.<span class="title function_">fnn</span>());   <span class="comment">// TypeError: obj.fnn is not a function</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(obj.<span class="property">fnn</span>?.()); <span class="comment">// undefined</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="結合空值合併運算符（-）來設置預設值"><a href="#結合空值合併運算符（-）來設置預設值" class="headerlink" title="結合空值合併運算符（??）來設置預設值"></a>結合空值合併運算符（??）來設置預設值</h3><figure class="highlight js"><figcaption><span>延續上方的程式碼</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> name = school.<span class="property">info</span>.<span class="property">teacher</span>?.<span class="property">name</span> ?? <span class="string">&#x27;陳怡君&#x27;</span>;</span><br></pre></td></tr></table></figure>
-
-<h2 id="conclusion"><a href="#conclusion" class="headerlink" title="conclusion"></a>conclusion</h2><div class="note default">
-            <p>比較直接透過錯誤訊息判斷問題（難追尋問題原因），但如果觀念夠的話，還是可以透過邏輯拆解一步一步尋找。</p>
-          </div>
-
-<h2 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h2><ul>
-<li><a href="https://github.com/HelloJunWei/blog/issues/7">我所不知道的javascript #7</a></li>
-</ul>
-<p>延伸閱讀</p>
-<ul>
-<li>程式猿吃香蕉：<a href="https://medium.com/%E7%A8%8B%E5%BC%8F%E7%8C%BF%E5%90%83%E9%A6%99%E8%95%89/%E4%BE%86%E8%AB%87-javascript-%E7%9A%84-optional-chaining-%E5%92%8C-nullish-coalescing-part-i-992625a1861d">前端開發 🦏 來談 JavaScript 的 Optional Chaining 和 Nullish Coalescing (一)</a></li>
-</ul>
-]]></content>
-      <categories>
-        <category>JavaScript</category>
-      </categories>
-      <tags>
-        <tag>JavaScript</tag>
-        <tag>ES6</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>JS 樣板字面值 Template Literal、標籤樣板字面值 Tagged Template Literals</title>
-    <url>/javascript/2204307334/</url>
-    <content><![CDATA[<h2 id="樣板字面值-Template-Literal"><a href="#樣板字面值-Template-Literal" class="headerlink" title="樣板字面值 Template Literal"></a>樣板字面值 Template Literal</h2><div class="note primary">
-            <p><a href="https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Template_literals">MDN</a>：用來進行多行字串、字串串接以及字串插補（string interpolation），在<code>先前</code>的版本 ES2015 中被稱為「樣板字串（template strings）」。</p>
-          </div>
-
-<p>語法：</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">`string text $&#123;expression&#125; string text`</span><br></pre></td></tr></table></figure>
-
-<div class="note default">
-            <p>兩個反引號<code>``</code>並加上 <code>${expression}</code> 來插入變數、表達式。</p>
-          </div>
-
-<figure class="highlight js"><figcaption><span>e.g. 樣板自面值</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> s = <span class="string">&#x27;我&#x27;</span>;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`<span class="subst">$&#123;s&#125;</span>是誰，<span class="subst">$&#123;s&#125;</span>在哪裡`</span>);</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>Tips</p>
-</blockquote>
-<ul>
-<li>反引號的內容會保留所有的 <code>換行</code> 和 <code>空白</code>。</li>
-<li>不能插入陳述式，否則會噴 Error。</li>
-</ul>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`我是誰  ，\n  我在哪裡`</span>);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`這是陳述式範例：變數宣告<span class="subst">$&#123; <span class="keyword">let</span> str&#125;</span>`</span>); <span class="comment">// SyntaxError: Missing &#125; in template expression</span></span><br></pre></td></tr></table></figure>
-
-<div class="note default">
-            <p>Q：那為什麼會需要樣板字面值？其它方式不行嗎？<br>A：可以，但樣板字面值簡化<code>串接過程</code>，使串接變得更<code>容易簡潔</code>。</p>
-          </div>
-
-<div class="note default">
-            <p>下面會透過幾個範例，來演示舊字串串接、樣板字面值兩者在不同情境的差別。</p>
-          </div>
-
-<h3 id="語法差異"><a href="#語法差異" class="headerlink" title="語法差異"></a>語法差異</h3><div class="note info">
-            <p>舊字串串接：會使用<code>單引號</code>或<code>雙引號</code> 來<code>包裹字串</code>，再透過 <code>+</code> 的方式來串接。<br>樣板字面值：兩個反引號 &#96;&#96; 並加上 <code>${expression}</code> 來插入變數、表達式。</p>
-          </div>
-
-<figure class="highlight js"><figcaption><span>e.g. 新舊寫法差異</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> str1 = <span class="string">&#x27;世界&#x27;</span>;</span><br><span class="line"><span class="keyword">let</span> str2 = <span class="string">&#x27;和平&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 舊字串串接</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(str1 + str2 + <span class="string">&#x27; &amp; 愛&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 樣板字面值</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`<span class="subst">$&#123;str1&#125;</span><span class="subst">$&#123;str2&#125;</span> &amp; 愛`</span>);</span><br></pre></td></tr></table></figure>
-
-<h3 id="多行串接"><a href="#多行串接" class="headerlink" title="多行串接"></a>多行串接</h3><figure class="highlight js"><figcaption><span>e.g. 多行串接</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> money = <span class="number">10</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 舊字串串接（需要使用到反斜線來換行）</span></span><br><span class="line"><span class="keyword">let</span> template = <span class="string">&#x27;&lt;ul&gt;\</span></span><br><span class="line"><span class="string">  &lt;li&gt;&#x27;</span> + money + <span class="string">&#x27;元 &lt;/li&gt;\</span></span><br><span class="line"><span class="string">  &lt;li&gt;&#x27;</span> + money + <span class="string">&#x27;元 &lt;/li&gt;\</span></span><br><span class="line"><span class="string">&lt;/ul&gt;&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 樣板字面值（會保留所有換行和空白）</span></span><br><span class="line"><span class="keyword">let</span> template = <span class="string">`</span></span><br><span class="line"><span class="string">  &lt;ul&gt;</span></span><br><span class="line"><span class="string">    &lt;li&gt; <span class="subst">$&#123;money&#125;</span>元 &lt;/li&gt;</span></span><br><span class="line"><span class="string">    &lt;li&gt; <span class="subst">$&#123;money&#125;</span>元 &lt;/li&gt;</span></span><br><span class="line"><span class="string">  &lt;/ul&gt;</span></span><br><span class="line"><span class="string">`</span>;</span><br></pre></td></tr></table></figure>
-
-<h3 id="跳脫字元"><a href="#跳脫字元" class="headerlink" title="跳脫字元"></a>跳脫字元</h3><div class="note default">
-            <p>Q：那如果需要將反引號作為字串怎麼辦？<br>A：可以使用跳脫字元。</p>
-          </div>
-
-<figure class="highlight js"><figcaption><span>e.g. 跳脫字元</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="comment">// 在字元前面加上反斜線（backslash）</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`我厶\`誰`</span>); <span class="comment">// 我厶`誰</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="複雜用法"><a href="#複雜用法" class="headerlink" title="複雜用法"></a>複雜用法</h3><div class="note default">
-            <p>上面範例中已充分暸解如何使用樣板字面值，來做字串串接和字串插補，下方在用一個範例來演示，結合函式、判斷式、巢狀的應用。</p>
-          </div>
-
-<figure class="highlight js"><figcaption><span>e.g. 函式 + 判斷式 + 巢狀</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> moneys = [<span class="number">10</span>, <span class="number">0</span>];</span><br><span class="line"><span class="keyword">let</span> template = <span class="string">`&lt;ul&gt;</span></span><br><span class="line"><span class="string">  <span class="subst">$&#123;moneys.map((money) =&gt; &#123;</span></span></span><br><span class="line"><span class="subst"><span class="string">    <span class="keyword">if</span> (money) &#123;</span></span></span><br><span class="line"><span class="subst"><span class="string">        <span class="keyword">return</span> <span class="string">`&lt;li&gt; <span class="subst">$&#123;money&#125;</span>元 &lt;/li&gt;`</span>;</span></span></span><br><span class="line"><span class="subst"><span class="string">      &#125; <span class="keyword">else</span> &#123;</span></span></span><br><span class="line"><span class="subst"><span class="string">        <span class="keyword">return</span> <span class="string">`&lt;li&gt; 沒錢 &lt;/li&gt;`</span>;</span></span></span><br><span class="line"><span class="subst"><span class="string">      &#125;</span></span></span><br><span class="line"><span class="subst"><span class="string">    &#125;).join(<span class="string">&#x27;&#x27;</span>)</span></span></span><br><span class="line"><span class="subst"><span class="string">  &#125;</span></span></span><br><span class="line"><span class="string">&lt;/ul&gt;`</span>;</span><br></pre></td></tr></table></figure>
-
-<div class="note default">
-            <p>不敢想像用傳統串接寫的話會變成什麼樣子 QQ</p>
-          </div>
-
-<hr>
-<h2 id="標籤樣板字面值-Tagged-Template-Literals"><a href="#標籤樣板字面值-Tagged-Template-Literals" class="headerlink" title="標籤樣板字面值 Tagged Template Literals"></a>標籤樣板字面值 Tagged Template Literals</h2><div class="note primary">
-            <p><a href="https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Template_literals#%E6%A8%99%E7%B1%A4%E6%A8%A3%E6%9D%BF%E5%AD%97%E9%9D%A2%E5%80%BC">MDN</a>：屬於樣板字面值的進階用法，常用於函式參數傳入。</p>
-          </div>
-
-<p>語法：</p>
-<ul>
-<li>函式後方將括號替代為樣板字面值</li>
-</ul>
-<figure class="highlight js"><figcaption><span>e.g. 簡化了一般函式呼叫的括號</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="comment">// 一般函式參數</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;標籤樣板字面值&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 標籤樣板字面值</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="property">log</span><span class="string">`標籤樣板字面值`</span>;</span><br></pre></td></tr></table></figure>
-
-<div class="note default">
-            <p>如果樣板字面值中沒有使用到 <code>${}</code>，那和一般函式呼叫帶入的參數沒什麼差異，那看起來也沒多厲害？不不不精彩的正要開始。</p>
-          </div>
-
-<h3 id="樣板字面值傳參數特性"><a href="#樣板字面值傳參數特性" class="headerlink" title="樣板字面值傳參數特性"></a>樣板字面值傳參數特性</h3><ul>
-<li>將樣板字面值內容中含有 <code>$&#123;&#125;</code> 切為 <code>多個參數</code>，將其組成一個陣列傳入函式中。</li>
-</ul>
-<p>參數格式</p>
-<ul>
-<li>第一個參數（陣列）：除了 <code>$&#123;&#125;</code> 之外的內容。<ul>
-<li>從 <code>$&#123;&#125;</code> 位置切割，並會以字串型態存入陣列中。</li>
-<li>要注意就算 <code>$&#123;&#125;</code> 後面沒有其他字串，但還是會有一個空字串存入陣列中</li>
-</ul>
-</li>
-<li>第二個參數：第一個 <code>$&#123;&#125;</code></li>
-<li>第三個參數：第二個 <code>$&#123;&#125;</code>（…依此類推下去）</li>
-</ul>
-<p><img src="https://imgur.com/N24S0H1.jpg"></p>
-<div class="note default">
-            <p>${} 後面沒有其他字串，但還是會有一個空字串存入陣列中。<br>例如：一個 ${} 會切兩個字串，兩個 ${} 會切三個字串。</p>
-          </div>
-
-<figure class="highlight js"><figcaption><span>e.g. 標籤樣板字面值</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> str1 = <span class="string">&#x27;標籤&#x27;</span>;</span><br><span class="line"><span class="keyword">let</span> str2 = <span class="string">&#x27;標籤樣板字面值&#x27;</span>;</span><br><span class="line"><span class="keyword">function</span> <span class="title function_">fn</span>(<span class="params">str, arg</span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(str);  <span class="comment">// str=[&#x27;演示&#x27;, &#x27;&#x27;, &#x27;範例&#x27;]</span></span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(arg);  <span class="comment">// arg=&#x27;標籤&#x27;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">fn<span class="string">`演示<span class="subst">$&#123;str1&#125;</span><span class="subst">$&#123;str2&#125;</span>範例`</span>;</span><br></pre></td></tr></table></figure>
-
-<div class="note default">
-            <p>變數的部分，也可以使用<code>其餘運算子</code>來一次接收全部變數。</p>
-          </div>
-
-<figure class="highlight js"><figcaption><span>e.g. 其餘運算子接收所有變數</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> str1 = <span class="string">&#x27;標籤&#x27;</span>;</span><br><span class="line"><span class="keyword">let</span> str2 = <span class="string">&#x27;標籤樣板字面值&#x27;</span>;</span><br><span class="line"><span class="keyword">function</span> <span class="title function_">fn</span>(<span class="params">str, ...arg</span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(str);  <span class="comment">// str=[&#x27;演示&#x27;, &#x27;&#x27;, &#x27;範例&#x27;]</span></span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(arg);  <span class="comment">// arg=[&#x27;標籤&#x27;, &#x27;標籤樣板字面值&#x27;]</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">fn<span class="string">`演示<span class="subst">$&#123;str1&#125;</span><span class="subst">$&#123;str2&#125;</span>範例`</span>;</span><br></pre></td></tr></table></figure>
-
-<div class="note default">
-            <p>通常 <code>${}</code> 數量是不固定的，因此可以使用其餘運算子將 <code>${}</code> 的參數組成陣列來使用。</p>
-          </div>
-
-<figure class="highlight js"><figcaption><span>e.g. 標籤樣板字面值 + 其餘運算子</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> str1 = <span class="string">&#x27;標籤樣板字面值&#x27;</span>;</span><br><span class="line"><span class="keyword">let</span> str2 = <span class="string">&#x27;其餘運算子&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">fn</span>(<span class="params">str, ...args</span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(str, args); </span><br><span class="line">  <span class="comment">// str=[&#x27;演示&#x27;, &#x27;+&#x27;, &#x27;範例&#x27;], arg=[&#x27;標籤樣板字面值&#x27;, &#x27;其餘運算子&#x27;]</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">fn<span class="string">`演示<span class="subst">$&#123;str1&#125;</span>+<span class="subst">$&#123;str2&#125;</span>範例`</span>;</span><br></pre></td></tr></table></figure>
-
-<div class="note danger">
-            <p>要注意第一個參數永遠只會傳入非 <code>${}</code> 的字串，所以請不要在第一個參數使用其餘參數，因為沒有必要。</p>
-          </div>
-
-<div class="note default">
-            <p>標籤樣板字面值也常用來預防 XSS 攻擊，請看下方範例。</p>
-          </div>
-
-<ul>
-<li>透過將 <code>$&#123;&#125;</code> 內容中含有<code>&lt;</code>、<code>&gt;</code> 與 <code>&amp;</code> 的符號替換成 ASCII Code，也就是單純的字串。</li>
-</ul>
-<figure class="highlight js"><figcaption><span>e.g. 預防 XSS 攻擊</span><a href="https://israynotarray.com/javascript/20211114/136128318/">src</a></figcaption><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">convertHTML</span> (strings, ...keys) &#123;</span><br><span class="line">  <span class="keyword">return</span> strings.<span class="title function_">map</span>(<span class="function">(<span class="params">str, i</span>) =&gt;</span> <span class="string">`<span class="subst">$&#123;str&#125;</span><span class="subst">$&#123;keys[i] ? keys[i].replace(/&amp;/g, <span class="string">&#x27;&amp;amp;&#x27;</span>).replace(/&lt;/g, <span class="string">&#x27;&amp;lt;&#x27;</span>).replace(/&gt;/g, <span class="string">&#x27;&amp;gt;&#x27;</span>): <span class="string">&#x27;&#x27;</span>&#125;</span>`</span>).<span class="title function_">join</span>(<span class="string">&#x27;&#x27;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">convertHTML<span class="string">`&lt;p&gt;超連結：<span class="subst">$&#123;Url&#125;</span>&lt;/p&gt;`</span>;</span><br></pre></td></tr></table></figure>
-
-<h2 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h2><ul>
-<li><a href="https://medium.com/vicky-notes/es6-%E7%AB%A0%E7%AF%80-template-literial-7309b9e3bebb">ES6 章節：Template Literial</a></li>
-<li>PJ 大 <a href="https://pjchender.blogspot.com/2017/01/javascript-es6-template-literalstagged.html">[筆記] JavaScript ES6 中的模版字符串（template literals）和標籤模版（tagged template）</a></li>
-<li>Ray <a href="https://israynotarray.com/javascript/20211114/136128318/">JavaScript 核心觀念(72) - ES6 章節：Template Literial - 標籤樣板字面值</a></li>
-</ul>
-]]></content>
-      <categories>
-        <category>JavaScript</category>
-      </categories>
-      <tags>
-        <tag>JavaScript</tag>
-        <tag>ES6</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>JS 空值合併運算子 Nullish coalescing operator</title>
     <url>/javascript/3525467973/</url>
     <content><![CDATA[<div class="note default">
@@ -1832,17 +1625,6 @@ console.log(obj.name);  // kent
       <tags>
         <tag>JavaScript</tag>
         <tag>ES6</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>JS 傳值 by Value、傳址 by Reference、傳共享 by sharing</title>
-    <url>/javascript/3842658283/</url>
-    <content><![CDATA[]]></content>
-      <categories>
-        <category>JavaScript</category>
-      </categories>
-      <tags>
-        <tag>JavaScript</tag>
       </tags>
   </entry>
   <entry>
@@ -2019,6 +1801,17 @@ console.log(obj.name);  // kent
       </tags>
   </entry>
   <entry>
+    <title>JS 傳值 by Value、傳址 by Reference、傳共享 by sharing</title>
+    <url>/javascript/3842658283/</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>JavaScript</category>
+      </categories>
+      <tags>
+        <tag>JavaScript</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>JS 轉型 - 抽象的值運算 abstract operations</title>
     <url>/javascript/163319027/</url>
     <content><![CDATA[<h2 id="ToPrimitive"><a href="#ToPrimitive" class="headerlink" title="ToPrimitive"></a>ToPrimitive</h2>]]></content>
@@ -2031,85 +1824,210 @@ console.log(obj.name);  // kent
       </tags>
   </entry>
   <entry>
-    <title>JS not defined vs undefined</title>
-    <url>/javascript/4170310433/</url>
-    <content><![CDATA[<p><img src="https://imgur.com/3uvmsGO.png"></p>
-<h2 id="undefined"><a href="#undefined" class="headerlink" title="undefined"></a>undefined</h2><div class="note primary">
-            <p><a href="https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Global_Objects/undefined">MDN</a>：屬於 <code>primitive value</code> 之一、全域物件的 <code>property</code>。</p>
+    <title>JS 樣板字面值 Template Literal、標籤樣板字面值 Tagged Template Literals</title>
+    <url>/javascript/2204307334/</url>
+    <content><![CDATA[<h2 id="樣板字面值-Template-Literal"><a href="#樣板字面值-Template-Literal" class="headerlink" title="樣板字面值 Template Literal"></a>樣板字面值 Template Literal</h2><div class="note primary">
+            <p><a href="https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Template_literals">MDN</a>：用來進行多行字串、字串串接以及字串插補（string interpolation），在<code>先前</code>的版本 ES2015 中被稱為「樣板字串（template strings）」。</p>
           </div>
+
+<p>語法：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">`string text $&#123;expression&#125; string text`</span><br></pre></td></tr></table></figure>
+
+<div class="note default">
+            <p>兩個反引號<code>``</code>並加上 <code>${expression}</code> 來插入變數、表達式。</p>
+          </div>
+
+<figure class="highlight js"><figcaption><span>e.g. 樣板自面值</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> s = <span class="string">&#x27;我&#x27;</span>;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`<span class="subst">$&#123;s&#125;</span>是誰，<span class="subst">$&#123;s&#125;</span>在哪裡`</span>);</span><br></pre></td></tr></table></figure>
 
 <blockquote>
 <p>Tips</p>
 </blockquote>
-<ol>
-<li><p>預設值<br>表示變數 <code>尚未宣告</code> 或者是已經宣告了但 <code>尚未賦值</code>。</p>
-</li>
-<li><p>特殊關鍵字<br>可以當作一個值去賦予不會噴錯，但 <code>千萬不要</code> 這麼做。</p>
-</li>
-</ol>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> b;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(b); <span class="comment">// undefined</span></span><br><span class="line"></span><br><span class="line">b = <span class="literal">undefined</span>; <span class="comment">// 不要這麼做</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>反引號的內容會保留所有的 <code>換行</code> 和 <code>空白</code>。</li>
+<li>不能插入陳述式，否則會噴 Error。</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`我是誰  ，\n  我在哪裡`</span>);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`這是陳述式範例：變數宣告<span class="subst">$&#123; <span class="keyword">let</span> str&#125;</span>`</span>); <span class="comment">// SyntaxError: Missing &#125; in template expression</span></span><br></pre></td></tr></table></figure>
 
 <div class="note default">
-            <p>下方會演示兩種 undefined 錯誤應用，並解析問題。</p>
+            <p>Q：那為什麼會需要樣板字面值？其它方式不行嗎？<br>A：可以，但樣板字面值簡化<code>串接過程</code>，使串接變得更<code>容易簡潔</code>。</p>
           </div>
 
-<h3 id="不建議賦值為-undefined"><a href="#不建議賦值為-undefined" class="headerlink" title="不建議賦值為 undefined"></a>不建議賦值為 undefined</h3><div class="note danger">
-            <p>問題：造成無法看出此變數是否有被賦予值。</p>
+<div class="note default">
+            <p>下面會透過幾個範例，來演示舊字串串接、樣板字面值兩者在不同情境的差別。</p>
           </div>
 
-<p>解法：</p>
-<ol>
-<li>使用 null，更符合空值的意義。</li>
-<li>宣告變數不帶值，預設就會賦予 undefined。</li>
-</ol>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 不建議寫法</span></span><br><span class="line"><span class="keyword">let</span> a = <span class="literal">undefined</span>; <span class="comment">// undefined</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 替代方式</span></span><br><span class="line"><span class="keyword">let</span> a;             <span class="comment">// undefined</span></span><br><span class="line"><span class="keyword">let</span> a = <span class="literal">null</span>;      <span class="comment">// undefined</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="不建議變數名稱命名為-undefined"><a href="#不建議變數名稱命名為-undefined" class="headerlink" title="不建議變數名稱命名為 undefined"></a>不建議變數名稱命名為 undefined</h3><div class="note danger">
-            <p>問題：javascript 會過，但無法正常運作。</p>
+<h3 id="語法差異"><a href="#語法差異" class="headerlink" title="語法差異"></a>語法差異</h3><div class="note info">
+            <p>舊字串串接：會使用<code>單引號</code>或<code>雙引號</code> 來<code>包裹字串</code>，再透過 <code>+</code> 的方式來串接。<br>樣板字面值：兩個反引號 &#96;&#96; 並加上 <code>${expression}</code> 來插入變數、表達式。</p>
           </div>
 
-<p>解法：</p>
-<ol>
-<li>直接不要用 undefined 命名</li>
-<li>不要用 var 改用 let、const（ES6 中已修正此問題，因此無法使用 undefined 命名）</li>
-</ol>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 不建議寫法</span></span><br><span class="line"><span class="keyword">var</span> <span class="literal">undefined</span> = <span class="string">&#x27;un&#x27;</span>;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="literal">undefined</span>); <span class="comment">// undefined，無法正常顯示值</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// let、const</span></span><br><span class="line"><span class="keyword">let</span> <span class="literal">undefined</span> = <span class="string">&#x27;un&#x27;</span>;   <span class="comment">// Uncaught SyntaxError: Identifier &#x27;undefined&#x27; has already been declared</span></span><br><span class="line"><span class="keyword">const</span> <span class="literal">undefined</span> = <span class="string">&#x27;un&#x27;</span>; <span class="comment">// Uncaught SyntaxError: Identifier &#x27;undefined&#x27; has already been declared</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><figcaption><span>e.g. 新舊寫法差異</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> str1 = <span class="string">&#x27;世界&#x27;</span>;</span><br><span class="line"><span class="keyword">let</span> str2 = <span class="string">&#x27;和平&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 舊字串串接</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(str1 + str2 + <span class="string">&#x27; &amp; 愛&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 樣板字面值</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`<span class="subst">$&#123;str1&#125;</span><span class="subst">$&#123;str2&#125;</span> &amp; 愛`</span>);</span><br></pre></td></tr></table></figure>
 
-<h2 id="not-defined"><a href="#not-defined" class="headerlink" title="not defined"></a>not defined</h2><div class="note primary">
-            <p>屬於 error，會噴錯誤訊息。（throw a ReferenceError exception）</p>
+<h3 id="多行串接"><a href="#多行串接" class="headerlink" title="多行串接"></a>多行串接</h3><figure class="highlight js"><figcaption><span>e.g. 多行串接</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> money = <span class="number">10</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 舊字串串接（需要使用到反斜線來換行）</span></span><br><span class="line"><span class="keyword">let</span> template = <span class="string">&#x27;&lt;ul&gt;\</span></span><br><span class="line"><span class="string">  &lt;li&gt;&#x27;</span> + money + <span class="string">&#x27;元 &lt;/li&gt;\</span></span><br><span class="line"><span class="string">  &lt;li&gt;&#x27;</span> + money + <span class="string">&#x27;元 &lt;/li&gt;\</span></span><br><span class="line"><span class="string">&lt;/ul&gt;&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 樣板字面值（會保留所有換行和空白）</span></span><br><span class="line"><span class="keyword">let</span> template = <span class="string">`</span></span><br><span class="line"><span class="string">  &lt;ul&gt;</span></span><br><span class="line"><span class="string">    &lt;li&gt; <span class="subst">$&#123;money&#125;</span>元 &lt;/li&gt;</span></span><br><span class="line"><span class="string">    &lt;li&gt; <span class="subst">$&#123;money&#125;</span>元 &lt;/li&gt;</span></span><br><span class="line"><span class="string">  &lt;/ul&gt;</span></span><br><span class="line"><span class="string">`</span>;</span><br></pre></td></tr></table></figure>
+
+<h3 id="跳脫字元"><a href="#跳脫字元" class="headerlink" title="跳脫字元"></a>跳脫字元</h3><div class="note default">
+            <p>Q：那如果需要將反引號作為字串怎麼辦？<br>A：可以使用跳脫字元。</p>
           </div>
 
-<blockquote>
-<p>Tip</p>
-</blockquote>
-<ul>
-<li>常見的原因是使用了<code>尚未宣告</code>的變數或函式，所導致的 Error。</li>
-</ul>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(c); <span class="comment">// ReferenceError: c is not defined</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><figcaption><span>e.g. 跳脫字元</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="comment">// 在字元前面加上反斜線（backslash）</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`我厶\`誰`</span>); <span class="comment">// 我厶`誰</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="複雜用法"><a href="#複雜用法" class="headerlink" title="複雜用法"></a>複雜用法</h3><div class="note default">
+            <p>上面範例中已充分暸解如何使用樣板字面值，來做字串串接和字串插補，下方在用一個範例來演示，結合函式、判斷式、巢狀的應用。</p>
+          </div>
+
+<figure class="highlight js"><figcaption><span>e.g. 函式 + 判斷式 + 巢狀</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> moneys = [<span class="number">10</span>, <span class="number">0</span>];</span><br><span class="line"><span class="keyword">let</span> template = <span class="string">`&lt;ul&gt;</span></span><br><span class="line"><span class="string">  <span class="subst">$&#123;moneys.map((money) =&gt; &#123;</span></span></span><br><span class="line"><span class="subst"><span class="string">    <span class="keyword">if</span> (money) &#123;</span></span></span><br><span class="line"><span class="subst"><span class="string">        <span class="keyword">return</span> <span class="string">`&lt;li&gt; <span class="subst">$&#123;money&#125;</span>元 &lt;/li&gt;`</span>;</span></span></span><br><span class="line"><span class="subst"><span class="string">      &#125; <span class="keyword">else</span> &#123;</span></span></span><br><span class="line"><span class="subst"><span class="string">        <span class="keyword">return</span> <span class="string">`&lt;li&gt; 沒錢 &lt;/li&gt;`</span>;</span></span></span><br><span class="line"><span class="subst"><span class="string">      &#125;</span></span></span><br><span class="line"><span class="subst"><span class="string">    &#125;).join(<span class="string">&#x27;&#x27;</span>)</span></span></span><br><span class="line"><span class="subst"><span class="string">  &#125;</span></span></span><br><span class="line"><span class="string">&lt;/ul&gt;`</span>;</span><br></pre></td></tr></table></figure>
+
+<div class="note default">
+            <p>不敢想像用傳統串接寫的話會變成什麼樣子 QQ</p>
+          </div>
 
 <hr>
-<h2 id="different"><a href="#different" class="headerlink" title="different"></a>different</h2><ul>
-<li>undefined：宣告(declaration) 後<code>尚未賦予值</code>。</li>
-<li>not defined：<code>尚未被宣告</code>(declaration)。</li>
-</ul>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> b;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(b); <span class="comment">// undefined</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(c); <span class="comment">// ReferenceError: c is not defined</span></span><br></pre></td></tr></table></figure>
+<h2 id="標籤樣板字面值-Tagged-Template-Literals"><a href="#標籤樣板字面值-Tagged-Template-Literals" class="headerlink" title="標籤樣板字面值 Tagged Template Literals"></a>標籤樣板字面值 Tagged Template Literals</h2><div class="note primary">
+            <p><a href="https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Template_literals#%E6%A8%99%E7%B1%A4%E6%A8%A3%E6%9D%BF%E5%AD%97%E9%9D%A2%E5%80%BC">MDN</a>：屬於樣板字面值的進階用法，常用於函式參數傳入。</p>
+          </div>
 
-<h2 id="conclusion"><a href="#conclusion" class="headerlink" title="conclusion"></a>conclusion</h2><p><img src="https://imgur.com/bGXwBgw.png"></p>
-<h2 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h2><ul>
-<li><a href="https://hsiangfeng.github.io/javascript/20200510/2581786882/">JavaScript 核心觀念(7)-執行環境與作用域-not defined VS undefined</a></li>
-<li><a href="https://ithelp.ithome.com.tw/articles/10190904">Day04　undefined與not defined</a></li>
-</ul>
-<p>延伸閱讀</p>
+<p>語法：</p>
 <ul>
-<li><a href="https://kentdoit.github.io/javascript/3007200680/">JS null vs undefined</a></li>
+<li>函式後方將括號替代為樣板字面值</li>
+</ul>
+<figure class="highlight js"><figcaption><span>e.g. 簡化了一般函式呼叫的括號</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="comment">// 一般函式參數</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;標籤樣板字面值&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 標籤樣板字面值</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="property">log</span><span class="string">`標籤樣板字面值`</span>;</span><br></pre></td></tr></table></figure>
+
+<div class="note default">
+            <p>如果樣板字面值中沒有使用到 <code>${}</code>，那和一般函式呼叫帶入的參數沒什麼差異，那看起來也沒多厲害？不不不精彩的正要開始。</p>
+          </div>
+
+<h3 id="樣板字面值傳參數特性"><a href="#樣板字面值傳參數特性" class="headerlink" title="樣板字面值傳參數特性"></a>樣板字面值傳參數特性</h3><ul>
+<li>將樣板字面值內容中含有 <code>$&#123;&#125;</code> 切為 <code>多個參數</code>，將其組成一個陣列傳入函式中。</li>
+</ul>
+<p>參數格式</p>
+<ul>
+<li>第一個參數（陣列）：除了 <code>$&#123;&#125;</code> 之外的內容。<ul>
+<li>從 <code>$&#123;&#125;</code> 位置切割，並會以字串型態存入陣列中。</li>
+<li>要注意就算 <code>$&#123;&#125;</code> 後面沒有其他字串，但還是會有一個空字串存入陣列中</li>
+</ul>
+</li>
+<li>第二個參數：第一個 <code>$&#123;&#125;</code></li>
+<li>第三個參數：第二個 <code>$&#123;&#125;</code>（…依此類推下去）</li>
+</ul>
+<p><img src="https://imgur.com/N24S0H1.jpg"></p>
+<div class="note default">
+            <p>${} 後面沒有其他字串，但還是會有一個空字串存入陣列中。<br>例如：一個 ${} 會切兩個字串，兩個 ${} 會切三個字串。</p>
+          </div>
+
+<figure class="highlight js"><figcaption><span>e.g. 標籤樣板字面值</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> str1 = <span class="string">&#x27;標籤&#x27;</span>;</span><br><span class="line"><span class="keyword">let</span> str2 = <span class="string">&#x27;標籤樣板字面值&#x27;</span>;</span><br><span class="line"><span class="keyword">function</span> <span class="title function_">fn</span>(<span class="params">str, arg</span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(str);  <span class="comment">// str=[&#x27;演示&#x27;, &#x27;&#x27;, &#x27;範例&#x27;]</span></span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(arg);  <span class="comment">// arg=&#x27;標籤&#x27;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">fn<span class="string">`演示<span class="subst">$&#123;str1&#125;</span><span class="subst">$&#123;str2&#125;</span>範例`</span>;</span><br></pre></td></tr></table></figure>
+
+<div class="note default">
+            <p>變數的部分，也可以使用<code>其餘運算子</code>來一次接收全部變數。</p>
+          </div>
+
+<figure class="highlight js"><figcaption><span>e.g. 其餘運算子接收所有變數</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> str1 = <span class="string">&#x27;標籤&#x27;</span>;</span><br><span class="line"><span class="keyword">let</span> str2 = <span class="string">&#x27;標籤樣板字面值&#x27;</span>;</span><br><span class="line"><span class="keyword">function</span> <span class="title function_">fn</span>(<span class="params">str, ...arg</span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(str);  <span class="comment">// str=[&#x27;演示&#x27;, &#x27;&#x27;, &#x27;範例&#x27;]</span></span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(arg);  <span class="comment">// arg=[&#x27;標籤&#x27;, &#x27;標籤樣板字面值&#x27;]</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">fn<span class="string">`演示<span class="subst">$&#123;str1&#125;</span><span class="subst">$&#123;str2&#125;</span>範例`</span>;</span><br></pre></td></tr></table></figure>
+
+<div class="note default">
+            <p>通常 <code>${}</code> 數量是不固定的，因此可以使用其餘運算子將 <code>${}</code> 的參數組成陣列來使用。</p>
+          </div>
+
+<figure class="highlight js"><figcaption><span>e.g. 標籤樣板字面值 + 其餘運算子</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> str1 = <span class="string">&#x27;標籤樣板字面值&#x27;</span>;</span><br><span class="line"><span class="keyword">let</span> str2 = <span class="string">&#x27;其餘運算子&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">fn</span>(<span class="params">str, ...args</span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(str, args); </span><br><span class="line">  <span class="comment">// str=[&#x27;演示&#x27;, &#x27;+&#x27;, &#x27;範例&#x27;], arg=[&#x27;標籤樣板字面值&#x27;, &#x27;其餘運算子&#x27;]</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">fn<span class="string">`演示<span class="subst">$&#123;str1&#125;</span>+<span class="subst">$&#123;str2&#125;</span>範例`</span>;</span><br></pre></td></tr></table></figure>
+
+<div class="note danger">
+            <p>要注意第一個參數永遠只會傳入非 <code>${}</code> 的字串，所以請不要在第一個參數使用其餘參數，因為沒有必要。</p>
+          </div>
+
+<div class="note default">
+            <p>標籤樣板字面值也常用來預防 XSS 攻擊，請看下方範例。</p>
+          </div>
+
+<ul>
+<li>透過將 <code>$&#123;&#125;</code> 內容中含有<code>&lt;</code>、<code>&gt;</code> 與 <code>&amp;</code> 的符號替換成 ASCII Code，也就是單純的字串。</li>
+</ul>
+<figure class="highlight js"><figcaption><span>e.g. 預防 XSS 攻擊</span><a href="https://israynotarray.com/javascript/20211114/136128318/">src</a></figcaption><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">convertHTML</span> (strings, ...keys) &#123;</span><br><span class="line">  <span class="keyword">return</span> strings.<span class="title function_">map</span>(<span class="function">(<span class="params">str, i</span>) =&gt;</span> <span class="string">`<span class="subst">$&#123;str&#125;</span><span class="subst">$&#123;keys[i] ? keys[i].replace(/&amp;/g, <span class="string">&#x27;&amp;amp;&#x27;</span>).replace(/&lt;/g, <span class="string">&#x27;&amp;lt;&#x27;</span>).replace(/&gt;/g, <span class="string">&#x27;&amp;gt;&#x27;</span>): <span class="string">&#x27;&#x27;</span>&#125;</span>`</span>).<span class="title function_">join</span>(<span class="string">&#x27;&#x27;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">convertHTML<span class="string">`&lt;p&gt;超連結：<span class="subst">$&#123;Url&#125;</span>&lt;/p&gt;`</span>;</span><br></pre></td></tr></table></figure>
+
+<h2 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h2><ul>
+<li><a href="https://medium.com/vicky-notes/es6-%E7%AB%A0%E7%AF%80-template-literial-7309b9e3bebb">ES6 章節：Template Literial</a></li>
+<li>PJ 大 <a href="https://pjchender.blogspot.com/2017/01/javascript-es6-template-literalstagged.html">[筆記] JavaScript ES6 中的模版字符串（template literals）和標籤模版（tagged template）</a></li>
+<li>Ray <a href="https://israynotarray.com/javascript/20211114/136128318/">JavaScript 核心觀念(72) - ES6 章節：Template Literial - 標籤樣板字面值</a></li>
 </ul>
 ]]></content>
       <categories>
         <category>JavaScript</category>
       </categories>
       <tags>
-        <tag>JS 釘孤枝</tag>
         <tag>JavaScript</tag>
+        <tag>ES6</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>JS 可選串連運算子 Optional chaining operator</title>
+    <url>/javascript/3900271525/</url>
+    <content><![CDATA[<h2 id="可選串連運算子-Optional-chaining-operator"><a href="#可選串連運算子-Optional-chaining-operator" class="headerlink" title="可選串連運算子 Optional chaining operator"></a>可選串連運算子 Optional chaining operator</h2><div class="note primary">
+            <p><a href="https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Operators/Optional_chaining">MDN</a>：<br>可選串連運算子 <strong><code>?.</code></strong> 允許進行深層次的物件值存取，而無需透過明確的物件值串連驗證。<code>?.</code> 運算子的操作與 <code>.</code> 屬性存取運算子相似，後者會在參照到 <a href="https://developer.mozilla.org/en-US/docs/Glossary/Nullish">nullish (en-US)</a> 的值為 <a href="https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Global_Objects/null">null</a> or <a href="https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Global_Objects/undefined">undefined</a> 來判斷當不存在時會出現錯誤，而前者可選串連則回傳 <code>undefined</code>。 當需要存取一個函數，而這函數並不存在時，則會回傳 <code>undefined</code>。</p>
+          </div>
+
+<div class="note default">
+            <p>白話文：存取一層以上的物件屬性時，就算屬性不存在也不會報錯，而是回傳 undefined。</p>
+          </div>
+
+<p>語法：在 <code>.</code> 前方加上 <code>?</code>。</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">obj?.prop</span><br><span class="line">obj?.[expr]</span><br><span class="line">arr?.[index]</span><br><span class="line">func?.(args)</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>Tips</p>
+</blockquote>
+<ul>
+<li>當 <code>?.</code> 左側屬性不存在，回傳 <code>undefined</code> 而非 TypeError。</li>
+</ul>
+<div class="note primary">
+            <p>物件特性：取用未定義屬性則會回傳 undefined，但僅限一層！不然會噴 TypeError。<br>（因此有了可選串連運算子的誕生）</p>
+          </div>
+
+<h3 id="語法差異"><a href="#語法差異" class="headerlink" title="語法差異"></a>語法差異</h3><div class="note info">
+            <p>舊方法：手動判斷 typeof 是否為 undefined。<br>新方法：直接在屬性 <code>.</code> 前方加上 <code>?</code>。</p>
+          </div>
+
+<div class="note primary">
+            <p>判斷是否存在會依照 <a href="https://developer.mozilla.org/en-US/docs/Glossary/Nullish">nullish value</a> （null、undefined）直來判斷，若值為 nullish value 就表示不存在。</p>
+          </div>
+
+<figure class="highlight js"><figcaption><span>e.g. 新舊寫法差異</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> school = &#123;</span><br><span class="line">  <span class="attr">info</span>: &#123;</span><br><span class="line">    <span class="attr">student</span>: &#123;</span><br><span class="line">      <span class="attr">name</span>: <span class="string">&#x27;kent&#x27;</span>,</span><br><span class="line">      <span class="attr">age</span>: <span class="number">18</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// TypeError: Cannot read properties of undefined (reading &#x27;name&#x27;)</span></span><br><span class="line"><span class="keyword">let</span> name = school.<span class="property">info</span>.<span class="property">teacher</span>.<span class="property">name</span>; </span><br><span class="line"></span><br><span class="line"><span class="comment">// 舊方法</span></span><br><span class="line"><span class="keyword">if</span> (<span class="keyword">typeof</span> (school.<span class="property">info</span>.<span class="property">teacher</span>) !== <span class="string">&#x27;undefined&#x27;</span>)&#123;</span><br><span class="line">  <span class="keyword">let</span> name = school.<span class="property">info</span>.<span class="property">teacher</span>.<span class="property">name</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 新方法</span></span><br><span class="line"><span class="keyword">let</span> name = school.<span class="property">info</span>.<span class="property">teacher</span>?.<span class="property">name</span>;</span><br></pre></td></tr></table></figure>
+
+<div class="note default">
+            <p>下方會用更多範例來介紹，範例中會使用<a href="https://kentdoit.github.io/javascript/350805089/">短路求值</a>的方式來演示，還不暸解的朋友可以參考這篇文章。</p>
+          </div>
+
+<hr>
+<h2 id="情境範例"><a href="#情境範例" class="headerlink" title="情境範例"></a>情境範例</h2><h3 id="判斷物件屬性是否存在"><a href="#判斷物件屬性是否存在" class="headerlink" title="判斷物件屬性是否存在"></a>判斷物件屬性是否存在</h3><ul>
+<li>舊方法：<code>&amp;&amp;</code><ul>
+<li>會先判斷上一層屬性是否存在，<code>&amp;&amp; 左邊</code> 是否為 nullish value （null 或 undefined）</li>
+<li>不是null 或 undefined 才繼續執行 <code>&amp;&amp; 右邊</code>。</li>
+</ul>
+</li>
+<li>新方法：<code>?.</code><ul>
+<li>當 <code>?.</code> 左側屬性是否為 nullish value （null 或 undefined），則回傳 undefined。</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> school = &#123;</span><br><span class="line">  <span class="attr">info</span>: &#123;</span><br><span class="line">    <span class="attr">student</span>: &#123;</span><br><span class="line">      <span class="attr">name</span>: <span class="string">&#x27;kent&#x27;</span>,</span><br><span class="line">      <span class="attr">age</span>: <span class="number">18</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 問題</span></span><br><span class="line"><span class="keyword">let</span> name = school.<span class="property">info</span>.<span class="property">teacher</span>.<span class="property">name</span>; <span class="comment">// TypeError: Cannot read properties of undefined (reading &#x27;name&#x27;)</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 舊方法</span></span><br><span class="line"><span class="keyword">let</span> name = school.<span class="property">info</span>.<span class="property">teacher</span> &amp;&amp; school.<span class="property">info</span>.<span class="property">teacher</span>.<span class="property">name</span>;   <span class="comment">// undefined</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 新方法</span></span><br><span class="line"><span class="keyword">let</span> name = school.<span class="property">info</span>.<span class="property">teacher</span>?.<span class="property">name</span>;      <span class="comment">// undefined</span></span><br><span class="line"><span class="keyword">let</span> name = school.<span class="property">info</span>[<span class="string">&#x27;teacher&#x27;</span>]?.<span class="property">name</span>;   <span class="comment">// undefined</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="延伸應用"><a href="#延伸應用" class="headerlink" title="延伸應用"></a>延伸應用</h2><h3 id="預防方法不存在"><a href="#預防方法不存在" class="headerlink" title="預防方法不存在"></a>預防方法不存在</h3><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> obj = &#123;</span><br><span class="line">  <span class="attr">fn</span>: <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;fn&#x27;</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(obj.<span class="title function_">fnn</span>());   <span class="comment">// TypeError: obj.fnn is not a function</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(obj.<span class="property">fnn</span>?.()); <span class="comment">// undefined</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="結合空值合併運算符（-）來設置預設值"><a href="#結合空值合併運算符（-）來設置預設值" class="headerlink" title="結合空值合併運算符（??）來設置預設值"></a>結合空值合併運算符（??）來設置預設值</h3><figure class="highlight js"><figcaption><span>延續上方的程式碼</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> name = school.<span class="property">info</span>.<span class="property">teacher</span>?.<span class="property">name</span> ?? <span class="string">&#x27;陳怡君&#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+<h2 id="conclusion"><a href="#conclusion" class="headerlink" title="conclusion"></a>conclusion</h2><div class="note default">
+            <p>比較直接透過錯誤訊息判斷問題（難追尋問題原因），但如果觀念夠的話，還是可以透過邏輯拆解一步一步尋找。</p>
+          </div>
+
+<h2 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h2><ul>
+<li><a href="https://github.com/HelloJunWei/blog/issues/7">我所不知道的javascript #7</a></li>
+</ul>
+<p>延伸閱讀</p>
+<ul>
+<li>程式猿吃香蕉：<a href="https://medium.com/%E7%A8%8B%E5%BC%8F%E7%8C%BF%E5%90%83%E9%A6%99%E8%95%89/%E4%BE%86%E8%AB%87-javascript-%E7%9A%84-optional-chaining-%E5%92%8C-nullish-coalescing-part-i-992625a1861d">前端開發 🦏 來談 JavaScript 的 Optional Chaining 和 Nullish Coalescing (一)</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>JavaScript</category>
+      </categories>
+      <tags>
+        <tag>JavaScript</tag>
+        <tag>ES6</tag>
       </tags>
   </entry>
   <entry>
@@ -2153,177 +2071,6 @@ console.log(obj.name);  // kent
       </categories>
       <tags>
         <tag>JS 釘孤枝</tag>
-        <tag>JavaScript</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>JS 宣告變數 var、let、const 差異</title>
-    <url>/javascript/475274378/</url>
-    <content><![CDATA[<h2 id="科普"><a href="#科普" class="headerlink" title="科普"></a>科普</h2><blockquote>
-<p>再開始之前先簡單科普幾個名詞，有助於理解後面篇幅內容。</p>
-</blockquote>
-<h3 id="Scope"><a href="#Scope" class="headerlink" title="Scope"></a>Scope</h3><blockquote>
-<p>白話文：程式碼的作用域。（想看 MDN 定義的請往這邊 <a href="https://developer.mozilla.org/en-US/docs/Glossary/Scope">scope</a>）</p>
-</blockquote>
-<p>編譯器或 JavaScript 引擎藉由 <code>識別字名稱</code>（identifier name）去查找變數，查找的規則是依循 RHS、LHS，而 <code>RHS、LHS</code> 是有範圍限制的（如果沒有範圍限制，全部的都變成全域不就 GG 了），所以透過定義出了三種 scope type（global scope、function scope、block scope）來區分 <code>RHS、LHS</code> 的使用範圍。</p>
-<p>更多 Scope 運作原理可以參考下方文章：</p>
-<ul>
-<li>summer 大大（超爆詳細）：<a href="https://cythilya.github.io/2018/10/19/function-vs-block-scope/">你懂 JavaScript 嗎？#12 函式範疇與區塊範疇（Function vs Block Scope）</a></li>
-</ul>
-<h3 id="Hoisting"><a href="#Hoisting" class="headerlink" title="Hoisting"></a>Hoisting</h3><blockquote>
-<p>白話文：將陳述式（ Statement ）提升（Hoisting），其特性使其在定義前，使用也可以運行。</p>
-</blockquote>
-<p>下方圖片中左邊程式碼因為 <code>Hoisting 特性</code> 使其可以運行，其效果可以參考圖片中右邊程式碼，想像 <code>Hoisting</code> 就是將宣告的部分提升至最前面，使其在宣告前使用不會因為<code>尚未定義</code> 就噴 not defined。</p>
-<p><img src="https://imgur.com/jAJH5Yd.png"></p>
-<h3 id="TDZ"><a href="#TDZ" class="headerlink" title="TDZ"></a>TDZ</h3><blockquote>
-<p>白話文：在 let、const 情況下<code>宣告後</code>以及<code>尚未賦予值</code>前都無法取用，因為會進入 TDZ（暫時性死區中）。</p>
-</blockquote>
-<p>下方圖片透過具象化方式來幫助理解<code>暫時性死區</code>，範例中宣告時會進入 TDZ，當賦予值時才會離開。</p>
-<p><img src="https://imgur.com/Em9khl0.png"></p>
-<div class="note danger">
-            <p>科普就到這邊，下方開始會透過範例來解析 var、let、const 三者差異。</p>
-          </div>
-
-<p>下方圖片是三者比較表，在後續的篇文中可以搭配範例一起服用。<br><img src="https://imgur.com/wSB9bbW.png"></p>
-<hr>
-<h2 id="var"><a href="#var" class="headerlink" title="var"></a>var</h2><blockquote>
-<p>var 作用域<code>僅限</code>於<code>函式</code>。</p>
-</blockquote>
-<p>若在其他區塊（ex：for、while、if）宣告 var，會被當成<code>全域</code>使用。</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// function scope</span></span><br><span class="line"><span class="keyword">var</span> msg = <span class="string">&quot;我是誰&quot;</span>;</span><br><span class="line"><span class="keyword">function</span> <span class="title function_">message</span>(<span class="params"></span>) &#123;</span><br><span class="line">	<span class="keyword">var</span> msg = <span class="string">&quot;我在哪裡&quot;</span>;</span><br><span class="line">	<span class="variable language_">console</span>.<span class="title function_">log</span>(msg);  <span class="comment">// 我在哪裡</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">message</span>()</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(msg);    <span class="comment">// 我是誰</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 可以重複宣告，var 特性導致當成全域變數重複宣告並覆蓋。</span></span><br><span class="line"><span class="keyword">var</span> msg2 = <span class="string">&quot;我是誰&quot;</span>;</span><br><span class="line"><span class="keyword">if</span> (<span class="literal">true</span>) &#123;</span><br><span class="line">	<span class="keyword">var</span> msg2 = <span class="string">&quot;我在哪裡&quot;</span>;</span><br><span class="line">	<span class="variable language_">console</span>.<span class="title function_">log</span>(msg2);   <span class="comment">// 我在哪裡</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(msg2);     <span class="comment">// 我在哪裡</span></span><br></pre></td></tr></table></figure>
-
-<hr>
-<h2 id="let"><a href="#let" class="headerlink" title="let"></a>let</h2><blockquote>
-<p>let 作用域在 <code>&#123;&#125;、()</code> 。</p>
-</blockquote>
-<p>若在作用域外使用變數，會因為 TDZ 特性造成 <code>Reference Error</code>。</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// block scope</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(msg); <span class="comment">// ReferenceError: not defined</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">let</span> msg = <span class="string">&quot;我是誰&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 無法重複宣告</span></span><br><span class="line"><span class="keyword">let</span> msg2 = <span class="string">&quot;我是誰&quot;</span>;</span><br><span class="line">msg2 = <span class="string">&quot;我在哪裡&quot;</span>;</span><br><span class="line"><span class="keyword">let</span> msg2 = <span class="string">&quot;我在幹嘛&quot;</span>;  <span class="comment">// SyntaxError: Identifier &#x27;msg&#x27; has already been declared</span></span><br></pre></td></tr></table></figure>
-
-<hr>
-<h2 id="const"><a href="#const" class="headerlink" title="const"></a>const</h2><blockquote>
-<p>const 作用域在 <code>&#123;&#125;、()</code> 。</p>
-</blockquote>
-<p>若在作用域外使用變數，會因為 TDZ 特性造成 <code>Reference Error</code>，且宣告時<code>必須</code>賦予值，否則會噴 <code>SyntaxError</code> 錯誤。</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(msg);</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">const</span> msg; <span class="comment">// SyntaxError: Missing initializer in const declaration</span></span><br><span class="line">	<span class="keyword">const</span> msg1 = <span class="string">&#x27;success&#x27;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 無法重複宣告</span></span><br><span class="line"><span class="keyword">const</span> msg2 = <span class="string">&quot;我是誰&quot;</span>;</span><br><span class="line"><span class="keyword">const</span> msg2 = <span class="string">&quot;我在哪裡&quot;</span>;  <span class="comment">// SyntaxError: Identifier &#x27;msg&#x27; has already been declared</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 不可修改，除非是值是 reference（物件、陣列）</span></span><br><span class="line"><span class="keyword">const</span> msg3 = <span class="string">&quot;我是誰&quot;</span>;</span><br><span class="line">msg3 = <span class="string">&quot;我在哪裡&quot;</span>; <span class="comment">// // TypeError: Assignment to constant variable</span></span><br></pre></td></tr></table></figure>
-
-<hr>
-<h2 id="conclusion"><a href="#conclusion" class="headerlink" title="conclusion"></a>conclusion</h2><div class="note danger">
-            <p>三者最大差異是 <code>作用域 Scope</code>。</p>
-          </div>
-
-<div class="note info">
-            <p>最後用兩個問題來複習這篇文章，大家可以試著回答看看。</p>
-          </div>
-
-<details>
-  <summary>Q1：const 可不可以修改？</summary>
-  <answer>A1：基礎型別不行，但物件型別可以，因為const 僅限制無法修改 value（無法重新賦予值），但可以修改 reference 原物件的值。</answer>
-  <answer>補充：使用 <code>freeze()</code>，可以防止物件 reference 的 property 被更動。</answer>
-</details>
-
-<details>
-  <summary>Q2：對於 JS 來說 const 效能勝過 let 和 var，那應該多使用 const 嗎？</summary>
-  <answer>A2：const 特點是防止變數被改變，應該照這個邏輯去規劃程式中哪些是可以修改以及不能修改的，並讓程式碼透過 const 達到這個目的，以及提升可讀性，並非一昧盲目使用 const。</answer>
-</details>]]></content>
-      <categories>
-        <category>JavaScript</category>
-      </categories>
-      <tags>
-        <tag>JavaScript</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>JS 類陣列 （ Array-like ）</title>
-    <url>/javascript/3574120313/</url>
-    <content><![CDATA[<h2 id="Array-like"><a href="#Array-like" class="headerlink" title="Array-like"></a>Array-like</h2><div class="note primary">
-            <p>Array-like object 就是一個類陣列物件（很像陣列的物件），和一般陣會最大差異就是，類陣列<code>沒有</code>陣列內建的方法。</p>
-          </div>
-
-<h3 id="常見的類陣列"><a href="#常見的類陣列" class="headerlink" title="常見的類陣列"></a>常見的類陣列</h3><ul>
-<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/arguments">arguments object</a><ul>
-<li>函式中用來接收所有引數。</li>
-</ul>
-</li>
-<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLCollection">HTMLCollection</a><ul>
-<li>透過方法（ex：getElementsByTagName）取得的 DOM 物件。</li>
-</ul>
-</li>
-<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/NodeList">NodeList</a><ul>
-<li>透過方法（ex：querySelectorAll）取得的節點集合。</li>
-</ul>
-</li>
-</ul>
-<div class="note danger">
-            <p>要注意，類陣列 <code>不是真正</code> 的陣列。</p>
-          </div>
-
-<h3 id="類陣列特性"><a href="#類陣列特性" class="headerlink" title="類陣列特性"></a>類陣列特性</h3><ul>
-<li>可以使用<code>索引值</code>取得值。</li>
-<li>可以使用 <code>length</code> 屬性。</li>
-<li>可以使用 <code>callee</code> 屬性。<ul>
-<li>callee 可以當作是一個指標，指向函式本身。</li>
-<li>對於匿名函式中特別有用，例如：讓匿名函式也可以進行遞迴（但在 ES5 嚴格模式底下已禁用，詳細原因請參考 <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/arguments/callee">MDN</a>）</li>
-</ul>
-</li>
-<li><code>沒有</code> 陣列內建的 <code>方法</code>。（ex：indexOf、concat、forEach）</li>
-</ul>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">add</span>(<span class="params">num1, num2</span>) &#123;</span><br><span class="line">	<span class="keyword">let</span> arr = [<span class="number">2000</span>, <span class="number">22</span>];</span><br><span class="line">	<span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">arguments</span>[<span class="number">0</span>]);     <span class="comment">// 2000</span></span><br><span class="line">	<span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">arguments</span>.<span class="property">length</span>); <span class="comment">// 2</span></span><br><span class="line">	<span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">arguments</span>.<span class="property">callee</span>); <span class="comment">// function code</span></span><br><span class="line">	<span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">arguments</span>, arr);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> constNum = <span class="title function_">add</span>(<span class="number">2000</span>, <span class="number">22</span>);</span><br></pre></td></tr></table></figure>
-
-<p>下方圖片為 <code>console.log(arguments, arr);</code> 的結果，可以從 Prototype 看出 arguments object 中<code>沒有</code>內建陣列方法。</p>
-<p><img src="https://imgur.com/tsnSGYm.jpg"></p>
-<div class="note default">
-            <p>雖然上述類陣列看起來這麼不方便，但可以將類陣列<code>轉為</code>陣列，來使用陣列方法。</p>
-          </div>
-
-<hr>
-<h2 id="類陣列轉陣列的三種方法"><a href="#類陣列轉陣列的三種方法" class="headerlink" title="類陣列轉陣列的三種方法"></a>類陣列轉陣列的三種方法</h2><div class="note default">
-            <p>下列介紹的三種都屬於淺拷貝（shallow-copied）的方式</p>
-          </div>
-
-<ul>
-<li>ES5 <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/slice#array-like_objects">slice</a>：<code>Array.prototype.slice.call(arguments);</code></li>
-<li>ES6 <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/from">Array.from</a>：<code>Array.from(arguments)</code></li>
-<li>ES6 <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/rest_parameters">Rest parameters（解構式）</a>：<code>[...arguments];</code></li>
-</ul>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">add</span>(<span class="params">num1, num2</span>) &#123;</span><br><span class="line">	<span class="keyword">let</span> arr1 = <span class="title class_">Array</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">slice</span>.<span class="title function_">call</span>(<span class="variable language_">arguments</span>);</span><br><span class="line">	<span class="keyword">let</span> arr2 = [...<span class="variable language_">arguments</span>]; <span class="comment">// 寫法相對簡潔</span></span><br><span class="line">	<span class="keyword">let</span> arr3 = <span class="title class_">Array</span>.<span class="title function_">from</span>(<span class="variable language_">arguments</span>);</span><br><span class="line">	<span class="variable language_">console</span>.<span class="title function_">log</span>(arr1, arr2, arr3);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> constNum = <span class="title function_">add</span>(<span class="number">2000</span>, <span class="number">22</span>);</span><br></pre></td></tr></table></figure>
-
-<p>由下方圖片的中的 Prototype 看得出來三者皆是陣列。</p>
-<p><img src="https://imgur.com/2HqYyra.jpg"></p>
-<div class="note default">
-            <p>下方會透過效能、支援度這兩個方面來對這三種方法做比較</p>
-          </div>
-
-<hr>
-<h2 id="performance-效能差異"><a href="#performance-效能差異" class="headerlink" title="performance 效能差異"></a>performance 效能差異</h2><blockquote>
-<p>圖片來自 <a href="https://catalin.red/js-array-from-array-like-object/">JS array from an array-like object</a> 文章，內文中有對上述提到的三種方法，進行效能的評測。</p>
-</blockquote>
-<p><img src="https://imgur.com/WlvvvyC.jpg"></p>
-<div class="note default">
-            <p>從上方圖片可得知 <code>slice</code> 方法的速度是較快的，優於另外兩種方法不少。</p>
-          </div>
-
-<h3 id="support-支援度"><a href="#support-支援度" class="headerlink" title="support 支援度"></a>support 支援度</h3><blockquote>
-<p>下方截圖是來自 <a href="https://caniuse.com/">caniuse</a>，比對上述三種方法對於瀏覽器的支援度。</p>
-</blockquote>
-<p><img src="https://imgur.com/wANgTbr.jpg"><br><img src="https://imgur.com/sGiyYxv.jpg"><br><img src="https://imgur.com/R7GWrno.jpg"></p>
-<div class="note default">
-            <p>最後結果可以得知 <code>slice</code> 方法的支援度是最好的。</p>
-          </div>
-
-<h2 id="conclusion"><a href="#conclusion" class="headerlink" title="conclusion"></a>conclusion</h2><div class="note default">
-            <p>上述三種方法若從效能和支援度方面來看，<code>slice</code> 勝。</p>
-          </div>
-
-<h2 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h2><ul>
-<li><a href="https://zh-tw.coderbridge.com/series/9e5162da940f473a9f1cfeece124ee98/posts/3df8bdb9dfdd4fef9f8b2d1b12eb5bf0">[12] 值 - 陣列、類陣列</a></li>
-<li><a href="https://catalin.red/js-array-from-array-like-object/">JS array from an array-like object</a></li>
-<li><a href="https://stackoverflow.com/questions/29707568/javascript-difference-between-array-and-array-like-object">JavaScript - Difference between Array and Array-like object</a></li>
-</ul>
-]]></content>
-      <categories>
-        <category>JavaScript</category>
-      </categories>
-      <tags>
         <tag>JavaScript</tag>
       </tags>
   </entry>
@@ -2426,6 +2173,259 @@ console.log(obj.name);  // kent
       </categories>
       <tags>
         <tag>JS 釘孤枝</tag>
+        <tag>JavaScript</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>JS not defined vs undefined</title>
+    <url>/javascript/4170310433/</url>
+    <content><![CDATA[<p><img src="https://imgur.com/3uvmsGO.png"></p>
+<h2 id="undefined"><a href="#undefined" class="headerlink" title="undefined"></a>undefined</h2><div class="note primary">
+            <p><a href="https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Global_Objects/undefined">MDN</a>：屬於 <code>primitive value</code> 之一、全域物件的 <code>property</code>。</p>
+          </div>
+
+<blockquote>
+<p>Tips</p>
+</blockquote>
+<ol>
+<li><p>預設值<br>表示變數 <code>尚未宣告</code> 或者是已經宣告了但 <code>尚未賦值</code>。</p>
+</li>
+<li><p>特殊關鍵字<br>可以當作一個值去賦予不會噴錯，但 <code>千萬不要</code> 這麼做。</p>
+</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> b;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(b); <span class="comment">// undefined</span></span><br><span class="line"></span><br><span class="line">b = <span class="literal">undefined</span>; <span class="comment">// 不要這麼做</span></span><br></pre></td></tr></table></figure>
+
+<div class="note default">
+            <p>下方會演示兩種 undefined 錯誤應用，並解析問題。</p>
+          </div>
+
+<h3 id="不建議賦值為-undefined"><a href="#不建議賦值為-undefined" class="headerlink" title="不建議賦值為 undefined"></a>不建議賦值為 undefined</h3><div class="note danger">
+            <p>問題：造成無法看出此變數是否有被賦予值。</p>
+          </div>
+
+<p>解法：</p>
+<ol>
+<li>使用 null，更符合空值的意義。</li>
+<li>宣告變數不帶值，預設就會賦予 undefined。</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 不建議寫法</span></span><br><span class="line"><span class="keyword">let</span> a = <span class="literal">undefined</span>; <span class="comment">// undefined</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 替代方式</span></span><br><span class="line"><span class="keyword">let</span> a;             <span class="comment">// undefined</span></span><br><span class="line"><span class="keyword">let</span> a = <span class="literal">null</span>;      <span class="comment">// undefined</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="不建議變數名稱命名為-undefined"><a href="#不建議變數名稱命名為-undefined" class="headerlink" title="不建議變數名稱命名為 undefined"></a>不建議變數名稱命名為 undefined</h3><div class="note danger">
+            <p>問題：javascript 會過，但無法正常運作。</p>
+          </div>
+
+<p>解法：</p>
+<ol>
+<li>直接不要用 undefined 命名</li>
+<li>不要用 var 改用 let、const（ES6 中已修正此問題，因此無法使用 undefined 命名）</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 不建議寫法</span></span><br><span class="line"><span class="keyword">var</span> <span class="literal">undefined</span> = <span class="string">&#x27;un&#x27;</span>;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="literal">undefined</span>); <span class="comment">// undefined，無法正常顯示值</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// let、const</span></span><br><span class="line"><span class="keyword">let</span> <span class="literal">undefined</span> = <span class="string">&#x27;un&#x27;</span>;   <span class="comment">// Uncaught SyntaxError: Identifier &#x27;undefined&#x27; has already been declared</span></span><br><span class="line"><span class="keyword">const</span> <span class="literal">undefined</span> = <span class="string">&#x27;un&#x27;</span>; <span class="comment">// Uncaught SyntaxError: Identifier &#x27;undefined&#x27; has already been declared</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="not-defined"><a href="#not-defined" class="headerlink" title="not defined"></a>not defined</h2><div class="note primary">
+            <p>屬於 error，會噴錯誤訊息。（throw a ReferenceError exception）</p>
+          </div>
+
+<blockquote>
+<p>Tip</p>
+</blockquote>
+<ul>
+<li>常見的原因是使用了<code>尚未宣告</code>的變數或函式，所導致的 Error。</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(c); <span class="comment">// ReferenceError: c is not defined</span></span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="different"><a href="#different" class="headerlink" title="different"></a>different</h2><ul>
+<li>undefined：宣告(declaration) 後<code>尚未賦予值</code>。</li>
+<li>not defined：<code>尚未被宣告</code>(declaration)。</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> b;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(b); <span class="comment">// undefined</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(c); <span class="comment">// ReferenceError: c is not defined</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="conclusion"><a href="#conclusion" class="headerlink" title="conclusion"></a>conclusion</h2><p><img src="https://imgur.com/bGXwBgw.png"></p>
+<h2 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h2><ul>
+<li><a href="https://hsiangfeng.github.io/javascript/20200510/2581786882/">JavaScript 核心觀念(7)-執行環境與作用域-not defined VS undefined</a></li>
+<li><a href="https://ithelp.ithome.com.tw/articles/10190904">Day04　undefined與not defined</a></li>
+</ul>
+<p>延伸閱讀</p>
+<ul>
+<li><a href="https://kentdoit.github.io/javascript/3007200680/">JS null vs undefined</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>JavaScript</category>
+      </categories>
+      <tags>
+        <tag>JS 釘孤枝</tag>
+        <tag>JavaScript</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>JS 類陣列 （ Array-like ）</title>
+    <url>/javascript/3574120313/</url>
+    <content><![CDATA[<h2 id="Array-like"><a href="#Array-like" class="headerlink" title="Array-like"></a>Array-like</h2><div class="note primary">
+            <p>Array-like object 就是一個類陣列物件（很像陣列的物件），和一般陣會最大差異就是，類陣列<code>沒有</code>陣列內建的方法。</p>
+          </div>
+
+<h3 id="常見的類陣列"><a href="#常見的類陣列" class="headerlink" title="常見的類陣列"></a>常見的類陣列</h3><ul>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/arguments">arguments object</a><ul>
+<li>函式中用來接收所有引數。</li>
+</ul>
+</li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLCollection">HTMLCollection</a><ul>
+<li>透過方法（ex：getElementsByTagName）取得的 DOM 物件。</li>
+</ul>
+</li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/NodeList">NodeList</a><ul>
+<li>透過方法（ex：querySelectorAll）取得的節點集合。</li>
+</ul>
+</li>
+</ul>
+<div class="note danger">
+            <p>要注意，類陣列 <code>不是真正</code> 的陣列。</p>
+          </div>
+
+<h3 id="類陣列特性"><a href="#類陣列特性" class="headerlink" title="類陣列特性"></a>類陣列特性</h3><ul>
+<li>可以使用<code>索引值</code>取得值。</li>
+<li>可以使用 <code>length</code> 屬性。</li>
+<li>可以使用 <code>callee</code> 屬性。<ul>
+<li>callee 可以當作是一個指標，指向函式本身。</li>
+<li>對於匿名函式中特別有用，例如：讓匿名函式也可以進行遞迴（但在 ES5 嚴格模式底下已禁用，詳細原因請參考 <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/arguments/callee">MDN</a>）</li>
+</ul>
+</li>
+<li><code>沒有</code> 陣列內建的 <code>方法</code>。（ex：indexOf、concat、forEach）</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">add</span>(<span class="params">num1, num2</span>) &#123;</span><br><span class="line">	<span class="keyword">let</span> arr = [<span class="number">2000</span>, <span class="number">22</span>];</span><br><span class="line">	<span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">arguments</span>[<span class="number">0</span>]);     <span class="comment">// 2000</span></span><br><span class="line">	<span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">arguments</span>.<span class="property">length</span>); <span class="comment">// 2</span></span><br><span class="line">	<span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">arguments</span>.<span class="property">callee</span>); <span class="comment">// function code</span></span><br><span class="line">	<span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">arguments</span>, arr);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> constNum = <span class="title function_">add</span>(<span class="number">2000</span>, <span class="number">22</span>);</span><br></pre></td></tr></table></figure>
+
+<p>下方圖片為 <code>console.log(arguments, arr);</code> 的結果，可以從 Prototype 看出 arguments object 中<code>沒有</code>內建陣列方法。</p>
+<p><img src="https://imgur.com/tsnSGYm.jpg"></p>
+<div class="note default">
+            <p>雖然上述類陣列看起來這麼不方便，但可以將類陣列<code>轉為</code>陣列，來使用陣列方法。</p>
+          </div>
+
+<hr>
+<h2 id="類陣列轉陣列的三種方法"><a href="#類陣列轉陣列的三種方法" class="headerlink" title="類陣列轉陣列的三種方法"></a>類陣列轉陣列的三種方法</h2><div class="note default">
+            <p>下列介紹的三種都屬於淺拷貝（shallow-copied）的方式</p>
+          </div>
+
+<ul>
+<li>ES5 <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/slice#array-like_objects">slice</a>：<code>Array.prototype.slice.call(arguments);</code></li>
+<li>ES6 <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/from">Array.from</a>：<code>Array.from(arguments)</code></li>
+<li>ES6 <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/rest_parameters">Rest parameters（解構式）</a>：<code>[...arguments];</code></li>
+</ul>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">add</span>(<span class="params">num1, num2</span>) &#123;</span><br><span class="line">	<span class="keyword">let</span> arr1 = <span class="title class_">Array</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">slice</span>.<span class="title function_">call</span>(<span class="variable language_">arguments</span>);</span><br><span class="line">	<span class="keyword">let</span> arr2 = [...<span class="variable language_">arguments</span>]; <span class="comment">// 寫法相對簡潔</span></span><br><span class="line">	<span class="keyword">let</span> arr3 = <span class="title class_">Array</span>.<span class="title function_">from</span>(<span class="variable language_">arguments</span>);</span><br><span class="line">	<span class="variable language_">console</span>.<span class="title function_">log</span>(arr1, arr2, arr3);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> constNum = <span class="title function_">add</span>(<span class="number">2000</span>, <span class="number">22</span>);</span><br></pre></td></tr></table></figure>
+
+<p>由下方圖片的中的 Prototype 看得出來三者皆是陣列。</p>
+<p><img src="https://imgur.com/2HqYyra.jpg"></p>
+<div class="note default">
+            <p>下方會透過效能、支援度這兩個方面來對這三種方法做比較</p>
+          </div>
+
+<hr>
+<h2 id="performance-效能差異"><a href="#performance-效能差異" class="headerlink" title="performance 效能差異"></a>performance 效能差異</h2><blockquote>
+<p>圖片來自 <a href="https://catalin.red/js-array-from-array-like-object/">JS array from an array-like object</a> 文章，內文中有對上述提到的三種方法，進行效能的評測。</p>
+</blockquote>
+<p><img src="https://imgur.com/WlvvvyC.jpg"></p>
+<div class="note default">
+            <p>從上方圖片可得知 <code>slice</code> 方法的速度是較快的，優於另外兩種方法不少。</p>
+          </div>
+
+<h3 id="support-支援度"><a href="#support-支援度" class="headerlink" title="support 支援度"></a>support 支援度</h3><blockquote>
+<p>下方截圖是來自 <a href="https://caniuse.com/">caniuse</a>，比對上述三種方法對於瀏覽器的支援度。</p>
+</blockquote>
+<p><img src="https://imgur.com/wANgTbr.jpg"><br><img src="https://imgur.com/sGiyYxv.jpg"><br><img src="https://imgur.com/R7GWrno.jpg"></p>
+<div class="note default">
+            <p>最後結果可以得知 <code>slice</code> 方法的支援度是最好的。</p>
+          </div>
+
+<h2 id="conclusion"><a href="#conclusion" class="headerlink" title="conclusion"></a>conclusion</h2><div class="note default">
+            <p>上述三種方法若從效能和支援度方面來看，<code>slice</code> 勝。</p>
+          </div>
+
+<h2 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h2><ul>
+<li><a href="https://zh-tw.coderbridge.com/series/9e5162da940f473a9f1cfeece124ee98/posts/3df8bdb9dfdd4fef9f8b2d1b12eb5bf0">[12] 值 - 陣列、類陣列</a></li>
+<li><a href="https://catalin.red/js-array-from-array-like-object/">JS array from an array-like object</a></li>
+<li><a href="https://stackoverflow.com/questions/29707568/javascript-difference-between-array-and-array-like-object">JavaScript - Difference between Array and Array-like object</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>JavaScript</category>
+      </categories>
+      <tags>
+        <tag>JavaScript</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>JS 宣告變數 var、let、const 差異</title>
+    <url>/javascript/475274378/</url>
+    <content><![CDATA[<h2 id="科普"><a href="#科普" class="headerlink" title="科普"></a>科普</h2><blockquote>
+<p>再開始之前先簡單科普幾個名詞，有助於理解後面篇幅內容。</p>
+</blockquote>
+<h3 id="Scope"><a href="#Scope" class="headerlink" title="Scope"></a>Scope</h3><blockquote>
+<p>白話文：程式碼的作用域。（想看 MDN 定義的請往這邊 <a href="https://developer.mozilla.org/en-US/docs/Glossary/Scope">scope</a>）</p>
+</blockquote>
+<p>編譯器或 JavaScript 引擎藉由 <code>識別字名稱</code>（identifier name）去查找變數，查找的規則是依循 RHS、LHS，而 <code>RHS、LHS</code> 是有範圍限制的（如果沒有範圍限制，全部的都變成全域不就 GG 了），所以透過定義出了三種 scope type（global scope、function scope、block scope）來區分 <code>RHS、LHS</code> 的使用範圍。</p>
+<p>更多 Scope 運作原理可以參考下方文章：</p>
+<ul>
+<li>summer 大大（超爆詳細）：<a href="https://cythilya.github.io/2018/10/19/function-vs-block-scope/">你懂 JavaScript 嗎？#12 函式範疇與區塊範疇（Function vs Block Scope）</a></li>
+</ul>
+<h3 id="Hoisting"><a href="#Hoisting" class="headerlink" title="Hoisting"></a>Hoisting</h3><blockquote>
+<p>白話文：將陳述式（ Statement ）提升（Hoisting），其特性使其在定義前，使用也可以運行。</p>
+</blockquote>
+<p>下方圖片中左邊程式碼因為 <code>Hoisting 特性</code> 使其可以運行，其效果可以參考圖片中右邊程式碼，想像 <code>Hoisting</code> 就是將宣告的部分提升至最前面，使其在宣告前使用不會因為<code>尚未定義</code> 就噴 not defined。</p>
+<p><img src="https://imgur.com/jAJH5Yd.png"></p>
+<h3 id="TDZ"><a href="#TDZ" class="headerlink" title="TDZ"></a>TDZ</h3><blockquote>
+<p>白話文：在 let、const 情況下<code>宣告後</code>以及<code>尚未賦予值</code>前都無法取用，因為會進入 TDZ（暫時性死區中）。</p>
+</blockquote>
+<p>下方圖片透過具象化方式來幫助理解<code>暫時性死區</code>，範例中宣告時會進入 TDZ，當賦予值時才會離開。</p>
+<p><img src="https://imgur.com/Em9khl0.png"></p>
+<div class="note danger">
+            <p>科普就到這邊，下方開始會透過範例來解析 var、let、const 三者差異。</p>
+          </div>
+
+<p>下方圖片是三者比較表，在後續的篇文中可以搭配範例一起服用。<br><img src="https://imgur.com/wSB9bbW.png"></p>
+<hr>
+<h2 id="var"><a href="#var" class="headerlink" title="var"></a>var</h2><blockquote>
+<p>var 作用域<code>僅限</code>於<code>函式</code>。</p>
+</blockquote>
+<p>若在其他區塊（ex：for、while、if）宣告 var，會被當成<code>全域</code>使用。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// function scope</span></span><br><span class="line"><span class="keyword">var</span> msg = <span class="string">&quot;我是誰&quot;</span>;</span><br><span class="line"><span class="keyword">function</span> <span class="title function_">message</span>(<span class="params"></span>) &#123;</span><br><span class="line">	<span class="keyword">var</span> msg = <span class="string">&quot;我在哪裡&quot;</span>;</span><br><span class="line">	<span class="variable language_">console</span>.<span class="title function_">log</span>(msg);  <span class="comment">// 我在哪裡</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">message</span>()</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(msg);    <span class="comment">// 我是誰</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 可以重複宣告，var 特性導致當成全域變數重複宣告並覆蓋。</span></span><br><span class="line"><span class="keyword">var</span> msg2 = <span class="string">&quot;我是誰&quot;</span>;</span><br><span class="line"><span class="keyword">if</span> (<span class="literal">true</span>) &#123;</span><br><span class="line">	<span class="keyword">var</span> msg2 = <span class="string">&quot;我在哪裡&quot;</span>;</span><br><span class="line">	<span class="variable language_">console</span>.<span class="title function_">log</span>(msg2);   <span class="comment">// 我在哪裡</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(msg2);     <span class="comment">// 我在哪裡</span></span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="let"><a href="#let" class="headerlink" title="let"></a>let</h2><blockquote>
+<p>let 作用域在 <code>&#123;&#125;、()</code> 。</p>
+</blockquote>
+<p>若在作用域外使用變數，會因為 TDZ 特性造成 <code>Reference Error</code>。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// block scope</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(msg); <span class="comment">// ReferenceError: not defined</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">let</span> msg = <span class="string">&quot;我是誰&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 無法重複宣告</span></span><br><span class="line"><span class="keyword">let</span> msg2 = <span class="string">&quot;我是誰&quot;</span>;</span><br><span class="line">msg2 = <span class="string">&quot;我在哪裡&quot;</span>;</span><br><span class="line"><span class="keyword">let</span> msg2 = <span class="string">&quot;我在幹嘛&quot;</span>;  <span class="comment">// SyntaxError: Identifier &#x27;msg&#x27; has already been declared</span></span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="const"><a href="#const" class="headerlink" title="const"></a>const</h2><blockquote>
+<p>const 作用域在 <code>&#123;&#125;、()</code> 。</p>
+</blockquote>
+<p>若在作用域外使用變數，會因為 TDZ 特性造成 <code>Reference Error</code>，且宣告時<code>必須</code>賦予值，否則會噴 <code>SyntaxError</code> 錯誤。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(msg);</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">const</span> msg; <span class="comment">// SyntaxError: Missing initializer in const declaration</span></span><br><span class="line">	<span class="keyword">const</span> msg1 = <span class="string">&#x27;success&#x27;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 無法重複宣告</span></span><br><span class="line"><span class="keyword">const</span> msg2 = <span class="string">&quot;我是誰&quot;</span>;</span><br><span class="line"><span class="keyword">const</span> msg2 = <span class="string">&quot;我在哪裡&quot;</span>;  <span class="comment">// SyntaxError: Identifier &#x27;msg&#x27; has already been declared</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 不可修改，除非是值是 reference（物件、陣列）</span></span><br><span class="line"><span class="keyword">const</span> msg3 = <span class="string">&quot;我是誰&quot;</span>;</span><br><span class="line">msg3 = <span class="string">&quot;我在哪裡&quot;</span>; <span class="comment">// // TypeError: Assignment to constant variable</span></span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="conclusion"><a href="#conclusion" class="headerlink" title="conclusion"></a>conclusion</h2><div class="note danger">
+            <p>三者最大差異是 <code>作用域 Scope</code>。</p>
+          </div>
+
+<div class="note info">
+            <p>最後用兩個問題來複習這篇文章，大家可以試著回答看看。</p>
+          </div>
+
+<details>
+  <summary>Q1：const 可不可以修改？</summary>
+  <answer>A1：基礎型別不行，但物件型別可以，因為const 僅限制無法修改 value（無法重新賦予值），但可以修改 reference 原物件的值。</answer>
+  <answer>補充：使用 <code>freeze()</code>，可以防止物件 reference 的 property 被更動。</answer>
+</details>
+
+<details>
+  <summary>Q2：對於 JS 來說 const 效能勝過 let 和 var，那應該多使用 const 嗎？</summary>
+  <answer>A2：const 特點是防止變數被改變，應該照這個邏輯去規劃程式中哪些是可以修改以及不能修改的，並讓程式碼透過 const 達到這個目的，以及提升可讀性，並非一昧盲目使用 const。</answer>
+</details>]]></content>
+      <categories>
+        <category>JavaScript</category>
+      </categories>
+      <tags>
         <tag>JavaScript</tag>
       </tags>
   </entry>
