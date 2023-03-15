@@ -91,6 +91,96 @@
       </tags>
   </entry>
   <entry>
+    <title>Hexo 主題 NexT 設置 (一)</title>
+    <url>/hexo/3802192554/</url>
+    <content><![CDATA[<h2 id="範例的環境版本"><a href="#範例的環境版本" class="headerlink" title="範例的環境版本"></a>範例的環境版本</h2><p>hexo 版本：6.0.1<br>hexo-cli 版本：4.3.0<br>next 版本：7.8.0</p>
+<h2 id="更換主題-theme"><a href="#更換主題-theme" class="headerlink" title="更換主題 theme"></a>更換主題 theme</h2><p>Step1：從<a href="https://hexo.io/themes/">官方</a>主題找尋自己順眼的</p>
+<div class="note default">
+            <p>最近主流有兩個推薦的（我選擇 Next）</p>
+          </div>
+
+<ul>
+<li><a href="https://github.com/theme-next/hexo-theme-next">Next</a></li>
+<li><a href="https://github.com/fluid-dev/hexo-theme-fluid">Fluid</a></li>
+</ul>
+<p>Step2：下載主題 Download 或 clone 到 themes 資料夾底下</p>
+<div class="note danger">
+            <p>切記要先進入該專案根目錄的 themes 資料夾底下</p>
+          </div>
+
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">cd themes</span><br><span class="line">git clone https://github.com/theme-next/hexo-theme-next.git</span><br></pre></td></tr></table></figure>
+
+<p>Step3：修改根目錄 _config.yml 中的 theme 參數（預設是 landscape）</p>
+<figure class="highlight diff"><figcaption><span>_config.yml</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="addition">+theme: landscape</span></span><br><span class="line"><span class="deletion">-theme: hexo-theme-next</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="NexT-樣式設定"><a href="#NexT-樣式設定" class="headerlink" title="NexT 樣式設定"></a>NexT 樣式設定</h2><blockquote>
+<p>下方會介紹部落格樣式中最基礎的設置。</p>
+</blockquote>
+<h3 id="Scheme-Settings"><a href="#Scheme-Settings" class="headerlink" title="Scheme Settings"></a>Scheme Settings</h3><blockquote>
+<p>第一個介紹的一定非 Scheme 莫屬，替部落格換上喜歡的皮。</p>
+</blockquote>
+<p>Step1：搜尋 Scheme</p>
+<p>Step2：將選擇的 scheme 取消註解（我選擇 Mist）</p>
+<figure class="highlight diff"><figcaption><span>themes/hexo-theme-next/_config.yml</span></figcaption><table><tr><td class="code"><pre><span class="line"># Schemes</span><br><span class="line"># scheme: Muse</span><br><span class="line">scheme: Mist</span><br><span class="line"># scheme: Pisces</span><br><span class="line"># scheme: Gemini</span><br></pre></td></tr></table></figure>
+
+<div class="note default">
+            <p>下方演示 NexT 提供的四種 schemes</p>
+          </div>
+
+<p><img src="https://imgur.com/tq9H5Eb.png" alt="NexT 提供的四種 schemes"></p>
+<h3 id="程式碼區塊樣式"><a href="#程式碼區塊樣式" class="headerlink" title="程式碼區塊樣式"></a>程式碼區塊樣式</h3><blockquote>
+<p>撰寫技術文章絕對不能缺少的 code block，換上舒服的樣式好比設置編輯器的樣式一樣。</p>
+</blockquote>
+<p>Step1：搜尋 codeblock</p>
+<p>Step2：設置參數</p>
+<ul>
+<li>highlight_theme：代碼高亮（我選擇 galactic，後來因為要客製化所以選擇 normal）<ul>
+<li>由於不同的 Next 版本可能有的 highlight_theme 樣式不同，因此建議大家都可以都試試看在選擇比較喜歡的。</li>
+</ul>
+</li>
+<li>copy_button：hover 會顯示複製按鈕</li>
+<li>style：外觀樣式（我選擇原本是選 mac，後來發現 flat 比較適合客製化其它樣式）</li>
+</ul>
+<figure class="highlight diff"><figcaption><span>themes/hexo-theme-next/_config.yml</span></figcaption><table><tr><td class="code"><pre><span class="line">codeblock:</span><br><span class="line">  # Code Highlight theme</span><br><span class="line">  # Available values: normal | night | night eighties | night blue | night bright | solarized | solarized dark | galactic</span><br><span class="line">  # See: https://github.com/chriskempson/tomorrow-theme</span><br><span class="line"><span class="deletion">-  highlight_theme: normal</span></span><br><span class="line"><span class="addition">+  highlight_theme: galactic</span></span><br><span class="line">  # Add copy button on codeblock</span><br><span class="line">  copy_button:</span><br><span class="line"><span class="deletion">-    enable: false</span></span><br><span class="line"><span class="addition">+    enable: true</span></span><br><span class="line">    # Show text copy result.</span><br><span class="line"><span class="deletion">-    show_result: false</span></span><br><span class="line"><span class="addition">+    show_result: false</span></span><br><span class="line">    # Available values: default | flat | mac</span><br><span class="line"><span class="deletion">-    style:</span></span><br><span class="line"><span class="addition">+    style: flat</span></span><br></pre></td></tr></table></figure>
+
+<div class="note danger">
+            <p>如果上面設置完沒有效果，請確認根目錄 _config.yml 檔案中的 <code>highlight</code> 參數 enable 是否設置為 true。</p>
+          </div>
+
+<figure class="highlight diff"><figcaption><span>_config.yml</span></figcaption><table><tr><td class="code"><pre><span class="line">highlight:</span><br><span class="line">  enable: true</span><br></pre></td></tr></table></figure>
+
+<h3 id="Menu-設置"><a href="#Menu-設置" class="headerlink" title="Menu 設置"></a>Menu 設置</h3><blockquote>
+<p>設置 menu 選單列的內容（home、about、tags、categories、archives、schedule、sitemap、commonweal），預設只有開啟兩個（home、archives）。</p>
+</blockquote>
+<p>Step1：搜尋 Menu Settings</p>
+<p>Step2：設置參數</p>
+<ul>
+<li>需要啟用就將對應的註解移除，下方範例示範開啟 tags、categories</li>
+</ul>
+<figure class="highlight diff"><figcaption><span>themes/hexo-theme-next/_config.yml</span></figcaption><table><tr><td class="code"><pre><span class="line">menu:</span><br><span class="line">  home: / || fa fa-home</span><br><span class="line">  #about: /about/ || fa fa-user</span><br><span class="line"><span class="deletion">- #tags: /tags/ || fa fa-tags</span></span><br><span class="line"><span class="addition">+ tags: /tags/ || fa fa-tags</span></span><br><span class="line"><span class="deletion">- #categories: /categories/ || fa fa-th</span></span><br><span class="line"><span class="addition">+ categories: /categories/ || fa fa-th</span></span><br><span class="line">  archives: /archives/ || fa fa-archive</span><br><span class="line">  #schedule: /schedule/ || fa fa-calendar</span><br><span class="line">  #sitemap: /sitemap.xml || fa fa-sitemap</span><br><span class="line">  #commonweal: /404/ || fa fa-heartbeat</span><br></pre></td></tr></table></figure>
+
+<div class="note default">
+            <p>Hexo 原生是使用 Font Awesome icon（註解中有寫），並透過 <code>短路求值（Short-circuit evaluation）</code> 的方式在路徑後方加上 icon 樣式（可以修改其它 icon 樣式）。</p>
+          </div>
+
+<p>Step3：menu 可以設置是否要開啟 icon 圖示 以及 badges 數量（用來顯示對應的數量）。</p>
+<figure class="highlight diff"><figcaption><span>themes/hexo-theme-next/_config.yml</span></figcaption><table><tr><td class="code"><pre><span class="line"># Enable / Disable menu icons / item badges.</span><br><span class="line">menu_settings:</span><br><span class="line">  icons: true</span><br><span class="line"><span class="deletion">-  badges: false</span></span><br><span class="line"><span class="addition">+  badges: true</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="https://imgur.com/AbQvbMt.png" alt="menu tag"></p>
+<div class="note danger">
+            <p>點選 menu 中預設（home、archives）之外的路徑，會出現路徑錯誤（例如：Cannot GET&#x2F;about&#x2F;），因為我們還沒新增對應的頁面，從根目錄 source 資料夾中是否有對應的資料夾，新增頁面作法可以參考下一篇文章。</p>
+          </div>
+
+<p><img src="https://imgur.com/W1W5iaB.png" alt="路徑錯誤"></p>
+]]></content>
+      <categories>
+        <category>Hexo</category>
+      </categories>
+      <tags>
+        <tag>Hexo 部落格</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Hexo 新增文章和頁面 (二)</title>
     <url>/hexo/356195859/</url>
     <content><![CDATA[<h2 id="範例的環境版本"><a href="#範例的環境版本" class="headerlink" title="範例的環境版本"></a>範例的環境版本</h2><p>hexo 版本：6.0.1<br>hexo-cli 版本：4.3.0<br>next 版本：7.8.0</p>
@@ -351,96 +441,6 @@
       </categories>
       <tags>
         <tag>Hexo 優化</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Hexo 主題 NexT 設置 (一)</title>
-    <url>/hexo/3802192554/</url>
-    <content><![CDATA[<h2 id="範例的環境版本"><a href="#範例的環境版本" class="headerlink" title="範例的環境版本"></a>範例的環境版本</h2><p>hexo 版本：6.0.1<br>hexo-cli 版本：4.3.0<br>next 版本：7.8.0</p>
-<h2 id="更換主題-theme"><a href="#更換主題-theme" class="headerlink" title="更換主題 theme"></a>更換主題 theme</h2><p>Step1：從<a href="https://hexo.io/themes/">官方</a>主題找尋自己順眼的</p>
-<div class="note default">
-            <p>最近主流有兩個推薦的（我選擇 Next）</p>
-          </div>
-
-<ul>
-<li><a href="https://github.com/theme-next/hexo-theme-next">Next</a></li>
-<li><a href="https://github.com/fluid-dev/hexo-theme-fluid">Fluid</a></li>
-</ul>
-<p>Step2：下載主題 Download 或 clone 到 themes 資料夾底下</p>
-<div class="note danger">
-            <p>切記要先進入該專案根目錄的 themes 資料夾底下</p>
-          </div>
-
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">cd themes</span><br><span class="line">git clone https://github.com/theme-next/hexo-theme-next.git</span><br></pre></td></tr></table></figure>
-
-<p>Step3：修改根目錄 _config.yml 中的 theme 參數（預設是 landscape）</p>
-<figure class="highlight diff"><figcaption><span>_config.yml</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="addition">+theme: landscape</span></span><br><span class="line"><span class="deletion">-theme: hexo-theme-next</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="NexT-樣式設定"><a href="#NexT-樣式設定" class="headerlink" title="NexT 樣式設定"></a>NexT 樣式設定</h2><blockquote>
-<p>下方會介紹部落格樣式中最基礎的設置。</p>
-</blockquote>
-<h3 id="Scheme-Settings"><a href="#Scheme-Settings" class="headerlink" title="Scheme Settings"></a>Scheme Settings</h3><blockquote>
-<p>第一個介紹的一定非 Scheme 莫屬，替部落格換上喜歡的皮。</p>
-</blockquote>
-<p>Step1：搜尋 Scheme</p>
-<p>Step2：將選擇的 scheme 取消註解（我選擇 Mist）</p>
-<figure class="highlight diff"><figcaption><span>themes/hexo-theme-next/_config.yml</span></figcaption><table><tr><td class="code"><pre><span class="line"># Schemes</span><br><span class="line"># scheme: Muse</span><br><span class="line">scheme: Mist</span><br><span class="line"># scheme: Pisces</span><br><span class="line"># scheme: Gemini</span><br></pre></td></tr></table></figure>
-
-<div class="note default">
-            <p>下方演示 NexT 提供的四種 schemes</p>
-          </div>
-
-<p><img src="https://imgur.com/tq9H5Eb.png" alt="NexT 提供的四種 schemes"></p>
-<h3 id="程式碼區塊樣式"><a href="#程式碼區塊樣式" class="headerlink" title="程式碼區塊樣式"></a>程式碼區塊樣式</h3><blockquote>
-<p>撰寫技術文章絕對不能缺少的 code block，換上舒服的樣式好比設置編輯器的樣式一樣。</p>
-</blockquote>
-<p>Step1：搜尋 codeblock</p>
-<p>Step2：設置參數</p>
-<ul>
-<li>highlight_theme：代碼高亮（我選擇 galactic，後來因為要客製化所以選擇 normal）<ul>
-<li>由於不同的 Next 版本可能有的 highlight_theme 樣式不同，因此建議大家都可以都試試看在選擇比較喜歡的。</li>
-</ul>
-</li>
-<li>copy_button：hover 會顯示複製按鈕</li>
-<li>style：外觀樣式（我選擇原本是選 mac，後來發現 flat 比較適合客製化其它樣式）</li>
-</ul>
-<figure class="highlight diff"><figcaption><span>themes/hexo-theme-next/_config.yml</span></figcaption><table><tr><td class="code"><pre><span class="line">codeblock:</span><br><span class="line">  # Code Highlight theme</span><br><span class="line">  # Available values: normal | night | night eighties | night blue | night bright | solarized | solarized dark | galactic</span><br><span class="line">  # See: https://github.com/chriskempson/tomorrow-theme</span><br><span class="line"><span class="deletion">-  highlight_theme: normal</span></span><br><span class="line"><span class="addition">+  highlight_theme: galactic</span></span><br><span class="line">  # Add copy button on codeblock</span><br><span class="line">  copy_button:</span><br><span class="line"><span class="deletion">-    enable: false</span></span><br><span class="line"><span class="addition">+    enable: true</span></span><br><span class="line">    # Show text copy result.</span><br><span class="line"><span class="deletion">-    show_result: false</span></span><br><span class="line"><span class="addition">+    show_result: false</span></span><br><span class="line">    # Available values: default | flat | mac</span><br><span class="line"><span class="deletion">-    style:</span></span><br><span class="line"><span class="addition">+    style: flat</span></span><br></pre></td></tr></table></figure>
-
-<div class="note danger">
-            <p>如果上面設置完沒有效果，請確認根目錄 _config.yml 檔案中的 <code>highlight</code> 參數 enable 是否設置為 true。</p>
-          </div>
-
-<figure class="highlight diff"><figcaption><span>_config.yml</span></figcaption><table><tr><td class="code"><pre><span class="line">highlight:</span><br><span class="line">  enable: true</span><br></pre></td></tr></table></figure>
-
-<h3 id="Menu-設置"><a href="#Menu-設置" class="headerlink" title="Menu 設置"></a>Menu 設置</h3><blockquote>
-<p>設置 menu 選單列的內容（home、about、tags、categories、archives、schedule、sitemap、commonweal），預設只有開啟兩個（home、archives）。</p>
-</blockquote>
-<p>Step1：搜尋 Menu Settings</p>
-<p>Step2：設置參數</p>
-<ul>
-<li>需要啟用就將對應的註解移除，下方範例示範開啟 tags、categories</li>
-</ul>
-<figure class="highlight diff"><figcaption><span>themes/hexo-theme-next/_config.yml</span></figcaption><table><tr><td class="code"><pre><span class="line">menu:</span><br><span class="line">  home: / || fa fa-home</span><br><span class="line">  #about: /about/ || fa fa-user</span><br><span class="line"><span class="deletion">- #tags: /tags/ || fa fa-tags</span></span><br><span class="line"><span class="addition">+ tags: /tags/ || fa fa-tags</span></span><br><span class="line"><span class="deletion">- #categories: /categories/ || fa fa-th</span></span><br><span class="line"><span class="addition">+ categories: /categories/ || fa fa-th</span></span><br><span class="line">  archives: /archives/ || fa fa-archive</span><br><span class="line">  #schedule: /schedule/ || fa fa-calendar</span><br><span class="line">  #sitemap: /sitemap.xml || fa fa-sitemap</span><br><span class="line">  #commonweal: /404/ || fa fa-heartbeat</span><br></pre></td></tr></table></figure>
-
-<div class="note default">
-            <p>Hexo 原生是使用 Font Awesome icon（註解中有寫），並透過 <code>短路求值（Short-circuit evaluation）</code> 的方式在路徑後方加上 icon 樣式（可以修改其它 icon 樣式）。</p>
-          </div>
-
-<p>Step3：menu 可以設置是否要開啟 icon 圖示 以及 badges 數量（用來顯示對應的數量）。</p>
-<figure class="highlight diff"><figcaption><span>themes/hexo-theme-next/_config.yml</span></figcaption><table><tr><td class="code"><pre><span class="line"># Enable / Disable menu icons / item badges.</span><br><span class="line">menu_settings:</span><br><span class="line">  icons: true</span><br><span class="line"><span class="deletion">-  badges: false</span></span><br><span class="line"><span class="addition">+  badges: true</span></span><br></pre></td></tr></table></figure>
-
-<p><img src="https://imgur.com/AbQvbMt.png" alt="menu tag"></p>
-<div class="note danger">
-            <p>點選 menu 中預設（home、archives）之外的路徑，會出現路徑錯誤（例如：Cannot GET&#x2F;about&#x2F;），因為我們還沒新增對應的頁面，從根目錄 source 資料夾中是否有對應的資料夾，新增頁面作法可以參考下一篇文章。</p>
-          </div>
-
-<p><img src="https://imgur.com/W1W5iaB.png" alt="路徑錯誤"></p>
-]]></content>
-      <categories>
-        <category>Hexo</category>
-      </categories>
-      <tags>
-        <tag>Hexo 部落格</tag>
       </tags>
   </entry>
   <entry>
@@ -818,206 +818,179 @@
       </tags>
   </entry>
   <entry>
-    <title>JS 箭頭函式 arrow function</title>
-    <url>/javascript/2638792469/</url>
-    <content><![CDATA[<div class="note default">
-            <p>箭頭函式是 ES6 新的語法糖，白話文來說，箭頭函式是傳統函式的<code>縮寫</code>，但有一些特性和邏輯不盡相同尤其是 this 的部分。</p>
-          </div>
-
-<p><a href="https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Functions/Arrow_functions">MDN 語法</a></p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">([param] [, param]) =&gt; &#123;</span><br><span class="line">  statements</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">param =&gt; expression</span><br></pre></td></tr></table></figure>
-
-<h2 id="縮寫特性"><a href="#縮寫特性" class="headerlink" title="縮寫特性"></a>縮寫特性</h2><blockquote>
-<p>用一張圖來看箭頭函式這個語法糖究竟簡化了些什麼？</p>
-</blockquote>
+    <title>JS 比較運算子的自動轉型</title>
+    <url>/javascript/2972146539/</url>
+    <content><![CDATA[<p>比較運算子注意事項</p>
 <div class="note default">
-            <p>將 function 簡化為<code>箭頭 =&gt;</code>。</p>
+            <p>在 JavaScript 中除了基礎型別（Primitive Type）以外的型別（ex: 陣列、物件）在做比較時，判斷的是兩者是否指向同一個 <code>reference</code>，而非判斷兩者的值是否相同。</p>
           </div>
 
-<p><img src="https://imgur.com/okxB6Sa.jpg"></p>
-<h3 id="單行型式縮寫"><a href="#單行型式縮寫" class="headerlink" title="單行型式縮寫"></a>單行型式縮寫</h3><blockquote>
-<p>規則</p>
-</blockquote>
-<ol>
-<li>大括號括號可省略。</li>
-<li>參數只有一個時，可以把參數的小括號省略。（沒有參數、兩個參數以上時不可省略小括號）</li>
-<li>若需要回傳值則可省略 return。</li>
-</ol>
-<p><img src="https://imgur.com/hdFhyyI.jpg"></p>
-<h3 id="縮寫-tips"><a href="#縮寫-tips" class="headerlink" title="縮寫 tips"></a>縮寫 tips</h3><div class="note default">
-            <p>下方會用範例來演示撰寫箭頭函式時需要注意的 tips。</p>
-          </div>
-
-<ul>
-<li>只有一個參數才不用加 <code>括號()</code>，否則會噴錯。</li>
-</ul>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 錯誤</span></span><br><span class="line"><span class="keyword">const</span> arrowFn = =&gt; <span class="string">&#x27;箭頭函式&#x27;</span>; <span class="comment">// SyntaxError: Unexpected token &#x27;=&gt;&#x27;</span></span><br><span class="line"><span class="keyword">const</span> arrowFn = item, <span class="function"><span class="params">index</span> =&gt;</span> <span class="string">&#x27;箭頭函式&#x27;</span>; <span class="comment">// SyntaxError: Unexpected token &#x27;=&gt;&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 正確</span></span><br><span class="line"><span class="keyword">const</span> <span class="title function_">arrowFn</span> = (<span class="params"></span>) =&gt; <span class="string">&#x27;箭頭函式&#x27;</span>;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>參數、return 值有包含 <code>大括號 &#123;&#125;</code> 物件，則需要在外圍加上<code>小括號()</code> 將其包裹起來。</li>
-</ul>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 錯誤</span></span><br><span class="line"><span class="keyword">const</span> arrowFn = &#123;name, sex&#125; =&gt; name;                 <span class="comment">// SyntaxError: Malformed arrow function parameter list</span></span><br><span class="line"><span class="keyword">const</span> <span class="title function_">arrowFn2</span> = (<span class="params"></span>) =&gt; &#123;<span class="attr">name</span>: <span class="string">&#x27;kent&#x27;</span>, <span class="attr">sex</span>: <span class="string">&#x27;male&#x27;</span>&#125;;  <span class="comment">// SyntaxError: Unexpected token &#x27;:&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 正確</span></span><br><span class="line"><span class="keyword">const</span> <span class="title function_">arrowFn</span> = (<span class="params">&#123;name, sex&#125;</span>) =&gt; name;</span><br><span class="line"><span class="keyword">const</span> <span class="title function_">arrowFn2</span> = (<span class="params"></span>) =&gt; (&#123;<span class="attr">name</span>: <span class="string">&#x27;kent&#x27;</span>, <span class="attr">sex</span>: <span class="string">&#x27;male&#x27;</span>&#125;);</span><br></pre></td></tr></table></figure>
-
-<h2 id="this"><a href="#this" class="headerlink" title="this"></a>this</h2><div class="note primary">
-            <p>箭頭函數中的 this 在<code>定義</code>時就綁定了不會更改，會將其綁定在定義的<code>執行環境</code>，另一種說法是會指向上一層的 this。</p>
-          </div>
-
-<figure class="highlight js"><figcaption><span>e.g. this 指向</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="comment">// 傳統函式</span></span><br><span class="line"><span class="keyword">const</span> obj = &#123;</span><br><span class="line">  <span class="attr">fn</span>: <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="variable language_">this</span>;</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 箭頭函式</span></span><br><span class="line"><span class="keyword">const</span> obj1 = &#123;</span><br><span class="line">  <span class="attr">arrowFn</span>: <span class="function">() =&gt;</span> <span class="variable language_">this</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(obj.<span class="title function_">fn</span>());         <span class="comment">// obj 物件</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(obj1.<span class="title function_">arrowFn</span>());   <span class="comment">// window 物件</span></span><br></pre></td></tr></table></figure>
-
-<div class="note danger">
-            <p>但有幾種特例情況會造成箭頭函式的 this 指向改變，而傳統函式的 this 物件指向是可變的，會隨著其呼叫的物件而有所改變。</p>
-          </div>
+<p>e.g. 陣列判斷</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> a = [<span class="number">1</span> , <span class="number">2</span>];</span><br><span class="line"><span class="keyword">let</span> b = [<span class="number">1</span> , <span class="number">2</span>];</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(a == b); <span class="comment">// false</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> c = b;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(c == b); <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
 
 <div class="note default">
-            <p>下方範例會掩飾在不同的情況下，箭頭函式以及傳統函式兩者 this 指向的結果。（不會對 this 做詳細的介紹）</p>
+            <p>下方會在針對其它例外情況做詳細介紹。</p>
           </div>
 
-<h3 id="嚴格模式-simple-call"><a href="#嚴格模式-simple-call" class="headerlink" title="嚴格模式 simple call"></a>嚴格模式 simple call</h3><ul>
-<li>傳統函式：指向 window，當函式 <code>沒有</code> 指定<code>呼叫物件</code>時，默認就會綁定在 <code>全域物件 window</code>。</li>
-<li>箭頭函式：指向 undefined，因為不允許默認綁定。</li>
-</ul>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title function_">fn</span> = (<span class="params"></span>) =&gt; &#123; </span><br><span class="line">  <span class="string">&#x27;use strict&#x27;</span>;</span><br><span class="line">  <span class="keyword">return</span> <span class="variable language_">this</span>; </span><br><span class="line">&#125;;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">fn</span>()); <span class="comment">//window物件</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> arrowFn = <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="string">&#x27;use strict&#x27;</span>; </span><br><span class="line">  <span class="keyword">const</span> <span class="title function_">arrowFn2</span> = (<span class="params"></span>) =&gt; <span class="variable language_">this</span>;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">arrowFn2</span>()); <span class="comment">//undefined </span></span><br><span class="line">  <span class="keyword">return</span> <span class="variable language_">this</span>; </span><br><span class="line">&#125;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">arrowFn</span>()); <span class="comment">//undefined </span></span><br></pre></td></tr></table></figure>
-
-<h3 id="物件實字（object-literal）方法"><a href="#物件實字（object-literal）方法" class="headerlink" title="物件實字（object literal）方法"></a>物件實字（object literal）方法</h3><ul>
-<li>傳統函式：指向 obj 物件，因此印出傳統函式。</li>
-<li>箭頭函式：指向上一層 window 物件，由於物件特性沒有定義 type 會回傳 undefined。</li>
-</ul>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 傳統函式</span></span><br><span class="line"><span class="keyword">const</span> obj = &#123;</span><br><span class="line">  <span class="attr">type</span>: <span class="string">&#x27;傳統函式&#x27;</span>,</span><br><span class="line">  <span class="attr">fn</span>: <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>.<span class="property">type</span>);  <span class="comment">// 傳統函式</span></span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 箭頭函式</span></span><br><span class="line"><span class="keyword">const</span> obj1 = &#123;</span><br><span class="line">  <span class="attr">type</span>: <span class="string">&#x27;箭頭函式&#x27;</span>,</span><br><span class="line">  <span class="attr">arrowFn</span>: <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>.<span class="property">type</span>);  <span class="comment">// undefined</span></span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">obj.<span class="title function_">fn</span>();         </span><br><span class="line">obj1.<span class="title function_">arrowFn</span>();</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://imgur.com/wzpfSYj.jpg"></p>
-<h3 id="call、apply、bind-方法"><a href="#call、apply、bind-方法" class="headerlink" title="call、apply、bind 方法"></a>call、apply、bind 方法</h3><div class="note default">
-            <p>這三種方法會透過傳入物件，並將函式 this 指向其物件。</p>
+<h2 id="x3D-x3D"><a href="#x3D-x3D" class="headerlink" title="&#x3D;&#x3D;"></a>&#x3D;&#x3D;</h2><div class="note primary">
+            <p>equality：比較等號兩邊值是否相同，當等號兩邊型別不同時，會先依照規則轉型再進行比對。（除了物件外，幾乎會轉型為 number 後在做比較）</p>
           </div>
 
-<ul>
-<li>傳統函式：指向 obj 物件，因此印出傳統函式。</li>
-<li>箭頭函式：指向 window 物件，由於箭頭函式特性（this 在 <code>定義</code> 時就綁定了不會更改）使其無法重新改變 this 指向。</li>
-</ul>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> obj = &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&#x27;Kent&#x27;</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> fn = <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>);  <span class="comment">// obj 物件</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> <span class="title function_">fnArrow</span> = (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>);  <span class="comment">// window 物件</span></span><br><span class="line">&#125;</span><br><span class="line">fnArrow.<span class="title function_">call</span>(obj); </span><br><span class="line">fn.<span class="title function_">call</span>(obj);</span><br></pre></td></tr></table></figure>
-
-<h3 id="Prototype-物件原型"><a href="#Prototype-物件原型" class="headerlink" title="Prototype 物件原型"></a>Prototype 物件原型</h3><ul>
-<li>傳統函式：回傳 5，指向 Member 物件。</li>
-<li>箭頭函式：回傳 undefined，指向上一層 window 物件。</li>
-</ul>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> type = <span class="string">&quot;window&quot;</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="title class_">Member</span> = <span class="keyword">function</span>(<span class="params">name, age</span>) &#123;</span><br><span class="line">  <span class="variable language_">this</span>.<span class="property">name</span> = name;</span><br><span class="line">  <span class="variable language_">this</span>.<span class="property">age</span> = age;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="title class_">Member</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">getAge</span> = <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>.<span class="property">age</span> ,<span class="variable language_">this</span>); <span class="comment">// 5, Member 物件</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="title class_">Member</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">getAgeArrow</span> = <span class="function">() =&gt;</span> <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>.<span class="property">age</span> ,<span class="variable language_">this</span>); <span class="comment">// undefined, window 物件</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> customer = <span class="keyword">new</span> <span class="title class_">Member</span>(<span class="string">&#x27;Kent&#x27;</span>, <span class="number">5</span>);</span><br><span class="line">customer.<span class="title function_">getAge</span>();</span><br><span class="line">customer.<span class="title function_">getAgeArrow</span>();</span><br></pre></td></tr></table></figure>
-
-<h3 id="DOM-監聽函式"><a href="#DOM-監聽函式" class="headerlink" title="DOM 監聽函式"></a>DOM 監聽函式</h3><div class="note default">
-            <p>DOM 擁有自己的 this，當事件觸發時會將 this 指向觸發事件的元素本身。</p>
-          </div>
-
-<ul>
-<li>傳統函式：函式被執行時指向元素本身。</li>
-<li>箭頭函式：函式被執行時指向 window 物件。</li>
-</ul>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> btn = <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;button&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> obj = &#123;</span><br><span class="line">  <span class="attr">type</span>: <span class="string">&#x27;傳統函式&#x27;</span>,</span><br><span class="line">  <span class="attr">fn</span>: <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>, <span class="variable language_">this</span>.<span class="property">type</span>); <span class="comment">// DOM element, &#x27;button&#x27;</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">btn.<span class="title function_">addEventListener</span>(<span class="string">&#x27;click&#x27;</span>, obj.<span class="property">fn</span>);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> obj1 = &#123;</span><br><span class="line">  <span class="attr">type</span>: <span class="string">&#x27;箭頭函式&#x27;</span>,</span><br><span class="line">  <span class="attr">fnArrow</span>: <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>, <span class="variable language_">this</span>.<span class="property">type</span>); <span class="comment">// // window 物件, undefined</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">btn.<span class="title function_">addEventListener</span>(<span class="string">&#x27;click&#x27;</span>, obj1.<span class="property">fnArrow</span>);</span><br></pre></td></tr></table></figure>
-
-<h2 id="arguments-參數"><a href="#arguments-參數" class="headerlink" title="arguments 參數"></a>arguments 參數</h2><div class="note danger">
-            <p>箭頭函式沒有 arguments 參數使用的話會噴 Error。</p>
-          </div>
+<p>e.g. 基礎 equality</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;1&#x27;</span> == <span class="number">1</span>); <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
 
 <div class="note default">
-            <p>解法：使用其餘參數（rest parameter）來替代，（arguments 是類陣列，其餘參數是陣列）</p>
-          </div>
-
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> fn = <span class="keyword">function</span> (<span class="params">parm</span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">arguments</span>);</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">const</span> <span class="title function_">arrowFn</span> = (<span class="params">parm</span>) =&gt; &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">arguments</span>);</span><br><span class="line">&#125;;</span><br><span class="line"><span class="title function_">fn</span>(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>);      <span class="comment">// Arguments(3)</span></span><br><span class="line"><span class="title function_">arrowFn</span>(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>); <span class="comment">// ReferenceError: arguments is not defined</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 其餘參數（rest parameter）</span></span><br><span class="line"><span class="keyword">const</span> <span class="title function_">arrowRestFn</span> = (<span class="params">...parm</span>) =&gt; &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(parm);</span><br><span class="line">&#125;;</span><br><span class="line"><span class="title function_">arrowRestFn</span>(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>); <span class="comment">// [1, 2, 3]</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h2 id="constructor、prototype"><a href="#constructor、prototype" class="headerlink" title="constructor、prototype"></a>constructor、prototype</h2><ul>
-<li>沒有原型（prototype）屬性，使用會回傳 undefined。</li>
-<li>若使用於建構式（constructor），會在使用 new 時候噴 error。</li>
-</ul>
-<div class="note default">
-            <p>在實體化物件的時候會改變 this 的指向，指向新的實體物件，但由於箭頭函式無法指向新的實體物件所以會噴錯。</p>
-          </div>
-
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> fn = <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>);</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">const</span> <span class="title function_">arrowFn</span> = (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>);</span><br><span class="line">&#125;;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(fn.<span class="property"><span class="keyword">prototype</span></span>);      <span class="comment">// &#123;constructor: ƒ&#125;</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(arrowFn.<span class="property"><span class="keyword">prototype</span></span>); <span class="comment">// undefined</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">new</span> <span class="title function_">fn</span>();</span><br><span class="line"><span class="keyword">new</span> <span class="title function_">arrowFn</span>(); <span class="comment">// TypeError: arrowFn is not a constructor</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="Array-prototype、陣列方法"><a href="#Array-prototype、陣列方法" class="headerlink" title="Array.prototype、陣列方法"></a>Array.prototype、陣列方法</h2><p><img src="https://imgur.com/oQML1lh.jpg" alt="正常傳統函式中的 Array 屬性"></p>
-<div class="note default">
-            <p>箭頭函式由於沒有 <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a> 這個屬性，因此無法使用陣列方法</p>
-          </div>
-
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> calculate = &#123;</span><br><span class="line">  <span class="attr">array</span>: [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>],</span><br><span class="line">  <span class="attr">sum</span>: <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="variable language_">this</span>.<span class="property">array</span>.<span class="title function_">reduce</span>(<span class="function">(<span class="params">result, item</span>) =&gt;</span> result + item)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//TypeError: Cannot read property &#x27;array&#x27; of undefined</span></span><br><span class="line">calculate.<span class="title function_">sum</span>()</span><br></pre></td></tr></table></figure>
-
-<h2 id="conclusion"><a href="#conclusion" class="headerlink" title="conclusion"></a>conclusion</h2><p>箭頭函式 tips</p>
-<ul>
-<li>傳統函式縮寫且只有一個參數才不用加<code>括號 ()</code>。</li>
-<li>特殊情況會造成 this 指向<code>改變</code>。</li>
-<li>沒有 arguments 參數。</li>
-<li>沒有 constructor、prototype。</li>
-<li>沒有 Array 無法使用陣列方法。</li>
-</ul>
-<h2 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h2><ul>
-<li><a href="https://pjchender.dev/javascript/js-arrow-function/">[JS] 箭頭函式（arrow function）和它對 this 的影響</a></li>
-<li><a href="https://ithelp.ithome.com.tw/articles/10249940">JavaScript基本功修練：Day21 - 箭頭函式</a></li>
-</ul>
-]]></content>
-      <categories>
-        <category>JavaScript</category>
-      </categories>
-      <tags>
-        <tag>JavaScript</tag>
-        <tag>箭頭函式</tag>
-        <tag>this</tag>
-        <tag>arguments</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>JS 短路求值 Short-circuit evaluation</title>
-    <url>/javascript/350805089/</url>
-    <content><![CDATA[<div class="note primary">
-            <p>快速複習一下<a href="https://kentdoit.github.io/javascript/1047366401/">邏輯運算子</a>：「當 AND 的第一個運算數的值為 false 時，其結果必定為 false；當 OR 的第一個運算數為 true 時，最後結果必定為 true。」</p>
-          </div>
-
-<div class="note default">
-            <p>不熟悉 <code>真值（truthy）</code>、<code>假值（falsy）</code> 可以參考這篇<a href="https://kentdoit.github.io/javascript/1047366401/#%E7%9C%9F%E5%80%BC%EF%BC%88truthy%EF%BC%89%E3%80%81%E5%81%87%E5%80%BC%EF%BC%88falsy%EF%BC%89">文章</a>。</p>
+            <p>下方會解析 ECMA-262 11th（ES2020）規範：<a href="https://262.ecma-international.org/11.0/#sec-abstract-equality-comparison">7.2.15 Abstract Equality Comparison</a> 是如何比較的以及轉型的過程。</p>
           </div>
 
 <blockquote>
-<p>口訣</p>
+<p>Step1：先檢查型別，型別相同則回傳 x &#x3D;&#x3D;&#x3D; y 的結果。</p>
 </blockquote>
-<ul>
-<li><code>&amp;&amp;</code> 左邊是 <code>假值(falsy)</code> 則不會執行右邊。</li>
-<li><code>||</code> 左邊是 <code>真值(truthy)</code> 則不會執行右邊。</li>
-</ul>
-<div class="note default">
-            <p>下方範例運用 &amp;&amp;、|| 特性，演示將左右兩邊的 <code>表達式</code> 達到和 if 判斷式一樣的效果。</p>
-          </div>
-
-<p>e.g. 使用 <code>||</code> 來實作賦予預設值功能</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> a = <span class="literal">null</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 短路求值寫法</span></span><br><span class="line"><span class="keyword">let</span> b = a || <span class="number">1</span>; <span class="comment">// a 不是真值所以會執行右邊，將 1 賦予到 b 變數上。</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// if 寫法</span></span><br><span class="line"><span class="keyword">if</span> (!a) &#123;</span><br><span class="line">  <span class="keyword">let</span> b = a;</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">  <span class="keyword">let</span> b = <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 三元運算寫法</span></span><br><span class="line"><span class="keyword">let</span> b = a ? a : <span class="number">1</span>;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>e.g. <code>&amp;&amp;</code> 透過判斷 <code>真假值</code> 來決定是否執行表達式（也可以執行函式）</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> person1 = &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&#x27;kent&#x27;</span>,</span><br><span class="line">  <span class="attr">age</span>: <span class="number">18</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 短路求值寫法（僅適用於只有一種結果的判斷式）</span></span><br><span class="line">person1.<span class="property">age</span> &gt;= <span class="number">18</span> &amp;&amp; <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`<span class="subst">$&#123;person1.name&#125;</span> 已成年`</span>); <span class="comment">// person1.age &gt;= 18 是 true 所有會執行右邊 console.log</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// if 寫法</span></span><br><span class="line"><span class="keyword">if</span> (person1.<span class="property">age</span> &gt;= <span class="number">18</span>) <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`<span class="subst">$&#123;person1.name&#125;</span> 已成年`</span>);</span><br></pre></td></tr></table></figure>
-
-<p>e.g. 判斷物件屬性是否存在</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> school = &#123;</span><br><span class="line">  <span class="attr">info</span>: &#123;</span><br><span class="line">    <span class="attr">student</span>: &#123;</span><br><span class="line">      <span class="attr">name</span>: <span class="string">&#x27;kent&#x27;</span>,</span><br><span class="line">      <span class="attr">age</span>: <span class="number">18</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 短路求值寫法</span></span><br><span class="line"><span class="keyword">let</span> name = obj.<span class="property">info</span>.<span class="property">teacher</span> &amp;&amp; obj.<span class="property">info</span>.<span class="property">teacher</span>.<span class="property">name</span>; <span class="comment">// 會透過先判斷上一層屬性是否存在，來預防噴錯</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// if 寫法</span></span><br><span class="line"><span class="keyword">let</span> name = obj.<span class="property">info</span>.<span class="property">teacher</span>.<span class="property">name</span>; <span class="comment">// TypeError: Cannot read properties of undefined (reading &#x27;name&#x27;)</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (obj.<span class="property">info</span>.<span class="property">teacher</span>) &#123;</span><br><span class="line">  <span class="keyword">let</span> name = obj.<span class="property">info</span>.<span class="property">teacher</span>.<span class="property">name</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="https://imgur.com/O6GtcuY.jpg"></p>
+<p>當型別相同，則不需要轉型因此可以直接比較。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;b&#x27;</span> === <span class="string">&#x27;a&#x27;</span>); <span class="comment">// false</span></span><br></pre></td></tr></table></figure>
 
 <blockquote>
-<p>短路求值 tips</p>
+<p>Step2：等號兩邊為 null 和 undefined 回傳 true。</p>
 </blockquote>
-<ol>
-<li><code>短路求值</code> 使用表達式的情況下，只適用於沒有 else 的判斷式，需要有 else 可以使用 <code>三元運算子</code>。</li>
-<li><code>短路求值</code> 不能帶 return。</li>
-</ol>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">isAdult</span>(<span class="params">age</span>) &#123; </span><br><span class="line">  <span class="comment">// 判斷是否為假值</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">// 短路求值寫法（短路求值帶 return 會噴 error）</span></span><br><span class="line">  age &amp;&amp; <span class="keyword">return</span> <span class="string">&#x27;資料錯誤&#x27;</span>; <span class="comment">// SyntaxError: Unexpected token &#x27;return&#x27;</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">// if 寫法</span></span><br><span class="line">  <span class="keyword">if</span> (!age) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&#x27;資料錯誤&#x27;</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  <span class="comment">// 下方範例不適合用短路求值，因為會缺少 else 表達式。</span></span><br><span class="line">  <span class="keyword">let</span> res</span><br><span class="line">  <span class="comment">// 短路求值寫法</span></span><br><span class="line">  res = (age &gt;= <span class="number">18</span>) &amp;&amp; <span class="string">&#x27;已成年&#x27;</span>;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 三元運算子寫法</span></span><br><span class="line">  res = age &gt;= <span class="number">18</span> ? <span class="string">&#x27;已成年&#x27;</span> : <span class="string">&#x27;未成年&#x27;</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title function_">isAdult</span>(<span class="literal">null</span>);  <span class="comment">// 資料錯誤</span></span><br><span class="line"><span class="title function_">isAdult</span>(<span class="number">18</span>); <span class="comment">// 已成年</span></span><br><span class="line"><span class="title function_">isAdult</span>(<span class="number">17</span>);  <span class="comment">// 未成年</span></span><br></pre></td></tr></table></figure>
+<p><img src="https://imgur.com/csTWjoh.jpg"></p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="literal">undefined</span> == <span class="literal">null</span>); <span class="comment">// true</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="literal">null</span> == <span class="literal">undefined</span>); <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
 
-<h3 id="詬病「不夠嚴謹」"><a href="#詬病「不夠嚴謹」" class="headerlink" title="詬病「不夠嚴謹」"></a>詬病「不夠嚴謹」</h3><div class="note default">
-            <p>👨‍💻 當變數為 <code>false</code>、<code>0</code> 或空字串 <code>&quot;&quot;</code> 其中之一時， 則布林值也會轉型為<code>假值 (falsy)</code>，對於判斷變數是否使用過來說是相當不方便的一件事。</p>
-          </div>
+<blockquote>
+<p>Step3：基礎型別自動轉成 number 後在做比較。（透過原生函式 ToNumber）</p>
+</blockquote>
+<p><img src="https://imgur.com/Mey9zi3.jpg"></p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;1&#x27;</span> == <span class="number">1</span>);       <span class="comment">// true，1 == 1</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="literal">true</span> == <span class="string">&#x27;1&#x27;</span>);    <span class="comment">// true，1 == 1</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="literal">true</span> == <span class="string">&#x27;true&#x27;</span>); <span class="comment">// false，1 == NaN</span></span><br></pre></td></tr></table></figure>
 
-<figure class="highlight js"><figcaption><span>e.g. 判斷某個變數是否使用過，有的話就作初始化。</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> time = <span class="number">1</span> - <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 判斷變數是否使用過，有的話將其初始化</span></span><br><span class="line"><span class="keyword">if</span> (time) &#123;</span><br><span class="line">  <span class="comment">// 初始化失敗</span></span><br><span class="line">  time = <span class="literal">null</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 初始化失敗</span></span><br><span class="line">time = time &amp;&amp; <span class="literal">null</span>;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight js"><figcaption><span>e.g. 假設有一間銀行，發給新辦用戶 100 摳，結果連舊客戶都發了...</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> person1 = &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&#x27;kent&#x27;</span>,</span><br><span class="line">  <span class="attr">age</span>: <span class="number">18</span>,</span><br><span class="line">  <span class="attr">wallet</span>: <span class="number">0</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> person2 = &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&#x27;clark&#x27;</span>,</span><br><span class="line">  <span class="attr">age</span>: <span class="number">20</span>,</span><br><span class="line">  <span class="attr">wallet</span>: <span class="literal">null</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">person1.<span class="property">wallet</span> || &#123;person1, ...&#123;<span class="attr">wallet</span>: <span class="number">100</span>&#125;&#125;; <span class="comment">// &#123;person1: &#123;…&#125;, wallet: 100&#125;</span></span><br><span class="line">person2.<span class="property">wallet</span> || &#123;person2, ...&#123;<span class="attr">wallet</span>: <span class="number">100</span>&#125;&#125;; <span class="comment">// &#123;person2: &#123;…&#125;, wallet: 100&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 發現活動還沒開跑，已經發了幾百萬出去</span></span><br></pre></td></tr></table></figure>
-
-<p><img src="https://imgur.com/yNnVS12.jpg" alt="部署後的工程師"></p>
+<blockquote>
+<p>⭐️ Step4：先將非基礎型別轉成基礎型別後再做比較。（透過原生函示 toPrimitive）</p>
+</blockquote>
+<p><img src="https://imgur.com/RTWXolI.jpg"></p>
 <div class="note default">
-            <p>javascript 後來增加了一種 <a href="https://kentdoit.github.io/javascript/3525467973/"><code>空值合併運算子</code></a> 用來解決不夠嚴謹的問題。</p>
+            <p>toPrimitive 將物件透過原生方法（ex：valueOf、toString）轉成基礎型別。</p>
           </div>
 
-<h2 id="conclusion"><a href="#conclusion" class="headerlink" title="conclusion"></a>conclusion</h2><p><img src="https://imgur.com/w9OtDHw.png" alt="||、&amp;&amp; 使用口訣"></p>
-<h2 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h2><ul>
-<li><a href="https://bolaslien.github.io/blog/2021/06/18/js-short-circuit-evaluation/">用邏輯判斷 ||(OR) 及 &amp;&amp;(AND) 來改寫 if (短路求值 Short-circuit evaluation)</a></li>
+<p>string 的執行順序</p>
+<ul>
+<li>先執行 toString &gt; 還不是 primitive 在執行 valueOf &gt; 還不是 primitive 就噴 <code>TypeError</code>。</li>
 </ul>
+<p>number 的執行順序</p>
+<ul>
+<li>（PreferredType 預設為 number）先執行 valueOf &gt; 還不是 primitive 在執行 toString &gt; 還不是 primitive 就噴 <code>TypeError</code>。</li>
+</ul>
+<p>e.g. 觀察 toPrimitive 中 valueOf 、 toString 優先順序</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> obj = &#123;</span><br><span class="line">  toString : <span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;toString&quot;</span>);</span><br><span class="line">    <span class="keyword">return</span> &#123;&#125;;</span><br><span class="line">  &#125;,</span><br><span class="line">  valueOf : <span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;valueOf&quot;</span>);</span><br><span class="line">    <span class="keyword">return</span> &#123;&#125;;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="title class_">String</span>(obj); <span class="comment">// toString -&gt; valueOf -&gt; TypeError</span></span><br><span class="line"><span class="title class_">Number</span>(obj); <span class="comment">// valueOf -&gt; toString -&gt; TypeError</span></span><br></pre></td></tr></table></figure>
+
+<p>e.g. toPrimitive 自定義方法，依照 hint 種類輸出結果。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> obj = &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&#x27;kent&#x27;</span>,</span><br><span class="line">  <span class="attr">age</span>: <span class="number">18</span>,</span><br><span class="line">  <span class="attr">sex</span>: <span class="string">&#x27;M&#x27;</span>,</span><br><span class="line">  [<span class="title class_">Symbol</span>.<span class="property">toPrimitive</span>]: <span class="keyword">function</span>(<span class="params">hint</span>) &#123;</span><br><span class="line">    <span class="comment">// hint 三種 &#x27;string&#x27;, &#x27;number&#x27;, &#x27;default&#x27;</span></span><br><span class="line">    <span class="keyword">switch</span>(hint) &#123;</span><br><span class="line">      <span class="keyword">case</span> <span class="string">&#x27;default&#x27;</span>: <span class="keyword">return</span> <span class="variable language_">this</span>.<span class="property">sex</span>;</span><br><span class="line">      <span class="keyword">case</span> <span class="string">&#x27;string&#x27;</span>: <span class="keyword">return</span> <span class="variable language_">this</span>.<span class="property">name</span>;</span><br><span class="line">      <span class="keyword">case</span> <span class="string">&#x27;number&#x27;</span>: <span class="keyword">return</span> <span class="variable language_">this</span>.<span class="property">age</span>;</span><br><span class="line">      <span class="attr">default</span>: <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">Error</span>();</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(obj == <span class="string">&#x27;M&#x27;</span>);            <span class="comment">// true，default</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">Number</span>(obj) == <span class="number">18</span>);     <span class="comment">// true，number</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">String</span>(obj) == <span class="string">&#x27;kent&#x27;</span>); <span class="comment">// true，string</span></span><br></pre></td></tr></table></figure>
+
+<div class="note default">
+            <p>以上為 &#x3D;&#x3D; 比較運算子的自動轉型過程。</p>
+          </div>
+
+<hr>
+<h2 id="x3D-x3D-x3D"><a href="#x3D-x3D-x3D" class="headerlink" title="&#x3D;&#x3D;&#x3D;"></a>&#x3D;&#x3D;&#x3D;</h2><div class="note default">
+            <p>strict equality：比較等號兩邊 <code>型別</code> 以及 <code>數值</code> 是否 <code>都相同</code>。</p>
+          </div>
+
+<p>e.g. 基礎 strict equality</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;1&#x27;</span> === <span class="number">1</span>); <span class="comment">// false</span></span><br></pre></td></tr></table></figure>
+
+<div class="note default">
+            <p>下方會解析 ECMA-262 11th（ES2020）規範：<a href="https://262.ecma-international.org/11.0/#sec-strict-equality-comparison">7.2.16 Strict Equality Comparison</a> 是如何比較的以及轉型的過程。</p>
+          </div>
+
+<blockquote>
+<p>Step1：檢查型別，型別不同則回傳 false。</p>
+</blockquote>
+<p><img src="https://imgur.com/qXhuPgq.jpg"></p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;1&#x27;</span> === <span class="number">1</span>); <span class="comment">// false</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>Step2：型別為 number 時會回傳 <a href="https://www.ecma-international.org/ecma-262/11.0/index.html#sec-numeric-types-number-equal">Number::equal ( x, y )</a> 結果，型別為 BigInt 時會回傳 <a href="https://www.ecma-international.org/ecma-262/11.0/index.html#sec-numeric-types-bigint-equal">BigInt::equal ( x, y )</a> 結果。</p>
+</blockquote>
+<p><img src="https://imgur.com/EID9qm4.jpg"></p>
+<div class="note default">
+            <p>在這之前需要，先暸解 Number、BigInt 兩者的 equal ( x, y ) 規則。</p>
+          </div>
+
+<p>Number::equal ( x, y ) 規則：</p>
+<p><img src="https://imgur.com/gGq66Sb.jpg"></p>
+<ul>
+<li>有 NaN 就回傳 false。</li>
+<li>值相同就回傳 true。</li>
+<li>兩者為 0 就回傳 true。（不管正負）</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">NaN</span> === <span class="title class_">NaN</span>); <span class="comment">// false</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(+<span class="number">1</span> === -<span class="number">1</span>);   <span class="comment">// false</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="number">0</span> === -<span class="number">0</span>);    <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+
+<p>BigInt::equal ( x, y ) 規則：</p>
+<p><img src="https://imgur.com/PiEO17R.jpg"></p>
+<ul>
+<li>BigInt 值相同回傳 true，否則回傳 false。</li>
+</ul>
+<div class="note primary">
+            <p>根據 <a href="https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Global_Objects/BigInt">MDN 文件</a>：「BigInt 是一個內建的物件，提供了表示大於 “2 的 53 次方” 整數的功能 (“2 的 53 次方” 是 JavaScript 原生的 Number 能夠表示的最大值)」</p>
+          </div>
+
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="number">1n</span> === <span class="number">1n</span>); <span class="comment">// true</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="number">1n</span> === <span class="number">2n</span>); <span class="comment">// false</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>Step3：會依照 SameValueNonNumeric 規則回傳結果。</p>
+</blockquote>
+<p><img src="https://imgur.com/qivniM1.jpg"></p>
+<p>SameValueNonNumeric ECMA Assert：</p>
+<ul>
+<li>兩者不是 <code>Number</code> 或 <code>BigInt</code> 型別。</li>
+<li>兩者值不相同。</li>
+</ul>
+<p>SameValueNonNumeric 規則：</p>
+<p><img src="https://imgur.com/L3oUg26.jpg"></p>
+<ul>
+<li>有 <code>undefined</code> 回傳 true。</li>
+<li>有 <code>null</code> 回傳 true。</li>
+<li><code>字串型別</code>時判斷字串是否相同，相同回傳 true 否則回傳 false。</li>
+<li><code>boolean</code>、<code>symbol</code> 和 <code>object</code> 型別都是比較值是否相同 。(但 object、symbols 還需要比較 reference 是否相同)<ul>
+<li>參考：<a href="https://stackoverflow.com/questions/61203925/how-does-the-array-prototype-includes-function-compare-objects">How does the Array.prototype.includes function compare objects</a></li>
+</ul>
+</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="literal">true</span> === <span class="literal">true</span>);           <span class="comment">// true</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">Symbol</span>(<span class="number">1</span>) === <span class="title class_">Symbol</span>(<span class="number">1</span>)); <span class="comment">// false</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(&#123;&#125; === &#123;&#125;);               <span class="comment">// false</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> obj = &#123;&#125;;</span><br><span class="line"><span class="keyword">const</span> sym = <span class="title class_">Symbol</span>();</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>([obj].<span class="title function_">includes</span>(obj));     <span class="comment">// true</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>([sym].<span class="title function_">includes</span>(sym));     <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="conclusion"><a href="#conclusion" class="headerlink" title="conclusion"></a>conclusion</h2><ul>
+<li><code>object</code>、<code>symbols</code> 還需要比較 reference，指向同一個 <code>references</code> 才會回傳 true。</li>
+<li><code>===</code> 不會做自動轉型。</li>
+<li><code>==</code>  除了物件外，會轉型為 number 在做比較。</li>
+<li>判斷是否為 <code>null</code> 、 <code>undefined</code> 可以使用 <code>==</code> 替代 <code>===</code> 。</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> (x === <span class="literal">null</span> || x === <span class="literal">undefined</span>) &#123;</span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// == 特性等號左右兩邊為 null、undefined 會回傳 true</span></span><br><span class="line"><span class="keyword">if</span> (x == <span class="literal">null</span>) &#123;</span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>常見迷思</p>
+</blockquote>
+<div class="note success">
+            <p>&#x3D;&#x3D; 不會檢查型別，直接轉型。</p>
+          </div>
+
+<div class="note warning">
+            <p>&#x3D;&#x3D; 第一步不是直接轉型，而是先檢查型別，再依造規則做轉型。</p>
+          </div>
+
+<blockquote>
+<p>分享幾張 &#x3D;&#x3D; 、 &#x3D;&#x3D;&#x3D;、if 的視覺化圖表</p>
+</blockquote>
+<p><a href="https://github.com/dorey/JavaScript-Equality-Table">src：JavaScript-Equality-Table</a></p>
+<p><img src="https://imgur.com/Ys0CgUz.jpg" alt="=== 比較表"></p>
+<p><img src="https://imgur.com/WzPfFFf.jpg" alt="== 比較表"></p>
+<p><img src="https://imgur.com/wd4ydIB.jpg" alt="綜合比較表"></p>
+<p><img src="https://imgur.com/OtmX7k7.jpg" alt="if/else （綠色代表 true、白色代表 false）"></p>
+<p>最後一張：<a href="https://thomas-yang.me/projects/oh-my-dear-js/">Relational and Equality Operators</a></p>
+<p><img src="https://imgur.com/Og8Y5JH.jpg" alt="依照嚴格程度排序不同的比較子（紅色最嚴格、灰色最寬鬆）"></p>
+<div class="note default">
+            <p>最後建議新手一律使用嚴謹的 &#x3D;&#x3D;&#x3D; 進行比較，避免因為自動轉型而產生非預期的結果，有經驗的就可以自由使用兩者囉。</p>
+          </div>
+
+<h2 id="references"><a href="#references" class="headerlink" title="references"></a>references</h2><p>白話文：<a href="https://medium.com/schaoss-blog/%E5%89%8D%E7%AB%AF%E4%B8%89%E5%8D%81-13-js-%E7%82%BA%E4%BB%80%E9%BA%BC%E5%88%A4%E6%96%B7%E7%9B%B8%E7%AD%89%E6%99%82%E4%B8%8D%E7%94%A8%E8%83%BD%E9%9B%99%E7%AD%89%E8%99%9F-d02fbf91492f">前端三十｜13. [JS] 為什麼判斷相等時不能用雙等號？</a><br>簡單解析ES6文件：<a href="https://stringpiggy.hpd.io/javascript-double-equals-triple-equals/#tldr">JavaScript 可愛筆記 #0 – 兩個等於真的有那麼壞嗎？</a><br>解析 ToPrimitive：<a href="https://sinaad.github.io/xfe/2016/04/15/ToPrimitive/">js隐式装箱-ToPrimitive</a><br>stackoverflow 討論：<a href="https://stackoverflow.com/questions/359494/which-equals-operator-vs-should-be-used-in-javascript-comparisons">Which equals operator (&#x3D;&#x3D; vs &#x3D;&#x3D;&#x3D;) should be used in JavaScript comparisons?</a></p>
 ]]></content>
       <categories>
         <category>JavaScript</category>
@@ -1025,6 +998,7 @@
       <tags>
         <tag>運算子</tag>
         <tag>JavaScript</tag>
+        <tag>ECMAScript</tag>
       </tags>
   </entry>
   <entry>
@@ -1286,179 +1260,206 @@ console.log(obj.name);  // kent
       </tags>
   </entry>
   <entry>
-    <title>JS 比較運算子的自動轉型</title>
-    <url>/javascript/2972146539/</url>
-    <content><![CDATA[<p>比較運算子注意事項</p>
-<div class="note default">
-            <p>在 JavaScript 中除了基礎型別（Primitive Type）以外的型別（ex: 陣列、物件）在做比較時，判斷的是兩者是否指向同一個 <code>reference</code>，而非判斷兩者的值是否相同。</p>
+    <title>JS 箭頭函式 arrow function</title>
+    <url>/javascript/2638792469/</url>
+    <content><![CDATA[<div class="note default">
+            <p>箭頭函式是 ES6 新的語法糖，白話文來說，箭頭函式是傳統函式的<code>縮寫</code>，但有一些特性和邏輯不盡相同尤其是 this 的部分。</p>
           </div>
 
-<p>e.g. 陣列判斷</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> a = [<span class="number">1</span> , <span class="number">2</span>];</span><br><span class="line"><span class="keyword">let</span> b = [<span class="number">1</span> , <span class="number">2</span>];</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(a == b); <span class="comment">// false</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> c = b;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(c == b); <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+<p><a href="https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Functions/Arrow_functions">MDN 語法</a></p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">([param] [, param]) =&gt; &#123;</span><br><span class="line">  statements</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">param =&gt; expression</span><br></pre></td></tr></table></figure>
 
-<div class="note default">
-            <p>下方會在針對其它例外情況做詳細介紹。</p>
-          </div>
-
-<h2 id="x3D-x3D"><a href="#x3D-x3D" class="headerlink" title="&#x3D;&#x3D;"></a>&#x3D;&#x3D;</h2><div class="note primary">
-            <p>equality：比較等號兩邊值是否相同，當等號兩邊型別不同時，會先依照規則轉型再進行比對。（除了物件外，幾乎會轉型為 number 後在做比較）</p>
-          </div>
-
-<p>e.g. 基礎 equality</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;1&#x27;</span> == <span class="number">1</span>); <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
-
-<div class="note default">
-            <p>下方會解析 ECMA-262 11th（ES2020）規範：<a href="https://262.ecma-international.org/11.0/#sec-abstract-equality-comparison">7.2.15 Abstract Equality Comparison</a> 是如何比較的以及轉型的過程。</p>
-          </div>
-
-<blockquote>
-<p>Step1：先檢查型別，型別相同則回傳 x &#x3D;&#x3D;&#x3D; y 的結果。</p>
+<h2 id="縮寫特性"><a href="#縮寫特性" class="headerlink" title="縮寫特性"></a>縮寫特性</h2><blockquote>
+<p>用一張圖來看箭頭函式這個語法糖究竟簡化了些什麼？</p>
 </blockquote>
-<p><img src="https://imgur.com/O6GtcuY.jpg"></p>
-<p>當型別相同，則不需要轉型因此可以直接比較。</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;b&#x27;</span> === <span class="string">&#x27;a&#x27;</span>); <span class="comment">// false</span></span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>Step2：等號兩邊為 null 和 undefined 回傳 true。</p>
-</blockquote>
-<p><img src="https://imgur.com/csTWjoh.jpg"></p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="literal">undefined</span> == <span class="literal">null</span>); <span class="comment">// true</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="literal">null</span> == <span class="literal">undefined</span>); <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>Step3：基礎型別自動轉成 number 後在做比較。（透過原生函式 ToNumber）</p>
-</blockquote>
-<p><img src="https://imgur.com/Mey9zi3.jpg"></p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;1&#x27;</span> == <span class="number">1</span>);       <span class="comment">// true，1 == 1</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="literal">true</span> == <span class="string">&#x27;1&#x27;</span>);    <span class="comment">// true，1 == 1</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="literal">true</span> == <span class="string">&#x27;true&#x27;</span>); <span class="comment">// false，1 == NaN</span></span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>⭐️ Step4：先將非基礎型別轉成基礎型別後再做比較。（透過原生函示 toPrimitive）</p>
-</blockquote>
-<p><img src="https://imgur.com/RTWXolI.jpg"></p>
 <div class="note default">
-            <p>toPrimitive 將物件透過原生方法（ex：valueOf、toString）轉成基礎型別。</p>
+            <p>將 function 簡化為<code>箭頭 =&gt;</code>。</p>
           </div>
 
-<p>string 的執行順序</p>
+<p><img src="https://imgur.com/okxB6Sa.jpg"></p>
+<h3 id="單行型式縮寫"><a href="#單行型式縮寫" class="headerlink" title="單行型式縮寫"></a>單行型式縮寫</h3><blockquote>
+<p>規則</p>
+</blockquote>
+<ol>
+<li>大括號括號可省略。</li>
+<li>參數只有一個時，可以把參數的小括號省略。（沒有參數、兩個參數以上時不可省略小括號）</li>
+<li>若需要回傳值則可省略 return。</li>
+</ol>
+<p><img src="https://imgur.com/hdFhyyI.jpg"></p>
+<h3 id="縮寫-tips"><a href="#縮寫-tips" class="headerlink" title="縮寫 tips"></a>縮寫 tips</h3><div class="note default">
+            <p>下方會用範例來演示撰寫箭頭函式時需要注意的 tips。</p>
+          </div>
+
 <ul>
-<li>先執行 toString &gt; 還不是 primitive 在執行 valueOf &gt; 還不是 primitive 就噴 <code>TypeError</code>。</li>
+<li>只有一個參數才不用加 <code>括號()</code>，否則會噴錯。</li>
 </ul>
-<p>number 的執行順序</p>
-<ul>
-<li>（PreferredType 預設為 number）先執行 valueOf &gt; 還不是 primitive 在執行 toString &gt; 還不是 primitive 就噴 <code>TypeError</code>。</li>
-</ul>
-<p>e.g. 觀察 toPrimitive 中 valueOf 、 toString 優先順序</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> obj = &#123;</span><br><span class="line">  toString : <span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;toString&quot;</span>);</span><br><span class="line">    <span class="keyword">return</span> &#123;&#125;;</span><br><span class="line">  &#125;,</span><br><span class="line">  valueOf : <span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;valueOf&quot;</span>);</span><br><span class="line">    <span class="keyword">return</span> &#123;&#125;;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="title class_">String</span>(obj); <span class="comment">// toString -&gt; valueOf -&gt; TypeError</span></span><br><span class="line"><span class="title class_">Number</span>(obj); <span class="comment">// valueOf -&gt; toString -&gt; TypeError</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 錯誤</span></span><br><span class="line"><span class="keyword">const</span> arrowFn = =&gt; <span class="string">&#x27;箭頭函式&#x27;</span>; <span class="comment">// SyntaxError: Unexpected token &#x27;=&gt;&#x27;</span></span><br><span class="line"><span class="keyword">const</span> arrowFn = item, <span class="function"><span class="params">index</span> =&gt;</span> <span class="string">&#x27;箭頭函式&#x27;</span>; <span class="comment">// SyntaxError: Unexpected token &#x27;=&gt;&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 正確</span></span><br><span class="line"><span class="keyword">const</span> <span class="title function_">arrowFn</span> = (<span class="params"></span>) =&gt; <span class="string">&#x27;箭頭函式&#x27;</span>;</span><br></pre></td></tr></table></figure>
 
-<p>e.g. toPrimitive 自定義方法，依照 hint 種類輸出結果。</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> obj = &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&#x27;kent&#x27;</span>,</span><br><span class="line">  <span class="attr">age</span>: <span class="number">18</span>,</span><br><span class="line">  <span class="attr">sex</span>: <span class="string">&#x27;M&#x27;</span>,</span><br><span class="line">  [<span class="title class_">Symbol</span>.<span class="property">toPrimitive</span>]: <span class="keyword">function</span>(<span class="params">hint</span>) &#123;</span><br><span class="line">    <span class="comment">// hint 三種 &#x27;string&#x27;, &#x27;number&#x27;, &#x27;default&#x27;</span></span><br><span class="line">    <span class="keyword">switch</span>(hint) &#123;</span><br><span class="line">      <span class="keyword">case</span> <span class="string">&#x27;default&#x27;</span>: <span class="keyword">return</span> <span class="variable language_">this</span>.<span class="property">sex</span>;</span><br><span class="line">      <span class="keyword">case</span> <span class="string">&#x27;string&#x27;</span>: <span class="keyword">return</span> <span class="variable language_">this</span>.<span class="property">name</span>;</span><br><span class="line">      <span class="keyword">case</span> <span class="string">&#x27;number&#x27;</span>: <span class="keyword">return</span> <span class="variable language_">this</span>.<span class="property">age</span>;</span><br><span class="line">      <span class="attr">default</span>: <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">Error</span>();</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(obj == <span class="string">&#x27;M&#x27;</span>);            <span class="comment">// true，default</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">Number</span>(obj) == <span class="number">18</span>);     <span class="comment">// true，number</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">String</span>(obj) == <span class="string">&#x27;kent&#x27;</span>); <span class="comment">// true，string</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>參數、return 值有包含 <code>大括號 &#123;&#125;</code> 物件，則需要在外圍加上<code>小括號()</code> 將其包裹起來。</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 錯誤</span></span><br><span class="line"><span class="keyword">const</span> arrowFn = &#123;name, sex&#125; =&gt; name;                 <span class="comment">// SyntaxError: Malformed arrow function parameter list</span></span><br><span class="line"><span class="keyword">const</span> <span class="title function_">arrowFn2</span> = (<span class="params"></span>) =&gt; &#123;<span class="attr">name</span>: <span class="string">&#x27;kent&#x27;</span>, <span class="attr">sex</span>: <span class="string">&#x27;male&#x27;</span>&#125;;  <span class="comment">// SyntaxError: Unexpected token &#x27;:&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 正確</span></span><br><span class="line"><span class="keyword">const</span> <span class="title function_">arrowFn</span> = (<span class="params">&#123;name, sex&#125;</span>) =&gt; name;</span><br><span class="line"><span class="keyword">const</span> <span class="title function_">arrowFn2</span> = (<span class="params"></span>) =&gt; (&#123;<span class="attr">name</span>: <span class="string">&#x27;kent&#x27;</span>, <span class="attr">sex</span>: <span class="string">&#x27;male&#x27;</span>&#125;);</span><br></pre></td></tr></table></figure>
+
+<h2 id="this"><a href="#this" class="headerlink" title="this"></a>this</h2><div class="note primary">
+            <p>箭頭函數中的 this 在<code>定義</code>時就綁定了不會更改，會將其綁定在定義的<code>執行環境</code>，另一種說法是會指向上一層的 this。</p>
+          </div>
+
+<figure class="highlight js"><figcaption><span>e.g. this 指向</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="comment">// 傳統函式</span></span><br><span class="line"><span class="keyword">const</span> obj = &#123;</span><br><span class="line">  <span class="attr">fn</span>: <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="variable language_">this</span>;</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 箭頭函式</span></span><br><span class="line"><span class="keyword">const</span> obj1 = &#123;</span><br><span class="line">  <span class="attr">arrowFn</span>: <span class="function">() =&gt;</span> <span class="variable language_">this</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(obj.<span class="title function_">fn</span>());         <span class="comment">// obj 物件</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(obj1.<span class="title function_">arrowFn</span>());   <span class="comment">// window 物件</span></span><br></pre></td></tr></table></figure>
+
+<div class="note danger">
+            <p>但有幾種特例情況會造成箭頭函式的 this 指向改變，而傳統函式的 this 物件指向是可變的，會隨著其呼叫的物件而有所改變。</p>
+          </div>
 
 <div class="note default">
-            <p>以上為 &#x3D;&#x3D; 比較運算子的自動轉型過程。</p>
+            <p>下方範例會掩飾在不同的情況下，箭頭函式以及傳統函式兩者 this 指向的結果。（不會對 this 做詳細的介紹）</p>
           </div>
 
-<hr>
-<h2 id="x3D-x3D-x3D"><a href="#x3D-x3D-x3D" class="headerlink" title="&#x3D;&#x3D;&#x3D;"></a>&#x3D;&#x3D;&#x3D;</h2><div class="note default">
-            <p>strict equality：比較等號兩邊 <code>型別</code> 以及 <code>數值</code> 是否 <code>都相同</code>。</p>
+<h3 id="嚴格模式-simple-call"><a href="#嚴格模式-simple-call" class="headerlink" title="嚴格模式 simple call"></a>嚴格模式 simple call</h3><ul>
+<li>傳統函式：指向 window，當函式 <code>沒有</code> 指定<code>呼叫物件</code>時，默認就會綁定在 <code>全域物件 window</code>。</li>
+<li>箭頭函式：指向 undefined，因為不允許默認綁定。</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title function_">fn</span> = (<span class="params"></span>) =&gt; &#123; </span><br><span class="line">  <span class="string">&#x27;use strict&#x27;</span>;</span><br><span class="line">  <span class="keyword">return</span> <span class="variable language_">this</span>; </span><br><span class="line">&#125;;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">fn</span>()); <span class="comment">//window物件</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> arrowFn = <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="string">&#x27;use strict&#x27;</span>; </span><br><span class="line">  <span class="keyword">const</span> <span class="title function_">arrowFn2</span> = (<span class="params"></span>) =&gt; <span class="variable language_">this</span>;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">arrowFn2</span>()); <span class="comment">//undefined </span></span><br><span class="line">  <span class="keyword">return</span> <span class="variable language_">this</span>; </span><br><span class="line">&#125;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">arrowFn</span>()); <span class="comment">//undefined </span></span><br></pre></td></tr></table></figure>
+
+<h3 id="物件實字（object-literal）方法"><a href="#物件實字（object-literal）方法" class="headerlink" title="物件實字（object literal）方法"></a>物件實字（object literal）方法</h3><ul>
+<li>傳統函式：指向 obj 物件，因此印出傳統函式。</li>
+<li>箭頭函式：指向上一層 window 物件，由於物件特性沒有定義 type 會回傳 undefined。</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 傳統函式</span></span><br><span class="line"><span class="keyword">const</span> obj = &#123;</span><br><span class="line">  <span class="attr">type</span>: <span class="string">&#x27;傳統函式&#x27;</span>,</span><br><span class="line">  <span class="attr">fn</span>: <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>.<span class="property">type</span>);  <span class="comment">// 傳統函式</span></span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 箭頭函式</span></span><br><span class="line"><span class="keyword">const</span> obj1 = &#123;</span><br><span class="line">  <span class="attr">type</span>: <span class="string">&#x27;箭頭函式&#x27;</span>,</span><br><span class="line">  <span class="attr">arrowFn</span>: <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>.<span class="property">type</span>);  <span class="comment">// undefined</span></span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">obj.<span class="title function_">fn</span>();         </span><br><span class="line">obj1.<span class="title function_">arrowFn</span>();</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://imgur.com/wzpfSYj.jpg"></p>
+<h3 id="call、apply、bind-方法"><a href="#call、apply、bind-方法" class="headerlink" title="call、apply、bind 方法"></a>call、apply、bind 方法</h3><div class="note default">
+            <p>這三種方法會透過傳入物件，並將函式 this 指向其物件。</p>
           </div>
 
-<p>e.g. 基礎 strict equality</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;1&#x27;</span> === <span class="number">1</span>); <span class="comment">// false</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>傳統函式：指向 obj 物件，因此印出傳統函式。</li>
+<li>箭頭函式：指向 window 物件，由於箭頭函式特性（this 在 <code>定義</code> 時就綁定了不會更改）使其無法重新改變 this 指向。</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> obj = &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&#x27;Kent&#x27;</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> fn = <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>);  <span class="comment">// obj 物件</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> <span class="title function_">fnArrow</span> = (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>);  <span class="comment">// window 物件</span></span><br><span class="line">&#125;</span><br><span class="line">fnArrow.<span class="title function_">call</span>(obj); </span><br><span class="line">fn.<span class="title function_">call</span>(obj);</span><br></pre></td></tr></table></figure>
+
+<h3 id="Prototype-物件原型"><a href="#Prototype-物件原型" class="headerlink" title="Prototype 物件原型"></a>Prototype 物件原型</h3><ul>
+<li>傳統函式：回傳 5，指向 Member 物件。</li>
+<li>箭頭函式：回傳 undefined，指向上一層 window 物件。</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> type = <span class="string">&quot;window&quot;</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="title class_">Member</span> = <span class="keyword">function</span>(<span class="params">name, age</span>) &#123;</span><br><span class="line">  <span class="variable language_">this</span>.<span class="property">name</span> = name;</span><br><span class="line">  <span class="variable language_">this</span>.<span class="property">age</span> = age;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="title class_">Member</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">getAge</span> = <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>.<span class="property">age</span> ,<span class="variable language_">this</span>); <span class="comment">// 5, Member 物件</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="title class_">Member</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">getAgeArrow</span> = <span class="function">() =&gt;</span> <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>.<span class="property">age</span> ,<span class="variable language_">this</span>); <span class="comment">// undefined, window 物件</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> customer = <span class="keyword">new</span> <span class="title class_">Member</span>(<span class="string">&#x27;Kent&#x27;</span>, <span class="number">5</span>);</span><br><span class="line">customer.<span class="title function_">getAge</span>();</span><br><span class="line">customer.<span class="title function_">getAgeArrow</span>();</span><br></pre></td></tr></table></figure>
+
+<h3 id="DOM-監聽函式"><a href="#DOM-監聽函式" class="headerlink" title="DOM 監聽函式"></a>DOM 監聽函式</h3><div class="note default">
+            <p>DOM 擁有自己的 this，當事件觸發時會將 this 指向觸發事件的元素本身。</p>
+          </div>
+
+<ul>
+<li>傳統函式：函式被執行時指向元素本身。</li>
+<li>箭頭函式：函式被執行時指向 window 物件。</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> btn = <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;button&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> obj = &#123;</span><br><span class="line">  <span class="attr">type</span>: <span class="string">&#x27;傳統函式&#x27;</span>,</span><br><span class="line">  <span class="attr">fn</span>: <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>, <span class="variable language_">this</span>.<span class="property">type</span>); <span class="comment">// DOM element, &#x27;button&#x27;</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">btn.<span class="title function_">addEventListener</span>(<span class="string">&#x27;click&#x27;</span>, obj.<span class="property">fn</span>);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> obj1 = &#123;</span><br><span class="line">  <span class="attr">type</span>: <span class="string">&#x27;箭頭函式&#x27;</span>,</span><br><span class="line">  <span class="attr">fnArrow</span>: <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>, <span class="variable language_">this</span>.<span class="property">type</span>); <span class="comment">// // window 物件, undefined</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">btn.<span class="title function_">addEventListener</span>(<span class="string">&#x27;click&#x27;</span>, obj1.<span class="property">fnArrow</span>);</span><br></pre></td></tr></table></figure>
+
+<h2 id="arguments-參數"><a href="#arguments-參數" class="headerlink" title="arguments 參數"></a>arguments 參數</h2><div class="note danger">
+            <p>箭頭函式沒有 arguments 參數使用的話會噴 Error。</p>
+          </div>
 
 <div class="note default">
-            <p>下方會解析 ECMA-262 11th（ES2020）規範：<a href="https://262.ecma-international.org/11.0/#sec-strict-equality-comparison">7.2.16 Strict Equality Comparison</a> 是如何比較的以及轉型的過程。</p>
+            <p>解法：使用其餘參數（rest parameter）來替代，（arguments 是類陣列，其餘參數是陣列）</p>
           </div>
 
-<blockquote>
-<p>Step1：檢查型別，型別不同則回傳 false。</p>
-</blockquote>
-<p><img src="https://imgur.com/qXhuPgq.jpg"></p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;1&#x27;</span> === <span class="number">1</span>); <span class="comment">// false</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> fn = <span class="keyword">function</span> (<span class="params">parm</span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">arguments</span>);</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">const</span> <span class="title function_">arrowFn</span> = (<span class="params">parm</span>) =&gt; &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">arguments</span>);</span><br><span class="line">&#125;;</span><br><span class="line"><span class="title function_">fn</span>(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>);      <span class="comment">// Arguments(3)</span></span><br><span class="line"><span class="title function_">arrowFn</span>(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>); <span class="comment">// ReferenceError: arguments is not defined</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 其餘參數（rest parameter）</span></span><br><span class="line"><span class="keyword">const</span> <span class="title function_">arrowRestFn</span> = (<span class="params">...parm</span>) =&gt; &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(parm);</span><br><span class="line">&#125;;</span><br><span class="line"><span class="title function_">arrowRestFn</span>(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>); <span class="comment">// [1, 2, 3]</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-<blockquote>
-<p>Step2：型別為 number 時會回傳 <a href="https://www.ecma-international.org/ecma-262/11.0/index.html#sec-numeric-types-number-equal">Number::equal ( x, y )</a> 結果，型別為 BigInt 時會回傳 <a href="https://www.ecma-international.org/ecma-262/11.0/index.html#sec-numeric-types-bigint-equal">BigInt::equal ( x, y )</a> 結果。</p>
-</blockquote>
-<p><img src="https://imgur.com/EID9qm4.jpg"></p>
+<h2 id="constructor、prototype"><a href="#constructor、prototype" class="headerlink" title="constructor、prototype"></a>constructor、prototype</h2><ul>
+<li>沒有原型（prototype）屬性，使用會回傳 undefined。</li>
+<li>若使用於建構式（constructor），會在使用 new 時候噴 error。</li>
+</ul>
 <div class="note default">
-            <p>在這之前需要，先暸解 Number、BigInt 兩者的 equal ( x, y ) 規則。</p>
+            <p>在實體化物件的時候會改變 this 的指向，指向新的實體物件，但由於箭頭函式無法指向新的實體物件所以會噴錯。</p>
           </div>
 
-<p>Number::equal ( x, y ) 規則：</p>
-<p><img src="https://imgur.com/gGq66Sb.jpg"></p>
-<ul>
-<li>有 NaN 就回傳 false。</li>
-<li>值相同就回傳 true。</li>
-<li>兩者為 0 就回傳 true。（不管正負）</li>
-</ul>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">NaN</span> === <span class="title class_">NaN</span>); <span class="comment">// false</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(+<span class="number">1</span> === -<span class="number">1</span>);   <span class="comment">// false</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="number">0</span> === -<span class="number">0</span>);    <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> fn = <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>);</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">const</span> <span class="title function_">arrowFn</span> = (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>);</span><br><span class="line">&#125;;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(fn.<span class="property"><span class="keyword">prototype</span></span>);      <span class="comment">// &#123;constructor: ƒ&#125;</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(arrowFn.<span class="property"><span class="keyword">prototype</span></span>); <span class="comment">// undefined</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">new</span> <span class="title function_">fn</span>();</span><br><span class="line"><span class="keyword">new</span> <span class="title function_">arrowFn</span>(); <span class="comment">// TypeError: arrowFn is not a constructor</span></span><br></pre></td></tr></table></figure>
 
-<p>BigInt::equal ( x, y ) 規則：</p>
-<p><img src="https://imgur.com/PiEO17R.jpg"></p>
-<ul>
-<li>BigInt 值相同回傳 true，否則回傳 false。</li>
-</ul>
-<div class="note primary">
-            <p>根據 <a href="https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Global_Objects/BigInt">MDN 文件</a>：「BigInt 是一個內建的物件，提供了表示大於 “2 的 53 次方” 整數的功能 (“2 的 53 次方” 是 JavaScript 原生的 Number 能夠表示的最大值)」</p>
-          </div>
-
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="number">1n</span> === <span class="number">1n</span>); <span class="comment">// true</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="number">1n</span> === <span class="number">2n</span>); <span class="comment">// false</span></span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>Step3：會依照 SameValueNonNumeric 規則回傳結果。</p>
-</blockquote>
-<p><img src="https://imgur.com/qivniM1.jpg"></p>
-<p>SameValueNonNumeric ECMA Assert：</p>
-<ul>
-<li>兩者不是 <code>Number</code> 或 <code>BigInt</code> 型別。</li>
-<li>兩者值不相同。</li>
-</ul>
-<p>SameValueNonNumeric 規則：</p>
-<p><img src="https://imgur.com/L3oUg26.jpg"></p>
-<ul>
-<li>有 <code>undefined</code> 回傳 true。</li>
-<li>有 <code>null</code> 回傳 true。</li>
-<li><code>字串型別</code>時判斷字串是否相同，相同回傳 true 否則回傳 false。</li>
-<li><code>boolean</code>、<code>symbol</code> 和 <code>object</code> 型別都是比較值是否相同 。(但 object、symbols 還需要比較 reference 是否相同)<ul>
-<li>參考：<a href="https://stackoverflow.com/questions/61203925/how-does-the-array-prototype-includes-function-compare-objects">How does the Array.prototype.includes function compare objects</a></li>
-</ul>
-</li>
-</ul>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="literal">true</span> === <span class="literal">true</span>);           <span class="comment">// true</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">Symbol</span>(<span class="number">1</span>) === <span class="title class_">Symbol</span>(<span class="number">1</span>)); <span class="comment">// false</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(&#123;&#125; === &#123;&#125;);               <span class="comment">// false</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> obj = &#123;&#125;;</span><br><span class="line"><span class="keyword">const</span> sym = <span class="title class_">Symbol</span>();</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>([obj].<span class="title function_">includes</span>(obj));     <span class="comment">// true</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>([sym].<span class="title function_">includes</span>(sym));     <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
-
-<hr>
-<h2 id="conclusion"><a href="#conclusion" class="headerlink" title="conclusion"></a>conclusion</h2><ul>
-<li><code>object</code>、<code>symbols</code> 還需要比較 reference，指向同一個 <code>references</code> 才會回傳 true。</li>
-<li><code>===</code> 不會做自動轉型。</li>
-<li><code>==</code>  除了物件外，會轉型為 number 在做比較。</li>
-<li>判斷是否為 <code>null</code> 、 <code>undefined</code> 可以使用 <code>==</code> 替代 <code>===</code> 。</li>
-</ul>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> (x === <span class="literal">null</span> || x === <span class="literal">undefined</span>) &#123;</span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// == 特性等號左右兩邊為 null、undefined 會回傳 true</span></span><br><span class="line"><span class="keyword">if</span> (x == <span class="literal">null</span>) &#123;</span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>常見迷思</p>
-</blockquote>
-<div class="note success">
-            <p>&#x3D;&#x3D; 不會檢查型別，直接轉型。</p>
-          </div>
-
-<div class="note warning">
-            <p>&#x3D;&#x3D; 第一步不是直接轉型，而是先檢查型別，再依造規則做轉型。</p>
-          </div>
-
-<blockquote>
-<p>分享幾張 &#x3D;&#x3D; 、 &#x3D;&#x3D;&#x3D;、if 的視覺化圖表</p>
-</blockquote>
-<p><a href="https://github.com/dorey/JavaScript-Equality-Table">src：JavaScript-Equality-Table</a></p>
-<p><img src="https://imgur.com/Ys0CgUz.jpg" alt="=== 比較表"></p>
-<p><img src="https://imgur.com/WzPfFFf.jpg" alt="== 比較表"></p>
-<p><img src="https://imgur.com/wd4ydIB.jpg" alt="綜合比較表"></p>
-<p><img src="https://imgur.com/OtmX7k7.jpg" alt="if/else （綠色代表 true、白色代表 false）"></p>
-<p>最後一張：<a href="https://thomas-yang.me/projects/oh-my-dear-js/">Relational and Equality Operators</a></p>
-<p><img src="https://imgur.com/Og8Y5JH.jpg" alt="依照嚴格程度排序不同的比較子（紅色最嚴格、灰色最寬鬆）"></p>
+<h2 id="Array-prototype、陣列方法"><a href="#Array-prototype、陣列方法" class="headerlink" title="Array.prototype、陣列方法"></a>Array.prototype、陣列方法</h2><p><img src="https://imgur.com/oQML1lh.jpg" alt="正常傳統函式中的 Array 屬性"></p>
 <div class="note default">
-            <p>最後建議新手一律使用嚴謹的 &#x3D;&#x3D;&#x3D; 進行比較，避免因為自動轉型而產生非預期的結果，有經驗的就可以自由使用兩者囉。</p>
+            <p>箭頭函式由於沒有 <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a> 這個屬性，因此無法使用陣列方法</p>
           </div>
 
-<h2 id="references"><a href="#references" class="headerlink" title="references"></a>references</h2><p>白話文：<a href="https://medium.com/schaoss-blog/%E5%89%8D%E7%AB%AF%E4%B8%89%E5%8D%81-13-js-%E7%82%BA%E4%BB%80%E9%BA%BC%E5%88%A4%E6%96%B7%E7%9B%B8%E7%AD%89%E6%99%82%E4%B8%8D%E7%94%A8%E8%83%BD%E9%9B%99%E7%AD%89%E8%99%9F-d02fbf91492f">前端三十｜13. [JS] 為什麼判斷相等時不能用雙等號？</a><br>簡單解析ES6文件：<a href="https://stringpiggy.hpd.io/javascript-double-equals-triple-equals/#tldr">JavaScript 可愛筆記 #0 – 兩個等於真的有那麼壞嗎？</a><br>解析 ToPrimitive：<a href="https://sinaad.github.io/xfe/2016/04/15/ToPrimitive/">js隐式装箱-ToPrimitive</a><br>stackoverflow 討論：<a href="https://stackoverflow.com/questions/359494/which-equals-operator-vs-should-be-used-in-javascript-comparisons">Which equals operator (&#x3D;&#x3D; vs &#x3D;&#x3D;&#x3D;) should be used in JavaScript comparisons?</a></p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> calculate = &#123;</span><br><span class="line">  <span class="attr">array</span>: [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>],</span><br><span class="line">  <span class="attr">sum</span>: <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="variable language_">this</span>.<span class="property">array</span>.<span class="title function_">reduce</span>(<span class="function">(<span class="params">result, item</span>) =&gt;</span> result + item)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//TypeError: Cannot read property &#x27;array&#x27; of undefined</span></span><br><span class="line">calculate.<span class="title function_">sum</span>()</span><br></pre></td></tr></table></figure>
+
+<h2 id="conclusion"><a href="#conclusion" class="headerlink" title="conclusion"></a>conclusion</h2><p>箭頭函式 tips</p>
+<ul>
+<li>傳統函式縮寫且只有一個參數才不用加<code>括號 ()</code>。</li>
+<li>特殊情況會造成 this 指向<code>改變</code>。</li>
+<li>沒有 arguments 參數。</li>
+<li>沒有 constructor、prototype。</li>
+<li>沒有 Array 無法使用陣列方法。</li>
+</ul>
+<h2 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h2><ul>
+<li><a href="https://pjchender.dev/javascript/js-arrow-function/">[JS] 箭頭函式（arrow function）和它對 this 的影響</a></li>
+<li><a href="https://ithelp.ithome.com.tw/articles/10249940">JavaScript基本功修練：Day21 - 箭頭函式</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>JavaScript</category>
+      </categories>
+      <tags>
+        <tag>JavaScript</tag>
+        <tag>箭頭函式</tag>
+        <tag>this</tag>
+        <tag>arguments</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>JS 短路求值 Short-circuit evaluation</title>
+    <url>/javascript/350805089/</url>
+    <content><![CDATA[<div class="note primary">
+            <p>快速複習一下<a href="https://kentdoit.github.io/javascript/1047366401/">邏輯運算子</a>：「當 AND 的第一個運算數的值為 false 時，其結果必定為 false；當 OR 的第一個運算數為 true 時，最後結果必定為 true。」</p>
+          </div>
+
+<div class="note default">
+            <p>不熟悉 <code>真值（truthy）</code>、<code>假值（falsy）</code> 可以參考這篇<a href="https://kentdoit.github.io/javascript/1047366401/#%E7%9C%9F%E5%80%BC%EF%BC%88truthy%EF%BC%89%E3%80%81%E5%81%87%E5%80%BC%EF%BC%88falsy%EF%BC%89">文章</a>。</p>
+          </div>
+
+<blockquote>
+<p>口訣</p>
+</blockquote>
+<ul>
+<li><code>&amp;&amp;</code> 左邊是 <code>假值(falsy)</code> 則不會執行右邊。</li>
+<li><code>||</code> 左邊是 <code>真值(truthy)</code> 則不會執行右邊。</li>
+</ul>
+<div class="note default">
+            <p>下方範例運用 &amp;&amp;、|| 特性，演示將左右兩邊的 <code>表達式</code> 達到和 if 判斷式一樣的效果。</p>
+          </div>
+
+<p>e.g. 使用 <code>||</code> 來實作賦予預設值功能</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> a = <span class="literal">null</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 短路求值寫法</span></span><br><span class="line"><span class="keyword">let</span> b = a || <span class="number">1</span>; <span class="comment">// a 不是真值所以會執行右邊，將 1 賦予到 b 變數上。</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// if 寫法</span></span><br><span class="line"><span class="keyword">if</span> (!a) &#123;</span><br><span class="line">  <span class="keyword">let</span> b = a;</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">  <span class="keyword">let</span> b = <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 三元運算寫法</span></span><br><span class="line"><span class="keyword">let</span> b = a ? a : <span class="number">1</span>;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>e.g. <code>&amp;&amp;</code> 透過判斷 <code>真假值</code> 來決定是否執行表達式（也可以執行函式）</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> person1 = &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&#x27;kent&#x27;</span>,</span><br><span class="line">  <span class="attr">age</span>: <span class="number">18</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 短路求值寫法（僅適用於只有一種結果的判斷式）</span></span><br><span class="line">person1.<span class="property">age</span> &gt;= <span class="number">18</span> &amp;&amp; <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`<span class="subst">$&#123;person1.name&#125;</span> 已成年`</span>); <span class="comment">// person1.age &gt;= 18 是 true 所有會執行右邊 console.log</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// if 寫法</span></span><br><span class="line"><span class="keyword">if</span> (person1.<span class="property">age</span> &gt;= <span class="number">18</span>) <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`<span class="subst">$&#123;person1.name&#125;</span> 已成年`</span>);</span><br></pre></td></tr></table></figure>
+
+<p>e.g. 判斷物件屬性是否存在</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> school = &#123;</span><br><span class="line">  <span class="attr">info</span>: &#123;</span><br><span class="line">    <span class="attr">student</span>: &#123;</span><br><span class="line">      <span class="attr">name</span>: <span class="string">&#x27;kent&#x27;</span>,</span><br><span class="line">      <span class="attr">age</span>: <span class="number">18</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 短路求值寫法</span></span><br><span class="line"><span class="keyword">let</span> name = obj.<span class="property">info</span>.<span class="property">teacher</span> &amp;&amp; obj.<span class="property">info</span>.<span class="property">teacher</span>.<span class="property">name</span>; <span class="comment">// 會透過先判斷上一層屬性是否存在，來預防噴錯</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// if 寫法</span></span><br><span class="line"><span class="keyword">let</span> name = obj.<span class="property">info</span>.<span class="property">teacher</span>.<span class="property">name</span>; <span class="comment">// TypeError: Cannot read properties of undefined (reading &#x27;name&#x27;)</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (obj.<span class="property">info</span>.<span class="property">teacher</span>) &#123;</span><br><span class="line">  <span class="keyword">let</span> name = obj.<span class="property">info</span>.<span class="property">teacher</span>.<span class="property">name</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>短路求值 tips</p>
+</blockquote>
+<ol>
+<li><code>短路求值</code> 使用表達式的情況下，只適用於沒有 else 的判斷式，需要有 else 可以使用 <code>三元運算子</code>。</li>
+<li><code>短路求值</code> 不能帶 return。</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">isAdult</span>(<span class="params">age</span>) &#123; </span><br><span class="line">  <span class="comment">// 判斷是否為假值</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">// 短路求值寫法（短路求值帶 return 會噴 error）</span></span><br><span class="line">  age &amp;&amp; <span class="keyword">return</span> <span class="string">&#x27;資料錯誤&#x27;</span>; <span class="comment">// SyntaxError: Unexpected token &#x27;return&#x27;</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">// if 寫法</span></span><br><span class="line">  <span class="keyword">if</span> (!age) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&#x27;資料錯誤&#x27;</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  <span class="comment">// 下方範例不適合用短路求值，因為會缺少 else 表達式。</span></span><br><span class="line">  <span class="keyword">let</span> res</span><br><span class="line">  <span class="comment">// 短路求值寫法</span></span><br><span class="line">  res = (age &gt;= <span class="number">18</span>) &amp;&amp; <span class="string">&#x27;已成年&#x27;</span>;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 三元運算子寫法</span></span><br><span class="line">  res = age &gt;= <span class="number">18</span> ? <span class="string">&#x27;已成年&#x27;</span> : <span class="string">&#x27;未成年&#x27;</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title function_">isAdult</span>(<span class="literal">null</span>);  <span class="comment">// 資料錯誤</span></span><br><span class="line"><span class="title function_">isAdult</span>(<span class="number">18</span>); <span class="comment">// 已成年</span></span><br><span class="line"><span class="title function_">isAdult</span>(<span class="number">17</span>);  <span class="comment">// 未成年</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="詬病「不夠嚴謹」"><a href="#詬病「不夠嚴謹」" class="headerlink" title="詬病「不夠嚴謹」"></a>詬病「不夠嚴謹」</h3><div class="note default">
+            <p>👨‍💻 當變數為 <code>false</code>、<code>0</code> 或空字串 <code>&quot;&quot;</code> 其中之一時， 則布林值也會轉型為<code>假值 (falsy)</code>，對於判斷變數是否使用過來說是相當不方便的一件事。</p>
+          </div>
+
+<figure class="highlight js"><figcaption><span>e.g. 判斷某個變數是否使用過，有的話就作初始化。</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> time = <span class="number">1</span> - <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 判斷變數是否使用過，有的話將其初始化</span></span><br><span class="line"><span class="keyword">if</span> (time) &#123;</span><br><span class="line">  <span class="comment">// 初始化失敗</span></span><br><span class="line">  time = <span class="literal">null</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 初始化失敗</span></span><br><span class="line">time = time &amp;&amp; <span class="literal">null</span>;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight js"><figcaption><span>e.g. 假設有一間銀行，發給新辦用戶 100 摳，結果連舊客戶都發了...</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> person1 = &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&#x27;kent&#x27;</span>,</span><br><span class="line">  <span class="attr">age</span>: <span class="number">18</span>,</span><br><span class="line">  <span class="attr">wallet</span>: <span class="number">0</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> person2 = &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&#x27;clark&#x27;</span>,</span><br><span class="line">  <span class="attr">age</span>: <span class="number">20</span>,</span><br><span class="line">  <span class="attr">wallet</span>: <span class="literal">null</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">person1.<span class="property">wallet</span> || &#123;person1, ...&#123;<span class="attr">wallet</span>: <span class="number">100</span>&#125;&#125;; <span class="comment">// &#123;person1: &#123;…&#125;, wallet: 100&#125;</span></span><br><span class="line">person2.<span class="property">wallet</span> || &#123;person2, ...&#123;<span class="attr">wallet</span>: <span class="number">100</span>&#125;&#125;; <span class="comment">// &#123;person2: &#123;…&#125;, wallet: 100&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 發現活動還沒開跑，已經發了幾百萬出去</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="https://imgur.com/yNnVS12.jpg" alt="部署後的工程師"></p>
+<div class="note default">
+            <p>javascript 後來增加了一種 <a href="https://kentdoit.github.io/javascript/3525467973/"><code>空值合併運算子</code></a> 用來解決不夠嚴謹的問題。</p>
+          </div>
+
+<h2 id="conclusion"><a href="#conclusion" class="headerlink" title="conclusion"></a>conclusion</h2><p><img src="https://imgur.com/w9OtDHw.png" alt="||、&amp;&amp; 使用口訣"></p>
+<h2 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h2><ul>
+<li><a href="https://bolaslien.github.io/blog/2021/06/18/js-short-circuit-evaluation/">用邏輯判斷 ||(OR) 及 &amp;&amp;(AND) 來改寫 if (短路求值 Short-circuit evaluation)</a></li>
+</ul>
 ]]></content>
       <categories>
         <category>JavaScript</category>
@@ -1466,7 +1467,6 @@ console.log(obj.name);  // kent
       <tags>
         <tag>運算子</tag>
         <tag>JavaScript</tag>
-        <tag>ECMAScript</tag>
       </tags>
   </entry>
   <entry>
@@ -1642,6 +1642,82 @@ console.log(obj.name);  // kent
 <li><a href="https://medium.com/vicky-notes/es6-%E7%AB%A0%E7%AF%80-template-literial-7309b9e3bebb">ES6 章節：Template Literial</a></li>
 <li>PJ 大 <a href="https://pjchender.blogspot.com/2017/01/javascript-es6-template-literalstagged.html">[筆記] JavaScript ES6 中的模版字符串（template literals）和標籤模版（tagged template）</a></li>
 <li>Ray <a href="https://israynotarray.com/javascript/20211114/136128318/">JavaScript 核心觀念(72) - ES6 章節：Template Literial - 標籤樣板字面值</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>JavaScript</category>
+      </categories>
+      <tags>
+        <tag>JavaScript</tag>
+        <tag>ES6</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>JS 可選串連運算子 Optional chaining operator</title>
+    <url>/javascript/3900271525/</url>
+    <content><![CDATA[<h2 id="可選串連運算子-Optional-chaining-operator"><a href="#可選串連運算子-Optional-chaining-operator" class="headerlink" title="可選串連運算子 Optional chaining operator"></a>可選串連運算子 Optional chaining operator</h2><div class="note primary">
+            <p><a href="https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Operators/Optional_chaining">MDN</a>：<br>可選串連運算子 <strong><code>?.</code></strong> 允許進行深層次的物件值存取，而無需透過明確的物件值串連驗證。<code>?.</code> 運算子的操作與 <code>.</code> 屬性存取運算子相似，後者會在參照到 <a href="https://developer.mozilla.org/en-US/docs/Glossary/Nullish">nullish (en-US)</a> 的值為 <a href="https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Global_Objects/null">null</a> or <a href="https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Global_Objects/undefined">undefined</a> 來判斷當不存在時會出現錯誤，而前者可選串連則回傳 <code>undefined</code>。 當需要存取一個函數，而這函數並不存在時，則會回傳 <code>undefined</code>。</p>
+          </div>
+
+<div class="note default">
+            <p>白話文：存取一層以上的物件屬性時，就算屬性不存在也不會報錯，而是回傳 undefined。</p>
+          </div>
+
+<p>語法：在 <code>.</code> 前方加上 <code>?</code>。</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">obj?.prop</span><br><span class="line">obj?.[expr]</span><br><span class="line">arr?.[index]</span><br><span class="line">func?.(args)</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>Tips</p>
+</blockquote>
+<ul>
+<li>當 <code>?.</code> 左側屬性不存在，回傳 <code>undefined</code> 而非 TypeError。</li>
+</ul>
+<div class="note primary">
+            <p>物件特性：取用未定義屬性則會回傳 undefined，但僅限一層！不然會噴 TypeError。<br>（因此有了可選串連運算子的誕生）</p>
+          </div>
+
+<h3 id="語法差異"><a href="#語法差異" class="headerlink" title="語法差異"></a>語法差異</h3><div class="note info">
+            <p>舊方法：手動判斷 typeof 是否為 undefined。<br>新方法：直接在屬性 <code>.</code> 前方加上 <code>?</code>。</p>
+          </div>
+
+<div class="note primary">
+            <p>判斷是否存在會依照 <a href="https://developer.mozilla.org/en-US/docs/Glossary/Nullish">nullish value</a> （null、undefined）直來判斷，若值為 nullish value 就表示不存在。</p>
+          </div>
+
+<figure class="highlight js"><figcaption><span>e.g. 新舊寫法差異</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> school = &#123;</span><br><span class="line">  <span class="attr">info</span>: &#123;</span><br><span class="line">    <span class="attr">student</span>: &#123;</span><br><span class="line">      <span class="attr">name</span>: <span class="string">&#x27;kent&#x27;</span>,</span><br><span class="line">      <span class="attr">age</span>: <span class="number">18</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// TypeError: Cannot read properties of undefined (reading &#x27;name&#x27;)</span></span><br><span class="line"><span class="keyword">let</span> name = school.<span class="property">info</span>.<span class="property">teacher</span>.<span class="property">name</span>; </span><br><span class="line"></span><br><span class="line"><span class="comment">// 舊方法</span></span><br><span class="line"><span class="keyword">if</span> (<span class="keyword">typeof</span> (school.<span class="property">info</span>.<span class="property">teacher</span>) !== <span class="string">&#x27;undefined&#x27;</span>)&#123;</span><br><span class="line">  <span class="keyword">let</span> name = school.<span class="property">info</span>.<span class="property">teacher</span>.<span class="property">name</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 新方法</span></span><br><span class="line"><span class="keyword">let</span> name = school.<span class="property">info</span>.<span class="property">teacher</span>?.<span class="property">name</span>;</span><br></pre></td></tr></table></figure>
+
+<div class="note default">
+            <p>下方會用更多範例來介紹，範例中會使用<a href="https://kentdoit.github.io/javascript/350805089/">短路求值</a>的方式來演示，還不暸解的朋友可以參考這篇文章。</p>
+          </div>
+
+<hr>
+<h2 id="情境範例"><a href="#情境範例" class="headerlink" title="情境範例"></a>情境範例</h2><h3 id="判斷物件屬性是否存在"><a href="#判斷物件屬性是否存在" class="headerlink" title="判斷物件屬性是否存在"></a>判斷物件屬性是否存在</h3><ul>
+<li>舊方法：<code>&amp;&amp;</code><ul>
+<li>會先判斷上一層屬性是否存在，<code>&amp;&amp; 左邊</code> 是否為 nullish value （null 或 undefined）</li>
+<li>不是null 或 undefined 才繼續執行 <code>&amp;&amp; 右邊</code>。</li>
+</ul>
+</li>
+<li>新方法：<code>?.</code><ul>
+<li>當 <code>?.</code> 左側屬性是否為 nullish value （null 或 undefined），則回傳 undefined。</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> school = &#123;</span><br><span class="line">  <span class="attr">info</span>: &#123;</span><br><span class="line">    <span class="attr">student</span>: &#123;</span><br><span class="line">      <span class="attr">name</span>: <span class="string">&#x27;kent&#x27;</span>,</span><br><span class="line">      <span class="attr">age</span>: <span class="number">18</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 問題</span></span><br><span class="line"><span class="keyword">let</span> name = school.<span class="property">info</span>.<span class="property">teacher</span>.<span class="property">name</span>; <span class="comment">// TypeError: Cannot read properties of undefined (reading &#x27;name&#x27;)</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 舊方法</span></span><br><span class="line"><span class="keyword">let</span> name = school.<span class="property">info</span>.<span class="property">teacher</span> &amp;&amp; school.<span class="property">info</span>.<span class="property">teacher</span>.<span class="property">name</span>;   <span class="comment">// undefined</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 新方法</span></span><br><span class="line"><span class="keyword">let</span> name = school.<span class="property">info</span>.<span class="property">teacher</span>?.<span class="property">name</span>;      <span class="comment">// undefined</span></span><br><span class="line"><span class="keyword">let</span> name = school.<span class="property">info</span>[<span class="string">&#x27;teacher&#x27;</span>]?.<span class="property">name</span>;   <span class="comment">// undefined</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="延伸應用"><a href="#延伸應用" class="headerlink" title="延伸應用"></a>延伸應用</h2><h3 id="預防方法不存在"><a href="#預防方法不存在" class="headerlink" title="預防方法不存在"></a>預防方法不存在</h3><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> obj = &#123;</span><br><span class="line">  <span class="attr">fn</span>: <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;fn&#x27;</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(obj.<span class="title function_">fnn</span>());   <span class="comment">// TypeError: obj.fnn is not a function</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(obj.<span class="property">fnn</span>?.()); <span class="comment">// undefined</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="結合空值合併運算符（-）來設置預設值"><a href="#結合空值合併運算符（-）來設置預設值" class="headerlink" title="結合空值合併運算符（??）來設置預設值"></a>結合空值合併運算符（??）來設置預設值</h3><figure class="highlight js"><figcaption><span>延續上方的程式碼</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> name = school.<span class="property">info</span>.<span class="property">teacher</span>?.<span class="property">name</span> ?? <span class="string">&#x27;陳怡君&#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+<h2 id="conclusion"><a href="#conclusion" class="headerlink" title="conclusion"></a>conclusion</h2><div class="note default">
+            <p>比較直接透過錯誤訊息判斷問題（難追尋問題原因），但如果觀念夠的話，還是可以透過邏輯拆解一步一步尋找。</p>
+          </div>
+
+<h2 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h2><ul>
+<li><a href="https://github.com/HelloJunWei/blog/issues/7">我所不知道的javascript #7</a></li>
+</ul>
+<p>延伸閱讀</p>
+<ul>
+<li>程式猿吃香蕉：<a href="https://medium.com/%E7%A8%8B%E5%BC%8F%E7%8C%BF%E5%90%83%E9%A6%99%E8%95%89/%E4%BE%86%E8%AB%87-javascript-%E7%9A%84-optional-chaining-%E5%92%8C-nullish-coalescing-part-i-992625a1861d">前端開發 🦏 來談 JavaScript 的 Optional Chaining 和 Nullish Coalescing (一)</a></li>
 </ul>
 ]]></content>
       <categories>
@@ -1932,82 +2008,6 @@ console.log(obj.name);  // kent
       </tags>
   </entry>
   <entry>
-    <title>JS 可選串連運算子 Optional chaining operator</title>
-    <url>/javascript/3900271525/</url>
-    <content><![CDATA[<h2 id="可選串連運算子-Optional-chaining-operator"><a href="#可選串連運算子-Optional-chaining-operator" class="headerlink" title="可選串連運算子 Optional chaining operator"></a>可選串連運算子 Optional chaining operator</h2><div class="note primary">
-            <p><a href="https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Operators/Optional_chaining">MDN</a>：<br>可選串連運算子 <strong><code>?.</code></strong> 允許進行深層次的物件值存取，而無需透過明確的物件值串連驗證。<code>?.</code> 運算子的操作與 <code>.</code> 屬性存取運算子相似，後者會在參照到 <a href="https://developer.mozilla.org/en-US/docs/Glossary/Nullish">nullish (en-US)</a> 的值為 <a href="https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Global_Objects/null">null</a> or <a href="https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Global_Objects/undefined">undefined</a> 來判斷當不存在時會出現錯誤，而前者可選串連則回傳 <code>undefined</code>。 當需要存取一個函數，而這函數並不存在時，則會回傳 <code>undefined</code>。</p>
-          </div>
-
-<div class="note default">
-            <p>白話文：存取一層以上的物件屬性時，就算屬性不存在也不會報錯，而是回傳 undefined。</p>
-          </div>
-
-<p>語法：在 <code>.</code> 前方加上 <code>?</code>。</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">obj?.prop</span><br><span class="line">obj?.[expr]</span><br><span class="line">arr?.[index]</span><br><span class="line">func?.(args)</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>Tips</p>
-</blockquote>
-<ul>
-<li>當 <code>?.</code> 左側屬性不存在，回傳 <code>undefined</code> 而非 TypeError。</li>
-</ul>
-<div class="note primary">
-            <p>物件特性：取用未定義屬性則會回傳 undefined，但僅限一層！不然會噴 TypeError。<br>（因此有了可選串連運算子的誕生）</p>
-          </div>
-
-<h3 id="語法差異"><a href="#語法差異" class="headerlink" title="語法差異"></a>語法差異</h3><div class="note info">
-            <p>舊方法：手動判斷 typeof 是否為 undefined。<br>新方法：直接在屬性 <code>.</code> 前方加上 <code>?</code>。</p>
-          </div>
-
-<div class="note primary">
-            <p>判斷是否存在會依照 <a href="https://developer.mozilla.org/en-US/docs/Glossary/Nullish">nullish value</a> （null、undefined）直來判斷，若值為 nullish value 就表示不存在。</p>
-          </div>
-
-<figure class="highlight js"><figcaption><span>e.g. 新舊寫法差異</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> school = &#123;</span><br><span class="line">  <span class="attr">info</span>: &#123;</span><br><span class="line">    <span class="attr">student</span>: &#123;</span><br><span class="line">      <span class="attr">name</span>: <span class="string">&#x27;kent&#x27;</span>,</span><br><span class="line">      <span class="attr">age</span>: <span class="number">18</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// TypeError: Cannot read properties of undefined (reading &#x27;name&#x27;)</span></span><br><span class="line"><span class="keyword">let</span> name = school.<span class="property">info</span>.<span class="property">teacher</span>.<span class="property">name</span>; </span><br><span class="line"></span><br><span class="line"><span class="comment">// 舊方法</span></span><br><span class="line"><span class="keyword">if</span> (<span class="keyword">typeof</span> (school.<span class="property">info</span>.<span class="property">teacher</span>) !== <span class="string">&#x27;undefined&#x27;</span>)&#123;</span><br><span class="line">  <span class="keyword">let</span> name = school.<span class="property">info</span>.<span class="property">teacher</span>.<span class="property">name</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 新方法</span></span><br><span class="line"><span class="keyword">let</span> name = school.<span class="property">info</span>.<span class="property">teacher</span>?.<span class="property">name</span>;</span><br></pre></td></tr></table></figure>
-
-<div class="note default">
-            <p>下方會用更多範例來介紹，範例中會使用<a href="https://kentdoit.github.io/javascript/350805089/">短路求值</a>的方式來演示，還不暸解的朋友可以參考這篇文章。</p>
-          </div>
-
-<hr>
-<h2 id="情境範例"><a href="#情境範例" class="headerlink" title="情境範例"></a>情境範例</h2><h3 id="判斷物件屬性是否存在"><a href="#判斷物件屬性是否存在" class="headerlink" title="判斷物件屬性是否存在"></a>判斷物件屬性是否存在</h3><ul>
-<li>舊方法：<code>&amp;&amp;</code><ul>
-<li>會先判斷上一層屬性是否存在，<code>&amp;&amp; 左邊</code> 是否為 nullish value （null 或 undefined）</li>
-<li>不是null 或 undefined 才繼續執行 <code>&amp;&amp; 右邊</code>。</li>
-</ul>
-</li>
-<li>新方法：<code>?.</code><ul>
-<li>當 <code>?.</code> 左側屬性是否為 nullish value （null 或 undefined），則回傳 undefined。</li>
-</ul>
-</li>
-</ul>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> school = &#123;</span><br><span class="line">  <span class="attr">info</span>: &#123;</span><br><span class="line">    <span class="attr">student</span>: &#123;</span><br><span class="line">      <span class="attr">name</span>: <span class="string">&#x27;kent&#x27;</span>,</span><br><span class="line">      <span class="attr">age</span>: <span class="number">18</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 問題</span></span><br><span class="line"><span class="keyword">let</span> name = school.<span class="property">info</span>.<span class="property">teacher</span>.<span class="property">name</span>; <span class="comment">// TypeError: Cannot read properties of undefined (reading &#x27;name&#x27;)</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 舊方法</span></span><br><span class="line"><span class="keyword">let</span> name = school.<span class="property">info</span>.<span class="property">teacher</span> &amp;&amp; school.<span class="property">info</span>.<span class="property">teacher</span>.<span class="property">name</span>;   <span class="comment">// undefined</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 新方法</span></span><br><span class="line"><span class="keyword">let</span> name = school.<span class="property">info</span>.<span class="property">teacher</span>?.<span class="property">name</span>;      <span class="comment">// undefined</span></span><br><span class="line"><span class="keyword">let</span> name = school.<span class="property">info</span>[<span class="string">&#x27;teacher&#x27;</span>]?.<span class="property">name</span>;   <span class="comment">// undefined</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="延伸應用"><a href="#延伸應用" class="headerlink" title="延伸應用"></a>延伸應用</h2><h3 id="預防方法不存在"><a href="#預防方法不存在" class="headerlink" title="預防方法不存在"></a>預防方法不存在</h3><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> obj = &#123;</span><br><span class="line">  <span class="attr">fn</span>: <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;fn&#x27;</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(obj.<span class="title function_">fnn</span>());   <span class="comment">// TypeError: obj.fnn is not a function</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(obj.<span class="property">fnn</span>?.()); <span class="comment">// undefined</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="結合空值合併運算符（-）來設置預設值"><a href="#結合空值合併運算符（-）來設置預設值" class="headerlink" title="結合空值合併運算符（??）來設置預設值"></a>結合空值合併運算符（??）來設置預設值</h3><figure class="highlight js"><figcaption><span>延續上方的程式碼</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> name = school.<span class="property">info</span>.<span class="property">teacher</span>?.<span class="property">name</span> ?? <span class="string">&#x27;陳怡君&#x27;</span>;</span><br></pre></td></tr></table></figure>
-
-<h2 id="conclusion"><a href="#conclusion" class="headerlink" title="conclusion"></a>conclusion</h2><div class="note default">
-            <p>比較直接透過錯誤訊息判斷問題（難追尋問題原因），但如果觀念夠的話，還是可以透過邏輯拆解一步一步尋找。</p>
-          </div>
-
-<h2 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h2><ul>
-<li><a href="https://github.com/HelloJunWei/blog/issues/7">我所不知道的javascript #7</a></li>
-</ul>
-<p>延伸閱讀</p>
-<ul>
-<li>程式猿吃香蕉：<a href="https://medium.com/%E7%A8%8B%E5%BC%8F%E7%8C%BF%E5%90%83%E9%A6%99%E8%95%89/%E4%BE%86%E8%AB%87-javascript-%E7%9A%84-optional-chaining-%E5%92%8C-nullish-coalescing-part-i-992625a1861d">前端開發 🦏 來談 JavaScript 的 Optional Chaining 和 Nullish Coalescing (一)</a></li>
-</ul>
-]]></content>
-      <categories>
-        <category>JavaScript</category>
-      </categories>
-      <tags>
-        <tag>JavaScript</tag>
-        <tag>ES6</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>JS String vs toString</title>
     <url>/javascript/4119142473/</url>
     <content><![CDATA[<h2 id="String"><a href="#String" class="headerlink" title="String()"></a>String()</h2><div class="note primary">
@@ -2134,101 +2134,6 @@ console.log(obj.name);  // kent
       </tags>
   </entry>
   <entry>
-    <title>JS 類陣列 （ Array-like ）</title>
-    <url>/javascript/3574120313/</url>
-    <content><![CDATA[<h2 id="Array-like"><a href="#Array-like" class="headerlink" title="Array-like"></a>Array-like</h2><div class="note primary">
-            <p>Array-like object 就是一個類陣列物件（很像陣列的物件），和一般陣會最大差異就是，類陣列<code>沒有</code>陣列內建的方法。</p>
-          </div>
-
-<h3 id="常見的類陣列"><a href="#常見的類陣列" class="headerlink" title="常見的類陣列"></a>常見的類陣列</h3><ul>
-<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/arguments">arguments object</a><ul>
-<li>函式中用來接收所有引數。</li>
-</ul>
-</li>
-<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLCollection">HTMLCollection</a><ul>
-<li>透過方法（ex：getElementsByTagName）取得的 DOM 物件。</li>
-</ul>
-</li>
-<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/NodeList">NodeList</a><ul>
-<li>透過方法（ex：querySelectorAll）取得的節點集合。</li>
-</ul>
-</li>
-</ul>
-<div class="note danger">
-            <p>要注意，類陣列 <code>不是真正</code> 的陣列。</p>
-          </div>
-
-<h3 id="類陣列特性"><a href="#類陣列特性" class="headerlink" title="類陣列特性"></a>類陣列特性</h3><ul>
-<li>可以使用<code>索引值</code>取得值。</li>
-<li>可以使用 <code>length</code> 屬性。</li>
-<li>可以使用 <code>callee</code> 屬性。<ul>
-<li>callee 可以當作是一個指標，指向函式本身。</li>
-<li>對於匿名函式中特別有用，例如：讓匿名函式也可以進行遞迴（但在 ES5 嚴格模式底下已禁用，詳細原因請參考 <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/arguments/callee">MDN</a>）</li>
-</ul>
-</li>
-<li><code>沒有</code> 陣列內建的 <code>方法</code>。（ex：indexOf、concat、forEach）</li>
-</ul>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">add</span>(<span class="params">num1, num2</span>) &#123;</span><br><span class="line">	<span class="keyword">let</span> arr = [<span class="number">2000</span>, <span class="number">22</span>];</span><br><span class="line">	<span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">arguments</span>[<span class="number">0</span>]);     <span class="comment">// 2000</span></span><br><span class="line">	<span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">arguments</span>.<span class="property">length</span>); <span class="comment">// 2</span></span><br><span class="line">	<span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">arguments</span>.<span class="property">callee</span>); <span class="comment">// function code</span></span><br><span class="line">	<span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">arguments</span>, arr);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> constNum = <span class="title function_">add</span>(<span class="number">2000</span>, <span class="number">22</span>);</span><br></pre></td></tr></table></figure>
-
-<p>下方圖片為 <code>console.log(arguments, arr);</code> 的結果，可以從 Prototype 看出 arguments object 中<code>沒有</code>內建陣列方法。</p>
-<p><img src="https://imgur.com/tsnSGYm.jpg"></p>
-<div class="note default">
-            <p>雖然上述類陣列看起來這麼不方便，但可以將類陣列<code>轉為</code>陣列，來使用陣列方法。</p>
-          </div>
-
-<hr>
-<h2 id="類陣列轉陣列的三種方法"><a href="#類陣列轉陣列的三種方法" class="headerlink" title="類陣列轉陣列的三種方法"></a>類陣列轉陣列的三種方法</h2><div class="note default">
-            <p>下列介紹的三種都屬於淺拷貝（shallow-copied）的方式</p>
-          </div>
-
-<ul>
-<li>ES5 <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/slice#array-like_objects">slice</a>：<code>Array.prototype.slice.call(arguments);</code></li>
-<li>ES6 <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/from">Array.from</a>：<code>Array.from(arguments)</code></li>
-<li>ES6 <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/rest_parameters">Rest parameters（解構式）</a>：<code>[...arguments];</code></li>
-</ul>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">add</span>(<span class="params">num1, num2</span>) &#123;</span><br><span class="line">	<span class="keyword">let</span> arr1 = <span class="title class_">Array</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">slice</span>.<span class="title function_">call</span>(<span class="variable language_">arguments</span>);</span><br><span class="line">	<span class="keyword">let</span> arr2 = [...<span class="variable language_">arguments</span>]; <span class="comment">// 寫法相對簡潔</span></span><br><span class="line">	<span class="keyword">let</span> arr3 = <span class="title class_">Array</span>.<span class="title function_">from</span>(<span class="variable language_">arguments</span>);</span><br><span class="line">	<span class="variable language_">console</span>.<span class="title function_">log</span>(arr1, arr2, arr3);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> constNum = <span class="title function_">add</span>(<span class="number">2000</span>, <span class="number">22</span>);</span><br></pre></td></tr></table></figure>
-
-<p>由下方圖片的中的 Prototype 看得出來三者皆是陣列。</p>
-<p><img src="https://imgur.com/2HqYyra.jpg"></p>
-<div class="note default">
-            <p>下方會透過效能、支援度這兩個方面來對這三種方法做比較</p>
-          </div>
-
-<hr>
-<h2 id="performance-效能差異"><a href="#performance-效能差異" class="headerlink" title="performance 效能差異"></a>performance 效能差異</h2><blockquote>
-<p>圖片來自 <a href="https://catalin.red/js-array-from-array-like-object/">JS array from an array-like object</a> 文章，內文中有對上述提到的三種方法，進行效能的評測。</p>
-</blockquote>
-<p><img src="https://imgur.com/WlvvvyC.jpg"></p>
-<div class="note default">
-            <p>從上方圖片可得知 <code>slice</code> 方法的速度是較快的，優於另外兩種方法不少。</p>
-          </div>
-
-<h3 id="support-支援度"><a href="#support-支援度" class="headerlink" title="support 支援度"></a>support 支援度</h3><blockquote>
-<p>下方截圖是來自 <a href="https://caniuse.com/">caniuse</a>，比對上述三種方法對於瀏覽器的支援度。</p>
-</blockquote>
-<p><img src="https://imgur.com/wANgTbr.jpg"><br><img src="https://imgur.com/sGiyYxv.jpg"><br><img src="https://imgur.com/R7GWrno.jpg"></p>
-<div class="note default">
-            <p>最後結果可以得知 <code>slice</code> 方法的支援度是最好的。</p>
-          </div>
-
-<h2 id="conclusion"><a href="#conclusion" class="headerlink" title="conclusion"></a>conclusion</h2><div class="note default">
-            <p>上述三種方法若從效能和支援度方面來看，<code>slice</code> 勝。</p>
-          </div>
-
-<h2 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h2><ul>
-<li><a href="https://zh-tw.coderbridge.com/series/9e5162da940f473a9f1cfeece124ee98/posts/3df8bdb9dfdd4fef9f8b2d1b12eb5bf0">[12] 值 - 陣列、類陣列</a></li>
-<li><a href="https://catalin.red/js-array-from-array-like-object/">JS array from an array-like object</a></li>
-<li><a href="https://stackoverflow.com/questions/29707568/javascript-difference-between-array-and-array-like-object">JavaScript - Difference between Array and Array-like object</a></li>
-</ul>
-]]></content>
-      <categories>
-        <category>JavaScript</category>
-      </categories>
-      <tags>
-        <tag>JavaScript</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>JS null vs undefined</title>
     <url>/javascript/3007200680/</url>
     <content><![CDATA[<h2 id="定義"><a href="#定義" class="headerlink" title="定義"></a>定義</h2><p>null：表示變數 <code>沒有值</code>（空值）。<br>undefined：預設值，表示變數 <code>尚未宣告</code> 或者是已經宣告了但 <code>尚未賦值</code>。</p>
@@ -2327,6 +2232,101 @@ console.log(obj.name);  // kent
       </categories>
       <tags>
         <tag>JS 釘孤枝</tag>
+        <tag>JavaScript</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>JS 類陣列 （ Array-like ）</title>
+    <url>/javascript/3574120313/</url>
+    <content><![CDATA[<h2 id="Array-like"><a href="#Array-like" class="headerlink" title="Array-like"></a>Array-like</h2><div class="note primary">
+            <p>Array-like object 就是一個類陣列物件（很像陣列的物件），和一般陣會最大差異就是，類陣列<code>沒有</code>陣列內建的方法。</p>
+          </div>
+
+<h3 id="常見的類陣列"><a href="#常見的類陣列" class="headerlink" title="常見的類陣列"></a>常見的類陣列</h3><ul>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/arguments">arguments object</a><ul>
+<li>函式中用來接收所有引數。</li>
+</ul>
+</li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLCollection">HTMLCollection</a><ul>
+<li>透過方法（ex：getElementsByTagName）取得的 DOM 物件。</li>
+</ul>
+</li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/NodeList">NodeList</a><ul>
+<li>透過方法（ex：querySelectorAll）取得的節點集合。</li>
+</ul>
+</li>
+</ul>
+<div class="note danger">
+            <p>要注意，類陣列 <code>不是真正</code> 的陣列。</p>
+          </div>
+
+<h3 id="類陣列特性"><a href="#類陣列特性" class="headerlink" title="類陣列特性"></a>類陣列特性</h3><ul>
+<li>可以使用<code>索引值</code>取得值。</li>
+<li>可以使用 <code>length</code> 屬性。</li>
+<li>可以使用 <code>callee</code> 屬性。<ul>
+<li>callee 可以當作是一個指標，指向函式本身。</li>
+<li>對於匿名函式中特別有用，例如：讓匿名函式也可以進行遞迴（但在 ES5 嚴格模式底下已禁用，詳細原因請參考 <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/arguments/callee">MDN</a>）</li>
+</ul>
+</li>
+<li><code>沒有</code> 陣列內建的 <code>方法</code>。（ex：indexOf、concat、forEach）</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">add</span>(<span class="params">num1, num2</span>) &#123;</span><br><span class="line">	<span class="keyword">let</span> arr = [<span class="number">2000</span>, <span class="number">22</span>];</span><br><span class="line">	<span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">arguments</span>[<span class="number">0</span>]);     <span class="comment">// 2000</span></span><br><span class="line">	<span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">arguments</span>.<span class="property">length</span>); <span class="comment">// 2</span></span><br><span class="line">	<span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">arguments</span>.<span class="property">callee</span>); <span class="comment">// function code</span></span><br><span class="line">	<span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">arguments</span>, arr);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> constNum = <span class="title function_">add</span>(<span class="number">2000</span>, <span class="number">22</span>);</span><br></pre></td></tr></table></figure>
+
+<p>下方圖片為 <code>console.log(arguments, arr);</code> 的結果，可以從 Prototype 看出 arguments object 中<code>沒有</code>內建陣列方法。</p>
+<p><img src="https://imgur.com/tsnSGYm.jpg"></p>
+<div class="note default">
+            <p>雖然上述類陣列看起來這麼不方便，但可以將類陣列<code>轉為</code>陣列，來使用陣列方法。</p>
+          </div>
+
+<hr>
+<h2 id="類陣列轉陣列的三種方法"><a href="#類陣列轉陣列的三種方法" class="headerlink" title="類陣列轉陣列的三種方法"></a>類陣列轉陣列的三種方法</h2><div class="note default">
+            <p>下列介紹的三種都屬於淺拷貝（shallow-copied）的方式</p>
+          </div>
+
+<ul>
+<li>ES5 <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/slice#array-like_objects">slice</a>：<code>Array.prototype.slice.call(arguments);</code></li>
+<li>ES6 <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/from">Array.from</a>：<code>Array.from(arguments)</code></li>
+<li>ES6 <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/rest_parameters">Rest parameters（解構式）</a>：<code>[...arguments];</code></li>
+</ul>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">add</span>(<span class="params">num1, num2</span>) &#123;</span><br><span class="line">	<span class="keyword">let</span> arr1 = <span class="title class_">Array</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">slice</span>.<span class="title function_">call</span>(<span class="variable language_">arguments</span>);</span><br><span class="line">	<span class="keyword">let</span> arr2 = [...<span class="variable language_">arguments</span>]; <span class="comment">// 寫法相對簡潔</span></span><br><span class="line">	<span class="keyword">let</span> arr3 = <span class="title class_">Array</span>.<span class="title function_">from</span>(<span class="variable language_">arguments</span>);</span><br><span class="line">	<span class="variable language_">console</span>.<span class="title function_">log</span>(arr1, arr2, arr3);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> constNum = <span class="title function_">add</span>(<span class="number">2000</span>, <span class="number">22</span>);</span><br></pre></td></tr></table></figure>
+
+<p>由下方圖片的中的 Prototype 看得出來三者皆是陣列。</p>
+<p><img src="https://imgur.com/2HqYyra.jpg"></p>
+<div class="note default">
+            <p>下方會透過效能、支援度這兩個方面來對這三種方法做比較</p>
+          </div>
+
+<hr>
+<h2 id="performance-效能差異"><a href="#performance-效能差異" class="headerlink" title="performance 效能差異"></a>performance 效能差異</h2><blockquote>
+<p>圖片來自 <a href="https://catalin.red/js-array-from-array-like-object/">JS array from an array-like object</a> 文章，內文中有對上述提到的三種方法，進行效能的評測。</p>
+</blockquote>
+<p><img src="https://imgur.com/WlvvvyC.jpg"></p>
+<div class="note default">
+            <p>從上方圖片可得知 <code>slice</code> 方法的速度是較快的，優於另外兩種方法不少。</p>
+          </div>
+
+<h3 id="support-支援度"><a href="#support-支援度" class="headerlink" title="support 支援度"></a>support 支援度</h3><blockquote>
+<p>下方截圖是來自 <a href="https://caniuse.com/">caniuse</a>，比對上述三種方法對於瀏覽器的支援度。</p>
+</blockquote>
+<p><img src="https://imgur.com/wANgTbr.jpg"><br><img src="https://imgur.com/sGiyYxv.jpg"><br><img src="https://imgur.com/R7GWrno.jpg"></p>
+<div class="note default">
+            <p>最後結果可以得知 <code>slice</code> 方法的支援度是最好的。</p>
+          </div>
+
+<h2 id="conclusion"><a href="#conclusion" class="headerlink" title="conclusion"></a>conclusion</h2><div class="note default">
+            <p>上述三種方法若從效能和支援度方面來看，<code>slice</code> 勝。</p>
+          </div>
+
+<h2 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h2><ul>
+<li><a href="https://zh-tw.coderbridge.com/series/9e5162da940f473a9f1cfeece124ee98/posts/3df8bdb9dfdd4fef9f8b2d1b12eb5bf0">[12] 值 - 陣列、類陣列</a></li>
+<li><a href="https://catalin.red/js-array-from-array-like-object/">JS array from an array-like object</a></li>
+<li><a href="https://stackoverflow.com/questions/29707568/javascript-difference-between-array-and-array-like-object">JavaScript - Difference between Array and Array-like object</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>JavaScript</category>
+      </categories>
+      <tags>
         <tag>JavaScript</tag>
       </tags>
   </entry>
@@ -2523,7 +2523,7 @@ console.log(obj.name);  // kent
           </div>
 
 <hr>
-<p>Q：為什麼無法渲染出 HTML tag</p>
+<h2 id="問題探討"><a href="#問題探討" class="headerlink" title="問題探討"></a>問題探討</h2><p>Q：為什麼無法渲染出 HTML tag</p>
 <p>A：<a href="https://vuejs.org/guide/essentials/template-syntax.html#raw-html">文件</a>中有提到「mustaches interpret the data as plain text」</p>
 <p><img src="https://imgur.com/wThhCkS.png" alt="Evan You"></p>
 <p>代表 mustaches 渲染得結果都會作為純文字（string）渲染到畫面上，因此不會解析成 HTML tag。</p>
@@ -2535,14 +2535,18 @@ console.log(obj.name);  // kent
           </div>
 
 <hr>
-<p>情境範例：依照 product.is_enabled 渲染出不同的 class、textContent</p>
+<h2 id="解決方法"><a href="#解決方法" class="headerlink" title="解決方法"></a>解決方法</h2><p>情境範例：依照 product.is_enabled 渲染出不同的 class、textContent</p>
 <blockquote>
 <p>錯誤範例：因為渲染出來的是純文字，不會解析成 HTML tag。</p>
 </blockquote>
 <figure class="highlight html"><table><tr><td class="code"><pre><span class="line">&#123;&#123; product.is_enabled ? &#x27;<span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">&quot;text-success&quot;</span>&gt;</span>啟用<span class="tag">&lt;/<span class="name">span</span>&gt;</span>&#x27; : &#x27;<span class="tag">&lt;<span class="name">span</span>&gt;</span>未啟用<span class="tag">&lt;/<span class="name">span</span>&gt;</span>&#x27; &#125;&#125;</span><br></pre></td></tr></table></figure>
 
+<div class="note default">
+            <p>下方示範演示兩種解決方法</p>
+          </div>
+
 <blockquote>
-<p>正確用法：三元運算子</p>
+<p>三元運算子</p>
 </blockquote>
 <ul>
 <li>相同類型的結構可以使用<code>三元運算子</code>動態切換不同的值，這邊 class 綁定的值屬於<code>陣列</code>。</li>
@@ -2555,7 +2559,7 @@ console.log(obj.name);  // kent
 <figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">span</span> <span class="attr">:class</span>=<span class="string">&quot;&#123;&#x27;text-success&#x27;: product.is_enabled, &#x27;text-warning&#x27;: !product.is_enabled&#125;&quot;</span>&gt;</span>&#123;&#123; product.is_enabled ? &#x27;啟用&#x27; : &#x27;未啟用&#x27; &#125;&#125;<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">span</span> <span class="attr">:class</span>=<span class="string">&quot;[&#123;&#x27;text-success&#x27;: product.is_enabled&#125;, &#123;&#x27;text-warning&#x27;: !product.is_enabled&#125;]&quot;</span>&gt;</span>&#123;&#123; product.is_enabled ? &#x27;啟用&#x27; : &#x27;未啟用&#x27; &#125;&#125;<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
 <blockquote>
-<p>正確用法：v-html</p>
+<p>v-html</p>
 </blockquote>
 <ul>
 <li>透過三元運算子來決定要渲染的 HTML tag。</li>
