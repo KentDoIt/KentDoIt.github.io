@@ -395,55 +395,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Hexo 管理爬蟲 robots.txt（五）</title>
-    <url>/hexo/3578178281/</url>
-    <content><![CDATA[<h2 id="範例的環境版本"><a href="#範例的環境版本" class="headerlink" title="範例的環境版本"></a>範例的環境版本</h2><p>hexo 版本：6.0.1<br>hexo-cli 版本：4.3.0<br>next 版本：7.8.0</p>
-<h2 id="Front-matter"><a href="#Front-matter" class="headerlink" title="Front-matter"></a>Front-matter</h2><blockquote>
-<p>如果有特定的頁面不希望被加入 sitemap.xml 中，可以在頁面的 markdown 中 Front-matter 設定 sitemap: false。</p>
-</blockquote>
-<figure class="highlight diff"><figcaption><span>text.md</span></figcaption><table><tr><td class="code"><pre><span class="line">title: 測試</span><br><span class="line">date: 2022-05-01 14:10:25</span><br><span class="line">categories:</span><br><span class="line">tags: </span><br><span class="line">description:</span><br><span class="line"><span class="addition">+ sitemap: false</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="robots-txt"><a href="#robots-txt" class="headerlink" title="robots.txt"></a>robots.txt</h2><blockquote>
-<p>設置搜尋引擎爬蟲哪些是可以爬的路徑哪些是不能爬的，也能增強 SEO。</p>
-</blockquote>
-<p>Step1：根目錄 source 資料夾底下新增 robots.txt 檔案</p>
-<p><img src="https://imgur.com/z1hRLbs.jpg"></p>
-<p>Step2：設置檔案參數</p>
-<p>User-agent : 爬蟲程式名字，必要項目</p>
-<ul>
-<li>可以在每項規則中指定一或多個 user-agen</li>
-<li>*：運行於所有搜尋引擎，也可以只允許指定搜尋引擎，例如<code>User-agent: Googlebot</code>。</li>
-</ul>
-<p>Allow：允許爬取路徑，至少要有一個</p>
-<ul>
-<li>相對路徑；若為目錄，則必須以 &#x2F; 作為結尾。</li>
-</ul>
-<p>Disallow：不允許爬取路徑，至少要有一個</p>
-<ul>
-<li>相對路徑；若為目錄，則必須以 &#x2F; 作為結尾。</li>
-</ul>
-<p>Sitemap：網站地圖的路徑，非必要</p>
-<ul>
-<li>使用絕對路徑。</li>
-</ul>
-<p>Crawl-delay：同伺服器每次連續請求所需的要間隔秒數，非必要</p>
-<figure class="highlight txt"><figcaption><span>source/robots.txt</span></figcaption><table><tr><td class="code"><pre><span class="line">User-agent: *</span><br><span class="line">Allow: /</span><br><span class="line">Allow: /archives/</span><br><span class="line">Allow: /categories/</span><br><span class="line">Allow: /tags/ </span><br><span class="line">Disallow: /vendors/</span><br><span class="line">Disallow: /fonts/</span><br><span class="line">Disallow: /vendors/</span><br><span class="line">Disallow: /fancybox/</span><br><span class="line">Sitemap: https://kentdoit.github.io/sitemap.xml</span><br></pre></td></tr></table></figure>
-
-<div class="note default">
-            <p><a href="https://israynotarray.com/other/20210627/3588736352/">ray 大</a>：『建議不要忽略 js、css 與 fonts 相關的檔案與資料夾，否則可能在 Google Console Search 會收到一些問題提示』。</p>
-          </div>
-
-<p>延伸閱讀：<a href="https://israynotarray.com/other/20210627/3588736352/">快速掌握 robots.txt 用途</a></p>
-<h2 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h2><p><a href="https://blog.yucheng.me/post/hexo-configuration/#sitemap-xml-%E6%90%9C%E5%B0%8B%E5%BC%95%E6%93%8E%E7%88%AC%E8%9F%B2">Hexo 基本配置</a><br><a href="https://israynotarray.com/other/20210627/3588736352/">快速掌握 robots.txt 用途</a></p>
-]]></content>
-      <categories>
-        <category>Hexo</category>
-      </categories>
-      <tags>
-        <tag>Hexo 優化</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Hexo 設置 GA、Sitemap（四）</title>
     <url>/hexo/599670072/</url>
     <content><![CDATA[<div class="note default">
@@ -520,6 +471,55 @@
       </categories>
       <tags>
         <tag>Hexo SEO</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Hexo 管理爬蟲 robots.txt（五）</title>
+    <url>/hexo/3578178281/</url>
+    <content><![CDATA[<h2 id="範例的環境版本"><a href="#範例的環境版本" class="headerlink" title="範例的環境版本"></a>範例的環境版本</h2><p>hexo 版本：6.0.1<br>hexo-cli 版本：4.3.0<br>next 版本：7.8.0</p>
+<h2 id="Front-matter"><a href="#Front-matter" class="headerlink" title="Front-matter"></a>Front-matter</h2><blockquote>
+<p>如果有特定的頁面不希望被加入 sitemap.xml 中，可以在頁面的 markdown 中 Front-matter 設定 sitemap: false。</p>
+</blockquote>
+<figure class="highlight diff"><figcaption><span>text.md</span></figcaption><table><tr><td class="code"><pre><span class="line">title: 測試</span><br><span class="line">date: 2022-05-01 14:10:25</span><br><span class="line">categories:</span><br><span class="line">tags: </span><br><span class="line">description:</span><br><span class="line"><span class="addition">+ sitemap: false</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="robots-txt"><a href="#robots-txt" class="headerlink" title="robots.txt"></a>robots.txt</h2><blockquote>
+<p>設置搜尋引擎爬蟲哪些是可以爬的路徑哪些是不能爬的，也能增強 SEO。</p>
+</blockquote>
+<p>Step1：根目錄 source 資料夾底下新增 robots.txt 檔案</p>
+<p><img src="https://imgur.com/z1hRLbs.jpg"></p>
+<p>Step2：設置檔案參數</p>
+<p>User-agent : 爬蟲程式名字，必要項目</p>
+<ul>
+<li>可以在每項規則中指定一或多個 user-agen</li>
+<li>*：運行於所有搜尋引擎，也可以只允許指定搜尋引擎，例如<code>User-agent: Googlebot</code>。</li>
+</ul>
+<p>Allow：允許爬取路徑，至少要有一個</p>
+<ul>
+<li>相對路徑；若為目錄，則必須以 &#x2F; 作為結尾。</li>
+</ul>
+<p>Disallow：不允許爬取路徑，至少要有一個</p>
+<ul>
+<li>相對路徑；若為目錄，則必須以 &#x2F; 作為結尾。</li>
+</ul>
+<p>Sitemap：網站地圖的路徑，非必要</p>
+<ul>
+<li>使用絕對路徑。</li>
+</ul>
+<p>Crawl-delay：同伺服器每次連續請求所需的要間隔秒數，非必要</p>
+<figure class="highlight txt"><figcaption><span>source/robots.txt</span></figcaption><table><tr><td class="code"><pre><span class="line">User-agent: *</span><br><span class="line">Allow: /</span><br><span class="line">Allow: /archives/</span><br><span class="line">Allow: /categories/</span><br><span class="line">Allow: /tags/ </span><br><span class="line">Disallow: /vendors/</span><br><span class="line">Disallow: /fonts/</span><br><span class="line">Disallow: /vendors/</span><br><span class="line">Disallow: /fancybox/</span><br><span class="line">Sitemap: https://kentdoit.github.io/sitemap.xml</span><br></pre></td></tr></table></figure>
+
+<div class="note default">
+            <p><a href="https://israynotarray.com/other/20210627/3588736352/">ray 大</a>：『建議不要忽略 js、css 與 fonts 相關的檔案與資料夾，否則可能在 Google Console Search 會收到一些問題提示』。</p>
+          </div>
+
+<p>延伸閱讀：<a href="https://israynotarray.com/other/20210627/3588736352/">快速掌握 robots.txt 用途</a></p>
+<h2 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h2><p><a href="https://blog.yucheng.me/post/hexo-configuration/#sitemap-xml-%E6%90%9C%E5%B0%8B%E5%BC%95%E6%93%8E%E7%88%AC%E8%9F%B2">Hexo 基本配置</a><br><a href="https://israynotarray.com/other/20210627/3588736352/">快速掌握 robots.txt 用途</a></p>
+]]></content>
+      <categories>
+        <category>Hexo</category>
+      </categories>
+      <tags>
+        <tag>Hexo 優化</tag>
       </tags>
   </entry>
   <entry>
@@ -618,94 +618,6 @@
       </categories>
       <tags>
         <tag>Hexo 部落格</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Hexo Sitemap 建立索引 無法擷取</title>
-    <url>/hexo/2629412870/</url>
-    <content><![CDATA[<div class="note default">
-            <p>此篇內容為 <a href="https://kentdoit.github.io/hexo/599670072/">Hexo 設置 GA、Sitemap（四）</a>的 Debug 延續篇，介紹如何解決無法擷取以及設置索引。</p>
-          </div>
-
-<h2 id="範例的環境版本"><a href="#範例的環境版本" class="headerlink" title="範例的環境版本"></a>範例的環境版本</h2><p>hexo 版本：6.0.1<br>hexo-cli 版本：4.3.0<br>next 版本：7.8.0</p>
-<h2 id="無法擷取"><a href="#無法擷取" class="headerlink" title="無法擷取"></a>無法擷取</h2><p><img src="https://imgur.com/UH0jdLH.jpg"></p>
-<div class="note default">
-            <p>下方會介紹四種我嘗試過的方法。</p>
-          </div>
-
-<h3 id="擁有權驗證"><a href="#擁有權驗證" class="headerlink" title="擁有權驗證"></a>擁有權驗證</h3><p>❌ 方法一：添加其他驗證方式（本來只有用 GA）</p>
-<p>Step1：取得 content 值</p>
-<ul>
-<li>記得在複製內容中只擷取 content 值就好。</li>
-</ul>
-<p><img src="https://imgur.com/N623p1p.jpg" alt="演示四步驟取得 content"></p>
-<p>Step2：修改 NexT 主題中 _config.yml 參數 google_site_verification</p>
-<ul>
-<li>貼上取得的 content 值。</li>
-</ul>
-<figure class="highlight diff"><figcaption><span>.git/config</span></figcaption><table><tr><td class="code"><pre><span class="line"># Google Webmaster tools verification.</span><br><span class="line"># See: https://www.google.com/webmasters</span><br><span class="line"><span class="addition">+ google_site_verification: 25miYVaewg4Qur_GPtoF9-GhCZZJNidmq2kqy6wRE9g</span></span><br><span class="line"><span class="deletion">- google_site_verification:</span></span><br></pre></td></tr></table></figure>
-
-<p>Step3：重新部署</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">hexo g -d</span><br></pre></td></tr></table></figure>
-
-<p>Step4：重新部署後，檢查網站中是否包含 google-site-verification</p>
-<p><img src="https://imgur.com/RVLo57e.jpg" alt="搜尋 google-site-verification"></p>
-<h3 id="檢查-Sitemap-格式"><a href="#檢查-Sitemap-格式" class="headerlink" title="檢查 Sitemap 格式"></a>檢查 Sitemap 格式</h3><p>❌ 方法二：檢查 Sitemap 格式</p>
-<blockquote>
-<p>發覺我的 sitemap.xml 格式和官方範例不同，所以需要將多的標籤移除。</p>
-</blockquote>
-<p><img src="https://imgur.com/QnPnMb0.jpg" alt="格式比較"></p>
-<p>Step1：將 node_modules&#x2F;hexo-generator-sitemap&#x2F;sitemap.xml 中的 <code>changefreq</code>、<code>priority</code> 標籤移除。</p>
-<p>Step2：重新部署</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">hexo g -d</span><br></pre></td></tr></table></figure>
-
-<div class="note default">
-            <p>參考這篇 <a href="https://zenreal.github.io/posts/7993/#google%E7%84%A1%E6%B3%95%E8%AE%80%E5%8F%96sitemap-%E4%B8%80%E8%88%AC%E7%9A%84http%E9%8C%AF%E8%AA%A4-%E8%A7%A3%E6%B1%BA%E6%96%B9%E5%BC%8F">Google無法讀取sitemap(一般的HTTP錯誤) 解決方式</a> 所提到的解法，雖然我沒有這個問題。</p>
-          </div>
-
-<p><img src="https://imgur.com/NkFfNmd.jpg" alt="記得要把所有多的標籤都移除呦，雖然也一樣沒成功"></p>
-<h3 id="建立索引"><a href="#建立索引" class="headerlink" title="建立索引"></a>建立索引</h3><blockquote>
-<p>為了將自己的網址透過 Google Search Console 建立索引，提交給 Google 使搜尋引擎能更容易地搜尋到我們的網站，這個也屬於提升 SEO 的其中一種方法。</p>
-</blockquote>
-<p>❌ 方法三：網址審查建立索引</p>
-<p>Step1：點擊網址審查，並在上方網址列貼上部落格網址（例如：<a href="https://kentdoit.github.io/%EF%BC%89">https://kentdoit.github.io/）</a></p>
-<p>Step2：按下建立索引</p>
-<p><img src="https://imgur.com/VwNKDrB.jpg" alt="兩步驟建立索引"></p>
-<div class="note default">
-            <p>過一陣子之後再到網址審查中檢查就會看到綠色勾勾了，也代表建立索引成功了～～～<br>雖然不確定是時間還沒到還是因為 .nojekyll，但至少之後用其他文章連結也有成功建立索引 (੭•̀ᴗ•̀)੭</p>
-          </div>
-
-<p><img src="https://imgur.com/iR7NAzQ.jpg" alt="網址審查通過"></p>
-<h3 id="建立-nojekyll"><a href="#建立-nojekyll" class="headerlink" title="建立 .nojekyll"></a>建立 .nojekyll</h3><p>❌ 方法四：建立 .nojekyll</p>
-<p>Step1：進入根目錄 source 資料夾底下</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">cd source</span><br></pre></td></tr></table></figure>
-
-<p>Step2：建立一個空白的 .nojekyll 檔案</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">touch .nojekyll</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://imgur.com/BFbbf5V.jpg"></p>
-<div class="note default">
-            <p>接下來設定是為了讓每次部署產生的 public 資料夾中也能存在 .nojekyll 檔案</p>
-          </div>
-
-<p>Step3：修改根目錄 _config.yml 參數</p>
-<figure class="highlight diff"><figcaption><span>_config.yml</span></figcaption><table><tr><td class="code"><pre><span class="line"># Include / Exclude file(s)</span><br><span class="line">## include:/exclude: options only apply to the &#x27;source/&#x27; folder</span><br><span class="line">include:</span><br><span class="line"><span class="addition">+  .nojekyll</span></span><br><span class="line">exclude:</span><br><span class="line">ignore:</span><br></pre></td></tr></table></figure>
-
-<p>Step4：重新部署</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">hexo cl</span><br><span class="line">hexo g -d</span><br></pre></td></tr></table></figure>
-
-<div class="note default">
-            <p>雖然建立索引成功了，但 Sitemap 狀態還是呈現 <code>無法擷取</code> 以及 <code>未提交至 Sitemap</code>，最後沒辦法只好靜待幾天看看會不會發生奇蹟</p>
-          </div>
-
-<h2 id="未提交至-Sitemap"><a href="#未提交至-Sitemap" class="headerlink" title="未提交至 Sitemap"></a>未提交至 Sitemap</h2><h2 id="可讀取-Sitemap，但其中含有錯誤"><a href="#可讀取-Sitemap，但其中含有錯誤" class="headerlink" title="可讀取 Sitemap，但其中含有錯誤"></a>可讀取 Sitemap，但其中含有錯誤</h2><p><img src="https://imgur.com/tYWXLmz.jpg"></p>
-<h2 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h2><p><a href="https://blog.kyomind.tw/adding-sitemap-issue/">解決 Hexo + Github Pages 新增 sitemap.xml 找不到頁面</a><br><a href="https://blog.balabambe.com/2021/12/01/%E8%A7%A3%E6%B1%BA-Google-Search-Console-%E6%8A%93%E4%B8%8D%E5%88%B0-Hexo-%E6%94%BE%E5%9C%A8-Github-Pages-%E7%9A%84-sitemap-xml-%E7%9A%84%E5%95%8F%E9%A1%8C/">解決 Google Search Console 抓不到 Hexo 放在 Github Pages 的 sitemap.xml 的問題</a></p>
-]]></content>
-      <categories>
-        <category>Hexo</category>
-      </categories>
-      <tags>
-        <tag>Hexo SEO</tag>
       </tags>
   </entry>
   <entry>
@@ -815,6 +727,94 @@
         <tag>運算子</tag>
         <tag>JS 釘孤枝</tag>
         <tag>JavaScript</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Hexo Sitemap 建立索引 無法擷取</title>
+    <url>/hexo/2629412870/</url>
+    <content><![CDATA[<div class="note default">
+            <p>此篇內容為 <a href="https://kentdoit.github.io/hexo/599670072/">Hexo 設置 GA、Sitemap（四）</a>的 Debug 延續篇，介紹如何解決無法擷取以及設置索引。</p>
+          </div>
+
+<h2 id="範例的環境版本"><a href="#範例的環境版本" class="headerlink" title="範例的環境版本"></a>範例的環境版本</h2><p>hexo 版本：6.0.1<br>hexo-cli 版本：4.3.0<br>next 版本：7.8.0</p>
+<h2 id="無法擷取"><a href="#無法擷取" class="headerlink" title="無法擷取"></a>無法擷取</h2><p><img src="https://imgur.com/UH0jdLH.jpg"></p>
+<div class="note default">
+            <p>下方會介紹四種我嘗試過的方法。</p>
+          </div>
+
+<h3 id="擁有權驗證"><a href="#擁有權驗證" class="headerlink" title="擁有權驗證"></a>擁有權驗證</h3><p>❌ 方法一：添加其他驗證方式（本來只有用 GA）</p>
+<p>Step1：取得 content 值</p>
+<ul>
+<li>記得在複製內容中只擷取 content 值就好。</li>
+</ul>
+<p><img src="https://imgur.com/N623p1p.jpg" alt="演示四步驟取得 content"></p>
+<p>Step2：修改 NexT 主題中 _config.yml 參數 google_site_verification</p>
+<ul>
+<li>貼上取得的 content 值。</li>
+</ul>
+<figure class="highlight diff"><figcaption><span>.git/config</span></figcaption><table><tr><td class="code"><pre><span class="line"># Google Webmaster tools verification.</span><br><span class="line"># See: https://www.google.com/webmasters</span><br><span class="line"><span class="addition">+ google_site_verification: 25miYVaewg4Qur_GPtoF9-GhCZZJNidmq2kqy6wRE9g</span></span><br><span class="line"><span class="deletion">- google_site_verification:</span></span><br></pre></td></tr></table></figure>
+
+<p>Step3：重新部署</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">hexo g -d</span><br></pre></td></tr></table></figure>
+
+<p>Step4：重新部署後，檢查網站中是否包含 google-site-verification</p>
+<p><img src="https://imgur.com/RVLo57e.jpg" alt="搜尋 google-site-verification"></p>
+<h3 id="檢查-Sitemap-格式"><a href="#檢查-Sitemap-格式" class="headerlink" title="檢查 Sitemap 格式"></a>檢查 Sitemap 格式</h3><p>❌ 方法二：檢查 Sitemap 格式</p>
+<blockquote>
+<p>發覺我的 sitemap.xml 格式和官方範例不同，所以需要將多的標籤移除。</p>
+</blockquote>
+<p><img src="https://imgur.com/QnPnMb0.jpg" alt="格式比較"></p>
+<p>Step1：將 node_modules&#x2F;hexo-generator-sitemap&#x2F;sitemap.xml 中的 <code>changefreq</code>、<code>priority</code> 標籤移除。</p>
+<p>Step2：重新部署</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">hexo g -d</span><br></pre></td></tr></table></figure>
+
+<div class="note default">
+            <p>參考這篇 <a href="https://zenreal.github.io/posts/7993/#google%E7%84%A1%E6%B3%95%E8%AE%80%E5%8F%96sitemap-%E4%B8%80%E8%88%AC%E7%9A%84http%E9%8C%AF%E8%AA%A4-%E8%A7%A3%E6%B1%BA%E6%96%B9%E5%BC%8F">Google無法讀取sitemap(一般的HTTP錯誤) 解決方式</a> 所提到的解法，雖然我沒有這個問題。</p>
+          </div>
+
+<p><img src="https://imgur.com/NkFfNmd.jpg" alt="記得要把所有多的標籤都移除呦，雖然也一樣沒成功"></p>
+<h3 id="建立索引"><a href="#建立索引" class="headerlink" title="建立索引"></a>建立索引</h3><blockquote>
+<p>為了將自己的網址透過 Google Search Console 建立索引，提交給 Google 使搜尋引擎能更容易地搜尋到我們的網站，這個也屬於提升 SEO 的其中一種方法。</p>
+</blockquote>
+<p>❌ 方法三：網址審查建立索引</p>
+<p>Step1：點擊網址審查，並在上方網址列貼上部落格網址（例如：<a href="https://kentdoit.github.io/%EF%BC%89">https://kentdoit.github.io/）</a></p>
+<p>Step2：按下建立索引</p>
+<p><img src="https://imgur.com/VwNKDrB.jpg" alt="兩步驟建立索引"></p>
+<div class="note default">
+            <p>過一陣子之後再到網址審查中檢查就會看到綠色勾勾了，也代表建立索引成功了～～～<br>雖然不確定是時間還沒到還是因為 .nojekyll，但至少之後用其他文章連結也有成功建立索引 (੭•̀ᴗ•̀)੭</p>
+          </div>
+
+<p><img src="https://imgur.com/iR7NAzQ.jpg" alt="網址審查通過"></p>
+<h3 id="建立-nojekyll"><a href="#建立-nojekyll" class="headerlink" title="建立 .nojekyll"></a>建立 .nojekyll</h3><p>❌ 方法四：建立 .nojekyll</p>
+<p>Step1：進入根目錄 source 資料夾底下</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">cd source</span><br></pre></td></tr></table></figure>
+
+<p>Step2：建立一個空白的 .nojekyll 檔案</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">touch .nojekyll</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://imgur.com/BFbbf5V.jpg"></p>
+<div class="note default">
+            <p>接下來設定是為了讓每次部署產生的 public 資料夾中也能存在 .nojekyll 檔案</p>
+          </div>
+
+<p>Step3：修改根目錄 _config.yml 參數</p>
+<figure class="highlight diff"><figcaption><span>_config.yml</span></figcaption><table><tr><td class="code"><pre><span class="line"># Include / Exclude file(s)</span><br><span class="line">## include:/exclude: options only apply to the &#x27;source/&#x27; folder</span><br><span class="line">include:</span><br><span class="line"><span class="addition">+  .nojekyll</span></span><br><span class="line">exclude:</span><br><span class="line">ignore:</span><br></pre></td></tr></table></figure>
+
+<p>Step4：重新部署</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">hexo cl</span><br><span class="line">hexo g -d</span><br></pre></td></tr></table></figure>
+
+<div class="note default">
+            <p>雖然建立索引成功了，但 Sitemap 狀態還是呈現 <code>無法擷取</code> 以及 <code>未提交至 Sitemap</code>，最後沒辦法只好靜待幾天看看會不會發生奇蹟</p>
+          </div>
+
+<h2 id="未提交至-Sitemap"><a href="#未提交至-Sitemap" class="headerlink" title="未提交至 Sitemap"></a>未提交至 Sitemap</h2><h2 id="可讀取-Sitemap，但其中含有錯誤"><a href="#可讀取-Sitemap，但其中含有錯誤" class="headerlink" title="可讀取 Sitemap，但其中含有錯誤"></a>可讀取 Sitemap，但其中含有錯誤</h2><p><img src="https://imgur.com/tYWXLmz.jpg"></p>
+<h2 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h2><p><a href="https://blog.kyomind.tw/adding-sitemap-issue/">解決 Hexo + Github Pages 新增 sitemap.xml 找不到頁面</a><br><a href="https://blog.balabambe.com/2021/12/01/%E8%A7%A3%E6%B1%BA-Google-Search-Console-%E6%8A%93%E4%B8%8D%E5%88%B0-Hexo-%E6%94%BE%E5%9C%A8-Github-Pages-%E7%9A%84-sitemap-xml-%E7%9A%84%E5%95%8F%E9%A1%8C/">解決 Google Search Console 抓不到 Hexo 放在 Github Pages 的 sitemap.xml 的問題</a></p>
+]]></content>
+      <categories>
+        <category>Hexo</category>
+      </categories>
+      <tags>
+        <tag>Hexo SEO</tag>
       </tags>
   </entry>
   <entry>
@@ -1835,6 +1835,50 @@ console.log(obj.name);  // kent
       </tags>
   </entry>
   <entry>
+    <title>JS String vs toString</title>
+    <url>/javascript/4119142473/</url>
+    <content><![CDATA[<h2 id="String"><a href="#String" class="headerlink" title="String()"></a>String()</h2><div class="note primary">
+            <p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/String">MDN</a>：屬於建構函式，會將對象轉換為<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">字串</a>。</p>
+          </div>
+
+<p>優點：所有型別都能轉換為字串。<br>缺點：<code>不支援</code>轉進位制轉換。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="title class_">String</span>(<span class="literal">null</span>); <span class="comment">// &#x27;null&#x27;</span></span><br><span class="line"><span class="title class_">String</span>(<span class="literal">undefined</span>); <span class="comment">// &#x27;undefined&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="toString-NaN"><a href="#toString-NaN" class="headerlink" title="toString()"></a>toString()</h2><div class="note primary">
+            <p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/toString">MDN</a>：屬於方法，會回傳指定對象的字串樣子。</p>
+          </div>
+
+<p>優點：支援進位制轉換。<br>缺點：無法轉換  <code>null</code> 、 <code>undefined</code>（會報 Error）。</p>
+<figure class="highlight js"><figcaption><span>進位制轉換</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="comment">// 括號中填寫進位對應數值</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> num = <span class="number">10</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 二進位制</span></span><br><span class="line">num.<span class="title function_">toString</span>(<span class="number">2</span>); <span class="comment">// &#x27;1010&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 八進位制</span></span><br><span class="line">num.<span class="title function_">toString</span>(<span class="number">8</span>); <span class="comment">// &#x27;12&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 十進位制</span></span><br><span class="line">num.<span class="title function_">toString</span>(<span class="number">10</span>); <span class="comment">// &#x27;10&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 十六進位制</span></span><br><span class="line">num.<span class="title function_">toString</span>(<span class="number">16</span>); <span class="comment">// &#x27;a&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p>解法：可以使用 <code>try catch</code> 或 <code>短路求值</code> 來預防 Error。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> toNum = <span class="literal">null</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 解法一</span></span><br><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">  toNum.<span class="title function_">toString</span>();</span><br><span class="line">&#125; <span class="keyword">catch</span> (exception) &#123;</span><br><span class="line">  <span class="comment">//  TypeError: Cannot read properties of null (reading &#x27;toString&#x27;)</span></span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`<span class="subst">$&#123;exception.name&#125;</span>: <span class="subst">$&#123;exception&#125;</span>`</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 解法二</span></span><br><span class="line">toNum &amp;&amp; toNum.<span class="title function_">toString</span>();</span><br></pre></td></tr></table></figure>
+
+<h2 id="different-point"><a href="#different-point" class="headerlink" title="different point"></a>different point</h2><blockquote>
+<p>null、undefined</p>
+</blockquote>
+<p>toString：無法轉為字串（會噴 Error）<br>String：可以正確轉為字串</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> num = <span class="literal">null</span>;</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(num.<span class="title function_">toString</span>()); <span class="comment">// TypeError: Cannot read properties of null (reading &#x27;toString&#x27;)</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">String</span>(num));    <span class="comment">// &#x27;null&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>進位制</p>
+</blockquote>
+<p>toString：可以正確轉換<br>String：無法正確轉換</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> num = <span class="number">10</span>;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(num.<span class="title function_">toString</span>(<span class="number">2</span>)); <span class="comment">// &#x27;1010&#x27;</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">String</span>(num));     <span class="comment">// &#x27;10&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="conclusion"><a href="#conclusion" class="headerlink" title="conclusion"></a>conclusion</h2><div class="note default">
+            <p>需要做進位制轉換就使用 <code>toString</code>，否則就使用 <code>String</code>。<br>使用 <code>String</code> 時預防噴 Error。</p>
+          </div>
+]]></content>
+      <categories>
+        <category>JavaScript</category>
+      </categories>
+      <tags>
+        <tag>JS 釘孤枝</tag>
+        <tag>JavaScript</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>JS 解構賦值 Destructuring Assignment</title>
     <url>/javascript/4089638591/</url>
     <content><![CDATA[<h2 id="解構賦值-Destructuring-Assignment"><a href="#解構賦值-Destructuring-Assignment" class="headerlink" title="解構賦值 Destructuring Assignment"></a>解構賦值 Destructuring Assignment</h2><div class="note primary">
@@ -2008,50 +2052,6 @@ console.log(obj.name);  // kent
       </tags>
   </entry>
   <entry>
-    <title>JS String vs toString</title>
-    <url>/javascript/4119142473/</url>
-    <content><![CDATA[<h2 id="String"><a href="#String" class="headerlink" title="String()"></a>String()</h2><div class="note primary">
-            <p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/String">MDN</a>：屬於建構函式，會將對象轉換為<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">字串</a>。</p>
-          </div>
-
-<p>優點：所有型別都能轉換為字串。<br>缺點：<code>不支援</code>轉進位制轉換。</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="title class_">String</span>(<span class="literal">null</span>); <span class="comment">// &#x27;null&#x27;</span></span><br><span class="line"><span class="title class_">String</span>(<span class="literal">undefined</span>); <span class="comment">// &#x27;undefined&#x27;</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="toString-NaN"><a href="#toString-NaN" class="headerlink" title="toString()"></a>toString()</h2><div class="note primary">
-            <p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/toString">MDN</a>：屬於方法，會回傳指定對象的字串樣子。</p>
-          </div>
-
-<p>優點：支援進位制轉換。<br>缺點：無法轉換  <code>null</code> 、 <code>undefined</code>（會報 Error）。</p>
-<figure class="highlight js"><figcaption><span>進位制轉換</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="comment">// 括號中填寫進位對應數值</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> num = <span class="number">10</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 二進位制</span></span><br><span class="line">num.<span class="title function_">toString</span>(<span class="number">2</span>); <span class="comment">// &#x27;1010&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 八進位制</span></span><br><span class="line">num.<span class="title function_">toString</span>(<span class="number">8</span>); <span class="comment">// &#x27;12&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 十進位制</span></span><br><span class="line">num.<span class="title function_">toString</span>(<span class="number">10</span>); <span class="comment">// &#x27;10&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 十六進位制</span></span><br><span class="line">num.<span class="title function_">toString</span>(<span class="number">16</span>); <span class="comment">// &#x27;a&#x27;</span></span><br></pre></td></tr></table></figure>
-
-<p>解法：可以使用 <code>try catch</code> 或 <code>短路求值</code> 來預防 Error。</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> toNum = <span class="literal">null</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 解法一</span></span><br><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">  toNum.<span class="title function_">toString</span>();</span><br><span class="line">&#125; <span class="keyword">catch</span> (exception) &#123;</span><br><span class="line">  <span class="comment">//  TypeError: Cannot read properties of null (reading &#x27;toString&#x27;)</span></span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`<span class="subst">$&#123;exception.name&#125;</span>: <span class="subst">$&#123;exception&#125;</span>`</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 解法二</span></span><br><span class="line">toNum &amp;&amp; toNum.<span class="title function_">toString</span>();</span><br></pre></td></tr></table></figure>
-
-<h2 id="different-point"><a href="#different-point" class="headerlink" title="different point"></a>different point</h2><blockquote>
-<p>null、undefined</p>
-</blockquote>
-<p>toString：無法轉為字串（會噴 Error）<br>String：可以正確轉為字串</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> num = <span class="literal">null</span>;</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(num.<span class="title function_">toString</span>()); <span class="comment">// TypeError: Cannot read properties of null (reading &#x27;toString&#x27;)</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">String</span>(num));    <span class="comment">// &#x27;null&#x27;</span></span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>進位制</p>
-</blockquote>
-<p>toString：可以正確轉換<br>String：無法正確轉換</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> num = <span class="number">10</span>;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(num.<span class="title function_">toString</span>(<span class="number">2</span>)); <span class="comment">// &#x27;1010&#x27;</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">String</span>(num));     <span class="comment">// &#x27;10&#x27;</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="conclusion"><a href="#conclusion" class="headerlink" title="conclusion"></a>conclusion</h2><div class="note default">
-            <p>需要做進位制轉換就使用 <code>toString</code>，否則就使用 <code>String</code>。<br>使用 <code>String</code> 時預防噴 Error。</p>
-          </div>
-]]></content>
-      <categories>
-        <category>JavaScript</category>
-      </categories>
-      <tags>
-        <tag>JS 釘孤枝</tag>
-        <tag>JavaScript</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>JS not defined vs undefined</title>
     <url>/javascript/4170310433/</url>
     <content><![CDATA[<p><img src="https://imgur.com/3uvmsGO.png"></p>
@@ -2123,108 +2123,6 @@ console.log(obj.name);  // kent
 <p>延伸閱讀</p>
 <ul>
 <li><a href="https://kentdoit.github.io/javascript/3007200680/">JS null vs undefined</a></li>
-</ul>
-]]></content>
-      <categories>
-        <category>JavaScript</category>
-      </categories>
-      <tags>
-        <tag>JS 釘孤枝</tag>
-        <tag>JavaScript</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>JS null vs undefined</title>
-    <url>/javascript/3007200680/</url>
-    <content><![CDATA[<h2 id="定義"><a href="#定義" class="headerlink" title="定義"></a>定義</h2><p>null：表示變數 <code>沒有值</code>（空值）。<br>undefined：預設值，表示變數 <code>尚未宣告</code> 或者是已經宣告了但 <code>尚未賦值</code>。</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> def;         <span class="comment">// undefined</span></span><br><span class="line"><span class="keyword">let</span> text = <span class="literal">null</span>; <span class="comment">// null</span></span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>常見應用</p>
-</blockquote>
-<p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined">undefined</a></p>
-<ul>
-<li>常用於表示尚未賦予值（預設值），或是錯誤的沒有值（ex：物件沒有的屬性、呼叫函數時缺少的參數）。</li>
-</ul>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> obj = &#123; </span><br><span class="line">  <span class="attr">name</span>: <span class="string">&#x27;kent&#x27;</span>,</span><br><span class="line">&#125;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(obj.<span class="property">age</span>); <span class="comment">//undefined</span></span><br></pre></td></tr></table></figure>
-
-<p><a href="https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Operators/null">null</a></p>
-<ul>
-<li>作為初始化（init）表示 <code>現在</code> 沒有值之後 <code>可能會</code> 有值。</li>
-</ul>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> num = <span class="number">0</span>;</span><br><span class="line">num = <span class="number">100</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// init</span></span><br><span class="line"><span class="keyword">let</span> num = <span class="literal">null</span>;</span><br></pre></td></tr></table></figure>
-
-<div class="note default">
-            <p>發覺和其他語言不同在 JS 中，大多是人不會將值設定為 <code>null</code>，而是依照不同型別來設置 init，我猜測和 JS 擁有非常多可惡的自動轉型規則有關係。</p>
-          </div>
-
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> obj = &#123;&#125;;</span><br><span class="line"><span class="keyword">let</span> num = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">let</span> str = <span class="string">&#x27;&#x27;</span>;</span><br></pre></td></tr></table></figure>
-
-<div class="note default">
-            <p>JS 中某些特定情況時會回傳 null。（下方介紹兩個在 JS 中會出現 null 的情境）</p>
-          </div>
-
-<p>情境一：閉包 closure、作用域鏈 scope chain</p>
-<ul>
-<li>當不存在的變數、函式，JS 會往上一層去尋找，直到 null 就會噴 not define error。。</li>
-</ul>
-<p>情境二：獲取 DOM 元素時</p>
-<ul>
-<li>若元素不存在會回傳 null。</li>
-</ul>
-<h2 id="same-point"><a href="#same-point" class="headerlink" title="same point"></a>same point</h2><ol>
-<li>基礎型別（primitives type）</li>
-<li>null、undefined 都是假值 Falsy (Boolean 為 false)</li>
-</ol>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">Boolean</span>(<span class="literal">undefined</span>));  <span class="comment">// false</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">Boolean</span>(<span class="literal">null</span>));       <span class="comment">// false</span></span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="literal">undefined</span> == <span class="literal">null</span>);   <span class="comment">// true，因為都是 false</span></span><br></pre></td></tr></table></figure>
-
-<div class="note default">
-            <p>想暸解 undefined &#x3D;&#x3D; null 為什麼是 true，可以參考這篇<a href="https://kentdoit.github.io/javascript/2972146539/#x3D-x3D">文章</a>（裡面有提到是因為 &#x3D;&#x3D; 的規則導致）</p>
-          </div>
-
-<hr>
-<h2 id="different-point"><a href="#different-point" class="headerlink" title="different point"></a>different point</h2><div class="note default">
-            <p>下方透過四個方向來演示兩者結果差異。</p>
-          </div>
-
-<blockquote>
-<p>Number</p>
-</blockquote>
-<p>null：<code>Number(null)</code> 結果為 <code>0</code><br>undefined：<code>Number(undefined)</code> 結果為 <code>NaN</code>。</p>
-<div class="note default">
-            <p>NaN：代表不是數值（not a number）</p>
-          </div>
-
-<blockquote>
-<p>typeof</p>
-</blockquote>
-<p>null：<code>typeof undefined</code> 結果為 <code>undefined</code>。<br>undefined：<code>typeof null</code> 結果為 <code>Object</code>。</p>
-<blockquote>
-<p>JSON</p>
-</blockquote>
-<p>null：<code>有效</code>的 JSON 值。<br>undefined：<code>無效</code>的 JSON 值。</p>
-<blockquote>
-<p>keyword</p>
-</blockquote>
-<p>null：是 keywords。（沒辦法作為變數名稱）<br>undefined：不是 keywords。（但 <code>千萬不要</code> 將變數名稱設為 undefined）</p>
-<h2 id="conclusion"><a href="#conclusion" class="headerlink" title="conclusion"></a>conclusion</h2><div class="note default">
-            <p>JS 中變數 undefined 比起 null，更相似其它語言的 NULL。（因為預設值）</p>
-          </div>
-
-<div class="note danger">
-            <p>除非很熟悉，不然新手一律不建議將變數設置 <code>null</code> 或 <code>undefined</code>。</p>
-          </div>
-
-<details>
-  <summary>有興趣可以參考下方幾篇 stackoverflow 的討論</summary>
-  <a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/16474796/set-javascript-variable-null-or-leave-undefined/16474917#16474917">1. Set JavaScript variable = null, or leave undefined?</a></br>
-  <a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/13142912/when-do-i-initialize-variables-in-javascript-with-null-or-not-at-all/13142982#13142982">2. When do I initialize variables in JavaScript with null or not at all?</a></br>
-  <a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/6604749/what-reason-is-there-to-use-null-instead-of-undefined-in-javascript/48197438#48197438">3. What reason is there to use null instead of undefined in JavaScript?</a></br>
-  <a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/6604749/what-reason-is-there-to-use-null-instead-of-undefined-in-javascript/6604783#6604783">4. What reason is there to use null instead of undefined in JavaScript?</a></br>
-</details>
-
-<h2 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h2><ul>
-<li>卡斯伯老師：<a href="https://wcc723.github.io/javascript/2017/12/08/javascript-typeof/">鐵人賽：動態型別的 JavaScript</a></li>
 </ul>
 ]]></content>
       <categories>
@@ -2492,6 +2390,108 @@ console.log(obj.name);  // kent
         <category>JavaScript</category>
       </categories>
       <tags>
+        <tag>JavaScript</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>JS null vs undefined</title>
+    <url>/javascript/3007200680/</url>
+    <content><![CDATA[<h2 id="定義"><a href="#定義" class="headerlink" title="定義"></a>定義</h2><p>null：表示變數 <code>沒有值</code>（空值）。<br>undefined：預設值，表示變數 <code>尚未宣告</code> 或者是已經宣告了但 <code>尚未賦值</code>。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> def;         <span class="comment">// undefined</span></span><br><span class="line"><span class="keyword">let</span> text = <span class="literal">null</span>; <span class="comment">// null</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>常見應用</p>
+</blockquote>
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined">undefined</a></p>
+<ul>
+<li>常用於表示尚未賦予值（預設值），或是錯誤的沒有值（ex：物件沒有的屬性、呼叫函數時缺少的參數）。</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> obj = &#123; </span><br><span class="line">  <span class="attr">name</span>: <span class="string">&#x27;kent&#x27;</span>,</span><br><span class="line">&#125;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(obj.<span class="property">age</span>); <span class="comment">//undefined</span></span><br></pre></td></tr></table></figure>
+
+<p><a href="https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Operators/null">null</a></p>
+<ul>
+<li>作為初始化（init）表示 <code>現在</code> 沒有值之後 <code>可能會</code> 有值。</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> num = <span class="number">0</span>;</span><br><span class="line">num = <span class="number">100</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// init</span></span><br><span class="line"><span class="keyword">let</span> num = <span class="literal">null</span>;</span><br></pre></td></tr></table></figure>
+
+<div class="note default">
+            <p>發覺和其他語言不同在 JS 中，大多是人不會將值設定為 <code>null</code>，而是依照不同型別來設置 init，我猜測和 JS 擁有非常多可惡的自動轉型規則有關係。</p>
+          </div>
+
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> obj = &#123;&#125;;</span><br><span class="line"><span class="keyword">let</span> num = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">let</span> str = <span class="string">&#x27;&#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+<div class="note default">
+            <p>JS 中某些特定情況時會回傳 null。（下方介紹兩個在 JS 中會出現 null 的情境）</p>
+          </div>
+
+<p>情境一：閉包 closure、作用域鏈 scope chain</p>
+<ul>
+<li>當不存在的變數、函式，JS 會往上一層去尋找，直到 null 就會噴 not define error。。</li>
+</ul>
+<p>情境二：獲取 DOM 元素時</p>
+<ul>
+<li>若元素不存在會回傳 null。</li>
+</ul>
+<h2 id="same-point"><a href="#same-point" class="headerlink" title="same point"></a>same point</h2><ol>
+<li>基礎型別（primitives type）</li>
+<li>null、undefined 都是假值 Falsy (Boolean 為 false)</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">Boolean</span>(<span class="literal">undefined</span>));  <span class="comment">// false</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">Boolean</span>(<span class="literal">null</span>));       <span class="comment">// false</span></span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="literal">undefined</span> == <span class="literal">null</span>);   <span class="comment">// true，因為都是 false</span></span><br></pre></td></tr></table></figure>
+
+<div class="note default">
+            <p>想暸解 undefined &#x3D;&#x3D; null 為什麼是 true，可以參考這篇<a href="https://kentdoit.github.io/javascript/2972146539/#x3D-x3D">文章</a>（裡面有提到是因為 &#x3D;&#x3D; 的規則導致）</p>
+          </div>
+
+<hr>
+<h2 id="different-point"><a href="#different-point" class="headerlink" title="different point"></a>different point</h2><div class="note default">
+            <p>下方透過四個方向來演示兩者結果差異。</p>
+          </div>
+
+<blockquote>
+<p>Number</p>
+</blockquote>
+<p>null：<code>Number(null)</code> 結果為 <code>0</code><br>undefined：<code>Number(undefined)</code> 結果為 <code>NaN</code>。</p>
+<div class="note default">
+            <p>NaN：代表不是數值（not a number）</p>
+          </div>
+
+<blockquote>
+<p>typeof</p>
+</blockquote>
+<p>null：<code>typeof undefined</code> 結果為 <code>undefined</code>。<br>undefined：<code>typeof null</code> 結果為 <code>Object</code>。</p>
+<blockquote>
+<p>JSON</p>
+</blockquote>
+<p>null：<code>有效</code>的 JSON 值。<br>undefined：<code>無效</code>的 JSON 值。</p>
+<blockquote>
+<p>keyword</p>
+</blockquote>
+<p>null：是 keywords。（沒辦法作為變數名稱）<br>undefined：不是 keywords。（但 <code>千萬不要</code> 將變數名稱設為 undefined）</p>
+<h2 id="conclusion"><a href="#conclusion" class="headerlink" title="conclusion"></a>conclusion</h2><div class="note default">
+            <p>JS 中變數 undefined 比起 null，更相似其它語言的 NULL。（因為預設值）</p>
+          </div>
+
+<div class="note danger">
+            <p>除非很熟悉，不然新手一律不建議將變數設置 <code>null</code> 或 <code>undefined</code>。</p>
+          </div>
+
+<details>
+  <summary>有興趣可以參考下方幾篇 stackoverflow 的討論</summary>
+  <a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/16474796/set-javascript-variable-null-or-leave-undefined/16474917#16474917">1. Set JavaScript variable = null, or leave undefined?</a></br>
+  <a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/13142912/when-do-i-initialize-variables-in-javascript-with-null-or-not-at-all/13142982#13142982">2. When do I initialize variables in JavaScript with null or not at all?</a></br>
+  <a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/6604749/what-reason-is-there-to-use-null-instead-of-undefined-in-javascript/48197438#48197438">3. What reason is there to use null instead of undefined in JavaScript?</a></br>
+  <a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/6604749/what-reason-is-there-to-use-null-instead-of-undefined-in-javascript/6604783#6604783">4. What reason is there to use null instead of undefined in JavaScript?</a></br>
+</details>
+
+<h2 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h2><ul>
+<li>卡斯伯老師：<a href="https://wcc723.github.io/javascript/2017/12/08/javascript-typeof/">鐵人賽：動態型別的 JavaScript</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>JavaScript</category>
+      </categories>
+      <tags>
+        <tag>JS 釘孤枝</tag>
         <tag>JavaScript</tag>
       </tags>
   </entry>
