@@ -40,21 +40,17 @@
   gtag('config', 'G-K8QW91NNBQ');
 </script>
 
-  <meta name="description" content="此篇主要透過 ECMAScript 中定義的規則，來講述幾個 JS 抽象的值運算 (abstract operations) 做轉型的過程。">
-<meta property="og:type" content="article">
-<meta property="og:title" content="JS 轉型 - 抽象的值運算 abstract operations">
-<meta property="og:url" content="https://kentdoit.github.io/javascript/163319027/index.html">
+  <meta name="description" content="Blog">
+<meta property="og:type" content="website">
+<meta property="og:title" content="KentDoIt">
+<meta property="og:url" content="https://kentdoit.github.io/archives/2023/03/index.html">
 <meta property="og:site_name" content="KentDoIt">
-<meta property="og:description" content="此篇主要透過 ECMAScript 中定義的規則，來講述幾個 JS 抽象的值運算 (abstract operations) 做轉型的過程。">
+<meta property="og:description" content="Blog">
 <meta property="og:locale" content="zh_TW">
-<meta property="article:published_time" content="2022-07-21T03:36:54.000Z">
-<meta property="article:modified_time" content="2022-08-12T12:01:08.000Z">
 <meta property="article:author" content="Kent">
-<meta property="article:tag" content="JavaScript">
-<meta property="article:tag" content="ECMAScript">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="https://kentdoit.github.io/javascript/163319027/">
+<link rel="canonical" href="https://kentdoit.github.io/archives/2023/03/">
 
 
 <script id="page-configurations">
@@ -62,12 +58,12 @@
   CONFIG.page = {
     sidebar: "",
     isHome : false,
-    isPost : true,
+    isPost : false,
     lang   : 'zh-TW'
   };
 </script>
 
-  <title>JS 轉型 - 抽象的值運算 abstract operations | KentDoIt</title>
+  <title>歸檔 | KentDoIt</title>
   
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-K8QW91NNBQ"></script>
     <script>
@@ -231,136 +227,56 @@
         <div class="content-wrap">
           
 
-          <div class="content post posts-expand">
+          <div class="content archive">
             
 
-    
   
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
-    <link itemprop="mainEntityOfPage" href="https://kentdoit.github.io/javascript/163319027/">
+  
+  <div class="post-block">
+    <div class="posts-collapse">
+      <div class="collection-title">
+        <span class="collection-header">嗯..! 目前共有 24 篇文章。 繼續努力。</span>
+      </div>
 
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/headshost_ya.jpg">
-      <meta itemprop="name" content="Kent">
-      <meta itemprop="description" content="Blog">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="KentDoIt">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          JS 轉型 - 抽象的值運算 abstract operations
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <!--<i class="far fa-folder"></i>-->
-                <i class="far fa-folder-open"></i>
-              </span>
-              <!--<span class="post-meta-item-text">分類於</span>-->
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/javascript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
-                </span>
-            </span>
-            <span class="post-meta-item" title="所需閱讀時間">
-              <!--<span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>-->
-              <span>1 分鐘閱讀時間</span>
-            </span>
-            <span class="post-meta-item">
-              <!--<span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">發表於</span>-->
-              <br>
-              <time title="創建時間：2022-07-21 11:36:54" itemprop="dateCreated datePublished" datetime="2022-07-21T11:36:54+08:00">2022-07-21</time>
-            </span>
-
-          
-            <div class="post-description">此篇主要透過 ECMAScript 中定義的規則，來講述幾個 JS 抽象的值運算 (abstract operations) 做轉型的過程。</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-        <blockquote class="blockquote-center">
-          <i class="fa fa-quote-left"></i>
-          <p>此篇主要透過 ECMAScript 中定義的規則，來講述幾個 JS 抽象的值運算 (abstract operations) 做轉型的過程。</p>
-          <i class="fa fa-quote-right"></i>
-        </blockquote>
       
-        <h2 id="ToPrimitive"><a href="#ToPrimitive" class="headerlink" title="ToPrimitive"></a>ToPrimitive</h2>
+    <div class="collection-year">
+      <span class="collection-header">2023</span>
     </div>
 
-    
-    
-    
-        
+  <article itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
 
-<div>
-<hr style="margin-top: 40px">
-<ul class="post-copyright">
-  <li class="post-copyright-author">
-    <strong>作者： </strong>Kent
-  </li>
-  <li class="post-copyright-link">
-    <strong>文章連結：</strong>
-    <a href="https://kentdoit.github.io/javascript/163319027/" title="JS 轉型 - 抽象的值運算 abstract operations">https://kentdoit.github.io/javascript/163319027/</a>
-  </li>
-  <li class="post-copyright-license">
-    <strong>版權聲明： </strong>本網誌所有文章除特別聲明外，均採用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh_TW" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 許可協議。轉載請註明出處！
-  </li>
-</ul>
-</div>
+      <div class="post-meta">
+        <time itemprop="dateCreated"
+              datetime="2023-03-08T11:42:01+08:00"
+              content="2023-03-08">
+          03-08
+        </time>
+      </div>
 
+      <div class="post-title">
+          <a class="post-title-link" href="/javascript/1956994369/" itemprop="url">
+            <span itemprop="name">JS 淺拷貝（Shallow Copy）、深拷貝（Deep Copy）</span>
+          </a>
+      </div>
 
-      <footer class="post-footer">
-          
-          <div class="post-tags">
-              <a href="/tags/JavaScript/" rel="tag"><i class="fas fa-hashtag"></i> JavaScript</a>
-              <a href="/tags/ECMAScript/" rel="tag"><i class="fas fa-hashtag"></i> ECMAScript</a>
-          </div>
-
-        
-
-
-        
-    <div class="post-nav">
-      <div class="post-nav-item">
-    <a href="/javascript/3842658283/" rel="prev" title="JS 傳值 by Value、傳址 by Reference、傳共享 by sharing">
-      <i class="fa fa-chevron-left"></i> JS 傳值 by Value、傳址 by Reference、傳共享 by sharing
-    </a></div>
-      <div class="post-nav-item">
-    <a href="/javascript/3007200680/" rel="next" title="JS null vs undefined">
-      JS null vs undefined <i class="fa fa-chevron-right"></i>
-    </a></div>
-    </div>
-      </footer>
-    
+    </header>
   </article>
+
+
+    </div>
+  </div>
   
   
+  
+
   
 
 
 
           </div>
           
-  <script src="https://utteranc.es/client.js"
-          repo="KentDoIt/hexo-theme-next"
-          issue-term="pathname"
-          label="blog comment"
-          theme="github-light"
-          crossorigin="anonymous"
-          async>
-  </script>
 
 <script>
   window.addEventListener('tabs:register', () => {
@@ -407,7 +323,6 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#ToPrimitive"><span class="nav-text">ToPrimitive</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -423,7 +338,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">25</span>
+          <span class="site-state-item-count">24</span>
           <span class="site-state-item-name">文章</span>
         </a>
       </div>
@@ -463,7 +378,7 @@
 <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2022</span>
+  <span itemprop="copyrightYear">2023</span>
   <span class="with-love">
     <i class=""></i>
   </span>
