@@ -49,7 +49,7 @@
 <meta property="og:locale" content="zh_TW">
 <meta property="og:image" content="https://imgur.com/wThhCkS.png">
 <meta property="article:published_time" content="2023-03-15T08:55:12.000Z">
-<meta property="article:modified_time" content="2023-03-15T09:01:52.499Z">
+<meta property="article:modified_time" content="2023-03-15T09:05:32.223Z">
 <meta property="article:author" content="Kent">
 <meta property="article:tag" content="Vue">
 <meta name="twitter:card" content="summary">
@@ -335,10 +335,9 @@
 
 <hr>
 <p>情境範例：依照 product.is_enabled 渲染出不同的 class、textContent</p>
-<p>錯誤範例</p>
-<ul>
-<li>因為渲染出來的是純文字，不會解析成 HTML tag。</li>
-</ul>
+<blockquote>
+<p>錯誤範例：因為渲染出來的是純文字，不會解析成 HTML tag。</p>
+</blockquote>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;&#123; product.is_enabled ? &#x27;<span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">&quot;text-success&quot;</span>&gt;</span>啟用<span class="tag">&lt;/<span class="name">span</span>&gt;</span>&#x27; : &#x27;<span class="tag">&lt;<span class="name">span</span>&gt;</span>未啟用<span class="tag">&lt;/<span class="name">span</span>&gt;</span>&#x27; &#125;&#125;</span><br></pre></td></tr></table></figure>
 
 <blockquote>
