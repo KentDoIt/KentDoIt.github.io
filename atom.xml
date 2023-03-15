@@ -6,7 +6,7 @@
   <link href="https://kentdoit.github.io/atom.xml" rel="self"/>
   
   <link href="https://kentdoit.github.io/"/>
-  <updated>2023-03-15T09:05:32.223Z</updated>
+  <updated>2023-03-15T09:07:51.955Z</updated>
   <id>https://kentdoit.github.io/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://kentdoit.github.io/Vue/3454538903/"/>
     <id>https://kentdoit.github.io/Vue/3454538903/</id>
     <published>2023-03-15T08:55:12.000Z</published>
-    <updated>2023-03-15T09:05:32.223Z</updated>
+    <updated>2023-03-15T09:07:51.955Z</updated>
     
     
     <summary type="html">此篇會探討為什麼雙括號 Mustache 無法渲染出 HTML tag 的問題</summary>

@@ -181,220 +181,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Hexo 新增文章和頁面 (二)</title>
-    <url>/hexo/356195859/</url>
-    <content><![CDATA[<h2 id="範例的環境版本"><a href="#範例的環境版本" class="headerlink" title="範例的環境版本"></a>範例的環境版本</h2><p>hexo 版本：6.0.1<br>hexo-cli 版本：4.3.0<br>next 版本：7.8.0</p>
-<h2 id="新增指令"><a href="#新增指令" class="headerlink" title="新增指令"></a>新增指令</h2><blockquote>
-<p>新增文章、草稿、草稿三種語法都一樣是使用 new 指令，只差別在 layout 參數。</p>
-</blockquote>
-<p>指令</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">hexo new [layout] &lt;title&gt;</span><br></pre></td></tr></table></figure>
-
-<p>參數</p>
-<p>title：文章標題</p>
-<ul>
-<li>若文章標題包含空格，需使用 <code>引號</code> 刮起來（雙引號、單引號都可以），否則會以最後一個空格後面的字作為 title。</li>
-</ul>
-<p>layout：模板種類，有以下三種不同的種類</p>
-<ul>
-<li>draft.md（新增草稿）</li>
-<li>page.md（新增頁面）</li>
-<li>post.md（預設值，新增文章）</li>
-</ul>
-<div class="note default">
-            <p>如果沒有加上 layout 參數，則會帶入根目錄 _config.yml 檔案中的 <code>default_layout</code> 參數，預設為 post。</p>
-          </div>
-
-<blockquote>
-<p>再下新增指令前，還需要先暸解一些設定以及檔案路徑。</p>
-</blockquote>
-<h3 id="存放路徑"><a href="#存放路徑" class="headerlink" title="存放路徑"></a>存放路徑</h3><blockquote>
-<p>新增的文章會存放於根目錄 source&#x2F;_post 路徑底下，會用 .md 檔作為筆記的副檔名。</p>
-</blockquote>
-<p><img src="https://imgur.com/XWXBS2c.png"></p>
-<div class="note default">
-            <p>如果想獲取已發佈的文章，則可以直接複製 source&#x2F;_post 資料夾，就可以獲得發佈過的 md 檔案。</p>
-          </div>
-
-<h3 id="設置模版參數"><a href="#設置模版參數" class="headerlink" title="設置模版參數"></a>設置模版參數</h3><blockquote>
-<p>根目錄 scaffolds 資料夾中的 layout 檔案（draft.md、page.md、post.md），分別代表三種種 layout 模板的設置。</p>
-</blockquote>
-<p><img src="https://imgur.com/8Cyd1Pz.png"></p>
-<h3 id="模版參數種類"><a href="#模版參數種類" class="headerlink" title="模版參數種類"></a>模版參數種類</h3><blockquote>
-<p>參數是 <code>Front-matter</code>，檔案最上方以 <code>---</code> 分隔的區域）作為模版預設樣式的參數。</p>
-</blockquote>
-<p>常用的四種參數</p>
-<ul>
-<li>title：會自動帶上當 title 值，並以 h1 tag 的方式呈現。</li>
-<li>date：會自動帶上當下日期。</li>
-<li>categories：分類（多筆會用 <code>破折號 -</code> 的方式輸入）。</li>
-<li>tags：分類（多筆會用 <code>破折號 -</code> 的方式輸入）。</li>
-</ul>
-<figure class="highlight js"><figcaption><span>示範 scaffolds 中如何用 &#123;&#123;&#125;&#125; 設置 Front-matter 參數</span></figcaption><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line"><span class="attr">title</span>: &#123;&#123; title &#125;&#125; <span class="comment">// 預設值，文章名稱（會自動帶入）</span></span><br><span class="line"><span class="attr">date</span>: &#123;&#123; date &#125;&#125; <span class="comment">// 預設值，文章時間（會自動帶入）</span></span><br><span class="line"><span class="attr">tags</span>: &#123;&#123; tags &#125;&#125; <span class="comment">// 標籤</span></span><br><span class="line"><span class="attr">categories</span>: &#123;&#123; categories &#125;&#125; <span class="comment">// 分類</span></span><br><span class="line"><span class="attr">thumbnail</span>: <span class="comment">// 預覽圖</span></span><br><span class="line"><span class="attr">banner</span>: <span class="comment">// 文章開頭圖</span></span><br><span class="line">---</span><br></pre></td></tr></table></figure>
-
-<div class="note default">
-            <p>其他參數請參考<a href="https://hexo.io/zh-tw/docs/front-matter">官方文件</a></p>
-          </div>
-
-<h2 id="新增頁面"><a href="#新增頁面" class="headerlink" title="新增頁面"></a>新增頁面</h2><blockquote>
-<p>此小節也會介紹如何解決上一篇文章結尾提到的徑錯誤（例如：Cannot GET&#x2F;about&#x2F;）。</p>
-</blockquote>
-<p>語法</p>
-<ul>
-<li><code>hexo new page &lt;title&gt;</code></li>
-</ul>
-<div class="note default">
-            <p>下方會演釋如何透過指令建立 menu 所需頁面，以及建立後需要設置什麼？</p>
-          </div>
-
-<p>Step1：輸入新增頁面指令</p>
-<ul>
-<li>示範新增 tags 頁面</li>
-</ul>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">hexo new page tags</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://imgur.com/6OCF161.png" alt="tags 畫面"></p>
-<div class="note default">
-            <p>這樣路徑就不會錯誤拉，只是會發現空空如也，那是因為還需要設置對應的 type 參數。</p>
-          </div>
-
-<p>Step2：修改 index.md 中 Front-matter 參數 type</p>
-<div class="note default">
-            <p>進入根目錄 source 資料夾中，剛剛新增的 tags 資料夾底下，會有一個 index.md，這隻檔案使用 Front-matter（檔案最上方以 — 分隔的區域） 作為模版預設樣式的參數。</p>
-          </div>
-
-<ul>
-<li>title：會自動帶入指令中的 title（tags）</li>
-<li>date：會自動帶入檔案檔案建立日期</li>
-<li>type: 才會對應類別的文章</li>
-</ul>
-<figure class="highlight plaintext"><figcaption><span>source/tags/index.md</span></figcaption><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">title: tags</span><br><span class="line">date: 2022-04-25 13:15:09</span><br><span class="line">type: tags</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://imgur.com/bRVlExe.png" alt="tags 畫面"></p>
-<p>延伸閱讀：ray 大 <a href="https://israynotarray.com/hexo/20200923/2032860736/">試著學 Hexo - 新增頁面</a></p>
-<div class="note default">
-            <p>文章中有提到如何去除模板，不使用預設產生的樣板而是改用手刻的 .html 檔案。</p>
-          </div>
-
-<h2 id="新增文章"><a href="#新增文章" class="headerlink" title="新增文章"></a>新增文章</h2><p>語法</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">hexo new &lt;title&gt;</span><br></pre></td></tr></table></figure>
-
-<div class="note default">
-            <p>下方如何透過指令新增文章，以及建立後需要設置什麼？</p>
-          </div>
-
-<p>Step1：新增文章</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">hexo new &lt;title&gt;</span><br></pre></td></tr></table></figure>
-
-<p>Step2：清除快取檔案 (db.json) 和已產生的靜態檔案 (public)</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">hexo cl</span><br></pre></td></tr></table></figure>
-
-<p>Step3：產生靜態檔案以及重新部署</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">hexo d -g</span><br></pre></td></tr></table></figure>
-
-<div class="note default">
-            <p>示範新增文章需要做的三個指令</p>
-          </div>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">hexo new &#x27;架設部落格 Hexo 部署 Github (零)&#x27;</span><br><span class="line">hexo cl</span><br><span class="line">hexo d -g</span><br></pre></td></tr></table></figure>
-
-<div class="note default">
-            <p>那如何在文章中添加圖片以及刪除文章呢？</p>
-          </div>
-
-<h3 id="刪除文章"><a href="#刪除文章" class="headerlink" title="刪除文章"></a>刪除文章</h3><p>Step1：直接刪除路徑 .&#x2F;source&#x2F;_posts 對應的文章 .md 檔案。</p>
-<p>Step2：清除快取檔案和已產生的靜態檔案。</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">hexo cl</span><br></pre></td></tr></table></figure>
-
-<p>Step3：重新部署</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">hexo d -g</span><br></pre></td></tr></table></figure>
-
-<h3 id="文章圖片"><a href="#文章圖片" class="headerlink" title="文章圖片"></a>文章圖片</h3><blockquote>
-<p>Hexo 本身並沒有提供上傳圖片的功能，因此需要另外尋找上傳圖片的服務，下面介紹兩種方法。</p>
-</blockquote>
-<p>方法一：在創建文章時會 <code>自動產生</code> 一個和文章同名的資料夾，用於存放圖片。</p>
-<blockquote>
-<p>透過部署時一併上傳到 github。</p>
-</blockquote>
-<p>Step1：搜尋 Writing<br>Step2：修改 post_asset_folder 參數（預設是 false）</p>
-<figure class="highlight diff"><figcaption><span>_config.yml</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="deletion">- post_asset_folder: false</span></span><br><span class="line"><span class="addition">+ post_asset_folder: true</span></span><br></pre></td></tr></table></figure>
-
-<div class="note default">
-            <p>後期不建議使用這種方式，因為 github repository 限制 5GB，當文件大小超過 50 MB 將收到警告，無法上傳超過 100 MB 的文件。</p><p>src：<a href="https://www.modb.pro/db/154051">GitHub、Gitlab、Gitee的容量及文件大小限制</a></p>
-          </div>
-
-<p>方法二：上傳其它圖片空間在用圖片超連結的方式插入到文章的 md 檔案。</p>
-<blockquote>
-<p>免費圖片空間：<a href="https://imgur.com/">Imgur</a>、<a href="https://upload.cc/">Upload.cc</a>、firebase</p>
-</blockquote>
-<p>Step1：上傳圖片到免費空間中<br>Step2：複製圖片連結<br>Step3：插入到文章中</p>
-<figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">![<span class="string">type</span>](<span class="link">https://imgur.com/bRVlExe.png</span>)</span><br></pre></td></tr></table></figure>
-
-<div class="note default">
-            <p>免費圖片空間注意事項</p><ol><li>是否有時間限制（例如：超過 60 天沒有瀏覽就刪除）</li><li>圖片是否可外連（例如：有些空間是不支援直接獲取圖片連結）</li><li>圖片流量限制（例如：限制圖片的讀取數量以及流出數量）</li></ol>
-          </div>
-
-<h2 id="新增草稿"><a href="#新增草稿" class="headerlink" title="新增草稿"></a>新增草稿</h2><div class="note default">
-            <p>草稿優勢為，預設不會被編譯出來，下方會介紹兩種不會被編譯的方法。</p>
-          </div>
-
-<p>指令</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">hexo new draft &lt;title&gt;</span><br></pre></td></tr></table></figure>
-
-<p>方法一：_drafts 資料夾（草稿資料夾）內的文章</p>
-<div class="note default">
-            <p>新增的草稿會存放於 _drafts 資料夾中，若資料夾不存在則會自動生成一個。</p>
-          </div>
-
-<p>Step1：輸入新增草稿文章指令</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">hexo new draft &lt;title&gt;</span><br></pre></td></tr></table></figure>
-
-<p>方法二：新增底線開頭資料夾</p>
-<p>Step1：根目錄 source&#x2F;_post 資料夾內，新增底線開頭的資料夾（例如：_草稿、_draft）<br>Step2：將還沒有要發布的文章手動搬移到到該資料夾底下</p>
-<p><img src="https://imgur.com/7XKWLNt.png" alt="草稿資料夾"></p>
-<div class="note default">
-            <p>那如果寫完了怎麼轉成文章？</p>
-          </div>
-
-<h3 id="草稿轉文章"><a href="#草稿轉文章" class="headerlink" title="草稿轉文章"></a>草稿轉文章</h3><div class="note default">
-            <p>下面介紹兩種方法。</p>
-          </div>
-
-<p>方法一：手動搬移</p>
-<ul>
-<li>將草稿文章手動搬移到 source&#x2F;_post 資料夾中。</li>
-</ul>
-<p>方法二：輸入 publish 指令</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">hexo publish draft &lt;title&gt;</span><br></pre></td></tr></table></figure>
-
-<div class="note danger">
-            <p>有限制，僅適用於存在 _drafts 資料夾底下的草稿，因為會自動從 source&#x2F;_drafts 尋找對應的草稿文章，因此不在該資料夾底下則會搜尋不到。</p>
-          </div>
-
-<p><img src="https://imgur.com/vmJTEpM.png" alt="草稿 error"></p>
-<h3 id="編譯草稿"><a href="#編譯草稿" class="headerlink" title="編譯草稿"></a>編譯草稿</h3><blockquote>
-<p>上面有提到，預設是不會將編譯草稿編譯出來，但如果要讓本地端 server 看見還是有辦法可以將其編譯出來的，下方介紹兩種方法。</p>
-</blockquote>
-<p>方法一：reu server 時帶入 <code>--draft</code></p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">hexo s --draft</span><br></pre></td></tr></table></figure>
-
-<p>方法二：修改根目錄 _config.yml 中的 <code>render_drafts</code> 參數（預設為 false）</p>
-<figure class="highlight diff"><table><tr><td class="code"><pre><span class="line"><span class="deletion">-render_drafts: false</span></span><br><span class="line"><span class="addition">+render_drafts: true</span></span><br></pre></td></tr></table></figure>
-
-<div class="note danger">
-            <p>但要注意使用方法二，運行時會出現警告提醒。（可以忽略沒關係）</p>
-          </div>
-
-<p><img src="https://imgur.com/wuOgMjr.png" alt="WARN 警告提示"></p>
-<h2 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h2><p><a href="https://israynotarray.com/hexo/20200923/2032860736/">試著學 Hexo - 新增頁面</a></p>
-]]></content>
-      <categories>
-        <category>Hexo</category>
-      </categories>
-      <tags>
-        <tag>Hexo 部落格</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Hexo 管理爬蟲 robots.txt（五）</title>
     <url>/hexo/3578178281/</url>
     <content><![CDATA[<h2 id="範例的環境版本"><a href="#範例的環境版本" class="headerlink" title="範例的環境版本"></a>範例的環境版本</h2><p>hexo 版本：6.0.1<br>hexo-cli 版本：4.3.0<br>next 版本：7.8.0</p>
@@ -1099,6 +885,220 @@
         <tag>運算子</tag>
         <tag>JavaScript</tag>
         <tag>ECMAScript</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Hexo 新增文章和頁面 (二)</title>
+    <url>/hexo/356195859/</url>
+    <content><![CDATA[<h2 id="範例的環境版本"><a href="#範例的環境版本" class="headerlink" title="範例的環境版本"></a>範例的環境版本</h2><p>hexo 版本：6.0.1<br>hexo-cli 版本：4.3.0<br>next 版本：7.8.0</p>
+<h2 id="新增指令"><a href="#新增指令" class="headerlink" title="新增指令"></a>新增指令</h2><blockquote>
+<p>新增文章、草稿、草稿三種語法都一樣是使用 new 指令，只差別在 layout 參數。</p>
+</blockquote>
+<p>指令</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">hexo new [layout] &lt;title&gt;</span><br></pre></td></tr></table></figure>
+
+<p>參數</p>
+<p>title：文章標題</p>
+<ul>
+<li>若文章標題包含空格，需使用 <code>引號</code> 刮起來（雙引號、單引號都可以），否則會以最後一個空格後面的字作為 title。</li>
+</ul>
+<p>layout：模板種類，有以下三種不同的種類</p>
+<ul>
+<li>draft.md（新增草稿）</li>
+<li>page.md（新增頁面）</li>
+<li>post.md（預設值，新增文章）</li>
+</ul>
+<div class="note default">
+            <p>如果沒有加上 layout 參數，則會帶入根目錄 _config.yml 檔案中的 <code>default_layout</code> 參數，預設為 post。</p>
+          </div>
+
+<blockquote>
+<p>再下新增指令前，還需要先暸解一些設定以及檔案路徑。</p>
+</blockquote>
+<h3 id="存放路徑"><a href="#存放路徑" class="headerlink" title="存放路徑"></a>存放路徑</h3><blockquote>
+<p>新增的文章會存放於根目錄 source&#x2F;_post 路徑底下，會用 .md 檔作為筆記的副檔名。</p>
+</blockquote>
+<p><img src="https://imgur.com/XWXBS2c.png"></p>
+<div class="note default">
+            <p>如果想獲取已發佈的文章，則可以直接複製 source&#x2F;_post 資料夾，就可以獲得發佈過的 md 檔案。</p>
+          </div>
+
+<h3 id="設置模版參數"><a href="#設置模版參數" class="headerlink" title="設置模版參數"></a>設置模版參數</h3><blockquote>
+<p>根目錄 scaffolds 資料夾中的 layout 檔案（draft.md、page.md、post.md），分別代表三種種 layout 模板的設置。</p>
+</blockquote>
+<p><img src="https://imgur.com/8Cyd1Pz.png"></p>
+<h3 id="模版參數種類"><a href="#模版參數種類" class="headerlink" title="模版參數種類"></a>模版參數種類</h3><blockquote>
+<p>參數是 <code>Front-matter</code>，檔案最上方以 <code>---</code> 分隔的區域）作為模版預設樣式的參數。</p>
+</blockquote>
+<p>常用的四種參數</p>
+<ul>
+<li>title：會自動帶上當 title 值，並以 h1 tag 的方式呈現。</li>
+<li>date：會自動帶上當下日期。</li>
+<li>categories：分類（多筆會用 <code>破折號 -</code> 的方式輸入）。</li>
+<li>tags：分類（多筆會用 <code>破折號 -</code> 的方式輸入）。</li>
+</ul>
+<figure class="highlight js"><figcaption><span>示範 scaffolds 中如何用 &#123;&#123;&#125;&#125; 設置 Front-matter 參數</span></figcaption><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line"><span class="attr">title</span>: &#123;&#123; title &#125;&#125; <span class="comment">// 預設值，文章名稱（會自動帶入）</span></span><br><span class="line"><span class="attr">date</span>: &#123;&#123; date &#125;&#125; <span class="comment">// 預設值，文章時間（會自動帶入）</span></span><br><span class="line"><span class="attr">tags</span>: &#123;&#123; tags &#125;&#125; <span class="comment">// 標籤</span></span><br><span class="line"><span class="attr">categories</span>: &#123;&#123; categories &#125;&#125; <span class="comment">// 分類</span></span><br><span class="line"><span class="attr">thumbnail</span>: <span class="comment">// 預覽圖</span></span><br><span class="line"><span class="attr">banner</span>: <span class="comment">// 文章開頭圖</span></span><br><span class="line">---</span><br></pre></td></tr></table></figure>
+
+<div class="note default">
+            <p>其他參數請參考<a href="https://hexo.io/zh-tw/docs/front-matter">官方文件</a></p>
+          </div>
+
+<h2 id="新增頁面"><a href="#新增頁面" class="headerlink" title="新增頁面"></a>新增頁面</h2><blockquote>
+<p>此小節也會介紹如何解決上一篇文章結尾提到的徑錯誤（例如：Cannot GET&#x2F;about&#x2F;）。</p>
+</blockquote>
+<p>語法</p>
+<ul>
+<li><code>hexo new page &lt;title&gt;</code></li>
+</ul>
+<div class="note default">
+            <p>下方會演釋如何透過指令建立 menu 所需頁面，以及建立後需要設置什麼？</p>
+          </div>
+
+<p>Step1：輸入新增頁面指令</p>
+<ul>
+<li>示範新增 tags 頁面</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">hexo new page tags</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://imgur.com/6OCF161.png" alt="tags 畫面"></p>
+<div class="note default">
+            <p>這樣路徑就不會錯誤拉，只是會發現空空如也，那是因為還需要設置對應的 type 參數。</p>
+          </div>
+
+<p>Step2：修改 index.md 中 Front-matter 參數 type</p>
+<div class="note default">
+            <p>進入根目錄 source 資料夾中，剛剛新增的 tags 資料夾底下，會有一個 index.md，這隻檔案使用 Front-matter（檔案最上方以 — 分隔的區域） 作為模版預設樣式的參數。</p>
+          </div>
+
+<ul>
+<li>title：會自動帶入指令中的 title（tags）</li>
+<li>date：會自動帶入檔案檔案建立日期</li>
+<li>type: 才會對應類別的文章</li>
+</ul>
+<figure class="highlight plaintext"><figcaption><span>source/tags/index.md</span></figcaption><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">title: tags</span><br><span class="line">date: 2022-04-25 13:15:09</span><br><span class="line">type: tags</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://imgur.com/bRVlExe.png" alt="tags 畫面"></p>
+<p>延伸閱讀：ray 大 <a href="https://israynotarray.com/hexo/20200923/2032860736/">試著學 Hexo - 新增頁面</a></p>
+<div class="note default">
+            <p>文章中有提到如何去除模板，不使用預設產生的樣板而是改用手刻的 .html 檔案。</p>
+          </div>
+
+<h2 id="新增文章"><a href="#新增文章" class="headerlink" title="新增文章"></a>新增文章</h2><p>語法</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">hexo new &lt;title&gt;</span><br></pre></td></tr></table></figure>
+
+<div class="note default">
+            <p>下方如何透過指令新增文章，以及建立後需要設置什麼？</p>
+          </div>
+
+<p>Step1：新增文章</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">hexo new &lt;title&gt;</span><br></pre></td></tr></table></figure>
+
+<p>Step2：清除快取檔案 (db.json) 和已產生的靜態檔案 (public)</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">hexo cl</span><br></pre></td></tr></table></figure>
+
+<p>Step3：產生靜態檔案以及重新部署</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">hexo d -g</span><br></pre></td></tr></table></figure>
+
+<div class="note default">
+            <p>示範新增文章需要做的三個指令</p>
+          </div>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">hexo new &#x27;架設部落格 Hexo 部署 Github (零)&#x27;</span><br><span class="line">hexo cl</span><br><span class="line">hexo d -g</span><br></pre></td></tr></table></figure>
+
+<div class="note default">
+            <p>那如何在文章中添加圖片以及刪除文章呢？</p>
+          </div>
+
+<h3 id="刪除文章"><a href="#刪除文章" class="headerlink" title="刪除文章"></a>刪除文章</h3><p>Step1：直接刪除路徑 .&#x2F;source&#x2F;_posts 對應的文章 .md 檔案。</p>
+<p>Step2：清除快取檔案和已產生的靜態檔案。</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">hexo cl</span><br></pre></td></tr></table></figure>
+
+<p>Step3：重新部署</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">hexo d -g</span><br></pre></td></tr></table></figure>
+
+<h3 id="文章圖片"><a href="#文章圖片" class="headerlink" title="文章圖片"></a>文章圖片</h3><blockquote>
+<p>Hexo 本身並沒有提供上傳圖片的功能，因此需要另外尋找上傳圖片的服務，下面介紹兩種方法。</p>
+</blockquote>
+<p>方法一：在創建文章時會 <code>自動產生</code> 一個和文章同名的資料夾，用於存放圖片。</p>
+<blockquote>
+<p>透過部署時一併上傳到 github。</p>
+</blockquote>
+<p>Step1：搜尋 Writing<br>Step2：修改 post_asset_folder 參數（預設是 false）</p>
+<figure class="highlight diff"><figcaption><span>_config.yml</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="deletion">- post_asset_folder: false</span></span><br><span class="line"><span class="addition">+ post_asset_folder: true</span></span><br></pre></td></tr></table></figure>
+
+<div class="note default">
+            <p>後期不建議使用這種方式，因為 github repository 限制 5GB，當文件大小超過 50 MB 將收到警告，無法上傳超過 100 MB 的文件。</p><p>src：<a href="https://www.modb.pro/db/154051">GitHub、Gitlab、Gitee的容量及文件大小限制</a></p>
+          </div>
+
+<p>方法二：上傳其它圖片空間在用圖片超連結的方式插入到文章的 md 檔案。</p>
+<blockquote>
+<p>免費圖片空間：<a href="https://imgur.com/">Imgur</a>、<a href="https://upload.cc/">Upload.cc</a>、firebase</p>
+</blockquote>
+<p>Step1：上傳圖片到免費空間中<br>Step2：複製圖片連結<br>Step3：插入到文章中</p>
+<figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">![<span class="string">type</span>](<span class="link">https://imgur.com/bRVlExe.png</span>)</span><br></pre></td></tr></table></figure>
+
+<div class="note default">
+            <p>免費圖片空間注意事項</p><ol><li>是否有時間限制（例如：超過 60 天沒有瀏覽就刪除）</li><li>圖片是否可外連（例如：有些空間是不支援直接獲取圖片連結）</li><li>圖片流量限制（例如：限制圖片的讀取數量以及流出數量）</li></ol>
+          </div>
+
+<h2 id="新增草稿"><a href="#新增草稿" class="headerlink" title="新增草稿"></a>新增草稿</h2><div class="note default">
+            <p>草稿優勢為，預設不會被編譯出來，下方會介紹兩種不會被編譯的方法。</p>
+          </div>
+
+<p>指令</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">hexo new draft &lt;title&gt;</span><br></pre></td></tr></table></figure>
+
+<p>方法一：_drafts 資料夾（草稿資料夾）內的文章</p>
+<div class="note default">
+            <p>新增的草稿會存放於 _drafts 資料夾中，若資料夾不存在則會自動生成一個。</p>
+          </div>
+
+<p>Step1：輸入新增草稿文章指令</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">hexo new draft &lt;title&gt;</span><br></pre></td></tr></table></figure>
+
+<p>方法二：新增底線開頭資料夾</p>
+<p>Step1：根目錄 source&#x2F;_post 資料夾內，新增底線開頭的資料夾（例如：_草稿、_draft）<br>Step2：將還沒有要發布的文章手動搬移到到該資料夾底下</p>
+<p><img src="https://imgur.com/7XKWLNt.png" alt="草稿資料夾"></p>
+<div class="note default">
+            <p>那如果寫完了怎麼轉成文章？</p>
+          </div>
+
+<h3 id="草稿轉文章"><a href="#草稿轉文章" class="headerlink" title="草稿轉文章"></a>草稿轉文章</h3><div class="note default">
+            <p>下面介紹兩種方法。</p>
+          </div>
+
+<p>方法一：手動搬移</p>
+<ul>
+<li>將草稿文章手動搬移到 source&#x2F;_post 資料夾中。</li>
+</ul>
+<p>方法二：輸入 publish 指令</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">hexo publish draft &lt;title&gt;</span><br></pre></td></tr></table></figure>
+
+<div class="note danger">
+            <p>有限制，僅適用於存在 _drafts 資料夾底下的草稿，因為會自動從 source&#x2F;_drafts 尋找對應的草稿文章，因此不在該資料夾底下則會搜尋不到。</p>
+          </div>
+
+<p><img src="https://imgur.com/vmJTEpM.png" alt="草稿 error"></p>
+<h3 id="編譯草稿"><a href="#編譯草稿" class="headerlink" title="編譯草稿"></a>編譯草稿</h3><blockquote>
+<p>上面有提到，預設是不會將編譯草稿編譯出來，但如果要讓本地端 server 看見還是有辦法可以將其編譯出來的，下方介紹兩種方法。</p>
+</blockquote>
+<p>方法一：reu server 時帶入 <code>--draft</code></p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">hexo s --draft</span><br></pre></td></tr></table></figure>
+
+<p>方法二：修改根目錄 _config.yml 中的 <code>render_drafts</code> 參數（預設為 false）</p>
+<figure class="highlight diff"><table><tr><td class="code"><pre><span class="line"><span class="deletion">-render_drafts: false</span></span><br><span class="line"><span class="addition">+render_drafts: true</span></span><br></pre></td></tr></table></figure>
+
+<div class="note danger">
+            <p>但要注意使用方法二，運行時會出現警告提醒。（可以忽略沒關係）</p>
+          </div>
+
+<p><img src="https://imgur.com/wuOgMjr.png" alt="WARN 警告提示"></p>
+<h2 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h2><p><a href="https://israynotarray.com/hexo/20200923/2032860736/">試著學 Hexo - 新增頁面</a></p>
+]]></content>
+      <categories>
+        <category>Hexo</category>
+      </categories>
+      <tags>
+        <tag>Hexo 部落格</tag>
       </tags>
   </entry>
   <entry>
@@ -2542,7 +2542,7 @@ console.log(obj.name);  // kent
 <figure class="highlight html"><table><tr><td class="code"><pre><span class="line">&#123;&#123; product.is_enabled ? &#x27;<span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">&quot;text-success&quot;</span>&gt;</span>啟用<span class="tag">&lt;/<span class="name">span</span>&gt;</span>&#x27; : &#x27;<span class="tag">&lt;<span class="name">span</span>&gt;</span>未啟用<span class="tag">&lt;/<span class="name">span</span>&gt;</span>&#x27; &#125;&#125;</span><br></pre></td></tr></table></figure>
 
 <blockquote>
-<p>三元運算子</p>
+<p>正確用法：三元運算子</p>
 </blockquote>
 <ul>
 <li>相同類型的結構可以使用<code>三元運算子</code>動態切換不同的值，這邊 class 綁定的值屬於<code>陣列</code>。</li>
@@ -2555,7 +2555,7 @@ console.log(obj.name);  // kent
 <figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">span</span> <span class="attr">:class</span>=<span class="string">&quot;&#123;&#x27;text-success&#x27;: product.is_enabled, &#x27;text-warning&#x27;: !product.is_enabled&#125;&quot;</span>&gt;</span>&#123;&#123; product.is_enabled ? &#x27;啟用&#x27; : &#x27;未啟用&#x27; &#125;&#125;<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">span</span> <span class="attr">:class</span>=<span class="string">&quot;[&#123;&#x27;text-success&#x27;: product.is_enabled&#125;, &#123;&#x27;text-warning&#x27;: !product.is_enabled&#125;]&quot;</span>&gt;</span>&#123;&#123; product.is_enabled ? &#x27;啟用&#x27; : &#x27;未啟用&#x27; &#125;&#125;<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
 <blockquote>
-<p>v-html</p>
+<p>正確用法：v-html</p>
 </blockquote>
 <ul>
 <li>透過三元運算子來決定要渲染的 HTML tag。</li>
