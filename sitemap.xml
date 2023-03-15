@@ -242,21 +242,6 @@
   </url>
   
   <url>
-    <loc>https://kentdoit.github.io/tags/ECMAScript/</loc>
-    <lastmod>2023-03-15</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://kentdoit.github.io/tags/%E7%89%A9%E4%BB%B6/</loc>
-    <lastmod>2023-03-15</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://kentdoit.github.io/tags/ES6/</loc>
-    <lastmod>2023-03-15</lastmod>
-  </url>
-  
-  <url>
     <loc>https://kentdoit.github.io/tags/%E7%AE%AD%E9%A0%AD%E5%87%BD%E5%BC%8F/</loc>
     <lastmod>2023-03-15</lastmod>
   </url>
@@ -268,6 +253,21 @@
   
   <url>
     <loc>https://kentdoit.github.io/tags/arguments/</loc>
+    <lastmod>2023-03-15</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://kentdoit.github.io/tags/ECMAScript/</loc>
+    <lastmod>2023-03-15</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://kentdoit.github.io/tags/%E7%89%A9%E4%BB%B6/</loc>
+    <lastmod>2023-03-15</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://kentdoit.github.io/tags/ES6/</loc>
     <lastmod>2023-03-15</lastmod>
   </url>
   
