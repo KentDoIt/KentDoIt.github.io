@@ -398,11 +398,6 @@
     <title>Hexo 管理爬蟲 robots.txt（五）</title>
     <url>/hexo/3578178281/</url>
     <content><![CDATA[<h2 id="範例的環境版本"><a href="#範例的環境版本" class="headerlink" title="範例的環境版本"></a>範例的環境版本</h2><p>hexo 版本：6.0.1<br>hexo-cli 版本：4.3.0<br>next 版本：7.8.0</p>
-<h2 id="Front-matter"><a href="#Front-matter" class="headerlink" title="Front-matter"></a>Front-matter</h2><blockquote>
-<p>如果有特定的頁面不希望被加入 sitemap.xml 中，可以在頁面的 markdown 中 Front-matter 設定 sitemap: false。</p>
-</blockquote>
-<figure class="highlight diff"><figcaption><span>text.md</span></figcaption><table><tr><td class="code"><pre><span class="line">title: 測試</span><br><span class="line">date: 2022-05-01 14:10:25</span><br><span class="line">categories:</span><br><span class="line">tags: </span><br><span class="line">description:</span><br><span class="line"><span class="addition">+ sitemap: false</span></span><br></pre></td></tr></table></figure>
-
 <h2 id="robots-txt"><a href="#robots-txt" class="headerlink" title="robots.txt"></a>robots.txt</h2><blockquote>
 <p>設置搜尋引擎爬蟲哪些是可以爬的路徑哪些是不能爬的，也能增強 SEO。</p>
 </blockquote>
@@ -434,6 +429,17 @@
           </div>
 
 <p>延伸閱讀：<a href="https://israynotarray.com/other/20210627/3588736352/">快速掌握 robots.txt 用途</a></p>
+<h2 id="Front-matter"><a href="#Front-matter" class="headerlink" title="Front-matter"></a>Front-matter</h2><div class="note default">
+            <p>前面介紹了透過 robots.txt 設置不允許爬蟲獲取路徑，那如果有特定的頁面不希望被加入 sitemap.xml 中，可以添加 Front-matter 參數。</p>
+          </div>
+
+<p>在頁面的 markdown 中 Front-matter 設定 sitemap: false。</p>
+<figure class="highlight diff"><figcaption><span>text.md</span></figcaption><table><tr><td class="code"><pre><span class="line">title: 測試</span><br><span class="line">date: 2022-05-01 14:10:25</span><br><span class="line">categories:</span><br><span class="line">tags: </span><br><span class="line">description:</span><br><span class="line"><span class="addition">+ sitemap: false</span></span><br></pre></td></tr></table></figure>
+
+<div class="note default">
+            <p>否則預設重新部署後，若有更新路徑都會自動更新到 sitemap.xml 中。</p>
+          </div>
+
 <h2 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h2><p><a href="https://blog.yucheng.me/post/hexo-configuration/#sitemap-xml-%E6%90%9C%E5%B0%8B%E5%BC%95%E6%93%8E%E7%88%AC%E8%9F%B2">Hexo 基本配置</a><br><a href="https://israynotarray.com/other/20210627/3588736352/">快速掌握 robots.txt 用途</a></p>
 ]]></content>
       <categories>
@@ -475,8 +481,12 @@
 
 <p><img src="https://imgur.com/60AW6rA.jpg" alt="進到 GA 中點選左邊側邊欄報表，有看到數字 1 就成功了！"></p>
 <h2 id="Sitemap"><a href="#Sitemap" class="headerlink" title="Sitemap"></a>Sitemap</h2><blockquote>
-<p>Sitemap 檔案會提供網頁中的相關資訊給搜尋引擎，Google 的爬蟲會定期爬 sitemap.xml 檔案，若有更新他就會去爬你的網站並加入到搜尋引擎中。</p>
+<p>Sitemap 用來記錄該網站中所有 url 路徑，以及每一個路徑最後修改的時間戳。</p>
 </blockquote>
+<div class="note default">
+            <p>Sitemap 檔案會提供網頁中的相關資訊給搜尋引擎，Google 的爬蟲會定期爬 sitemap.xml 檔案，若有更新他就會去爬你的網站並加入到搜尋引擎中。</p>
+          </div>
+
 <p>Step1：安裝指令</p>
 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">npm install hexo-generator-sitemap</span><br></pre></td></tr></table></figure>
 
@@ -514,94 +524,6 @@
           </div>
 
 <h2 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h2><p><a href="https://israynotarray.com/hexo/20190514/2072033203/">Hexo搜尋引擎優化</a><br><a href="https://zenreal.github.io/posts/7993/">Hexo 搭建系列 - SEO優化篇</a><br><a href="https://syj0905.github.io/hexo/20190906/285599935/">Hexo 架站攻略 - SEO 優化</a></p>
-]]></content>
-      <categories>
-        <category>Hexo</category>
-      </categories>
-      <tags>
-        <tag>Hexo SEO</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Hexo Sitemap 建立索引 無法擷取</title>
-    <url>/hexo/2629412870/</url>
-    <content><![CDATA[<div class="note default">
-            <p>此篇內容為 <a href="https://kentdoit.github.io/hexo/599670072/">Hexo 設置 GA、Sitemap（四）</a>的 Debug 延續篇，介紹如何解決無法擷取以及設置索引。</p>
-          </div>
-
-<h2 id="範例的環境版本"><a href="#範例的環境版本" class="headerlink" title="範例的環境版本"></a>範例的環境版本</h2><p>hexo 版本：6.0.1<br>hexo-cli 版本：4.3.0<br>next 版本：7.8.0</p>
-<h2 id="無法擷取"><a href="#無法擷取" class="headerlink" title="無法擷取"></a>無法擷取</h2><p><img src="https://imgur.com/UH0jdLH.jpg"></p>
-<div class="note default">
-            <p>下方會介紹四種我嘗試過的方法。</p>
-          </div>
-
-<h3 id="擁有權驗證"><a href="#擁有權驗證" class="headerlink" title="擁有權驗證"></a>擁有權驗證</h3><p>❌ 方法一：添加其他驗證方式（本來只有用 GA）</p>
-<p>Step1：取得 content 值</p>
-<ul>
-<li>記得在複製內容中只擷取 content 值就好。</li>
-</ul>
-<p><img src="https://imgur.com/N623p1p.jpg" alt="演示四步驟取得 content"></p>
-<p>Step2：修改 NexT 主題中 _config.yml 參數 google_site_verification</p>
-<ul>
-<li>貼上取得的 content 值。</li>
-</ul>
-<figure class="highlight diff"><figcaption><span>.git/config</span></figcaption><table><tr><td class="code"><pre><span class="line"># Google Webmaster tools verification.</span><br><span class="line"># See: https://www.google.com/webmasters</span><br><span class="line"><span class="addition">+ google_site_verification: 25miYVaewg4Qur_GPtoF9-GhCZZJNidmq2kqy6wRE9g</span></span><br><span class="line"><span class="deletion">- google_site_verification:</span></span><br></pre></td></tr></table></figure>
-
-<p>Step3：重新部署</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">hexo g -d</span><br></pre></td></tr></table></figure>
-
-<p>Step4：重新部署後，檢查網站中是否包含 google-site-verification</p>
-<p><img src="https://imgur.com/RVLo57e.jpg" alt="搜尋 google-site-verification"></p>
-<h3 id="檢查-Sitemap-格式"><a href="#檢查-Sitemap-格式" class="headerlink" title="檢查 Sitemap 格式"></a>檢查 Sitemap 格式</h3><p>❌ 方法二：檢查 Sitemap 格式</p>
-<blockquote>
-<p>發覺我的 sitemap.xml 格式和官方範例不同，所以需要將多的標籤移除。</p>
-</blockquote>
-<p><img src="https://imgur.com/QnPnMb0.jpg" alt="格式比較"></p>
-<p>Step1：將 node_modules&#x2F;hexo-generator-sitemap&#x2F;sitemap.xml 中的 <code>changefreq</code>、<code>priority</code> 標籤移除。</p>
-<p>Step2：重新部署</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">hexo g -d</span><br></pre></td></tr></table></figure>
-
-<div class="note default">
-            <p>參考這篇 <a href="https://zenreal.github.io/posts/7993/#google%E7%84%A1%E6%B3%95%E8%AE%80%E5%8F%96sitemap-%E4%B8%80%E8%88%AC%E7%9A%84http%E9%8C%AF%E8%AA%A4-%E8%A7%A3%E6%B1%BA%E6%96%B9%E5%BC%8F">Google無法讀取sitemap(一般的HTTP錯誤) 解決方式</a> 所提到的解法，雖然我沒有這個問題。</p>
-          </div>
-
-<p><img src="https://imgur.com/NkFfNmd.jpg" alt="記得要把所有多的標籤都移除呦，雖然也一樣沒成功"></p>
-<h3 id="建立索引"><a href="#建立索引" class="headerlink" title="建立索引"></a>建立索引</h3><blockquote>
-<p>為了將自己的網址透過 Google Search Console 建立索引，提交給 Google 使搜尋引擎能更容易地搜尋到我們的網站，這個也屬於提升 SEO 的其中一種方法。</p>
-</blockquote>
-<p>❌ 方法三：網址審查建立索引</p>
-<p>Step1：點擊網址審查，並在上方網址列貼上部落格網址（例如：<a href="https://kentdoit.github.io/%EF%BC%89">https://kentdoit.github.io/）</a></p>
-<p>Step2：按下建立索引</p>
-<p><img src="https://imgur.com/VwNKDrB.jpg" alt="兩步驟建立索引"></p>
-<div class="note default">
-            <p>過一陣子之後再到網址審查中檢查就會看到綠色勾勾了，也代表建立索引成功了～～～<br>雖然不確定是時間還沒到還是因為 .nojekyll，但至少之後用其他文章連結也有成功建立索引 (੭•̀ᴗ•̀)੭</p>
-          </div>
-
-<p><img src="https://imgur.com/iR7NAzQ.jpg" alt="網址審查通過"></p>
-<h3 id="建立-nojekyll"><a href="#建立-nojekyll" class="headerlink" title="建立 .nojekyll"></a>建立 .nojekyll</h3><p>❌ 方法四：建立 .nojekyll</p>
-<p>Step1：進入根目錄 source 資料夾底下</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">cd source</span><br></pre></td></tr></table></figure>
-
-<p>Step2：建立一個空白的 .nojekyll 檔案</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">touch .nojekyll</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://imgur.com/BFbbf5V.jpg"></p>
-<div class="note default">
-            <p>接下來設定是為了讓每次部署產生的 public 資料夾中也能存在 .nojekyll 檔案</p>
-          </div>
-
-<p>Step3：修改根目錄 _config.yml 參數</p>
-<figure class="highlight diff"><figcaption><span>_config.yml</span></figcaption><table><tr><td class="code"><pre><span class="line"># Include / Exclude file(s)</span><br><span class="line">## include:/exclude: options only apply to the &#x27;source/&#x27; folder</span><br><span class="line">include:</span><br><span class="line"><span class="addition">+  .nojekyll</span></span><br><span class="line">exclude:</span><br><span class="line">ignore:</span><br></pre></td></tr></table></figure>
-
-<p>Step4：重新部署</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">hexo cl</span><br><span class="line">hexo g -d</span><br></pre></td></tr></table></figure>
-
-<div class="note default">
-            <p>雖然建立索引成功了，但 Sitemap 狀態還是呈現 <code>無法擷取</code> 以及 <code>未提交至 Sitemap</code>，最後沒辦法只好靜待幾天看看會不會發生奇蹟</p>
-          </div>
-
-<h2 id="未提交至-Sitemap"><a href="#未提交至-Sitemap" class="headerlink" title="未提交至 Sitemap"></a>未提交至 Sitemap</h2><h2 id="可讀取-Sitemap，但其中含有錯誤"><a href="#可讀取-Sitemap，但其中含有錯誤" class="headerlink" title="可讀取 Sitemap，但其中含有錯誤"></a>可讀取 Sitemap，但其中含有錯誤</h2><p><img src="https://imgur.com/tYWXLmz.jpg"></p>
-<h2 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h2><p><a href="https://blog.kyomind.tw/adding-sitemap-issue/">解決 Hexo + Github Pages 新增 sitemap.xml 找不到頁面</a><br><a href="https://blog.balabambe.com/2021/12/01/%E8%A7%A3%E6%B1%BA-Google-Search-Console-%E6%8A%93%E4%B8%8D%E5%88%B0-Hexo-%E6%94%BE%E5%9C%A8-Github-Pages-%E7%9A%84-sitemap-xml-%E7%9A%84%E5%95%8F%E9%A1%8C/">解決 Google Search Console 抓不到 Hexo 放在 Github Pages 的 sitemap.xml 的問題</a></p>
 ]]></content>
       <categories>
         <category>Hexo</category>
@@ -706,6 +628,114 @@
       </categories>
       <tags>
         <tag>Hexo 部落格</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Hexo Sitemap 建立索引 無法擷取</title>
+    <url>/hexo/2629412870/</url>
+    <content><![CDATA[<div class="note default">
+            <p>此篇內容為 <a href="https://kentdoit.github.io/hexo/599670072/">Hexo 設置 GA、Sitemap（四）</a>的 Debug 延續篇，介紹如何解決無法擷取以及設置索引。</p>
+          </div>
+
+<h2 id="範例的環境版本"><a href="#範例的環境版本" class="headerlink" title="範例的環境版本"></a>範例的環境版本</h2><p>hexo 版本：6.0.1<br>hexo-cli 版本：4.3.0<br>next 版本：7.8.0</p>
+<h2 id="無法擷取、可讀取-Sitemap，但其中含有錯誤"><a href="#無法擷取、可讀取-Sitemap，但其中含有錯誤" class="headerlink" title="無法擷取、可讀取 Sitemap，但其中含有錯誤"></a>無法擷取、可讀取 Sitemap，但其中含有錯誤</h2><p><img src="https://imgur.com/UH0jdLH.jpg"></p>
+<p><img src="https://imgur.com/Ae8Sllt.jpg"></p>
+<p><img src="https://imgur.com/tYWXLmz.jpg"></p>
+<div class="note default">
+            <p>看到類似以上圖片狀況，都不需要擔心。下方會分享四種親身嘗試的方法。</p>
+          </div>
+
+
+<h3 id="擁有權驗證"><a href="#擁有權驗證" class="headerlink" title="擁有權驗證"></a>擁有權驗證</h3><p>方法一：添加其他驗證方式（本來只有用 GA）</p>
+<p>Step1：取得 content 值</p>
+<ul>
+<li>記得在複製內容中只擷取 content 值就好。</li>
+</ul>
+<p><img src="https://imgur.com/N623p1p.jpg" alt="演示四步驟取得 content"></p>
+<p>Step2：修改 NexT 主題中 _config.yml 參數 google_site_verification</p>
+<ul>
+<li>貼上取得的 content 值。</li>
+</ul>
+<figure class="highlight diff"><figcaption><span>.git/config</span></figcaption><table><tr><td class="code"><pre><span class="line"># Google Webmaster tools verification.</span><br><span class="line"># See: https://www.google.com/webmasters</span><br><span class="line"><span class="addition">+ google_site_verification: 25miYVaewg4Qur_GPtoF9-GhCZZJNidmq2kqy6wRE9g</span></span><br><span class="line"><span class="deletion">- google_site_verification:</span></span><br></pre></td></tr></table></figure>
+
+<p>Step3：重新部署</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">hexo g -d</span><br></pre></td></tr></table></figure>
+
+<p>Step4：重新部署後，檢查網站中是否包含 google-site-verification</p>
+<p><img src="https://imgur.com/RVLo57e.jpg" alt="搜尋 google-site-verification"></p>
+<h3 id="檢查-Sitemap-格式"><a href="#檢查-Sitemap-格式" class="headerlink" title="檢查 Sitemap 格式"></a>檢查 Sitemap 格式</h3><p>方法二：檢查 Sitemap 格式</p>
+<blockquote>
+<p>發覺我的 sitemap.xml 格式和官方範例不同，所以需要將多的標籤移除。</p>
+</blockquote>
+<p><img src="https://imgur.com/QnPnMb0.jpg" alt="格式比較"></p>
+<p>Step1：將 node_modules&#x2F;hexo-generator-sitemap&#x2F;sitemap.xml 中的 <code>changefreq</code>、<code>priority</code> 標籤移除。</p>
+<p>Step2：重新部署</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">hexo g -d</span><br></pre></td></tr></table></figure>
+
+<div class="note default">
+            <p>參考這篇 <a href="https://zenreal.github.io/posts/7993/#google%E7%84%A1%E6%B3%95%E8%AE%80%E5%8F%96sitemap-%E4%B8%80%E8%88%AC%E7%9A%84http%E9%8C%AF%E8%AA%A4-%E8%A7%A3%E6%B1%BA%E6%96%B9%E5%BC%8F">Google無法讀取sitemap(一般的HTTP錯誤) 解決方式</a> 所提到的解法，雖然我沒有這個問題。</p>
+          </div>
+
+<p><img src="https://imgur.com/NkFfNmd.jpg" alt="我有嘗試把所有多的標籤都移除呦，但也還是沒成功。"></p>
+<h3 id="建立-nojekyll"><a href="#建立-nojekyll" class="headerlink" title="建立 .nojekyll"></a>建立 .nojekyll</h3><p>方法四：建立 .nojekyll</p>
+<p>Step1：進入根目錄 source 資料夾底下</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">cd source</span><br></pre></td></tr></table></figure>
+
+<p>Step2：建立一個空白的 .nojekyll 檔案</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">touch .nojekyll</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://imgur.com/BFbbf5V.jpg"></p>
+<div class="note default">
+            <p>接下來設定是為了讓每次部署產生的 public 資料夾中也能存在 .nojekyll 檔案</p>
+          </div>
+
+<p>Step3：修改根目錄 _config.yml 參數</p>
+<figure class="highlight diff"><figcaption><span>_config.yml</span></figcaption><table><tr><td class="code"><pre><span class="line"># Include / Exclude file(s)</span><br><span class="line">## include:/exclude: options only apply to the &#x27;source/&#x27; folder</span><br><span class="line">include:</span><br><span class="line"><span class="addition">+  .nojekyll</span></span><br><span class="line">exclude:</span><br><span class="line">ignore:</span><br></pre></td></tr></table></figure>
+
+<p>Step4：重新部署</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">hexo cl</span><br><span class="line">hexo g -d</span><br></pre></td></tr></table></figure>
+
+<div class="note default">
+            <p>參考這篇 <a href="https://github.com/orgs/community/discussions/21599">Sitemap (XML) partially works on GitHub Pages and cannot be fetched by Google Search Console</a> 所提到的添加 .nojekyll。</p>
+          </div>
+
+<h3 id="建立索引"><a href="#建立索引" class="headerlink" title="建立索引"></a>建立索引</h3><blockquote>
+<p>為了將自己的網址透過 Google Search Console 建立索引，提交給 Google 使搜尋引擎能更容易地搜尋到我們的網站，這個也屬於提升 SEO 的其中一種方法。</p>
+</blockquote>
+<p>方法三：網址審查建立索引</p>
+<p>Step1：點擊網址審查，並在上方網址列貼上部落格網址（例如：<a href="https://kentdoit.github.io/%EF%BC%89">https://kentdoit.github.io/）</a></p>
+<p>Step2：按下建立索引</p>
+<p><img src="https://imgur.com/VwNKDrB.jpg" alt="兩步驟建立索引"></p>
+<div class="note default">
+            <p>過一陣子之後再到網址審查中檢查就會看到綠色勾勾了，也代表建立索引成功了～～～<br>雖然不確定是時間還沒到還是因為 .nojekyll，但至少之後用其他文章連結也有成功建立索引 (੭•̀ᴗ•̀)੭</p>
+          </div>
+
+<p><img src="https://imgur.com/iR7NAzQ.jpg"></p>
+<div class="note default">
+            <p>「已建立索引，但未提交至 Sitemap」看到這個沒關係，只是 google 還尚未更新我們的 Sitemap，等 Sitemap 狀態變為「成功」之後，全部的索引資料也都會一併更新。</p>
+          </div>
+
+<h3 id="自我檢查兩步驟"><a href="#自我檢查兩步驟" class="headerlink" title="自我檢查兩步驟"></a>自我檢查兩步驟</h3><p>Step1: robots.txt 是否有設置 Sitemap</p>
+<p>可以參考「<a href="https://kentdoit.github.io/hexo/3578178281/">Hexo 管理爬蟲 robots.txt（五）</a>」來設置 robots.txt。</p>
+<p>Step2: google 搜尋自己的網站</p>
+<p>格式：<code>site:</code> 網站網址</p>
+<p><img src="https://imgur.com/xRoMj9K.jpg"></p>
+<div class="note default">
+            <p>google 有搜尋到、robots.txt 有設置，基本上就可以不用擔心了，接下來就交給時間了。<br>我自己是等超過一個禮拜還好就不管了，一個月之後看就自動好了，Google Search Console 也會都有自動找到尚未加入索引的網址。</p>
+          </div>
+
+<h2 id="conclusion"><a href="#conclusion" class="headerlink" title="conclusion"></a>conclusion</h2><div class="note default">
+            <p>如果沒有其他錯誤訊息，基本上<code>時間到了</code>狀態自動就會變綠色「成功」。</p>
+          </div>
+
+<p><img src="https://imgur.com/65rMzvx.jpg"></p>
+<h2 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h2><p><a href="https://blog.kyomind.tw/adding-sitemap-issue/">解決 Hexo + Github Pages 新增 sitemap.xml 找不到頁面</a><br><a href="https://blog.balabambe.com/2021/12/01/%E8%A7%A3%E6%B1%BA-Google-Search-Console-%E6%8A%93%E4%B8%8D%E5%88%B0-Hexo-%E6%94%BE%E5%9C%A8-Github-Pages-%E7%9A%84-sitemap-xml-%E7%9A%84%E5%95%8F%E9%A1%8C/">解決 Google Search Console 抓不到 Hexo 放在 Github Pages 的 sitemap.xml 的問題</a></p>
+]]></content>
+      <categories>
+        <category>Hexo</category>
+      </categories>
+      <tags>
+        <tag>Hexo SEO</tag>
       </tags>
   </entry>
   <entry>
@@ -815,106 +845,6 @@
         <tag>運算子</tag>
         <tag>JS 釘孤枝</tag>
         <tag>JavaScript</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>JS 邏輯運算子</title>
-    <url>/javascript/1047366401/</url>
-    <content><![CDATA[<h2 id="邏輯運算子-Logical-Operators"><a href="#邏輯運算子-Logical-Operators" class="headerlink" title="邏輯運算子 (Logical Operators)"></a>邏輯運算子 (Logical Operators)</h2><p><img src="https://imgur.com/1ynLfOn.jpg" alt="三種常見邏輯運算子介紹"></p>
-<div class="note default">
-            <p>最常見用途為 <code>if 判斷式</code>並搭配 <code>比較運算子</code> 一起使用，透過 <code>邏輯運算子</code> 回傳運算結果為 true 或 false。</p>
-          </div>
-
-<h3 id="邏輯運算子-OR"><a href="#邏輯運算子-OR" class="headerlink" title="|| 邏輯運算子 OR"></a>|| 邏輯運算子 OR</h3><div class="note primary">
-            <p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Logical_OR">Logical OR</a>：其中一側為 true 就會回傳 true，兩個皆為 false 才會回傳 false。</p>
-          </div>
-
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> (<span class="number">3</span> === <span class="number">3</span> || <span class="number">1</span> == <span class="string">&#x27;2&#x27;</span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;true&#x27;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="amp-amp-邏輯運算子-AND"><a href="#amp-amp-邏輯運算子-AND" class="headerlink" title="&amp;&amp; 邏輯運算子 AND"></a>&amp;&amp; 邏輯運算子 AND</h3><div class="note primary">
-            <p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Logical_AND">Logical AND</a>：其中一側為 false 就會回傳 false，兩個皆為 true 才會回傳 true。</p>
-          </div>
-
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> (<span class="number">3</span> === <span class="number">3</span> &amp;&amp; <span class="number">2</span> == <span class="string">&#x27;2&#x27;</span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;true&#x27;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="邏輯運算子-NOT"><a href="#邏輯運算子-NOT" class="headerlink" title="! 邏輯運算子 NOT"></a>! 邏輯運算子 NOT</h3><div class="note primary">
-            <p><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Logical_NOT">Logical NOT</a>：將布林值反向。</p>
-          </div>
-
-<div class="note default">
-            <p>將非布林變數自動轉型為布林值的特性，衍伸出另一種用法 <code>!! 將型別轉型為布林</code> 達到和 <code>Boolean(變數)</code> 相同效果。</p>
-          </div>
-
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(!<span class="literal">true</span>); <span class="comment">// false</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(!!<span class="string">&#x27;&#x27;</span>);  <span class="comment">// false</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(!!<span class="string">&#x27;a&#x27;</span>); <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
-
-<p><img src="https://imgur.com/tqCYUbe.jpg" alt="型別轉換過程解析"></p>
-<blockquote>
-<p>邏輯運算子 tips</p>
-</blockquote>
-<ol>
-<li>JS 中邏輯運算子僅支援符號寫法，不支援英文寫法。<br><img src="https://imgur.com/fnGTg2x.jpg"></li>
-<li>依照權重高低，有優先順序。（<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Operator_Precedence#table">運算子優先順序 operator precedence</a>）<br><img src="https://imgur.com/VF2aXkz.jpg"></li>
-</ol>
-<hr>
-<h2 id="真值（truthy）、假值（falsy）"><a href="#真值（truthy）、假值（falsy）" class="headerlink" title="真值（truthy）、假值（falsy）"></a><a href="https://developer.mozilla.org/zh-CN/docs/Glossary/Truthy">真值（truthy）</a>、<a href="https://developer.mozilla.org/zh-CN/docs/Glossary/Falsy">假值（falsy）</a></h2><div class="note default">
-            <p>JS 將轉換為布林型別後為 true 的值稱為 <code>真值（truthy)</code>，false 的值稱為 <code>假值 (falsy)</code>。</p>
-          </div>
-
-<blockquote>
-<p>類型定義</p>
-</blockquote>
-<ul>
-<li>假值：<ul>
-<li>false</li>
-<li>null</li>
-<li>NaN</li>
-<li>0、-0</li>
-<li>空字串 (“” 或 ‘’ 或 &#96;&#96;)</li>
-<li>undefined</li>
-</ul>
-</li>
-<li>真值：<ul>
-<li>除了上述假值類型<code>以外</code>的值都是真值。</li>
-</ul>
-</li>
-</ul>
-<p>常見用法：判斷是否有值</p>
-<div class="note default">
-            <p>在函數前方做資料判斷是否為空的防呆機制，判斷是否為我們預期的資料型別，不是的話 retuen 回去讓程式不再往下執行。</p>
-          </div>
-
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">isAdult</span>(<span class="params">age</span>) &#123; </span><br><span class="line">  <span class="comment">// 判斷是否為假值</span></span><br><span class="line">  <span class="keyword">if</span> (!age) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&#x27;資料錯誤&#x27;</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> age &gt;= <span class="number">18</span> ? <span class="string">&#x27;已成年&#x27;</span> : <span class="string">&#x27;未成年&#x27;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title function_">isAdult</span>(<span class="literal">null</span>); <span class="comment">// 資料錯誤</span></span><br><span class="line"><span class="title function_">isAdult</span>(<span class="number">18</span>);   <span class="comment">// 已成年</span></span><br><span class="line"><span class="title function_">isAdult</span>(<span class="number">17</span>);   <span class="comment">// 未成年</span></span><br></pre></td></tr></table></figure>
-
-<div class="note default">
-            <p>運算子並非只能回傳 true、false，在 javascript 中邏輯運算子也能回傳<code>非布林</code>的值。（有興趣可以參考這篇<a href="https://kentdoit.github.io/javascript/350805089/">短路求值</a>介紹，其中有示範操作非布林的值的方法）</p>
-          </div>
-
-<p>真值表：依照嚴格程度排序不同的比較子（紅色最嚴格、灰色最寬鬆）<br><img src="https://imgur.com/Og8Y5JH.jpg" alt="src: https://thomas-yang.me/projects/oh-my-dear-js/"></p>
-<h2 id="conclusion"><a href="#conclusion" class="headerlink" title="conclusion"></a>conclusion</h2><p>1.<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Operator_Precedence#table">運算子優先順序 operator precedence</a></p>
-<div class="note default">
-            <p>理解優先順序 <code>! &gt; &amp;&amp; &gt; || &gt; ??</code> 邏輯運算子用起來沒煩惱。</p>
-          </div>
-
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="literal">true</span> || <span class="literal">false</span> &amp;&amp; <span class="literal">false</span>)    <span class="comment">// true → (true || false)</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>((<span class="literal">true</span> || <span class="literal">false</span>) &amp;&amp; <span class="literal">false</span>)  <span class="comment">// false → (true &amp;&amp; false)</span></span><br></pre></td></tr></table></figure>
-
-<p>2.括號內會強制轉型</p>
-<div class="note default">
-            <p>if 判斷式會將 <code>括號</code> 內變數 <code>強制轉型</code> 成布林值。</p>
-          </div>
-
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> (<span class="number">1</span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;true&#x27;</span>) <span class="comment">// true</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (<span class="string">&#x27;1&#x27;</span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;true&#x27;</span>) <span class="comment">// true</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (<span class="string">&#x27;0&#x27;</span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;true&#x27;</span>) <span class="comment">// true</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (!<span class="number">0</span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;true&#x27;</span>) <span class="comment">// true</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h2><ul>
-<li><a href="https://ithelp.ithome.com.tw/articles/10191343">重新認識 JavaScript: Day 08 Boolean 的真假判斷</a></li>
-</ul>
-]]></content>
-      <categories>
-        <category>JavaScript</category>
-      </categories>
-      <tags>
-        <tag>運算子</tag>
-        <tag>JavaScript</tag>
-        <tag>ECMAScript</tag>
       </tags>
   </entry>
   <entry>
@@ -1091,6 +1021,106 @@
           </div>
 
 <h2 id="references"><a href="#references" class="headerlink" title="references"></a>references</h2><p>白話文：<a href="https://medium.com/schaoss-blog/%E5%89%8D%E7%AB%AF%E4%B8%89%E5%8D%81-13-js-%E7%82%BA%E4%BB%80%E9%BA%BC%E5%88%A4%E6%96%B7%E7%9B%B8%E7%AD%89%E6%99%82%E4%B8%8D%E7%94%A8%E8%83%BD%E9%9B%99%E7%AD%89%E8%99%9F-d02fbf91492f">前端三十｜13. [JS] 為什麼判斷相等時不能用雙等號？</a><br>簡單解析ES6文件：<a href="https://stringpiggy.hpd.io/javascript-double-equals-triple-equals/#tldr">JavaScript 可愛筆記 #0 – 兩個等於真的有那麼壞嗎？</a><br>解析 ToPrimitive：<a href="https://sinaad.github.io/xfe/2016/04/15/ToPrimitive/">js隐式装箱-ToPrimitive</a><br>stackoverflow 討論：<a href="https://stackoverflow.com/questions/359494/which-equals-operator-vs-should-be-used-in-javascript-comparisons">Which equals operator (&#x3D;&#x3D; vs &#x3D;&#x3D;&#x3D;) should be used in JavaScript comparisons?</a></p>
+]]></content>
+      <categories>
+        <category>JavaScript</category>
+      </categories>
+      <tags>
+        <tag>運算子</tag>
+        <tag>JavaScript</tag>
+        <tag>ECMAScript</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>JS 邏輯運算子</title>
+    <url>/javascript/1047366401/</url>
+    <content><![CDATA[<h2 id="邏輯運算子-Logical-Operators"><a href="#邏輯運算子-Logical-Operators" class="headerlink" title="邏輯運算子 (Logical Operators)"></a>邏輯運算子 (Logical Operators)</h2><p><img src="https://imgur.com/1ynLfOn.jpg" alt="三種常見邏輯運算子介紹"></p>
+<div class="note default">
+            <p>最常見用途為 <code>if 判斷式</code>並搭配 <code>比較運算子</code> 一起使用，透過 <code>邏輯運算子</code> 回傳運算結果為 true 或 false。</p>
+          </div>
+
+<h3 id="邏輯運算子-OR"><a href="#邏輯運算子-OR" class="headerlink" title="|| 邏輯運算子 OR"></a>|| 邏輯運算子 OR</h3><div class="note primary">
+            <p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Logical_OR">Logical OR</a>：其中一側為 true 就會回傳 true，兩個皆為 false 才會回傳 false。</p>
+          </div>
+
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> (<span class="number">3</span> === <span class="number">3</span> || <span class="number">1</span> == <span class="string">&#x27;2&#x27;</span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;true&#x27;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="amp-amp-邏輯運算子-AND"><a href="#amp-amp-邏輯運算子-AND" class="headerlink" title="&amp;&amp; 邏輯運算子 AND"></a>&amp;&amp; 邏輯運算子 AND</h3><div class="note primary">
+            <p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Logical_AND">Logical AND</a>：其中一側為 false 就會回傳 false，兩個皆為 true 才會回傳 true。</p>
+          </div>
+
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> (<span class="number">3</span> === <span class="number">3</span> &amp;&amp; <span class="number">2</span> == <span class="string">&#x27;2&#x27;</span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;true&#x27;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="邏輯運算子-NOT"><a href="#邏輯運算子-NOT" class="headerlink" title="! 邏輯運算子 NOT"></a>! 邏輯運算子 NOT</h3><div class="note primary">
+            <p><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Logical_NOT">Logical NOT</a>：將布林值反向。</p>
+          </div>
+
+<div class="note default">
+            <p>將非布林變數自動轉型為布林值的特性，衍伸出另一種用法 <code>!! 將型別轉型為布林</code> 達到和 <code>Boolean(變數)</code> 相同效果。</p>
+          </div>
+
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(!<span class="literal">true</span>); <span class="comment">// false</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(!!<span class="string">&#x27;&#x27;</span>);  <span class="comment">// false</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(!!<span class="string">&#x27;a&#x27;</span>); <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="https://imgur.com/tqCYUbe.jpg" alt="型別轉換過程解析"></p>
+<blockquote>
+<p>邏輯運算子 tips</p>
+</blockquote>
+<ol>
+<li>JS 中邏輯運算子僅支援符號寫法，不支援英文寫法。<br><img src="https://imgur.com/fnGTg2x.jpg"></li>
+<li>依照權重高低，有優先順序。（<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Operator_Precedence#table">運算子優先順序 operator precedence</a>）<br><img src="https://imgur.com/VF2aXkz.jpg"></li>
+</ol>
+<hr>
+<h2 id="真值（truthy）、假值（falsy）"><a href="#真值（truthy）、假值（falsy）" class="headerlink" title="真值（truthy）、假值（falsy）"></a><a href="https://developer.mozilla.org/zh-CN/docs/Glossary/Truthy">真值（truthy）</a>、<a href="https://developer.mozilla.org/zh-CN/docs/Glossary/Falsy">假值（falsy）</a></h2><div class="note default">
+            <p>JS 將轉換為布林型別後為 true 的值稱為 <code>真值（truthy)</code>，false 的值稱為 <code>假值 (falsy)</code>。</p>
+          </div>
+
+<blockquote>
+<p>類型定義</p>
+</blockquote>
+<ul>
+<li>假值：<ul>
+<li>false</li>
+<li>null</li>
+<li>NaN</li>
+<li>0、-0</li>
+<li>空字串 (“” 或 ‘’ 或 &#96;&#96;)</li>
+<li>undefined</li>
+</ul>
+</li>
+<li>真值：<ul>
+<li>除了上述假值類型<code>以外</code>的值都是真值。</li>
+</ul>
+</li>
+</ul>
+<p>常見用法：判斷是否有值</p>
+<div class="note default">
+            <p>在函數前方做資料判斷是否為空的防呆機制，判斷是否為我們預期的資料型別，不是的話 retuen 回去讓程式不再往下執行。</p>
+          </div>
+
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">isAdult</span>(<span class="params">age</span>) &#123; </span><br><span class="line">  <span class="comment">// 判斷是否為假值</span></span><br><span class="line">  <span class="keyword">if</span> (!age) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&#x27;資料錯誤&#x27;</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> age &gt;= <span class="number">18</span> ? <span class="string">&#x27;已成年&#x27;</span> : <span class="string">&#x27;未成年&#x27;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title function_">isAdult</span>(<span class="literal">null</span>); <span class="comment">// 資料錯誤</span></span><br><span class="line"><span class="title function_">isAdult</span>(<span class="number">18</span>);   <span class="comment">// 已成年</span></span><br><span class="line"><span class="title function_">isAdult</span>(<span class="number">17</span>);   <span class="comment">// 未成年</span></span><br></pre></td></tr></table></figure>
+
+<div class="note default">
+            <p>運算子並非只能回傳 true、false，在 javascript 中邏輯運算子也能回傳<code>非布林</code>的值。（有興趣可以參考這篇<a href="https://kentdoit.github.io/javascript/350805089/">短路求值</a>介紹，其中有示範操作非布林的值的方法）</p>
+          </div>
+
+<p>真值表：依照嚴格程度排序不同的比較子（紅色最嚴格、灰色最寬鬆）<br><img src="https://imgur.com/Og8Y5JH.jpg" alt="src: https://thomas-yang.me/projects/oh-my-dear-js/"></p>
+<h2 id="conclusion"><a href="#conclusion" class="headerlink" title="conclusion"></a>conclusion</h2><p>1.<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Operator_Precedence#table">運算子優先順序 operator precedence</a></p>
+<div class="note default">
+            <p>理解優先順序 <code>! &gt; &amp;&amp; &gt; || &gt; ??</code> 邏輯運算子用起來沒煩惱。</p>
+          </div>
+
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="literal">true</span> || <span class="literal">false</span> &amp;&amp; <span class="literal">false</span>)    <span class="comment">// true → (true || false)</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>((<span class="literal">true</span> || <span class="literal">false</span>) &amp;&amp; <span class="literal">false</span>)  <span class="comment">// false → (true &amp;&amp; false)</span></span><br></pre></td></tr></table></figure>
+
+<p>2.括號內會強制轉型</p>
+<div class="note default">
+            <p>if 判斷式會將 <code>括號</code> 內變數 <code>強制轉型</code> 成布林值。</p>
+          </div>
+
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> (<span class="number">1</span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;true&#x27;</span>) <span class="comment">// true</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (<span class="string">&#x27;1&#x27;</span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;true&#x27;</span>) <span class="comment">// true</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (<span class="string">&#x27;0&#x27;</span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;true&#x27;</span>) <span class="comment">// true</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (!<span class="number">0</span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;true&#x27;</span>) <span class="comment">// true</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h2><ul>
+<li><a href="https://ithelp.ithome.com.tw/articles/10191343">重新認識 JavaScript: Day 08 Boolean 的真假判斷</a></li>
+</ul>
 ]]></content>
       <categories>
         <category>JavaScript</category>
@@ -1404,148 +1434,6 @@ console.log(obj.name);  // kent
       </tags>
   </entry>
   <entry>
-    <title>JS 短路求值 Short-circuit evaluation</title>
-    <url>/javascript/350805089/</url>
-    <content><![CDATA[<div class="note primary">
-            <p>快速複習一下<a href="https://kentdoit.github.io/javascript/1047366401/">邏輯運算子</a>：「當 AND 的第一個運算數的值為 false 時，其結果必定為 false；當 OR 的第一個運算數為 true 時，最後結果必定為 true。」</p>
-          </div>
-
-<div class="note default">
-            <p>不熟悉 <code>真值（truthy）</code>、<code>假值（falsy）</code> 可以參考這篇<a href="https://kentdoit.github.io/javascript/1047366401/#%E7%9C%9F%E5%80%BC%EF%BC%88truthy%EF%BC%89%E3%80%81%E5%81%87%E5%80%BC%EF%BC%88falsy%EF%BC%89">文章</a>。</p>
-          </div>
-
-<blockquote>
-<p>口訣</p>
-</blockquote>
-<ul>
-<li><code>&amp;&amp;</code> 左邊是 <code>假值(falsy)</code> 則不會執行右邊。</li>
-<li><code>||</code> 左邊是 <code>真值(truthy)</code> 則不會執行右邊。</li>
-</ul>
-<div class="note default">
-            <p>下方範例運用 &amp;&amp;、|| 特性，演示將左右兩邊的 <code>表達式</code> 達到和 if 判斷式一樣的效果。</p>
-          </div>
-
-<p>e.g. 使用 <code>||</code> 來實作賦予預設值功能</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> a = <span class="literal">null</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 短路求值寫法</span></span><br><span class="line"><span class="keyword">let</span> b = a || <span class="number">1</span>; <span class="comment">// a 不是真值所以會執行右邊，將 1 賦予到 b 變數上。</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// if 寫法</span></span><br><span class="line"><span class="keyword">if</span> (!a) &#123;</span><br><span class="line">  <span class="keyword">let</span> b = a;</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">  <span class="keyword">let</span> b = <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 三元運算寫法</span></span><br><span class="line"><span class="keyword">let</span> b = a ? a : <span class="number">1</span>;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>e.g. <code>&amp;&amp;</code> 透過判斷 <code>真假值</code> 來決定是否執行表達式（也可以執行函式）</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> person1 = &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&#x27;kent&#x27;</span>,</span><br><span class="line">  <span class="attr">age</span>: <span class="number">18</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 短路求值寫法（僅適用於只有一種結果的判斷式）</span></span><br><span class="line">person1.<span class="property">age</span> &gt;= <span class="number">18</span> &amp;&amp; <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`<span class="subst">$&#123;person1.name&#125;</span> 已成年`</span>); <span class="comment">// person1.age &gt;= 18 是 true 所有會執行右邊 console.log</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// if 寫法</span></span><br><span class="line"><span class="keyword">if</span> (person1.<span class="property">age</span> &gt;= <span class="number">18</span>) <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`<span class="subst">$&#123;person1.name&#125;</span> 已成年`</span>);</span><br></pre></td></tr></table></figure>
-
-<p>e.g. 判斷物件屬性是否存在</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> school = &#123;</span><br><span class="line">  <span class="attr">info</span>: &#123;</span><br><span class="line">    <span class="attr">student</span>: &#123;</span><br><span class="line">      <span class="attr">name</span>: <span class="string">&#x27;kent&#x27;</span>,</span><br><span class="line">      <span class="attr">age</span>: <span class="number">18</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 短路求值寫法</span></span><br><span class="line"><span class="keyword">let</span> name = obj.<span class="property">info</span>.<span class="property">teacher</span> &amp;&amp; obj.<span class="property">info</span>.<span class="property">teacher</span>.<span class="property">name</span>; <span class="comment">// 會透過先判斷上一層屬性是否存在，來預防噴錯</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// if 寫法</span></span><br><span class="line"><span class="keyword">let</span> name = obj.<span class="property">info</span>.<span class="property">teacher</span>.<span class="property">name</span>; <span class="comment">// TypeError: Cannot read properties of undefined (reading &#x27;name&#x27;)</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (obj.<span class="property">info</span>.<span class="property">teacher</span>) &#123;</span><br><span class="line">  <span class="keyword">let</span> name = obj.<span class="property">info</span>.<span class="property">teacher</span>.<span class="property">name</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>短路求值 tips</p>
-</blockquote>
-<ol>
-<li><code>短路求值</code> 使用表達式的情況下，只適用於沒有 else 的判斷式，需要有 else 可以使用 <code>三元運算子</code>。</li>
-<li><code>短路求值</code> 不能帶 return。</li>
-</ol>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">isAdult</span>(<span class="params">age</span>) &#123; </span><br><span class="line">  <span class="comment">// 判斷是否為假值</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">// 短路求值寫法（短路求值帶 return 會噴 error）</span></span><br><span class="line">  age &amp;&amp; <span class="keyword">return</span> <span class="string">&#x27;資料錯誤&#x27;</span>; <span class="comment">// SyntaxError: Unexpected token &#x27;return&#x27;</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">// if 寫法</span></span><br><span class="line">  <span class="keyword">if</span> (!age) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&#x27;資料錯誤&#x27;</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  <span class="comment">// 下方範例不適合用短路求值，因為會缺少 else 表達式。</span></span><br><span class="line">  <span class="keyword">let</span> res</span><br><span class="line">  <span class="comment">// 短路求值寫法</span></span><br><span class="line">  res = (age &gt;= <span class="number">18</span>) &amp;&amp; <span class="string">&#x27;已成年&#x27;</span>;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 三元運算子寫法</span></span><br><span class="line">  res = age &gt;= <span class="number">18</span> ? <span class="string">&#x27;已成年&#x27;</span> : <span class="string">&#x27;未成年&#x27;</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title function_">isAdult</span>(<span class="literal">null</span>);  <span class="comment">// 資料錯誤</span></span><br><span class="line"><span class="title function_">isAdult</span>(<span class="number">18</span>); <span class="comment">// 已成年</span></span><br><span class="line"><span class="title function_">isAdult</span>(<span class="number">17</span>);  <span class="comment">// 未成年</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="詬病「不夠嚴謹」"><a href="#詬病「不夠嚴謹」" class="headerlink" title="詬病「不夠嚴謹」"></a>詬病「不夠嚴謹」</h3><div class="note default">
-            <p>👨‍💻 當變數為 <code>false</code>、<code>0</code> 或空字串 <code>&quot;&quot;</code> 其中之一時， 則布林值也會轉型為<code>假值 (falsy)</code>，對於判斷變數是否使用過來說是相當不方便的一件事。</p>
-          </div>
-
-<figure class="highlight js"><figcaption><span>e.g. 判斷某個變數是否使用過，有的話就作初始化。</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> time = <span class="number">1</span> - <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 判斷變數是否使用過，有的話將其初始化</span></span><br><span class="line"><span class="keyword">if</span> (time) &#123;</span><br><span class="line">  <span class="comment">// 初始化失敗</span></span><br><span class="line">  time = <span class="literal">null</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 初始化失敗</span></span><br><span class="line">time = time &amp;&amp; <span class="literal">null</span>;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight js"><figcaption><span>e.g. 假設有一間銀行，發給新辦用戶 100 摳，結果連舊客戶都發了...</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> person1 = &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&#x27;kent&#x27;</span>,</span><br><span class="line">  <span class="attr">age</span>: <span class="number">18</span>,</span><br><span class="line">  <span class="attr">wallet</span>: <span class="number">0</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> person2 = &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&#x27;clark&#x27;</span>,</span><br><span class="line">  <span class="attr">age</span>: <span class="number">20</span>,</span><br><span class="line">  <span class="attr">wallet</span>: <span class="literal">null</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">person1.<span class="property">wallet</span> || &#123;person1, ...&#123;<span class="attr">wallet</span>: <span class="number">100</span>&#125;&#125;; <span class="comment">// &#123;person1: &#123;…&#125;, wallet: 100&#125;</span></span><br><span class="line">person2.<span class="property">wallet</span> || &#123;person2, ...&#123;<span class="attr">wallet</span>: <span class="number">100</span>&#125;&#125;; <span class="comment">// &#123;person2: &#123;…&#125;, wallet: 100&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 發現活動還沒開跑，已經發了幾百萬出去</span></span><br></pre></td></tr></table></figure>
-
-<p><img src="https://imgur.com/yNnVS12.jpg" alt="部署後的工程師"></p>
-<div class="note default">
-            <p>javascript 後來增加了一種 <a href="https://kentdoit.github.io/javascript/3525467973/"><code>空值合併運算子</code></a> 用來解決不夠嚴謹的問題。</p>
-          </div>
-
-<h2 id="conclusion"><a href="#conclusion" class="headerlink" title="conclusion"></a>conclusion</h2><p><img src="https://imgur.com/w9OtDHw.png" alt="||、&amp;&amp; 使用口訣"></p>
-<h2 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h2><ul>
-<li><a href="https://bolaslien.github.io/blog/2021/06/18/js-short-circuit-evaluation/">用邏輯判斷 ||(OR) 及 &amp;&amp;(AND) 來改寫 if (短路求值 Short-circuit evaluation)</a></li>
-</ul>
-]]></content>
-      <categories>
-        <category>JavaScript</category>
-      </categories>
-      <tags>
-        <tag>運算子</tag>
-        <tag>JavaScript</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>JS 可選串連運算子 Optional chaining operator</title>
-    <url>/javascript/3900271525/</url>
-    <content><![CDATA[<h2 id="可選串連運算子-Optional-chaining-operator"><a href="#可選串連運算子-Optional-chaining-operator" class="headerlink" title="可選串連運算子 Optional chaining operator"></a>可選串連運算子 Optional chaining operator</h2><div class="note primary">
-            <p><a href="https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Operators/Optional_chaining">MDN</a>：<br>可選串連運算子 <strong><code>?.</code></strong> 允許進行深層次的物件值存取，而無需透過明確的物件值串連驗證。<code>?.</code> 運算子的操作與 <code>.</code> 屬性存取運算子相似，後者會在參照到 <a href="https://developer.mozilla.org/en-US/docs/Glossary/Nullish">nullish (en-US)</a> 的值為 <a href="https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Global_Objects/null">null</a> or <a href="https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Global_Objects/undefined">undefined</a> 來判斷當不存在時會出現錯誤，而前者可選串連則回傳 <code>undefined</code>。 當需要存取一個函數，而這函數並不存在時，則會回傳 <code>undefined</code>。</p>
-          </div>
-
-<div class="note default">
-            <p>白話文：存取一層以上的物件屬性時，就算屬性不存在也不會報錯，而是回傳 undefined。</p>
-          </div>
-
-<p>語法：在 <code>.</code> 前方加上 <code>?</code>。</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">obj?.prop</span><br><span class="line">obj?.[expr]</span><br><span class="line">arr?.[index]</span><br><span class="line">func?.(args)</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>Tips</p>
-</blockquote>
-<ul>
-<li>當 <code>?.</code> 左側屬性不存在，回傳 <code>undefined</code> 而非 TypeError。</li>
-</ul>
-<div class="note primary">
-            <p>物件特性：取用未定義屬性則會回傳 undefined，但僅限一層！不然會噴 TypeError。<br>（因此有了可選串連運算子的誕生）</p>
-          </div>
-
-<h3 id="語法差異"><a href="#語法差異" class="headerlink" title="語法差異"></a>語法差異</h3><div class="note info">
-            <p>舊方法：手動判斷 typeof 是否為 undefined。<br>新方法：直接在屬性 <code>.</code> 前方加上 <code>?</code>。</p>
-          </div>
-
-<div class="note primary">
-            <p>判斷是否存在會依照 <a href="https://developer.mozilla.org/en-US/docs/Glossary/Nullish">nullish value</a> （null、undefined）直來判斷，若值為 nullish value 就表示不存在。</p>
-          </div>
-
-<figure class="highlight js"><figcaption><span>e.g. 新舊寫法差異</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> school = &#123;</span><br><span class="line">  <span class="attr">info</span>: &#123;</span><br><span class="line">    <span class="attr">student</span>: &#123;</span><br><span class="line">      <span class="attr">name</span>: <span class="string">&#x27;kent&#x27;</span>,</span><br><span class="line">      <span class="attr">age</span>: <span class="number">18</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// TypeError: Cannot read properties of undefined (reading &#x27;name&#x27;)</span></span><br><span class="line"><span class="keyword">let</span> name = school.<span class="property">info</span>.<span class="property">teacher</span>.<span class="property">name</span>; </span><br><span class="line"></span><br><span class="line"><span class="comment">// 舊方法</span></span><br><span class="line"><span class="keyword">if</span> (<span class="keyword">typeof</span> (school.<span class="property">info</span>.<span class="property">teacher</span>) !== <span class="string">&#x27;undefined&#x27;</span>)&#123;</span><br><span class="line">  <span class="keyword">let</span> name = school.<span class="property">info</span>.<span class="property">teacher</span>.<span class="property">name</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 新方法</span></span><br><span class="line"><span class="keyword">let</span> name = school.<span class="property">info</span>.<span class="property">teacher</span>?.<span class="property">name</span>;</span><br></pre></td></tr></table></figure>
-
-<div class="note default">
-            <p>下方會用更多範例來介紹，範例中會使用<a href="https://kentdoit.github.io/javascript/350805089/">短路求值</a>的方式來演示，還不暸解的朋友可以參考這篇文章。</p>
-          </div>
-
-<hr>
-<h2 id="情境範例"><a href="#情境範例" class="headerlink" title="情境範例"></a>情境範例</h2><h3 id="判斷物件屬性是否存在"><a href="#判斷物件屬性是否存在" class="headerlink" title="判斷物件屬性是否存在"></a>判斷物件屬性是否存在</h3><ul>
-<li>舊方法：<code>&amp;&amp;</code><ul>
-<li>會先判斷上一層屬性是否存在，<code>&amp;&amp; 左邊</code> 是否為 nullish value （null 或 undefined）</li>
-<li>不是null 或 undefined 才繼續執行 <code>&amp;&amp; 右邊</code>。</li>
-</ul>
-</li>
-<li>新方法：<code>?.</code><ul>
-<li>當 <code>?.</code> 左側屬性是否為 nullish value （null 或 undefined），則回傳 undefined。</li>
-</ul>
-</li>
-</ul>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> school = &#123;</span><br><span class="line">  <span class="attr">info</span>: &#123;</span><br><span class="line">    <span class="attr">student</span>: &#123;</span><br><span class="line">      <span class="attr">name</span>: <span class="string">&#x27;kent&#x27;</span>,</span><br><span class="line">      <span class="attr">age</span>: <span class="number">18</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 問題</span></span><br><span class="line"><span class="keyword">let</span> name = school.<span class="property">info</span>.<span class="property">teacher</span>.<span class="property">name</span>; <span class="comment">// TypeError: Cannot read properties of undefined (reading &#x27;name&#x27;)</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 舊方法</span></span><br><span class="line"><span class="keyword">let</span> name = school.<span class="property">info</span>.<span class="property">teacher</span> &amp;&amp; school.<span class="property">info</span>.<span class="property">teacher</span>.<span class="property">name</span>;   <span class="comment">// undefined</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 新方法</span></span><br><span class="line"><span class="keyword">let</span> name = school.<span class="property">info</span>.<span class="property">teacher</span>?.<span class="property">name</span>;      <span class="comment">// undefined</span></span><br><span class="line"><span class="keyword">let</span> name = school.<span class="property">info</span>[<span class="string">&#x27;teacher&#x27;</span>]?.<span class="property">name</span>;   <span class="comment">// undefined</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="延伸應用"><a href="#延伸應用" class="headerlink" title="延伸應用"></a>延伸應用</h2><h3 id="預防方法不存在"><a href="#預防方法不存在" class="headerlink" title="預防方法不存在"></a>預防方法不存在</h3><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> obj = &#123;</span><br><span class="line">  <span class="attr">fn</span>: <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;fn&#x27;</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(obj.<span class="title function_">fnn</span>());   <span class="comment">// TypeError: obj.fnn is not a function</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(obj.<span class="property">fnn</span>?.()); <span class="comment">// undefined</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="結合空值合併運算符（-）來設置預設值"><a href="#結合空值合併運算符（-）來設置預設值" class="headerlink" title="結合空值合併運算符（??）來設置預設值"></a>結合空值合併運算符（??）來設置預設值</h3><figure class="highlight js"><figcaption><span>延續上方的程式碼</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> name = school.<span class="property">info</span>.<span class="property">teacher</span>?.<span class="property">name</span> ?? <span class="string">&#x27;陳怡君&#x27;</span>;</span><br></pre></td></tr></table></figure>
-
-<h2 id="conclusion"><a href="#conclusion" class="headerlink" title="conclusion"></a>conclusion</h2><div class="note default">
-            <p>比較直接透過錯誤訊息判斷問題（難追尋問題原因），但如果觀念夠的話，還是可以透過邏輯拆解一步一步尋找。</p>
-          </div>
-
-<h2 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h2><ul>
-<li><a href="https://github.com/HelloJunWei/blog/issues/7">我所不知道的javascript #7</a></li>
-</ul>
-<p>延伸閱讀</p>
-<ul>
-<li>程式猿吃香蕉：<a href="https://medium.com/%E7%A8%8B%E5%BC%8F%E7%8C%BF%E5%90%83%E9%A6%99%E8%95%89/%E4%BE%86%E8%AB%87-javascript-%E7%9A%84-optional-chaining-%E5%92%8C-nullish-coalescing-part-i-992625a1861d">前端開發 🦏 來談 JavaScript 的 Optional Chaining 和 Nullish Coalescing (一)</a></li>
-</ul>
-]]></content>
-      <categories>
-        <category>JavaScript</category>
-      </categories>
-      <tags>
-        <tag>JavaScript</tag>
-        <tag>ES6</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>JS 空值合併運算子 Nullish coalescing operator</title>
     <url>/javascript/3525467973/</url>
     <content><![CDATA[<div class="note default">
@@ -1718,6 +1606,148 @@ console.log(obj.name);  // kent
 <li><a href="https://medium.com/vicky-notes/es6-%E7%AB%A0%E7%AF%80-template-literial-7309b9e3bebb">ES6 章節：Template Literial</a></li>
 <li>PJ 大 <a href="https://pjchender.blogspot.com/2017/01/javascript-es6-template-literalstagged.html">[筆記] JavaScript ES6 中的模版字符串（template literals）和標籤模版（tagged template）</a></li>
 <li>Ray <a href="https://israynotarray.com/javascript/20211114/136128318/">JavaScript 核心觀念(72) - ES6 章節：Template Literial - 標籤樣板字面值</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>JavaScript</category>
+      </categories>
+      <tags>
+        <tag>JavaScript</tag>
+        <tag>ES6</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>JS 短路求值 Short-circuit evaluation</title>
+    <url>/javascript/350805089/</url>
+    <content><![CDATA[<div class="note primary">
+            <p>快速複習一下<a href="https://kentdoit.github.io/javascript/1047366401/">邏輯運算子</a>：「當 AND 的第一個運算數的值為 false 時，其結果必定為 false；當 OR 的第一個運算數為 true 時，最後結果必定為 true。」</p>
+          </div>
+
+<div class="note default">
+            <p>不熟悉 <code>真值（truthy）</code>、<code>假值（falsy）</code> 可以參考這篇<a href="https://kentdoit.github.io/javascript/1047366401/#%E7%9C%9F%E5%80%BC%EF%BC%88truthy%EF%BC%89%E3%80%81%E5%81%87%E5%80%BC%EF%BC%88falsy%EF%BC%89">文章</a>。</p>
+          </div>
+
+<blockquote>
+<p>口訣</p>
+</blockquote>
+<ul>
+<li><code>&amp;&amp;</code> 左邊是 <code>假值(falsy)</code> 則不會執行右邊。</li>
+<li><code>||</code> 左邊是 <code>真值(truthy)</code> 則不會執行右邊。</li>
+</ul>
+<div class="note default">
+            <p>下方範例運用 &amp;&amp;、|| 特性，演示將左右兩邊的 <code>表達式</code> 達到和 if 判斷式一樣的效果。</p>
+          </div>
+
+<p>e.g. 使用 <code>||</code> 來實作賦予預設值功能</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> a = <span class="literal">null</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 短路求值寫法</span></span><br><span class="line"><span class="keyword">let</span> b = a || <span class="number">1</span>; <span class="comment">// a 不是真值所以會執行右邊，將 1 賦予到 b 變數上。</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// if 寫法</span></span><br><span class="line"><span class="keyword">if</span> (!a) &#123;</span><br><span class="line">  <span class="keyword">let</span> b = a;</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">  <span class="keyword">let</span> b = <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 三元運算寫法</span></span><br><span class="line"><span class="keyword">let</span> b = a ? a : <span class="number">1</span>;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>e.g. <code>&amp;&amp;</code> 透過判斷 <code>真假值</code> 來決定是否執行表達式（也可以執行函式）</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> person1 = &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&#x27;kent&#x27;</span>,</span><br><span class="line">  <span class="attr">age</span>: <span class="number">18</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 短路求值寫法（僅適用於只有一種結果的判斷式）</span></span><br><span class="line">person1.<span class="property">age</span> &gt;= <span class="number">18</span> &amp;&amp; <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`<span class="subst">$&#123;person1.name&#125;</span> 已成年`</span>); <span class="comment">// person1.age &gt;= 18 是 true 所有會執行右邊 console.log</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// if 寫法</span></span><br><span class="line"><span class="keyword">if</span> (person1.<span class="property">age</span> &gt;= <span class="number">18</span>) <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`<span class="subst">$&#123;person1.name&#125;</span> 已成年`</span>);</span><br></pre></td></tr></table></figure>
+
+<p>e.g. 判斷物件屬性是否存在</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> school = &#123;</span><br><span class="line">  <span class="attr">info</span>: &#123;</span><br><span class="line">    <span class="attr">student</span>: &#123;</span><br><span class="line">      <span class="attr">name</span>: <span class="string">&#x27;kent&#x27;</span>,</span><br><span class="line">      <span class="attr">age</span>: <span class="number">18</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 短路求值寫法</span></span><br><span class="line"><span class="keyword">let</span> name = obj.<span class="property">info</span>.<span class="property">teacher</span> &amp;&amp; obj.<span class="property">info</span>.<span class="property">teacher</span>.<span class="property">name</span>; <span class="comment">// 會透過先判斷上一層屬性是否存在，來預防噴錯</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// if 寫法</span></span><br><span class="line"><span class="keyword">let</span> name = obj.<span class="property">info</span>.<span class="property">teacher</span>.<span class="property">name</span>; <span class="comment">// TypeError: Cannot read properties of undefined (reading &#x27;name&#x27;)</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (obj.<span class="property">info</span>.<span class="property">teacher</span>) &#123;</span><br><span class="line">  <span class="keyword">let</span> name = obj.<span class="property">info</span>.<span class="property">teacher</span>.<span class="property">name</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>短路求值 tips</p>
+</blockquote>
+<ol>
+<li><code>短路求值</code> 使用表達式的情況下，只適用於沒有 else 的判斷式，需要有 else 可以使用 <code>三元運算子</code>。</li>
+<li><code>短路求值</code> 不能帶 return。</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">isAdult</span>(<span class="params">age</span>) &#123; </span><br><span class="line">  <span class="comment">// 判斷是否為假值</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">// 短路求值寫法（短路求值帶 return 會噴 error）</span></span><br><span class="line">  age &amp;&amp; <span class="keyword">return</span> <span class="string">&#x27;資料錯誤&#x27;</span>; <span class="comment">// SyntaxError: Unexpected token &#x27;return&#x27;</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">// if 寫法</span></span><br><span class="line">  <span class="keyword">if</span> (!age) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&#x27;資料錯誤&#x27;</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  <span class="comment">// 下方範例不適合用短路求值，因為會缺少 else 表達式。</span></span><br><span class="line">  <span class="keyword">let</span> res</span><br><span class="line">  <span class="comment">// 短路求值寫法</span></span><br><span class="line">  res = (age &gt;= <span class="number">18</span>) &amp;&amp; <span class="string">&#x27;已成年&#x27;</span>;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 三元運算子寫法</span></span><br><span class="line">  res = age &gt;= <span class="number">18</span> ? <span class="string">&#x27;已成年&#x27;</span> : <span class="string">&#x27;未成年&#x27;</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title function_">isAdult</span>(<span class="literal">null</span>);  <span class="comment">// 資料錯誤</span></span><br><span class="line"><span class="title function_">isAdult</span>(<span class="number">18</span>); <span class="comment">// 已成年</span></span><br><span class="line"><span class="title function_">isAdult</span>(<span class="number">17</span>);  <span class="comment">// 未成年</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="詬病「不夠嚴謹」"><a href="#詬病「不夠嚴謹」" class="headerlink" title="詬病「不夠嚴謹」"></a>詬病「不夠嚴謹」</h3><div class="note default">
+            <p>👨‍💻 當變數為 <code>false</code>、<code>0</code> 或空字串 <code>&quot;&quot;</code> 其中之一時， 則布林值也會轉型為<code>假值 (falsy)</code>，對於判斷變數是否使用過來說是相當不方便的一件事。</p>
+          </div>
+
+<figure class="highlight js"><figcaption><span>e.g. 判斷某個變數是否使用過，有的話就作初始化。</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> time = <span class="number">1</span> - <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 判斷變數是否使用過，有的話將其初始化</span></span><br><span class="line"><span class="keyword">if</span> (time) &#123;</span><br><span class="line">  <span class="comment">// 初始化失敗</span></span><br><span class="line">  time = <span class="literal">null</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 初始化失敗</span></span><br><span class="line">time = time &amp;&amp; <span class="literal">null</span>;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight js"><figcaption><span>e.g. 假設有一間銀行，發給新辦用戶 100 摳，結果連舊客戶都發了...</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> person1 = &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&#x27;kent&#x27;</span>,</span><br><span class="line">  <span class="attr">age</span>: <span class="number">18</span>,</span><br><span class="line">  <span class="attr">wallet</span>: <span class="number">0</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> person2 = &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&#x27;clark&#x27;</span>,</span><br><span class="line">  <span class="attr">age</span>: <span class="number">20</span>,</span><br><span class="line">  <span class="attr">wallet</span>: <span class="literal">null</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">person1.<span class="property">wallet</span> || &#123;person1, ...&#123;<span class="attr">wallet</span>: <span class="number">100</span>&#125;&#125;; <span class="comment">// &#123;person1: &#123;…&#125;, wallet: 100&#125;</span></span><br><span class="line">person2.<span class="property">wallet</span> || &#123;person2, ...&#123;<span class="attr">wallet</span>: <span class="number">100</span>&#125;&#125;; <span class="comment">// &#123;person2: &#123;…&#125;, wallet: 100&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 發現活動還沒開跑，已經發了幾百萬出去</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="https://imgur.com/yNnVS12.jpg" alt="部署後的工程師"></p>
+<div class="note default">
+            <p>javascript 後來增加了一種 <a href="https://kentdoit.github.io/javascript/3525467973/"><code>空值合併運算子</code></a> 用來解決不夠嚴謹的問題。</p>
+          </div>
+
+<h2 id="conclusion"><a href="#conclusion" class="headerlink" title="conclusion"></a>conclusion</h2><p><img src="https://imgur.com/w9OtDHw.png" alt="||、&amp;&amp; 使用口訣"></p>
+<h2 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h2><ul>
+<li><a href="https://bolaslien.github.io/blog/2021/06/18/js-short-circuit-evaluation/">用邏輯判斷 ||(OR) 及 &amp;&amp;(AND) 來改寫 if (短路求值 Short-circuit evaluation)</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>JavaScript</category>
+      </categories>
+      <tags>
+        <tag>運算子</tag>
+        <tag>JavaScript</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>JS 可選串連運算子 Optional chaining operator</title>
+    <url>/javascript/3900271525/</url>
+    <content><![CDATA[<h2 id="可選串連運算子-Optional-chaining-operator"><a href="#可選串連運算子-Optional-chaining-operator" class="headerlink" title="可選串連運算子 Optional chaining operator"></a>可選串連運算子 Optional chaining operator</h2><div class="note primary">
+            <p><a href="https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Operators/Optional_chaining">MDN</a>：<br>可選串連運算子 <strong><code>?.</code></strong> 允許進行深層次的物件值存取，而無需透過明確的物件值串連驗證。<code>?.</code> 運算子的操作與 <code>.</code> 屬性存取運算子相似，後者會在參照到 <a href="https://developer.mozilla.org/en-US/docs/Glossary/Nullish">nullish (en-US)</a> 的值為 <a href="https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Global_Objects/null">null</a> or <a href="https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Global_Objects/undefined">undefined</a> 來判斷當不存在時會出現錯誤，而前者可選串連則回傳 <code>undefined</code>。 當需要存取一個函數，而這函數並不存在時，則會回傳 <code>undefined</code>。</p>
+          </div>
+
+<div class="note default">
+            <p>白話文：存取一層以上的物件屬性時，就算屬性不存在也不會報錯，而是回傳 undefined。</p>
+          </div>
+
+<p>語法：在 <code>.</code> 前方加上 <code>?</code>。</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">obj?.prop</span><br><span class="line">obj?.[expr]</span><br><span class="line">arr?.[index]</span><br><span class="line">func?.(args)</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>Tips</p>
+</blockquote>
+<ul>
+<li>當 <code>?.</code> 左側屬性不存在，回傳 <code>undefined</code> 而非 TypeError。</li>
+</ul>
+<div class="note primary">
+            <p>物件特性：取用未定義屬性則會回傳 undefined，但僅限一層！不然會噴 TypeError。<br>（因此有了可選串連運算子的誕生）</p>
+          </div>
+
+<h3 id="語法差異"><a href="#語法差異" class="headerlink" title="語法差異"></a>語法差異</h3><div class="note info">
+            <p>舊方法：手動判斷 typeof 是否為 undefined。<br>新方法：直接在屬性 <code>.</code> 前方加上 <code>?</code>。</p>
+          </div>
+
+<div class="note primary">
+            <p>判斷是否存在會依照 <a href="https://developer.mozilla.org/en-US/docs/Glossary/Nullish">nullish value</a> （null、undefined）直來判斷，若值為 nullish value 就表示不存在。</p>
+          </div>
+
+<figure class="highlight js"><figcaption><span>e.g. 新舊寫法差異</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> school = &#123;</span><br><span class="line">  <span class="attr">info</span>: &#123;</span><br><span class="line">    <span class="attr">student</span>: &#123;</span><br><span class="line">      <span class="attr">name</span>: <span class="string">&#x27;kent&#x27;</span>,</span><br><span class="line">      <span class="attr">age</span>: <span class="number">18</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// TypeError: Cannot read properties of undefined (reading &#x27;name&#x27;)</span></span><br><span class="line"><span class="keyword">let</span> name = school.<span class="property">info</span>.<span class="property">teacher</span>.<span class="property">name</span>; </span><br><span class="line"></span><br><span class="line"><span class="comment">// 舊方法</span></span><br><span class="line"><span class="keyword">if</span> (<span class="keyword">typeof</span> (school.<span class="property">info</span>.<span class="property">teacher</span>) !== <span class="string">&#x27;undefined&#x27;</span>)&#123;</span><br><span class="line">  <span class="keyword">let</span> name = school.<span class="property">info</span>.<span class="property">teacher</span>.<span class="property">name</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 新方法</span></span><br><span class="line"><span class="keyword">let</span> name = school.<span class="property">info</span>.<span class="property">teacher</span>?.<span class="property">name</span>;</span><br></pre></td></tr></table></figure>
+
+<div class="note default">
+            <p>下方會用更多範例來介紹，範例中會使用<a href="https://kentdoit.github.io/javascript/350805089/">短路求值</a>的方式來演示，還不暸解的朋友可以參考這篇文章。</p>
+          </div>
+
+<hr>
+<h2 id="情境範例"><a href="#情境範例" class="headerlink" title="情境範例"></a>情境範例</h2><h3 id="判斷物件屬性是否存在"><a href="#判斷物件屬性是否存在" class="headerlink" title="判斷物件屬性是否存在"></a>判斷物件屬性是否存在</h3><ul>
+<li>舊方法：<code>&amp;&amp;</code><ul>
+<li>會先判斷上一層屬性是否存在，<code>&amp;&amp; 左邊</code> 是否為 nullish value （null 或 undefined）</li>
+<li>不是null 或 undefined 才繼續執行 <code>&amp;&amp; 右邊</code>。</li>
+</ul>
+</li>
+<li>新方法：<code>?.</code><ul>
+<li>當 <code>?.</code> 左側屬性是否為 nullish value （null 或 undefined），則回傳 undefined。</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> school = &#123;</span><br><span class="line">  <span class="attr">info</span>: &#123;</span><br><span class="line">    <span class="attr">student</span>: &#123;</span><br><span class="line">      <span class="attr">name</span>: <span class="string">&#x27;kent&#x27;</span>,</span><br><span class="line">      <span class="attr">age</span>: <span class="number">18</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 問題</span></span><br><span class="line"><span class="keyword">let</span> name = school.<span class="property">info</span>.<span class="property">teacher</span>.<span class="property">name</span>; <span class="comment">// TypeError: Cannot read properties of undefined (reading &#x27;name&#x27;)</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 舊方法</span></span><br><span class="line"><span class="keyword">let</span> name = school.<span class="property">info</span>.<span class="property">teacher</span> &amp;&amp; school.<span class="property">info</span>.<span class="property">teacher</span>.<span class="property">name</span>;   <span class="comment">// undefined</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 新方法</span></span><br><span class="line"><span class="keyword">let</span> name = school.<span class="property">info</span>.<span class="property">teacher</span>?.<span class="property">name</span>;      <span class="comment">// undefined</span></span><br><span class="line"><span class="keyword">let</span> name = school.<span class="property">info</span>[<span class="string">&#x27;teacher&#x27;</span>]?.<span class="property">name</span>;   <span class="comment">// undefined</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="延伸應用"><a href="#延伸應用" class="headerlink" title="延伸應用"></a>延伸應用</h2><h3 id="預防方法不存在"><a href="#預防方法不存在" class="headerlink" title="預防方法不存在"></a>預防方法不存在</h3><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> obj = &#123;</span><br><span class="line">  <span class="attr">fn</span>: <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;fn&#x27;</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(obj.<span class="title function_">fnn</span>());   <span class="comment">// TypeError: obj.fnn is not a function</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(obj.<span class="property">fnn</span>?.()); <span class="comment">// undefined</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="結合空值合併運算符（-）來設置預設值"><a href="#結合空值合併運算符（-）來設置預設值" class="headerlink" title="結合空值合併運算符（??）來設置預設值"></a>結合空值合併運算符（??）來設置預設值</h3><figure class="highlight js"><figcaption><span>延續上方的程式碼</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> name = school.<span class="property">info</span>.<span class="property">teacher</span>?.<span class="property">name</span> ?? <span class="string">&#x27;陳怡君&#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+<h2 id="conclusion"><a href="#conclusion" class="headerlink" title="conclusion"></a>conclusion</h2><div class="note default">
+            <p>比較直接透過錯誤訊息判斷問題（難追尋問題原因），但如果觀念夠的話，還是可以透過邏輯拆解一步一步尋找。</p>
+          </div>
+
+<h2 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h2><ul>
+<li><a href="https://github.com/HelloJunWei/blog/issues/7">我所不知道的javascript #7</a></li>
+</ul>
+<p>延伸閱讀</p>
+<ul>
+<li>程式猿吃香蕉：<a href="https://medium.com/%E7%A8%8B%E5%BC%8F%E7%8C%BF%E5%90%83%E9%A6%99%E8%95%89/%E4%BE%86%E8%AB%87-javascript-%E7%9A%84-optional-chaining-%E5%92%8C-nullish-coalescing-part-i-992625a1861d">前端開發 🦏 來談 JavaScript 的 Optional Chaining 和 Nullish Coalescing (一)</a></li>
 </ul>
 ]]></content>
       <categories>
@@ -2052,88 +2082,6 @@ console.log(obj.name);  // kent
       </tags>
   </entry>
   <entry>
-    <title>JS not defined vs undefined</title>
-    <url>/javascript/4170310433/</url>
-    <content><![CDATA[<p><img src="https://imgur.com/3uvmsGO.png"></p>
-<h2 id="undefined"><a href="#undefined" class="headerlink" title="undefined"></a>undefined</h2><div class="note primary">
-            <p><a href="https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Global_Objects/undefined">MDN</a>：屬於 <code>primitive value</code> 之一、全域物件的 <code>property</code>。</p>
-          </div>
-
-<blockquote>
-<p>Tips</p>
-</blockquote>
-<ol>
-<li><p>預設值<br>表示變數 <code>尚未宣告</code> 或者是已經宣告了但 <code>尚未賦值</code>。</p>
-</li>
-<li><p>特殊關鍵字<br>可以當作一個值去賦予不會噴錯，但 <code>千萬不要</code> 這麼做。</p>
-</li>
-</ol>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> b;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(b); <span class="comment">// undefined</span></span><br><span class="line"></span><br><span class="line">b = <span class="literal">undefined</span>; <span class="comment">// 不要這麼做</span></span><br></pre></td></tr></table></figure>
-
-<div class="note default">
-            <p>下方會演示兩種 undefined 錯誤應用，並解析問題。</p>
-          </div>
-
-<h3 id="不建議賦值為-undefined"><a href="#不建議賦值為-undefined" class="headerlink" title="不建議賦值為 undefined"></a>不建議賦值為 undefined</h3><div class="note danger">
-            <p>問題：造成無法看出此變數是否有被賦予值。</p>
-          </div>
-
-<p>解法：</p>
-<ol>
-<li>使用 null，更符合空值的意義。</li>
-<li>宣告變數不帶值，預設就會賦予 undefined。</li>
-</ol>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 不建議寫法</span></span><br><span class="line"><span class="keyword">let</span> a = <span class="literal">undefined</span>; <span class="comment">// undefined</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 替代方式</span></span><br><span class="line"><span class="keyword">let</span> a;             <span class="comment">// undefined</span></span><br><span class="line"><span class="keyword">let</span> a = <span class="literal">null</span>;      <span class="comment">// undefined</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="不建議變數名稱命名為-undefined"><a href="#不建議變數名稱命名為-undefined" class="headerlink" title="不建議變數名稱命名為 undefined"></a>不建議變數名稱命名為 undefined</h3><div class="note danger">
-            <p>問題：javascript 會過，但無法正常運作。</p>
-          </div>
-
-<p>解法：</p>
-<ol>
-<li>直接不要用 undefined 命名</li>
-<li>不要用 var 改用 let、const（ES6 中已修正此問題，因此無法使用 undefined 命名）</li>
-</ol>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 不建議寫法</span></span><br><span class="line"><span class="keyword">var</span> <span class="literal">undefined</span> = <span class="string">&#x27;un&#x27;</span>;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="literal">undefined</span>); <span class="comment">// undefined，無法正常顯示值</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// let、const</span></span><br><span class="line"><span class="keyword">let</span> <span class="literal">undefined</span> = <span class="string">&#x27;un&#x27;</span>;   <span class="comment">// Uncaught SyntaxError: Identifier &#x27;undefined&#x27; has already been declared</span></span><br><span class="line"><span class="keyword">const</span> <span class="literal">undefined</span> = <span class="string">&#x27;un&#x27;</span>; <span class="comment">// Uncaught SyntaxError: Identifier &#x27;undefined&#x27; has already been declared</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="not-defined"><a href="#not-defined" class="headerlink" title="not defined"></a>not defined</h2><div class="note primary">
-            <p>屬於 error，會噴錯誤訊息。（throw a ReferenceError exception）</p>
-          </div>
-
-<blockquote>
-<p>Tip</p>
-</blockquote>
-<ul>
-<li>常見的原因是使用了<code>尚未宣告</code>的變數或函式，所導致的 Error。</li>
-</ul>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(c); <span class="comment">// ReferenceError: c is not defined</span></span><br></pre></td></tr></table></figure>
-
-<hr>
-<h2 id="different"><a href="#different" class="headerlink" title="different"></a>different</h2><ul>
-<li>undefined：宣告(declaration) 後<code>尚未賦予值</code>。</li>
-<li>not defined：<code>尚未被宣告</code>(declaration)。</li>
-</ul>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> b;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(b); <span class="comment">// undefined</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(c); <span class="comment">// ReferenceError: c is not defined</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="conclusion"><a href="#conclusion" class="headerlink" title="conclusion"></a>conclusion</h2><p><img src="https://imgur.com/bGXwBgw.png"></p>
-<h2 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h2><ul>
-<li><a href="https://hsiangfeng.github.io/javascript/20200510/2581786882/">JavaScript 核心觀念(7)-執行環境與作用域-not defined VS undefined</a></li>
-<li><a href="https://ithelp.ithome.com.tw/articles/10190904">Day04　undefined與not defined</a></li>
-</ul>
-<p>延伸閱讀</p>
-<ul>
-<li><a href="https://kentdoit.github.io/javascript/3007200680/">JS null vs undefined</a></li>
-</ul>
-]]></content>
-      <categories>
-        <category>JavaScript</category>
-      </categories>
-      <tags>
-        <tag>JS 釘孤枝</tag>
-        <tag>JavaScript</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>JS null vs undefined</title>
     <url>/javascript/3007200680/</url>
     <content><![CDATA[<h2 id="定義"><a href="#定義" class="headerlink" title="定義"></a>定義</h2><p>null：表示變數 <code>沒有值</code>（空值）。<br>undefined：預設值，表示變數 <code>尚未宣告</code> 或者是已經宣告了但 <code>尚未賦值</code>。</p>
@@ -2407,91 +2355,84 @@ console.log(obj.name);  // kent
       </tags>
   </entry>
   <entry>
-    <title>JS 淺拷貝（Shallow Copy）、深拷貝（Deep Copy）</title>
-    <url>/javascript/1956994369/</url>
-    <content><![CDATA[<h2 id="科普"><a href="#科普" class="headerlink" title="科普"></a>科普</h2><blockquote>
-<p>快速科普一下什麼是傳值（Pass by value）、傳址（Pass by reference）</p>
-</blockquote>
-<div class="note default">
-            <p>依照資料型別來決定傳遞行為是 Pass by value 或 Pass by reference。</p>
+    <title>JS not defined vs undefined</title>
+    <url>/javascript/4170310433/</url>
+    <content><![CDATA[<p><img src="https://imgur.com/3uvmsGO.png"></p>
+<h2 id="undefined"><a href="#undefined" class="headerlink" title="undefined"></a>undefined</h2><div class="note primary">
+            <p><a href="https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Global_Objects/undefined">MDN</a>：屬於 <code>primitive value</code> 之一、全域物件的 <code>property</code>。</p>
           </div>
 
-<p>基本型別 (Primitive Type) </p>
-<ul>
-<li>就是傳值（value），會是分別獨立的記憶體空間。（也稱深拷貝）</li>
-</ul>
-<p>物件型別 (Object Type) </p>
-<ul>
-<li>就是傳址（address），會指向同一個記憶體空間。（也稱淺拷貝）</li>
-</ul>
-<div class="note default">
-            <p>科普就到這邊，下方會用實際範例來演釋實作淺拷貝、深拷貝的方法。</p>
-          </div>
-
-<hr>
-<h2 id="淺拷貝（Shallow-Copy）"><a href="#淺拷貝（Shallow-Copy）" class="headerlink" title="淺拷貝（Shallow Copy）"></a>淺拷貝（Shallow Copy）</h2><blockquote>
-<p>最多只能複製第一層（淺層），其它層還是指向相同記憶體位置，因此在較深的結構賦予值還是會相互影響。</p>
-</blockquote>
-<h3 id="原生物件型別"><a href="#原生物件型別" class="headerlink" title="原生物件型別"></a>原生物件型別</h3><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> obj1 = &#123;<span class="attr">name</span>: <span class="string">&#x27;kent&#x27;</span>&#125;;</span><br><span class="line"><span class="keyword">let</span> obj2 = obj1;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(obj1 === obj2);  <span class="comment">// true，第一層</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(obj1.<span class="property">name</span> === obj2.<span class="property">name</span>);  <span class="comment">// true，第一層</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="展開運算子"><a href="#展開運算子" class="headerlink" title="展開運算子"></a>展開運算子</h3><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> obj1 = &#123;<span class="attr">name</span>: <span class="string">&#x27;kent&#x27;</span>&#125;;</span><br><span class="line"><span class="keyword">let</span> obj2 = &#123;...obj1&#125;;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(obj1 === obj2);  <span class="comment">// false，第一層</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(obj1.<span class="property">name</span> === obj2.<span class="property">name</span>);  <span class="comment">// true，第二層</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="object-assign"><a href="#object-assign" class="headerlink" title="object assign"></a>object assign</h3><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> obj1 = &#123;<span class="attr">name</span>: <span class="string">&#x27;kent&#x27;</span>&#125;;</span><br><span class="line"><span class="keyword">let</span> obj2 = <span class="title class_">Object</span>.<span class="title function_">assign</span>(&#123;&#125;,obj1);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(obj1 === obj2);  <span class="comment">// false，第一層</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(obj1.<span class="property">name</span> === obj2.<span class="property">name</span>);  <span class="comment">// true，第二層</span></span><br></pre></td></tr></table></figure>
-
-<hr>
-<h2 id="深拷貝（Deep-Copy）"><a href="#深拷貝（Deep-Copy）" class="headerlink" title="深拷貝（Deep Copy）"></a>深拷貝（Deep Copy）</h2><blockquote>
-<p>建立新的記憶體空間來複製全部內容（全部深度），因此兩者是獨立的記憶體空間，彼此不會相互影響。</p>
-</blockquote>
-<h3 id="JSON-parse-JSON-stringify-object"><a href="#JSON-parse-JSON-stringify-object" class="headerlink" title="JSON.parse( JSON.stringify( object ) )"></a>JSON.parse( JSON.stringify( object ) )</h3><ul>
-<li><code>JSON.stringify()</code>：轉成 JSON 字串，<code>無法</code> 轉換為 JSON 字串的屬性則自動 <code>忽略</code>。</li>
-<li><code>JSON.parse()</code>：解析 JSON，將 JSON 轉為基本型別 (Primitive Type) 、物件型別 (Object Type) 。</li>
-</ul>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">	 <span class="attr">name</span>: <span class="string">&#x27;kent&#x27;</span>, </span><br><span class="line">   <span class="attr">age</span>: <span class="number">5</span>, </span><br><span class="line">   <span class="attr">action</span>: <span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">     <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;function&#x27;</span>)      </span><br><span class="line">   &#125;,</span><br><span class="line">   <span class="attr">religion</span>: <span class="literal">undefined</span>,</span><br><span class="line">   <span class="attr">fortune</span>: <span class="title class_">NaN</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">var</span> obj2 = <span class="title class_">JSON</span>.<span class="title function_">parse</span>( <span class="title class_">JSON</span>.<span class="title function_">stringify</span>(obj));</span><br><span class="line"><span class="comment">//function、undefined 不是 JSON 有效值，且 NaN 被轉換成 null</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(obj2);</span><br></pre></td></tr></table></figure>
-
-<h3 id="lodash-套件的-cloneDeep"><a href="#lodash-套件的-cloneDeep" class="headerlink" title="lodash 套件的 cloneDeep()"></a>lodash 套件的 cloneDeep()</h3><ul>
-<li><code>clone()</code>：只複製淺層的值。</li>
-<li><code>cloneDeep()</code>：透過遞迴的方式複製全部的值。</li>
-<li>好處：不會遇到 <code>JSON.stringify/parse</code> 部分值會非預期改變的問題。</li>
-</ul>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; clone, cloneDeep &#125; <span class="keyword">from</span> <span class="string">&#x27;lodash&#x27;</span>;</span><br><span class="line"><span class="keyword">let</span> obj1 = &#123;</span><br><span class="line">	<span class="attr">name</span>: <span class="string">&#x27;kent&#x27;</span>, </span><br><span class="line">	<span class="attr">age</span>: <span class="number">5</span>, </span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">let</span> obj2 = <span class="title function_">clone</span>(obj1);</span><br><span class="line"><span class="keyword">let</span> obj3 = <span class="title function_">cloneDeep</span>(obj1);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(obj1.<span class="property">name</span> === obj2.<span class="property">name</span>); <span class="comment">// true，淺拷貝</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(obj1.<span class="property">name</span> === obj3.<span class="property">name</span>); <span class="comment">// false，深拷貝</span></span><br></pre></td></tr></table></figure>
-<hr>
-<h2 id="三種自製簡單遞迴-function-作法"><a href="#三種自製簡單遞迴-function-作法" class="headerlink" title="三種自製簡單遞迴 function 作法"></a>三種自製簡單遞迴 function 作法</h2><p>第一種：</p>
-<figure class="highlight js"><figcaption><span>src:</span><a href="https://medium.com/coding-hot-pot/javascript中的深拷貝與淺拷貝-9493a5153d16">JavaScript中的深拷貝與淺拷貝</a></figcaption><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title function_">deepCopy</span> = (<span class="params">val</span>) =&gt; &#123;</span><br><span class="line">	<span class="keyword">let</span> newVal = <span class="title class_">Array</span>.<span class="title function_">isArray</span>(val) ? [] : &#123;&#125;;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">let</span> v <span class="keyword">in</span> val) &#123;</span><br><span class="line">	    <span class="keyword">if</span> (val.<span class="title function_">hasOwnProperty</span>(v)) &#123;</span><br><span class="line">	        <span class="keyword">if</span> (<span class="string">&#x27;object&#x27;</span> === <span class="keyword">typeof</span> val[v]) &#123;</span><br><span class="line">	            newVal[v] = <span class="title function_">deepCopy</span>(val[v]);</span><br><span class="line">	        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">	            newVal[v] = val[v];</span><br><span class="line">	        &#125;</span><br><span class="line">	    &#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> newVal;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> originalData = &#123;</span><br><span class="line">  <span class="attr">firstLayerNum</span>: <span class="number">10</span>,</span><br><span class="line">  <span class="attr">obj</span>: &#123;</span><br><span class="line">    <span class="attr">secondLayerNum</span>: <span class="number">100</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">const</span> clonedData = <span class="title function_">deepCopy</span>(originalData);</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(clonedData === originalData); <span class="comment">// false，第一層</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(clonedData.<span class="property">obj</span>.<span class="property">secondLayerNum</span> === originalData.<span class="property">obj</span>.<span class="property">secondLayerNum</span>); <span class="comment">// false，第二層</span></span><br></pre></td></tr></table></figure>
-
-<p>第二種：</p>
-<figure class="highlight js"><figcaption><span>src:</span><a href="https://www.programfarmer.com/articles/javaScript/javascript-shallow-copy-deep-copy">JS 中的淺拷貝 (Shallow copy) 與深拷貝 (Deep copy) 原理與實作</a></figcaption><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">deepCopy</span>(<span class="params">inputObject</span>) &#123;</span><br><span class="line">  <span class="comment">// Return the value if inputObject is not an Object data</span></span><br><span class="line">  <span class="comment">// Need to notice typeof null is &#x27;object&#x27;</span></span><br><span class="line">  <span class="keyword">if</span> (<span class="keyword">typeof</span> inputObject !== <span class="string">&#x27;object&#x27;</span> || inputObject === <span class="literal">null</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> inputObject;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// Create an array or object to hold the values</span></span><br><span class="line">  <span class="keyword">const</span> outputObject = <span class="title class_">Array</span>.<span class="title function_">isArray</span>(inputObject) ? [] : &#123;&#125;;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// Recursively deep copy for nested objects, including arrays</span></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> key <span class="keyword">in</span> inputObject) &#123;</span><br><span class="line">    <span class="keyword">const</span> value = inputObject[key];</span><br><span class="line">    outputObject[key] = <span class="title function_">deepCopyFunction</span>(value);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> outputObject;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> originalData = &#123;</span><br><span class="line">  <span class="attr">firstLayerNum</span>: <span class="number">10</span>,</span><br><span class="line">  <span class="attr">obj</span>: &#123;</span><br><span class="line">    <span class="attr">secondLayerNum</span>: <span class="number">100</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">const</span> clonedData = <span class="title function_">deepCopy</span>(originalData);</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(clonedData === originalData); <span class="comment">// false，第一層</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(clonedData.<span class="property">obj</span>.<span class="property">secondLayerNum</span> === originalData.<span class="property">obj</span>.<span class="property">secondLayerNum</span>); <span class="comment">// false，第二層</span></span><br></pre></td></tr></table></figure>
-
-<p>第三種：</p>
-<figure class="highlight js"><figcaption><span>src:</span><a href="https://jsbench.me/euk9l6x9jx/1">jsbench example</a></figcaption><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">deepCopy</span>(<span class="params">obj</span>) &#123;</span><br><span class="line">    <span class="keyword">var</span> copy;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Handle the 3 simple types, and null or undefined</span></span><br><span class="line">    <span class="keyword">if</span> (<span class="literal">null</span> == obj || <span class="string">&quot;object&quot;</span> != <span class="keyword">typeof</span> obj) <span class="keyword">return</span> obj;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Handle Date</span></span><br><span class="line">    <span class="keyword">if</span> (obj <span class="keyword">instanceof</span> <span class="title class_">Date</span>) &#123;</span><br><span class="line">        copy = <span class="keyword">new</span> <span class="title class_">Date</span>();</span><br><span class="line">        copy.<span class="title function_">setTime</span>(obj.<span class="title function_">getTime</span>());</span><br><span class="line">        <span class="keyword">return</span> copy;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Handle Array</span></span><br><span class="line">    <span class="keyword">if</span> (obj <span class="keyword">instanceof</span> <span class="title class_">Array</span>) &#123;</span><br><span class="line">        copy = [];</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>, len = obj.<span class="property">length</span>; i &lt; len; i++) &#123;</span><br><span class="line">            copy[i] = <span class="title function_">deepCopy</span>(obj[i]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> copy;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Handle Object</span></span><br><span class="line">    <span class="keyword">if</span> (obj <span class="keyword">instanceof</span> <span class="title class_">Object</span>) &#123;</span><br><span class="line">        copy = &#123;&#125;;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">var</span> attr <span class="keyword">in</span> obj) &#123;</span><br><span class="line">            <span class="keyword">if</span> (obj.<span class="title function_">hasOwnProperty</span>(attr)) copy[attr] = <span class="title function_">deepCopy</span>(obj[attr]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> copy;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">Error</span>(<span class="string">&quot;Unable to copy obj! Its type isn&#x27;t supported.&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> originalData = &#123;</span><br><span class="line">  <span class="attr">firstLayerNum</span>: <span class="number">10</span>,</span><br><span class="line">  <span class="attr">obj</span>: &#123;</span><br><span class="line">    <span class="attr">secondLayerNum</span>: <span class="number">100</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">const</span> clonedData = <span class="title function_">deepCopy</span>(originalData);</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(clonedData === originalData); <span class="comment">// false，第一層</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(clonedData.<span class="property">obj</span>.<span class="property">secondLayerNum</span> === originalData.<span class="property">obj</span>.<span class="property">secondLayerNum</span>); <span class="comment">// false，第二層</span></span><br></pre></td></tr></table></figure>
-
-<p>陣列延伸閱讀請參考：</p>
-<ul>
-<li>askie 大：<a href="https://askie.today/javascript-deep-copy-swallow-copy/">透過複製陣列理解 JS 的淺拷貝與深拷貝 - JavaScript</a></li>
-</ul>
-<hr>
-<h2 id="performance"><a href="#performance" class="headerlink" title="performance"></a>performance</h2><p>以下圖片出自於 StackOverflow <a href="https://stackoverflow.com/questions/728360/how-do-i-correctly-clone-a-javascript-object/61523278#61523278">How do I correctly clone a JavaScript object?</a> 討論中提到上述淺拷貝、深拷貝實作方法的在三大瀏覽器中的效能比較。</p>
 <blockquote>
-<p>淺拷貝：展開運算子、assign 兩者是差不多的優異</p>
+<p>Tips</p>
 </blockquote>
-<p><img src="https://imgur.com/SsrJiev.jpg"></p>
-<blockquote>
-<p>深拷貝：遞迴 function &gt; lodash &gt; JSON</p>
-</blockquote>
-<p><img src="https://imgur.com/QcWxZ4C.jpg"></p>
-<hr>
-<h2 id="conclusion"><a href="#conclusion" class="headerlink" title="conclusion"></a>conclusion</h2><div class="note default">
-            <p>從上方效能比較圖看起來，使用 <code>JSON.parse(JSON.stringify( ))</code> 方法效能是比較差的，此外的方法會依照需求做調整。</p>
+<ol>
+<li><p>預設值<br>表示變數 <code>尚未宣告</code> 或者是已經宣告了但 <code>尚未賦值</code>。</p>
+</li>
+<li><p>特殊關鍵字<br>可以當作一個值去賦予不會噴錯，但 <code>千萬不要</code> 這麼做。</p>
+</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> b;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(b); <span class="comment">// undefined</span></span><br><span class="line"></span><br><span class="line">b = <span class="literal">undefined</span>; <span class="comment">// 不要這麼做</span></span><br></pre></td></tr></table></figure>
+
+<div class="note default">
+            <p>下方會演示兩種 undefined 錯誤應用，並解析問題。</p>
           </div>
+
+<h3 id="不建議賦值為-undefined"><a href="#不建議賦值為-undefined" class="headerlink" title="不建議賦值為 undefined"></a>不建議賦值為 undefined</h3><div class="note danger">
+            <p>問題：造成無法看出此變數是否有被賦予值。</p>
+          </div>
+
+<p>解法：</p>
+<ol>
+<li>使用 null，更符合空值的意義。</li>
+<li>宣告變數不帶值，預設就會賦予 undefined。</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 不建議寫法</span></span><br><span class="line"><span class="keyword">let</span> a = <span class="literal">undefined</span>; <span class="comment">// undefined</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 替代方式</span></span><br><span class="line"><span class="keyword">let</span> a;             <span class="comment">// undefined</span></span><br><span class="line"><span class="keyword">let</span> a = <span class="literal">null</span>;      <span class="comment">// undefined</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="不建議變數名稱命名為-undefined"><a href="#不建議變數名稱命名為-undefined" class="headerlink" title="不建議變數名稱命名為 undefined"></a>不建議變數名稱命名為 undefined</h3><div class="note danger">
+            <p>問題：javascript 會過，但無法正常運作。</p>
+          </div>
+
+<p>解法：</p>
+<ol>
+<li>直接不要用 undefined 命名</li>
+<li>不要用 var 改用 let、const（ES6 中已修正此問題，因此無法使用 undefined 命名）</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 不建議寫法</span></span><br><span class="line"><span class="keyword">var</span> <span class="literal">undefined</span> = <span class="string">&#x27;un&#x27;</span>;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="literal">undefined</span>); <span class="comment">// undefined，無法正常顯示值</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// let、const</span></span><br><span class="line"><span class="keyword">let</span> <span class="literal">undefined</span> = <span class="string">&#x27;un&#x27;</span>;   <span class="comment">// Uncaught SyntaxError: Identifier &#x27;undefined&#x27; has already been declared</span></span><br><span class="line"><span class="keyword">const</span> <span class="literal">undefined</span> = <span class="string">&#x27;un&#x27;</span>; <span class="comment">// Uncaught SyntaxError: Identifier &#x27;undefined&#x27; has already been declared</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="not-defined"><a href="#not-defined" class="headerlink" title="not defined"></a>not defined</h2><div class="note primary">
+            <p>屬於 error，會噴錯誤訊息。（throw a ReferenceError exception）</p>
+          </div>
+
+<blockquote>
+<p>Tip</p>
+</blockquote>
+<ul>
+<li>常見的原因是使用了<code>尚未宣告</code>的變數或函式，所導致的 Error。</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(c); <span class="comment">// ReferenceError: c is not defined</span></span><br></pre></td></tr></table></figure>
+
 <hr>
-<h1 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h1><ul>
-<li>簡單明瞭：<a href="https://medium.com/coding-hot-pot/javascript%E4%B8%AD%E7%9A%84%E6%B7%B1%E6%8B%B7%E8%B2%9D%E8%88%87%E6%B7%BA%E6%8B%B7%E8%B2%9D-9493a5153d16">JavaScript中的深拷貝與淺拷貝</a></li>
-<li><a href="https://www.programfarmer.com/articles/javaScript/javascript-shallow-copy-deep-copy">JS 中的淺拷貝 (Shadow copy) 與深拷貝 (Deep copy) 原理與實作</a></li>
+<h2 id="different"><a href="#different" class="headerlink" title="different"></a>different</h2><ul>
+<li>undefined：宣告(declaration) 後<code>尚未賦予值</code>。</li>
+<li>not defined：<code>尚未被宣告</code>(declaration)。</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> b;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(b); <span class="comment">// undefined</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(c); <span class="comment">// ReferenceError: c is not defined</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="conclusion"><a href="#conclusion" class="headerlink" title="conclusion"></a>conclusion</h2><p><img src="https://imgur.com/bGXwBgw.png"></p>
+<h2 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h2><ul>
+<li><a href="https://hsiangfeng.github.io/javascript/20200510/2581786882/">JavaScript 核心觀念(7)-執行環境與作用域-not defined VS undefined</a></li>
+<li><a href="https://ithelp.ithome.com.tw/articles/10190904">Day04　undefined與not defined</a></li>
+</ul>
+<p>延伸閱讀</p>
+<ul>
+<li><a href="https://kentdoit.github.io/javascript/3007200680/">JS null vs undefined</a></li>
 </ul>
 ]]></content>
       <categories>
         <category>JavaScript</category>
       </categories>
       <tags>
+        <tag>JS 釘孤枝</tag>
         <tag>JavaScript</tag>
       </tags>
   </entry>
@@ -2585,6 +2526,95 @@ console.log(obj.name);  // kent
       </categories>
       <tags>
         <tag>Vue</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>JS 淺拷貝（Shallow Copy）、深拷貝（Deep Copy）</title>
+    <url>/javascript/1956994369/</url>
+    <content><![CDATA[<h2 id="科普"><a href="#科普" class="headerlink" title="科普"></a>科普</h2><blockquote>
+<p>快速科普一下什麼是傳值（Pass by value）、傳址（Pass by reference）</p>
+</blockquote>
+<div class="note default">
+            <p>依照資料型別來決定傳遞行為是 Pass by value 或 Pass by reference。</p>
+          </div>
+
+<p>基本型別 (Primitive Type) </p>
+<ul>
+<li>就是傳值（value），會是分別獨立的記憶體空間。（也稱深拷貝）</li>
+</ul>
+<p>物件型別 (Object Type) </p>
+<ul>
+<li>就是傳址（address），會指向同一個記憶體空間。（也稱淺拷貝）</li>
+</ul>
+<div class="note default">
+            <p>科普就到這邊，下方會用實際範例來演釋實作淺拷貝、深拷貝的方法。</p>
+          </div>
+
+<hr>
+<h2 id="淺拷貝（Shallow-Copy）"><a href="#淺拷貝（Shallow-Copy）" class="headerlink" title="淺拷貝（Shallow Copy）"></a>淺拷貝（Shallow Copy）</h2><blockquote>
+<p>最多只能複製第一層（淺層），其它層還是指向相同記憶體位置，因此在較深的結構賦予值還是會相互影響。</p>
+</blockquote>
+<h3 id="原生物件型別"><a href="#原生物件型別" class="headerlink" title="原生物件型別"></a>原生物件型別</h3><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> obj1 = &#123;<span class="attr">name</span>: <span class="string">&#x27;kent&#x27;</span>&#125;;</span><br><span class="line"><span class="keyword">let</span> obj2 = obj1;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(obj1 === obj2);  <span class="comment">// true，第一層</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(obj1.<span class="property">name</span> === obj2.<span class="property">name</span>);  <span class="comment">// true，第一層</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="展開運算子"><a href="#展開運算子" class="headerlink" title="展開運算子"></a>展開運算子</h3><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> obj1 = &#123;<span class="attr">name</span>: <span class="string">&#x27;kent&#x27;</span>&#125;;</span><br><span class="line"><span class="keyword">let</span> obj2 = &#123;...obj1&#125;;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(obj1 === obj2);  <span class="comment">// false，第一層</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(obj1.<span class="property">name</span> === obj2.<span class="property">name</span>);  <span class="comment">// true，第二層</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="object-assign"><a href="#object-assign" class="headerlink" title="object assign"></a>object assign</h3><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> obj1 = &#123;<span class="attr">name</span>: <span class="string">&#x27;kent&#x27;</span>&#125;;</span><br><span class="line"><span class="keyword">let</span> obj2 = <span class="title class_">Object</span>.<span class="title function_">assign</span>(&#123;&#125;,obj1);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(obj1 === obj2);  <span class="comment">// false，第一層</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(obj1.<span class="property">name</span> === obj2.<span class="property">name</span>);  <span class="comment">// true，第二層</span></span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="深拷貝（Deep-Copy）"><a href="#深拷貝（Deep-Copy）" class="headerlink" title="深拷貝（Deep Copy）"></a>深拷貝（Deep Copy）</h2><blockquote>
+<p>建立新的記憶體空間來複製全部內容（全部深度），因此兩者是獨立的記憶體空間，彼此不會相互影響。</p>
+</blockquote>
+<h3 id="JSON-parse-JSON-stringify-object"><a href="#JSON-parse-JSON-stringify-object" class="headerlink" title="JSON.parse( JSON.stringify( object ) )"></a>JSON.parse( JSON.stringify( object ) )</h3><ul>
+<li><code>JSON.stringify()</code>：轉成 JSON 字串，<code>無法</code> 轉換為 JSON 字串的屬性則自動 <code>忽略</code>。</li>
+<li><code>JSON.parse()</code>：解析 JSON，將 JSON 轉為基本型別 (Primitive Type) 、物件型別 (Object Type) 。</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">	 <span class="attr">name</span>: <span class="string">&#x27;kent&#x27;</span>, </span><br><span class="line">   <span class="attr">age</span>: <span class="number">5</span>, </span><br><span class="line">   <span class="attr">action</span>: <span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">     <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;function&#x27;</span>)      </span><br><span class="line">   &#125;,</span><br><span class="line">   <span class="attr">religion</span>: <span class="literal">undefined</span>,</span><br><span class="line">   <span class="attr">fortune</span>: <span class="title class_">NaN</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">var</span> obj2 = <span class="title class_">JSON</span>.<span class="title function_">parse</span>( <span class="title class_">JSON</span>.<span class="title function_">stringify</span>(obj));</span><br><span class="line"><span class="comment">//function、undefined 不是 JSON 有效值，且 NaN 被轉換成 null</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(obj2);</span><br></pre></td></tr></table></figure>
+
+<h3 id="lodash-套件的-cloneDeep"><a href="#lodash-套件的-cloneDeep" class="headerlink" title="lodash 套件的 cloneDeep()"></a>lodash 套件的 cloneDeep()</h3><ul>
+<li><code>clone()</code>：只複製淺層的值。</li>
+<li><code>cloneDeep()</code>：透過遞迴的方式複製全部的值。</li>
+<li>好處：不會遇到 <code>JSON.stringify/parse</code> 部分值會非預期改變的問題。</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; clone, cloneDeep &#125; <span class="keyword">from</span> <span class="string">&#x27;lodash&#x27;</span>;</span><br><span class="line"><span class="keyword">let</span> obj1 = &#123;</span><br><span class="line">	<span class="attr">name</span>: <span class="string">&#x27;kent&#x27;</span>, </span><br><span class="line">	<span class="attr">age</span>: <span class="number">5</span>, </span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">let</span> obj2 = <span class="title function_">clone</span>(obj1);</span><br><span class="line"><span class="keyword">let</span> obj3 = <span class="title function_">cloneDeep</span>(obj1);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(obj1.<span class="property">name</span> === obj2.<span class="property">name</span>); <span class="comment">// true，淺拷貝</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(obj1.<span class="property">name</span> === obj3.<span class="property">name</span>); <span class="comment">// false，深拷貝</span></span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="三種自製簡單遞迴-function-作法"><a href="#三種自製簡單遞迴-function-作法" class="headerlink" title="三種自製簡單遞迴 function 作法"></a>三種自製簡單遞迴 function 作法</h2><p>第一種：</p>
+<figure class="highlight js"><figcaption><span>src:</span><a href="https://medium.com/coding-hot-pot/javascript中的深拷貝與淺拷貝-9493a5153d16">JavaScript中的深拷貝與淺拷貝</a></figcaption><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title function_">deepCopy</span> = (<span class="params">val</span>) =&gt; &#123;</span><br><span class="line">	<span class="keyword">let</span> newVal = <span class="title class_">Array</span>.<span class="title function_">isArray</span>(val) ? [] : &#123;&#125;;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">let</span> v <span class="keyword">in</span> val) &#123;</span><br><span class="line">	    <span class="keyword">if</span> (val.<span class="title function_">hasOwnProperty</span>(v)) &#123;</span><br><span class="line">	        <span class="keyword">if</span> (<span class="string">&#x27;object&#x27;</span> === <span class="keyword">typeof</span> val[v]) &#123;</span><br><span class="line">	            newVal[v] = <span class="title function_">deepCopy</span>(val[v]);</span><br><span class="line">	        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">	            newVal[v] = val[v];</span><br><span class="line">	        &#125;</span><br><span class="line">	    &#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> newVal;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> originalData = &#123;</span><br><span class="line">  <span class="attr">firstLayerNum</span>: <span class="number">10</span>,</span><br><span class="line">  <span class="attr">obj</span>: &#123;</span><br><span class="line">    <span class="attr">secondLayerNum</span>: <span class="number">100</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">const</span> clonedData = <span class="title function_">deepCopy</span>(originalData);</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(clonedData === originalData); <span class="comment">// false，第一層</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(clonedData.<span class="property">obj</span>.<span class="property">secondLayerNum</span> === originalData.<span class="property">obj</span>.<span class="property">secondLayerNum</span>); <span class="comment">// false，第二層</span></span><br></pre></td></tr></table></figure>
+
+<p>第二種：</p>
+<figure class="highlight js"><figcaption><span>src:</span><a href="https://www.programfarmer.com/articles/javaScript/javascript-shallow-copy-deep-copy">JS 中的淺拷貝 (Shallow copy) 與深拷貝 (Deep copy) 原理與實作</a></figcaption><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">deepCopy</span>(<span class="params">inputObject</span>) &#123;</span><br><span class="line">  <span class="comment">// Return the value if inputObject is not an Object data</span></span><br><span class="line">  <span class="comment">// Need to notice typeof null is &#x27;object&#x27;</span></span><br><span class="line">  <span class="keyword">if</span> (<span class="keyword">typeof</span> inputObject !== <span class="string">&#x27;object&#x27;</span> || inputObject === <span class="literal">null</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> inputObject;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// Create an array or object to hold the values</span></span><br><span class="line">  <span class="keyword">const</span> outputObject = <span class="title class_">Array</span>.<span class="title function_">isArray</span>(inputObject) ? [] : &#123;&#125;;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// Recursively deep copy for nested objects, including arrays</span></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> key <span class="keyword">in</span> inputObject) &#123;</span><br><span class="line">    <span class="keyword">const</span> value = inputObject[key];</span><br><span class="line">    outputObject[key] = <span class="title function_">deepCopyFunction</span>(value);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> outputObject;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> originalData = &#123;</span><br><span class="line">  <span class="attr">firstLayerNum</span>: <span class="number">10</span>,</span><br><span class="line">  <span class="attr">obj</span>: &#123;</span><br><span class="line">    <span class="attr">secondLayerNum</span>: <span class="number">100</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">const</span> clonedData = <span class="title function_">deepCopy</span>(originalData);</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(clonedData === originalData); <span class="comment">// false，第一層</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(clonedData.<span class="property">obj</span>.<span class="property">secondLayerNum</span> === originalData.<span class="property">obj</span>.<span class="property">secondLayerNum</span>); <span class="comment">// false，第二層</span></span><br></pre></td></tr></table></figure>
+
+<p>第三種：</p>
+<figure class="highlight js"><figcaption><span>src:</span><a href="https://jsbench.me/euk9l6x9jx/1">jsbench example</a></figcaption><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">deepCopy</span>(<span class="params">obj</span>) &#123;</span><br><span class="line">    <span class="keyword">var</span> copy;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Handle the 3 simple types, and null or undefined</span></span><br><span class="line">    <span class="keyword">if</span> (<span class="literal">null</span> == obj || <span class="string">&quot;object&quot;</span> != <span class="keyword">typeof</span> obj) <span class="keyword">return</span> obj;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Handle Date</span></span><br><span class="line">    <span class="keyword">if</span> (obj <span class="keyword">instanceof</span> <span class="title class_">Date</span>) &#123;</span><br><span class="line">        copy = <span class="keyword">new</span> <span class="title class_">Date</span>();</span><br><span class="line">        copy.<span class="title function_">setTime</span>(obj.<span class="title function_">getTime</span>());</span><br><span class="line">        <span class="keyword">return</span> copy;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Handle Array</span></span><br><span class="line">    <span class="keyword">if</span> (obj <span class="keyword">instanceof</span> <span class="title class_">Array</span>) &#123;</span><br><span class="line">        copy = [];</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>, len = obj.<span class="property">length</span>; i &lt; len; i++) &#123;</span><br><span class="line">            copy[i] = <span class="title function_">deepCopy</span>(obj[i]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> copy;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Handle Object</span></span><br><span class="line">    <span class="keyword">if</span> (obj <span class="keyword">instanceof</span> <span class="title class_">Object</span>) &#123;</span><br><span class="line">        copy = &#123;&#125;;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">var</span> attr <span class="keyword">in</span> obj) &#123;</span><br><span class="line">            <span class="keyword">if</span> (obj.<span class="title function_">hasOwnProperty</span>(attr)) copy[attr] = <span class="title function_">deepCopy</span>(obj[attr]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> copy;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">Error</span>(<span class="string">&quot;Unable to copy obj! Its type isn&#x27;t supported.&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> originalData = &#123;</span><br><span class="line">  <span class="attr">firstLayerNum</span>: <span class="number">10</span>,</span><br><span class="line">  <span class="attr">obj</span>: &#123;</span><br><span class="line">    <span class="attr">secondLayerNum</span>: <span class="number">100</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">const</span> clonedData = <span class="title function_">deepCopy</span>(originalData);</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(clonedData === originalData); <span class="comment">// false，第一層</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(clonedData.<span class="property">obj</span>.<span class="property">secondLayerNum</span> === originalData.<span class="property">obj</span>.<span class="property">secondLayerNum</span>); <span class="comment">// false，第二層</span></span><br></pre></td></tr></table></figure>
+
+<p>陣列延伸閱讀請參考：</p>
+<ul>
+<li>askie 大：<a href="https://askie.today/javascript-deep-copy-swallow-copy/">透過複製陣列理解 JS 的淺拷貝與深拷貝 - JavaScript</a></li>
+</ul>
+<hr>
+<h2 id="performance"><a href="#performance" class="headerlink" title="performance"></a>performance</h2><p>以下圖片出自於 StackOverflow <a href="https://stackoverflow.com/questions/728360/how-do-i-correctly-clone-a-javascript-object/61523278#61523278">How do I correctly clone a JavaScript object?</a> 討論中提到上述淺拷貝、深拷貝實作方法的在三大瀏覽器中的效能比較。</p>
+<blockquote>
+<p>淺拷貝：展開運算子、assign 兩者是差不多的優異</p>
+</blockquote>
+<p><img src="https://imgur.com/SsrJiev.jpg"></p>
+<blockquote>
+<p>深拷貝：遞迴 function &gt; lodash &gt; JSON</p>
+</blockquote>
+<p><img src="https://imgur.com/QcWxZ4C.jpg"></p>
+<hr>
+<h2 id="conclusion"><a href="#conclusion" class="headerlink" title="conclusion"></a>conclusion</h2><div class="note default">
+            <p>從上方效能比較圖看起來，使用 <code>JSON.parse(JSON.stringify( ))</code> 方法效能是比較差的，此外的方法會依照需求做調整。</p>
+          </div>
+<hr>
+<h1 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h1><ul>
+<li>簡單明瞭：<a href="https://medium.com/coding-hot-pot/javascript%E4%B8%AD%E7%9A%84%E6%B7%B1%E6%8B%B7%E8%B2%9D%E8%88%87%E6%B7%BA%E6%8B%B7%E8%B2%9D-9493a5153d16">JavaScript中的深拷貝與淺拷貝</a></li>
+<li><a href="https://www.programfarmer.com/articles/javaScript/javascript-shallow-copy-deep-copy">JS 中的淺拷貝 (Shadow copy) 與深拷貝 (Deep copy) 原理與實作</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>JavaScript</category>
+      </categories>
+      <tags>
+        <tag>JavaScript</tag>
       </tags>
   </entry>
 </search>
