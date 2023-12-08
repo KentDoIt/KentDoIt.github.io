@@ -61,7 +61,7 @@
 <meta property="og:image" content="https://imgur.com/xRoMj9K.jpg">
 <meta property="og:image" content="https://imgur.com/65rMzvx.jpg">
 <meta property="article:published_time" content="2022-05-09T23:51:46.000Z">
-<meta property="article:modified_time" content="2023-12-08T09:14:05.667Z">
+<meta property="article:modified_time" content="2023-12-08T09:16:00.415Z">
 <meta property="article:author" content="Kent">
 <meta property="article:tag" content="Hexo SEO">
 <meta name="twitter:card" content="summary">
@@ -321,7 +321,7 @@
             <p>看到類似以上圖片狀況，都不需要擔心。下方會分享四種親身嘗試的方法。</p>
           </div>
 
-
+<hr>
 <h3 id="擁有權驗證"><a href="#擁有權驗證" class="headerlink" title="擁有權驗證"></a>擁有權驗證</h3><p>方法一：添加其他驗證方式（本來只有用 GA）</p>
 <p>Step1：取得 content 值</p>
 <ul>
@@ -339,6 +339,7 @@
 
 <p>Step4：重新部署後，檢查網站中是否包含 google-site-verification</p>
 <p><img src="https://imgur.com/RVLo57e.jpg" alt="搜尋 google-site-verification"></p>
+<hr>
 <h3 id="檢查-Sitemap-格式"><a href="#檢查-Sitemap-格式" class="headerlink" title="檢查 Sitemap 格式"></a>檢查 Sitemap 格式</h3><p>方法二：檢查 Sitemap 格式</p>
 <blockquote>
 <p>發覺我的 sitemap.xml 格式和官方範例不同，所以需要將多的標籤移除。</p>
@@ -353,7 +354,8 @@
           </div>
 
 <p><img src="https://imgur.com/NkFfNmd.jpg" alt="我有嘗試把所有多的標籤都移除呦，但也還是沒成功。"></p>
-<h3 id="建立-nojekyll"><a href="#建立-nojekyll" class="headerlink" title="建立 .nojekyll"></a>建立 .nojekyll</h3><p>方法四：建立 .nojekyll</p>
+<hr>
+<h3 id="建立-nojekyll"><a href="#建立-nojekyll" class="headerlink" title="建立 .nojekyll"></a>建立 .nojekyll</h3><p>方法三：建立 .nojekyll</p>
 <p>Step1：進入根目錄 source 資料夾底下</p>
 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">cd source</span><br></pre></td></tr></table></figure>
 
@@ -375,10 +377,11 @@
             <p>參考這篇 <a target="_blank" rel="noopener" href="https://github.com/orgs/community/discussions/21599">Sitemap (XML) partially works on GitHub Pages and cannot be fetched by Google Search Console</a> 所提到的添加 .nojekyll。</p>
           </div>
 
+<hr>
 <h3 id="建立索引"><a href="#建立索引" class="headerlink" title="建立索引"></a>建立索引</h3><blockquote>
 <p>為了將自己的網址透過 Google Search Console 建立索引，提交給 Google 使搜尋引擎能更容易地搜尋到我們的網站，這個也屬於提升 SEO 的其中一種方法。</p>
 </blockquote>
-<p>方法三：網址審查建立索引</p>
+<p>方法四：網址審查建立索引</p>
 <p>Step1：點擊網址審查，並在上方網址列貼上部落格網址（例如：<a href="https://kentdoit.github.io/%EF%BC%89">https://kentdoit.github.io/）</a></p>
 <p>Step2：按下建立索引</p>
 <p><img src="https://imgur.com/VwNKDrB.jpg" alt="兩步驟建立索引"></p>
@@ -391,6 +394,7 @@
             <p>「已建立索引，但未提交至 Sitemap」看到這個沒關係，只是 google 還尚未更新我們的 Sitemap，等 Sitemap 狀態變為「成功」之後，全部的索引資料也都會一併更新。</p>
           </div>
 
+<hr>
 <h3 id="自我檢查兩步驟"><a href="#自我檢查兩步驟" class="headerlink" title="自我檢查兩步驟"></a>自我檢查兩步驟</h3><p>Step1: robots.txt 是否有設置 Sitemap</p>
 <p>可以參考「<a href="https://kentdoit.github.io/hexo/3578178281/">Hexo 管理爬蟲 robots.txt（五）</a>」來設置 robots.txt。</p>
 <p><img src="https://imgur.com/herVKkf.jpg"></p>
@@ -401,6 +405,7 @@
             <p>google 有搜尋到、robots.txt 有設置，基本上就可以不用擔心了，接下來就交給時間了。<br>我自己是等超過一個禮拜還好就不管了，一個月之後看就自動好了，Google Search Console 也會都有自動找到尚未加入索引的網址。</p>
           </div>
 
+<hr>
 <h2 id="conclusion"><a href="#conclusion" class="headerlink" title="conclusion"></a>conclusion</h2><div class="note default">
             <p>如果沒有其他錯誤訊息，基本上<code>時間到了</code>狀態自動就會變綠色「成功」。</p>
           </div>
