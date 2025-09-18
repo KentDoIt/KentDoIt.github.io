@@ -1,0 +1,199 @@
+// ===== Body ===== 
+.content {
+  padding-top: 40px;
+}
+
+h2 {
+  font-size: 1.65em;
+}
+
+// ===== Menu =====
+.menu .menu-item {
+  &.menu-item-active a {
+    color: var(--link-color);
+  }
+  & a {
+    border-radius: 0;
+    color #999;
+    font-size: 14px;
+    transition: all .1s linear;
+  }
+
+  & a:hover {
+    color: var(--link-color);
+    // border-bottom: 1px solid var(--link-hover-color);
+  }
+}
+
+// ===== Tags =====
+.post-tags {
+  text-align: center !important;
+  a {
+    background: transparent !important;
+    display: inline-block;
+    transition: all .2s linear;
+    &:hover {
+      background: transparent !important;
+      transform: scale(1.1);
+    }
+  }
+}
+
+// ===== Index =====
+.posts-expand.index .post-meta {
+  margin-bottom: 10px;
+}
+
+.post-button {
+  margin-top: 20px;
+}
+
+.post-eof {
+  margin: 60px auto 40px;
+}
+
+// ===== Meta Item =====
+.post-meta .post-meta-item + .post-meta-item::before {
+  content: '';
+  margin: 0;
+}
+
+[itemprop="about"] a {
+  border-bottom: 0;
+  // transition: all .2s linear;
+  &:hover {
+    border-bottom: 1px solid var(--link-hover-color);
+  }
+}
+
+.posts-expand .post-meta time {
+  border-bottom: 0;
+  cursor: default;
+}
+
+.posts-expand .post-meta {
+  margin-bottom: 0;
+}
+
+// ===== Page Description =====
+.posts-expand .post-meta .post-description {
+  display: none;
+}
+
+// ===== MarkDown =====
+.blockquote-center {
+  margin: 50px 0;
+}
+
+// ===== Creative Commons =====
+.post-copyright {
+  // border-top: 3px solid #e4e0ce;
+  border-left: 0;
+  background: var(--body-bg-color);
+  color: var(--blockquote-color);
+  padding: 1rem 0;
+}
+
+// ===== Sidebar & Hamburger Menu =====
+.sidebar {
+  background: #313131;
+}
+
+.sidebar-toggle {
+  background: transparent;
+  & .toggle-line, &:hover .toggle-line {
+    background: $black-deep;
+  }
+  &.toggle-close .toggle-line {
+    background: #b3cdd1;
+  }
+}
+
+.back-to-top {
+  left: auto;
+  right: 30px;
+  border-radius: 5px;
+
+  &.back-to-top-on {
+    bottom: 45px;
+  }
+}
+
+// ===== Github Banner =====
+.github-corner {
+  svg {
+    position: fixed;
+    top: -50px;
+    fill: transparent;
+    color: var(--link-hover-color);
+    transform: rotate(140deg);
+    margin-top: 10px;
+  }
+}
+
+// ===== Backtick Code Block =====
+.highlight {
+  overflow-x: auto;
+  overflow-y: hidden;
+  border-radius: 4px;
+}
+
+pre .deletion {
+  background: #ffd8d5;
+}
+
+.copy-btn {
+  if (hexo-config('codeblock.copy_button.style') == 'flat') {
+    background: transparent;
+    top: auto;
+    bottom: 5px;
+  }
+}
+
+// ===== lightbox =====
+.post-body .image-caption {
+  margin-top: 50px;
+  margin-bottom: 5px;
+}
+
+.posts-expand .post-body img {
+  margin: 0 auto 40px;
+}
+
+.use-motion .site-title {
+  top: 0;
+}
+
+.use-motion .custom-logo-image {
+  // width: 45px;
+  height: 40px;
+  top: 0;
+  opacity: 1;
+}
+
+.site-brand-container {
+  position: absolute;
+}
+
+@media (max-width: 767px) {
+  .site-brand-container {
+    display: none;
+  }
+}
+
+// ===== footer =====
+.footer-inner {
+  display: none;
+}
+
+// ===== Collapse answer =====
+answer {
+  display: inline-block;
+  margin-left: 18px;
+}
+
+// ===== details =====
+
+details:hover {
+  cursor: pointer;
+}
