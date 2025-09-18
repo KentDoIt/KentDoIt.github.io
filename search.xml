@@ -181,6 +181,148 @@
       </tags>
   </entry>
   <entry>
+    <title>Hexo 管理爬蟲 robots.txt（五）</title>
+    <url>/hexo/3578178281/</url>
+    <content><![CDATA[<h2 id="範例的環境版本"><a href="#範例的環境版本" class="headerlink" title="範例的環境版本"></a>範例的環境版本</h2><p>hexo 版本：6.0.1<br>hexo-cli 版本：4.3.0<br>next 版本：7.8.0</p>
+<h2 id="robots-txt"><a href="#robots-txt" class="headerlink" title="robots.txt"></a>robots.txt</h2><blockquote>
+<p>設置搜尋引擎爬蟲哪些是可以爬的路徑哪些是不能爬的，也能增強 SEO。</p>
+</blockquote>
+<p>Step1：根目錄 source 資料夾底下新增 robots.txt 檔案</p>
+<p><img src="https://imgur.com/z1hRLbs.jpg"></p>
+<p>Step2：設置檔案參數</p>
+<p>User-agent : 爬蟲程式名字，必要項目</p>
+<ul>
+<li>可以在每項規則中指定一或多個 user-agen</li>
+<li>*：運行於所有搜尋引擎，也可以只允許指定搜尋引擎，例如<code>User-agent: Googlebot</code>。</li>
+</ul>
+<p>Allow：允許爬取路徑，至少要有一個</p>
+<ul>
+<li>相對路徑；若為目錄，則必須以 &#x2F; 作為結尾。</li>
+</ul>
+<p>Disallow：不允許爬取路徑，至少要有一個</p>
+<ul>
+<li>相對路徑；若為目錄，則必須以 &#x2F; 作為結尾。</li>
+</ul>
+<p>Sitemap：網站地圖的路徑，非必要</p>
+<ul>
+<li>使用絕對路徑。</li>
+</ul>
+<p>Crawl-delay：同伺服器每次連續請求所需的要間隔秒數，非必要</p>
+<figure class="highlight txt"><figcaption><span>source/robots.txt</span></figcaption><table><tr><td class="code"><pre><span class="line">User-agent: *</span><br><span class="line">Allow: /</span><br><span class="line">Allow: /archives/</span><br><span class="line">Allow: /categories/</span><br><span class="line">Allow: /tags/ </span><br><span class="line">Disallow: /vendors/</span><br><span class="line">Disallow: /fonts/</span><br><span class="line">Disallow: /vendors/</span><br><span class="line">Disallow: /fancybox/</span><br><span class="line">Sitemap: https://kentdoit.github.io/sitemap.xml</span><br></pre></td></tr></table></figure>
+
+<div class="note default">
+            <p><a href="https://israynotarray.com/other/20210627/3588736352/">ray 大</a>：『建議不要忽略 js、css 與 fonts 相關的檔案與資料夾，否則可能在 Google Console Search 會收到一些問題提示』。</p>
+          </div>
+
+<p>延伸閱讀：<a href="https://israynotarray.com/other/20210627/3588736352/">快速掌握 robots.txt 用途</a></p>
+<hr>
+<h2 id="Front-matter"><a href="#Front-matter" class="headerlink" title="Front-matter"></a>Front-matter</h2><div class="note default">
+            <p>前面介紹了透過 robots.txt 設置不允許爬蟲獲取路徑，那如果有特定的頁面不希望被加入 sitemap.xml 中，可以添加 Front-matter 參數。</p>
+          </div>
+
+<p>在頁面的 markdown 中 Front-matter 設定 sitemap: false。</p>
+<figure class="highlight diff"><figcaption><span>text.md</span></figcaption><table><tr><td class="code"><pre><span class="line">title: 測試</span><br><span class="line">date: 2022-05-01 14:10:25</span><br><span class="line">categories:</span><br><span class="line">tags: </span><br><span class="line">description:</span><br><span class="line"><span class="addition">+ sitemap: false</span></span><br></pre></td></tr></table></figure>
+
+<div class="note default">
+            <p>否則預設重新部署後，若有更新路徑都會自動更新到 sitemap.xml 中。</p>
+          </div>
+
+<hr>
+<h2 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h2><p><a href="https://blog.yucheng.me/post/hexo-configuration/#sitemap-xml-%E6%90%9C%E5%B0%8B%E5%BC%95%E6%93%8E%E7%88%AC%E8%9F%B2">Hexo 基本配置</a><br><a href="https://israynotarray.com/other/20210627/3588736352/">快速掌握 robots.txt 用途</a></p>
+]]></content>
+      <categories>
+        <category>Hexo</category>
+      </categories>
+      <tags>
+        <tag>Hexo 優化</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Hexo 設置 GA、Sitemap（四）</title>
+    <url>/hexo/599670072/</url>
+    <content><![CDATA[<div class="note default">
+            <p>會把這篇內容放在前面是因為我深受其害，因此我誠心建議這些設定越早弄完越好。</p>
+          </div>
+
+<h2 id="範例的環境版本"><a href="#範例的環境版本" class="headerlink" title="範例的環境版本"></a>範例的環境版本</h2><p>hexo 版本：6.0.1<br>hexo-cli 版本：4.3.0<br>next 版本：7.8.0</p>
+<h2 id="Google-Analytics"><a href="#Google-Analytics" class="headerlink" title="Google Analytics"></a>Google Analytics</h2><blockquote>
+<p>下面分成兩個方向來設置：設置追蹤碼、埋追蹤碼。</p>
+</blockquote>
+<div class="note default">
+            <p>想看詳細過程介紹可以參考：Gui <a href="https://guiblogs.com/hexo30-12/">Day 12：為 Hexo 裝設 Google Analytics，追蹤你的部落格流量（使用 Next 佈景主題）</a></p>
+          </div>
+
+<h3 id="設置追蹤碼（製評估-ID）"><a href="#設置追蹤碼（製評估-ID）" class="headerlink" title="設置追蹤碼（製評估 ID）"></a>設置追蹤碼（製評估 ID）</h3><p>Step1：<a href="https://analytics.google.com/analytics/web/provision/#/provision">Google Analytics</a> 申請帳號<br>Step2：複製評估 ID（<code>G-</code> 開頭）<br>Step3：修改 NexT 主題中 _config.yml 參數</p>
+<figure class="highlight diff"><figcaption><span>themes/hexo-theme-next/_config.yml</span></figcaption><table><tr><td class="code"><pre><span class="line"># Google Analytics</span><br><span class="line">google_analytics:</span><br><span class="line"><span class="deletion">-  tracking_id: # &lt;app_id&gt;</span></span><br><span class="line"><span class="addition">+  tracking_id: #貼上剛剛複製的評估 ID</span></span><br><span class="line">  # By default, NexT will load an external gtag.js script on your site.</span><br><span class="line">  # If you only need the pageview feature, set the following option to true to get a better performance.</span><br><span class="line">  only_pageview: false</span><br></pre></td></tr></table></figure>
+
+<h3 id="埋追蹤碼"><a href="#埋追蹤碼" class="headerlink" title="埋追蹤碼"></a>埋追蹤碼</h3><p>Step1：複製追蹤碼</p>
+<p><img src="https://imgur.com/mjvgxfs.jpg" alt="步驟演示：資料串流 →  全域網站代碼 → 複製"></p>
+<p>Step2：檔案 themes&#x2F;hexo-theme-next&#x2F;layout&#x2F;_partials&#x2F;head&#x2F;head.swig 最後貼上追蹤碼</p>
+<figure class="highlight diff"><figcaption><span>themes/hexo-theme-next/layout/_partials/head/head.swig</span></figcaption><table><tr><td class="code"><pre><span class="line">&#123;&#123; next_config() &#125;&#125;</span><br><span class="line"><span class="addition">+ &lt;!-- Global site tag (gtag.js) - Google Analytics --&gt;</span></span><br><span class="line"><span class="addition">+ &lt;script async src=&quot;https://www.googletagmanager.com/gtag/js?id=G-K8QW91NNBQ&quot;&gt;&lt;/script&gt;</span></span><br><span class="line"><span class="addition">+ &lt;script&gt;</span></span><br><span class="line"><span class="addition">+   window.dataLayer = window.dataLayer || [];</span></span><br><span class="line"><span class="addition">+   function gtag()&#123;dataLayer.push(arguments);&#125;</span></span><br><span class="line"><span class="addition">+   gtag(&#x27;js&#x27;, new Date());</span></span><br><span class="line"><span class="addition">+ </span></span><br><span class="line"><span class="addition">+   gtag(&#x27;config&#x27;, &#x27;G-K8QW91NNBQ&#x27;);</span></span><br><span class="line"><span class="addition">+ &lt;/script&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>Step3：重新部署</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">hexo g -d</span><br></pre></td></tr></table></figure>
+
+<div class="note default">
+            <p>完成上面兩個設置就可以重新部署後再次檢查 GA 是否成功。</p>
+          </div>
+
+<p><img src="https://imgur.com/60AW6rA.jpg" alt="進到 GA 中點選左邊側邊欄報表，有看到數字 1 就成功了！"></p>
+<hr>
+<h2 id="Sitemap"><a href="#Sitemap" class="headerlink" title="Sitemap"></a>Sitemap</h2><blockquote>
+<p>Sitemap 用來記錄該網站中所有 url 路徑，以及每一個路徑最後修改的時間戳。</p>
+</blockquote>
+<div class="note default">
+            <p>Sitemap 檔案會提供網頁中的相關資訊給搜尋引擎，Google 的爬蟲會定期爬 sitemap.xml 檔案，若有更新他就會去爬你的網站並加入到搜尋引擎中。</p>
+          </div>
+
+<p>Step1：安裝指令</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">npm install hexo-generator-sitemap</span><br></pre></td></tr></table></figure>
+
+<p>Step2：根目錄 _config.yml 在最後面添加新參數</p>
+<ul>
+<li>之後只要指令有 <code>hexo g</code> 時，就會自動生成 sitemap.xml。</li>
+</ul>
+<figure class="highlight diff"><figcaption><span>.git/config</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="addition">+ # Sitemap</span></span><br><span class="line"><span class="addition">+ sitemap:</span></span><br><span class="line"><span class="addition">+   path: sitemap.xml</span></span><br></pre></td></tr></table></figure>
+
+<p>Step3：重新部署</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">hexo d -g</span><br></pre></td></tr></table></figure>
+
+<p>Step4：<a href="https://search.google.com/search-console/about?hl=zh-tw">Google Search</a> 設置加入網站連結</p>
+<ul>
+<li>GA 屬於一種驗證方式，剛剛有成功設置 GA 所以會自動驗證成功。</li>
+</ul>
+<p><img src="https://imgur.com/MCx0dFO.jpg"></p>
+<p>Step5：提交 sitemap</p>
+<ul>
+<li>在新增 Sitemap 欄位中輸入 <code>sitemap.xml</code></li>
+</ul>
+<p><img src="https://imgur.com/D2VrXHx.jpg"></p>
+<p>Step6：檢查 sitemap</p>
+<ul>
+<li>檢查自己的網址後面加上 <code>/sitemap</code> 或 <code>/sitemap.xml</code> 後查看是否有內容。</li>
+</ul>
+<p><img src="https://imgur.com/2yYRM6p.jpg" alt="https://kentdoit.github.io/sitemap"></p>
+<div class="note default">
+            <p>如果<strong>運氣好</strong>到這邊應該是成功了，<del>運氣不好</del>會發覺網址看有內容，但是狀態為<code>無法擷取</code>。</p>
+          </div>
+
+<p><img src="https://imgur.com/Ae8Sllt.jpg"></p>
+<div class="note default">
+            <p>礙於 debug 篇幅過長，將過程記錄在另一篇 <a href="https://kentdoit.github.io/hexo/2629412870/">Hexo Sitemap 建立索引 無法擷取</a> 文章中。</p>
+          </div>
+
+<hr>
+<h2 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h2><p><a href="https://israynotarray.com/hexo/20190514/2072033203/">Hexo搜尋引擎優化</a><br><a href="https://zenreal.github.io/posts/7993/">Hexo 搭建系列 - SEO優化篇</a><br><a href="https://syj0905.github.io/hexo/20190906/285599935/">Hexo 架站攻略 - SEO 優化</a></p>
+]]></content>
+      <categories>
+        <category>Hexo</category>
+      </categories>
+      <tags>
+        <tag>Hexo SEO</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Hexo 新增文章和頁面 (二)</title>
     <url>/hexo/356195859/</url>
     <content><![CDATA[<h2 id="範例的環境版本"><a href="#範例的環境版本" class="headerlink" title="範例的環境版本"></a>範例的環境版本</h2><p>hexo 版本：6.0.1<br>hexo-cli 版本：4.3.0<br>next 版本：7.8.0</p>
@@ -392,148 +534,6 @@
       </categories>
       <tags>
         <tag>Hexo 部落格</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Hexo 管理爬蟲 robots.txt（五）</title>
-    <url>/hexo/3578178281/</url>
-    <content><![CDATA[<h2 id="範例的環境版本"><a href="#範例的環境版本" class="headerlink" title="範例的環境版本"></a>範例的環境版本</h2><p>hexo 版本：6.0.1<br>hexo-cli 版本：4.3.0<br>next 版本：7.8.0</p>
-<h2 id="robots-txt"><a href="#robots-txt" class="headerlink" title="robots.txt"></a>robots.txt</h2><blockquote>
-<p>設置搜尋引擎爬蟲哪些是可以爬的路徑哪些是不能爬的，也能增強 SEO。</p>
-</blockquote>
-<p>Step1：根目錄 source 資料夾底下新增 robots.txt 檔案</p>
-<p><img src="https://imgur.com/z1hRLbs.jpg"></p>
-<p>Step2：設置檔案參數</p>
-<p>User-agent : 爬蟲程式名字，必要項目</p>
-<ul>
-<li>可以在每項規則中指定一或多個 user-agen</li>
-<li>*：運行於所有搜尋引擎，也可以只允許指定搜尋引擎，例如<code>User-agent: Googlebot</code>。</li>
-</ul>
-<p>Allow：允許爬取路徑，至少要有一個</p>
-<ul>
-<li>相對路徑；若為目錄，則必須以 &#x2F; 作為結尾。</li>
-</ul>
-<p>Disallow：不允許爬取路徑，至少要有一個</p>
-<ul>
-<li>相對路徑；若為目錄，則必須以 &#x2F; 作為結尾。</li>
-</ul>
-<p>Sitemap：網站地圖的路徑，非必要</p>
-<ul>
-<li>使用絕對路徑。</li>
-</ul>
-<p>Crawl-delay：同伺服器每次連續請求所需的要間隔秒數，非必要</p>
-<figure class="highlight txt"><figcaption><span>source/robots.txt</span></figcaption><table><tr><td class="code"><pre><span class="line">User-agent: *</span><br><span class="line">Allow: /</span><br><span class="line">Allow: /archives/</span><br><span class="line">Allow: /categories/</span><br><span class="line">Allow: /tags/ </span><br><span class="line">Disallow: /vendors/</span><br><span class="line">Disallow: /fonts/</span><br><span class="line">Disallow: /vendors/</span><br><span class="line">Disallow: /fancybox/</span><br><span class="line">Sitemap: https://kentdoit.github.io/sitemap.xml</span><br></pre></td></tr></table></figure>
-
-<div class="note default">
-            <p><a href="https://israynotarray.com/other/20210627/3588736352/">ray 大</a>：『建議不要忽略 js、css 與 fonts 相關的檔案與資料夾，否則可能在 Google Console Search 會收到一些問題提示』。</p>
-          </div>
-
-<p>延伸閱讀：<a href="https://israynotarray.com/other/20210627/3588736352/">快速掌握 robots.txt 用途</a></p>
-<hr>
-<h2 id="Front-matter"><a href="#Front-matter" class="headerlink" title="Front-matter"></a>Front-matter</h2><div class="note default">
-            <p>前面介紹了透過 robots.txt 設置不允許爬蟲獲取路徑，那如果有特定的頁面不希望被加入 sitemap.xml 中，可以添加 Front-matter 參數。</p>
-          </div>
-
-<p>在頁面的 markdown 中 Front-matter 設定 sitemap: false。</p>
-<figure class="highlight diff"><figcaption><span>text.md</span></figcaption><table><tr><td class="code"><pre><span class="line">title: 測試</span><br><span class="line">date: 2022-05-01 14:10:25</span><br><span class="line">categories:</span><br><span class="line">tags: </span><br><span class="line">description:</span><br><span class="line"><span class="addition">+ sitemap: false</span></span><br></pre></td></tr></table></figure>
-
-<div class="note default">
-            <p>否則預設重新部署後，若有更新路徑都會自動更新到 sitemap.xml 中。</p>
-          </div>
-
-<hr>
-<h2 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h2><p><a href="https://blog.yucheng.me/post/hexo-configuration/#sitemap-xml-%E6%90%9C%E5%B0%8B%E5%BC%95%E6%93%8E%E7%88%AC%E8%9F%B2">Hexo 基本配置</a><br><a href="https://israynotarray.com/other/20210627/3588736352/">快速掌握 robots.txt 用途</a></p>
-]]></content>
-      <categories>
-        <category>Hexo</category>
-      </categories>
-      <tags>
-        <tag>Hexo 優化</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Hexo 設置 GA、Sitemap（四）</title>
-    <url>/hexo/599670072/</url>
-    <content><![CDATA[<div class="note default">
-            <p>會把這篇內容放在前面是因為我深受其害，因此我誠心建議這些設定越早弄完越好。</p>
-          </div>
-
-<h2 id="範例的環境版本"><a href="#範例的環境版本" class="headerlink" title="範例的環境版本"></a>範例的環境版本</h2><p>hexo 版本：6.0.1<br>hexo-cli 版本：4.3.0<br>next 版本：7.8.0</p>
-<h2 id="Google-Analytics"><a href="#Google-Analytics" class="headerlink" title="Google Analytics"></a>Google Analytics</h2><blockquote>
-<p>下面分成兩個方向來設置：設置追蹤碼、埋追蹤碼。</p>
-</blockquote>
-<div class="note default">
-            <p>想看詳細過程介紹可以參考：Gui <a href="https://guiblogs.com/hexo30-12/">Day 12：為 Hexo 裝設 Google Analytics，追蹤你的部落格流量（使用 Next 佈景主題）</a></p>
-          </div>
-
-<h3 id="設置追蹤碼（製評估-ID）"><a href="#設置追蹤碼（製評估-ID）" class="headerlink" title="設置追蹤碼（製評估 ID）"></a>設置追蹤碼（製評估 ID）</h3><p>Step1：<a href="https://analytics.google.com/analytics/web/provision/#/provision">Google Analytics</a> 申請帳號<br>Step2：複製評估 ID（<code>G-</code> 開頭）<br>Step3：修改 NexT 主題中 _config.yml 參數</p>
-<figure class="highlight diff"><figcaption><span>themes/hexo-theme-next/_config.yml</span></figcaption><table><tr><td class="code"><pre><span class="line"># Google Analytics</span><br><span class="line">google_analytics:</span><br><span class="line"><span class="deletion">-  tracking_id: # &lt;app_id&gt;</span></span><br><span class="line"><span class="addition">+  tracking_id: #貼上剛剛複製的評估 ID</span></span><br><span class="line">  # By default, NexT will load an external gtag.js script on your site.</span><br><span class="line">  # If you only need the pageview feature, set the following option to true to get a better performance.</span><br><span class="line">  only_pageview: false</span><br></pre></td></tr></table></figure>
-
-<h3 id="埋追蹤碼"><a href="#埋追蹤碼" class="headerlink" title="埋追蹤碼"></a>埋追蹤碼</h3><p>Step1：複製追蹤碼</p>
-<p><img src="https://imgur.com/mjvgxfs.jpg" alt="步驟演示：資料串流 →  全域網站代碼 → 複製"></p>
-<p>Step2：檔案 themes&#x2F;hexo-theme-next&#x2F;layout&#x2F;_partials&#x2F;head&#x2F;head.swig 最後貼上追蹤碼</p>
-<figure class="highlight diff"><figcaption><span>themes/hexo-theme-next/layout/_partials/head/head.swig</span></figcaption><table><tr><td class="code"><pre><span class="line">&#123;&#123; next_config() &#125;&#125;</span><br><span class="line"><span class="addition">+ &lt;!-- Global site tag (gtag.js) - Google Analytics --&gt;</span></span><br><span class="line"><span class="addition">+ &lt;script async src=&quot;https://www.googletagmanager.com/gtag/js?id=G-K8QW91NNBQ&quot;&gt;&lt;/script&gt;</span></span><br><span class="line"><span class="addition">+ &lt;script&gt;</span></span><br><span class="line"><span class="addition">+   window.dataLayer = window.dataLayer || [];</span></span><br><span class="line"><span class="addition">+   function gtag()&#123;dataLayer.push(arguments);&#125;</span></span><br><span class="line"><span class="addition">+   gtag(&#x27;js&#x27;, new Date());</span></span><br><span class="line"><span class="addition">+ </span></span><br><span class="line"><span class="addition">+   gtag(&#x27;config&#x27;, &#x27;G-K8QW91NNBQ&#x27;);</span></span><br><span class="line"><span class="addition">+ &lt;/script&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>Step3：重新部署</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">hexo g -d</span><br></pre></td></tr></table></figure>
-
-<div class="note default">
-            <p>完成上面兩個設置就可以重新部署後再次檢查 GA 是否成功。</p>
-          </div>
-
-<p><img src="https://imgur.com/60AW6rA.jpg" alt="進到 GA 中點選左邊側邊欄報表，有看到數字 1 就成功了！"></p>
-<hr>
-<h2 id="Sitemap"><a href="#Sitemap" class="headerlink" title="Sitemap"></a>Sitemap</h2><blockquote>
-<p>Sitemap 用來記錄該網站中所有 url 路徑，以及每一個路徑最後修改的時間戳。</p>
-</blockquote>
-<div class="note default">
-            <p>Sitemap 檔案會提供網頁中的相關資訊給搜尋引擎，Google 的爬蟲會定期爬 sitemap.xml 檔案，若有更新他就會去爬你的網站並加入到搜尋引擎中。</p>
-          </div>
-
-<p>Step1：安裝指令</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">npm install hexo-generator-sitemap</span><br></pre></td></tr></table></figure>
-
-<p>Step2：根目錄 _config.yml 在最後面添加新參數</p>
-<ul>
-<li>之後只要指令有 <code>hexo g</code> 時，就會自動生成 sitemap.xml。</li>
-</ul>
-<figure class="highlight diff"><figcaption><span>.git/config</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="addition">+ # Sitemap</span></span><br><span class="line"><span class="addition">+ sitemap:</span></span><br><span class="line"><span class="addition">+   path: sitemap.xml</span></span><br></pre></td></tr></table></figure>
-
-<p>Step3：重新部署</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">hexo d -g</span><br></pre></td></tr></table></figure>
-
-<p>Step4：<a href="https://search.google.com/search-console/about?hl=zh-tw">Google Search</a> 設置加入網站連結</p>
-<ul>
-<li>GA 屬於一種驗證方式，剛剛有成功設置 GA 所以會自動驗證成功。</li>
-</ul>
-<p><img src="https://imgur.com/MCx0dFO.jpg"></p>
-<p>Step5：提交 sitemap</p>
-<ul>
-<li>在新增 Sitemap 欄位中輸入 <code>sitemap.xml</code></li>
-</ul>
-<p><img src="https://imgur.com/D2VrXHx.jpg"></p>
-<p>Step6：檢查 sitemap</p>
-<ul>
-<li>檢查自己的網址後面加上 <code>/sitemap</code> 或 <code>/sitemap.xml</code> 後查看是否有內容。</li>
-</ul>
-<p><img src="https://imgur.com/2yYRM6p.jpg" alt="https://kentdoit.github.io/sitemap"></p>
-<div class="note default">
-            <p>如果<strong>運氣好</strong>到這邊應該是成功了，<del>運氣不好</del>會發覺網址看有內容，但是狀態為<code>無法擷取</code>。</p>
-          </div>
-
-<p><img src="https://imgur.com/Ae8Sllt.jpg"></p>
-<div class="note default">
-            <p>礙於 debug 篇幅過長，將過程記錄在另一篇 <a href="https://kentdoit.github.io/hexo/2629412870/">Hexo Sitemap 建立索引 無法擷取</a> 文章中。</p>
-          </div>
-
-<hr>
-<h2 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h2><p><a href="https://israynotarray.com/hexo/20190514/2072033203/">Hexo搜尋引擎優化</a><br><a href="https://zenreal.github.io/posts/7993/">Hexo 搭建系列 - SEO優化篇</a><br><a href="https://syj0905.github.io/hexo/20190906/285599935/">Hexo 架站攻略 - SEO 優化</a></p>
-]]></content>
-      <categories>
-        <category>Hexo</category>
-      </categories>
-      <tags>
-        <tag>Hexo SEO</tag>
       </tags>
   </entry>
   <entry>
@@ -1676,12 +1676,88 @@ console.log(obj.name);  // kent
 <ul>
 <li>透過將 <code>$&#123;&#125;</code> 內容中含有<code>&lt;</code>、<code>&gt;</code> 與 <code>&amp;</code> 的符號替換成 ASCII Code，也就是單純的字串。</li>
 </ul>
-<figure class="highlight js"><figcaption><span>e.g. 預防 XSS 攻擊</span><a href="https://israynotarray.com/javascript/20211114/136128318/">src</a></figcaption><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">convertHTML</span> (strings, ...keys) &#123;</span><br><span class="line">  <span class="keyword">return</span> strings.<span class="title function_">map</span>(<span class="function">(<span class="params">str, i</span>) =&gt;</span> <span class="string">`<span class="subst">$&#123;str&#125;</span><span class="subst">$&#123;keys[i] ? keys[i].replace(/&amp;/g, <span class="string">&#x27;&amp;amp;&#x27;</span>).replace(/&lt;/g, <span class="string">&#x27;&amp;lt;&#x27;</span>).replace(/&gt;/g, <span class="string">&#x27;&amp;gt;&#x27;</span>): <span class="string">&#x27;&#x27;</span>&#125;</span>`</span>).<span class="title function_">join</span>(<span class="string">&#x27;&#x27;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">convertHTML<span class="string">`&lt;p&gt;超連結：<span class="subst">$&#123;Url&#125;</span>&lt;/p&gt;`</span>;</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><figcaption><span>e.g. 預防 XSS 攻擊</span><a href="https://israynotarray.com/javascript/20211114/136128318/">src</a></figcaption><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">convertHTML</span> (<span class="params">strings, ...keys</span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> strings.<span class="title function_">map</span>(<span class="function">(<span class="params">str, i</span>) =&gt;</span> <span class="string">`<span class="subst">$&#123;str&#125;</span><span class="subst">$&#123;keys[i] ? keys[i].replace(/&amp;/g, <span class="string">&#x27;&amp;amp;&#x27;</span>).replace(/&lt;/g, <span class="string">&#x27;&amp;lt;&#x27;</span>).replace(/&gt;/g, <span class="string">&#x27;&amp;gt;&#x27;</span>): <span class="string">&#x27;&#x27;</span>&#125;</span>`</span>).<span class="title function_">join</span>(<span class="string">&#x27;&#x27;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">convertHTML<span class="string">`&lt;p&gt;超連結：<span class="subst">$&#123;Url&#125;</span>&lt;/p&gt;`</span>;</span><br></pre></td></tr></table></figure>
 
 <h2 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h2><ul>
 <li><a href="https://medium.com/vicky-notes/es6-%E7%AB%A0%E7%AF%80-template-literial-7309b9e3bebb">ES6 章節：Template Literial</a></li>
 <li>PJ 大 <a href="https://pjchender.blogspot.com/2017/01/javascript-es6-template-literalstagged.html">[筆記] JavaScript ES6 中的模版字符串（template literals）和標籤模版（tagged template）</a></li>
 <li>Ray <a href="https://israynotarray.com/javascript/20211114/136128318/">JavaScript 核心觀念(72) - ES6 章節：Template Literial - 標籤樣板字面值</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>JavaScript</category>
+      </categories>
+      <tags>
+        <tag>JavaScript</tag>
+        <tag>ES6</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>JS 可選串連運算子 Optional chaining operator</title>
+    <url>/javascript/3900271525/</url>
+    <content><![CDATA[<h2 id="可選串連運算子-Optional-chaining-operator"><a href="#可選串連運算子-Optional-chaining-operator" class="headerlink" title="可選串連運算子 Optional chaining operator"></a>可選串連運算子 Optional chaining operator</h2><div class="note primary">
+            <p><a href="https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Operators/Optional_chaining">MDN</a>：<br>可選串連運算子 <strong><code>?.</code></strong> 允許進行深層次的物件值存取，而無需透過明確的物件值串連驗證。<code>?.</code> 運算子的操作與 <code>.</code> 屬性存取運算子相似，後者會在參照到 <a href="https://developer.mozilla.org/en-US/docs/Glossary/Nullish">nullish (en-US)</a> 的值為 <a href="https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Global_Objects/null">null</a> or <a href="https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Global_Objects/undefined">undefined</a> 來判斷當不存在時會出現錯誤，而前者可選串連則回傳 <code>undefined</code>。 當需要存取一個函數，而這函數並不存在時，則會回傳 <code>undefined</code>。</p>
+          </div>
+
+<div class="note default">
+            <p>白話文：存取一層以上的物件屬性時，就算屬性不存在也不會報錯，而是回傳 undefined。</p>
+          </div>
+
+<p>語法：在 <code>.</code> 前方加上 <code>?</code>。</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">obj?.prop</span><br><span class="line">obj?.[expr]</span><br><span class="line">arr?.[index]</span><br><span class="line">func?.(args)</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>Tips</p>
+</blockquote>
+<ul>
+<li>當 <code>?.</code> 左側屬性不存在，回傳 <code>undefined</code> 而非 TypeError。</li>
+</ul>
+<div class="note primary">
+            <p>物件特性：取用未定義屬性則會回傳 undefined，但僅限一層！不然會噴 TypeError。<br>（因此有了可選串連運算子的誕生）</p>
+          </div>
+
+<h3 id="語法差異"><a href="#語法差異" class="headerlink" title="語法差異"></a>語法差異</h3><div class="note info">
+            <p>舊方法：手動判斷 typeof 是否為 undefined。<br>新方法：直接在屬性 <code>.</code> 前方加上 <code>?</code>。</p>
+          </div>
+
+<div class="note primary">
+            <p>判斷是否存在會依照 <a href="https://developer.mozilla.org/en-US/docs/Glossary/Nullish">nullish value</a> （null、undefined）直來判斷，若值為 nullish value 就表示不存在。</p>
+          </div>
+
+<figure class="highlight js"><figcaption><span>e.g. 新舊寫法差異</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> school = &#123;</span><br><span class="line">  <span class="attr">info</span>: &#123;</span><br><span class="line">    <span class="attr">student</span>: &#123;</span><br><span class="line">      <span class="attr">name</span>: <span class="string">&#x27;kent&#x27;</span>,</span><br><span class="line">      <span class="attr">age</span>: <span class="number">18</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// TypeError: Cannot read properties of undefined (reading &#x27;name&#x27;)</span></span><br><span class="line"><span class="keyword">let</span> name = school.<span class="property">info</span>.<span class="property">teacher</span>.<span class="property">name</span>; </span><br><span class="line"></span><br><span class="line"><span class="comment">// 舊方法</span></span><br><span class="line"><span class="keyword">if</span> (<span class="title function_">typeof</span> (school.<span class="property">info</span>.<span class="property">teacher</span>) !== <span class="string">&#x27;undefined&#x27;</span>)&#123;</span><br><span class="line">  <span class="keyword">let</span> name = school.<span class="property">info</span>.<span class="property">teacher</span>.<span class="property">name</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 新方法</span></span><br><span class="line"><span class="keyword">let</span> name = school.<span class="property">info</span>.<span class="property">teacher</span>?.<span class="property">name</span>;</span><br></pre></td></tr></table></figure>
+
+<div class="note default">
+            <p>下方會用更多範例來介紹，範例中會使用<a href="https://kentdoit.github.io/javascript/350805089/">短路求值</a>的方式來演示，還不暸解的朋友可以參考這篇文章。</p>
+          </div>
+
+<hr>
+<h2 id="情境範例"><a href="#情境範例" class="headerlink" title="情境範例"></a>情境範例</h2><h3 id="判斷物件屬性是否存在"><a href="#判斷物件屬性是否存在" class="headerlink" title="判斷物件屬性是否存在"></a>判斷物件屬性是否存在</h3><ul>
+<li>舊方法：<code>&amp;&amp;</code><ul>
+<li>會先判斷上一層屬性是否存在，<code>&amp;&amp; 左邊</code> 是否為 nullish value （null 或 undefined）</li>
+<li>不是null 或 undefined 才繼續執行 <code>&amp;&amp; 右邊</code>。</li>
+</ul>
+</li>
+<li>新方法：<code>?.</code><ul>
+<li>當 <code>?.</code> 左側屬性是否為 nullish value （null 或 undefined），則回傳 undefined。</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> school = &#123;</span><br><span class="line">  <span class="attr">info</span>: &#123;</span><br><span class="line">    <span class="attr">student</span>: &#123;</span><br><span class="line">      <span class="attr">name</span>: <span class="string">&#x27;kent&#x27;</span>,</span><br><span class="line">      <span class="attr">age</span>: <span class="number">18</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 問題</span></span><br><span class="line"><span class="keyword">let</span> name = school.<span class="property">info</span>.<span class="property">teacher</span>.<span class="property">name</span>; <span class="comment">// TypeError: Cannot read properties of undefined (reading &#x27;name&#x27;)</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 舊方法</span></span><br><span class="line"><span class="keyword">let</span> name = school.<span class="property">info</span>.<span class="property">teacher</span> &amp;&amp; school.<span class="property">info</span>.<span class="property">teacher</span>.<span class="property">name</span>;   <span class="comment">// undefined</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 新方法</span></span><br><span class="line"><span class="keyword">let</span> name = school.<span class="property">info</span>.<span class="property">teacher</span>?.<span class="property">name</span>;      <span class="comment">// undefined</span></span><br><span class="line"><span class="keyword">let</span> name = school.<span class="property">info</span>[<span class="string">&#x27;teacher&#x27;</span>]?.<span class="property">name</span>;   <span class="comment">// undefined</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="延伸應用"><a href="#延伸應用" class="headerlink" title="延伸應用"></a>延伸應用</h2><h3 id="預防方法不存在"><a href="#預防方法不存在" class="headerlink" title="預防方法不存在"></a>預防方法不存在</h3><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> obj = &#123;</span><br><span class="line">  <span class="attr">fn</span>: <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;fn&#x27;</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(obj.<span class="title function_">fnn</span>());   <span class="comment">// TypeError: obj.fnn is not a function</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(obj.<span class="property">fnn</span>?.()); <span class="comment">// undefined</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="結合空值合併運算符（-）來設置預設值"><a href="#結合空值合併運算符（-）來設置預設值" class="headerlink" title="結合空值合併運算符（??）來設置預設值"></a>結合空值合併運算符（??）來設置預設值</h3><figure class="highlight js"><figcaption><span>延續上方的程式碼</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> name = school.<span class="property">info</span>.<span class="property">teacher</span>?.<span class="property">name</span> ?? <span class="string">&#x27;陳怡君&#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+<h2 id="conclusion"><a href="#conclusion" class="headerlink" title="conclusion"></a>conclusion</h2><div class="note default">
+            <p>比較直接透過錯誤訊息判斷問題（難追尋問題原因），但如果觀念夠的話，還是可以透過邏輯拆解一步一步尋找。</p>
+          </div>
+
+<h2 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h2><ul>
+<li><a href="https://github.com/HelloJunWei/blog/issues/7">我所不知道的javascript #7</a></li>
+</ul>
+<p>延伸閱讀</p>
+<ul>
+<li>程式猿吃香蕉：<a href="https://medium.com/%E7%A8%8B%E5%BC%8F%E7%8C%BF%E5%90%83%E9%A6%99%E8%95%89/%E4%BE%86%E8%AB%87-javascript-%E7%9A%84-optional-chaining-%E5%92%8C-nullish-coalescing-part-i-992625a1861d">前端開發 🦏 來談 JavaScript 的 Optional Chaining 和 Nullish Coalescing (一)</a></li>
 </ul>
 ]]></content>
       <categories>
@@ -1911,9 +1987,9 @@ console.log(obj.name);  // kent
             <p>函式參數的用法和一般解構一樣，只是從 <code>等號左邊解構到右邊</code> 變為 <code>arguments 解構到 parameters</code>。與陣列解構、物件解構沒有太大差異這邊就不多贅述。<br>下方用兩個範例分別演示兩種函式參數解構的新舊寫法差異。</p>
           </div>
 
-<figure class="highlight js"><figcaption><span>函式陣列參數解構</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="comment">// 舊寫法</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">fn</span> (args) &#123;</span><br><span class="line">  <span class="keyword">let</span> month = args[<span class="number">0</span>];</span><br><span class="line">  <span class="keyword">let</span> day = args[<span class="number">1</span>];</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(month, day);   <span class="comment">// month=11, day=11</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">fn</span>([<span class="number">11</span>, <span class="number">11</span>]);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 新寫法</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">fn</span> ([month, day]) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(month, day);   <span class="comment">// month=11, day=11</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">fn</span>([<span class="number">11</span>, <span class="number">11</span> ]);</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><figcaption><span>函式陣列參數解構</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="comment">// 舊寫法</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">fn</span> (<span class="params">args</span>) &#123;</span><br><span class="line">  <span class="keyword">let</span> month = args[<span class="number">0</span>];</span><br><span class="line">  <span class="keyword">let</span> day = args[<span class="number">1</span>];</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(month, day);   <span class="comment">// month=11, day=11</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">fn</span>([<span class="number">11</span>, <span class="number">11</span>]);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 新寫法</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">fn</span> (<span class="params">[month, day]</span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(month, day);   <span class="comment">// month=11, day=11</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">fn</span>([<span class="number">11</span>, <span class="number">11</span> ]);</span><br></pre></td></tr></table></figure>
 
-<figure class="highlight js"><figcaption><span>函式物件參數解構</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="comment">// 舊寫法</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">fn</span> (args) &#123;</span><br><span class="line">  <span class="keyword">let</span> month = args.<span class="property">month</span>;</span><br><span class="line">  <span class="keyword">let</span> day = args.<span class="property">day</span>;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(month, day);   <span class="comment">// month=11, day=11</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">fn</span>(&#123; <span class="attr">month</span>: <span class="number">11</span>, <span class="attr">day</span>: <span class="number">11</span> &#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 新寫法</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">fn</span> (&#123; month, day &#125;) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(month, day);   <span class="comment">// month=11, day=11</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">fn</span>(&#123; <span class="attr">month</span>: <span class="number">11</span>, <span class="attr">day</span>: <span class="number">11</span> &#125;);</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><figcaption><span>函式物件參數解構</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="comment">// 舊寫法</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">fn</span> (<span class="params">args</span>) &#123;</span><br><span class="line">  <span class="keyword">let</span> month = args.<span class="property">month</span>;</span><br><span class="line">  <span class="keyword">let</span> day = args.<span class="property">day</span>;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(month, day);   <span class="comment">// month=11, day=11</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">fn</span>(&#123; <span class="attr">month</span>: <span class="number">11</span>, <span class="attr">day</span>: <span class="number">11</span> &#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 新寫法</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">fn</span> (<span class="params">&#123; month, day &#125;</span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(month, day);   <span class="comment">// month=11, day=11</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">fn</span>(&#123; <span class="attr">month</span>: <span class="number">11</span>, <span class="attr">day</span>: <span class="number">11</span> &#125;);</span><br></pre></td></tr></table></figure>
 
 <div class="note default">
             <p>介紹到這邊對於解構賦值基礎運用已具備一定程度的理解，下方會介紹幾種稍微進階一咪咪的解構賦值應用。</p>
@@ -1923,7 +1999,7 @@ console.log(obj.name);  // kent
 <h3 id="非基礎應用"><a href="#非基礎應用" class="headerlink" title="非基礎應用"></a>非基礎應用</h3><h4 id="設定默認值（預設值）"><a href="#設定默認值（預設值）" class="headerlink" title="設定默認值（預設值）"></a>設定默認值（預設值）</h4><ul>
 <li>防止出現 undefined 結果，再解構變數後方使用 &#x3D; 並賦予一個值。</li>
 </ul>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> obj = &#123; <span class="attr">name</span>: <span class="string">&#x27;kent&#x27;</span> &#125;;</span><br><span class="line"><span class="keyword">const</span> arr = [<span class="number">20</span>, <span class="number">22</span>];</span><br><span class="line"></span><br><span class="line"><span class="comment">// 陣列解構預設值</span></span><br><span class="line"><span class="keyword">const</span> [a, b, c = <span class="number">1</span>] = arr;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(a, b, c);   <span class="comment">// a=20, b=22, c=1</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 物件解構預設值</span></span><br><span class="line"><span class="keyword">const</span> &#123; name, age = <span class="number">18</span> &#125; = obj;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(name, age); <span class="comment">// name=&#x27;kent&#x27;, age=18</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 函式參數解構預設值</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">fn</span> ([a, b, c = <span class="number">1</span>]) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(a, b, c);   <span class="comment">// a=20, b=22, c=1</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">fn</span>(arr);</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> obj = &#123; <span class="attr">name</span>: <span class="string">&#x27;kent&#x27;</span> &#125;;</span><br><span class="line"><span class="keyword">const</span> arr = [<span class="number">20</span>, <span class="number">22</span>];</span><br><span class="line"></span><br><span class="line"><span class="comment">// 陣列解構預設值</span></span><br><span class="line"><span class="keyword">const</span> [a, b, c = <span class="number">1</span>] = arr;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(a, b, c);   <span class="comment">// a=20, b=22, c=1</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 物件解構預設值</span></span><br><span class="line"><span class="keyword">const</span> &#123; name, age = <span class="number">18</span> &#125; = obj;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(name, age); <span class="comment">// name=&#x27;kent&#x27;, age=18</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 函式參數解構預設值</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">fn</span> (<span class="params">[a, b, c = <span class="number">1</span>]</span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(a, b, c);   <span class="comment">// a=20, b=22, c=1</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">fn</span>(arr);</span><br></pre></td></tr></table></figure>
 
 <div class="note danger">
             <p>常見問題：函式參數為空會噴 Error</p>
@@ -1933,7 +2009,7 @@ console.log(obj.name);  // kent
             <p>解決辦法：對參數設預設值</p>
           </div>
 
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 錯誤</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">fn</span> ([a, b, c = <span class="number">1</span>]) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(a, b, c);   <span class="comment">// TypeError: undefined is not iterable (cannot read property Symbol(Symbol.iterator))</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">fn</span>();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 正確</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">fn</span> ([a, b, c = <span class="number">1</span>] = []) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(a, b, c);   <span class="comment">// undefined undefined 1</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">fn</span>(); <span class="comment">// 若上面的錯誤範例傳入 fn([]) 則結果會相同</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 錯誤</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">fn</span> (<span class="params">[a, b, c = <span class="number">1</span>]</span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(a, b, c);   <span class="comment">// TypeError: undefined is not iterable (cannot read property Symbol(Symbol.iterator))</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">fn</span>();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 正確</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">fn</span> (<span class="params">[a, b, c = <span class="number">1</span>] = []</span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(a, b, c);   <span class="comment">// undefined undefined 1</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">fn</span>(); <span class="comment">// 若上面的錯誤範例傳入 fn([]) 則結果會相同</span></span><br></pre></td></tr></table></figure>
 
 <h4 id="巢狀解構"><a href="#巢狀解構" class="headerlink" title="巢狀解構"></a>巢狀解構</h4><ul>
 <li>子解構，透過重新賦予的特性，將其在進行解構一次。</li>
@@ -1961,82 +2037,6 @@ console.log(obj.name);  // kent
 <h2 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h2><ul>
 <li>PJ 大：<a href="https://pjchender.blogspot.com/2017/01/es6-array-destructuring.html">[筆記] JavaScript ES6 中的陣列解構賦值（array destructuring）</a></li>
 <li>summer 大：<a href="https://cythilya.github.io/2018/11/05/syntax/">你懂 JavaScript 嗎？#29 語法（Syntax）</a></li>
-</ul>
-]]></content>
-      <categories>
-        <category>JavaScript</category>
-      </categories>
-      <tags>
-        <tag>JavaScript</tag>
-        <tag>ES6</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>JS 可選串連運算子 Optional chaining operator</title>
-    <url>/javascript/3900271525/</url>
-    <content><![CDATA[<h2 id="可選串連運算子-Optional-chaining-operator"><a href="#可選串連運算子-Optional-chaining-operator" class="headerlink" title="可選串連運算子 Optional chaining operator"></a>可選串連運算子 Optional chaining operator</h2><div class="note primary">
-            <p><a href="https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Operators/Optional_chaining">MDN</a>：<br>可選串連運算子 <strong><code>?.</code></strong> 允許進行深層次的物件值存取，而無需透過明確的物件值串連驗證。<code>?.</code> 運算子的操作與 <code>.</code> 屬性存取運算子相似，後者會在參照到 <a href="https://developer.mozilla.org/en-US/docs/Glossary/Nullish">nullish (en-US)</a> 的值為 <a href="https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Global_Objects/null">null</a> or <a href="https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Global_Objects/undefined">undefined</a> 來判斷當不存在時會出現錯誤，而前者可選串連則回傳 <code>undefined</code>。 當需要存取一個函數，而這函數並不存在時，則會回傳 <code>undefined</code>。</p>
-          </div>
-
-<div class="note default">
-            <p>白話文：存取一層以上的物件屬性時，就算屬性不存在也不會報錯，而是回傳 undefined。</p>
-          </div>
-
-<p>語法：在 <code>.</code> 前方加上 <code>?</code>。</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">obj?.prop</span><br><span class="line">obj?.[expr]</span><br><span class="line">arr?.[index]</span><br><span class="line">func?.(args)</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>Tips</p>
-</blockquote>
-<ul>
-<li>當 <code>?.</code> 左側屬性不存在，回傳 <code>undefined</code> 而非 TypeError。</li>
-</ul>
-<div class="note primary">
-            <p>物件特性：取用未定義屬性則會回傳 undefined，但僅限一層！不然會噴 TypeError。<br>（因此有了可選串連運算子的誕生）</p>
-          </div>
-
-<h3 id="語法差異"><a href="#語法差異" class="headerlink" title="語法差異"></a>語法差異</h3><div class="note info">
-            <p>舊方法：手動判斷 typeof 是否為 undefined。<br>新方法：直接在屬性 <code>.</code> 前方加上 <code>?</code>。</p>
-          </div>
-
-<div class="note primary">
-            <p>判斷是否存在會依照 <a href="https://developer.mozilla.org/en-US/docs/Glossary/Nullish">nullish value</a> （null、undefined）直來判斷，若值為 nullish value 就表示不存在。</p>
-          </div>
-
-<figure class="highlight js"><figcaption><span>e.g. 新舊寫法差異</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> school = &#123;</span><br><span class="line">  <span class="attr">info</span>: &#123;</span><br><span class="line">    <span class="attr">student</span>: &#123;</span><br><span class="line">      <span class="attr">name</span>: <span class="string">&#x27;kent&#x27;</span>,</span><br><span class="line">      <span class="attr">age</span>: <span class="number">18</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// TypeError: Cannot read properties of undefined (reading &#x27;name&#x27;)</span></span><br><span class="line"><span class="keyword">let</span> name = school.<span class="property">info</span>.<span class="property">teacher</span>.<span class="property">name</span>; </span><br><span class="line"></span><br><span class="line"><span class="comment">// 舊方法</span></span><br><span class="line"><span class="keyword">if</span> (<span class="keyword">typeof</span> (school.<span class="property">info</span>.<span class="property">teacher</span>) !== <span class="string">&#x27;undefined&#x27;</span>)&#123;</span><br><span class="line">  <span class="keyword">let</span> name = school.<span class="property">info</span>.<span class="property">teacher</span>.<span class="property">name</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 新方法</span></span><br><span class="line"><span class="keyword">let</span> name = school.<span class="property">info</span>.<span class="property">teacher</span>?.<span class="property">name</span>;</span><br></pre></td></tr></table></figure>
-
-<div class="note default">
-            <p>下方會用更多範例來介紹，範例中會使用<a href="https://kentdoit.github.io/javascript/350805089/">短路求值</a>的方式來演示，還不暸解的朋友可以參考這篇文章。</p>
-          </div>
-
-<hr>
-<h2 id="情境範例"><a href="#情境範例" class="headerlink" title="情境範例"></a>情境範例</h2><h3 id="判斷物件屬性是否存在"><a href="#判斷物件屬性是否存在" class="headerlink" title="判斷物件屬性是否存在"></a>判斷物件屬性是否存在</h3><ul>
-<li>舊方法：<code>&amp;&amp;</code><ul>
-<li>會先判斷上一層屬性是否存在，<code>&amp;&amp; 左邊</code> 是否為 nullish value （null 或 undefined）</li>
-<li>不是null 或 undefined 才繼續執行 <code>&amp;&amp; 右邊</code>。</li>
-</ul>
-</li>
-<li>新方法：<code>?.</code><ul>
-<li>當 <code>?.</code> 左側屬性是否為 nullish value （null 或 undefined），則回傳 undefined。</li>
-</ul>
-</li>
-</ul>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> school = &#123;</span><br><span class="line">  <span class="attr">info</span>: &#123;</span><br><span class="line">    <span class="attr">student</span>: &#123;</span><br><span class="line">      <span class="attr">name</span>: <span class="string">&#x27;kent&#x27;</span>,</span><br><span class="line">      <span class="attr">age</span>: <span class="number">18</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 問題</span></span><br><span class="line"><span class="keyword">let</span> name = school.<span class="property">info</span>.<span class="property">teacher</span>.<span class="property">name</span>; <span class="comment">// TypeError: Cannot read properties of undefined (reading &#x27;name&#x27;)</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 舊方法</span></span><br><span class="line"><span class="keyword">let</span> name = school.<span class="property">info</span>.<span class="property">teacher</span> &amp;&amp; school.<span class="property">info</span>.<span class="property">teacher</span>.<span class="property">name</span>;   <span class="comment">// undefined</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 新方法</span></span><br><span class="line"><span class="keyword">let</span> name = school.<span class="property">info</span>.<span class="property">teacher</span>?.<span class="property">name</span>;      <span class="comment">// undefined</span></span><br><span class="line"><span class="keyword">let</span> name = school.<span class="property">info</span>[<span class="string">&#x27;teacher&#x27;</span>]?.<span class="property">name</span>;   <span class="comment">// undefined</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="延伸應用"><a href="#延伸應用" class="headerlink" title="延伸應用"></a>延伸應用</h2><h3 id="預防方法不存在"><a href="#預防方法不存在" class="headerlink" title="預防方法不存在"></a>預防方法不存在</h3><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> obj = &#123;</span><br><span class="line">  <span class="attr">fn</span>: <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;fn&#x27;</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(obj.<span class="title function_">fnn</span>());   <span class="comment">// TypeError: obj.fnn is not a function</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(obj.<span class="property">fnn</span>?.()); <span class="comment">// undefined</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="結合空值合併運算符（-）來設置預設值"><a href="#結合空值合併運算符（-）來設置預設值" class="headerlink" title="結合空值合併運算符（??）來設置預設值"></a>結合空值合併運算符（??）來設置預設值</h3><figure class="highlight js"><figcaption><span>延續上方的程式碼</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> name = school.<span class="property">info</span>.<span class="property">teacher</span>?.<span class="property">name</span> ?? <span class="string">&#x27;陳怡君&#x27;</span>;</span><br></pre></td></tr></table></figure>
-
-<h2 id="conclusion"><a href="#conclusion" class="headerlink" title="conclusion"></a>conclusion</h2><div class="note default">
-            <p>比較直接透過錯誤訊息判斷問題（難追尋問題原因），但如果觀念夠的話，還是可以透過邏輯拆解一步一步尋找。</p>
-          </div>
-
-<h2 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h2><ul>
-<li><a href="https://github.com/HelloJunWei/blog/issues/7">我所不知道的javascript #7</a></li>
-</ul>
-<p>延伸閱讀</p>
-<ul>
-<li>程式猿吃香蕉：<a href="https://medium.com/%E7%A8%8B%E5%BC%8F%E7%8C%BF%E5%90%83%E9%A6%99%E8%95%89/%E4%BE%86%E8%AB%87-javascript-%E7%9A%84-optional-chaining-%E5%92%8C-nullish-coalescing-part-i-992625a1861d">前端開發 🦏 來談 JavaScript 的 Optional Chaining 和 Nullish Coalescing (一)</a></li>
 </ul>
 ]]></content>
       <categories>
@@ -2533,98 +2533,6 @@ console.log(obj.name);  // kent
       </categories>
       <tags>
         <tag>JavaScript</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Vue 雙括號 Mustache 無法渲染出 HTML tag</title>
-    <url>/Vue/3454538903/</url>
-    <content><![CDATA[<h2 id="科普-Mustache"><a href="#科普-Mustache" class="headerlink" title="科普 Mustache"></a>科普 Mustache</h2><ul>
-<li>使用方式：<code>&#123;&#123; &#125;&#125; 雙括號</code></li>
-<li>用途：動態顯示 data 以及綁定</li>
-</ul>
-<blockquote>
-<p>支持兩種參數</p>
-</blockquote>
-<p>Inside text interpolations 文本插值</p>
-<ul>
-<li>最基本的數據綁定方式<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">span</span>&gt;</span>Message: &#123;&#123; msg &#125;&#125;<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
-</ul>
-<p>expression 表達式</p>
-<ul>
-<li>皆會轉換成 JavaScript expressions<figure class="highlight html"><table><tr><td class="code"><pre><span class="line">&#123;&#123; number + 1 &#125;&#125;</span><br><span class="line">&#123;&#123; ok ? &#x27;YES&#x27; : &#x27;NO&#x27; &#125;&#125;</span><br><span class="line">&#123;&#123; message.split(&#x27;&#x27;).reverse().join(&#x27;&#x27;) &#125;&#125;</span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">:id</span>=<span class="string">&quot;`list-$&#123;id&#125;`&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
-</ul>
-<p>補充：vue templates 中可以使用 JavaScript expressions 的兩種時機</p>
-<ul>
-<li>Inside text interpolations 使用 <code>&#123;&#123;&#125;&#125; mustaches</code></li>
-<li>任何使用 <code>v-</code> 開頭的屬性值（例如：v-if、v-bind）</li>
-</ul>
-<div class="note default">
-            <p>以上屬於對 Mustache 的介紹，下方開始探討為什麼無法渲染出 HTML tag。</p>
-          </div>
-
-<hr>
-<h2 id="問題探討"><a href="#問題探討" class="headerlink" title="問題探討"></a>問題探討</h2><p>Q：為什麼無法渲染出 HTML tag</p>
-<p>A：<a href="https://vuejs.org/guide/essentials/template-syntax.html#raw-html">官方文件</a>中有提到「mustaches interpret the data as plain text」</p>
-<p><img src="https://imgur.com/wThhCkS.png"></p>
-<p>代表 mustaches 渲染得結果都會作為純文字（string）渲染到畫面上，因此不會解析成 HTML tag。</p>
-<ul>
-<li>文件中也有表示可以透過 <a href="https://vuejs.org/guide/essentials/template-syntax.html#raw-html">Raw HTML</a>（v-html） 來渲染出 HTML tag。</li>
-</ul>
-<div class="note default">
-            <p>下方示範如何解決</p>
-          </div>
-
-<hr>
-<h2 id="解決方法"><a href="#解決方法" class="headerlink" title="解決方法"></a>解決方法</h2><p>情境範例：依照 product.is_enabled 渲染出不同的 class、textContent</p>
-<blockquote>
-<p>錯誤範例：因為渲染出來的是純文字，不會解析成 HTML tag。</p>
-</blockquote>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line">&#123;&#123; product.is_enabled ? &#x27;<span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">&quot;text-success&quot;</span>&gt;</span>啟用<span class="tag">&lt;/<span class="name">span</span>&gt;</span>&#x27; : &#x27;<span class="tag">&lt;<span class="name">span</span>&gt;</span>未啟用<span class="tag">&lt;/<span class="name">span</span>&gt;</span>&#x27; &#125;&#125;</span><br></pre></td></tr></table></figure>
-
-<div class="note default">
-            <p>因此如果渲染 HTML 需求，不能透過 Mustache 字串插值的方式，下方示範演示其他兩種解決方法。</p>
-          </div>
-
-<blockquote>
-<p>三元運算子</p>
-</blockquote>
-<ul>
-<li>相同類型的結構可以使用<code>三元運算子</code>動態切換不同的值，這邊 class 綁定的值屬於<code>陣列</code>。</li>
-</ul>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">span</span> <span class="attr">:class</span>=<span class="string">&quot;[product.is_enabled ? &#x27;text-success&#x27; : &#x27;text-warning&#x27;]&quot;</span>&gt;</span>&#123;&#123; product.is_enabled ? &#x27;啟用&#x27; : &#x27;未啟用&#x27; &#125;&#125;<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>如果動態切換條件只需要判斷一種結果，則下方範例兩種形式都可以。</li>
-</ul>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">span</span> <span class="attr">:class</span>=<span class="string">&quot;&#123;&#x27;text-success&#x27;: product.is_enabled, &#x27;text-warning&#x27;: !product.is_enabled&#125;&quot;</span>&gt;</span>&#123;&#123; product.is_enabled ? &#x27;啟用&#x27; : &#x27;未啟用&#x27; &#125;&#125;<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">span</span> <span class="attr">:class</span>=<span class="string">&quot;[&#123;&#x27;text-success&#x27;: product.is_enabled&#125;, &#123;&#x27;text-warning&#x27;: !product.is_enabled&#125;]&quot;</span>&gt;</span>&#123;&#123; product.is_enabled ? &#x27;啟用&#x27; : &#x27;未啟用&#x27; &#125;&#125;<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>v-html</p>
-</blockquote>
-<ul>
-<li>透過三元運算子來決定要渲染的 HTML tag。</li>
-</ul>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">v-html</span>=<span class="string">&quot;product.is_enabled ? `&lt;span class=&#x27;text-success&#x27;&gt;啟用&lt;/span&gt;` : `&lt;span class=&#x27;text-warning&#x27;&gt;未啟用&lt;/span&gt;`&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>data 定義一個變數來存放 html tag，再作為 v-html 綁定對象。</li>
-</ul>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line">const app = &#123;</span><br><span class="line">  data() &#123;</span><br><span class="line">    return &#123;</span><br><span class="line">			rawHtmlEnabledIsTrue: &quot;<span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">&quot;text-success&quot;</span> <span class="attr">v-if</span>=<span class="string">&quot;product.is_enabled&quot;</span>&gt;</span>啟用<span class="tag">&lt;/<span class="name">span</span>&gt;</span>&quot;,</span><br><span class="line">			rawHtmlEnabledIsFalse: &quot;<span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">&quot;text-warning&quot;</span> <span class="attr">v-if</span>=<span class="string">&quot;!product.is_enabled&quot;</span>&gt;</span>未啟用<span class="tag">&lt;/<span class="name">span</span>&gt;</span>&quot;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">v-html</span>=<span class="string">&quot;product.is_enabled ? rawHtmlEnabledIsTrue : rawHtmlEnabledIsFalse&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<div class="note danger">
-            <p>提醒：這種動態渲染 HTML 方式，容易導致 XSS 漏洞，因此必須要在可信任的 content（例如上方範例的 rawHtmlEnabledIsTrue、rawHtmlEnabledIsFalse）中在使用 v-html，絕對不能用在使用者提供的內容上（例如：input）。</p>
-          </div>
-
-<p>延伸問題</p>
-<ul>
-<li>ray <a href="https://israynotarray.com/vue/20221202/2131448011/">解決 Vue 渲染太慢而導致看到 Mustache (雙花括號)的問題</a></li>
-</ul>
-]]></content>
-      <categories>
-        <category>Vue</category>
-      </categories>
-      <tags>
-        <tag>Vue</tag>
       </tags>
   </entry>
 </search>
